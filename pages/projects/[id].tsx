@@ -33,12 +33,14 @@ const smoothTransition = {
 };
 
 const thumbnailVariants = {
-  initial: { opacity: 1, y: 200 },
-  animate: { opacity: 1, y: 0, transition: smoothTransition },
+  initial: { opacity: 1 },
+  animate: { opacity: 1, transition: smoothTransition },
 };
 
 const IndexPage = ({ project }) => (
-  <Layout title="Home | Next.js + TypeScript Example">
+  <Layout
+    title={`${[project.titleLine1, project.titleLine2].join(" ")} | VOGELINO`}
+  >
     <motion.div
       key={`project-${project.slug}-container`}
       initial="initial"
@@ -56,7 +58,7 @@ const IndexPage = ({ project }) => (
             transition: smoothTransition,
           },
         }}
-        className="aspect-[16/13] relative overflow-hidden w-full"
+        className="relative overflow-hidden w-full"
         style={{ willChange: "height" }}
       >
         <motion.img
@@ -65,7 +67,7 @@ const IndexPage = ({ project }) => (
           src={project.imagePath}
           alt={project.imageAlt}
           variants={thumbnailVariants}
-          className="absolute top-0 left-0 w-full -mt-[30vh]"
+          className="w-full h-full object-cover"
           style={{ willChange: "transform, opacity" }}
         />
         <OverlayingPixel
@@ -78,42 +80,38 @@ const IndexPage = ({ project }) => (
         />
         <ImageLittleSquares showBottonLeftCorner={false} />
       </motion.div>
-      <motion.div
-        key={`project-${project.slug}-title-container`}
-        className="container mx-auto px-8 z-10 min-h-screen -mt-[87px]"
-        variants={{
-          animate: {
-            transition: {
-              delay: 2,
-              beforeChildren: true,
-            },
-          },
-        }}
-      >
-        <div className="relative">
+      <div className="container mx-auto px-8 z-10 min-h-screen -mt-[87px]">
+        <div
+          className="relative"
+          role="heading"
+          aria-label={[project.titleLine1, project.titleLine2].join(" ")}
+        >
           <ProjectTitle
+            ariaHidden
             id={`project-${project.slug}-title-line-1`}
             projectTitleLine1={project.titleLine1}
             projectTitleLine2={""}
             className="text-9xl mix-blend-difference text-black-negative z-20"
-            delay={1}
+            delay={0.4}
           />
           <ProjectTitle
+            ariaHidden
             id={`project-${project.slug}-title-line-1`}
             projectTitleLine1={project.titleLine1}
             projectTitleLine2={""}
             className="text-9xl mix-blend-overlay text-black/60 z-20"
-            delay={1}
+            delay={0.4}
           />
           <ProjectTitle
+            ariaHidden
             id={`project-${project.slug}-title-line-2`}
             projectTitleLine1={project.titleLine2}
             projectTitleLine2={""}
             className="mt-[89px] text-9xl text-black z-20"
-            delay={1.2}
+            delay={0.6}
           />
         </div>
-      </motion.div>
+      </div>
     </motion.div>
   </Layout>
 );

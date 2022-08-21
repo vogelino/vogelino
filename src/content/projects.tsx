@@ -14,7 +14,7 @@ export const projects: ProjectType[] = [
     titleLine2: `Perspectives`,
     slug: `hidden-perspectives`,
     imagePath: `/images/projects/hidden-perspectives/thumbnail.webp`,
-    imageAlt: `/images/projects/hidden-perspectives/thumbnail.webp`,
+    imageAlt: `The Shah with John F. Kennedy and Robert McNamara in 1962`,
     type: `Web Archive`,
     description:
       `A digital archive gathering documents and events ` +
@@ -25,7 +25,7 @@ export const projects: ProjectType[] = [
     titleLine2: `Stori.es`,
     slug: `letter-stories-raoul-hausmann`,
     imagePath: `/images/projects/letter-stories/thumbnail.webp`,
-    imageAlt: `/images/projects/letter-stories/thumbnail.webp`,
+    imageAlt: `Black and white portrait of german dada artist Raoul Hausmann`,
     type: `Dataviz`,
     description:
       `A  visualization of the correspondence ` +
@@ -37,7 +37,7 @@ export const projects: ProjectType[] = [
     titleLine2: `2030`,
     slug: `design-job-2030`,
     imagePath: `/images/projects/design-job-2030/thumbnail.webp`,
-    imageAlt: `/images/projects/design-job-2030/thumbnail.webp`,
+    imageAlt: `Old photo of an old flying car`,
     type: `Web Timeline`,
     description:
       `A critical-design timeline gathering real and ` +
@@ -48,7 +48,7 @@ export const projects: ProjectType[] = [
     titleLine2: `Magazine`,
     slug: `streem-retro-future-webdesign`,
     imagePath: `/images/projects/streem-magazine/thumbnail.webp`,
-    imageAlt: `/images/projects/streem-magazine/thumbnail.webp`,
+    imageAlt: `Line drawing of a city, mixed with 3d words such as Wurstbande`,
     type: `Scrollytelling`,
     description:
       `An experimental and fictional alternative ` +

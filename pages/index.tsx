@@ -4,8 +4,11 @@ import { projects } from "../src/content/projects";
 import classNames from "../src/utils/classNames";
 
 const IndexPage = () => (
-  <Layout title="Home | Next.js + TypeScript Example">
-    <main className="container px-8 grid grid-cols-1 mx-auto gap-8 py-32">
+  <Layout title="Selected Projects | VOGELINO">
+    <main
+      className="container px-8 grid grid-cols-1 mx-auto gap-8 py-32"
+      aria-label="List of selected works"
+    >
       {projects.map((work, idx) => (
         <div
           key={work.slug}

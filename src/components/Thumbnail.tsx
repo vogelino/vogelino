@@ -101,24 +101,29 @@ const Thumbnail: FC<ThumbnailPropType> = ({
           transition: { when: "beforeChildren", delay: 0.1, duration: 0.1 },
         },
       }}
+      role="heading"
+      aria-label={[projectTitleLine1, projectTitleLine2].join(" ")}
     >
       <ProjectTitle
         id={`thumbnail-${projectSlug}-title-line-1`}
         projectTitleLine1={projectTitleLine1}
         projectTitleLine2={projectTitleLine2}
         className="mix-blend-difference text-black-negative z-20"
+        ariaHidden
       />
       <ProjectTitle
         id={`thumbnail-${projectSlug}-title-line-2`}
         projectTitleLine1={projectTitleLine1}
         projectTitleLine2={projectTitleLine2}
         className="mix-blend-overlay text-black/60 z-20"
+        ariaHidden
       />
       <ProjectTitle
         id={`thumbnail-${projectSlug}-title-line-3`}
         projectTitleLine1={projectTitleLine1}
         projectTitleLine2={projectTitleLine2.slice(0, 1)}
         className="z-30"
+        ariaHidden
       />
       <div
         className={classNames(
@@ -127,6 +132,7 @@ const Thumbnail: FC<ThumbnailPropType> = ({
         )}
       >
         <motion.h3
+          aria-label={`Project type: ${projectType}`}
           key={`thumbnail-${projectSlug}-type`}
           className={classNames(
             "origin-bottom-left -rotate-90 translate-x-7",
@@ -136,6 +142,7 @@ const Thumbnail: FC<ThumbnailPropType> = ({
         >
           {projectType.split("").map((c, idx) => (
             <motion.span
+              aria-hidden="true"
               key={`thumbnail-${projectSlug}-type-${c}-${idx}`}
               variants={projectTypeCharsVariants}
               className="inline-block"

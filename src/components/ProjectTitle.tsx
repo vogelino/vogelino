@@ -5,6 +5,7 @@ import classNames from "../utils/classNames";
 interface ProjectTitlePropType {
   id: number | string;
   delay?: number;
+  ariaHidden?: boolean;
   projectTitleLine1: string;
   projectTitleLine2: string;
   className?: React.HTMLAttributes<HTMLElement>["className"];
@@ -97,6 +98,7 @@ const TitleLine: FC<{ children: string; id: string; delay: number }> = ({
 
 export const ProjectTitle: FC<ProjectTitlePropType> = ({
   id,
+  ariaHidden = false,
   delay = 0,
   projectTitleLine1,
   projectTitleLine2,
@@ -104,6 +106,7 @@ export const ProjectTitle: FC<ProjectTitlePropType> = ({
 }) => (
   <motion.h2
     key={id}
+    aria-hidden={ariaHidden}
     variants={titleParentVariants}
     className={classNames(
       className,

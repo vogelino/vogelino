@@ -8,10 +8,16 @@ function MyApp({ Component, pageProps }: AppProps) {
   const { pathname } = useRouter();
   return (
     <>
-      <header className="fixed top-0 left-0 w-full z-40 text-black-negative mix-blend-exclusion">
+      <header
+        aria-label="Main header"
+        className="fixed top-0 left-0 w-full z-40 text-black-negative mix-blend-exclusion"
+      >
         <div className="container mx-auto px-8 py-4 flex">
           <Link href="/">
-            <a className="uppercase text-3xl tracking-widest font-headline">
+            <a
+              className="uppercase text-3xl tracking-widest font-headline"
+              aria-label="Logo (Link to Homepage)"
+            >
               Vogelino
             </a>
           </Link>
