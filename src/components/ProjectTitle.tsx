@@ -86,7 +86,7 @@ const TitleLine: FC<{ children: string; id: string; delay: number }> = ({
       <motion.span
         variants={typeCharsVariants}
         key={[id, c, i].join("-")}
-        className="inline-block"
+        className="inline-block min-w-[0.3ch]"
         style={{ willChange: "opacity, transform" }}
         custom={delay + 0.04 * i}
       >

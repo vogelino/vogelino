@@ -59,51 +59,19 @@ export const projects: ProjectType[] = [
     titleLine2: `Berlin`,
     slug: `airbnb-vs-berlin`,
     imagePath: `/images/projects/airbnb-vs-berlin/thumbnail.webp`,
-    imageAlt: `/images/projects/airbnb-vs-berlin/thumbnail.webp`,
-    type: `IOS App`,
+    imageAlt: `A birds-eye view of some building in Berlin with the U-Bahn`,
+    type: `Data Journalism`,
     description:
       `A data journalism article analysing the impact of ` +
       `the housing platform Airbnb on Berlin.`,
   },
   {
-    titleLine1: `Hºme`,
-    titleLine2: `Heating`,
-    slug: `home-heat-control-app`,
-    imagePath: `/images/projects/home-heat-control-app/thumbnail.webp`,
-    imageAlt: `/images/projects/home-heat-control-app/thumbnail.webp`,
-    type: `Dataviz`,
-    description:
-      `An app design concept for home heating control ` + `and schedule.`,
-  },
-  {
-    titleLine1: `Productivity`,
-    titleLine2: `App`,
-    slug: `collaborative-solution-oriented-app`,
-    imagePath: `/images/projects/collaborative-solution-oriented-app/thumbnail.webp`,
-    imageAlt: `/images/projects/collaborative-solution-oriented-app/thumbnail.webp`,
-    type: `Dataviz`,
-    description:
-      `An app that helps digital workers ` +
-      ` to discuss problems and to find solutions collaboratively.`,
-  },
-  {
-    titleLine1: `Bettina`,
-    titleLine2: `Bummelt`,
-    slug: `bettina-bummelt-ebook-for-children`,
-    imagePath: `/images/projects/bettina-bummelt-ebook-for-children/thumbnail.webp`,
-    imageAlt: `/images/projects/bettina-bummelt-ebook-for-children/thumbnail.webp`,
-    type: `Dataviz`,
-    description:
-      `An simplified and educational ebook ` +
-      `that helps children to learn how to read.`,
-  },
-  {
     titleLine1: `Multigen`,
     titleLine2: `Living`,
     slug: `multi-generational-living-platform`,
-    imagePath: `/images/projects/multi-generational-living-platform/thumbnail.webp`,
-    imageAlt: `/images/projects/multi-generational-living-platform/thumbnail.webp`,
-    type: `Dataviz`,
+    imagePath: `/images/projects/multigen-living/thumbnail.webp`,
+    imageAlt: `Two senior women laughting together`,
+    type: `Community Platform`,
     description:
       `A communication and organisation platform ` +
       ` for people linving in multi-generational communities.`,
@@ -112,9 +80,9 @@ export const projects: ProjectType[] = [
     titleLine1: `Open`,
     titleLine2: `Circle`,
     slug: `open-circle-circular-economy-platform`,
-    imagePath: `/images/projects/open-circle-circular-economy-platform/thumbnail.webp`,
-    imageAlt: `/images/projects/open-circle-circular-economy-platform/thumbnail.webp`,
-    type: `Dataviz`,
+    imagePath: `/images/projects/open-circle/thumbnail.webp`,
+    imageAlt: `A street sign of a roundabout`,
+    type: `Circular Economy`,
     description:
       `An online community web app for sharing circular` +
       ` economy-related know-how.`,

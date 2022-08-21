@@ -145,7 +145,10 @@ const Thumbnail: FC<ThumbnailPropType> = ({
               aria-hidden="true"
               key={`thumbnail-${projectSlug}-type-${c}-${idx}`}
               variants={projectTypeCharsVariants}
-              className="inline-block"
+              className={classNames(
+                "inline-block h-full",
+                c === " " && "w-[0.5ch]"
+              )}
               style={{ willChange: "opacity, transform" }}
             >
               {c}
