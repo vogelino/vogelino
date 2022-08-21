@@ -5,7 +5,7 @@ import classNames from "../src/utils/classNames";
 
 const IndexPage = () => (
   <Layout title="Home | Next.js + TypeScript Example">
-    <main className="grid grid-cols-1 max-w-3xl mx-auto gap-8 py-16">
+    <main className="container px-8 grid grid-cols-1 mx-auto gap-8 py-32">
       {projects.map((work, idx) => (
         <div
           key={work.slug}

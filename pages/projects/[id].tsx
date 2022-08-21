@@ -80,7 +80,7 @@ const IndexPage = ({ project }) => (
       </motion.div>
       <motion.div
         key={`project-${project.slug}-title-container`}
-        className="container mx-auto relative px-8 z-10 min-h-screen -mt-[87px]"
+        className="container mx-auto px-8 z-10 min-h-screen -mt-[87px]"
         variants={{
           animate: {
             transition: {
@@ -90,20 +90,29 @@ const IndexPage = ({ project }) => (
           },
         }}
       >
-        <ProjectTitle
-          id={`project-${project.slug}-title-line-1`}
-          projectTitleLine1={project.titleLine1}
-          projectTitleLine2={""}
-          className="text-9xl mix-blend-overlay text-black/80 z-20"
-          delay={1}
-        />
-        <ProjectTitle
-          id={`project-${project.slug}-title-line-2`}
-          projectTitleLine1={project.titleLine2}
-          projectTitleLine2={""}
-          className="mt-[89px] text-9xl text-black z-20"
-          delay={1.2}
-        />
+        <div className="relative">
+          <ProjectTitle
+            id={`project-${project.slug}-title-line-1`}
+            projectTitleLine1={project.titleLine1}
+            projectTitleLine2={""}
+            className="text-9xl mix-blend-difference text-black-negative z-20"
+            delay={1}
+          />
+          <ProjectTitle
+            id={`project-${project.slug}-title-line-1`}
+            projectTitleLine1={project.titleLine1}
+            projectTitleLine2={""}
+            className="text-9xl mix-blend-overlay text-black/60 z-20"
+            delay={1}
+          />
+          <ProjectTitle
+            id={`project-${project.slug}-title-line-2`}
+            projectTitleLine1={project.titleLine2}
+            projectTitleLine2={""}
+            className="mt-[89px] text-9xl text-black z-20"
+            delay={1.2}
+          />
+        </div>
       </motion.div>
     </motion.div>
   </Layout>

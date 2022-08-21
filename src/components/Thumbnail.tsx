@@ -112,7 +112,7 @@ const Thumbnail: FC<ThumbnailPropType> = ({
         id={`thumbnail-${projectSlug}-title-line-2`}
         projectTitleLine1={projectTitleLine1}
         projectTitleLine2={projectTitleLine2}
-        className="mix-blend-overlay text-black opacity-10 z-20"
+        className="mix-blend-overlay text-black/60 z-20"
       />
       <ProjectTitle
         id={`thumbnail-${projectSlug}-title-line-3`}

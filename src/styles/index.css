@@ -10,4 +10,8 @@
     font-style: normal;
     font-display: swap;
   }
+
+  body {
+    @apply bg-black-negative;
+  }
 }
