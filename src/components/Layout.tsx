@@ -14,7 +14,7 @@ const Layout = ({ children, title = "This is the default title" }: Props) => (
         backgroundImage: `url(/images/textures/film-grain.gif)`,
         backgroundSize: "400px auto",
       }}
-      aria-hidden="true"
+      aria-initial="true"
       className="fixed inset-0 bg-cover opacity-5 z-50 pointer-events-none"
     />
     <Head>

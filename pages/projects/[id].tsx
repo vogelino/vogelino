@@ -26,56 +26,83 @@ export const getStaticProps: GetStaticProps<{
   return { props: { project } };
 };
 
+const smoothTransition = {
+  type: "tween",
+  ease: [0.5, 0, 0.04, 1],
+  duration: 2,
+};
+
 const thumbnailVariants = {
-  hidden: { opacity: 0 },
-  shown: { opacity: 1 },
+  initial: { opacity: 1, y: 200 },
+  animate: { opacity: 1, y: 0, transition: smoothTransition },
 };
 
 const IndexPage = ({ project }) => (
   <Layout title="Home | Next.js + TypeScript Example">
-    <motion.div initial="hidden" animate="shown" className="z-0">
+    <motion.div
+      key={`project-${project.slug}-container`}
+      initial="initial"
+      exit="initial"
+      animate="animate"
+      className="z-0"
+    >
       <motion.div
+        key={`project-${project.slug}-img-container`}
+        layoutId={`${project.slug}-img-container`}
         variants={{
-          initial: { height: 0 },
-          shown: {
+          initial: { height: 500 },
+          animate: {
             height: 600,
-            transition: { type: "tween", ease: [0, 0.88, 0, 1], duration: 2 },
+            transition: smoothTransition,
           },
         }}
-        layoutId={`thumbnail-${project.slug}`}
         className="aspect-[16/13] relative overflow-hidden w-full"
+        style={{ willChange: "height" }}
       >
         <motion.img
+          key={`project-${project.slug}-img`}
+          layoutId={`${project.slug}-img`}
           src={project.imagePath}
           alt={project.imageAlt}
           variants={thumbnailVariants}
-          className="absolute top-0 left-0 w-full -mt-[30vh] transition-all"
+          className="absolute top-0 left-0 w-full -mt-[30vh]"
           style={{ willChange: "transform, opacity" }}
-          layoutId={`thumbnail-${project.slug}-img`}
         />
         <OverlayingPixel
-          variants={{ shown: { opacity: 0 } }}
+          variants={{ animate: { opacity: 0 } }}
           className={classNames(
             "w-full h-full opacity-0",
             "inset-0 absolute",
             "bg-black mix-blend-overlay "
           )}
         />
-        <ImageLittleSquares id={project.slug} showBottonLeftCorner={false} />
+        <ImageLittleSquares showBottonLeftCorner={false} />
       </motion.div>
       <motion.div
-        transition={{ delayChildren: 3 }}
+        key={`project-${project.slug}-title-container`}
         className="container mx-auto relative px-8 z-10 min-h-screen -mt-[87px]"
+        variants={{
+          animate: {
+            transition: {
+              delay: 2,
+              beforeChildren: true,
+            },
+          },
+        }}
       >
         <ProjectTitle
+          id={`project-${project.slug}-title-line-1`}
           projectTitleLine1={project.titleLine1}
-          projectTitleLine2={project.titleLine2}
-          className="text-9xl mix-blend-overlay text-black opacity-80 z-20"
+          projectTitleLine2={""}
+          className="text-9xl mix-blend-overlay text-black/80 z-20"
+          delay={1}
         />
         <ProjectTitle
+          id={`project-${project.slug}-title-line-2`}
           projectTitleLine1={project.titleLine2}
           projectTitleLine2={""}
           className="mt-[89px] text-9xl text-black z-20"
+          delay={1.2}
         />
       </motion.div>
     </motion.div>

@@ -4,7 +4,7 @@ import classNames from "../utils/classNames";
 import { OverlayingPixel } from "./OverlayingPixel";
 
 const littleSquareParentVarians: AnimationProps["variants"] = {
-  shown: {
+  animate: {
     transition: {
       staggerChildren: 0.1,
     },
@@ -17,9 +17,9 @@ const littleSquareParentVarians: AnimationProps["variants"] = {
 };
 
 const littleSquaresVariants = {
-  hidden: { opacity: 0, y: `-100%` },
+  initial: { opacity: 0, y: `-100%` },
   hover: { opacity: 0, y: `100%`, transition: { duration: 0.1 } },
-  shown: {
+  animate: {
     opacity: 1,
     y: 0,
     transition: {

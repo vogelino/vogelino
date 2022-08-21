@@ -10,7 +10,7 @@ export const OverlayingPixel: FC<{
   <motion.span
     style={{ willChange: "transform, opacity" }}
     variants={!variants ? {} : variants}
-    aria-hidden="true"
+    aria-initial="true"
     className={classNames(className, "inline-block absolute")}
     custom={delay}
   />
