@@ -1,0 +1,106 @@
+---
+import classNames from "../utils/classNames";
+import OverlayingPixel from "./OverlayingPixel.astro";
+
+const { showBottonLeftCorner, showBottonRightCorner, showTopRightCorner } =
+  Astro.props;
+---
+
+{
+  showBottonLeftCorner && (
+    <div>
+      <OverlayingPixel
+        className={classNames(
+          "w-8 h-8",
+          "bottom-0 left-8",
+          "bg-black mix-blend-overlay"
+        )}
+      />
+      <OverlayingPixel
+        className={classNames("w-8 h-8", "bottom-0 left-0", "bg-white")}
+      />
+      <OverlayingPixel
+        className={classNames("w-8 h-8", "bottom-0 left-16", "bg-white")}
+      />
+      <OverlayingPixel
+        className={classNames("w-8 h-8", "bottom-0 left-24", "bg-white")}
+      />
+      <OverlayingPixel
+        className={classNames("w-8 h-8", "bottom-0 left-32", "bg-white")}
+      />
+      <OverlayingPixel
+        className={classNames(
+          "w-8 h-8",
+          "bottom-0 left-40",
+          "bg-white mix-blend-overlay"
+        )}
+      />
+      <OverlayingPixel
+        className={classNames(
+          "w-4 h-4",
+          "bottom-8 left-4",
+          "bg-black mix-blend-overlay"
+        )}
+      />
+      <OverlayingPixel
+        className={classNames(
+          "w-4 h-4",
+          "bottom-12 left-0",
+          "bg-black mix-blend-overlay"
+        )}
+      />
+    </div>
+  )
+}
+
+{
+  showBottonRightCorner && (
+    <div>
+      <OverlayingPixel
+        className={classNames(
+          "w-8 h-8",
+          "bottom-0 right-0",
+          "bg-black mix-blend-overlay"
+        )}
+      />
+      <OverlayingPixel
+        className={classNames(
+          "w-8 h-8",
+          "bottom-8 right-0",
+          "bg-white mix-blend-overlay"
+        )}
+      />
+      <OverlayingPixel
+        className={classNames(
+          "w-4 h-4",
+          "bottom-4 right-8",
+          "bg-white mix-blend-overlay"
+        )}
+      />
+      <OverlayingPixel
+        className={classNames(
+          "w-4 h-4",
+          "bottom-4 right-4",
+          "bg-black mix-blend-overlay"
+        )}
+      />
+    </div>
+  )
+}
+
+{
+  showTopRightCorner && (
+    <div>
+      <OverlayingPixel
+        className={classNames(
+          "w-8 h-8",
+          "top-0 right-0",
+          "bg-white mix-blend-overlay"
+        )}
+      />
+      <OverlayingPixel
+        className={classNames("w-4 h-4", "top-8 right-0", "bg-black")}
+      />
+    </div>
+  )
+}

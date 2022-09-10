@@ -16,14 +16,20 @@ interface RawNotionProjectType {
         };
       }[];
     };
+    Type: {
+      select: {
+        name: string;
+      };
+    };
   };
 }
 
 const parseNotionProject = (
   rawProject: RawNotionProjectType
 ): MappedNotionProject => {
-  const { Name, Thumbnail } = rawProject.properties;
+  const { Name, Thumbnail, Type } = rawProject.properties;
   const thumbnail = Thumbnail.files[0].external.url;
+  const type = Type.select.name;
   const fullTitle = Name.title.map(({ plain_text }) => plain_text).join("");
   const [titleLine1, ...rest] = fullTitle.split(" ");
   const titleLine2 = rest.join(" ");
@@ -31,6 +37,7 @@ const parseNotionProject = (
     fullTitle,
     titleLine1,
     titleLine2,
+    type,
     slug: slugify(fullTitle),
     thumbnail,
   };
@@ -40,13 +47,14 @@ export interface MappedNotionProject {
   fullTitle: string;
   titleLine1: string;
   titleLine2: string;
+  type: string;
   slug: string;
   thumbnail: string;
 }
 
 export const getNotionProjects = async (): Promise<MappedNotionProject[]> => {
   const notionResponse = await notion.databases.query({
-    database_id: process.env.NOTION_PORTFOLIO_DATABASE_ID,
+    database_id: import.meta.env.NOTION_PORTFOLIO_DATABASE_ID,
     filter: {
       and: [
         {

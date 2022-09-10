@@ -1,0 +1,64 @@
+---
+export interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{[title, "Vogelino"].join(" – ")}</title>
+  </head>
+  <body class="pt-[calc(36px+4vw)]">
+    <header
+      aria-label="Main header"
+      class="fixed top-0 left-0 w-full z-40 text-black-negative mix-blend-exclusion"
+    >
+      <div class="container mx-auto px-8 py-4 flex">
+        <a
+          href="/"
+          class="uppercase text-3xl tracking-widest font-headline"
+          aria-label="Logo (Link to Homepage)"
+        >
+          Vogelino
+        </a>
+      </div>
+    </header>
+    <slot />
+    <div
+      style={{
+        backgroundImage: `url(/images/textures/film-grain.gif)`,
+        backgroundSize: "400px auto",
+      }}
+      aria-initial="true"
+      class="fixed inset-0 bg-cover opacity-5 z-50 pointer-events-none mix-blend-exclusion"
+    >
+    </div>
+    <style>
+      @tailwind base;
+      @tailwind components;
+      @tailwind utilities;
+
+      @layer base {
+        @font-face {
+          font-family: "Thunder";
+          src: url("/fonts/thunder/thunder.woff2?v=3.18")
+            format("woff2-variations");
+          font-weight: 200 900;
+          font-style: normal;
+          font-display: swap;
+        }
+
+        body {
+          @apply bg-black-negative text-black;
+        }
+      }
+    </style>
+  </body>
+</html>

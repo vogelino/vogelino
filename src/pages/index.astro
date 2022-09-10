@@ -1,0 +1,37 @@
+---
+import Thumbnail from "../components/Thumbnail.astro";
+import Layout from "../layouts/Layout.astro";
+import classNames from "../utils/classNames";
+import { getNotionProjects } from "../utils/getNotionProjects";
+
+const projects = await getNotionProjects();
+---
+
+<Layout title="Welcome">
+  <main
+    class="container px-8 grid grid-cols-1 mx-auto gap-8 py-32"
+    aria-label="List of selected works"
+  >
+    {
+      projects.map((work, idx) => (
+        <div
+          class={classNames(
+            "flex",
+            idx % 2 === 0 ? "justify-start" : "justify-end"
+          )}
+        >
+          <div class="sm:w-2/3">
+            <Thumbnail
+              projectSlug={work.slug}
+              projectTitleLine1={work.titleLine1}
+              projectTitleLine2={work.titleLine2}
+              projectType={work.type}
+              projectImagePath={work.thumbnail}
+              projectImageAlt={work.fullTitle}
+            />
+          </div>
+        </div>
+      ))
+    }
+  </main>
+</Layout>

@@ -1,6 +1,6 @@
 import { Client } from "@notionhq/client";
 
-const auth = process.env.NOTION_API_SECRET;
+const auth = import.meta.env.NOTION_API_SECRET;
 
 if (!auth) throw new Error(`No env var NOTION_API_SECRET defined!!`);
 

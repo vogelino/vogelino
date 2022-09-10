@@ -1,0 +1,82 @@
+---
+import classNames from "../utils/classNames";
+import ImageLittleSquares from "./ImageLittleSquares.astro";
+import OverlayingPixel from "./OverlayingPixel.astro";
+import ProjectTitle from "./ProjectTitle.astro";
+
+export interface Props {
+  projectSlug: string;
+  projectTitleLine1: string;
+  projectTitleLine2: string;
+  projectType: string;
+  projectImagePath: string;
+  projectImageAlt: string;
+}
+const {
+  projectSlug,
+  projectTitleLine1,
+  projectTitleLine2,
+  projectType,
+  projectImagePath,
+  projectImageAlt,
+} = Astro.props;
+---
+
+<a href={`/projects/${projectSlug}`}>
+  <div
+    class="group relative pt-[67px] mb-16 pl-[38px] cursor-pointer"
+    role="heading"
+    aria-label={[projectTitleLine1, projectTitleLine2].join(" ")}
+  >
+    <ProjectTitle
+      projectTitleLine1={projectTitleLine1}
+      projectTitleLine2={projectTitleLine2}
+      className="mix-blend-difference text-black-negative z-20"
+      ariaHidden
+    />
+    <ProjectTitle
+      projectTitleLine1={projectTitleLine1}
+      projectTitleLine2={projectTitleLine2}
+      className="mix-blend-overlay text-black/60 z-20"
+      ariaHidden
+    />
+    <ProjectTitle
+      projectTitleLine1={projectTitleLine1}
+      projectTitleLine2={projectTitleLine2.slice(0, 1)}
+      className="z-30"
+      ariaHidden
+    />
+    <div
+      class={classNames(
+        "absolute bottom-0 left-0 uppercase font-headline text-2xl",
+        "z-10 tracking-widest leading-4"
+      )}
+    >
+      <h3
+        aria-label={`Project type: ${projectType}`}
+        class={classNames(
+          "origin-bottom-left -rotate-90 translate-x-7",
+          "pt-1 -mt-1"
+        )}
+      >
+        {projectType}
+      </h3>
+    </div>
+    <div class="aspect-[16/11] relative overflow-hidden">
+      <img
+        src={projectImagePath}
+        alt={projectImageAlt}
+        class="object-cover absolute top-0 left-0 w-full aspect-[16/11]"
+      />
+      <OverlayingPixel
+        className={classNames(
+          "w-full h-full opacity-0",
+          "inset-0 absolute transition-colors",
+          "bg-zinc-500 mix-blend-overlay ",
+          "group-hover:bg-zinc-800"
+        )}
+      />
+      <ImageLittleSquares showTopRightCorner={projectTitleLine2.length} />
+    </div>
+  </div>
+</a>
