@@ -7,10 +7,13 @@
     "type-check": "tsc"
   },
   "dependencies": {
+    "@notionhq/client": "2.2.0",
     "framer-motion": "7.2.0",
     "next": "latest",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "request": "2.88.2",
+    "slugify": "1.6.5"
   },
   "devDependencies": {
     "@types/node": "12.12.21",

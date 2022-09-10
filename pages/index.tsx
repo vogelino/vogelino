@@ -1,9 +1,24 @@
+import { GetStaticProps } from "next";
+import { FC } from "react";
 import Layout from "../src/components/Layout";
 import Thumbnail from "../src/components/Thumbnail";
-import { projects } from "../src/content/projects";
 import classNames from "../src/utils/classNames";
+import {
+  getNotionProjects,
+  MappedNotionProject,
+} from "../src/utils/getNotionProjects";
 
-const IndexPage = () => (
+export const getStaticProps: GetStaticProps = async () => {
+  const notionProjects = await getNotionProjects();
+
+  return {
+    props: {
+      projects: notionProjects,
+    },
+  };
+};
+
+const IndexPage: FC<{ projects: MappedNotionProject[] }> = ({ projects }) => (
   <Layout title="Selected Projects | VOGELINO">
     <main
       className="container px-8 grid grid-cols-1 mx-auto gap-8 py-32"
@@ -22,9 +37,9 @@ const IndexPage = () => (
               projectSlug={work.slug}
               projectTitleLine1={work.titleLine1}
               projectTitleLine2={work.titleLine2}
-              projectType={work.type}
-              projectImagePath={work.imagePath}
-              projectImageAlt={work.imageAlt}
+              projectType={work.titleLine1}
+              projectImagePath={work.thumbnail}
+              projectImageAlt={work.fullTitle}
             />
           </div>
         </div>

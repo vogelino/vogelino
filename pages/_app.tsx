@@ -23,11 +23,13 @@ function MyApp({ Component, pageProps }: AppProps) {
           </Link>
         </div>
       </header>
-      <LayoutGroup id={pathname}>
-        <AnimatePresence mode="wait">
-          <Component {...pageProps} />
-        </AnimatePresence>
-      </LayoutGroup>
+      <AnimatePresence
+        exitBeforeEnter
+        mode="wait"
+        onExitComplete={() => window.scrollTo(0, 0)}
+      >
+        <Component {...pageProps} />
+      </AnimatePresence>
       <div
         style={{
           backgroundImage: `url(/images/textures/film-grain.gif)`,

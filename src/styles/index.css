@@ -12,6 +12,6 @@
   }
 
   body {
-    @apply bg-black-negative;
+    @apply bg-slate-50 text-black;
   }
 }

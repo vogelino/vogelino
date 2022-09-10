@@ -1,11 +1,11 @@
-import type { FC, HTMLProps } from "react";
-import { AnimatePresence, AnimationProps, motion } from "framer-motion";
+import type { FC } from "react";
+import { motion } from "framer-motion";
 import classNames from "../utils/classNames";
-import Image from "next/image";
 import Link from "next/link";
 import { ImageLittleSquares } from "./ImageLittleSquares";
 import { OverlayingPixel } from "./OverlayingPixel";
 import { ProjectTitle } from "./ProjectTitle";
+import Image from "next/image";
 
 interface ThumbnailPropType {
   projectSlug: string;
@@ -18,7 +18,7 @@ interface ThumbnailPropType {
 
 const thumbnailVariants = {
   initial: { opacity: 0, scale: 1.2 },
-  hover: { opacity: 1, scale: 1.2 },
+  hover: { opacity: 1, scale: 1.1 },
   animate(i: number) {
     const delay = i / 2 + 0.1;
     return {
@@ -48,7 +48,7 @@ const typeWriterParentVariants = {
 
 const mainSquareVariants = {
   initial: { opacity: 0 },
-  animate: { opacity: 0 },
+  animate: { opacity: 1 },
   hover: { opacity: 1 },
   exit: { opacity: 0 },
 };
@@ -85,10 +85,10 @@ const Thumbnail: FC<ThumbnailPropType> = ({
   projectImagePath,
   projectImageAlt,
 }) => (
-  <Link href={`/projects/${projectSlug}`}>
+  <Link href={`/projects/${projectSlug}`} scroll={false}>
     <motion.div
       key={`thumbnail-${projectSlug}`}
-      className="relative pt-[67px] mb-16 pl-[38px] cursor-pointer"
+      className="group relative pt-[67px] mb-16 pl-[38px] cursor-pointer"
       whileInView="animate"
       whileHover="hover"
       whileTap="hover"
@@ -100,6 +100,7 @@ const Thumbnail: FC<ThumbnailPropType> = ({
           opacity: 1,
           transition: { when: "beforeChildren", delay: 0.1, duration: 0.1 },
         },
+        exit: { opacity: 0 },
       }}
       role="heading"
       aria-label={[projectTitleLine1, projectTitleLine2].join(" ")}
@@ -158,24 +159,29 @@ const Thumbnail: FC<ThumbnailPropType> = ({
       </div>
       <motion.div
         key={`${projectSlug}-img-container`}
-        layoutId={`${projectSlug}-img-container`}
         className="aspect-[16/13] relative overflow-hidden"
       >
-        <motion.img
+        <motion.div
           key={`thumbnail-${projectSlug}-img`}
-          layoutId={`${projectSlug}-img`}
-          src={projectImagePath}
-          alt={projectImageAlt}
           variants={thumbnailVariants}
-          className="absolute top-0 left-0 w-full"
           style={{ willChange: "transform, opacity" }}
-        />
+          className="absolute top-0 left-0 w-full aspect-video"
+        >
+          <Image
+            src={projectImagePath}
+            alt={projectImageAlt}
+            width={1326}
+            height={1008}
+            objectFit="cover"
+          />
+        </motion.div>
         <OverlayingPixel
           variants={mainSquareVariants}
           className={classNames(
             "w-full h-full opacity-0",
-            "inset-0 absolute",
-            "bg-black mix-blend-overlay "
+            "inset-0 absolute transition-colors",
+            "bg-zinc-500 mix-blend-overlay ",
+            "group-hover:bg-zinc-800"
           )}
         />
         <ImageLittleSquares
