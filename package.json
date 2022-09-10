@@ -12,6 +12,7 @@
     "@astrojs/tailwind": "1.0.0",
     "@types/marked": "4.0.7",
     "astro": "1.2.1",
+    "astro-imagetools": "0.6.10",
     "esbuild": "0.15.7"
   },
   "dependencies": {

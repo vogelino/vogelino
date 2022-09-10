@@ -1,0 +1,54 @@
+---
+import ProjectTitle from "../components/ProjectTitle.astro";
+import Layout from "../layouts/Layout.astro";
+import { getAllNotionLinks } from "../utils/getAllNotionLinks";
+
+const notionLinks = await getAllNotionLinks();
+---
+
+<Layout title="Inspirations">
+  <ul class="grid grid-cols-4 gap-8 px-8 pb-16 container mx-auto">
+    <div class="relative h-32">
+      <ProjectTitle projectTitleLine1="Sites" projectTitleLine2="I Like" />
+    </div>
+    {
+      notionLinks.map((link) => {
+        return (
+          <li>
+            <a
+              href={link.url}
+              target="_blank"
+              rel="noopener nofollow"
+              class="flex flex-col gap-4 group"
+            >
+              <span class="relative block aspect-[140/73] bg-zinc-100 rounded overflow-hidden">
+                <img
+                  src={`https://images.vogelino.com/inspirations/${link.id}.webp`}
+                  alt={`Cover image of "${link.url}"`}
+                  class="w-full aspect-[140/73] rounded object-cover transition-transform group-hover:scale-110"
+                  loading="lazy"
+                />
+                <span class="absolute inset-0 pointer-events-none bg-zinc-100 mix-blend-multiply" />
+              </span>
+              <div class="grid grid-cols-[1rem,1fr] gap-3">
+                <span
+                  class="inline-grid w-4 h-4 mt-0.5 rounded overflow-hidden bg-zinc-100 bg-cover bg-center leading-4"
+                  style={
+                    typeof link.icon === "string"
+                      ? `background-image: url("${link.icon}")`
+                      : ""
+                  }
+                >
+                  {typeof link.icon !== "string" &&
+                    typeof link.icon?.emoji === "string" &&
+                    link.icon.emoji}
+                </span>
+                <h3 class="inline-block leading-tight">{link.title}</h3>
+              </div>
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
+</Layout>
