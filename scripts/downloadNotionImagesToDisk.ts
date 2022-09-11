@@ -8,6 +8,7 @@ import {
   IMAGE_ORIGINALS_EXPORT_PATH,
   IMAGE_RESIZED_EXPORT_PATH,
 } from "./paths";
+import { createDirectoriesIfNotAlreadyThere } from "./lib/createDirectoriesIfNotAlreadyThere";
 
 const WIDTH = 560;
 const HEIGHT = 292;
@@ -32,46 +33,43 @@ async function downloadNotionImagesToDisk() {
     logSecondary([`Downloading image "${pageId}"`]);
     logIndented(`🔗 ${url.slice(0, 50)}...`);
 
-    // CHECK FOR EXISTING LARGE FILE
-    let largePath = `${IMAGE_ORIGINALS_EXPORT_PATH}/${pageId}.png`;
-    const fileAlreadyExistAsPng = await doesFileExists(largePath);
+    // MAKE SURE DIRECTORIES EXIST
+    await createDirectoriesIfNotAlreadyThere(IMAGE_ORIGINALS_EXPORT_PATH);
+    await createDirectoriesIfNotAlreadyThere(IMAGE_RESIZED_EXPORT_PATH);
 
-    if (fileAlreadyExistAsPng) {
+    // CHECK FOR EXISTING DESTINATION FILE
+    const resizeDest = `${IMAGE_RESIZED_EXPORT_PATH}/${pageId}.webp`;
+    const destinationFileAlreadyExist = await doesFileExists(resizeDest);
+
+    if (destinationFileAlreadyExist) {
       logIndented(`⏭ Skipping (already exists)`);
     } else {
       // DOWNLOAD
       const { imageExt, data } = await downloadImage(url);
-      largePath = `${IMAGE_ORIGINALS_EXPORT_PATH}/${pageId}.${imageExt}`;
+      const originalPath = `${IMAGE_ORIGINALS_EXPORT_PATH}/${pageId}.${imageExt}`;
 
       // CHECK FOR EXISTING LARGE FILE
-      const fileAlreadyExist = await doesFileExists(largePath);
+      const fileAlreadyExist = await doesFileExists(originalPath);
 
       if (fileAlreadyExist) {
         logIndented(`⏭ Skipping (already exists)`);
       } else {
         // SAVING LARGE FILE
-        logIndented(`💾 Saving file into: ${largePath}`);
-        await fs.writeFile(largePath, data);
+        logIndented(`💾 Saving file into: ${originalPath}`);
+        await fs.writeFile(originalPath, data);
         logIndented(`✅ Success`);
       }
-    }
 
-    // CHECK FOR EXISTING LARGE FILE
-    const resizeDest = `${IMAGE_RESIZED_EXPORT_PATH}/${pageId}.webp`;
-    const resizedFileAlreadyExist = await doesFileExists(resizeDest);
-
-    logIndented(`📐 Resizing (${WIDTH}x${HEIGHT})`);
-    if (resizedFileAlreadyExist) {
-      logIndented("⏭ Skipping (already exists)", 1);
-      continue;
+      // RESIZING FILE
+      logIndented(`📐 Resizing (${WIDTH}x${HEIGHT})`);
+      await resizeImage(originalPath, resizeDest, {
+        width: WIDTH,
+        height: HEIGHT,
+        position: "top",
+      });
+      logIndented(`✅ Success!`, 1);
+      await fs.unlink(originalPath);
     }
-    // RESIZING FILE
-    await resizeImage(largePath, resizeDest, {
-      width: WIDTH,
-      height: HEIGHT,
-      position: "top",
-    });
-    logIndented(`✅ Success!`, 1);
   }
 
   logEnd();
