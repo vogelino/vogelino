@@ -6,17 +6,24 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "type-check": "tsc"
+    "type-check": "tsc",
+    "downloadInspiration": "npx ts-node -P scripts/tsconfig.json scripts/downloadNotionImagesToDisk.ts"
   },
   "devDependencies": {
     "@astrojs/tailwind": "1.0.0",
     "@types/marked": "4.0.7",
     "astro": "1.2.1",
-    "astro-imagetools": "0.6.10",
-    "esbuild": "0.15.7"
-  },
-  "dependencies": {
+    "esbuild": "0.15.7",
+    "node-fetch": "2.6.7",
+    "puppeteer": "14.1.1",
+    "sharp": "0.31.0",
+    "@types/puppeteer": "5.4.6",
+    "@types/sharp": "0.30.5",
+    "ts-node": "10.8.0",
     "@notionhq/client": "2.2.0",
-    "slugify": "1.6.5"
-  }
+    "slugify": "1.6.5",
+    "typescript": "4.7.2",
+    "dotenv": "16.0.2"
+  },
+  "dependencies": {}
 }
