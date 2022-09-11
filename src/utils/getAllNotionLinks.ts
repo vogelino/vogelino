@@ -58,7 +58,7 @@ function mapNotionInspirationLink(
   }
   return {
     id: rawLink.id,
-    title: Name.title[0].plain_text,
+    title: Name.title.map((item) => item.plain_text).join(""),
     url: URL.url,
     thumbnail: (cover?.file || cover?.external)?.url,
     icon: iconToReturn,
