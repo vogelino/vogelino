@@ -7,7 +7,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "type-check": "tsc",
-    "downloadInspiration": "npx ts-node -P scripts/tsconfig.json scripts/downloadNotionImagesToDisk.ts"
+    "downloadInspiration": "npx ts-node -P scripts/tsconfig.json scripts/downloadNotionImagesToDisk.ts",
+    "downloadDrawings": "npx ts-node -P scripts/tsconfig.json scripts/downloadNotionDrawingsToDisk.ts"
   },
   "devDependencies": {
     "@astrojs/tailwind": "1.0.0",

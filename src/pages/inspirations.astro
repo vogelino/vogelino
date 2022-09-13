@@ -35,16 +35,8 @@ const notionLinks = await getAllNotionLinks();
               <div class="grid grid-cols-[1rem,1fr] gap-3">
                 <span
                   class="inline-grid w-4 h-4 mt-0.5 rounded overflow-hidden bg-zinc-100 bg-cover bg-center leading-4"
-                  style={
-                    typeof link.icon === "string"
-                      ? `background-image: url("${link.icon}")`
-                      : ""
-                  }
-                >
-                  {typeof link.icon !== "string" &&
-                    typeof link.icon?.emoji === "string" &&
-                    link.icon.emoji}
-                </span>
+                  style={`background-image: url("https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&size=32&url=${link.url}")`}
+                />
                 <h3 class="inline-block leading-tight">{link.title}</h3>
               </div>
             </a>

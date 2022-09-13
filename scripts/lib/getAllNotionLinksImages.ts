@@ -8,9 +8,8 @@ import { notion } from "./notion";
 
 const IPP = 100;
 
-const databaseId = process.env.NOTION_INSPIRATION_DATABASE_ID || "";
-
 export async function getAllNotionLinksImages(
+  databaseId: string,
   onlyExternal: boolean = true,
   nextCursor?: string
 ): Promise<[string, string][]> {
@@ -42,18 +41,21 @@ export async function getAllNotionLinksImages(
     );
   }
 
-  const onlyImageUrls = linksImages.map(
-    ([pageId, imageBlock]) =>
-      [
-        pageId,
-        imageBlock.image.type === "external"
-          ? imageBlock.image.external.url
-          : imageBlock.image.file.url,
-      ] as [string, string]
-  );
+  const onlyImageUrls = linksImages
+    .filter(([pageId, imageBlock]) => pageId && imageBlock)
+    .map(
+      ([pageId, imageBlock]) =>
+        [
+          pageId,
+          imageBlock.image.type === "external"
+            ? imageBlock.image.external.url
+            : imageBlock.image.file.url,
+        ] as [string, string]
+    );
 
   if (response.next_cursor && response.has_more) {
     const nextPage = await getAllNotionLinksImages(
+      databaseId,
       onlyExternal,
       response.next_cursor
     );

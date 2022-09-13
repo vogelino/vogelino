@@ -6,14 +6,14 @@ import { resizeImage } from "./lib/resizeImage";
 import fs from "node:fs/promises";
 import {
   IMAGE_ORIGINALS_EXPORT_PATH,
-  IMAGE_RESIZED_EXPORT_PATH,
+  DRAWINGS_RESIZED_EXPORT_PATH,
 } from "./paths";
 import { createDirectoriesIfNotAlreadyThere } from "./lib/createDirectoriesIfNotAlreadyThere";
 
 const WIDTH = 560;
-const HEIGHT = 292;
+const HEIGHT = 560;
 
-const databaseId = process.env.NOTION_INSPIRATION_DATABASE_ID || "";
+const databaseId = process.env.NOTION_DRAWINGS_DATABASE_ID || "";
 
 /*
 1. Images are downloaded from notion and saved in the images repo
@@ -37,10 +37,10 @@ async function downloadNotionImagesToDisk() {
 
     // MAKE SURE DIRECTORIES EXIST
     await createDirectoriesIfNotAlreadyThere(IMAGE_ORIGINALS_EXPORT_PATH);
-    await createDirectoriesIfNotAlreadyThere(IMAGE_RESIZED_EXPORT_PATH);
+    await createDirectoriesIfNotAlreadyThere(DRAWINGS_RESIZED_EXPORT_PATH);
 
     // CHECK FOR EXISTING DESTINATION FILE
-    const resizeDest = `${IMAGE_RESIZED_EXPORT_PATH}/${pageId}.webp`;
+    const resizeDest = `${DRAWINGS_RESIZED_EXPORT_PATH}/${pageId}.webp`;
     const destinationFileAlreadyExist = await doesFileExists(resizeDest);
 
     if (destinationFileAlreadyExist) {
