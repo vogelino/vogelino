@@ -18,7 +18,7 @@ const { title } = Astro.props;
   <body class="pt-[calc(36px+4vw)]">
     <header
       aria-label="Main header"
-      class="fixed top-0 left-0 w-full z-40 text-black-negative mix-blend-exclusion"
+      class="fixed top-0 left-0 w-full z-40 text-bg mix-blend-exclusion"
     >
       <div class="container mx-auto px-8 py-4 flex">
         <a
@@ -47,16 +47,43 @@ const { title } = Astro.props;
 
       @layer base {
         @font-face {
-          font-family: "Thunder";
-          src: url("/fonts/thunder/thunder.woff2?v=3.18")
-            format("woff2-variations");
-          font-weight: 200 900;
+          font-family: "FUNGIS";
+          src: url("/fonts/fungis/fungis-regular.eot");
+          src: url("/fonts/fungis/fungis-regular.eot?#iefix")
+              format("embedded-opentype"),
+            url("/fonts/fungis/fungis-regular.woff") format("woff"),
+            url("/fonts/fungis/fungis-regular.ttf") format("truetype");
           font-style: normal;
-          font-display: swap;
+          font-weight: normal;
+          text-rendering: optimizeLegibility;
+        }
+
+        @font-face {
+          font-family: "FUNGIS";
+          src: url("/fonts/fungis/fungis-bold.eot");
+          src: url("/fonts/fungis/fungis-bold.eot?#iefix")
+              format("embedded-opentype"),
+            url("/fonts/fungis/fungis-bold.woff") format("woff"),
+            url("/fonts/fungis/fungis-bold.ttf") format("truetype");
+          font-style: normal;
+          font-weight: bold;
+          text-rendering: optimizeLegibility;
+        }
+
+        @font-face {
+          font-family: "FUNGIS";
+          src: url("/fonts/fungis/fungis-heavy.eot");
+          src: url("/fonts/fungis/fungis-heavy.eot?#iefix")
+              format("embedded-opentype"),
+            url("/fonts/fungis/fungis-heavy.woff") format("woff"),
+            url("/fonts/fungis/fungis-heavy.ttf") format("truetype");
+          font-style: normal;
+          font-weight: 900;
+          text-rendering: optimizeLegibility;
         }
 
         body {
-          @apply bg-black-negative text-black;
+          @apply bg-bg text-fg;
         }
       }
     </style>

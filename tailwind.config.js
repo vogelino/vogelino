@@ -24,14 +24,19 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        headline: ["Thunder", ...fallbackFonts],
-        sans: [...fallbackFonts],
+        headline: ["FUNGIS", ...fallbackFonts],
+        sans: ["FUNGIS", ...fallbackFonts],
         serif: ["serif"],
         mono: ["monospace"],
       },
       colors: {
-        black: "#000000",
-        "black-negative": "#FFFFFF",
+        fg: "#FF0040",
+        bg: "#FCFEFF",
+        alt: "#FFEB84",
+        grayDark: "#5D7280",
+        grayMed: "#D0DFE7",
+        grayLight: "#E1ECF2",
+        grayUltraLight: "#F1FAFF",
       },
     },
   },

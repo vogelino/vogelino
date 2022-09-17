@@ -32,7 +32,7 @@ const project = Astro.props;
         className={classNames(
           "w-full h-full opacity-0",
           "inset-0 absolute",
-          "bg-black mix-blend-overlay "
+          "bg-fg mix-blend-overlay "
         )}
       />
       <ImageLittleSquares showBottonLeftCorner={false} />
@@ -47,19 +47,19 @@ const project = Astro.props;
           ariaHidden
           projectTitleLine1={project.titleLine1}
           projectTitleLine2={""}
-          className="text-9xl mix-blend-difference text-black-negative z-20"
+          className="text-9xl mix-blend-difference text-bg z-20"
         />
         <ProjectTitle
           ariaHidden
           projectTitleLine1={project.titleLine1}
           projectTitleLine2={""}
-          className="text-9xl mix-blend-overlay text-black/60 z-20"
+          className="text-9xl mix-blend-overlay text-fg/60 z-20"
         />
         <ProjectTitle
           ariaHidden
           projectTitleLine1={project.titleLine2}
           projectTitleLine2={""}
-          className="mt-[89px] text-9xl text-black z-20"
+          className="mt-[89px] text-9xl text-fg z-20"
         />
       </div>
     </div>
