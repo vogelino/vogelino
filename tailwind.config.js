@@ -24,7 +24,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        headline: ["FUNGIS", ...fallbackFonts],
+        special: ["lobular", ...fallbackFonts],
         sans: ["FUNGIS", ...fallbackFonts],
         serif: ["serif"],
         mono: ["monospace"],

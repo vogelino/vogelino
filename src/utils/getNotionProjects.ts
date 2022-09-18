@@ -12,6 +12,22 @@ interface NotionImageType {
   }[];
 }
 
+interface NotionRichTextType {
+  rich_text: {
+    type: "text";
+    text: { content: string | null; link: null | string };
+    annotations: {
+      bold: boolean;
+      italic: boolean;
+      strikethrough: boolean;
+      underline: boolean;
+      code: boolean;
+    };
+    plain_text: string;
+    href: null | string;
+  }[];
+}
+
 interface RawNotionProjectType {
   properties: {
     Name: {
@@ -20,21 +36,8 @@ interface RawNotionProjectType {
         plain_text: string;
       }[];
     };
-    Description: {
-      rich_text: {
-        type: "text";
-        text: { content: string; link: null | string };
-        annotations: {
-          bold: boolean;
-          italic: boolean;
-          strikethrough: boolean;
-          underline: boolean;
-          code: boolean;
-        };
-        plain_text: string;
-        href: null | string;
-      }[];
-    };
+    Description: NotionRichTextType;
+    NameShort: NotionRichTextType;
     Thumbnail: NotionImageType;
     BgImage: NotionImageType;
     Year: {
@@ -45,13 +48,16 @@ interface RawNotionProjectType {
         name: string;
       };
     };
+    URL: {
+      url: null | string;
+    };
   };
 }
 
 const parseNotionProject = (
   rawProject: RawNotionProjectType
 ): MappedNotionProject => {
-  const { Name, Description, Thumbnail, BgImage, Type, Year } =
+  const { Name, NameShort, Description, Thumbnail, BgImage, Type, Year, URL } =
     rawProject.properties;
 
   const thumbnail =
@@ -67,21 +73,27 @@ const parseNotionProject = (
       highlighted: annotations.bold,
     })
   );
+  const nameShort = NameShort.rich_text
+    .map(({ text }) => text?.content)
+    .join(" ");
   return {
     title: fullTitle,
+    nameShort,
     description,
     type,
     slug: slugify(fullTitle),
     thumbnail,
     bgImage,
     year: Year.number,
+    url: URL.url,
   };
 };
 
 export interface MappedNotionProject {
   title: string;
+  nameShort: null | string;
   description: {
-    text: string;
+    text: null | string;
     link: null | string;
     highlighted: boolean;
   }[];
@@ -90,6 +102,7 @@ export interface MappedNotionProject {
   thumbnail: string;
   bgImage: string;
   year: number;
+  url: null | string;
 }
 
 export const getNotionProjects = async (): Promise<MappedNotionProject[]> => {

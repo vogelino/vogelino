@@ -3,7 +3,7 @@ import classNames from "../utils/classNames";
 import type { MappedNotionProject } from "../utils/getNotionProjects";
 
 export interface Props extends MappedNotionProject {}
-const { slug, title, type, bgImage, thumbnail, year } = Astro.props;
+const { slug, title, nameShort, type, bgImage, thumbnail, year } = Astro.props;
 ---
 
 <a
@@ -21,7 +21,8 @@ const { slug, title, type, bgImage, thumbnail, year } = Astro.props;
     class={classNames(
       `aspect-[16/11] relative overflow-hidden`,
       `col-span-2 border-b border-grayLight`,
-      `group-hover:border-fgDark transition-colors`
+      `group-hover:border-fgDark transition-colors`,
+      `pointer-events-none`
     )}
   >
     <img
@@ -65,7 +66,8 @@ const { slug, title, type, bgImage, thumbnail, year } = Astro.props;
     class={classNames(
       `relative border-x border-b border-grayLight`,
       `border-r-grayMed row-span-2`,
-      `group-hover:border-fgDark transition-colors`
+      `group-hover:border-fgDark transition-colors`,
+      `pointer-events-none`
     )}
   >
     <div
@@ -106,18 +108,29 @@ const { slug, title, type, bgImage, thumbnail, year } = Astro.props;
   <h1
     class={classNames(
       "border-l border-b border-grayLight pt-6 px-4 pb-4 uppercase",
-      "text-3xl tracking-wider leading-7",
-      `group-hover:border-fgDark transition-colors`
+      "group-hover:pt-[20px]",
+      "text-3xl tracking-wider leading-7 group-hover:px-1",
+      `group-hover:border-fgDark transition-colors`,
+      `pointer-events-none`
     )}
   >
-    {title}
+    <span
+      class={classNames(
+        `group-hover:font-special group-hover:px-3`,
+        `group-hover:text-fg group-hover:bg-alt`,
+        `decoration-clone rounded-full group-hover:leading-6`,
+        `group-hover:tracking-tight antialiased transition-all`
+      )}
+      >{nameShort || title}
+    </span>
   </h1>
   <div
     class={classNames(
       `col-span-3 relative bg-grayUltraLight`,
       `group-hover:bg-grayDark/10 transition`,
       `h-4 border-r border-grayMed`,
-      `group-hover:border-fgDark`
+      `group-hover:border-fgDark`,
+      `pointer-events-none`
     )}
   >
     <svg

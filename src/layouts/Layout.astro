@@ -23,7 +23,7 @@ const { title } = Astro.props;
       <div class="container mx-auto px-8 py-4 flex">
         <a
           href="/"
-          class="uppercase text-3xl tracking-widest font-headline"
+          class="uppercase text-3xl tracking-widest font-special"
           aria-label="Logo (Link to Homepage)"
         >
           Vogelino
@@ -71,14 +71,14 @@ const { title } = Astro.props;
         }
 
         @font-face {
-          font-family: "FUNGIS";
-          src: url("/fonts/fungis/fungis-heavy.eot");
-          src: url("/fonts/fungis/fungis-heavy.eot?#iefix")
+          font-family: "Lobular";
+          src: url("/fonts/lobular/lobular-regular.eot");
+          src: url("/fonts/lobular/lobular-regular.eot?#iefix")
               format("embedded-opentype"),
-            url("/fonts/fungis/fungis-heavy.woff") format("woff"),
-            url("/fonts/fungis/fungis-heavy.ttf") format("truetype");
+            url("/fonts/lobular/lobular-regular.woff") format("woff"),
+            url("/fonts/lobular/lobular-regular.ttf") format("truetype");
           font-style: normal;
-          font-weight: 900;
+          font-weight: normal;
           text-rendering: optimizeLegibility;
         }
 

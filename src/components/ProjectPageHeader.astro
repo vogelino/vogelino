@@ -1,15 +1,18 @@
 ---
 import classNames from "../utils/classNames";
 import type { MappedNotionProject } from "../utils/getNotionProjects";
+import Link from "./icons/Link.astro";
 
 export interface Props extends MappedNotionProject {}
 
 const project = Astro.props;
-const highlightClasses = `bg-alt rounded-full pl-3 pr-2 mr-1 pt-2 pb-1`;
+const highlightClasses = `bg-alt rounded-full pl-3 pr-2 mr-1 pt-2 pb-1 decoration-clone leading-relaxed`;
 ---
 
-<div class="relative overflow-hidden w-screen h-screen">
-  <div class="w-full h-full">
+<div class="relative overflow-hidden w-screen">
+  <div
+    class="w-screen h-[60vh] md:h-screen absolute top-0 left-0 -z-10 border-b border-grayMed"
+  >
     <img
       src={project.bgImage}
       alt={project.title}
@@ -24,30 +27,84 @@ const highlightClasses = `bg-alt rounded-full pl-3 pr-2 mr-1 pt-2 pb-1`;
     </div>
   </div>
   <div
-    class="absolute inset-0 bottom-auto h-[65vh] flex items-center justify-center px-8"
+    class="pt-[20vw] pb-[8vw] md:pt-[8vw] md:pb-[4vw] flex items-center justify-center px-8 container mx-auto"
   >
     <div class="text-center flex flex-col items-center">
+      <span class="text-2xl mb-3 md:mb-6">{project.year}</span>
       <h1
-        class="text-7xl 2xl:text-8xl leading-[72px] 2xl:leading-[96px] uppercase font-bold inline-block"
+        class={classNames(
+          `text-5xl md:text-7xl 2xl:text-8xl`,
+          `leading-[1em]`,
+          `uppercase font-bold inline-block`
+        )}
       >
         {project.title}
       </h1>
-      <span class="text-2xl mt-3">{project.year}</span>
-      <p class="text-2xl leading-relaxed mt-4 max-w-2xl">
+      <p class="text-xl md:text-2xl leading-loose mt-4 max-w-2xl">
         {
-          project.description.map((part) =>
-            part.link ? (
-              <a href={part.link} class={highlightClasses} target="_blank">
-                {part.text.trim()}
-              </a>
-            ) : (
-              <span class={part.highlighted ? highlightClasses : ""}>
-                {part.text.trim()}
-              </span>
-            )
+          project.description.map(
+            (part) =>
+              part.text &&
+              (part.link ? (
+                <a href={part.link} class={highlightClasses} target="_blank">
+                  {part.text.trim()}
+                </a>
+              ) : (
+                <span class={part.highlighted ? highlightClasses : ""}>
+                  {part.text.trim()}
+                </span>
+              ))
           )
         }
       </p>
     </div>
   </div>
+  <div class="container mx-auto max-w-6xl px-4 sm:px-8 pb-[20vw] md:pb-[10vw]">
+    <div class="bg-alt rounded-lg p-1 md:p-2 pt-6 md:pt-8 relative">
+      {
+        project.url && (
+          <a
+            href={project.url}
+            target="_blank"
+            class={classNames(
+              `font-special antialiased absolute left-1/2 -translate-x-1/2`,
+              `top-0 text-2xl -translate-y-1/2 px-4 pb-1 rounded-full bg-fg text-alt`,
+              `transition-colors hover:bg-alt hover:text-fg border-2 border-fg`,
+              `hover:scale-110 special-button flex gap-2 items-center`
+            )}
+          >
+            <span>Launch</span> <Link className="mt-1" />
+          </a>
+        )
+      }
+      <span
+        class={classNames(
+          `top-2 left-2`,
+          `md:top-2.5 md:left-2.5`,
+          `absolute flex gap-1 md:gap-2`
+        )}
+      >
+        <span class="w-2 h-2 md:w-3 md:h-3 rounded-full bg-fg"></span>
+        <span
+          class="w-2 h-2 md:w-3 md:h-3 rounded-full bg-grayDark mix-blend-multiply opacity-20"
+        ></span>
+        <span
+          class="w-2 h-2 md:w-3 md:h-3 rounded-full bg-grayDark mix-blend-multiply opacity-20"
+        ></span>
+      </span>
+      <img
+        src={project.thumbnail}
+        alt={`Screenshot of the project ${project.title}`}
+        class="w-full rounded"
+      />
+    </div>
+  </div>
 </div>
+
+<style>
+  .special-button {
+    transition: opacity 200ms ease-in-out,
+      transform 500ms cubic-bezier(0, 2.09, 0.27, 0.86);
+    will-change: transform, color, background-color;
+  }
+</style>
