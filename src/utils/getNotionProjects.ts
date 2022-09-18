@@ -53,7 +53,6 @@ const parseNotionProject = (
 ): MappedNotionProject => {
   const { Name, Description, Thumbnail, BgImage, Type, Year } =
     rawProject.properties;
-  console.log(rawProject.properties.Description.rich_text);
 
   const thumbnail =
     Thumbnail.files[0].external?.url || Thumbnail.files[0].file?.url || "";
