@@ -12,7 +12,7 @@ const { slug, title, nameShort, type, bgImage, thumbnail, year } = Astro.props;
     `group relative cursor-pointer`,
     `grid grid-cols-[1rem,1fr,3rem] grid-rows-[auto,1fr,16px]`,
     `border-y border-grayMed -mt-[1px]`,
-    `hover:bg-fg hover:text-bg transition-colors`
+    `hover:bg-fg hover:text-bg`
   )}
   role="heading"
   aria-label={title}
@@ -21,7 +21,7 @@ const { slug, title, nameShort, type, bgImage, thumbnail, year } = Astro.props;
     class={classNames(
       `aspect-[16/11] relative overflow-hidden`,
       `col-span-2 border-b border-grayLight`,
-      `group-hover:border-fgDark transition-colors`,
+      `group-hover:border-fgDark`,
       `pointer-events-none`
     )}
   >
@@ -34,21 +34,21 @@ const { slug, title, nameShort, type, bgImage, thumbnail, year } = Astro.props;
     <div
       class={classNames(
         `absolute inset-0 sm:bg-grayDark mix-blend-screen`,
-        `bg-fgDark group-hover:bg-fgDark transition-colors`
+        `bg-fgDark group-hover:bg-fgDark`
       )}
     >
     </div>
     <div
       class={classNames(
         `absolute inset-0 sm:bg-grayUltraLight mix-blend-multiply opacity-50`,
-        `bg-fgDark group-hover:bg-fgDark transition-colors`
+        `bg-fgDark group-hover:bg-fgDark`
       )}
     >
     </div>
     <div
       class={classNames(
         `absolute inset-0 sm:bg-grayUltraLight mix-blend-color`,
-        `bg-fgDark group-hover:bg-fgDark transition-colors`
+        `bg-fgDark group-hover:bg-fgDark`
       )}
     >
     </div>
@@ -66,7 +66,7 @@ const { slug, title, nameShort, type, bgImage, thumbnail, year } = Astro.props;
     class={classNames(
       `relative border-x border-b border-grayLight`,
       `border-r-grayMed row-span-2`,
-      `group-hover:border-fgDark transition-colors`,
+      `group-hover:border-fgDark`,
       `pointer-events-none`
     )}
   >
@@ -110,7 +110,7 @@ const { slug, title, nameShort, type, bgImage, thumbnail, year } = Astro.props;
       "border-l border-b border-grayLight pt-6 px-4 pb-4 uppercase",
       "group-hover:pt-[20px]",
       "text-3xl tracking-wider leading-7 group-hover:px-1",
-      `group-hover:border-fgDark transition-colors`,
+      `group-hover:border-fgDark`,
       `pointer-events-none`
     )}
   >
@@ -119,7 +119,7 @@ const { slug, title, nameShort, type, bgImage, thumbnail, year } = Astro.props;
         `group-hover:font-special group-hover:px-3`,
         `group-hover:text-fg group-hover:bg-alt`,
         `decoration-clone rounded-full group-hover:leading-6`,
-        `group-hover:tracking-tight antialiased transition-all`
+        `group-hover:tracking-tight antialiased`
       )}
       >{nameShort || title}
     </span>
@@ -127,7 +127,7 @@ const { slug, title, nameShort, type, bgImage, thumbnail, year } = Astro.props;
   <div
     class={classNames(
       `col-span-3 relative bg-grayUltraLight`,
-      `group-hover:bg-grayDark/10 transition`,
+      `group-hover:bg-grayDark/10`,
       `h-4 border-r border-grayMed`,
       `group-hover:border-fgDark`,
       `pointer-events-none`
@@ -137,7 +137,7 @@ const { slug, title, nameShort, type, bgImage, thumbnail, year } = Astro.props;
       width="16px"
       height="20px"
       viewBox="0 0 16 20"
-      class="absolute bottom-0 left-0 text-bg group-hover:text-fg transition-colors"
+      class="absolute bottom-0 left-0 text-bg group-hover:text-fg"
     >
       <polygon points="0,0 16,0 16,4 0,20" fill="currentColor"></polygon>
     </svg>
@@ -145,7 +145,7 @@ const { slug, title, nameShort, type, bgImage, thumbnail, year } = Astro.props;
       width="17px"
       height="17px"
       viewBox="0 0 17 17"
-      class="absolute bottom-0 left-0 text-grayLight group-hover:text-fgDark transition-colors"
+      class="absolute bottom-0 left-0 text-grayLight group-hover:text-fgDark"
     >
       <polyline points="17,0 0,17" stroke="currentColor" fill="none"></polyline>
     </svg>
