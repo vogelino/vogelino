@@ -4,7 +4,20 @@ import Layout from "../layouts/Layout.astro";
 import classNames from "../utils/classNames";
 import { getNotionProjects } from "../utils/getNotionProjects";
 
-const projects = await getNotionProjects();
+const projects = (await getNotionProjects()).map((w) => {
+  const classes = [
+    `group-hover:rotate-1`,
+    `group-hover:rotate-0`,
+    `group-hover:rotate-2`,
+    `group-hover:-rotate-1`,
+    `group-hover:-rotate-2`,
+  ];
+  const rotationClass = classes[Math.floor(Math.random() * classes.length)];
+  return {
+    ...w,
+    rotationClass,
+  };
+});
 ---
 
 <Layout title="Welcome">

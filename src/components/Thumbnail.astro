@@ -2,8 +2,19 @@
 import classNames from "../utils/classNames";
 import type { MappedNotionProject } from "../utils/getNotionProjects";
 
-export interface Props extends MappedNotionProject {}
-const { slug, title, nameShort, type, bgImage, thumbnail, year } = Astro.props;
+export interface Props extends MappedNotionProject {
+  rotationClass: string;
+}
+const {
+  slug,
+  title,
+  nameShort,
+  rotationClass,
+  type,
+  bgImage,
+  thumbnail,
+  year,
+} = Astro.props;
 ---
 
 <a
@@ -54,6 +65,7 @@ const { slug, title, nameShort, type, bgImage, thumbnail, year } = Astro.props;
     </div>
     <div
       class={classNames(
+        rotationClass,
         `absolute inset-4 border-2 border-alt rounded`,
         `border-t-[12px] overflow-hidden sm:opacity-0 transition`,
         `group-hover:opacity-100 sm:scale-95 sm:group-hover:scale-100`
