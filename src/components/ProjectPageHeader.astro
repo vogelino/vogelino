@@ -1,0 +1,53 @@
+---
+import classNames from "../utils/classNames";
+import type { MappedNotionProject } from "../utils/getNotionProjects";
+
+export interface Props extends MappedNotionProject {}
+
+const project = Astro.props;
+const highlightClasses = `bg-alt rounded-full pl-3 pr-2 mr-1 pt-2 pb-1`;
+---
+
+<div class="relative overflow-hidden w-screen h-screen">
+  <div class="w-full h-full">
+    <img
+      src={project.bgImage}
+      alt={project.title}
+      class="w-full h-full object-cover"
+    />
+
+    <div class={classNames(`absolute inset-0 bg-grayMed mix-blend-screen`)}>
+    </div>
+    <div
+      class={classNames(`absolute inset-0 bg-grayUltraLight mix-blend-color`)}
+    >
+    </div>
+  </div>
+  <div
+    class="absolute inset-0 bottom-auto h-[65vh] flex items-center justify-center px-8"
+  >
+    <div class="text-center flex flex-col items-center">
+      <h1
+        class="text-7xl 2xl:text-8xl leading-[72px] 2xl:leading-[96px] uppercase font-bold inline-block"
+      >
+        {project.title}
+      </h1>
+      <span class="text-2xl mt-3">{project.year}</span>
+      <p class="text-2xl leading-relaxed mt-4 max-w-2xl">
+        {
+          project.description.map((part) =>
+            part.link ? (
+              <a href={part.link} class={highlightClasses} target="_blank">
+                {part.text.trim()}
+              </a>
+            ) : (
+              <span class={part.highlighted ? highlightClasses : ""}>
+                {part.text.trim()}
+              </span>
+            )
+          )
+        }
+      </p>
+    </div>
+  </div>
+</div>

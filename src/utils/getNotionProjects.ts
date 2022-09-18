@@ -20,6 +20,21 @@ interface RawNotionProjectType {
         plain_text: string;
       }[];
     };
+    Description: {
+      rich_text: {
+        type: "text";
+        text: { content: string; link: null | string };
+        annotations: {
+          bold: boolean;
+          italic: boolean;
+          strikethrough: boolean;
+          underline: boolean;
+          code: boolean;
+        };
+        plain_text: string;
+        href: null | string;
+      }[];
+    };
     Thumbnail: NotionImageType;
     BgImage: NotionImageType;
     Year: {
@@ -36,15 +51,26 @@ interface RawNotionProjectType {
 const parseNotionProject = (
   rawProject: RawNotionProjectType
 ): MappedNotionProject => {
-  const { Name, Thumbnail, BgImage, Type, Year } = rawProject.properties;
+  const { Name, Description, Thumbnail, BgImage, Type, Year } =
+    rawProject.properties;
+  console.log(rawProject.properties.Description.rich_text);
+
   const thumbnail =
     Thumbnail.files[0].external?.url || Thumbnail.files[0].file?.url || "";
   const bgImage =
     BgImage.files[0].external?.url || BgImage.files[0].file?.url || "";
   const type = Type.select.name;
   const fullTitle = Name.title.map(({ plain_text }) => plain_text).join("");
+  const description = Description.rich_text.map(
+    ({ text, annotations, href }) => ({
+      text: text.content,
+      link: href,
+      highlighted: annotations.bold,
+    })
+  );
   return {
     title: fullTitle,
+    description,
     type,
     slug: slugify(fullTitle),
     thumbnail,
@@ -55,6 +81,11 @@ const parseNotionProject = (
 
 export interface MappedNotionProject {
   title: string;
+  description: {
+    text: string;
+    link: null | string;
+    highlighted: boolean;
+  }[];
   type: string;
   slug: string;
   thumbnail: string;

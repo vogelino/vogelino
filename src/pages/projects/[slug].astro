@@ -1,10 +1,11 @@
 ---
-import OverlayingPixel from "../../components/OverlayingPixel.astro";
-import ImageLittleSquares from "../../components/ImageLittleSquares.astro";
-import ProjectTitle from "../../components/ProjectTitle.astro";
-import { getNotionProjects } from "../../utils/getNotionProjects";
+import {
+  getNotionProjects,
+  MappedNotionProject,
+} from "../../utils/getNotionProjects";
 import classNames from "../../utils/classNames";
 import Layout from "../../layouts/Layout.astro";
+import ProjectPageHeader from "../../components/ProjectPageHeader.astro";
 
 export async function getStaticPaths() {
   const notionProjects = await getNotionProjects();
@@ -14,54 +15,11 @@ export async function getStaticPaths() {
   }));
 }
 
+export interface Props extends MappedNotionProject {}
+
 const project = Astro.props;
 ---
 
-<Layout title={project.fullTitle}>
-  <div class="z-0">
-    <div class="relative overflow-hidden w-full h-[70vh]">
-      <div class="w-full h-full">
-        <img
-          src={project.thumbnail}
-          alt={project.fullTitle}
-          class="w-full h-full object-cover"
-        />
-      </div>
-      <OverlayingPixel
-        variants={{ animate: { opacity: 0 } }}
-        className={classNames(
-          "w-full h-full opacity-0",
-          "inset-0 absolute",
-          "bg-fg mix-blend-overlay "
-        )}
-      />
-      <ImageLittleSquares showBottonLeftCorner={false} />
-    </div>
-    <div class="container mx-auto px-8 z-10 min-h-screen -mt-[87px]">
-      <div
-        class="relative"
-        role="heading"
-        aria-label={[project.titleLine1, project.titleLine2].join(" ")}
-      >
-        <ProjectTitle
-          ariaHidden
-          projectTitleLine1={project.titleLine1}
-          projectTitleLine2={""}
-          className="text-9xl mix-blend-difference text-bg z-20"
-        />
-        <ProjectTitle
-          ariaHidden
-          projectTitleLine1={project.titleLine1}
-          projectTitleLine2={""}
-          className="text-9xl mix-blend-overlay text-fg/60 z-20"
-        />
-        <ProjectTitle
-          ariaHidden
-          projectTitleLine1={project.titleLine2}
-          projectTitleLine2={""}
-          className="mt-[89px] text-9xl text-fg z-20"
-        />
-      </div>
-    </div>
-  </div>
+<Layout title={project.title}>
+  <ProjectPageHeader {...project} />
 </Layout>
