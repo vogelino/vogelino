@@ -9,29 +9,9 @@ const projects = await getNotionProjects();
 
 <Layout title="Welcome">
   <main
-    class="container px-8 grid grid-cols-1 mx-auto gap-8 py-32"
+    class="grid sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 py-32"
     aria-label="List of selected works"
   >
-    {
-      projects.map((work, idx) => (
-        <div
-          class={classNames(
-            "flex",
-            idx % 2 === 0 ? "justify-start" : "justify-end"
-          )}
-        >
-          <div class="sm:w-2/3">
-            <Thumbnail
-              projectSlug={work.slug}
-              projectTitleLine1={work.titleLine1}
-              projectTitleLine2={work.titleLine2}
-              projectType={work.type}
-              projectImagePath={work.thumbnail}
-              projectImageAlt={work.fullTitle}
-            />
-          </div>
-        </div>
-      ))
-    }
+    {projects.map((work) => <Thumbnail {...work} />)}
   </main>
 </Layout>

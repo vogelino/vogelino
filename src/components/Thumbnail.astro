@@ -1,82 +1,140 @@
 ---
 import classNames from "../utils/classNames";
-import ImageLittleSquares from "./ImageLittleSquares.astro";
-import OverlayingPixel from "./OverlayingPixel.astro";
-import ProjectTitle from "./ProjectTitle.astro";
+import type { MappedNotionProject } from "../utils/getNotionProjects";
 
-export interface Props {
-  projectSlug: string;
-  projectTitleLine1: string;
-  projectTitleLine2: string;
-  projectType: string;
-  projectImagePath: string;
-  projectImageAlt: string;
-}
-const {
-  projectSlug,
-  projectTitleLine1,
-  projectTitleLine2,
-  projectType,
-  projectImagePath,
-  projectImageAlt,
-} = Astro.props;
+export interface Props extends MappedNotionProject {}
+const { slug, title, type, bgImage, thumbnail, year } = Astro.props;
 ---
 
-<a href={`/projects/${projectSlug}`}>
+<a
+  href={`/projects/${slug}`}
+  class={classNames(
+    `group relative cursor-pointer`,
+    `grid grid-cols-[1rem,1fr,3rem] grid-rows-[auto,1fr,16px]`,
+    `border-y border-grayMed -mt-[1px]`,
+    `hover:bg-fg hover:text-bg transition-colors`
+  )}
+  role="heading"
+  aria-label={title}
+>
   <div
-    class="group relative pt-[67px] mb-16 pl-[38px] cursor-pointer"
-    role="heading"
-    aria-label={[projectTitleLine1, projectTitleLine2].join(" ")}
+    class={classNames(
+      `aspect-[16/11] relative overflow-hidden`,
+      `col-span-2 border-b border-grayLight`,
+      `group-hover:border-fgDark transition-colors`
+    )}
   >
-    <ProjectTitle
-      projectTitleLine1={projectTitleLine1}
-      projectTitleLine2={projectTitleLine2}
-      className="mix-blend-difference text-bg z-20"
-      ariaHidden
-    />
-    <ProjectTitle
-      projectTitleLine1={projectTitleLine1}
-      projectTitleLine2={projectTitleLine2}
-      className="mix-blend-overlay text-fg/60 z-20"
-      ariaHidden
-    />
-    <ProjectTitle
-      projectTitleLine1={projectTitleLine1}
-      projectTitleLine2={projectTitleLine2.slice(0, 1)}
-      className="z-30"
-      ariaHidden
+    <img
+      src={bgImage}
+      loading="lazy"
+      aria-hidden="true"
+      class="object-cover absolute top-0 left-0 w-full aspect-[16/11]"
     />
     <div
       class={classNames(
-        "absolute bottom-0 left-0 uppercase font-headline text-2xl",
-        "z-10 tracking-widest leading-4"
+        `absolute inset-0 sm:bg-grayDark mix-blend-screen`,
+        `bg-fgDark group-hover:bg-fgDark transition-colors`
+      )}
+    >
+    </div>
+    <div
+      class={classNames(
+        `absolute inset-0 sm:bg-grayUltraLight mix-blend-multiply opacity-50`,
+        `bg-fgDark group-hover:bg-fgDark transition-colors`
+      )}
+    >
+    </div>
+    <div
+      class={classNames(
+        `absolute inset-0 sm:bg-grayUltraLight mix-blend-color`,
+        `bg-fgDark group-hover:bg-fgDark transition-colors`
+      )}
+    >
+    </div>
+    <div
+      class={classNames(
+        `absolute inset-4 border-2 border-alt rounded`,
+        `border-t-[12px] overflow-hidden sm:opacity-0 transition`,
+        `group-hover:opacity-100 sm:scale-95 sm:group-hover:scale-100`
+      )}
+    >
+      <img loading="lazy" src={thumbnail} alt={title} class="w-full h-auto" />
+    </div>
+  </div>
+  <div
+    class={classNames(
+      `relative border-x border-b border-grayLight`,
+      `border-r-grayMed row-span-2`,
+      `group-hover:border-fgDark transition-colors`
+    )}
+  >
+    <div
+      class={classNames(
+        "absolute bottom-4 left-1 whitespace-nowrap suppercase",
+        "z-10 tracking-wide leading-4 text-lg"
       )}
     >
       <h3
-        aria-label={`Project type: ${projectType}`}
+        aria-label={`project type: ${type}`}
         class={classNames(
           "origin-bottom-left -rotate-90 translate-x-7",
           "pt-1 -mt-1"
         )}
       >
-        {projectType}
+        {type.toLowerCase()}
       </h3>
     </div>
-    <div class="aspect-[16/11] relative overflow-hidden">
-      <img
-        src={projectImagePath}
-        alt={projectImageAlt}
-        class="object-cover absolute top-0 left-0 w-full aspect-[16/11]"
-      />
-      <OverlayingPixel
-        className={classNames(
-          "w-full h-full opacity-0",
-          "inset-0 absolute transition-colors",
-          "bg-zinc-500 mix-blend-overlay ",
-          "group-hover:bg-zinc-800"
+    <div
+      class={classNames(
+        `absolute top-4 left-1 whitespace-nowrap suppercase`,
+        `z-10 tracking-wide leading-4 text-lg text-grayDark opacity-50`,
+        `group-hover:text-white transition group-hover:opacity-70`
+      )}
+    >
+      <h3
+        aria-label={`project type: ${type}`}
+        class={classNames(
+          "origin-bottom-left -rotate-90 translate-x-7 translate-y-full",
+          "pt-1 -mt-1"
         )}
-      />
-      <ImageLittleSquares showTopRightCorner={projectTitleLine2.length} />
+      >
+        {year}
+      </h3>
     </div>
+  </div>
+  <div></div>
+  <h1
+    class={classNames(
+      "border-l border-b border-grayLight pt-6 px-4 pb-4 uppercase",
+      "text-3xl tracking-wider leading-7",
+      `group-hover:border-fgDark transition-colors`
+    )}
+  >
+    {title}
+  </h1>
+  <div
+    class={classNames(
+      `col-span-3 relative bg-grayUltraLight`,
+      `group-hover:bg-grayDark/10 transition`,
+      `h-4 border-r border-grayMed`,
+      `group-hover:border-fgDark`
+    )}
+  >
+    <svg
+      width="16px"
+      height="20px"
+      viewBox="0 0 16 20"
+      class="absolute bottom-0 left-0 text-bg group-hover:text-fg transition-colors"
+    >
+      <polygon points="0,0 16,0 16,4 0,20" fill="currentColor"></polygon>
+    </svg>
+    <svg
+      width="17px"
+      height="17px"
+      viewBox="0 0 17 17"
+      class="absolute bottom-0 left-0 text-grayLight group-hover:text-fgDark transition-colors"
+    >
+      <polyline points="17,0 0,17" stroke="currentColor" fill="none"></polyline>
+    </svg>
   </div>
 </a>

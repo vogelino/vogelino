@@ -31,6 +31,7 @@ module.exports = {
       },
       colors: {
         fg: "#FF0040",
+        fgDark: "#D60039",
         bg: "#FCFEFF",
         alt: "#FFEB84",
         grayDark: "#5D7280",
