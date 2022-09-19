@@ -14,16 +14,12 @@ const highlightClasses = `bg-alt rounded-full pl-3 pr-2 mr-1 pt-2 pb-1 decoratio
 
 <div class="relative overflow-hidden w-screen">
   <div
-    class="w-screen h-[60vh] md:h-screen absolute top-0 left-0 -z-10 border-b border-grayMed"
+    class="w-screen h-[60vh] overflow-hidden md:h-screen absolute top-0 left-0 -z-10 border-b border-grayMed"
   >
     <Img
       src={`/images/bg-images/${project.slug}.webp`}
       alt={project.title}
-      attributes={{
-        img: {
-          class: "w-full h-full object-cover",
-        },
-      }}
+      layout="fill"
     />
 
     <div class={classNames(`absolute inset-0 bg-grayMed mix-blend-screen`)}>
