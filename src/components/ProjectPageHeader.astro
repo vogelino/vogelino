@@ -2,6 +2,9 @@
 import classNames from "../utils/classNames";
 import type { MappedNotionProject } from "../utils/getNotionProjects";
 import Link from "./icons/Link.astro";
+import * as astroComponents from "astro-imagetools/components";
+
+const { Img } = astroComponents;
 
 export interface Props extends MappedNotionProject {}
 
@@ -13,10 +16,14 @@ const highlightClasses = `bg-alt rounded-full pl-3 pr-2 mr-1 pt-2 pb-1 decoratio
   <div
     class="w-screen h-[60vh] md:h-screen absolute top-0 left-0 -z-10 border-b border-grayMed"
   >
-    <img
-      src={project.bgImage}
+    <Img
+      src={`/images/bg-images/${project.slug}.webp`}
       alt={project.title}
-      class="w-full h-full object-cover"
+      attributes={{
+        img: {
+          class: "w-full h-full object-cover",
+        },
+      }}
     />
 
     <div class={classNames(`absolute inset-0 bg-grayMed mix-blend-screen`)}>
@@ -92,10 +99,14 @@ const highlightClasses = `bg-alt rounded-full pl-3 pr-2 mr-1 pt-2 pb-1 decoratio
           class="w-2 h-2 md:w-3 md:h-3 rounded-full bg-grayDark mix-blend-multiply opacity-20"
         ></span>
       </span>
-      <img
-        src={project.thumbnail}
+      <Img
+        src={`/images/thumbnails/${project.slug}.webp`}
         alt={`Screenshot of the project ${project.title}`}
-        class="w-full rounded"
+        attributes={{
+          img: {
+            class: "w-full rounded",
+          },
+        }}
       />
     </div>
   </div>

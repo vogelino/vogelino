@@ -1,20 +1,14 @@
 ---
 import classNames from "../utils/classNames";
 import type { MappedNotionProject } from "../utils/getNotionProjects";
+import * as astroComponents from "astro-imagetools/components";
+
+const { Img } = astroComponents;
 
 export interface Props extends MappedNotionProject {
   rotationClass: string;
 }
-const {
-  slug,
-  title,
-  nameShort,
-  rotationClass,
-  type,
-  bgImage,
-  thumbnail,
-  year,
-} = Astro.props;
+const { slug, title, nameShort, rotationClass, type, year } = Astro.props;
 ---
 
 <a
@@ -36,11 +30,15 @@ const {
       `pointer-events-none`
     )}
   >
-    <img
+    <Img
       src={`/images/bg-images/${slug}.webp`}
-      loading="lazy"
-      aria-hidden="true"
-      class="object-cover absolute top-0 left-0 w-full aspect-[16/11]"
+      alt={`Background image for project ${title}`}
+      attributes={{
+        img: {
+          "aria-hidden": "true",
+          class: "object-cover absolute top-0 left-0 w-full aspect-[16/11]",
+        },
+      }}
     />
     <div
       class={classNames(
@@ -71,11 +69,14 @@ const {
         `group-hover:opacity-100 sm:scale-95 sm:group-hover:scale-100`
       )}
     >
-      <img
-        loading="lazy"
+      <Img
         src={`/images/thumbnails/${slug}.webp`}
         alt={title}
-        class="w-full h-auto"
+        attributes={{
+          img: {
+            class: "w-full h-auto",
+          },
+        }}
       />
     </div>
   </div>
