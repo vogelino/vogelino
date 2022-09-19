@@ -1,10 +1,12 @@
 ---
 import Thumbnail from "../components/Thumbnail.astro";
 import Layout from "../layouts/Layout.astro";
-import classNames from "../utils/classNames";
 import { getNotionProjects } from "../utils/getNotionProjects";
+import { notion } from "../utils/notion";
 
-const projects = (await getNotionProjects()).map((w) => {
+const projects = (
+  await getNotionProjects(import.meta.env.NOTION_PORTFOLIO_DATABASE_ID, notion)
+).map((w) => {
   const classes = [
     `group-hover:rotate-1`,
     `group-hover:rotate-0`,

@@ -37,7 +37,7 @@ const {
     )}
   >
     <img
-      src={bgImage}
+      src={`/images/bg-images/${slug}.webp`}
       loading="lazy"
       aria-hidden="true"
       class="object-cover absolute top-0 left-0 w-full aspect-[16/11]"
@@ -71,7 +71,12 @@ const {
         `group-hover:opacity-100 sm:scale-95 sm:group-hover:scale-100`
       )}
     >
-      <img loading="lazy" src={thumbnail} alt={title} class="w-full h-auto" />
+      <img
+        loading="lazy"
+        src={`/images/thumbnails/${slug}.webp`}
+        alt={title}
+        class="w-full h-auto"
+      />
     </div>
   </div>
   <div

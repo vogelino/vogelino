@@ -1,15 +1,19 @@
+import type { Client } from "@notionhq/client";
 import slugify from "slugify";
 import { notion } from "./notion";
 
 interface NotionImageType {
-  files: {
-    external?: {
-      url: string;
-    };
-    file?: {
-      url: string;
-    };
-  }[];
+  type: string;
+  external?: {
+    url: string;
+  };
+  file?: {
+    url: string;
+  };
+}
+
+export interface NotionFilesType {
+  files: NotionImageType[];
 }
 
 interface NotionRichTextType {
@@ -28,7 +32,8 @@ interface NotionRichTextType {
   }[];
 }
 
-interface RawNotionProjectType {
+export interface RawNotionProjectType {
+  id: string;
   properties: {
     Name: {
       title: {
@@ -38,8 +43,8 @@ interface RawNotionProjectType {
     };
     Description: NotionRichTextType;
     NameShort: NotionRichTextType;
-    Thumbnail: NotionImageType;
-    BgImage: NotionImageType;
+    Thumbnail: NotionFilesType;
+    BgImage: NotionFilesType;
     Year: {
       number: number;
     };
@@ -81,7 +86,12 @@ const parseNotionProject = (
     nameShort,
     description,
     type,
-    slug: slugify(fullTitle),
+    slug: slugify(fullTitle, {
+      lower: true,
+      strict: true,
+      trim: true,
+      remove: /\./gi,
+    }),
     thumbnail,
     bgImage,
     year: Year.number,
@@ -105,9 +115,12 @@ export interface MappedNotionProject {
   url: null | string;
 }
 
-export const getNotionProjects = async (): Promise<MappedNotionProject[]> => {
-  const notionResponse = await notion.databases.query({
-    database_id: import.meta.env.NOTION_PORTFOLIO_DATABASE_ID,
+export const getNotionProjects = async (
+  databaseId: string,
+  notionInstance: Client
+): Promise<MappedNotionProject[]> => {
+  const notionResponse = await notionInstance.databases.query({
+    database_id: databaseId,
     filter: {
       and: [
         {

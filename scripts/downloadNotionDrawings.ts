@@ -1,19 +1,18 @@
+import * as dotenv from "dotenv";
+dotenv.config();
 import { doesFileExists } from "./lib/doesFileExist";
 import { downloadImage } from "./lib/downloadImage";
-import { getAllNotionLinksImages } from "./lib/getAllNotionLinksImages";
+import { getAllNotionInspirationImages } from "./lib/getAllNotionInspirationImages";
 import { logEnd, logH1, logIndented, logSecondary } from "./lib/logUtil";
 import { resizeImage } from "./lib/resizeImage";
 import fs from "node:fs/promises";
-import {
-  IMAGE_ORIGINALS_EXPORT_PATH,
-  IMAGE_RESIZED_EXPORT_PATH,
-} from "./paths";
+import { IMAGE_TMP_EXPORT_PATH, DRAWINGS_RESIZED_EXPORT_PATH } from "./paths";
 import { createDirectoriesIfNotAlreadyThere } from "./lib/createDirectoriesIfNotAlreadyThere";
 
 const WIDTH = 560;
-const HEIGHT = 292;
+const HEIGHT = 560;
 
-const databaseId = process.env.NOTION_INSPIRATION_DATABASE_ID || "";
+const databaseId = process.env.NOTION_DRAWINGS_DATABASE_ID || "";
 
 /*
 1. Images are downloaded from notion and saved in the images repo
@@ -26,21 +25,21 @@ const databaseId = process.env.NOTION_INSPIRATION_DATABASE_ID || "";
 
 TADAA! All the images are now hosted on my side!
 */
-async function downloadNotionImagesToDisk() {
+async function downloadNotionDrawings() {
   logH1(`Downloading all images from Notion`);
 
-  const images = await getAllNotionLinksImages(databaseId, false);
+  const images = await getAllNotionInspirationImages(databaseId, false);
 
   for (const [pageId, url] of images) {
     logSecondary([`Downloading image "${pageId}"`]);
     logIndented(`🔗 ${url.slice(0, 50)}...`);
 
     // MAKE SURE DIRECTORIES EXIST
-    await createDirectoriesIfNotAlreadyThere(IMAGE_ORIGINALS_EXPORT_PATH);
-    await createDirectoriesIfNotAlreadyThere(IMAGE_RESIZED_EXPORT_PATH);
+    await createDirectoriesIfNotAlreadyThere(IMAGE_TMP_EXPORT_PATH);
+    await createDirectoriesIfNotAlreadyThere(DRAWINGS_RESIZED_EXPORT_PATH);
 
     // CHECK FOR EXISTING DESTINATION FILE
-    const resizeDest = `${IMAGE_RESIZED_EXPORT_PATH}/${pageId}.webp`;
+    const resizeDest = `${DRAWINGS_RESIZED_EXPORT_PATH}/${pageId}.webp`;
     const destinationFileAlreadyExist = await doesFileExists(resizeDest);
 
     if (destinationFileAlreadyExist) {
@@ -48,7 +47,7 @@ async function downloadNotionImagesToDisk() {
     } else {
       // DOWNLOAD
       const { imageExt, data } = await downloadImage(url);
-      const originalPath = `${IMAGE_ORIGINALS_EXPORT_PATH}/${pageId}.${imageExt}`;
+      const originalPath = `${IMAGE_TMP_EXPORT_PATH}/${pageId}.${imageExt}`;
 
       // CHECK FOR EXISTING LARGE FILE
       const fileAlreadyExist = await doesFileExists(originalPath);
@@ -78,4 +77,4 @@ async function downloadNotionImagesToDisk() {
   process.exit();
 }
 
-downloadNotionImagesToDisk();
+downloadNotionDrawings();

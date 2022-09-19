@@ -3,12 +3,15 @@ import {
   getNotionProjects,
   MappedNotionProject,
 } from "../../utils/getNotionProjects";
-import classNames from "../../utils/classNames";
 import Layout from "../../layouts/Layout.astro";
 import ProjectPageHeader from "../../components/ProjectPageHeader.astro";
+import { notion } from "../../utils/notion";
 
 export async function getStaticPaths() {
-  const notionProjects = await getNotionProjects();
+  const notionProjects = await getNotionProjects(
+    import.meta.env.NOTION_PORTFOLIO_DATABASE_ID,
+    notion
+  );
   return notionProjects.map((notionProject) => ({
     params: { slug: notionProject.slug },
     props: notionProject,

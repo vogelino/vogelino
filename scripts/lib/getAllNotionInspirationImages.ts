@@ -1,5 +1,3 @@
-import * as dotenv from "dotenv";
-dotenv.config();
 import type {
   BlockObjectResponse,
   ImageBlockObjectResponse,
@@ -8,7 +6,7 @@ import { notion } from "./notion";
 
 const IPP = 100;
 
-export async function getAllNotionLinksImages(
+export async function getAllNotionInspirationImages(
   databaseId: string,
   onlyExternal: boolean = true,
   nextCursor?: string
@@ -54,7 +52,7 @@ export async function getAllNotionLinksImages(
     );
 
   if (response.next_cursor && response.has_more) {
-    const nextPage = await getAllNotionLinksImages(
+    const nextPage = await getAllNotionInspirationImages(
       databaseId,
       onlyExternal,
       response.next_cursor
