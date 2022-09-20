@@ -81,7 +81,9 @@ const parseNotionProject = (
   const nameShort = NameShort.rich_text
     .map(({ text }) => text?.content)
     .join(" ");
+
   return {
+    id: rawProject.id,
     title: fullTitle,
     nameShort,
     description,
@@ -100,6 +102,7 @@ const parseNotionProject = (
 };
 
 export interface MappedNotionProject {
+  id: string;
   title: string;
   nameShort: null | string;
   description: {

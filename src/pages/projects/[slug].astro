@@ -6,6 +6,7 @@ import {
 import Layout from "../../layouts/Layout.astro";
 import ProjectPageHeader from "../../components/ProjectPageHeader.astro";
 import { notion } from "../../utils/notion";
+import type { BlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 
 export async function getStaticPaths() {
   const notionProjects = await getNotionProjects(
@@ -21,8 +22,65 @@ export async function getStaticPaths() {
 export interface Props extends MappedNotionProject {}
 
 const project = Astro.props;
+
+const blocksResponse = await notion.blocks.children.list({
+  block_id: project.id,
+});
+
+const blocks = blocksResponse.results as unknown as BlockObjectResponse[];
+const highlightClasses = `bg-alt rounded-full pl-3 pr-2 mr-1 pt-2 pb-1 decoration-clone leading-relaxed`;
 ---
 
 <Layout title={project.title}>
   <ProjectPageHeader {...project} />
+  <div
+    class="grid grid-cols-3 container mx-auto max-w-6xl px-4 sm:px-8 pb-[20vw] md:pb-[10vw]"
+  >
+    <article class="col-span-2 text-2xl leading-normal">
+      {
+        blocks.map((block) => {
+          if (block.type === "paragraph") {
+            return (
+              <p class="mb-5">
+                {block.paragraph.rich_text
+                  .map((item) => {
+                    const text = item.plain_text;
+                    if (!text) return false;
+                    if (item.href) {
+                      return (
+                        <a
+                          href={item.href}
+                          target="_blank"
+                          class={highlightClasses}
+                        >
+                          {text}
+                        </a>
+                      );
+                    }
+                    if (item.annotations.bold) return <strong>{text}</strong>;
+                    if (item.annotations.italic) return <em>{text}</em>;
+                    return <>{text}</>;
+                  })
+                  .filter(Boolean)}
+              </p>
+            );
+          }
+          if (block.type === "image") {
+            console.log(block);
+            const image = block.image as {
+              external?: { url: string };
+              file?: { url: string };
+            };
+            const img = image?.external || image?.file;
+            return (
+              <img
+                src={img?.url || img?.url || ""}
+                class="my-8 border border-grayMed"
+              />
+            );
+          }
+        })
+      }
+    </article>
+  </div>
 </Layout>

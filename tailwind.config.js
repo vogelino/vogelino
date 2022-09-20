@@ -39,6 +39,9 @@ module.exports = {
         grayLight: "#E1ECF2",
         grayUltraLight: "#F1FAFF",
       },
+      backgroundImage: {
+        "tooth-pattern": "url('/images/tooth-pattern.svg')",
+      },
     },
   },
   plugins: [],
