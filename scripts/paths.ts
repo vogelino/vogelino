@@ -5,3 +5,4 @@ export const THUMBNAILS_RESIZED_EXPORT_PATH = "public/images/thumbnails";
 export const BG_IMAGEs_RESIZED_EXPORT_PATH = "public/images/bg-images";
 export const DRAWINGS_RESIZED_EXPORT_PATH = "public/images/drawings";
 export const CONTENT_RESIZED_EXPORT_PATH = "public/images/content";
+export const COLLABORATORS_RESIZED_EXPORT_PATH = "public/images/collaborators";

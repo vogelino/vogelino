@@ -14,6 +14,12 @@ export const downloadImage = async (
   const response = await fetch(url);
   timeoutExceeded = false;
   const contentType = response.headers.get("content-type");
+  if (contentType === "image/svg+xml") {
+    return {
+      imageExt: "svg",
+      data: response.body,
+    };
+  }
   const imageExtensionMatch = contentType?.match(
     /^image\/(?<ext>\b[^\d\W]+\b)$/
   )?.groups;
