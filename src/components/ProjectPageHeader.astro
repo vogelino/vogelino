@@ -43,7 +43,9 @@ const highlightClasses = `bg-alt rounded-full pl-3 pr-2 mr-1 pt-2 pb-1 decoratio
       >
         {project.title}
       </h1>
-      <p class="text-xl md:text-2xl leading-loose mt-4 max-w-2xl">
+      <p
+        class="text-xl md:text-2xl md:leading-relaxed mt-4 max-w-2xl mb-6 md:mb-2"
+      >
         {
           project.description.map(
             (part) =>
@@ -62,7 +64,9 @@ const highlightClasses = `bg-alt rounded-full pl-3 pr-2 mr-1 pt-2 pb-1 decoratio
       </p>
     </div>
   </div>
-  <div class="container mx-auto max-w-6xl px-4 sm:px-8 pb-[20vw] md:pb-[10vw]">
+  <div
+    class="container mx-auto max-w-6xl px-4 sm:px-8 pb-[16vw] md:pb-[7vw] 2xl:pb-[5vw]"
+  >
     <div class="bg-alt rounded-t-lg p-1 md:p-2 pt-6 md:pt-8 relative">
       {
         project.url && (

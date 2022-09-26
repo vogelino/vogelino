@@ -5,9 +5,11 @@ import { doesFileExists } from "./lib/doesFileExist";
 import { downloadImage } from "./lib/downloadImage";
 import { log, logEnd, logH1, logIndented, logSecondary } from "./lib/logUtil";
 import { resizeImage } from "./lib/resizeImage";
+import { getNotionPageContentImages } from "./lib/getNotionPageContentImages";
 import fs from "node:fs/promises";
 import {
   BG_IMAGEs_RESIZED_EXPORT_PATH,
+  CONTENT_RESIZED_EXPORT_PATH,
   IMAGE_TMP_EXPORT_PATH,
   THUMBNAILS_RESIZED_EXPORT_PATH,
 } from "./paths";
@@ -27,14 +29,18 @@ async function downloadNotionProjectImages() {
 
   for (const project of projects) {
     const { slug, thumbnail, bgImage } = project;
+    const contentImages = await getNotionPageContentImages(project.id);
+
     logSecondary([`Downloading images for page "${slug}"`]);
     logIndented(`📺 ${thumbnail.slice(0, 50)}...`);
     logIndented(`🖼 ${bgImage.slice(0, 50)}...`);
+    logIndented(`📝 Content images:`);
 
     // MAKE SURE DIRECTORIES EXIST
     await createDirectoriesIfNotAlreadyThere(IMAGE_TMP_EXPORT_PATH);
     await createDirectoriesIfNotAlreadyThere(THUMBNAILS_RESIZED_EXPORT_PATH);
     await createDirectoriesIfNotAlreadyThere(BG_IMAGEs_RESIZED_EXPORT_PATH);
+    await createDirectoriesIfNotAlreadyThere(CONTENT_RESIZED_EXPORT_PATH);
 
     // CHECK FOR EXISTING DESTINATION FILE FOR THUMBNAIL
     const thumbResizeDest = `${THUMBNAILS_RESIZED_EXPORT_PATH}/${slug}.webp`;
@@ -88,6 +94,34 @@ async function downloadNotionProjectImages() {
       });
       logIndented(`✅ Success!`, 1);
       await fs.unlink(originalPath);
+    }
+
+    for (const contentImg of contentImages) {
+      // CHECK FOR EXISTING DESTINATION FILE FOR BG IMAGE
+      const contentImgDest = `${CONTENT_RESIZED_EXPORT_PATH}/${contentImg.name}.webp`;
+      const contentImgAlreadyExist = await doesFileExists(contentImgDest);
+
+      if (contentImgAlreadyExist) {
+        logIndented(`⏭ Skipping (already exists)`);
+      } else {
+        // DOWNLOAD
+        const { imageExt, data } = await downloadImage(contentImg.url);
+        const contentImgOriginalPath = `${IMAGE_TMP_EXPORT_PATH}/${slug}.${imageExt}`;
+
+        // SAVING LARGE FILE
+        logIndented(`💾 Saving file into: ${contentImgOriginalPath}`);
+        await fs.writeFile(contentImgOriginalPath, data);
+        logIndented(`✅ Success`);
+
+        // RESIZING FILE
+        logIndented(`📐 Resizing (${WIDTH}x${HEIGHT})`);
+        await resizeImage(contentImgOriginalPath, contentImgDest, {
+          width: WIDTH,
+          withoutEnlargement: true,
+        });
+        logIndented(`✅ Success!`, 1);
+        await fs.unlink(contentImgOriginalPath);
+      }
     }
   }
 

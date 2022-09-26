@@ -4,3 +4,4 @@ export const INSPIRATION_RESIZED_EXPORT_PATH = "public/images/inspirations";
 export const THUMBNAILS_RESIZED_EXPORT_PATH = "public/images/thumbnails";
 export const BG_IMAGEs_RESIZED_EXPORT_PATH = "public/images/bg-images";
 export const DRAWINGS_RESIZED_EXPORT_PATH = "public/images/drawings";
+export const CONTENT_RESIZED_EXPORT_PATH = "public/images/content";
