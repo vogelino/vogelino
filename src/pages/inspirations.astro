@@ -3,6 +3,9 @@ import { loadJson } from "../../scripts/lib/loadJson";
 import { INSPIRATIONS_JSON_PATH } from "../../scripts/paths";
 import Layout from "../layouts/Layout.astro";
 import type { MappedNotionInspirationLinkType } from "../utils/getAllNotionInspirations";
+import * as astroComponents from "astro-imagetools/components";
+
+const { Img } = astroComponents;
 
 const notionLinks = await loadJson<MappedNotionInspirationLinkType[]>(
   INSPIRATIONS_JSON_PATH
@@ -27,11 +30,15 @@ const notionLinks = await loadJson<MappedNotionInspirationLinkType[]>(
               class="flex flex-col gap-4 group"
             >
               <span class="relative block aspect-[140/73] bg-zinc-100 rounded overflow-hidden">
-                <img
+                <Img
                   src={`/images/inspirations/${link.id}.webp`}
                   alt={`Cover image of "${link.url}"`}
-                  class="w-full aspect-[140/73] rounded object-cover transition-transform group-hover:scale-110"
-                  loading="lazy"
+                  attributes={{
+                    img: {
+                      class:
+                        "w-full aspect-[140/73] rounded object-cover transition-transform group-hover:scale-110",
+                    },
+                  }}
                 />
                 <span class="absolute inset-0 pointer-events-none bg-zinc-100 mix-blend-multiply" />
               </span>

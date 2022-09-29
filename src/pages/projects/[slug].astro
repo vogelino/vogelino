@@ -3,12 +3,12 @@ import Layout from "../../layouts/Layout.astro";
 import ProjectPageHeader from "../../components/ProjectPageHeader.astro";
 import { notion } from "../../utils/notion";
 import type { BlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
-import * as astroComponents from "astro-imagetools/components";
 import CollaboratorsGroup from "../../components/CollaboratorsGroup.astro";
 import classNames from "../../utils/classNames";
 import { loadJson } from "../../../scripts/lib/loadJson";
 import { PROJECTS_JSON_PATH } from "../../../scripts/paths";
 import type { MappedNotionProject } from "../../utils/getNotionProjects";
+import * as astroComponents from "astro-imagetools/components";
 
 const { Img } = astroComponents;
 
