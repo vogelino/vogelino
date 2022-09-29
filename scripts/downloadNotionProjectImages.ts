@@ -25,7 +25,7 @@ async function downloadNotionProjectImages() {
   logH1(`Downloading all project images from Notion`);
 
   log(`databaseId: ${databaseId}`);
-  const projects = await getNotionProjects(databaseId, notion);
+  const projects = await getNotionProjects(databaseId, notion, false);
 
   for (const project of projects) {
     const { slug, thumbnail, bgImage } = project;

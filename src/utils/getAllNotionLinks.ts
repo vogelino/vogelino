@@ -1,4 +1,4 @@
-import { notion } from "./notion";
+import type { Client } from "@notionhq/client";
 
 const IPP = 100;
 
@@ -36,7 +36,8 @@ interface RawNotionInspirationLinkType {
   }[];
 }
 
-export interface MappedNotionInspirationLinkType {
+export interface MappedNotionInspirationLinkType
+  extends Record<string, unknown> {
   id: string;
   title: string;
   url: string;
@@ -66,11 +67,13 @@ function mapNotionInspirationLink(
 }
 
 export async function getAllNotionLinks(
+  databaseId: string,
+  notion: Client,
   prevLinks: MappedNotionInspirationLinkType[] = [],
   nextCursor?: string
 ): Promise<MappedNotionInspirationLinkType[]> {
   const response = await notion.databases.query({
-    database_id: import.meta.env.NOTION_INSPIRATION_DATABASE_ID,
+    database_id: databaseId,
     page_size: IPP,
     start_cursor: nextCursor,
     filter: {
@@ -93,7 +96,12 @@ export async function getAllNotionLinks(
   const allLinksUpToNow = [...prevLinks, ...mappedNotionLinks];
 
   if (response.next_cursor && response.has_more) {
-    return getAllNotionLinks(allLinksUpToNow, response.next_cursor);
+    return getAllNotionLinks(
+      databaseId,
+      notion,
+      allLinksUpToNow,
+      response.next_cursor
+    );
   }
   return allLinksUpToNow;
 }

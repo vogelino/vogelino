@@ -2,7 +2,6 @@ import type { Client } from "@notionhq/client";
 import fetch from "node-fetch";
 import slugify from "slugify";
 import { contentTypeToImgExtension } from "../../scripts/lib/contentTypeToImgExtension";
-import { notion } from "./notion";
 
 interface NotionImageType {
   type: string;
@@ -88,18 +87,20 @@ const getRealtionExtractor =
       ] as NotionRelationType
     ).relation.map(({ id }) => id);
 
-function parseNotionProject(
+async function parseNotionProject(
   rawProject: RawNotionProjectType
-): MappedNotionProject<false> {
-  const { Name, NameShort, Description, Thumbnail, BgImage, Type, Year, URL } =
+): Promise<MappedNotionProject<false>> {
+  const { Name, NameShort, Description, Type, Year, URL } =
     rawProject.properties;
-
-  const getRelationIds = getRealtionExtractor(rawProject);
-
-  const thumbnail = parseNotionFileUrl(Thumbnail);
-  const bgImage = parseNotionFileUrl(BgImage);
-  const type = Type.select.name;
   const fullTitle = Name.title.map(({ plain_text }) => plain_text).join("");
+  const slug = slugify(fullTitle, {
+    lower: true,
+    strict: true,
+    trim: true,
+    remove: /\./gi,
+  });
+
+  const type = Type.select.name;
   const description = Description.rich_text.map(
     ({ text, annotations, href }) => ({
       text: text.content,
@@ -111,18 +112,16 @@ function parseNotionProject(
     .map(({ text }) => text?.content)
     .join(" ");
 
+  const thumbnail = `/images/projects/${slug}/thumbnail.webp`;
+  const bgImage = `/images/bg-images/${slug}.webp`;
+  const getRelationIds = getRealtionExtractor(rawProject);
   return {
     id: rawProject.id,
     title: fullTitle,
     nameShort,
     description,
     type,
-    slug: slugify(fullTitle, {
-      lower: true,
-      strict: true,
-      trim: true,
-      remove: /\./gi,
-    }),
+    slug,
     thumbnail,
     bgImage,
     year: Year.number,
@@ -134,7 +133,8 @@ function parseNotionProject(
   };
 }
 
-export interface MappedNotionProject<LoadRelations extends boolean> {
+export interface MappedNotionProject<LoadRelations extends boolean>
+  extends Record<string, unknown> {
   id: string;
   title: string;
   nameShort: null | string;
@@ -207,9 +207,9 @@ export async function getNotionProjects<LoadRelations extends boolean>(
   });
   const notionProjects =
     notionResponse.results as unknown as RawNotionProjectType[];
-  const mappedProjects = notionProjects
-    .map(parseNotionProject)
-    .sort((a, b) => b.year - a.year);
+  const mappedProjects = (
+    await Promise.all(notionProjects.map(parseNotionProject))
+  ).sort((a, b) => b.year - a.year);
   if (!loadRelations)
     return mappedProjects as unknown as MappedNotionProject<LoadRelations>[];
   const allCollaboratorIds = Array.from(
@@ -225,11 +225,11 @@ export async function getNotionProjects<LoadRelations extends boolean>(
       }, new Set<string>())
       .values()
   );
-  const allCollaboratorPromises = allCollaboratorIds.map((id) => {
-    return notionInstance.pages.retrieve({
+  const allCollaboratorPromises = allCollaboratorIds.map((id) =>
+    notionInstance.pages.retrieve({
       page_id: id,
-    });
-  });
+    })
+  );
   const allCollaboratorPages = await Promise.all(allCollaboratorPromises);
   const allCollaboratorPagesWithUrls = await getCollaboratorsImages(
     allCollaboratorPages as unknown as NotionCollaboratorPageType[]
@@ -247,10 +247,8 @@ async function getCollaboratorsImages(
     const url = parseNotionFileUrl(col.properties.Avatar);
     if (!url) return false;
     try {
-      const response = await fetch(url);
-      const contentType = response.headers.get("content-type");
-      const originalImageExt = contentTypeToImgExtension(contentType);
-      const imageExt = originalImageExt === "svg" ? "svg" : "webp";
+      const imageExt = await getImageWithExtension(url);
+      const imageUrl = `/images/collaborators/${col.id}.${imageExt}`;
 
       return {
         ...col,
@@ -260,7 +258,7 @@ async function getCollaboratorsImages(
             files: [
               {
                 external: {
-                  url: `/images/collaborators/${col.id}.${imageExt}`,
+                  url: imageUrl,
                 },
               },
             ],
@@ -326,4 +324,12 @@ function mapNotionCollaborator(
     url: col.properties.URL.url || undefined,
     avatar: parseNotionFileUrl(col.properties.Avatar),
   };
+}
+
+async function getImageWithExtension(url: string): Promise<string> {
+  const response = await fetch(url);
+  const contentType = response.headers.get("content-type");
+  const originalImageExt = contentTypeToImgExtension(contentType);
+  const imageExt = originalImageExt === "svg" ? "svg" : "webp";
+  return imageExt;
 }
