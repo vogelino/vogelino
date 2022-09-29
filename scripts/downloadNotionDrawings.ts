@@ -14,17 +14,6 @@ const HEIGHT = 560;
 
 const databaseId = process.env.NOTION_DRAWINGS_DATABASE_ID || "";
 
-/*
-1. Images are downloaded from notion and saved in the images repo
-3. The file names are based on the page id
-4. The images are resized/optimized to fit my needs
-5. All files in the folder that do not correspond to any link are deleted
-6. Once all images are clean, a manual push on the images repo is made
-7. A GitHub action reacts to the push of the images repo and fires a vercel webhook
-8. The vercel webhook triggers the deployment of the astro website
-
-TADAA! All the images are now hosted on my side!
-*/
 async function downloadNotionDrawings() {
   logH1(`Downloading all images from Notion`);
 
