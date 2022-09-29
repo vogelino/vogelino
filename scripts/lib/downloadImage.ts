@@ -1,3 +1,4 @@
+import { contentTypeToImgExtension } from "./contentTypeToImgExtension";
 import fetch from "node-fetch";
 import { logIndented } from "./logUtil";
 
@@ -14,20 +15,7 @@ export const downloadImage = async (
   const response = await fetch(url);
   timeoutExceeded = false;
   const contentType = response.headers.get("content-type");
-  if (contentType === "image/svg+xml") {
-    return {
-      imageExt: "svg",
-      data: response.body,
-    };
-  }
-  const imageExtensionMatch = contentType?.match(
-    /^image\/(?<ext>\b[^\d\W]+\b)$/
-  )?.groups;
-  const imageExt = imageExtensionMatch?.ext;
-  if (!imageExt)
-    throw new Error(
-      `The requested url was not an image (content-type: ${contentType})`
-    );
+  const imageExt = contentTypeToImgExtension(contentType);
   logIndented(`📄 The file is an image with the ".${imageExt}" extension`);
 
   return {

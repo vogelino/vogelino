@@ -1,5 +1,7 @@
 import type { Client } from "@notionhq/client";
+import fetch from "node-fetch";
 import slugify from "slugify";
+import { contentTypeToImgExtension } from "../../scripts/lib/contentTypeToImgExtension";
 import { notion } from "./notion";
 
 interface NotionImageType {
@@ -71,8 +73,11 @@ export interface RawNotionProjectType {
   };
 }
 
-const parseNotionFileUrl = (file: NotionFilesType) =>
-  file.files[0].external?.url || file.files[0].file?.url || "";
+const parseNotionFileUrl = (file?: NotionFilesType) => {
+  const firstFile = file?.files[0];
+  if (!firstFile) return "";
+  return firstFile.external?.url || firstFile.file?.url || "";
+};
 
 const getRealtionExtractor =
   (rawProject: RawNotionProjectType) =>
@@ -226,12 +231,51 @@ export async function getNotionProjects<LoadRelations extends boolean>(
     });
   });
   const allCollaboratorPages = await Promise.all(allCollaboratorPromises);
-  const projectMapper = getCollaboratosMapper(
+  const allCollaboratorPagesWithUrls = await getCollaboratorsImages(
     allCollaboratorPages as unknown as NotionCollaboratorPageType[]
   );
+  const projectMapper = getCollaboratosMapper(allCollaboratorPagesWithUrls);
   return mappedProjects.map(
     projectMapper
   ) as unknown as MappedNotionProject<LoadRelations>[];
+}
+
+async function getCollaboratorsImages(
+  allCollaboratorPages: NotionCollaboratorPageType[]
+): Promise<NotionCollaboratorPageType[]> {
+  const mappedPagesPromises = allCollaboratorPages.map(async (col) => {
+    const url = parseNotionFileUrl(col.properties.Avatar);
+    if (!url) return false;
+    try {
+      const response = await fetch(url);
+      const contentType = response.headers.get("content-type");
+      const originalImageExt = contentTypeToImgExtension(contentType);
+      const imageExt = originalImageExt === "svg" ? "svg" : "webp";
+
+      return {
+        ...col,
+        properties: {
+          ...col.properties,
+          Avatar: {
+            files: [
+              {
+                external: {
+                  url: `/images/collaborators/${col.id}.${imageExt}`,
+                },
+              },
+            ],
+          },
+        },
+      };
+    } catch (err) {
+      console.log(url);
+      console.log(err);
+
+      return false;
+    }
+  });
+  const mappedPages = await Promise.all(mappedPagesPromises);
+  return mappedPages.filter(Boolean) as unknown as NotionCollaboratorPageType[];
 }
 
 function getCollaboratosMapper(

@@ -5,7 +5,7 @@ import * as astroComponents from "astro-imagetools/components";
 
 const { Img } = astroComponents;
 
-export interface Props extends MappedNotionProject {
+export interface Props extends MappedNotionProject<false> {
   rotationClass: string;
 }
 const { slug, title, nameShort, rotationClass, type, year } = Astro.props;
@@ -125,8 +125,8 @@ const { slug, title, nameShort, rotationClass, type, year } = Astro.props;
   <div></div>
   <h1
     class={classNames(
-      "border-l border-b border-grayLight pt-6 px-4 pb-4 uppercase",
-      "group-hover:pt-[20px]",
+      "border-l border-b border-grayLight pt-5 px-4 pb-4 uppercase",
+      "group-hover:pt-[18px]",
       "text-3xl tracking-wider leading-7 group-hover:px-1",
       `group-hover:border-fgDark`,
       `pointer-events-none`
@@ -137,7 +137,7 @@ const { slug, title, nameShort, rotationClass, type, year } = Astro.props;
         `group-hover:font-special group-hover:px-3`,
         `group-hover:text-fg group-hover:bg-alt`,
         `decoration-clone rounded-full group-hover:leading-6`,
-        `group-hover:tracking-tight antialiased`
+        `group-hover:tracking-tight antialiased group-hover:pb-0.5`
       )}
       >{nameShort || title}
     </span>

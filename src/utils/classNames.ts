@@ -3,7 +3,7 @@ export default function classNames(
 ): string {
   const flatClasses = classes.map((className) => {
     if (typeof className === "string") return className;
-    if (Array.isArray(className)) return classNames(className);
+    if (Array.isArray(className)) return classNames(...className);
     return "";
   });
   return flatClasses.filter(Boolean).join(" ");

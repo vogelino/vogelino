@@ -106,19 +106,26 @@ const highlightClasses = `bg-alt rounded-full pl-3 pr-2 mr-1 pt-2 pb-1 decoratio
         })
       }
     </article>
-    <aside>
-      <CollaboratorsGroup collaborators={project.colleagues}>
-        Made with
-      </CollaboratorsGroup>
-      <CollaboratorsGroup collaborators={project.supervisors}>
-        Supervised by
-      </CollaboratorsGroup>
-      <CollaboratorsGroup collaborators={project.institutions}>
-        Made @
-      </CollaboratorsGroup>
-      <CollaboratorsGroup collaborators={project.collaborators}>
-        In collaboration with
-      </CollaboratorsGroup>
+    <aside class="col-span-4 md:col-span-1">
+      <div
+        class={classNames(
+          `border border-grayLight bg-grayMed items-stretch`,
+          `grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-[1px]`
+        )}
+      >
+        <CollaboratorsGroup collaborators={project.colleagues}>
+          Made with
+        </CollaboratorsGroup>
+        <CollaboratorsGroup collaborators={project.supervisors}>
+          Supervised by
+        </CollaboratorsGroup>
+        <CollaboratorsGroup collaborators={project.institutions}>
+          Made @
+        </CollaboratorsGroup>
+        <CollaboratorsGroup collaborators={project.collaborators}>
+          In collaboration with
+        </CollaboratorsGroup>
+      </div>
     </aside>
   </div>
 </Layout>
