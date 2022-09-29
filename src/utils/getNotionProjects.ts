@@ -112,7 +112,7 @@ async function parseNotionProject(
     .map(({ text }) => text?.content)
     .join(" ");
 
-  const thumbnail = `/images/projects/${slug}/thumbnail.webp`;
+  const thumbnail = `/images/thumbnails/${slug}.webp`;
   const bgImage = `/images/bg-images/${slug}.webp`;
   const getRelationIds = getRealtionExtractor(rawProject);
   return {
