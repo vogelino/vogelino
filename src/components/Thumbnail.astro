@@ -8,7 +8,16 @@ const { Img } = astroComponents;
 export interface Props extends MappedNotionProject<false> {
   rotationClass: string;
 }
-const { slug, title, nameShort, rotationClass, type, year } = Astro.props;
+const {
+  slug,
+  title,
+  thumbnail,
+  bgImage,
+  nameShort,
+  rotationClass,
+  type,
+  year,
+} = Astro.props;
 ---
 
 <a
@@ -31,7 +40,7 @@ const { slug, title, nameShort, rotationClass, type, year } = Astro.props;
     )}
   >
     <Img
-      src={`/images/bg-images/${slug}.webp`}
+      src={bgImage}
       alt={`Background image for project ${title}`}
       attributes={{
         img: {
@@ -70,7 +79,7 @@ const { slug, title, nameShort, rotationClass, type, year } = Astro.props;
       )}
     >
       <Img
-        src={`/images/thumbnails/${slug}.webp`}
+        src={thumbnail}
         alt={title}
         attributes={{
           img: {

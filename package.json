@@ -3,13 +3,14 @@
   "scripts": {
     "dev": "TAILWIND_MODE=watch astro dev",
     "start": "astro dev",
-    "build": "npm run downloadInspiration && npm run downloadProjectImages && npm run downloadCacheData && npm run astroBuild",
+    "build": "npm run downloadInspiration && npm run downloadCollaborators && npm run downloadProjectImages && npm run downloadCacheData && npm run astroBuild",
     "astroBuild": "astro build",
     "preview": "astro preview",
     "astro": "astro",
     "type-check": "tsc",
     "downloadCacheData": "npx ts-node -P scripts/tsconfig.json scripts/downloadCacheData.ts",
     "downloadInspiration": "npx ts-node -P scripts/tsconfig.json scripts/downloadNotionInspirationImages.ts",
+    "downloadCollaborators": "npx ts-node -P scripts/tsconfig.json scripts/downloadNotionCollaboratorsImages.ts",
     "downloadProjectImages": "npx ts-node -P scripts/tsconfig.json scripts/downloadNotionProjectImages.ts",
     "downloadDrawings": "npx ts-node -P scripts/tsconfig.json scripts/downloadNotionDrawings.ts"
   },

@@ -1,11 +1,11 @@
 ---
+import { loadJson } from "../../scripts/lib/loadJson";
+import { INSPIRATIONS_JSON_PATH } from "../../scripts/paths";
 import Layout from "../layouts/Layout.astro";
-import { getAllNotionInspirations } from "../utils/getAllNotionInspirations";
-import { notion } from "../utils/notion";
+import type { MappedNotionInspirationLinkType } from "../utils/getAllNotionInspirations";
 
-const notionLinks = await getAllNotionInspirations(
-  import.meta.env.NOTION_INSPIRATION_DATABASE_ID || "",
-  notion
+const notionLinks = await loadJson<MappedNotionInspirationLinkType[]>(
+  INSPIRATIONS_JSON_PATH
 );
 ---
 
