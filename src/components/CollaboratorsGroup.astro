@@ -1,0 +1,24 @@
+---
+import type { MappedCollaboratorPageType } from "../utils/getNotionProjects";
+
+export interface Props {
+  collaborators: MappedCollaboratorPageType[];
+}
+
+const props = Astro.props;
+---
+
+{
+  props.collaborators.length && (
+    <div>
+      <h3>
+        <slot />
+      </h3>
+      <ul>
+        {props.collaborators.map((collaborator) => (
+          <li>{collaborator.name}</li>
+        ))}
+      </ul>
+    </div>
+  )
+}

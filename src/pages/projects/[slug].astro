@@ -8,13 +8,16 @@ import ProjectPageHeader from "../../components/ProjectPageHeader.astro";
 import { notion } from "../../utils/notion";
 import type { BlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import * as astroComponents from "astro-imagetools/components";
+import CollaboratorsGroup from "../../components/CollaboratorsGroup.astro";
+import classNames from "../../utils/classNames";
 
 const { Img } = astroComponents;
 
 export async function getStaticPaths() {
-  const notionProjects = await getNotionProjects(
+  const notionProjects = await getNotionProjects<true>(
     import.meta.env.NOTION_PORTFOLIO_DATABASE_ID,
-    notion
+    notion,
+    true
   );
   return notionProjects.map((notionProject) => ({
     params: { slug: notionProject.slug },
@@ -22,7 +25,7 @@ export async function getStaticPaths() {
   }));
 }
 
-export interface Props extends MappedNotionProject {}
+export interface Props extends MappedNotionProject<true> {}
 
 const project = Astro.props;
 
@@ -37,7 +40,10 @@ const highlightClasses = `bg-alt rounded-full pl-3 pr-2 mr-1 pt-2 pb-1 decoratio
 <Layout title={project.title}>
   <ProjectPageHeader {...project} />
   <div
-    class="grid grid-cols-3 container mx-auto max-w-6xl px-4 sm:px-8 pb-[20vw] md:pb-[10vw] 2xl:pb-[5vw]"
+    class={classNames(
+      `grid grid-cols-3 container mx-auto max-w-6xl px-4 sm:px-8 pb-[20vw] md:pb-[10vw] 2xl:pb-[5vw]`,
+      `gap-[5vw]`
+    )}
   >
     <article class="col-span-3 md:col-span-2 text-2xl leading-normal">
       {
@@ -100,5 +106,19 @@ const highlightClasses = `bg-alt rounded-full pl-3 pr-2 mr-1 pt-2 pb-1 decoratio
         })
       }
     </article>
+    <aside>
+      <CollaboratorsGroup collaborators={project.colleagues}>
+        Made with
+      </CollaboratorsGroup>
+      <CollaboratorsGroup collaborators={project.supervisors}>
+        Supervised by
+      </CollaboratorsGroup>
+      <CollaboratorsGroup collaborators={project.institutions}>
+        Made @
+      </CollaboratorsGroup>
+      <CollaboratorsGroup collaborators={project.collaborators}>
+        In collaboration with
+      </CollaboratorsGroup>
+    </aside>
   </div>
 </Layout>

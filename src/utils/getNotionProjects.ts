@@ -32,15 +32,23 @@ interface NotionRichTextType {
   }[];
 }
 
+interface NotionRelationType {
+  id: string;
+  type: "relation";
+  relation: { id: string }[];
+}
+
+interface NotionTitleType {
+  title: {
+    type: "text";
+    plain_text: string;
+  }[];
+}
+
 export interface RawNotionProjectType {
   id: string;
   properties: {
-    Name: {
-      title: {
-        type: "text";
-        plain_text: string;
-      }[];
-    };
+    Name: NotionTitleType;
     Description: NotionRichTextType;
     NameShort: NotionRichTextType;
     Thumbnail: NotionFilesType;
@@ -56,19 +64,35 @@ export interface RawNotionProjectType {
     URL: {
       url: null | string;
     };
+    "In collaboration with": NotionRelationType;
+    "Supervised by": NotionRelationType;
+    "Made With": NotionRelationType;
+    "Made @": NotionRelationType;
   };
 }
 
-const parseNotionProject = (
+const parseNotionFileUrl = (file: NotionFilesType) =>
+  file.files[0].external?.url || file.files[0].file?.url || "";
+
+const getRealtionExtractor =
+  (rawProject: RawNotionProjectType) =>
+  (key: string): string[] =>
+    (
+      rawProject.properties[
+        key as keyof typeof rawProject.properties
+      ] as NotionRelationType
+    ).relation.map(({ id }) => id);
+
+function parseNotionProject(
   rawProject: RawNotionProjectType
-): MappedNotionProject => {
+): MappedNotionProject<false> {
   const { Name, NameShort, Description, Thumbnail, BgImage, Type, Year, URL } =
     rawProject.properties;
 
-  const thumbnail =
-    Thumbnail.files[0].external?.url || Thumbnail.files[0].file?.url || "";
-  const bgImage =
-    BgImage.files[0].external?.url || BgImage.files[0].file?.url || "";
+  const getRelationIds = getRealtionExtractor(rawProject);
+
+  const thumbnail = parseNotionFileUrl(Thumbnail);
+  const bgImage = parseNotionFileUrl(BgImage);
   const type = Type.select.name;
   const fullTitle = Name.title.map(({ plain_text }) => plain_text).join("");
   const description = Description.rich_text.map(
@@ -98,10 +122,14 @@ const parseNotionProject = (
     bgImage,
     year: Year.number,
     url: URL.url,
+    collaborators: getRelationIds("In collaboration with"),
+    supervisors: getRelationIds("Supervised by"),
+    colleagues: getRelationIds("Made With"),
+    institutions: getRelationIds("Made @"),
   };
-};
+}
 
-export interface MappedNotionProject {
+export interface MappedNotionProject<LoadRelations extends boolean> {
   id: string;
   title: string;
   nameShort: null | string;
@@ -116,12 +144,43 @@ export interface MappedNotionProject {
   bgImage: string;
   year: number;
   url: null | string;
+  collaborators: LoadRelations extends true
+    ? MappedCollaboratorPageType[]
+    : string[];
+  supervisors: LoadRelations extends true
+    ? MappedCollaboratorPageType[]
+    : string[];
+  colleagues: LoadRelations extends true
+    ? MappedCollaboratorPageType[]
+    : string[];
+  institutions: LoadRelations extends true
+    ? MappedCollaboratorPageType[]
+    : string[];
 }
 
-export const getNotionProjects = async (
+interface NotionCollaboratorPageType {
+  id: string;
+  properties: {
+    URL: {
+      url: null | string;
+    };
+    Avatar: NotionFilesType;
+    Name: NotionTitleType;
+  };
+}
+
+export interface MappedCollaboratorPageType {
+  id: string;
+  name: string;
+  url?: string;
+  avatar?: string;
+}
+
+export async function getNotionProjects<LoadRelations extends boolean>(
   databaseId: string,
-  notionInstance: Client
-): Promise<MappedNotionProject[]> => {
+  notionInstance: Client,
+  loadRelations: undefined | LoadRelations
+): Promise<MappedNotionProject<LoadRelations>[]> {
   const notionResponse = await notionInstance.databases.query({
     database_id: databaseId,
     filter: {
@@ -143,6 +202,84 @@ export const getNotionProjects = async (
   });
   const notionProjects =
     notionResponse.results as unknown as RawNotionProjectType[];
+  const mappedProjects = notionProjects
+    .map(parseNotionProject)
+    .sort((a, b) => b.year - a.year);
+  if (!loadRelations)
+    return mappedProjects as unknown as MappedNotionProject<LoadRelations>[];
+  const allCollaboratorIds = Array.from(
+    mappedProjects
+      .reduce((acc, p) => {
+        [
+          ...p.collaborators,
+          ...p.colleagues,
+          ...p.supervisors,
+          ...p.institutions,
+        ].forEach((id) => acc.add(id));
+        return acc;
+      }, new Set<string>())
+      .values()
+  );
+  const allCollaboratorPromises = allCollaboratorIds.map((id) => {
+    return notionInstance.pages.retrieve({
+      page_id: id,
+    });
+  });
+  const allCollaboratorPages = await Promise.all(allCollaboratorPromises);
+  const projectMapper = getCollaboratosMapper(
+    allCollaboratorPages as unknown as NotionCollaboratorPageType[]
+  );
+  return mappedProjects.map(
+    projectMapper
+  ) as unknown as MappedNotionProject<LoadRelations>[];
+}
 
-  return notionProjects.map(parseNotionProject).sort((a, b) => b.year - a.year);
-};
+function getCollaboratosMapper(
+  allCollaboratorPages: NotionCollaboratorPageType[]
+) {
+  return (project: MappedNotionProject<false>): MappedNotionProject<true> => {
+    return {
+      ...project,
+      collaborators: mapNotionCollaborators(
+        allCollaboratorPages,
+        project.collaborators
+      ),
+      colleagues: mapNotionCollaborators(
+        allCollaboratorPages,
+        project.colleagues
+      ),
+      supervisors: mapNotionCollaborators(
+        allCollaboratorPages,
+        project.supervisors
+      ),
+      institutions: mapNotionCollaborators(
+        allCollaboratorPages,
+        project.institutions
+      ),
+    };
+  };
+}
+
+function mapNotionCollaborators(
+  allCollaboratorPages: NotionCollaboratorPageType[],
+  ids: string[]
+): MappedCollaboratorPageType[] {
+  return ids.reduce((acc, id) => {
+    const collaborator = allCollaboratorPages.find((p) => p.id === id);
+    if (!collaborator) return acc;
+    return [...acc, mapNotionCollaborator(collaborator)];
+  }, [] as MappedCollaboratorPageType[]);
+}
+
+function mapNotionCollaborator(
+  col: NotionCollaboratorPageType
+): MappedCollaboratorPageType {
+  return {
+    id: col.id,
+    name: col.properties.Name.title
+      .map(({ plain_text }) => plain_text)
+      .join(""),
+    url: col.properties.URL.url || undefined,
+    avatar: parseNotionFileUrl(col.properties.Avatar),
+  };
+}
