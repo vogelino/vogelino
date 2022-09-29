@@ -4,7 +4,7 @@ import {
   ArenaLinkType,
   getExistingArenaLinks,
 } from "./lib/getExistingArenaLinks";
-import { getAllNotionLinks } from "./lib/getAllNotionLinks";
+import { getAllNotionInspirations } from "./lib/getAllNotionInspirations";
 import { filterArenatLinks } from "./lib/filterArenatLinks";
 import { logEnd, logIndented, logSecondary, logSummary } from "./lib/logUtil";
 import { notion } from "./lib/notion";
@@ -58,7 +58,7 @@ async function addLink(link: ArenaLinkType): Promise<void> {
 
 async function addArenaLinks() {
   const [existingLinks, arenaLinks] = await Promise.all([
-    getAllNotionLinks(),
+    getAllNotionInspirations(),
     getExistingArenaLinks(),
   ]);
   const arenaLinksToAdd = filterArenatLinks({ existingLinks, arenaLinks });

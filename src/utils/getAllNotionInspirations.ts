@@ -66,7 +66,7 @@ function mapNotionInspirationLink(
   };
 }
 
-export async function getAllNotionLinks(
+export async function getAllNotionInspirations(
   databaseId: string,
   notion: Client,
   prevLinks: MappedNotionInspirationLinkType[] = [],
@@ -96,7 +96,7 @@ export async function getAllNotionLinks(
   const allLinksUpToNow = [...prevLinks, ...mappedNotionLinks];
 
   if (response.next_cursor && response.has_more) {
-    return getAllNotionLinks(
+    return getAllNotionInspirations(
       databaseId,
       notion,
       allLinksUpToNow,

@@ -1,7 +1,7 @@
 import { logSummary, logSecondary, logEnd } from "./lib/logUtil";
 import { addArenaLinkToFile } from "./lib/addArenaLinkToFile";
 import { getExistingArenaLinkMap } from "./lib/getExistingArenaLinks";
-import { getAllNotionLinks } from "./lib/getAllNotionLinks";
+import { getAllNotionInspirations } from "./lib/getAllNotionInspirations";
 import { filterArenatLinks } from "./lib/filterArenatLinks";
 import type { ArenaLinkType } from "./lib/getExistingArenaLinks";
 import { fetchAllArenaBlocks } from "./lib/fetchAllArenaBlocks";
@@ -27,7 +27,7 @@ async function getAllArenaLinks(): Promise<void> {
 
   const [existingLinksMap, notionLinks] = await Promise.all([
     getExistingArenaLinkMap(),
-    getAllNotionLinks(),
+    getAllNotionInspirations(),
   ]);
   const exitingLinkUrls = Object.values(existingLinksMap).filter(
     Boolean

@@ -1,7 +1,7 @@
 import * as dotenv from "dotenv";
 dotenv.config();
 import { getNotionProjects } from "../src/utils/getNotionProjects";
-import { getAllNotionLinks } from "../src/utils/getAllNotionLinks";
+import { getAllNotionInspirations } from "../src/utils/getAllNotionInspirations";
 import { notion } from "./lib/notion";
 import { createDirectoriesIfNotAlreadyThere } from "./lib/createDirectoriesIfNotAlreadyThere";
 import { INSPIRATIONS_JSON_PATH, PROJECTS_JSON_PATH } from "./paths";
@@ -17,7 +17,7 @@ async function downloadCacheData() {
   logIndented(`🗯 Inspirations`);
   const [projects, inspirations] = await Promise.all([
     getNotionProjects<true>(projectsDatabaseId, notion, true),
-    getAllNotionLinks(inspirationsDatabaseId, notion),
+    getAllNotionInspirations(inspirationsDatabaseId, notion),
   ]);
   logIndented(`✅ Success`);
 

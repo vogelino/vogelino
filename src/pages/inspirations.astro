@@ -1,9 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { getAllNotionLinks } from "../utils/getAllNotionLinks";
+import { getAllNotionInspirations } from "../utils/getAllNotionInspirations";
 import { notion } from "../utils/notion";
 
-const notionLinks = await getAllNotionLinks(
+const notionLinks = await getAllNotionInspirations(
   import.meta.env.NOTION_INSPIRATION_DATABASE_ID || "",
   notion
 );

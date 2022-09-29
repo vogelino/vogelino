@@ -6,7 +6,7 @@ const IPP = 100;
 
 const databaseId = process.env.NOTION_INSPIRATION_DATABASE_ID || "";
 
-export async function getAllNotionLinks(
+export async function getAllNotionInspirations(
   nextCursor?: string
 ): Promise<string[]> {
   const response = await notion.databases.query({
@@ -20,7 +20,7 @@ export async function getAllNotionLinks(
   });
 
   if (response.has_more && response.next_cursor) {
-    const nextPage = await getAllNotionLinks(response.next_cursor);
+    const nextPage = await getAllNotionInspirations(response.next_cursor);
     return [...existingUrls, ...nextPage];
   }
   return existingUrls;
