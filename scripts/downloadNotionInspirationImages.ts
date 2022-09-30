@@ -1,33 +1,49 @@
+import { MappedNotionInspirationLinkType } from "./lib/parseOriginalNotionInspirations";
 import * as dotenv from "dotenv";
 dotenv.config();
 import { doesFileExists } from "./lib/doesFileExist";
 import { downloadImage } from "./lib/downloadImage";
-import { getAllNotionInspirationImages } from "./lib/getAllNotionInspirationImages";
-import { logEnd, logH1, logIndented, logSecondary } from "./lib/logUtil";
+import { log, logEnd, logH1, logIndented, logSecondary } from "./lib/logUtil";
 import { resizeImage } from "./lib/resizeImage";
 import fs from "node:fs/promises";
 import {
   IMAGE_TMP_EXPORT_PATH,
+  INSPIRATIONS_JSON_PATH,
   INSPIRATION_RESIZED_EXPORT_PATH,
+  ORIGINAL_INSPIRATIONS_JSON_PATH,
 } from "./paths";
 import { createDirectoriesIfNotAlreadyThere } from "./lib/createDirectoriesIfNotAlreadyThere";
+import { RawNotionInspirationLinkType } from "./lib/getOriginalNotionInspirations";
+import { loadJson } from "./lib/loadJson";
+import { parseNotionFileUrl } from "./lib/parseNotionFileUrl";
 
 const WIDTH = 560;
 const HEIGHT = 292;
 
-const databaseId = process.env.NOTION_INSPIRATION_DATABASE_ID || "";
-
 async function downloadNotionInspirationImages() {
   logH1(`Downloading all images from Notion`);
 
-  const images = await getAllNotionInspirationImages(databaseId, false);
+  const inspirations = await loadJson<RawNotionInspirationLinkType[]>(
+    ORIGINAL_INSPIRATIONS_JSON_PATH
+  );
+  const images = inspirations.reduce((acc, rawInspiration) => {
+    if (!rawInspiration.cover) return acc;
+    return [
+      ...acc,
+      [
+        rawInspiration.id,
+        parseNotionFileUrl({ files: [rawInspiration.cover] }),
+      ],
+    ];
+  }, [] as string[][]);
 
   for (const [pageId, url] of images) {
     logSecondary([`Downloading image "${pageId}"`]);
     logIndented(`🔗 ${url.slice(0, 50)}...`);
 
-    // MAKE SURE DIRECTORIES EXIST
-    await createDirectoriesIfNotAlreadyThere(IMAGE_TMP_EXPORT_PATH);
+    if (pageId === "f453ef97-bc37-43d2-99ac-c1612c53f10b")
+      // MAKE SURE DIRECTORIES EXIST
+      await createDirectoriesIfNotAlreadyThere(IMAGE_TMP_EXPORT_PATH);
     await createDirectoriesIfNotAlreadyThere(INSPIRATION_RESIZED_EXPORT_PATH);
 
     // CHECK FOR EXISTING DESTINATION FILE
@@ -50,7 +66,7 @@ async function downloadNotionInspirationImages() {
         // SAVING LARGE FILE
         logIndented(`💾 Saving file into: ${originalPath}`);
         await fs.writeFile(originalPath, data);
-        logIndented(`✅ Success`);
+        logIndented(`🛟 Saved ✔️`);
       }
 
       // RESIZING FILE
@@ -62,6 +78,21 @@ async function downloadNotionInspirationImages() {
       });
       logIndented(`✅ Success!`, 1);
       await fs.unlink(originalPath);
+    }
+  }
+
+  const mappedInspirations = await loadJson<MappedNotionInspirationLinkType[]>(
+    INSPIRATIONS_JSON_PATH
+  );
+  // VERIFYING ALL IMAGES ARE REALLY DOWNLOADED
+  for (const inspiration of mappedInspirations) {
+    const filePath = `${INSPIRATION_RESIZED_EXPORT_PATH}/${inspiration.id}.webp`;
+    const fileExists = await doesFileExists(filePath);
+    if (!fileExists) {
+      logSecondary([
+        `⛔️ Missing file found for inspiration "${inspiration.title}"!`,
+      ]);
+      logIndented(filePath);
     }
   }
 

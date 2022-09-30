@@ -4,10 +4,12 @@ import {
   ArenaLinkType,
   getExistingArenaLinks,
 } from "./lib/getExistingArenaLinks";
-import { getAllNotionInspirations } from "./lib/getAllNotionInspirations";
 import { filterArenatLinks } from "./lib/filterArenatLinks";
 import { logEnd, logIndented, logSecondary, logSummary } from "./lib/logUtil";
 import { notion } from "./lib/notion";
+import { loadJson } from "./lib/loadJson";
+import { INSPIRATIONS_JSON_PATH } from "./paths";
+import { MappedNotionInspirationLinkType } from "./lib/parseOriginalNotionInspirations";
 
 const databaseId = process.env.NOTION_INSPIRATION_DATABASE_ID || "";
 
@@ -57,11 +59,15 @@ async function addLink(link: ArenaLinkType): Promise<void> {
 }
 
 async function addArenaLinks() {
-  const [existingLinks, arenaLinks] = await Promise.all([
-    getAllNotionInspirations(),
+  const [inspirations, arenaLinks] = await Promise.all([
+    loadJson<MappedNotionInspirationLinkType[]>(INSPIRATIONS_JSON_PATH),
     getExistingArenaLinks(),
   ]);
-  const arenaLinksToAdd = filterArenatLinks({ existingLinks, arenaLinks });
+  const existingLinks = inspirations.map(({ url }) => url);
+  const arenaLinksToAdd = filterArenatLinks<ArenaLinkType>({
+    existingLinks,
+    arenaLinks,
+  });
 
   const totalLinks = existingLinks.length + arenaLinks.length;
   const skippedLinks = totalLinks - arenaLinksToAdd.length;

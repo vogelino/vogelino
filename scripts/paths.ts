@@ -8,3 +8,6 @@ export const CONTENT_RESIZED_EXPORT_PATH = "public/images/content";
 export const COLLABORATORS_RESIZED_EXPORT_PATH = "public/images/collaborators";
 export const PROJECTS_JSON_PATH = "data/projects.json";
 export const INSPIRATIONS_JSON_PATH = "data/inspirations.json";
+export const ORIGINAL_PROJECTS_JSON_PATH = `data/originalProjects.json`;
+export const ORIGINAL_COLLABORATORS_JSON_PATH = `data/originalCollaborators.json`;
+export const ORIGINAL_INSPIRATIONS_JSON_PATH = `data/originalInspirations.json`;

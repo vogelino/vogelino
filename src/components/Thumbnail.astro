@@ -1,11 +1,11 @@
 ---
 import classNames from "../utils/classNames";
-import type { MappedNotionProject } from "../utils/getNotionProjects";
 import * as astroComponents from "astro-imagetools/components";
+import type { MappedNotionProject } from "../../scripts/lib/parseOriginalNotionProjects";
 
 const { Img } = astroComponents;
 
-export interface Props extends MappedNotionProject<false> {
+export interface Props extends MappedNotionProject {
   rotationClass: string;
 }
 const {

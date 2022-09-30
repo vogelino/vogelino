@@ -1,18 +1,18 @@
-import type { ArenaLinkType } from "./getExistingArenaLinks";
 import { urlsAreEquals } from "./urlsAreEqual";
 
-type FilterArenaLinksType = (props: {
-  arenaLinks: ArenaLinkType[];
+interface FilterArenaLinksType<ObjType> {
+  arenaLinks: ObjType[];
   existingLinks: string[];
-}) => ArenaLinkType[];
+}
 
-export const filterArenatLinks: FilterArenaLinksType = ({
+export function filterArenatLinks<ObjType extends { url: string }>({
   arenaLinks,
   existingLinks,
-}) =>
-  arenaLinks.filter(
+}: FilterArenaLinksType<ObjType>) {
+  return arenaLinks.filter(
     (arenaLink) =>
       !existingLinks.find((existingLink) =>
         urlsAreEquals(existingLink, arenaLink.url)
       )
   );
+}

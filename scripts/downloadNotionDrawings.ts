@@ -47,7 +47,7 @@ async function downloadNotionDrawings() {
         // SAVING LARGE FILE
         logIndented(`💾 Saving file into: ${originalPath}`);
         await fs.writeFile(originalPath, data);
-        logIndented(`✅ Success`);
+        logIndented(`🛟 Saved ✔️`);
       }
 
       // RESIZING FILE

@@ -1,6 +1,6 @@
+import { MappedNotionProject } from "./lib/parseOriginalNotionProjects";
 import * as dotenv from "dotenv";
 dotenv.config();
-import { getNotionProjects } from "./../src/utils/getNotionProjects";
 import { doesFileExists } from "./lib/doesFileExist";
 import { downloadImage } from "./lib/downloadImage";
 import { log, logEnd, logH1, logIndented, logSecondary } from "./lib/logUtil";
@@ -11,10 +11,11 @@ import {
   BG_IMAGEs_RESIZED_EXPORT_PATH,
   CONTENT_RESIZED_EXPORT_PATH,
   IMAGE_TMP_EXPORT_PATH,
+  PROJECTS_JSON_PATH,
   THUMBNAILS_RESIZED_EXPORT_PATH,
 } from "./paths";
 import { createDirectoriesIfNotAlreadyThere } from "./lib/createDirectoriesIfNotAlreadyThere";
-import { notion } from "./lib/notion";
+import { loadJson } from "./lib/loadJson";
 
 const WIDTH = 1440;
 const HEIGHT = 960;
@@ -25,7 +26,7 @@ async function downloadNotionProjectImages() {
   logH1(`Downloading all project images from Notion`);
 
   log(`databaseId: ${databaseId}`);
-  const projects = await getNotionProjects(databaseId, notion, false);
+  const projects = await loadJson<MappedNotionProject[]>(PROJECTS_JSON_PATH);
 
   for (const project of projects) {
     const { slug, thumbnail, bgImage } = project;
@@ -60,7 +61,7 @@ async function downloadNotionProjectImages() {
       // SAVING LARGE FILE
       logIndented(`💾 Saving file into: ${originalPath}`);
       await fs.writeFile(originalPath, data);
-      logIndented(`✅ Success`);
+      logIndented(`🛟 Saved ✔️`);
 
       // RESIZING FILE
       logIndented(`📐 Resizing (${WIDTH}x${HEIGHT})`);
@@ -83,7 +84,7 @@ async function downloadNotionProjectImages() {
       // SAVING LARGE FILE
       logIndented(`💾 Saving file into: ${originalPath}`);
       await fs.writeFile(originalPath, data);
-      logIndented(`✅ Success`);
+      logIndented(`🛟 Saved ✔️`);
 
       // RESIZING FILE
       logIndented(`📐 Resizing (${WIDTH}x${HEIGHT})`);
@@ -111,7 +112,7 @@ async function downloadNotionProjectImages() {
         // SAVING LARGE FILE
         logIndented(`💾 Saving file into: ${contentImgOriginalPath}`);
         await fs.writeFile(contentImgOriginalPath, data);
-        logIndented(`✅ Success`);
+        logIndented(`🛟 Saved ✔️`);
 
         // RESIZING FILE
         logIndented(`📐 Resizing (${WIDTH}x${HEIGHT})`);

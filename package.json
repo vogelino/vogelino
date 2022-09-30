@@ -3,7 +3,7 @@
   "scripts": {
     "dev": "TAILWIND_MODE=watch astro dev",
     "start": "astro dev",
-    "build": "npm run downloadInspiration && npm run downloadCollaborators && npm run downloadProjectImages && npm run downloadCacheData && npm run astroBuild",
+    "build": "npm run downloadCacheData && npm run downloadInspiration && npm run downloadCollaborators && npm run downloadProjectImages && npm run astroBuild",
     "astroBuild": "astro build",
     "preview": "astro preview",
     "astro": "astro",

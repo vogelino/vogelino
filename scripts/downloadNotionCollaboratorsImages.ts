@@ -1,6 +1,5 @@
 import * as dotenv from "dotenv";
 dotenv.config();
-import { getNotionCollaboratorImages } from "./lib/getNotionCollaboratorImages";
 import { doesFileExists } from "./lib/doesFileExist";
 import { downloadImage } from "./lib/downloadImage";
 import { log, logEnd, logH1, logIndented, logSecondary } from "./lib/logUtil";
@@ -9,9 +8,12 @@ import fs from "node:fs/promises";
 import {
   COLLABORATORS_RESIZED_EXPORT_PATH,
   IMAGE_TMP_EXPORT_PATH,
+  ORIGINAL_COLLABORATORS_JSON_PATH,
 } from "./paths";
 import { createDirectoriesIfNotAlreadyThere } from "./lib/createDirectoriesIfNotAlreadyThere";
-import { notion } from "./lib/notion";
+import { loadJson } from "./lib/loadJson";
+import { RawNotionCollaboratorType } from "./lib/getOriginalNotionCollaborators";
+import { parseNotionFileUrl } from "./lib/parseNotionFileUrl";
 
 const WIDTH = 90;
 const HEIGHT = 90;
@@ -22,7 +24,15 @@ async function downloadNotionCollaboratorsImages() {
   logH1(`Downloading all collaborator images from Notion`);
 
   log(`databaseId: ${databaseId}`);
-  const images = await getNotionCollaboratorImages(databaseId, notion);
+  const collaborators = await loadJson<RawNotionCollaboratorType[]>(
+    ORIGINAL_COLLABORATORS_JSON_PATH
+  );
+  const images = collaborators.map((rawCollaborator) => {
+    return [
+      rawCollaborator.id,
+      parseNotionFileUrl(rawCollaborator.properties.Avatar),
+    ];
+  });
 
   for (const [id, url] of images) {
     logSecondary([`Downloading collaborator image for page "${id}"`]);
@@ -46,7 +56,7 @@ async function downloadNotionCollaboratorsImages() {
         const svgPath = `${COLLABORATORS_RESIZED_EXPORT_PATH}/${id}.svg`;
         logIndented(`💾 Saving file into: ${svgPath}`);
         await fs.writeFile(svgPath, data);
-        logIndented(`✅ Success`);
+        logIndented(`🛟 Saved ✔️`);
         continue;
       }
 
@@ -54,7 +64,7 @@ async function downloadNotionCollaboratorsImages() {
       // SAVING LARGE FILE
       logIndented(`💾 Saving file into: ${originalPath}`);
       await fs.writeFile(originalPath, data);
-      logIndented(`✅ Success`);
+      logIndented(`🛟 Saved ✔️`);
 
       // RESIZING FILE
       logIndented(`📐 Resizing (${WIDTH}x${HEIGHT})`);

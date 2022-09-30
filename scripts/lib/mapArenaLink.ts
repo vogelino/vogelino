@@ -1,5 +1,5 @@
 import type { ArenaBlockType } from "./fetchAllArenaBlocks";
-import type { ArenaLinkType } from "./getExistingArenaLinks";
+import { ArenaLinkType } from "./getExistingArenaLinks";
 
 export const mapArenaLink = (link: ArenaBlockType): ArenaLinkType => ({
   title:

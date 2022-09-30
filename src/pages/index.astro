@@ -1,12 +1,12 @@
 ---
 import { loadJson } from "../../scripts/lib/loadJson";
+import type { MappedNotionProject } from "../../scripts/lib/parseOriginalNotionProjects";
 import { PROJECTS_JSON_PATH } from "../../scripts/paths";
 import Thumbnail from "../components/Thumbnail.astro";
 import Layout from "../layouts/Layout.astro";
-import type { MappedNotionProject } from "../utils/getNotionProjects";
 
 const projects = (
-  await loadJson<MappedNotionProject<false>[]>(PROJECTS_JSON_PATH)
+  await loadJson<MappedNotionProject[]>(PROJECTS_JSON_PATH)
 ).map((w) => {
   const classes = [
     `group-hover:rotate-1`,

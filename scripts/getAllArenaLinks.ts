@@ -1,13 +1,15 @@
 import { logSummary, logSecondary, logEnd } from "./lib/logUtil";
 import { addArenaLinkToFile } from "./lib/addArenaLinkToFile";
 import { getExistingArenaLinkMap } from "./lib/getExistingArenaLinks";
-import { getAllNotionInspirations } from "./lib/getAllNotionInspirations";
 import { filterArenatLinks } from "./lib/filterArenatLinks";
 import type { ArenaLinkType } from "./lib/getExistingArenaLinks";
 import { fetchAllArenaBlocks } from "./lib/fetchAllArenaBlocks";
 import { mapArenaLink } from "./lib/mapArenaLink";
 import { getHeadlessPage } from "./lib/getHeadlessPage";
 import { logH1, logIndented } from "./lib/logUtil";
+import { loadJson } from "./lib/loadJson";
+import { MappedNotionInspirationLinkType } from "./lib/parseOriginalNotionInspirations";
+import { INSPIRATIONS_JSON_PATH } from "./paths";
 
 let successfulFaviconsScrapes = 0;
 async function getAllArenaLinks(): Promise<void> {
@@ -27,16 +29,19 @@ async function getAllArenaLinks(): Promise<void> {
 
   const [existingLinksMap, notionLinks] = await Promise.all([
     getExistingArenaLinkMap(),
-    getAllNotionInspirations(),
+    loadJson<MappedNotionInspirationLinkType[]>(INSPIRATIONS_JSON_PATH),
   ]);
   const exitingLinkUrls = Object.values(existingLinksMap).filter(
     Boolean
   ) as ArenaLinkType[];
   const existingLinks = [
-    ...notionLinks,
+    ...notionLinks.map(({ url }) => url),
     ...exitingLinkUrls.map(({ url }) => url),
   ];
-  const filteredLinks = filterArenatLinks({ existingLinks, arenaLinks });
+  const filteredLinks = filterArenatLinks<ArenaLinkType>({
+    existingLinks,
+    arenaLinks,
+  });
   logSummary(`Arena Links successfully fetched`, [
     `${arenaLinks.length} links`,
     `${arenaLinks.length - filteredLinks.length} skipped links`,

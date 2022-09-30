@@ -2,8 +2,8 @@
 import { loadJson } from "../../scripts/lib/loadJson";
 import { INSPIRATIONS_JSON_PATH } from "../../scripts/paths";
 import Layout from "../layouts/Layout.astro";
-import type { MappedNotionInspirationLinkType } from "../utils/getAllNotionInspirations";
 import * as astroComponents from "astro-imagetools/components";
+import type { MappedNotionInspirationLinkType } from "../../scripts/lib/parseOriginalNotionInspirations";
 
 const { Img } = astroComponents;
 
@@ -31,7 +31,7 @@ const notionLinks = await loadJson<MappedNotionInspirationLinkType[]>(
             >
               <span class="relative block aspect-[140/73] bg-zinc-100 rounded overflow-hidden">
                 <Img
-                  src={`/images/inspirations/${link.id}.webp`}
+                  src={link.thumbnail}
                   alt={`Cover image of "${link.url}"`}
                   attributes={{
                     img: {

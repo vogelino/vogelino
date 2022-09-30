@@ -7,13 +7,13 @@ import CollaboratorsGroup from "../../components/CollaboratorsGroup.astro";
 import classNames from "../../utils/classNames";
 import { loadJson } from "../../../scripts/lib/loadJson";
 import { PROJECTS_JSON_PATH } from "../../../scripts/paths";
-import type { MappedNotionProject } from "../../utils/getNotionProjects";
 import * as astroComponents from "astro-imagetools/components";
+import type { MappedNotionProject } from "../../../scripts/lib/parseOriginalNotionProjects";
 
 const { Img } = astroComponents;
 
 export async function getStaticPaths() {
-  const notionProjects = await loadJson<MappedNotionProject<false>[]>(
+  const notionProjects = await loadJson<MappedNotionProject[]>(
     PROJECTS_JSON_PATH
   );
   return notionProjects.map((notionProject) => ({
@@ -22,7 +22,7 @@ export async function getStaticPaths() {
   }));
 }
 
-export interface Props extends MappedNotionProject<true> {}
+export interface Props extends MappedNotionProject {}
 
 const project = Astro.props;
 
