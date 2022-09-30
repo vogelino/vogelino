@@ -35,6 +35,8 @@ async function downloadCacheData() {
     ]);
   logIndented(`✅ Original data fetching success`);
   logSecondary([`💾 Saving originals`]);
+
+  await createDirectoriesIfNotAlreadyThere("data");
   await Promise.all([
     writeJsonFile(ORIGINAL_PROJECTS_JSON_PATH, originalProjects),
     writeJsonFile(ORIGINAL_COLLABORATORS_JSON_PATH, originalCollaborators),
@@ -50,9 +52,7 @@ async function downloadCacheData() {
     parseOriginalNotionProjects(originalProjects, originalCollaborators),
     parseOriginalNotionInspirations(originalInspirations),
   ]);
-  logIndented(`✅ Success`);
-
-  await createDirectoriesIfNotAlreadyThere("data");
+  logIndented(`✅ Parsed data fetching success`);
 
   logSecondary([`💾 Saving parsed content`]);
   logIndented(`🗂 ${projects.length} projects`);

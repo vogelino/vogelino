@@ -1,0 +1,3568 @@
+[
+  {
+    "object": "page",
+    "id": "3b0a71b8-f262-44ff-ae52-8567dd41ee9c",
+    "created_time": "2022-09-07T04:36:00.000Z",
+    "last_edited_time": "2022-09-18T19:31:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "5fbc46aa-c889-462d-b909-401589a1409b"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "5fbc46aa-c889-462d-b909-401589a1409b"
+    },
+    "cover": null,
+    "icon": {
+      "type": "file",
+      "file": {
+        "url": "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/02e75ca6-ea60-4103-a5f9-e52c9320ac3c/BrainIcon.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220930%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220930T130439Z&X-Amz-Expires=3600&X-Amz-Signature=6d334b8f63f180dc47b711dc394b9e39174fe262482666361c65e812000ea22a&X-Amz-SignedHeaders=host&x-id=GetObject",
+        "expiry_time": "2022-09-30T14:04:39.226Z"
+      }
+    },
+    "parent": {
+      "type": "database_id",
+      "database_id": "d5f716ed-7b84-40be-846a-60ece0eeb0e8"
+    },
+    "archived": false,
+    "properties": {
+      "Quote": {
+        "id": "%40j%3Ef",
+        "type": "relation",
+        "relation": [],
+        "has_more": false
+      },
+      "isActual": {
+        "id": "BAtU",
+        "type": "formula",
+        "formula": {
+          "type": "boolean",
+          "boolean": false
+        }
+      },
+      "Year": {
+        "id": "JyY%3E",
+        "type": "number",
+        "number": 2017
+      },
+      "Thumbnail": {
+        "id": "OYQ~",
+        "type": "files",
+        "files": [
+          {
+            "name": "Home.png",
+            "type": "file",
+            "file": {
+              "url": "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/8adb8a63-ba0e-442c-808d-1570e7ffc922/Home.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220930%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220930T130439Z&X-Amz-Expires=3600&X-Amz-Signature=6ac7f11c30d994499df0e9d4e5addc2106eb73c835b0a70b65058f9e38ef8e65&X-Amz-SignedHeaders=host&x-id=GetObject",
+              "expiry_time": "2022-09-30T14:04:39.200Z"
+            }
+          }
+        ]
+      },
+      "ClientID": {
+        "id": "TXY_",
+        "type": "rollup",
+        "rollup": {
+          "type": "array",
+          "array": [
+            {
+              "type": "rich_text",
+              "rich_text": [
+                {
+                  "type": "text",
+                  "text": {
+                    "content": "0034",
+                    "link": null
+                  },
+                  "annotations": {
+                    "bold": false,
+                    "italic": false,
+                    "strikethrough": false,
+                    "underline": false,
+                    "code": false,
+                    "color": "default"
+                  },
+                  "plain_text": "0034",
+                  "href": null
+                }
+              ]
+            }
+          ],
+          "function": "show_original"
+        }
+      },
+      "In collaboration with": {
+        "id": "Tv%3Et",
+        "type": "relation",
+        "relation": [],
+        "has_more": false
+      },
+      "Show in portfolio": {
+        "id": "Tvdr",
+        "type": "checkbox",
+        "checkbox": true
+      },
+      "Invoice": {
+        "id": "%5BEtn",
+        "type": "relation",
+        "relation": [],
+        "has_more": false
+      },
+      "Client": {
+        "id": "%5Exa%60",
+        "type": "relation",
+        "relation": [
+          {
+            "id": "b6f4dd01-24c8-4e39-9b68-9d22fd2841b7"
+          }
+        ],
+        "has_more": false
+      },
+      "ID": {
+        "id": "c%5Djx",
+        "type": "rich_text",
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "105",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "105",
+            "href": null
+          }
+        ]
+      },
+      "Long-ID": {
+        "id": "kV%3Fi",
+        "type": "formula",
+        "formula": {
+          "type": "string",
+          "string": "P-070922-0034"
+        }
+      },
+      "Type": {
+        "id": "nc%5DG",
+        "type": "select",
+        "select": {
+          "id": "26edce31-c8d4-47ce-ba8e-9fab84a88769",
+          "name": "Community Platform",
+          "color": "green"
+        }
+      },
+      "Tags": {
+        "id": "p_DO",
+        "type": "multi_select",
+        "multi_select": [
+          {
+            "id": "155c8f3b-e896-4e81-be08-12e5729a0c1e",
+            "name": "Webdesign",
+            "color": "brown"
+          },
+          {
+            "id": "f574ba11-1aea-42c4-a227-9fedfe4e0618",
+            "name": "UI Design",
+            "color": "pink"
+          },
+          {
+            "id": "729c7a04-a0cb-4ac4-8ddc-eb90bb86d934",
+            "name": "UX Design",
+            "color": "brown"
+          },
+          {
+            "id": "f4e1cb89-2e85-4e10-a88b-5c29e5a20ada",
+            "name": "Fake",
+            "color": "yellow"
+          },
+          {
+            "id": "d2c30c16-8bb4-4dac-9a1f-e470f4f9e652",
+            "name": "Civic Committment",
+            "color": "brown"
+          },
+          {
+            "id": "76167218-bc4c-4986-8d41-2b894983fb16",
+            "name": "Political",
+            "color": "yellow"
+          }
+        ]
+      },
+      "Created Time": {
+        "id": "r%3FOv",
+        "type": "created_time",
+        "created_time": "2022-09-07T04:36:00.000Z"
+      },
+      "URL": {
+        "id": "rNb%3A",
+        "type": "url",
+        "url": null
+      },
+      "BgImage": {
+        "id": "tK~I",
+        "type": "files",
+        "files": [
+          {
+            "name": "opencircle.png",
+            "type": "file",
+            "file": {
+              "url": "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/8b440440-a15d-416e-91f1-3cac5d0cb92e/opencircle.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220930%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220930T130439Z&X-Amz-Expires=3600&X-Amz-Signature=53fb8f27feeac3dd5f9d0560d47dfc80d542e7f784afda63e0537803fe9ae628&X-Amz-SignedHeaders=host&x-id=GetObject",
+              "expiry_time": "2022-09-30T14:04:39.215Z"
+            }
+          }
+        ]
+      },
+      "NameShort": {
+        "id": "yA%3A%3F",
+        "type": "rich_text",
+        "rich_text": []
+      },
+      "Supervised by": {
+        "id": "%7BbFM",
+        "type": "relation",
+        "relation": [],
+        "has_more": false
+      },
+      "Related to Time tracking - MosktoTV (Project)": {
+        "id": "%7Cnde",
+        "type": "relation",
+        "relation": [],
+        "has_more": false
+      },
+      "Made With": {
+        "id": "~l%5De",
+        "type": "relation",
+        "relation": [],
+        "has_more": false
+      },
+      "Made @": {
+        "id": "~o_v",
+        "type": "relation",
+        "relation": [],
+        "has_more": false
+      },
+      "Name": {
+        "id": "title",
+        "type": "title",
+        "title": [
+          {
+            "type": "text",
+            "text": {
+              "content": "Open Circle",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "Open Circle",
+            "href": null
+          }
+        ]
+      },
+      "Estimate": {
+        "id": "1abefb24-6322-4984-bad4-6bf70f27ab07",
+        "type": "number",
+        "number": null
+      },
+      "Status": {
+        "id": "25df4997-9d2e-4eaa-bcf6-3ff2b3912188",
+        "type": "select",
+        "select": {
+          "id": "4d85fa22-0327-40a1-bd68-8f14405f7806",
+          "name": "Done",
+          "color": "green"
+        }
+      },
+      "Project Start": {
+        "id": "368d1240-719b-4daf-9187-1b60a9e806de",
+        "type": "date",
+        "date": null
+      },
+      "Deadline": {
+        "id": "4b718ef6-1462-41fa-bc65-98084ba761a5",
+        "type": "date",
+        "date": null
+      },
+      "Description": {
+        "id": "c2b54f46-3331-423e-9257-41f6271f36b9",
+        "type": "rich_text",
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "Online ",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "Online ",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": "community platform",
+              "link": null
+            },
+            "annotations": {
+              "bold": true,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "community platform",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": " to share ",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": " to share ",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": "circular economy",
+              "link": null
+            },
+            "annotations": {
+              "bold": true,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "circular economy",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": " tips and advice.",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": " tips and advice.",
+            "href": null
+          }
+        ]
+      }
+    },
+    "url": "https://www.notion.so/Open-Circle-3b0a71b8f26244ffae528567dd41ee9c"
+  },
+  {
+    "object": "page",
+    "id": "bf878338-07b7-427f-80e8-42254ad828e8",
+    "created_time": "2022-09-07T04:33:00.000Z",
+    "last_edited_time": "2022-09-18T19:32:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "5fbc46aa-c889-462d-b909-401589a1409b"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "5fbc46aa-c889-462d-b909-401589a1409b"
+    },
+    "cover": null,
+    "icon": {
+      "type": "external",
+      "external": {
+        "url": "https://www.notion.so/icons/earthquake_blue.svg"
+      }
+    },
+    "parent": {
+      "type": "database_id",
+      "database_id": "d5f716ed-7b84-40be-846a-60ece0eeb0e8"
+    },
+    "archived": false,
+    "properties": {
+      "Quote": {
+        "id": "%40j%3Ef",
+        "type": "relation",
+        "relation": [],
+        "has_more": false
+      },
+      "isActual": {
+        "id": "BAtU",
+        "type": "formula",
+        "formula": {
+          "type": "boolean",
+          "boolean": false
+        }
+      },
+      "Year": {
+        "id": "JyY%3E",
+        "type": "number",
+        "number": 2017
+      },
+      "Thumbnail": {
+        "id": "OYQ~",
+        "type": "files",
+        "files": [
+          {
+            "name": "Projektseite (Über uns).png",
+            "type": "file",
+            "file": {
+              "url": "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/2a175be6-9c6a-467d-9b97-29c0167c516d/Projektseite_%28Uber_uns%29.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220930%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220930T130439Z&X-Amz-Expires=3600&X-Amz-Signature=217f879ef3ea977bfe1e139882fb35e3d2101da2c84c2b706809e0ff81415953&X-Amz-SignedHeaders=host&x-id=GetObject",
+              "expiry_time": "2022-09-30T14:04:39.215Z"
+            }
+          }
+        ]
+      },
+      "ClientID": {
+        "id": "TXY_",
+        "type": "rollup",
+        "rollup": {
+          "type": "array",
+          "array": [
+            {
+              "type": "rich_text",
+              "rich_text": [
+                {
+                  "type": "text",
+                  "text": {
+                    "content": "0034",
+                    "link": null
+                  },
+                  "annotations": {
+                    "bold": false,
+                    "italic": false,
+                    "strikethrough": false,
+                    "underline": false,
+                    "code": false,
+                    "color": "default"
+                  },
+                  "plain_text": "0034",
+                  "href": null
+                }
+              ]
+            }
+          ],
+          "function": "show_original"
+        }
+      },
+      "In collaboration with": {
+        "id": "Tv%3Et",
+        "type": "relation",
+        "relation": [],
+        "has_more": false
+      },
+      "Show in portfolio": {
+        "id": "Tvdr",
+        "type": "checkbox",
+        "checkbox": true
+      },
+      "Invoice": {
+        "id": "%5BEtn",
+        "type": "relation",
+        "relation": [],
+        "has_more": false
+      },
+      "Client": {
+        "id": "%5Exa%60",
+        "type": "relation",
+        "relation": [
+          {
+            "id": "b6f4dd01-24c8-4e39-9b68-9d22fd2841b7"
+          }
+        ],
+        "has_more": false
+      },
+      "ID": {
+        "id": "c%5Djx",
+        "type": "rich_text",
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "104",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "104",
+            "href": null
+          }
+        ]
+      },
+      "Long-ID": {
+        "id": "kV%3Fi",
+        "type": "formula",
+        "formula": {
+          "type": "string",
+          "string": "P-070922-0034"
+        }
+      },
+      "Type": {
+        "id": "nc%5DG",
+        "type": "select",
+        "select": {
+          "id": "26edce31-c8d4-47ce-ba8e-9fab84a88769",
+          "name": "Community Platform",
+          "color": "green"
+        }
+      },
+      "Tags": {
+        "id": "p_DO",
+        "type": "multi_select",
+        "multi_select": [
+          {
+            "id": "155c8f3b-e896-4e81-be08-12e5729a0c1e",
+            "name": "Webdesign",
+            "color": "brown"
+          },
+          {
+            "id": "729c7a04-a0cb-4ac4-8ddc-eb90bb86d934",
+            "name": "UX Design",
+            "color": "brown"
+          },
+          {
+            "id": "f574ba11-1aea-42c4-a227-9fedfe4e0618",
+            "name": "UI Design",
+            "color": "pink"
+          },
+          {
+            "id": "76167218-bc4c-4986-8d41-2b894983fb16",
+            "name": "Political",
+            "color": "yellow"
+          },
+          {
+            "id": "f4e1cb89-2e85-4e10-a88b-5c29e5a20ada",
+            "name": "Fake",
+            "color": "yellow"
+          }
+        ]
+      },
+      "Created Time": {
+        "id": "r%3FOv",
+        "type": "created_time",
+        "created_time": "2022-09-07T04:33:00.000Z"
+      },
+      "URL": {
+        "id": "rNb%3A",
+        "type": "url",
+        "url": null
+      },
+      "BgImage": {
+        "id": "tK~I",
+        "type": "files",
+        "files": [
+          {
+            "name": "multigen.png",
+            "type": "file",
+            "file": {
+              "url": "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/91182db9-83be-467a-9461-4f92cf30c293/multigen.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220930%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220930T130439Z&X-Amz-Expires=3600&X-Amz-Signature=e9b26d2bb3facfeddb9a9bd5ca9fe41b723f58f37dc897f006809b21a40d4c18&X-Amz-SignedHeaders=host&x-id=GetObject",
+              "expiry_time": "2022-09-30T14:04:39.224Z"
+            }
+          }
+        ]
+      },
+      "NameShort": {
+        "id": "yA%3A%3F",
+        "type": "rich_text",
+        "rich_text": []
+      },
+      "Supervised by": {
+        "id": "%7BbFM",
+        "type": "relation",
+        "relation": [],
+        "has_more": false
+      },
+      "Related to Time tracking - MosktoTV (Project)": {
+        "id": "%7Cnde",
+        "type": "relation",
+        "relation": [],
+        "has_more": false
+      },
+      "Made With": {
+        "id": "~l%5De",
+        "type": "relation",
+        "relation": [],
+        "has_more": false
+      },
+      "Made @": {
+        "id": "~o_v",
+        "type": "relation",
+        "relation": [],
+        "has_more": false
+      },
+      "Name": {
+        "id": "title",
+        "type": "title",
+        "title": [
+          {
+            "type": "text",
+            "text": {
+              "content": "Multigen Living",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "Multigen Living",
+            "href": null
+          }
+        ]
+      },
+      "Estimate": {
+        "id": "1abefb24-6322-4984-bad4-6bf70f27ab07",
+        "type": "number",
+        "number": null
+      },
+      "Status": {
+        "id": "25df4997-9d2e-4eaa-bcf6-3ff2b3912188",
+        "type": "select",
+        "select": {
+          "id": "4d85fa22-0327-40a1-bd68-8f14405f7806",
+          "name": "Done",
+          "color": "green"
+        }
+      },
+      "Project Start": {
+        "id": "368d1240-719b-4daf-9187-1b60a9e806de",
+        "type": "date",
+        "date": null
+      },
+      "Deadline": {
+        "id": "4b718ef6-1462-41fa-bc65-98084ba761a5",
+        "type": "date",
+        "date": null
+      },
+      "Description": {
+        "id": "c2b54f46-3331-423e-9257-41f6271f36b9",
+        "type": "rich_text",
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "Social platform",
+              "link": null
+            },
+            "annotations": {
+              "bold": true,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "Social platform",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": " for people living in ",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": " for people living in ",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": "multi-generational",
+              "link": null
+            },
+            "annotations": {
+              "bold": true,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "multi-generational",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": " houses, for them to exchange, communicate and organise within and between ",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": " houses, for them to exchange, communicate and organise within and between ",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": "communities",
+              "link": null
+            },
+            "annotations": {
+              "bold": true,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "communities",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": ".",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": ".",
+            "href": null
+          }
+        ]
+      }
+    },
+    "url": "https://www.notion.so/Multigen-Living-bf87833807b7427f80e842254ad828e8"
+  },
+  {
+    "object": "page",
+    "id": "08466308-9782-4fa1-9533-5cdb121be288",
+    "created_time": "2022-09-07T04:25:00.000Z",
+    "last_edited_time": "2022-09-18T19:22:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "5fbc46aa-c889-462d-b909-401589a1409b"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "5fbc46aa-c889-462d-b909-401589a1409b"
+    },
+    "cover": null,
+    "icon": {
+      "type": "file",
+      "file": {
+        "url": "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/6e21f530-83a0-4afb-8579-7010040e3607/Asset_1.svg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220930%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220930T130439Z&X-Amz-Expires=3600&X-Amz-Signature=d29be44352cb08f7bc26fd37a82e77f80ee3f0a4b80c8c0cb0998fe99823946a&X-Amz-SignedHeaders=host&x-id=GetObject",
+        "expiry_time": "2022-09-30T14:04:39.220Z"
+      }
+    },
+    "parent": {
+      "type": "database_id",
+      "database_id": "d5f716ed-7b84-40be-846a-60ece0eeb0e8"
+    },
+    "archived": false,
+    "properties": {
+      "Quote": {
+        "id": "%40j%3Ef",
+        "type": "relation",
+        "relation": [],
+        "has_more": false
+      },
+      "isActual": {
+        "id": "BAtU",
+        "type": "formula",
+        "formula": {
+          "type": "boolean",
+          "boolean": false
+        }
+      },
+      "Year": {
+        "id": "JyY%3E",
+        "type": "number",
+        "number": 2015
+      },
+      "Thumbnail": {
+        "id": "OYQ~",
+        "type": "files",
+        "files": [
+          {
+            "name": "screen-start.png",
+            "type": "file",
+            "file": {
+              "url": "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/c4ee91e4-4905-4d4b-bc0e-8585a5e87b27/screen-start.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220930%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220930T130439Z&X-Amz-Expires=3600&X-Amz-Signature=7d9dc1e90e8476188b781c2b5758c9d710c64002d1b330dbeba97c64952d5eb0&X-Amz-SignedHeaders=host&x-id=GetObject",
+              "expiry_time": "2022-09-30T14:04:39.199Z"
+            }
+          }
+        ]
+      },
+      "ClientID": {
+        "id": "TXY_",
+        "type": "rollup",
+        "rollup": {
+          "type": "array",
+          "array": [
+            {
+              "type": "rich_text",
+              "rich_text": [
+                {
+                  "type": "text",
+                  "text": {
+                    "content": "0034",
+                    "link": null
+                  },
+                  "annotations": {
+                    "bold": false,
+                    "italic": false,
+                    "strikethrough": false,
+                    "underline": false,
+                    "code": false,
+                    "color": "default"
+                  },
+                  "plain_text": "0034",
+                  "href": null
+                }
+              ]
+            }
+          ],
+          "function": "show_original"
+        }
+      },
+      "In collaboration with": {
+        "id": "Tv%3Et",
+        "type": "relation",
+        "relation": [],
+        "has_more": false
+      },
+      "Show in portfolio": {
+        "id": "Tvdr",
+        "type": "checkbox",
+        "checkbox": true
+      },
+      "Invoice": {
+        "id": "%5BEtn",
+        "type": "relation",
+        "relation": [],
+        "has_more": false
+      },
+      "Client": {
+        "id": "%5Exa%60",
+        "type": "relation",
+        "relation": [
+          {
+            "id": "b6f4dd01-24c8-4e39-9b68-9d22fd2841b7"
+          }
+        ],
+        "has_more": false
+      },
+      "ID": {
+        "id": "c%5Djx",
+        "type": "rich_text",
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "101",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "101",
+            "href": null
+          }
+        ]
+      },
+      "Long-ID": {
+        "id": "kV%3Fi",
+        "type": "formula",
+        "formula": {
+          "type": "string",
+          "string": "P-070922-0034"
+        }
+      },
+      "Type": {
+        "id": "nc%5DG",
+        "type": "select",
+        "select": {
+          "id": "88268003-4431-4cb2-b19e-252a707651b8",
+          "name": "Data Journalism",
+          "color": "yellow"
+        }
+      },
+      "Tags": {
+        "id": "p_DO",
+        "type": "multi_select",
+        "multi_select": [
+          {
+            "id": "8475a0c0-fad0-4cc9-b555-a48b7efa8a68",
+            "name": "Storytelling",
+            "color": "yellow"
+          },
+          {
+            "id": "0762238f-b85a-434c-bf39-042af95e0db3",
+            "name": "Culture",
+            "color": "orange"
+          },
+          {
+            "id": "70ff12d3-d802-4b57-8edc-469074b9b622",
+            "name": "Datavis",
+            "color": "red"
+          },
+          {
+            "id": "76167218-bc4c-4986-8d41-2b894983fb16",
+            "name": "Political",
+            "color": "yellow"
+          },
+          {
+            "id": "d2c30c16-8bb4-4dac-9a1f-e470f4f9e652",
+            "name": "Civic Committment",
+            "color": "brown"
+          }
+        ]
+      },
+      "Created Time": {
+        "id": "r%3FOv",
+        "type": "created_time",
+        "created_time": "2022-09-07T04:25:00.000Z"
+      },
+      "URL": {
+        "id": "rNb%3A",
+        "type": "url",
+        "url": "https://airbnbvsberlin.com/"
+      },
+      "BgImage": {
+        "id": "tK~I",
+        "type": "files",
+        "files": [
+          {
+            "name": "jumbotron.jpg",
+            "type": "file",
+            "file": {
+              "url": "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/d4103ce6-bbf4-41da-9564-5c77d4523834/jumbotron.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220930%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220930T130439Z&X-Amz-Expires=3600&X-Amz-Signature=50333bdbdd4d075a2ccd55b1f86cf2a2c24a90ef8ac9236d57f1dc70a694d0c1&X-Amz-SignedHeaders=host&x-id=GetObject",
+              "expiry_time": "2022-09-30T14:04:39.204Z"
+            }
+          }
+        ]
+      },
+      "NameShort": {
+        "id": "yA%3A%3F",
+        "type": "rich_text",
+        "rich_text": []
+      },
+      "Supervised by": {
+        "id": "%7BbFM",
+        "type": "relation",
+        "relation": [],
+        "has_more": false
+      },
+      "Related to Time tracking - MosktoTV (Project)": {
+        "id": "%7Cnde",
+        "type": "relation",
+        "relation": [],
+        "has_more": false
+      },
+      "Made With": {
+        "id": "~l%5De",
+        "type": "relation",
+        "relation": [],
+        "has_more": false
+      },
+      "Made @": {
+        "id": "~o_v",
+        "type": "relation",
+        "relation": [],
+        "has_more": false
+      },
+      "Name": {
+        "id": "title",
+        "type": "title",
+        "title": [
+          {
+            "type": "text",
+            "text": {
+              "content": "Airbnb vs. Berlin",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "Airbnb vs. Berlin",
+            "href": null
+          }
+        ]
+      },
+      "Estimate": {
+        "id": "1abefb24-6322-4984-bad4-6bf70f27ab07",
+        "type": "number",
+        "number": null
+      },
+      "Status": {
+        "id": "25df4997-9d2e-4eaa-bcf6-3ff2b3912188",
+        "type": "select",
+        "select": {
+          "id": "4d85fa22-0327-40a1-bd68-8f14405f7806",
+          "name": "Done",
+          "color": "green"
+        }
+      },
+      "Project Start": {
+        "id": "368d1240-719b-4daf-9187-1b60a9e806de",
+        "type": "date",
+        "date": null
+      },
+      "Deadline": {
+        "id": "4b718ef6-1462-41fa-bc65-98084ba761a5",
+        "type": "date",
+        "date": null
+      },
+      "Description": {
+        "id": "c2b54f46-3331-423e-9257-41f6271f36b9",
+        "type": "rich_text",
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "Data journalism article that ",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "Data journalism article that ",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": "questions the fair use",
+              "link": null
+            },
+            "annotations": {
+              "bold": true,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "questions the fair use",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": " of the renting platform ",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": " of the renting platform ",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": "AirBnB",
+              "link": null
+            },
+            "annotations": {
+              "bold": true,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "AirBnB",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": " for mainly business purposes",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": " for mainly business purposes",
+            "href": null
+          }
+        ]
+      }
+    },
+    "url": "https://www.notion.so/Airbnb-vs-Berlin-0846630897824fa195335cdb121be288"
+  },
+  {
+    "object": "page",
+    "id": "a1b5662b-650e-4e23-8551-8dd1c8e3da6f",
+    "created_time": "2022-09-07T04:19:00.000Z",
+    "last_edited_time": "2022-09-18T19:32:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "5fbc46aa-c889-462d-b909-401589a1409b"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "5fbc46aa-c889-462d-b909-401589a1409b"
+    },
+    "cover": null,
+    "icon": {
+      "type": "file",
+      "file": {
+        "url": "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/7db5d8b5-420e-4ff0-ad39-c640a1ec9893/favicon.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220930%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220930T130439Z&X-Amz-Expires=3600&X-Amz-Signature=b70e9a07a3d18f00dde66810f119a9b26ffc9890dbe2e477775775e7ebc62e0f&X-Amz-SignedHeaders=host&x-id=GetObject",
+        "expiry_time": "2022-09-30T14:04:39.208Z"
+      }
+    },
+    "parent": {
+      "type": "database_id",
+      "database_id": "d5f716ed-7b84-40be-846a-60ece0eeb0e8"
+    },
+    "archived": false,
+    "properties": {
+      "Quote": {
+        "id": "%40j%3Ef",
+        "type": "relation",
+        "relation": [],
+        "has_more": false
+      },
+      "isActual": {
+        "id": "BAtU",
+        "type": "formula",
+        "formula": {
+          "type": "boolean",
+          "boolean": false
+        }
+      },
+      "Year": {
+        "id": "JyY%3E",
+        "type": "number",
+        "number": 2017
+      },
+      "Thumbnail": {
+        "id": "OYQ~",
+        "type": "files",
+        "files": [
+          {
+            "name": "https://images.vogelino.com/thumbnails/design-job-2030-thumbnail.png",
+            "type": "external",
+            "external": {
+              "url": "https://images.vogelino.com/thumbnails/design-job-2030-thumbnail.png"
+            }
+          }
+        ]
+      },
+      "ClientID": {
+        "id": "TXY_",
+        "type": "rollup",
+        "rollup": {
+          "type": "array",
+          "array": [
+            {
+              "type": "rich_text",
+              "rich_text": [
+                {
+                  "type": "text",
+                  "text": {
+                    "content": "0034",
+                    "link": null
+                  },
+                  "annotations": {
+                    "bold": false,
+                    "italic": false,
+                    "strikethrough": false,
+                    "underline": false,
+                    "code": false,
+                    "color": "default"
+                  },
+                  "plain_text": "0034",
+                  "href": null
+                }
+              ]
+            }
+          ],
+          "function": "show_original"
+        }
+      },
+      "In collaboration with": {
+        "id": "Tv%3Et",
+        "type": "relation",
+        "relation": [],
+        "has_more": false
+      },
+      "Show in portfolio": {
+        "id": "Tvdr",
+        "type": "checkbox",
+        "checkbox": true
+      },
+      "Invoice": {
+        "id": "%5BEtn",
+        "type": "relation",
+        "relation": [],
+        "has_more": false
+      },
+      "Client": {
+        "id": "%5Exa%60",
+        "type": "relation",
+        "relation": [
+          {
+            "id": "b6f4dd01-24c8-4e39-9b68-9d22fd2841b7"
+          }
+        ],
+        "has_more": false
+      },
+      "ID": {
+        "id": "c%5Djx",
+        "type": "rich_text",
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "100",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "100",
+            "href": null
+          }
+        ]
+      },
+      "Long-ID": {
+        "id": "kV%3Fi",
+        "type": "formula",
+        "formula": {
+          "type": "string",
+          "string": "P-070922-0034"
+        }
+      },
+      "Type": {
+        "id": "nc%5DG",
+        "type": "select",
+        "select": {
+          "id": "9e41118f-63b8-49a1-ae0b-cbf1f5785669",
+          "name": "Web Timeline",
+          "color": "pink"
+        }
+      },
+      "Tags": {
+        "id": "p_DO",
+        "type": "multi_select",
+        "multi_select": [
+          {
+            "id": "155c8f3b-e896-4e81-be08-12e5729a0c1e",
+            "name": "Webdesign",
+            "color": "brown"
+          },
+          {
+            "id": "30acd885-f6c7-49a5-8407-515e1234edda",
+            "name": "Web Development",
+            "color": "orange"
+          },
+          {
+            "id": "f574ba11-1aea-42c4-a227-9fedfe4e0618",
+            "name": "UI Design",
+            "color": "pink"
+          },
+          {
+            "id": "70ff12d3-d802-4b57-8edc-469074b9b622",
+            "name": "Datavis",
+            "color": "red"
+          },
+          {
+            "id": "e1fae53a-9a88-4330-a314-131d69f9638e",
+            "name": "Experimentation",
+            "color": "red"
+          },
+          {
+            "id": "83a121f0-418b-4149-a568-25ef3693cb85",
+            "name": "Timeline",
+            "color": "brown"
+          }
+        ]
+      },
+      "Created Time": {
+        "id": "r%3FOv",
+        "type": "created_time",
+        "created_time": "2022-09-07T04:19:00.000Z"
+      },
+      "URL": {
+        "id": "rNb%3A",
+        "type": "url",
+        "url": "https://design-timeline.vogelino.com/"
+      },
+      "BgImage": {
+        "id": "tK~I",
+        "type": "files",
+        "files": [
+          {
+            "name": "clem-onojeghuo-fY8Jr4iuPQM-unsplash.jpg",
+            "type": "file",
+            "file": {
+              "url": "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/f33f84d4-feb9-447f-8a2e-81b9c058c016/clem-onojeghuo-fY8Jr4iuPQM-unsplash.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220930%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220930T130439Z&X-Amz-Expires=3600&X-Amz-Signature=a44ee23290c4babe212dd628319c12c5ab4173304f4ef5ced19ea23f6057ef6d&X-Amz-SignedHeaders=host&x-id=GetObject",
+              "expiry_time": "2022-09-30T14:04:39.200Z"
+            }
+          }
+        ]
+      },
+      "NameShort": {
+        "id": "yA%3A%3F",
+        "type": "rich_text",
+        "rich_text": []
+      },
+      "Supervised by": {
+        "id": "%7BbFM",
+        "type": "relation",
+        "relation": [
+          {
+            "id": "e7af3d49-8add-4e01-b9a5-93ce48deb2c5"
+          }
+        ],
+        "has_more": false
+      },
+      "Related to Time tracking - MosktoTV (Project)": {
+        "id": "%7Cnde",
+        "type": "relation",
+        "relation": [],
+        "has_more": false
+      },
+      "Made With": {
+        "id": "~l%5De",
+        "type": "relation",
+        "relation": [
+          {
+            "id": "150d87f4-4d8a-4326-a81d-30fb4c1bcb51"
+          },
+          {
+            "id": "429c3d1a-b398-4dcc-a2dd-3b802633df92"
+          },
+          {
+            "id": "7f315c08-da82-46ac-95af-5b47e4a53205"
+          },
+          {
+            "id": "2e59acb8-3470-4acf-9246-1b43a32dbe2b"
+          }
+        ],
+        "has_more": false
+      },
+      "Made @": {
+        "id": "~o_v",
+        "type": "relation",
+        "relation": [
+          {
+            "id": "7a67434b-730a-4cc1-820a-5d3effe7ab12"
+          }
+        ],
+        "has_more": false
+      },
+      "Name": {
+        "id": "title",
+        "type": "title",
+        "title": [
+          {
+            "type": "text",
+            "text": {
+              "content": "Design Job 2030",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "Design Job 2030",
+            "href": null
+          }
+        ]
+      },
+      "Estimate": {
+        "id": "1abefb24-6322-4984-bad4-6bf70f27ab07",
+        "type": "number",
+        "number": null
+      },
+      "Status": {
+        "id": "25df4997-9d2e-4eaa-bcf6-3ff2b3912188",
+        "type": "select",
+        "select": {
+          "id": "4d85fa22-0327-40a1-bd68-8f14405f7806",
+          "name": "Done",
+          "color": "green"
+        }
+      },
+      "Project Start": {
+        "id": "368d1240-719b-4daf-9187-1b60a9e806de",
+        "type": "date",
+        "date": null
+      },
+      "Deadline": {
+        "id": "4b718ef6-1462-41fa-bc65-98084ba761a5",
+        "type": "date",
+        "date": null
+      },
+      "Description": {
+        "id": "c2b54f46-3331-423e-9257-41f6271f36b9",
+        "type": "rich_text",
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "Speculative timeline",
+              "link": null
+            },
+            "annotations": {
+              "bold": true,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "Speculative timeline",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": " of the design job market and studies ",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": " of the design job market and studies ",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": "in 2030",
+              "link": null
+            },
+            "annotations": {
+              "bold": true,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "in 2030",
+            "href": null
+          }
+        ]
+      }
+    },
+    "url": "https://www.notion.so/Design-Job-2030-a1b5662b650e4e2385518dd1c8e3da6f"
+  },
+  {
+    "object": "page",
+    "id": "0e7f531c-9b2d-43ed-9dda-181c3391477e",
+    "created_time": "2022-09-07T04:15:00.000Z",
+    "last_edited_time": "2022-09-21T17:40:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "5fbc46aa-c889-462d-b909-401589a1409b"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "5fbc46aa-c889-462d-b909-401589a1409b"
+    },
+    "cover": null,
+    "icon": {
+      "type": "file",
+      "file": {
+        "url": "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/af4e64b8-edf8-47da-a687-45c01b70474c/apple-icon-180x180.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220930%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220930T130439Z&X-Amz-Expires=3600&X-Amz-Signature=264da14e776e12cbe3abb73016f1e38e156c1c7f5ed2599ae5b836b3ba74b028&X-Amz-SignedHeaders=host&x-id=GetObject",
+        "expiry_time": "2022-09-30T14:04:39.208Z"
+      }
+    },
+    "parent": {
+      "type": "database_id",
+      "database_id": "d5f716ed-7b84-40be-846a-60ece0eeb0e8"
+    },
+    "archived": false,
+    "properties": {
+      "Quote": {
+        "id": "%40j%3Ef",
+        "type": "relation",
+        "relation": [],
+        "has_more": false
+      },
+      "isActual": {
+        "id": "BAtU",
+        "type": "formula",
+        "formula": {
+          "type": "boolean",
+          "boolean": false
+        }
+      },
+      "Year": {
+        "id": "JyY%3E",
+        "type": "number",
+        "number": 2019
+      },
+      "Thumbnail": {
+        "id": "OYQ~",
+        "type": "files",
+        "files": [
+          {
+            "name": "https://images.vogelino.com/thumbnails/hidden-perspectives-thumbnail.png",
+            "type": "external",
+            "external": {
+              "url": "https://images.vogelino.com/thumbnails/hidden-perspectives-thumbnail.png"
+            }
+          }
+        ]
+      },
+      "ClientID": {
+        "id": "TXY_",
+        "type": "rollup",
+        "rollup": {
+          "type": "array",
+          "array": [
+            {
+              "type": "rich_text",
+              "rich_text": [
+                {
+                  "type": "text",
+                  "text": {
+                    "content": "0034",
+                    "link": null
+                  },
+                  "annotations": {
+                    "bold": false,
+                    "italic": false,
+                    "strikethrough": false,
+                    "underline": false,
+                    "code": false,
+                    "color": "default"
+                  },
+                  "plain_text": "0034",
+                  "href": null
+                }
+              ]
+            }
+          ],
+          "function": "show_original"
+        }
+      },
+      "In collaboration with": {
+        "id": "Tv%3Et",
+        "type": "relation",
+        "relation": [
+          {
+            "id": "ea773842-4cca-4971-962d-141ba67faf3b"
+          }
+        ],
+        "has_more": false
+      },
+      "Show in portfolio": {
+        "id": "Tvdr",
+        "type": "checkbox",
+        "checkbox": true
+      },
+      "Invoice": {
+        "id": "%5BEtn",
+        "type": "relation",
+        "relation": [],
+        "has_more": false
+      },
+      "Client": {
+        "id": "%5Exa%60",
+        "type": "relation",
+        "relation": [
+          {
+            "id": "b6f4dd01-24c8-4e39-9b68-9d22fd2841b7"
+          }
+        ],
+        "has_more": false
+      },
+      "ID": {
+        "id": "c%5Djx",
+        "type": "rich_text",
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "099",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "099",
+            "href": null
+          }
+        ]
+      },
+      "Long-ID": {
+        "id": "kV%3Fi",
+        "type": "formula",
+        "formula": {
+          "type": "string",
+          "string": "P-070922-0034"
+        }
+      },
+      "Type": {
+        "id": "nc%5DG",
+        "type": "select",
+        "select": {
+          "id": "dc0f9b8e-7de5-4577-b0a6-0cfcef7a2ffc",
+          "name": "Digital Archive",
+          "color": "brown"
+        }
+      },
+      "Tags": {
+        "id": "p_DO",
+        "type": "multi_select",
+        "multi_select": [
+          {
+            "id": "b75f811e-1d1a-4651-bf12-7219e4aefc9f",
+            "name": "Archive",
+            "color": "brown"
+          },
+          {
+            "id": "155c8f3b-e896-4e81-be08-12e5729a0c1e",
+            "name": "Webdesign",
+            "color": "brown"
+          },
+          {
+            "id": "30acd885-f6c7-49a5-8407-515e1234edda",
+            "name": "Web Development",
+            "color": "orange"
+          },
+          {
+            "id": "729c7a04-a0cb-4ac4-8ddc-eb90bb86d934",
+            "name": "UX Design",
+            "color": "brown"
+          },
+          {
+            "id": "70ff12d3-d802-4b57-8edc-469074b9b622",
+            "name": "Datavis",
+            "color": "red"
+          }
+        ]
+      },
+      "Created Time": {
+        "id": "r%3FOv",
+        "type": "created_time",
+        "created_time": "2022-09-07T04:15:00.000Z"
+      },
+      "URL": {
+        "id": "rNb%3A",
+        "type": "url",
+        "url": "https://hidden-perspectives.netlify.app/"
+      },
+      "BgImage": {
+        "id": "tK~I",
+        "type": "files",
+        "files": [
+          {
+            "name": "us-iran.png",
+            "type": "file",
+            "file": {
+              "url": "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/51d68900-0a64-4108-b082-c209261db110/us-iran.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220930%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220930T130439Z&X-Amz-Expires=3600&X-Amz-Signature=b3c0b95feb569226abbb17d9c9cc8e21fc27904806579647238530553765da4c&X-Amz-SignedHeaders=host&x-id=GetObject",
+              "expiry_time": "2022-09-30T14:04:39.200Z"
+            }
+          }
+        ]
+      },
+      "NameShort": {
+        "id": "yA%3A%3F",
+        "type": "rich_text",
+        "rich_text": []
+      },
+      "Supervised by": {
+        "id": "%7BbFM",
+        "type": "relation",
+        "relation": [
+          {
+            "id": "e7af3d49-8add-4e01-b9a5-93ce48deb2c5"
+          },
+          {
+            "id": "62dec738-ca4b-464e-8f13-8fe302cce0f3"
+          }
+        ],
+        "has_more": false
+      },
+      "Related to Time tracking - MosktoTV (Project)": {
+        "id": "%7Cnde",
+        "type": "relation",
+        "relation": [],
+        "has_more": false
+      },
+      "Made With": {
+        "id": "~l%5De",
+        "type": "relation",
+        "relation": [
+          {
+            "id": "150d87f4-4d8a-4326-a81d-30fb4c1bcb51"
+          },
+          {
+            "id": "88bf97f8-53cd-4595-9233-0f48f9b0305f"
+          },
+          {
+            "id": "429c3d1a-b398-4dcc-a2dd-3b802633df92"
+          },
+          {
+            "id": "ad7974f5-26c4-42fa-af3b-0edc09cc454e"
+          }
+        ],
+        "has_more": false
+      },
+      "Made @": {
+        "id": "~o_v",
+        "type": "relation",
+        "relation": [
+          {
+            "id": "7a67434b-730a-4cc1-820a-5d3effe7ab12"
+          }
+        ],
+        "has_more": false
+      },
+      "Name": {
+        "id": "title",
+        "type": "title",
+        "title": [
+          {
+            "type": "text",
+            "text": {
+              "content": "Hidden Perspectives",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "Hidden Perspectives",
+            "href": null
+          }
+        ]
+      },
+      "Estimate": {
+        "id": "1abefb24-6322-4984-bad4-6bf70f27ab07",
+        "type": "number",
+        "number": null
+      },
+      "Status": {
+        "id": "25df4997-9d2e-4eaa-bcf6-3ff2b3912188",
+        "type": "select",
+        "select": {
+          "id": "4d85fa22-0327-40a1-bd68-8f14405f7806",
+          "name": "Done",
+          "color": "green"
+        }
+      },
+      "Project Start": {
+        "id": "368d1240-719b-4daf-9187-1b60a9e806de",
+        "type": "date",
+        "date": null
+      },
+      "Deadline": {
+        "id": "4b718ef6-1462-41fa-bc65-98084ba761a5",
+        "type": "date",
+        "date": null
+      },
+      "Description": {
+        "id": "c2b54f46-3331-423e-9257-41f6271f36b9",
+        "type": "rich_text",
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "Digital archive",
+              "link": null
+            },
+            "annotations": {
+              "bold": true,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "Digital archive",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": " gathering documents and events relating to the ",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": " gathering documents and events relating to the ",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": "U.S. – Iran",
+              "link": null
+            },
+            "annotations": {
+              "bold": true,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "U.S. – Iran",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": " political relationship.",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": " political relationship.",
+            "href": null
+          }
+        ]
+      }
+    },
+    "url": "https://www.notion.so/Hidden-Perspectives-0e7f531c9b2d43ed9dda181c3391477e"
+  },
+  {
+    "object": "page",
+    "id": "6ff3e46f-9918-48ec-a2c0-b32775a9e513",
+    "created_time": "2022-09-07T04:11:00.000Z",
+    "last_edited_time": "2022-09-18T19:30:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "5fbc46aa-c889-462d-b909-401589a1409b"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "5fbc46aa-c889-462d-b909-401589a1409b"
+    },
+    "cover": null,
+    "icon": {
+      "type": "file",
+      "file": {
+        "url": "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/a317cc92-b967-4b94-9c85-6e1f213e95f0/Screenshot_2022-09-10_at_00.06.13.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220930%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220930T130439Z&X-Amz-Expires=3600&X-Amz-Signature=03dd7655df6020fc823709ca3ea20da4af0ec4edff24a76737d4585ffdbeff2f&X-Amz-SignedHeaders=host&x-id=GetObject",
+        "expiry_time": "2022-09-30T14:04:39.208Z"
+      }
+    },
+    "parent": {
+      "type": "database_id",
+      "database_id": "d5f716ed-7b84-40be-846a-60ece0eeb0e8"
+    },
+    "archived": false,
+    "properties": {
+      "Quote": {
+        "id": "%40j%3Ef",
+        "type": "relation",
+        "relation": [],
+        "has_more": false
+      },
+      "isActual": {
+        "id": "BAtU",
+        "type": "formula",
+        "formula": {
+          "type": "boolean",
+          "boolean": false
+        }
+      },
+      "Year": {
+        "id": "JyY%3E",
+        "type": "number",
+        "number": 2018
+      },
+      "Thumbnail": {
+        "id": "OYQ~",
+        "type": "files",
+        "files": [
+          {
+            "name": "https://images.vogelino.com/thumbnails/streem-retro-future-webdesign-thumbnail.png",
+            "type": "external",
+            "external": {
+              "url": "https://images.vogelino.com/thumbnails/streem-retro-future-webdesign-thumbnail.png"
+            }
+          }
+        ]
+      },
+      "ClientID": {
+        "id": "TXY_",
+        "type": "rollup",
+        "rollup": {
+          "type": "array",
+          "array": [
+            {
+              "type": "rich_text",
+              "rich_text": [
+                {
+                  "type": "text",
+                  "text": {
+                    "content": "0034",
+                    "link": null
+                  },
+                  "annotations": {
+                    "bold": false,
+                    "italic": false,
+                    "strikethrough": false,
+                    "underline": false,
+                    "code": false,
+                    "color": "default"
+                  },
+                  "plain_text": "0034",
+                  "href": null
+                }
+              ]
+            }
+          ],
+          "function": "show_original"
+        }
+      },
+      "In collaboration with": {
+        "id": "Tv%3Et",
+        "type": "relation",
+        "relation": [],
+        "has_more": false
+      },
+      "Show in portfolio": {
+        "id": "Tvdr",
+        "type": "checkbox",
+        "checkbox": true
+      },
+      "Invoice": {
+        "id": "%5BEtn",
+        "type": "relation",
+        "relation": [],
+        "has_more": false
+      },
+      "Client": {
+        "id": "%5Exa%60",
+        "type": "relation",
+        "relation": [
+          {
+            "id": "b6f4dd01-24c8-4e39-9b68-9d22fd2841b7"
+          }
+        ],
+        "has_more": false
+      },
+      "ID": {
+        "id": "c%5Djx",
+        "type": "rich_text",
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "098",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "098",
+            "href": null
+          }
+        ]
+      },
+      "Long-ID": {
+        "id": "kV%3Fi",
+        "type": "formula",
+        "formula": {
+          "type": "string",
+          "string": "P-070922-0034"
+        }
+      },
+      "Type": {
+        "id": "nc%5DG",
+        "type": "select",
+        "select": {
+          "id": "1a7bdc92-38b6-42e1-bdcf-8b7e395773fe",
+          "name": "Web Experiment",
+          "color": "default"
+        }
+      },
+      "Tags": {
+        "id": "p_DO",
+        "type": "multi_select",
+        "multi_select": [
+          {
+            "id": "155c8f3b-e896-4e81-be08-12e5729a0c1e",
+            "name": "Webdesign",
+            "color": "brown"
+          },
+          {
+            "id": "30acd885-f6c7-49a5-8407-515e1234edda",
+            "name": "Web Development",
+            "color": "orange"
+          },
+          {
+            "id": "051f9ad1-bee2-4032-9071-e87694b8793b",
+            "name": "Graphic Design",
+            "color": "purple"
+          },
+          {
+            "id": "e1fae53a-9a88-4330-a314-131d69f9638e",
+            "name": "Experimentation",
+            "color": "red"
+          },
+          {
+            "id": "6bc05a22-fcaf-4e3b-89e8-2ee0b6b9a160",
+            "name": "Scrollytelling",
+            "color": "default"
+          }
+        ]
+      },
+      "Created Time": {
+        "id": "r%3FOv",
+        "type": "created_time",
+        "created_time": "2022-09-07T04:11:00.000Z"
+      },
+      "URL": {
+        "id": "rNb%3A",
+        "type": "url",
+        "url": "https://streem.vogelino.com/"
+      },
+      "BgImage": {
+        "id": "tK~I",
+        "type": "files",
+        "files": [
+          {
+            "name": "streem.png",
+            "type": "file",
+            "file": {
+              "url": "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/0ad2f2d3-de63-4c3a-b7aa-60142d9c7978/streem.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220930%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220930T130439Z&X-Amz-Expires=3600&X-Amz-Signature=52ae2cf59516837db2611a9a65fc952dbd766a39e2083bd2d03038f4edb0187c&X-Amz-SignedHeaders=host&x-id=GetObject",
+              "expiry_time": "2022-09-30T14:04:39.200Z"
+            }
+          }
+        ]
+      },
+      "NameShort": {
+        "id": "yA%3A%3F",
+        "type": "rich_text",
+        "rich_text": []
+      },
+      "Supervised by": {
+        "id": "%7BbFM",
+        "type": "relation",
+        "relation": [],
+        "has_more": false
+      },
+      "Related to Time tracking - MosktoTV (Project)": {
+        "id": "%7Cnde",
+        "type": "relation",
+        "relation": [],
+        "has_more": false
+      },
+      "Made With": {
+        "id": "~l%5De",
+        "type": "relation",
+        "relation": [],
+        "has_more": false
+      },
+      "Made @": {
+        "id": "~o_v",
+        "type": "relation",
+        "relation": [],
+        "has_more": false
+      },
+      "Name": {
+        "id": "title",
+        "type": "title",
+        "title": [
+          {
+            "type": "text",
+            "text": {
+              "content": "Streem Magazine",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "Streem Magazine",
+            "href": null
+          }
+        ]
+      },
+      "Estimate": {
+        "id": "1abefb24-6322-4984-bad4-6bf70f27ab07",
+        "type": "number",
+        "number": null
+      },
+      "Status": {
+        "id": "25df4997-9d2e-4eaa-bcf6-3ff2b3912188",
+        "type": "select",
+        "select": {
+          "id": "4d85fa22-0327-40a1-bd68-8f14405f7806",
+          "name": "Done",
+          "color": "green"
+        }
+      },
+      "Project Start": {
+        "id": "368d1240-719b-4daf-9187-1b60a9e806de",
+        "type": "date",
+        "date": null
+      },
+      "Deadline": {
+        "id": "4b718ef6-1462-41fa-bc65-98084ba761a5",
+        "type": "date",
+        "date": null
+      },
+      "Description": {
+        "id": "c2b54f46-3331-423e-9257-41f6271f36b9",
+        "type": "rich_text",
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "Experimental",
+              "link": null
+            },
+            "annotations": {
+              "bold": true,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "Experimental",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": " and fictional alternative online presence for the Berlin street magazine ",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": " and fictional alternative online presence for the Berlin street magazine ",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": "Streem",
+              "link": null
+            },
+            "annotations": {
+              "bold": true,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "Streem",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": ".",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": ".",
+            "href": null
+          }
+        ]
+      }
+    },
+    "url": "https://www.notion.so/Streem-Magazine-6ff3e46f991848eca2c0b32775a9e513"
+  },
+  {
+    "object": "page",
+    "id": "1b5ba140-b71d-4829-acf3-5ff4d4e5ba73",
+    "created_time": "2021-01-22T10:39:00.000Z",
+    "last_edited_time": "2022-09-18T19:30:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "5fbc46aa-c889-462d-b909-401589a1409b"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "5fbc46aa-c889-462d-b909-401589a1409b"
+    },
+    "cover": null,
+    "icon": {
+      "type": "file",
+      "file": {
+        "url": "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/620e32b0-3522-47c8-b34d-80ad2ed2a666/download.svg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220930%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220930T130439Z&X-Amz-Expires=3600&X-Amz-Signature=41d6f2c2f866f211a5ccf4ae0cf8d9667984810385fb5d905fcb7897da653bfe&X-Amz-SignedHeaders=host&x-id=GetObject",
+        "expiry_time": "2022-09-30T14:04:39.226Z"
+      }
+    },
+    "parent": {
+      "type": "database_id",
+      "database_id": "d5f716ed-7b84-40be-846a-60ece0eeb0e8"
+    },
+    "archived": false,
+    "properties": {
+      "Quote": {
+        "id": "%40j%3Ef",
+        "type": "relation",
+        "relation": [],
+        "has_more": false
+      },
+      "isActual": {
+        "id": "BAtU",
+        "type": "formula",
+        "formula": {
+          "type": "boolean",
+          "boolean": false
+        }
+      },
+      "Year": {
+        "id": "JyY%3E",
+        "type": "number",
+        "number": 2017
+      },
+      "Thumbnail": {
+        "id": "OYQ~",
+        "type": "files",
+        "files": [
+          {
+            "name": "https://images.vogelino.com/thumbnails/letter-stories-raoul-hausmann-thumbnail.png",
+            "type": "external",
+            "external": {
+              "url": "https://images.vogelino.com/thumbnails/letter-stories-raoul-hausmann-thumbnail.png"
+            }
+          }
+        ]
+      },
+      "ClientID": {
+        "id": "TXY_",
+        "type": "rollup",
+        "rollup": {
+          "type": "array",
+          "array": [
+            {
+              "type": "rich_text",
+              "rich_text": [
+                {
+                  "type": "text",
+                  "text": {
+                    "content": "0034",
+                    "link": null
+                  },
+                  "annotations": {
+                    "bold": false,
+                    "italic": false,
+                    "strikethrough": false,
+                    "underline": false,
+                    "code": false,
+                    "color": "default"
+                  },
+                  "plain_text": "0034",
+                  "href": null
+                }
+              ]
+            }
+          ],
+          "function": "show_original"
+        }
+      },
+      "In collaboration with": {
+        "id": "Tv%3Et",
+        "type": "relation",
+        "relation": [
+          {
+            "id": "0c0e350a-6265-4689-bec9-6f20c6f6418b"
+          }
+        ],
+        "has_more": false
+      },
+      "Show in portfolio": {
+        "id": "Tvdr",
+        "type": "checkbox",
+        "checkbox": true
+      },
+      "Invoice": {
+        "id": "%5BEtn",
+        "type": "relation",
+        "relation": [],
+        "has_more": false
+      },
+      "Client": {
+        "id": "%5Exa%60",
+        "type": "relation",
+        "relation": [
+          {
+            "id": "b6f4dd01-24c8-4e39-9b68-9d22fd2841b7"
+          }
+        ],
+        "has_more": false
+      },
+      "ID": {
+        "id": "c%5Djx",
+        "type": "rich_text",
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "082",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "082",
+            "href": null
+          }
+        ]
+      },
+      "Long-ID": {
+        "id": "kV%3Fi",
+        "type": "formula",
+        "formula": {
+          "type": "string",
+          "string": "P-220121-0034"
+        }
+      },
+      "Type": {
+        "id": "nc%5DG",
+        "type": "select",
+        "select": {
+          "id": "dc0f9b8e-7de5-4577-b0a6-0cfcef7a2ffc",
+          "name": "Digital Archive",
+          "color": "brown"
+        }
+      },
+      "Tags": {
+        "id": "p_DO",
+        "type": "multi_select",
+        "multi_select": [
+          {
+            "id": "70ff12d3-d802-4b57-8edc-469074b9b622",
+            "name": "Datavis",
+            "color": "red"
+          },
+          {
+            "id": "729c7a04-a0cb-4ac4-8ddc-eb90bb86d934",
+            "name": "UX Design",
+            "color": "brown"
+          },
+          {
+            "id": "0762238f-b85a-434c-bf39-042af95e0db3",
+            "name": "Culture",
+            "color": "orange"
+          },
+          {
+            "id": "03952ecd-ed5d-492e-a90a-7c7a25e69150",
+            "name": "Museum",
+            "color": "default"
+          },
+          {
+            "id": "f574ba11-1aea-42c4-a227-9fedfe4e0618",
+            "name": "UI Design",
+            "color": "pink"
+          }
+        ]
+      },
+      "Created Time": {
+        "id": "r%3FOv",
+        "type": "created_time",
+        "created_time": "2021-01-22T10:39:00.000Z"
+      },
+      "URL": {
+        "id": "rNb%3A",
+        "type": "url",
+        "url": "https://letterstori.es/"
+      },
+      "BgImage": {
+        "id": "tK~I",
+        "type": "files",
+        "files": [
+          {
+            "name": "Raoul-Hausmann-by-August-Sander-2614978771.jpg",
+            "type": "file",
+            "file": {
+              "url": "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/cc1af2a2-8c3f-4f03-8ec1-6d98fbcd58b3/Raoul-Hausmann-by-August-Sander-2614978771.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220930%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220930T130439Z&X-Amz-Expires=3600&X-Amz-Signature=5480c9e1c03c972eb6491497e7cec3d7dc9cdb93fb7aced50e0eedfd0b0aacaf&X-Amz-SignedHeaders=host&x-id=GetObject",
+              "expiry_time": "2022-09-30T14:04:39.215Z"
+            }
+          }
+        ]
+      },
+      "NameShort": {
+        "id": "yA%3A%3F",
+        "type": "rich_text",
+        "rich_text": []
+      },
+      "Supervised by": {
+        "id": "%7BbFM",
+        "type": "relation",
+        "relation": [
+          {
+            "id": "e7af3d49-8add-4e01-b9a5-93ce48deb2c5"
+          },
+          {
+            "id": "4d087c32-a670-469e-8d67-2d5b39e015d0"
+          }
+        ],
+        "has_more": false
+      },
+      "Related to Time tracking - MosktoTV (Project)": {
+        "id": "%7Cnde",
+        "type": "relation",
+        "relation": [],
+        "has_more": false
+      },
+      "Made With": {
+        "id": "~l%5De",
+        "type": "relation",
+        "relation": [
+          {
+            "id": "6eb55f20-6ee4-4286-a711-6630737bea7e"
+          },
+          {
+            "id": "faaac509-3576-4984-b633-cfb423b898d4"
+          },
+          {
+            "id": "06d3685e-8926-4bec-8366-61ce8bbf8640"
+          }
+        ],
+        "has_more": false
+      },
+      "Made @": {
+        "id": "~o_v",
+        "type": "relation",
+        "relation": [
+          {
+            "id": "7a67434b-730a-4cc1-820a-5d3effe7ab12"
+          }
+        ],
+        "has_more": false
+      },
+      "Name": {
+        "id": "title",
+        "type": "title",
+        "title": [
+          {
+            "type": "text",
+            "text": {
+              "content": "Raoul Hausmann",
+              "link": {
+                "url": "https://vogelino.com/letter-stories-raoul-hausmann"
+              }
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "Raoul Hausmann",
+            "href": "https://vogelino.com/letter-stories-raoul-hausmann"
+          }
+        ]
+      },
+      "Estimate": {
+        "id": "1abefb24-6322-4984-bad4-6bf70f27ab07",
+        "type": "number",
+        "number": null
+      },
+      "Status": {
+        "id": "25df4997-9d2e-4eaa-bcf6-3ff2b3912188",
+        "type": "select",
+        "select": {
+          "id": "4d85fa22-0327-40a1-bd68-8f14405f7806",
+          "name": "Done",
+          "color": "green"
+        }
+      },
+      "Project Start": {
+        "id": "368d1240-719b-4daf-9187-1b60a9e806de",
+        "type": "date",
+        "date": null
+      },
+      "Deadline": {
+        "id": "4b718ef6-1462-41fa-bc65-98084ba761a5",
+        "type": "date",
+        "date": null
+      },
+      "Description": {
+        "id": "c2b54f46-3331-423e-9257-41f6271f36b9",
+        "type": "rich_text",
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "Visualisation of the ",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "Visualisation of the ",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": "correspondence",
+              "link": null
+            },
+            "annotations": {
+              "bold": true,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "correspondence",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": " between the Austrian dada artist ",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": " between the Austrian dada artist ",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": "Raoul Hausmann",
+              "link": null
+            },
+            "annotations": {
+              "bold": true,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "Raoul Hausmann",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": " and his contemporaries.",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": " and his contemporaries.",
+            "href": null
+          }
+        ]
+      }
+    },
+    "url": "https://www.notion.so/Raoul-Hausmann-1b5ba140b71d4829acf35ff4d4e5ba73"
+  },
+  {
+    "object": "page",
+    "id": "9706ec20-a1e1-425b-989b-f8ca6d8ec128",
+    "created_time": "2020-10-28T18:01:00.000Z",
+    "last_edited_time": "2022-09-18T19:42:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "5fbc46aa-c889-462d-b909-401589a1409b"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "5fbc46aa-c889-462d-b909-401589a1409b"
+    },
+    "cover": null,
+    "icon": {
+      "type": "file",
+      "file": {
+        "url": "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/c0ae1236-1968-4bce-93d3-cd84e0f676dd/project-icon.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220930%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220930T130439Z&X-Amz-Expires=3600&X-Amz-Signature=079df106efc95f56c6e2bb0b41693880f5df5c878898894a3fd77ad085487ae6&X-Amz-SignedHeaders=host&x-id=GetObject",
+        "expiry_time": "2022-09-30T14:04:39.299Z"
+      }
+    },
+    "parent": {
+      "type": "database_id",
+      "database_id": "d5f716ed-7b84-40be-846a-60ece0eeb0e8"
+    },
+    "archived": false,
+    "properties": {
+      "Quote": {
+        "id": "%40j%3Ef",
+        "type": "relation",
+        "relation": [
+          {
+            "id": "369bd3a4-dbe9-4343-a4c8-b193be55077d"
+          }
+        ],
+        "has_more": false
+      },
+      "isActual": {
+        "id": "BAtU",
+        "type": "formula",
+        "formula": {
+          "type": "boolean",
+          "boolean": false
+        }
+      },
+      "Year": {
+        "id": "JyY%3E",
+        "type": "number",
+        "number": 2021
+      },
+      "Thumbnail": {
+        "id": "OYQ~",
+        "type": "files",
+        "files": [
+          {
+            "name": "faf-ss.png",
+            "type": "file",
+            "file": {
+              "url": "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/663e2010-863e-4641-9a47-469d38e7a7ae/faf-ss.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220930%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220930T130439Z&X-Amz-Expires=3600&X-Amz-Signature=d422db46214d48c982cb57cd541aa58f0803a79e3b1ee2efcdd1046dc5f30c1b&X-Amz-SignedHeaders=host&x-id=GetObject",
+              "expiry_time": "2022-09-30T14:04:39.293Z"
+            }
+          }
+        ]
+      },
+      "ClientID": {
+        "id": "TXY_",
+        "type": "rollup",
+        "rollup": {
+          "type": "array",
+          "array": [
+            {
+              "type": "rich_text",
+              "rich_text": [
+                {
+                  "type": "text",
+                  "text": {
+                    "content": "0057",
+                    "link": null
+                  },
+                  "annotations": {
+                    "bold": false,
+                    "italic": false,
+                    "strikethrough": false,
+                    "underline": false,
+                    "code": false,
+                    "color": "default"
+                  },
+                  "plain_text": "0057",
+                  "href": null
+                }
+              ]
+            }
+          ],
+          "function": "show_original"
+        }
+      },
+      "In collaboration with": {
+        "id": "Tv%3Et",
+        "type": "relation",
+        "relation": [],
+        "has_more": false
+      },
+      "Show in portfolio": {
+        "id": "Tvdr",
+        "type": "checkbox",
+        "checkbox": true
+      },
+      "Invoice": {
+        "id": "%5BEtn",
+        "type": "relation",
+        "relation": [
+          {
+            "id": "ced3b5a9-e618-4a3f-8c66-2d02a13ae807"
+          },
+          {
+            "id": "39212032-21ff-4731-96c0-bd3cb7ff1205"
+          },
+          {
+            "id": "070a270c-ea43-4c46-80d0-5f8174562ad4"
+          },
+          {
+            "id": "342413e5-0d59-4858-896a-cd64ac537e17"
+          }
+        ],
+        "has_more": true
+      },
+      "Client": {
+        "id": "%5Exa%60",
+        "type": "relation",
+        "relation": [
+          {
+            "id": "4670bd4d-0671-4757-9732-782d19275d80"
+          }
+        ],
+        "has_more": false
+      },
+      "ID": {
+        "id": "c%5Djx",
+        "type": "rich_text",
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "083",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "083",
+            "href": null
+          }
+        ]
+      },
+      "Long-ID": {
+        "id": "kV%3Fi",
+        "type": "formula",
+        "formula": {
+          "type": "string",
+          "string": "P-281020-0057"
+        }
+      },
+      "Type": {
+        "id": "nc%5DG",
+        "type": "select",
+        "select": {
+          "id": "63144884-7b1e-4423-b8c1-586358c2551b",
+          "name": "Product Website",
+          "color": "purple"
+        }
+      },
+      "Tags": {
+        "id": "p_DO",
+        "type": "multi_select",
+        "multi_select": [
+          {
+            "id": "155c8f3b-e896-4e81-be08-12e5729a0c1e",
+            "name": "Webdesign",
+            "color": "brown"
+          },
+          {
+            "id": "30acd885-f6c7-49a5-8407-515e1234edda",
+            "name": "Web Development",
+            "color": "orange"
+          },
+          {
+            "id": "9fc529a4-737a-49ed-b636-7d27105ae9a8",
+            "name": "eCommerce",
+            "color": "gray"
+          },
+          {
+            "id": "97f2de18-499f-441a-8ce8-d1cfacf366b3",
+            "name": "Furniture",
+            "color": "gray"
+          },
+          {
+            "id": "051f9ad1-bee2-4032-9071-e87694b8793b",
+            "name": "Graphic Design",
+            "color": "purple"
+          },
+          {
+            "id": "2525da5f-b967-4dce-966c-c34cbccb5de7",
+            "name": "Corporate Design",
+            "color": "red"
+          },
+          {
+            "id": "f574ba11-1aea-42c4-a227-9fedfe4e0618",
+            "name": "UI Design",
+            "color": "pink"
+          },
+          {
+            "id": "e1f23c3b-83eb-4d0c-ba0e-7b405553d552",
+            "name": "Typography",
+            "color": "yellow"
+          },
+          {
+            "id": "3f9b4786-bdc3-41f7-b41e-720142aa660a",
+            "name": "Online Shop",
+            "color": "yellow"
+          },
+          {
+            "id": "831e4ac4-03ec-4285-8caa-dc512b4e193f",
+            "name": "Friend & Family",
+            "color": "yellow"
+          },
+          {
+            "id": "23eda49a-85b6-4319-be8c-c3aaf92871d4",
+            "name": "CMS",
+            "color": "red"
+          }
+        ]
+      },
+      "Created Time": {
+        "id": "r%3FOv",
+        "type": "created_time",
+        "created_time": "2020-10-28T18:01:00.000Z"
+      },
+      "URL": {
+        "id": "rNb%3A",
+        "type": "url",
+        "url": "https://faf.berlin/en"
+      },
+      "BgImage": {
+        "id": "tK~I",
+        "type": "files",
+        "files": [
+          {
+            "name": "faf.jpg",
+            "type": "file",
+            "file": {
+              "url": "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/30568e3b-f4fd-4cca-bddc-a7dd18c1b76f/faf.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220930%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220930T130439Z&X-Amz-Expires=3600&X-Amz-Signature=ed95f47dffde562674b4cdf1dc0f18bcb5ff697ab84c0949e431ad432aeca1a5&X-Amz-SignedHeaders=host&x-id=GetObject",
+              "expiry_time": "2022-09-30T14:04:39.295Z"
+            }
+          }
+        ]
+      },
+      "NameShort": {
+        "id": "yA%3A%3F",
+        "type": "rich_text",
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "FAF",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "FAF",
+            "href": null
+          }
+        ]
+      },
+      "Supervised by": {
+        "id": "%7BbFM",
+        "type": "relation",
+        "relation": [],
+        "has_more": false
+      },
+      "Related to Time tracking - MosktoTV (Project)": {
+        "id": "%7Cnde",
+        "type": "relation",
+        "relation": [],
+        "has_more": false
+      },
+      "Made With": {
+        "id": "~l%5De",
+        "type": "relation",
+        "relation": [],
+        "has_more": false
+      },
+      "Made @": {
+        "id": "~o_v",
+        "type": "relation",
+        "relation": [],
+        "has_more": false
+      },
+      "Name": {
+        "id": "title",
+        "type": "title",
+        "title": [
+          {
+            "type": "text",
+            "text": {
+              "content": "Fast Assembled Furniture",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "Fast Assembled Furniture",
+            "href": null
+          }
+        ]
+      },
+      "Estimate": {
+        "id": "1abefb24-6322-4984-bad4-6bf70f27ab07",
+        "type": "number",
+        "number": 120
+      },
+      "Status": {
+        "id": "25df4997-9d2e-4eaa-bcf6-3ff2b3912188",
+        "type": "select",
+        "select": {
+          "id": "4d85fa22-0327-40a1-bd68-8f14405f7806",
+          "name": "Done",
+          "color": "green"
+        }
+      },
+      "Project Start": {
+        "id": "368d1240-719b-4daf-9187-1b60a9e806de",
+        "type": "date",
+        "date": {
+          "start": "2020-10-30",
+          "end": null,
+          "time_zone": null
+        }
+      },
+      "Deadline": {
+        "id": "4b718ef6-1462-41fa-bc65-98084ba761a5",
+        "type": "date",
+        "date": {
+          "start": "2021-02-28",
+          "end": null,
+          "time_zone": null
+        }
+      },
+      "Description": {
+        "id": "c2b54f46-3331-423e-9257-41f6271f36b9",
+        "type": "rich_text",
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "Webshop",
+              "link": null
+            },
+            "annotations": {
+              "bold": true,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "Webshop",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": " creation of ",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": " creation of ",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": "Fast Assembled Furniture,",
+              "link": {
+                "url": "https://faf.berlin/en"
+              }
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "Fast Assembled Furniture,",
+            "href": "https://faf.berlin/en"
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": " a functional and mobile sideboard that can be personalised, extended and ",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": " a functional and mobile sideboard that can be personalised, extended and ",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": "assembled and disassembled ",
+              "link": null
+            },
+            "annotations": {
+              "bold": true,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "assembled and disassembled ",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": "without tools. ",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "without tools. ",
+            "href": null
+          }
+        ]
+      }
+    },
+    "url": "https://www.notion.so/Fast-Assembled-Furniture-9706ec20a1e1425b989bf8ca6d8ec128"
+  },
+  {
+    "object": "page",
+    "id": "7187e368-d8dc-4980-8dae-6b6ab1833c30",
+    "created_time": "2020-09-07T20:02:00.000Z",
+    "last_edited_time": "2022-09-18T19:20:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "5fbc46aa-c889-462d-b909-401589a1409b"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "5fbc46aa-c889-462d-b909-401589a1409b"
+    },
+    "cover": {
+      "type": "file",
+      "file": {
+        "url": "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/54248df9-9110-41e0-bce6-415fd950ed87/Screenshot_2020-09-07_at_22.08.52.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220930%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220930T130439Z&X-Amz-Expires=3600&X-Amz-Signature=883d38d57bbf0a6fe9dffcf18ee07031667c3e08cf35e968e3f3f0f20e2602bb&X-Amz-SignedHeaders=host&x-id=GetObject",
+        "expiry_time": "2022-09-30T14:04:39.236Z"
+      }
+    },
+    "icon": {
+      "type": "file",
+      "file": {
+        "url": "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/591edb09-8fdb-4226-9d8f-fd67f6a747a3/project1.5-form.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220930%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220930T130439Z&X-Amz-Expires=3600&X-Amz-Signature=d4e5e60c832cb169e87bb6df540dce9e2ce6d7195b2aa64b72e9fb0984302e81&X-Amz-SignedHeaders=host&x-id=GetObject",
+        "expiry_time": "2022-09-30T14:04:39.239Z"
+      }
+    },
+    "parent": {
+      "type": "database_id",
+      "database_id": "d5f716ed-7b84-40be-846a-60ece0eeb0e8"
+    },
+    "archived": false,
+    "properties": {
+      "Quote": {
+        "id": "%40j%3Ef",
+        "type": "relation",
+        "relation": [],
+        "has_more": false
+      },
+      "isActual": {
+        "id": "BAtU",
+        "type": "formula",
+        "formula": {
+          "type": "boolean",
+          "boolean": false
+        }
+      },
+      "Year": {
+        "id": "JyY%3E",
+        "type": "number",
+        "number": 2016
+      },
+      "Thumbnail": {
+        "id": "OYQ~",
+        "type": "files",
+        "files": [
+          {
+            "name": "charlotte-ss.png",
+            "type": "file",
+            "file": {
+              "url": "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/bfb91657-48bd-450b-8652-c637fddfe9d9/charlotte-ss.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220930%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220930T130439Z&X-Amz-Expires=3600&X-Amz-Signature=8318efc78ed29022493cebd8d1efc159c57987612893d8e2d8d9d7523d0c254e&X-Amz-SignedHeaders=host&x-id=GetObject",
+              "expiry_time": "2022-09-30T14:04:39.215Z"
+            }
+          }
+        ]
+      },
+      "ClientID": {
+        "id": "TXY_",
+        "type": "rollup",
+        "rollup": {
+          "type": "array",
+          "array": [
+            {
+              "type": "rich_text",
+              "rich_text": [
+                {
+                  "type": "text",
+                  "text": {
+                    "content": "0012",
+                    "link": null
+                  },
+                  "annotations": {
+                    "bold": false,
+                    "italic": false,
+                    "strikethrough": false,
+                    "underline": false,
+                    "code": false,
+                    "color": "default"
+                  },
+                  "plain_text": "0012",
+                  "href": null
+                }
+              ]
+            }
+          ],
+          "function": "show_original"
+        }
+      },
+      "In collaboration with": {
+        "id": "Tv%3Et",
+        "type": "relation",
+        "relation": [],
+        "has_more": false
+      },
+      "Show in portfolio": {
+        "id": "Tvdr",
+        "type": "checkbox",
+        "checkbox": true
+      },
+      "Invoice": {
+        "id": "%5BEtn",
+        "type": "relation",
+        "relation": [],
+        "has_more": false
+      },
+      "Client": {
+        "id": "%5Exa%60",
+        "type": "relation",
+        "relation": [
+          {
+            "id": "8093d83e-0a78-4c5e-afd7-5b807d52c540"
+          }
+        ],
+        "has_more": false
+      },
+      "ID": {
+        "id": "c%5Djx",
+        "type": "rich_text",
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "008",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "008",
+            "href": null
+          }
+        ]
+      },
+      "Long-ID": {
+        "id": "kV%3Fi",
+        "type": "formula",
+        "formula": {
+          "type": "string",
+          "string": "P-070920-0012"
+        }
+      },
+      "Type": {
+        "id": "nc%5DG",
+        "type": "select",
+        "select": {
+          "id": "ecb9ba7c-d7ed-4212-9eb9-9fbe328baa40",
+          "name": "Portfolio Website",
+          "color": "red"
+        }
+      },
+      "Tags": {
+        "id": "p_DO",
+        "type": "multi_select",
+        "multi_select": [
+          {
+            "id": "5604eb44-3480-4eaf-b4fb-c115c3105e40",
+            "name": "Portfolio",
+            "color": "pink"
+          },
+          {
+            "id": "155c8f3b-e896-4e81-be08-12e5729a0c1e",
+            "name": "Webdesign",
+            "color": "brown"
+          },
+          {
+            "id": "30acd885-f6c7-49a5-8407-515e1234edda",
+            "name": "Web Development",
+            "color": "orange"
+          },
+          {
+            "id": "f574ba11-1aea-42c4-a227-9fedfe4e0618",
+            "name": "UI Design",
+            "color": "pink"
+          }
+        ]
+      },
+      "Created Time": {
+        "id": "r%3FOv",
+        "type": "created_time",
+        "created_time": "2020-09-07T20:02:00.000Z"
+      },
+      "URL": {
+        "id": "rNb%3A",
+        "type": "url",
+        "url": "https://charlottestuby.com/"
+      },
+      "BgImage": {
+        "id": "tK~I",
+        "type": "files",
+        "files": [
+          {
+            "name": "charlote.jpg",
+            "type": "file",
+            "file": {
+              "url": "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/4693f4db-0025-43b4-a499-674d36815117/charlote.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220930%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220930T130439Z&X-Amz-Expires=3600&X-Amz-Signature=1511b74770d38692fbdf97d540e3446ee2d4f25682e9cf0a0c01cff443abdd0b&X-Amz-SignedHeaders=host&x-id=GetObject",
+              "expiry_time": "2022-09-30T14:04:39.224Z"
+            }
+          }
+        ]
+      },
+      "NameShort": {
+        "id": "yA%3A%3F",
+        "type": "rich_text",
+        "rich_text": []
+      },
+      "Supervised by": {
+        "id": "%7BbFM",
+        "type": "relation",
+        "relation": [],
+        "has_more": false
+      },
+      "Related to Time tracking - MosktoTV (Project)": {
+        "id": "%7Cnde",
+        "type": "relation",
+        "relation": [],
+        "has_more": false
+      },
+      "Made With": {
+        "id": "~l%5De",
+        "type": "relation",
+        "relation": [],
+        "has_more": false
+      },
+      "Made @": {
+        "id": "~o_v",
+        "type": "relation",
+        "relation": [],
+        "has_more": false
+      },
+      "Name": {
+        "id": "title",
+        "type": "title",
+        "title": [
+          {
+            "type": "text",
+            "text": {
+              "content": "Charlotte Stuby",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "Charlotte Stuby",
+            "href": null
+          }
+        ]
+      },
+      "Estimate": {
+        "id": "1abefb24-6322-4984-bad4-6bf70f27ab07",
+        "type": "number",
+        "number": null
+      },
+      "Status": {
+        "id": "25df4997-9d2e-4eaa-bcf6-3ff2b3912188",
+        "type": "select",
+        "select": {
+          "id": "4d85fa22-0327-40a1-bd68-8f14405f7806",
+          "name": "Done",
+          "color": "green"
+        }
+      },
+      "Project Start": {
+        "id": "368d1240-719b-4daf-9187-1b60a9e806de",
+        "type": "date",
+        "date": {
+          "start": "2016-03-01",
+          "end": null,
+          "time_zone": null
+        }
+      },
+      "Deadline": {
+        "id": "4b718ef6-1462-41fa-bc65-98084ba761a5",
+        "type": "date",
+        "date": null
+      },
+      "Description": {
+        "id": "c2b54f46-3331-423e-9257-41f6271f36b9",
+        "type": "rich_text",
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "Personal ",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "Personal ",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": "portfolio",
+              "link": null
+            },
+            "annotations": {
+              "bold": true,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "portfolio",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": " of textile artist ",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": " of textile artist ",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": "Charlotte Stuby",
+              "link": null
+            },
+            "annotations": {
+              "bold": true,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "Charlotte Stuby",
+            "href": null
+          }
+        ]
+      }
+    },
+    "url": "https://www.notion.so/Charlotte-Stuby-7187e368d8dc49808dae6b6ab1833c30"
+  }
+]
