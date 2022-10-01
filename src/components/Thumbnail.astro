@@ -36,21 +36,29 @@ const {
       `aspect-[16/11] relative overflow-hidden`,
       `col-span-2 border-b border-grayLight`,
       `group-hover:border-fgDark`,
-      `pointer-events-none`
+      `pointer-events-none bg-grayUltraLight`
     )}
   >
-    <Img
-      src={bgImage}
-      alt={`Background image for project ${title}`}
-      attributes={{
-        img: {
-          "aria-hidden": "true",
-          class: "object-cover absolute top-0 left-0 w-full aspect-[16/11]",
-        },
-      }}
-    />
     <div
       class={classNames(
+        `hidden md:block absolute top-0 left-0 w-full aspect-[16/11]`
+      )}
+    >
+      <Img
+        src={bgImage}
+        alt={`Background image for project ${title}`}
+        attributes={{
+          img: {
+            "aria-hidden": "true",
+            class:
+              "object-cover w-full absolute top-0 left-0  h-full aspect-[16/11]",
+          },
+        }}
+      />
+    </div>
+    <div
+      class={classNames(
+        `hidden md:block`,
         `absolute inset-0 sm:bg-grayDark mix-blend-screen`,
         `bg-fgDark group-hover:bg-fgDark`
       )}
@@ -58,6 +66,7 @@ const {
     </div>
     <div
       class={classNames(
+        `hidden md:block`,
         `absolute inset-0 sm:bg-grayUltraLight mix-blend-multiply opacity-50`,
         `bg-fgDark group-hover:bg-fgDark`
       )}
@@ -65,6 +74,7 @@ const {
     </div>
     <div
       class={classNames(
+        `hidden md:block`,
         `absolute inset-0 sm:bg-grayUltraLight mix-blend-color`,
         `bg-fgDark group-hover:bg-fgDark`
       )}
@@ -73,7 +83,7 @@ const {
     <div
       class={classNames(
         rotationClass,
-        `absolute inset-4 border-2 border-alt rounded`,
+        `absolute inset-4 border-2 border-alt rounded shadow-md`,
         `border-t-[12px] overflow-hidden sm:opacity-0 transition`,
         `group-hover:opacity-100 sm:scale-95 sm:group-hover:scale-100`
       )}

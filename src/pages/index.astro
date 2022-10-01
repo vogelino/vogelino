@@ -34,9 +34,9 @@ const projects = (
     <a
       href="/about"
       class={classNames(
-        `bg-bg flex group focus:outline-none`,
-        `focus:ring-2 focus:ring-fg`,
-        `focus:ring-inset focus:ring-offset-bg`
+        `bg-bg flex flex-col-reverse md:flex-row`,
+        `focus:ring-2 focus:ring-fg group focus:outline-none`,
+        `focus:ring-inset focus:ring-offset-bg overflow-hidden`
       )}
     >
       <div
@@ -54,11 +54,14 @@ const projects = (
         </p>
       </div>
       <div
-        class={classNames(`w-[140px] shrink-0 h-full relative overflow-hidden`)}
+        class={classNames(
+          `w-full md:w-[140px] shrink-0 h-4 md:h-full relative md:overflow-hidden`
+        )}
       >
         <div
           class={classNames(
-            `group-hover:scale-110 transition-transform absolute -bottom-20 left-4`,
+            `-top-32 -right-10 md:-bottom-20 md:left-4`,
+            `group-hover:scale-110 transition-transform absolute`,
             `rounded-full group-focus:ring-4 group-focus:ring-fg`,
             `group-focus:ring-offset-4 group-focus:ring-offset-bg`
           )}
@@ -97,8 +100,10 @@ const projects = (
           `flex gap-x-6 md:gap-x-8 gap-y-2 items-center`
         )}
       >
-        <h1 class="uppercase text-5xl">Projects</h1>
-        <p class="text-2xl">
+        <h2 class="uppercase font-bold md:font-normal text-3xl md:text-5xl">
+          Projects
+        </h2>
+        <p class="text-lg md:text-2xl">
           This is a selection of some of the
           <span class="bg-alt px-2.5 py-1 rounded-full -ml-1 decoration-clone">
             projects that I made.
@@ -108,7 +113,7 @@ const projects = (
       <svg
         width="38"
         height="90"
-        class="absolute top-2/3 right-6 2xl:right-16 z-50"
+        class="absolute top-2/3 right-6 2xl:right-16 z-10"
         ><path
           d="M3.342 2.776c19.013 9.76 28.544 22.856 29.574 38.143.848 12.585-4.196 26.116-13.233 38.374l-5.272 6.219 9.33-3.462.696 1.875-12.908 4.79-1.666.619.336-1.746 2.61-13.519 1.963.38-1.886 9.771 5.23-6.167c8.736-11.855 13.617-24.947 12.805-37C29.94 26.505 20.847 14.01 2.429 4.555l.913-1.78Z"
           fill="#FF0040"
