@@ -41,9 +41,8 @@ async function downloadNotionInspirationImages() {
     logSecondary([`Downloading image "${pageId}"`]);
     logIndented(`🔗 ${url.slice(0, 50)}...`);
 
-    if (pageId === "f453ef97-bc37-43d2-99ac-c1612c53f10b")
-      // MAKE SURE DIRECTORIES EXIST
-      await createDirectoriesIfNotAlreadyThere(IMAGE_TMP_EXPORT_PATH);
+    // MAKE SURE DIRECTORIES EXIST
+    await createDirectoriesIfNotAlreadyThere(IMAGE_TMP_EXPORT_PATH);
     await createDirectoriesIfNotAlreadyThere(INSPIRATION_RESIZED_EXPORT_PATH);
 
     // CHECK FOR EXISTING DESTINATION FILE
