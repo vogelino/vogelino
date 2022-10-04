@@ -9,6 +9,7 @@ import { loadJson } from "../../../scripts/lib/loadJson";
 import { PROJECTS_JSON_PATH } from "../../../scripts/paths";
 import * as astroComponents from "astro-imagetools/components";
 import type { MappedNotionProject } from "../../../scripts/lib/parseOriginalNotionProjects";
+import Thumbnail from "../../components/Thumbnail.astro";
 
 const { Img } = astroComponents;
 
@@ -16,15 +17,27 @@ export async function getStaticPaths() {
   const notionProjects = await loadJson<MappedNotionProject[]>(
     PROJECTS_JSON_PATH
   );
-  return notionProjects.map((notionProject) => ({
-    params: { slug: notionProject.slug },
-    props: notionProject,
-  }));
+  return notionProjects.map((notionProject, idx) => {
+    const nextIdx = idx + 1 > notionProjects.length - 1 ? 0 : idx + 1;
+    const prevIdx = idx - 1 < 0 ? notionProjects.length - 1 : idx - 1;
+    return {
+      params: { slug: notionProject.slug },
+      props: {
+        project: notionProject,
+        prevProject: notionProjects[prevIdx],
+        nextProject: notionProjects[nextIdx],
+      },
+    };
+  });
 }
 
-export interface Props extends MappedNotionProject {}
+export interface Props {
+  project: MappedNotionProject;
+  nextProject: MappedNotionProject;
+  prevProject: MappedNotionProject;
+}
 
-const project = Astro.props;
+const { project, nextProject, prevProject } = Astro.props;
 
 const blocksResponse = await notion.blocks.children.list({
   block_id: project.id,
@@ -125,4 +138,19 @@ const highlightClasses = `bg-alt rounded-full pl-3 pr-2 mr-1 pt-2 pb-1 decoratio
       </div>
     </aside>
   </div>
+  <section
+    class={classNames(
+      `flex flex-col`,
+      `md:grid md:grid-cols-[400px,1fr,400px]`,
+      `border-t border-grayMed`
+    )}
+  >
+    <Thumbnail {...prevProject} rotationClass="rotate-1" />
+    <div></div>
+    <Thumbnail
+      {...nextProject}
+      className="md:border-l md:border-l-grayMed"
+      rotationClass="-rotate-1"
+    />
+  </section>
 </Layout>

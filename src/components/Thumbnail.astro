@@ -7,6 +7,7 @@ const { Img } = astroComponents;
 
 export interface Props extends MappedNotionProject {
   rotationClass: string;
+  className?: string;
 }
 const {
   slug,
@@ -15,6 +16,7 @@ const {
   bgImage,
   nameShort,
   rotationClass,
+  className = "",
   type,
   year,
 } = Astro.props;
@@ -23,6 +25,7 @@ const {
 <a
   href={`/projects/${slug}`}
   class={classNames(
+    className,
     `group relative cursor-pointer`,
     `grid grid-cols-[1rem,1fr,3rem] grid-rows-[auto,1fr,16px]`,
     `border-y border-grayMed -mt-[1px]`,
