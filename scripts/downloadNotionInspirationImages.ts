@@ -3,7 +3,7 @@ import * as dotenv from "dotenv";
 dotenv.config();
 import { doesFileExists } from "./lib/doesFileExist";
 import { downloadImage } from "./lib/downloadImage";
-import { log, logEnd, logH1, logIndented, logSecondary } from "./lib/logUtil";
+import { logEnd, logH1, logIndented, logSecondary } from "./lib/logUtil";
 import { resizeImage } from "./lib/resizeImage";
 import fs from "node:fs/promises";
 import {
@@ -21,13 +21,15 @@ const WIDTH = 560;
 const HEIGHT = 292;
 
 async function downloadNotionInspirationImages() {
-  logH1(`Downloading all images from Notion`);
+  logH1("Downloading all images from Notion");
 
   const inspirations = await loadJson<RawNotionInspirationLinkType[]>(
-    ORIGINAL_INSPIRATIONS_JSON_PATH
+    ORIGINAL_INSPIRATIONS_JSON_PATH,
   );
   const images = inspirations.reduce((acc, rawInspiration) => {
-    if (!rawInspiration.cover) return acc;
+    if (!rawInspiration.cover) {
+      return acc;
+    }
     return [
       ...acc,
       [
@@ -50,7 +52,7 @@ async function downloadNotionInspirationImages() {
     const destinationFileAlreadyExist = await doesFileExists(resizeDest);
 
     if (destinationFileAlreadyExist) {
-      logIndented(`⏭ Skipping (already exists)`);
+      logIndented("⏭ Skipping (already exists)");
     } else {
       // DOWNLOAD
       const { imageExt, data } = await downloadImage(url);
@@ -60,12 +62,12 @@ async function downloadNotionInspirationImages() {
       const fileAlreadyExist = await doesFileExists(originalPath);
 
       if (fileAlreadyExist) {
-        logIndented(`⏭ Skipping (already exists)`);
+        logIndented("⏭ Skipping (already exists)");
       } else {
         // SAVING LARGE FILE
         logIndented(`💾 Saving file into: ${originalPath}`);
         await fs.writeFile(originalPath, data);
-        logIndented(`🛟 Saved ✔️`);
+        logIndented("🛟 Saved ✔️");
       }
 
       // RESIZING FILE
@@ -75,13 +77,13 @@ async function downloadNotionInspirationImages() {
         height: HEIGHT,
         position: "top",
       });
-      logIndented(`✅ Success!`, 1);
+      logIndented("✅ Success!", 1);
       await fs.unlink(originalPath);
     }
   }
 
   const mappedInspirations = await loadJson<MappedNotionInspirationLinkType[]>(
-    INSPIRATIONS_JSON_PATH
+    INSPIRATIONS_JSON_PATH,
   );
   // VERIFYING ALL IMAGES ARE REALLY DOWNLOADED
   for (const inspiration of mappedInspirations) {
