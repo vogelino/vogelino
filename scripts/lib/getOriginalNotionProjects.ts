@@ -66,6 +66,12 @@ export interface RawNotionProjectType extends Record<string, unknown> {
     "Supervised by": NotionRelationType;
     "Made With": NotionRelationType;
     "Made @": NotionRelationType;
+    "Show in portfolio": {
+      checkbox: boolean;
+    };
+    "Highlight in portfolio": {
+      checkbox: boolean;
+    };
   };
 }
 

@@ -34,6 +34,7 @@ export interface MappedNotionProject extends Record<string, unknown> {
   supervisors: MappedCollaboratorPageType[];
   colleagues: MappedCollaboratorPageType[];
   institutions: MappedCollaboratorPageType[];
+  highlighted: boolean;
 }
 
 export async function parseOriginalNotionProjects(
@@ -73,6 +74,8 @@ function mapOriginalNotionProject(
   const nameShort = NameShort.rich_text
     .map(({ text }) => text?.content)
     .join(" ");
+  const highlighted =
+    !!rawProject.properties["Highlight in portfolio"].checkbox;
 
   const thumbnail = `/images/thumbnails/${slug}.webp`;
   const bgImage = `/images/bg-images/${slug}.webp`;
@@ -96,6 +99,7 @@ function mapOriginalNotionProject(
     colleagues: mapNotionCollaborators(rawCollaborators, supervisorsIds),
     supervisors: mapNotionCollaborators(rawCollaborators, colleaguesIds),
     institutions: mapNotionCollaborators(rawCollaborators, institutionsIds),
+    highlighted,
   };
 }
 

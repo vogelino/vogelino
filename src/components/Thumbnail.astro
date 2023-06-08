@@ -16,6 +16,7 @@ const {
   bgImage,
   nameShort,
   rotationClass,
+  highlighted,
   className = "",
   type,
   year,
@@ -26,10 +27,11 @@ const {
   href={`/projects/${slug}`}
   class={classNames(
     className,
-    `group relative cursor-pointer`,
+    `group relative cursor-pointer @container/thumb`,
     `grid grid-cols-[1rem,1fr,3rem] grid-rows-[auto,1fr,16px]`,
     `border-y border-grayMed -mt-[1px]`,
-    `hover:bg-fg hover:text-bg`
+    `hover:bg-fg hover:text-bg col-span-2`,
+    highlighted && `sm:col-span-4 md:col-span-2 xl:col-span-4 xl:row-span-2`
   )}
   role="heading"
   aria-label={title}
@@ -44,7 +46,7 @@ const {
   >
     <div
       class={classNames(
-        `hidden md:block absolute top-0 left-0 w-full aspect-[16/11]`
+        `hidden @md/thumb:block absolute top-0 left-0 w-full aspect-[16/11]`
       )}
     >
       <Img
@@ -61,24 +63,24 @@ const {
     </div>
     <div
       class={classNames(
-        `hidden md:block`,
-        `absolute inset-0 sm:bg-grayDark mix-blend-screen`,
+        `hidden @md/thumb:block`,
+        `absolute inset-0 @sm/thumb:bg-grayDark mix-blend-screen`,
         `bg-fgDark group-hover:bg-fgDark`
       )}
     >
     </div>
     <div
       class={classNames(
-        `hidden md:block`,
-        `absolute inset-0 sm:bg-grayUltraLight mix-blend-multiply opacity-50`,
+        `hidden @md/thumb:block`,
+        `absolute inset-0 @sm/thumb:bg-grayUltraLight mix-blend-multiply opacity-50`,
         `bg-fgDark group-hover:bg-fgDark`
       )}
     >
     </div>
     <div
       class={classNames(
-        `hidden md:block`,
-        `absolute inset-0 sm:bg-grayUltraLight mix-blend-color`,
+        `hidden @md/thumb:block`,
+        `absolute inset-0 @sm/thumb:bg-grayUltraLight mix-blend-color`,
         `bg-fgDark group-hover:bg-fgDark`
       )}
     >
@@ -87,8 +89,8 @@ const {
       class={classNames(
         rotationClass,
         `absolute inset-4 border-2 border-alt rounded shadow-md`,
-        `border-t-[12px] overflow-hidden sm:opacity-0 transition`,
-        `group-hover:opacity-100 sm:scale-95 sm:group-hover:scale-100`
+        `border-t-[12px] overflow-hidden @sm/thumb:opacity-0 transition`,
+        `group-hover:opacity-100 @sm/thumb:scale-95 @sm/thumb:group-hover:scale-100`
       )}
     >
       <Img
