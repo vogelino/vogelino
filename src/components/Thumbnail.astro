@@ -30,7 +30,8 @@ const {
     `group relative cursor-pointer @container/thumb`,
     `grid grid-cols-[1rem,1fr,3rem] grid-rows-[auto,1fr,16px]`,
     `border-y border-grayMed -mt-[1px]`,
-    `hover:bg-fg hover:text-bg col-span-2`,
+    `hover:bg-fg hover:text-bg focus:bg-fg focus:text-bg`,
+    `col-span-2 focus-visible:outline-none`,
     highlighted && `sm:col-span-4 md:col-span-2 xl:col-span-4 xl:row-span-2`
   )}
   role="heading"
@@ -40,7 +41,7 @@ const {
     class={classNames(
       `aspect-[16/11] relative overflow-hidden`,
       `col-span-2 border-b border-grayLight`,
-      `group-hover:border-fgDark`,
+      `group-hover:border-fgDark group-focus:border-fgDark`,
       `pointer-events-none bg-grayUltraLight`
     )}
   >
@@ -65,7 +66,7 @@ const {
       class={classNames(
         `hidden @md/thumb:block`,
         `absolute inset-0 @sm/thumb:bg-grayDark mix-blend-screen`,
-        `bg-fgDark group-hover:bg-fgDark`
+        `bg-fgDark group-hover:bg-fgDark group-focus:bg-fgDark`
       )}
     >
     </div>
@@ -73,7 +74,7 @@ const {
       class={classNames(
         `hidden @md/thumb:block`,
         `absolute inset-0 @sm/thumb:bg-grayUltraLight mix-blend-multiply opacity-50`,
-        `bg-fgDark group-hover:bg-fgDark`
+        `bg-fgDark group-hover:bg-fgDark group-focus:bg-fgDark`
       )}
     >
     </div>
@@ -81,7 +82,7 @@ const {
       class={classNames(
         `hidden @md/thumb:block`,
         `absolute inset-0 @sm/thumb:bg-grayUltraLight mix-blend-color`,
-        `bg-fgDark group-hover:bg-fgDark`
+        `bg-fgDark group-hover:bg-fgDark group-focus:bg-fgDark`
       )}
     >
     </div>
@@ -90,7 +91,9 @@ const {
         rotationClass,
         `absolute inset-4 border-2 border-alt rounded shadow-md`,
         `border-t-[12px] overflow-hidden @sm/thumb:opacity-0 transition`,
-        `group-hover:opacity-100 @sm/thumb:scale-95 @sm/thumb:group-hover:scale-100`
+        `@sm/thumb:scale-95`,
+        `group-hover:opacity-100 @sm/thumb:group-hover:scale-100`,
+        `group-focus:opacity-100 @sm/thumb:group-focus:scale-100`
       )}
     >
       <Img
@@ -109,6 +112,7 @@ const {
       `relative border-x border-b border-grayLight`,
       `border-r-grayMed row-span-2`,
       `group-hover:border-fgDark`,
+      `group-focus:border-fgDark`,
       `pointer-events-none`
     )}
   >
@@ -130,9 +134,10 @@ const {
     </div>
     <div
       class={classNames(
-        `absolute top-4 left-1 whitespace-nowrap suppercase`,
+        `absolute top-4 left-1 whitespace-nowrap suppercase transition`,
         `z-10 tracking-wide leading-4 text-lg text-grayDark opacity-50`,
-        `group-hover:text-white transition group-hover:opacity-70`
+        `group-hover:text-white group-hover:opacity-70`,
+        `group-focus:text-white group-focus:opacity-70`
       )}
     >
       <h3
@@ -147,31 +152,39 @@ const {
     </div>
   </div>
   <div></div>
-  <h1
+  <h2
     class={classNames(
       "border-l border-b border-grayLight pt-5 px-4 pb-4 uppercase",
-      "group-hover:pt-[18px]",
-      "text-3xl tracking-wider leading-7 group-hover:px-1",
-      `group-hover:border-fgDark`,
-      `pointer-events-none`
+      "group-hover:pt-[18px] group-hover:px-1 group-hover:border-fgDark",
+      "group-focus:pt-[18px] group-focus:px-1 group-focus:border-fgDark",
+      "text-3xl tracking-wider leading-7",
+      `@xl/thumb:text-5xl @xl/thumb:leading-8`,
+      `pointer-events-none flex items-center`
     )}
   >
     <span
       class={classNames(
-        `group-hover:font-special group-hover:px-3`,
+        `group-hover:font-special`,
         `group-hover:text-fg group-hover:bg-alt`,
-        `decoration-clone rounded-full group-hover:leading-6`,
-        `group-hover:tracking-tight antialiased group-hover:pb-0.5`
+        `group-hover:tracking-tight group-hover:leading-6 `,
+        `group-focus:font-special`,
+        `group-focus:text-fg group-focus:bg-alt`,
+        `group-focus:tracking-tight group-focus:leading-6`,
+        `decoration-clone rounded-full antialiased`,
+        `group-hover:px-3 group-hover:-mt-1 group-hover:pb-1.5 group-hover:pt-1`,
+        `group-focus:px-3 group-focus:-mt-1 group-focus:pb-1.5 group-focus:pt-1`,
+        `@xl/thumb:group-hover:-mt-3 @xl/thumb:group-hover:py-4`,
+        `@xl/thumb:group-focus:-mt-3 @xl/thumb:group-focus:py-4`
       )}
       >{nameShort || title}
     </span>
-  </h1>
+  </h2>
   <div
     class={classNames(
       `col-span-3 relative bg-grayUltraLight`,
-      `group-hover:bg-grayDark/10`,
+      `group-hover:bg-grayDark/10 group-hover:border-fgDark`,
+      `group-focus:bg-grayDark/10 group-focus:border-fgDark`,
       `h-4 border-r border-grayMed`,
-      `group-hover:border-fgDark`,
       `pointer-events-none`
     )}
   >
@@ -179,7 +192,7 @@ const {
       width="16px"
       height="20px"
       viewBox="0 0 16 20"
-      class="absolute bottom-0 left-0 text-bg group-hover:text-fg"
+      class="absolute bottom-0 left-0 text-bg group-hover:text-fg group-focus:text-fg"
     >
       <polygon points="0,0 16,0 16,4 0,20" fill="currentColor"></polygon>
     </svg>
@@ -187,7 +200,7 @@ const {
       width="17px"
       height="17px"
       viewBox="0 0 17 17"
-      class="absolute bottom-0 left-0 text-grayLight group-hover:text-fgDark"
+      class="absolute bottom-0 left-0 text-grayLight group-hover:text-fgDark group-focus:text-fgDark"
     >
       <polyline points="17,0 0,17" stroke="currentColor" fill="none"></polyline>
     </svg>

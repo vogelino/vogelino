@@ -10,11 +10,11 @@ const projects = (
   await loadJson<MappedNotionProject[]>(PROJECTS_JSON_PATH)
 ).map((w) => {
   const classes = [
-    `group-hover:rotate-1`,
-    `group-hover:rotate-0`,
-    `group-hover:rotate-2`,
-    `group-hover:-rotate-1`,
-    `group-hover:-rotate-2`,
+    `group-focus:rotate-1 group-hover:rotate-1`,
+    `group-focus:rotate-0 group-hover:rotate-0`,
+    `group-focus:rotate-2 group-hover:rotate-2`,
+    `group-focus:-rotate-1 group-hover:-rotate-1`,
+    `group-focus:-rotate-2 group-hover:-rotate-2`,
   ];
   const rotationClass = classes[Math.floor(Math.random() * classes.length)];
   return {
