@@ -141,11 +141,11 @@ const highlightClasses = `bg-alt rounded-full pl-3 pr-2 mr-1 pt-2 pb-1 decoratio
   <section
     class={classNames(
       `flex flex-col`,
-      `md:grid md:grid-cols-[1fr,0,1fr] xl:grid-cols-[400px,1fr,400px]`,
+      `md:grid md:grid-cols-[1fr,0,0,0,1fr] xl:grid-cols-[0,450px,1fr,450px,0]`,
       `border-t border-grayMed`
     )}
   >
-    <Thumbnail {...prevProject} rotationClass="rotate-1" />
+    <Thumbnail {...prevProject} highlighted={false} rotationClass="rotate-1" />
     <div class="flex items-center justify-center">
       <svg
         width="416"
@@ -166,6 +166,7 @@ const highlightClasses = `bg-alt rounded-full pl-3 pr-2 mr-1 pt-2 pb-1 decoratio
     </div>
     <Thumbnail
       {...nextProject}
+      highlighted={false}
       className="xl:border-l md:border-l-grayMed"
       rotationClass="-rotate-1"
     />
