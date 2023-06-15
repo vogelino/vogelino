@@ -97,6 +97,12 @@ export async function getOriginalNotionProjects(
         },
       ],
     },
+    sorts: [
+      {
+        property: "Year",
+        direction: "descending",
+      },
+    ],
   });
   const notionProjects =
     notionResponse.results as unknown as RawNotionProjectType[];
