@@ -84,6 +84,7 @@ function mapOriginalNotionProject(
   const supervisorsIds = getRelationIds("Supervised by");
   const colleaguesIds = getRelationIds("Made With");
   const institutionsIds = getRelationIds("Made @");
+  const clientsIds = getRelationIds("Made for");
   return {
     id: rawProject.id,
     title: fullTitle,
@@ -99,6 +100,7 @@ function mapOriginalNotionProject(
     colleagues: mapNotionCollaborators(rawCollaborators, colleaguesIds),
     supervisors: mapNotionCollaborators(rawCollaborators, supervisorsIds),
     institutions: mapNotionCollaborators(rawCollaborators, institutionsIds),
+    clients: mapNotionCollaborators(rawCollaborators, clientsIds),
     highlighted,
   };
 }

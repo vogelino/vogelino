@@ -123,6 +123,9 @@ const highlightClasses = `bg-alt rounded-full pl-3 pr-2 mr-1 pt-2 pb-1 decoratio
           `grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-[1px]`
         )}
       >
+        <CollaboratorsGroup collaborators={project.clients}>
+          Made for
+        </CollaboratorsGroup>
         <CollaboratorsGroup collaborators={project.colleagues}>
           Made with
         </CollaboratorsGroup>
