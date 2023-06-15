@@ -96,8 +96,8 @@ function mapOriginalNotionProject(
     year: Year.number,
     url: URL.url,
     collaborators: mapNotionCollaborators(rawCollaborators, collaboratorsIds),
-    colleagues: mapNotionCollaborators(rawCollaborators, supervisorsIds),
-    supervisors: mapNotionCollaborators(rawCollaborators, colleaguesIds),
+    colleagues: mapNotionCollaborators(rawCollaborators, colleaguesIds),
+    supervisors: mapNotionCollaborators(rawCollaborators, supervisorsIds),
     institutions: mapNotionCollaborators(rawCollaborators, institutionsIds),
     highlighted,
   };
