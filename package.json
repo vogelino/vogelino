@@ -28,6 +28,7 @@
     "puppeteer": "14.1.1",
     "sharp": "0.31.0",
     "slugify": "1.6.5",
+    "tailwindcss-touch": "1.0.1",
     "ts-node": "10.8.0",
     "typescript": "4.7.2"
   },

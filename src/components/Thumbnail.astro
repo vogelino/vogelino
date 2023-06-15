@@ -47,7 +47,7 @@ const {
   >
     <div
       class={classNames(
-        `hidden @md/thumb:block absolute top-0 left-0 w-full aspect-[16/11]`
+        `hidden hover-hover:block absolute top-0 left-0 w-full aspect-[16/11]`
       )}
     >
       <Img
@@ -64,24 +64,24 @@ const {
     </div>
     <div
       class={classNames(
-        `hidden @md/thumb:block`,
-        `absolute inset-0 @sm/thumb:bg-grayDark mix-blend-screen`,
+        `hidden hover-hover:block`,
+        `absolute inset-0 bg-grayDark mix-blend-screen`,
         `bg-fgDark group-hover:bg-fgDark group-focus:bg-fgDark`
       )}
     >
     </div>
     <div
       class={classNames(
-        `hidden @md/thumb:block`,
-        `absolute inset-0 @sm/thumb:bg-grayUltraLight mix-blend-multiply opacity-50`,
+        `hidden hover-hover:block`,
+        `absolute inset-0 bg-grayUltraLight mix-blend-multiply opacity-50`,
         `bg-fgDark group-hover:bg-fgDark group-focus:bg-fgDark`
       )}
     >
     </div>
     <div
       class={classNames(
-        `hidden @md/thumb:block`,
-        `absolute inset-0 @sm/thumb:bg-grayUltraLight mix-blend-color`,
+        `hidden hover-hover:block`,
+        `absolute inset-0 bg-grayUltraLight mix-blend-color`,
         `bg-fgDark group-hover:bg-fgDark group-focus:bg-fgDark`
       )}
     >
@@ -90,8 +90,8 @@ const {
       class={classNames(
         rotationClass,
         `absolute inset-4 border-2 border-alt rounded shadow-md`,
-        `border-t-[12px] overflow-hidden @sm/thumb:opacity-0 transition`,
-        `@sm/thumb:scale-95`,
+        `border-t-[12px] overflow-hidden transition`,
+        `@sm/thumb:scale-95 hover-hover:opacity-0`,
         `group-hover:opacity-100 @sm/thumb:group-hover:scale-100`,
         `group-focus:opacity-100 @sm/thumb:group-focus:scale-100`
       )}
