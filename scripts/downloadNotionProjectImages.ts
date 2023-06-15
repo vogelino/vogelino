@@ -1,4 +1,5 @@
-import { MappedNotionProject } from "./lib/parseOriginalNotionProjects";
+import type { MappedNotionProject } from "./lib/parseOriginalNotionProjects";
+import type { RawNotionProjectType } from "./lib/getOriginalNotionProjects";
 import * as dotenv from "dotenv";
 dotenv.config();
 import { doesFileExists } from "./lib/doesFileExist";
@@ -11,6 +12,7 @@ import {
   BG_IMAGEs_RESIZED_EXPORT_PATH,
   CONTENT_RESIZED_EXPORT_PATH,
   IMAGE_TMP_EXPORT_PATH,
+  ORIGINAL_PROJECTS_JSON_PATH,
   PROJECTS_JSON_PATH,
   THUMBNAILS_RESIZED_EXPORT_PATH,
 } from "./paths";
@@ -26,15 +28,24 @@ async function downloadNotionProjectImages() {
   logH1(`Downloading all project images from Notion`);
 
   log(`databaseId: ${databaseId}`);
-  const projects = await loadJson<MappedNotionProject[]>(PROJECTS_JSON_PATH);
+  const parsedProjects = await loadJson<MappedNotionProject[]>(
+    PROJECTS_JSON_PATH
+  );
+  const originalProjects = await loadJson<RawNotionProjectType[]>(
+    ORIGINAL_PROJECTS_JSON_PATH
+  );
 
-  for (const project of projects) {
-    const { slug, thumbnail, bgImage } = project;
-    const contentImages = await getNotionPageContentImages(project.id);
+  for (const projectIdx in parsedProjects) {
+    const { id, slug } = parsedProjects[projectIdx];
+    const contentImages = await getNotionPageContentImages(id);
+    const originalProject = originalProjects[projectIdx];
+    const thumbnail = originalProject.properties.Thumbnail.files[0].file?.url;
+    const bgImage = originalProject.properties.BgImage.files[0].file?.url;
+
+    if (!thumbnail) throw new Error(`Project "${slug}" has no thumbnail`);
+    if (!bgImage) throw new Error(`Project "${slug}" has no background image`);
 
     logSecondary([`Downloading images for page "${slug}"`]);
-    logIndented(`📺 ${thumbnail.slice(0, 50)}...`);
-    logIndented(`🖼 ${bgImage.slice(0, 50)}...`);
     logIndented(`📝 Content images:`);
 
     // MAKE SURE DIRECTORIES EXIST
@@ -56,22 +67,22 @@ async function downloadNotionProjectImages() {
     } else {
       // DOWNLOAD
       const { imageExt, data } = await downloadImage(thumbnail);
-      const originalPath = `${IMAGE_TMP_EXPORT_PATH}/${slug}.${imageExt}`;
+      const destPath = `${IMAGE_TMP_EXPORT_PATH}/${slug}.${imageExt}`;
 
       // SAVING LARGE FILE
-      logIndented(`💾 Saving file into: ${originalPath}`);
-      await fs.writeFile(originalPath, data);
+      logIndented(`💾 Saving file into: ${destPath}`);
+      await fs.writeFile(destPath, data);
       logIndented(`🛟 Saved ✔️`);
 
       // RESIZING FILE
       logIndented(`📐 Resizing (${WIDTH}x${HEIGHT})`);
-      await resizeImage(originalPath, thumbResizeDest, {
+      await resizeImage(destPath, thumbResizeDest, {
         width: WIDTH,
         height: HEIGHT,
         position: "top",
       });
       logIndented(`✅ Success!`, 1);
-      await fs.unlink(originalPath);
+      await fs.unlink(destPath);
     }
 
     if (destBgFileAlreadyExist) {
@@ -79,22 +90,22 @@ async function downloadNotionProjectImages() {
     } else {
       // DOWNLOAD
       const { imageExt, data } = await downloadImage(bgImage);
-      const originalPath = `${IMAGE_TMP_EXPORT_PATH}/${slug}.${imageExt}`;
+      const destPath = `${IMAGE_TMP_EXPORT_PATH}/${slug}.${imageExt}`;
 
       // SAVING LARGE FILE
-      logIndented(`💾 Saving file into: ${originalPath}`);
-      await fs.writeFile(originalPath, data);
+      logIndented(`💾 Saving file into: ${destPath}`);
+      await fs.writeFile(destPath, data);
       logIndented(`🛟 Saved ✔️`);
 
       // RESIZING FILE
       logIndented(`📐 Resizing (${WIDTH}x${HEIGHT})`);
-      await resizeImage(originalPath, bgResizeDest, {
+      await resizeImage(destPath, bgResizeDest, {
         width: WIDTH,
         height: HEIGHT,
         position: "center",
       });
       logIndented(`✅ Success!`, 1);
-      await fs.unlink(originalPath);
+      await fs.unlink(destPath);
     }
 
     for (const contentImg of contentImages) {
