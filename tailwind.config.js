@@ -1,3 +1,6 @@
+/** @type {import('tailwindcss').Config} */
+const plugin = require('tailwindcss/plugin');
+
 const fallbackFonts = [
   "ui-sans-serif",
   "system-ui",
@@ -47,5 +50,12 @@ module.exports = {
   plugins: [
     require('@tailwindcss/container-queries'),
     require('tailwindcss-touch')(),
+    plugin(function({ addUtilities }) {
+      addUtilities({
+        '.text-balance': {
+          'text-wrap': 'balance',
+        }
+      })
+    })
   ],
 };

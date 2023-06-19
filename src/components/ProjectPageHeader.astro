@@ -30,21 +30,26 @@ const highlightClasses = `bg-alt rounded-full pl-3 pr-2 mr-1 pt-2 pb-1 decoratio
     </div>
   </div>
   <div
-    class="pt-[20vw] pb-[8vw] md:pt-[8vw] md:pb-[4vw] flex items-center justify-center px-8 container mx-auto"
+    class={classNames(
+      `container mx-auto px-8`,
+      `flex items-center justify-center`,
+      `pt-[calc(69px+10vw)] md:pt-[calc(69px+4vw)]`,
+      `pb-[8vw] md:pb-[4vw]`
+    )}
   >
     <div class="text-center flex flex-col items-center">
       <span class="text-2xl mb-3 md:mb-6">{project.year}</span>
       <h1
         class={classNames(
           `text-5xl md:text-7xl 2xl:text-8xl`,
-          `leading-[1em]`,
+          `leading-[1em] text-balance`,
           `uppercase font-bold inline-block`
         )}
       >
         {project.title}
       </h1>
       <p
-        class="text-xl md:text-2xl md:leading-relaxed mt-4 max-w-2xl mb-6 md:mb-2"
+        class="text-xl md:text-2xl md:leading-relaxed mt-4 max-w-2xl mb-6 md:mb-2 text-balance"
       >
         {
           project.description.map(
