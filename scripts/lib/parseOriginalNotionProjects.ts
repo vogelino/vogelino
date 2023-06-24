@@ -1,12 +1,13 @@
 import type {
   NotionRelationType,
-  RawNotionProjectType,
+  RawNotionProjectWithBlocksType,
 } from "./getOriginalNotionProjects";
 import fetch from "node-fetch";
 import type { RawNotionCollaboratorType } from "./getOriginalNotionCollaborators";
 import slugify from "slugify";
 import { contentTypeToImgExtension } from "./contentTypeToImgExtension";
 import { parseNotionFileUrl } from "./parseNotionFileUrl";
+import { BlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 
 export interface MappedCollaboratorPageType {
   id: string;
@@ -15,15 +16,17 @@ export interface MappedCollaboratorPageType {
   avatar?: string;
 }
 
+export type MappedNotionTextContentsType = {
+  text: null | string;
+  link: null | string;
+  highlighted: boolean;
+}[];
+
 export interface MappedNotionProject extends Record<string, unknown> {
   id: string;
   title: string;
   nameShort: null | string;
-  description: {
-    text: null | string;
-    link: null | string;
-    highlighted: boolean;
-  }[];
+  description: MappedNotionTextContentsType;
   type: string;
   slug: string;
   thumbnail: string;
@@ -35,10 +38,11 @@ export interface MappedNotionProject extends Record<string, unknown> {
   colleagues: MappedCollaboratorPageType[];
   institutions: MappedCollaboratorPageType[];
   highlighted: boolean;
+  blocks: BlockObjectResponse[];
 }
 
 export async function parseOriginalNotionProjects(
-  originalProjects: RawNotionProjectType[],
+  originalProjects: RawNotionProjectWithBlocksType[],
   originalCollaborators: RawNotionCollaboratorType[]
 ): Promise<MappedNotionProject[]> {
   const allCollaboratorPagesWithUrls = await getCollaboratorsImages(
@@ -50,7 +54,7 @@ export async function parseOriginalNotionProjects(
 }
 
 function mapOriginalNotionProject(
-  rawProject: RawNotionProjectType,
+  rawProject: RawNotionProjectWithBlocksType,
   rawCollaborators: RawNotionCollaboratorType[]
 ): MappedNotionProject {
   const { Name, NameShort, Description, Type, Year, URL } =
@@ -102,10 +106,11 @@ function mapOriginalNotionProject(
     institutions: mapNotionCollaborators(rawCollaborators, institutionsIds),
     clients: mapNotionCollaborators(rawCollaborators, clientsIds),
     highlighted,
+    blocks: rawProject.properties.blocks,
   };
 }
 
-function getRealtionExtractor(rawProject: RawNotionProjectType) {
+function getRealtionExtractor(rawProject: RawNotionProjectWithBlocksType) {
   return (key: string): string[] =>
     (
       rawProject.properties[

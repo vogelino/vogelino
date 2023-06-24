@@ -13,26 +13,36 @@ import {
   ORIGINAL_PROJECTS_JSON_PATH,
   ORIGINAL_COLLABORATORS_JSON_PATH,
   ORIGINAL_INSPIRATIONS_JSON_PATH,
+  ORIGINAL_ABOUT_BLOCKS_JSON_PATH,
 } from "./paths";
 import { writeJsonFile } from "./lib/writeJsonFile";
 import { logEnd, logH1, logIndented, logSecondary } from "./lib/logUtil";
+import { getOriginalNotionPageBlocks } from "./lib/getOriginalNotionPageBlocks";
+import { BlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 
 const projectsDatabaseId = process.env.NOTION_PORTFOLIO_DATABASE_ID || "";
 const inspirationsDatabaseId = process.env.NOTION_INSPIRATION_DATABASE_ID || "";
 const collaboratorsDatabaseId =
   process.env.NOTION_COLLABORATORS_DATABASE_ID || "";
+const aboutPageId = process.env.NOTION_ABOUT_PAGE_ID || "";
 
 async function downloadCacheData() {
   logH1(`Downloading original data from Notion`);
   logIndented(`🗂 Projects`);
   logIndented(`🗯 Inspirations`);
   logIndented(`😎 Collaborators`);
-  const [originalProjects, originalInspirations, originalCollaborators] =
-    await Promise.all([
-      getOriginalNotionProjects(projectsDatabaseId, notion),
-      getOriginalNotionInspirations(inspirationsDatabaseId, notion),
-      getOriginalNotionCollaborators(collaboratorsDatabaseId, notion),
-    ]);
+  logIndented(`ℹ️ CAbout Blocks`);
+  const [
+    originalProjects,
+    originalInspirations,
+    originalCollaborators,
+    originalAboutPageBlocks,
+  ] = await Promise.all([
+    getOriginalNotionProjects(projectsDatabaseId, notion),
+    getOriginalNotionInspirations(inspirationsDatabaseId, notion),
+    getOriginalNotionCollaborators(collaboratorsDatabaseId, notion),
+    getOriginalNotionPageBlocks(aboutPageId, notion),
+  ]);
   logIndented(`✅ Original data fetching success`);
   logSecondary([`💾 Saving originals`]);
 
@@ -41,6 +51,10 @@ async function downloadCacheData() {
     writeJsonFile(ORIGINAL_PROJECTS_JSON_PATH, originalProjects),
     writeJsonFile(ORIGINAL_COLLABORATORS_JSON_PATH, originalCollaborators),
     writeJsonFile(ORIGINAL_INSPIRATIONS_JSON_PATH, originalInspirations),
+    writeJsonFile<BlockObjectResponse[]>(
+      ORIGINAL_ABOUT_BLOCKS_JSON_PATH,
+      originalAboutPageBlocks
+    ),
   ]);
   logIndented(`🛟 Saved ✔️`);
   logIndented(ORIGINAL_PROJECTS_JSON_PATH, 1);

@@ -10,6 +10,7 @@ import { PROJECTS_JSON_PATH } from "../../../scripts/paths";
 import * as astroComponents from "astro-imagetools/components";
 import type { MappedNotionProject } from "../../../scripts/lib/parseOriginalNotionProjects";
 import Thumbnail from "../../components/Thumbnail.astro";
+import NotionTextContents from "../../components/NotionTextContents.astro";
 
 const { Img } = astroComponents;
 
@@ -38,13 +39,6 @@ export interface Props {
 }
 
 const { project, nextProject, prevProject } = Astro.props;
-
-const blocksResponse = await notion.blocks.children.list({
-  block_id: project.id,
-});
-
-const blocks = blocksResponse.results as unknown as BlockObjectResponse[];
-const highlightClasses = `bg-alt rounded-full pl-3 pr-2 mr-1 pt-2 pb-1 decoration-clone leading-relaxed`;
 ---
 
 <Layout title={project.title}>
@@ -56,65 +50,7 @@ const highlightClasses = `bg-alt rounded-full pl-3 pr-2 mr-1 pt-2 pb-1 decoratio
     )}
   >
     <article class="col-span-3 md:col-span-2 text-2xl leading-normal">
-      {
-        blocks.map((block) => {
-          if (block.type === "paragraph") {
-            return (
-              <p class="mb-5">
-                {block.paragraph.rich_text
-                  .map((item) => {
-                    const text = item.plain_text;
-                    if (!text) return false;
-                    if (item.href) {
-                      return (
-                        <a
-                          href={item.href}
-                          target="_blank"
-                          class={highlightClasses}
-                        >
-                          {text}
-                        </a>
-                      );
-                    }
-                    if (item.annotations.bold) return <strong>{text}</strong>;
-                    if (item.annotations.italic) return <em>{text}</em>;
-                    return <>{text}</>;
-                  })
-                  .filter(Boolean)}
-              </p>
-            );
-          }
-          if (block.type === "image") {
-            const image = block.image as {
-              caption: {
-                text: {
-                  content: string;
-                };
-              }[];
-            };
-            return (
-              <div class="my-8">
-                <Img
-                  src={`/images/content/${block.id}.webp`}
-                  alt={image.caption.map((c) => c.text.content).join(" ")}
-                  width={725}
-                  layout="fullWidth"
-                  attributes={{
-                    img: {
-                      class: "border border-grayMed",
-                    },
-                  }}
-                />
-                {image.caption.length > 0 && (
-                  <small class="text-grayDark text-sm">
-                    {image.caption.map((c) => c.text.content).join(" ")}
-                  </small>
-                )}
-              </div>
-            );
-          }
-        })
-      }
+      <NotionTextContents blocks={project.blocks || []} />
     </article>
     <aside class="col-span-4 md:col-span-1">
       <div

@@ -1,4 +1,6 @@
 import type { Client } from "@notionhq/client";
+import { BlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
+import { getOriginalNotionPageBlocks } from "./getOriginalNotionPageBlocks";
 
 export interface NotionImageType {
   type: string;
@@ -75,10 +77,16 @@ export interface RawNotionProjectType extends Record<string, unknown> {
   };
 }
 
+export interface RawNotionProjectWithBlocksType extends RawNotionProjectType {
+  properties: RawNotionProjectType["properties"] & {
+    blocks: BlockObjectResponse[];
+  };
+}
+
 export async function getOriginalNotionProjects(
   databaseId: string,
   notion: Client
-): Promise<RawNotionProjectType[]> {
+): Promise<RawNotionProjectWithBlocksType[]> {
   const notionResponse = await notion.databases.query({
     database_id: databaseId,
     filter: {
@@ -105,6 +113,14 @@ export async function getOriginalNotionProjects(
     ],
   });
   const notionProjects =
-    notionResponse.results as unknown as RawNotionProjectType[];
+    notionResponse.results as unknown as RawNotionProjectWithBlocksType[];
+
+  for (const notionProjectIdx in notionProjects) {
+    let project = notionProjects[notionProjectIdx];
+
+    const blocks = await getOriginalNotionPageBlocks(project.id, notion);
+    project.properties.blocks = blocks;
+    notionProjects[notionProjectIdx] = project;
+  }
   return notionProjects;
 }

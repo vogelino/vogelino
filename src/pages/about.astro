@@ -1,15 +1,54 @@
 ---
+import { notion } from "../utils/notion";
 import classNames from "../utils/classNames";
 import Layout from "../layouts/Layout.astro";
+import NotionTextContents from "../components/NotionTextContents.astro";
+import { PROJECTS_JSON_PATH } from "../../scripts/paths";
+import { loadJson } from "../../scripts/lib/loadJson";
+import type { BlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
+
+const blocks = await loadJson<BlockResponseBlock[]>(
+  ORIGINAL_ABOUT_BLOCKS_JSON_PATH
+);
 ---
 
 <Layout title="About me">
-  <section
+  <div
     class={classNames(
-      `container mx-auto pt-[69px]`,
-      `max-w-6xl px-4 sm:px-8 pb-[20vw] md:pb-[10vw] 2xl:pb-[5vw]`
+      `grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 pt-[68px]`,
+      `bg-gray-200 min-h-screen gap-px`
     )}
   >
-    <h1>About me</h1>
-  </section>
+    <section
+      class={classNames(
+        `h-full px-6 py-5`,
+        `md:col-span-2 lg:col-span-3 bg-bg`
+      )}
+    >
+      <h1
+        class={classNames(
+          `text-5xl md:text-7xl 2xl:text-8xl`,
+          `leading-[1em] text-balance`,
+          `pb-[2vmax] pt-[1.5vmax]`,
+          `uppercase font-bold inline-block`
+        )}
+      >
+        About <span
+          class="font-special inline-block bg-alt px-5 pt-1 pb-2 rounded-full"
+          >me</span
+        >
+      </h1>
+      <section class="text-2xl leading-normal">
+        <NotionTextContents blocks={blocks} />
+      </section>
+    </section>
+    <section
+      class={classNames(
+        `h-full px-6 py-5 pt-[2vw]`,
+        `order-1 md:order-last lg:col-span-2 bg-bg`
+      )}
+    >
+      Part 2
+    </section>
+  </div>
 </Layout>
