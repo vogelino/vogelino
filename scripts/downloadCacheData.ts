@@ -31,7 +31,7 @@ async function downloadCacheData() {
   logIndented(`🗂 Projects`);
   logIndented(`🗯 Inspirations`);
   logIndented(`😎 Collaborators`);
-  logIndented(`ℹ️ CAbout Blocks`);
+  logIndented(`i  About Blocks`);
   const [
     originalProjects,
     originalInspirations,
@@ -60,6 +60,7 @@ async function downloadCacheData() {
   logIndented(ORIGINAL_PROJECTS_JSON_PATH, 1);
   logIndented(ORIGINAL_COLLABORATORS_JSON_PATH, 1);
   logIndented(ORIGINAL_INSPIRATIONS_JSON_PATH, 1);
+  logIndented(ORIGINAL_ABOUT_BLOCKS_JSON_PATH, 1);
 
   logSecondary([`🧹 Parsing originals`]);
   const [projects, inspirations] = await Promise.all([
@@ -71,6 +72,8 @@ async function downloadCacheData() {
   logSecondary([`💾 Saving parsed content`]);
   logIndented(`🗂 ${projects.length} projects`);
   logIndented(`🗯 ${inspirations.length} inspirations`);
+  logIndented(`😎 ${originalCollaborators.length} collaborators`);
+  logIndented(`i ${originalAboutPageBlocks.length} about blocks`);
   await Promise.all([
     writeJsonFile(PROJECTS_JSON_PATH, projects),
     writeJsonFile(INSPIRATIONS_JSON_PATH, inspirations),
