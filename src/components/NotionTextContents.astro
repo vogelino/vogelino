@@ -1,5 +1,8 @@
 ---
 import type { BlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
+import * as astroComponents from "astro-imagetools/components";
+
+const { Img } = astroComponents;
 
 export interface Props {
   blocks: BlockObjectResponse[];
