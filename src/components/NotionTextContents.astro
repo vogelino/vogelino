@@ -1,6 +1,7 @@
 ---
 import type { BlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import * as astroComponents from "astro-imagetools/components";
+import NotionFormattedRichText from "./NotionFormattedRichText.astro"
 
 const { Img } = astroComponents;
 
@@ -9,30 +10,14 @@ export interface Props {
 }
 
 const { blocks } = Astro.props;
-const highlightClasses = `bg-alt rounded-full pl-3 pr-2 mr-1 pt-2 pb-1 decoration-clone leading-relaxed`;
 ---
 
 {
   blocks.map((block) => {
     if (block.type === "paragraph") {
       return (
-        <p class="mb-5">
-          {block.paragraph.rich_text
-            .map((item) => {
-              const text = item.plain_text;
-              if (!text) return false;
-              if (item.href) {
-                return (
-                  <a href={item.href} target="_blank" class={highlightClasses}>
-                    {text}
-                  </a>
-                );
-              }
-              if (item.annotations.bold) return <strong>{text}</strong>;
-              if (item.annotations.italic) return <em>{text}</em>;
-              return <>{text}</>;
-            })
-            .filter(Boolean)}
+        <p class="mb-5 hyphens-auto">
+          <NotionFormattedRichText richText={block.paragraph.rich_text} />
         </p>
       );
     }

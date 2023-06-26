@@ -16,20 +16,22 @@ export interface NotionFilesType {
   files: NotionImageType[];
 }
 
+export interface NotionTextType {
+  type: "text";
+  text: { content: string | null; link: null | string };
+  annotations: {
+    bold: boolean;
+    italic: boolean;
+    strikethrough: boolean;
+    underline: boolean;
+    code: boolean;
+  };
+  plain_text: string;
+  href: null | string;
+}
+
 export interface NotionRichTextType {
-  rich_text: {
-    type: "text";
-    text: { content: string | null; link: null | string };
-    annotations: {
-      bold: boolean;
-      italic: boolean;
-      strikethrough: boolean;
-      underline: boolean;
-      code: boolean;
-    };
-    plain_text: string;
-    href: null | string;
-  }[];
+  rich_text: NotionTextType[];
 }
 
 export interface NotionRelationType {
@@ -39,10 +41,7 @@ export interface NotionRelationType {
 }
 
 export interface NotionTitleType {
-  title: {
-    type: "text";
-    plain_text: string;
-  }[];
+  title: NotionTextType[];
 }
 
 export interface RawNotionProjectType extends Record<string, unknown> {

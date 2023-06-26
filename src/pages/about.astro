@@ -3,14 +3,26 @@ import { notion } from "../utils/notion";
 import classNames from "../utils/classNames";
 import Layout from "../layouts/Layout.astro";
 import NotionTextContents from "../components/NotionTextContents.astro";
-import { ORIGINAL_ABOUT_BLOCKS_JSON_PATH } from "../../scripts/paths";
+import { ORIGINAL_ABOUT_BLOCKS_JSON_PATH, CV_JSON_PATH } from "../../scripts/paths";
 import { loadJson } from "../../scripts/lib/loadJson";
+import type { MappedNotionCV } from "../../scripts/lib/parseOriginalNotionCV";
 import type { BlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import CVLine from "../components/CVLine.astro"
+import Link from "../components/icons/Link.astro";
+import Pdf from "../components/icons/Pdf.astro";
+import LinkedIn from "../components/icons/LinkedIn.astro";
+import GitHub from "../components/icons/GitHub.astro";
+import Dribbble from "../components/icons/Dribbble.astro";
 
-const blocks = await loadJson<BlockResponseBlock[]>(
-  ORIGINAL_ABOUT_BLOCKS_JSON_PATH
-);
+const [blocks, cv] = await (async function() {
+  const blocks = await loadJson<BlockResponseBlock[]>(
+    ORIGINAL_ABOUT_BLOCKS_JSON_PATH
+  );
+  const cv = await loadJson<MappedNotionCV>(
+    CV_JSON_PATH
+  );
+  return [blocks, cv]
+})()
 ---
 
 <Layout title="About me">
@@ -35,17 +47,19 @@ const blocks = await loadJson<BlockResponseBlock[]>(
         )}
       >
         About <span
-          class="font-special inline-block bg-alt px-5 pt-1 pb-2 rounded-full"
+          class="font-special font-normal inline-block bg-alt px-5 pt-1 pb-2 rounded-full"
           >me</span
         >
       </h1>
       <section class="text-2xl leading-normal">
-        <NotionTextContents blocks={blocks} />
+        <div class="max-w-2xl">
+          <NotionTextContents blocks={blocks} />
+        </div>
       </section>
     </section>
     <section
       class={classNames(
-        `h-full py-5 pt-[2vw]`,
+        `h-full pt-5`,
         `order-1 md:order-last lg:col-span-2 bg-bg`
       )}
     >
@@ -54,22 +68,120 @@ const blocks = await loadJson<BlockResponseBlock[]>(
           `text-5xl md:text-7xl 2xl:text-8xl`,
           `leading-[1em] text-balance`,
           `pb-[2vmax] pt-[1.5vmax] px-6`,
-          `uppercase font-bold inline-block`
+          `uppercase font-bold inline-block`,
+          `flex flex-wrap justify-between items-center gap-8`
         )}
       >
-        My <span
-          class="font-special inline-block bg-alt px-5 pt-1 pb-2 rounded-full"
-          >CV</span
+        <span>
+          My
+          <span class="font-special font-normal inline-block bg-alt px-5 pt-1 pb-2 rounded-full">
+            CV
+          </span
         >
+        </span>
+        <a
+          href={`https://www.linkedin.com/in/vogelino/`}
+          target="_blank"
+          class={classNames(
+            `text-xl px-4 py-1 rounded-full bg-alt text-fg font-bold`,
+            `transition-colors flex gap-2 items-center`,
+            `hover:bg-fg hover:text-alt focus:ring-2 focus:ring-fg focus:outline-none`
+          )}
+        >
+          <span class="pt-px">PDF</span> <Pdf />
+        </a>
       </h2>
+      <dl class="grid grid-cols-[auto,1fr] border-b border-grayMed mb-6 text-lg">
+        <dt class="px-6 py-2 border-t border-grayLight"><strong>Full name</strong></dt>
+        <dd class="px-6 py-2 border-t border-grayLight">Lucas Vogel Urzúa</dd>
+        <dt class="px-6 py-2 border-t border-grayLight"><strong>Nationality</strong></dt>
+        <dd class="px-6 py-2 border-t border-grayLight">Swiss & Chilian</dd>
+        <dt class="px-6 py-2 border-t border-grayLight"><strong>Birth date & place</strong></dt>
+        <dd class="px-6 py-2 border-t border-grayLight">21. June 1993, Lausanne, CH</dd>
+      </dl>
+      <section class="mb-14 flex flex-wrap px-6 gap-2">
+        <a
+          href={`https://github.com/vogelino`}
+          target="_blank"
+          class={classNames(
+            `text-xl px-1.5 py-1 -ml-1.5 rounded-full`,
+            `transition-colors flex items-center`,
+            `hover:bg-fg hover:text-alt focus:ring-2 focus:ring-fg focus:outline-none`
+          )}
+        >
+           <GitHub />
+        </a>
+        <a
+          href={`https://www.linkedin.com/in/vogelino/`}
+          target="_blank"
+          class={classNames(
+            `text-xl px-1.5 py-1 rounded-full`,
+            `transition-colors flex items-center`,
+            `hover:bg-fg hover:text-alt focus:ring-2 focus:ring-fg focus:outline-none`
+          )}
+        >
+           <LinkedIn />
+        </a>
+        <a
+          href={`https://dribbble.com/vogelino`}
+          target="_blank"
+          class={classNames(
+            `text-xl px-1.5 py-1 rounded-full`,
+            `transition-colors flex items-center`,
+            `hover:bg-fg hover:text-alt focus:ring-2 focus:ring-fg focus:outline-none`
+          )}
+        >
+           <Dribbble />
+        </a>
+      </section>
       <h3 class="text-3xl md:text-4xl 2xl:text-5xl uppercase px-6 mb-3">
         Work
       </h3>
-      <CVLine
-        timePeriod={`2012 - 2013`}
-        title={``}
-        subtitle={``}
-      />
+      <ul>
+        {cv.work.map((cvLine) => (
+          <CVLine
+            title={cvLine.title}
+            subtitle={cvLine.location}
+            timePeriod={cvLine.timePeriod}
+            />
+        ))}
+      </ul>
+      <h3 class="text-3xl md:text-4xl 2xl:text-5xl uppercase px-6 mb-3 mt-12">
+        Education
+      </h3>
+      <ul>
+        {cv.education.map((cvLine) => (
+          <CVLine
+            title={cvLine.title}
+            subtitle={cvLine.location}
+            timePeriod={cvLine.timePeriod}
+            />
+        ))}
+      </ul>
+      <h3 class="text-3xl md:text-4xl 2xl:text-5xl uppercase px-6 mb-3 mt-12">
+        Teaching
+      </h3>
+      <ul>
+        {cv.teaching.map((cvLine) => (
+          <CVLine
+            title={cvLine.title}
+            subtitle={cvLine.location}
+            timePeriod={cvLine.timePeriod}
+            />
+        ))}
+      </ul>
+      <h3 class="text-3xl md:text-4xl 2xl:text-5xl uppercase px-6 mb-3 mt-12">
+        Internships
+      </h3>
+      <ul>
+        {cv.internships.map((cvLine) => (
+          <CVLine
+            title={cvLine.title}
+            subtitle={cvLine.location}
+            timePeriod={cvLine.timePeriod}
+            />
+        ))}
+      </ul>
     </section>
   </div>
 </Layout>

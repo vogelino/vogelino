@@ -1,6 +1,65 @@
 ---
 import classNames from '../utils/classNames'
+import NotionTextContents from "../components/NotionTextContents.astro";
+import type { BlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
+import NotionFormattedRichText from "../components/NotionFormattedRichText.astro"
+
+export interface props {
+  timePeriod: string;
+  title: BlockObjectResponse[];
+  subtitle: string | null;
+}
+
+const { timePeriod, title, subtitle } = Astro.props
 ---
-<li class={classNames(`border-t py-3 px-6 grid grif`)}>
-  Item
-</li>
+<div class={classNames(
+  `text-grayDark bg-bg relative flex flex-col`,
+  `border-t border-grayMed text-lg`,
+  `@container/cvline`
+)}>
+  <div
+    class={classNames(
+      `min-h-[calc(100%-1rem)] w-[calc(100%-1rem)] ml-4 border-l border-grayLight`,
+      `p-6 gap-x-6 grid @md/cvline:grid-cols-3 @lg/cvline:grid-cols-4 items-baseline`,
+      `gap-y-2`
+    )}
+  >
+    <span class="@md/cvline:row-span-2">
+      {timePeriod}
+    </span>
+    <h4 class={classNames(
+      `@md/cvline:col-span-2 @lg/cvline:col-span-3`,
+      `text-lg leading-normal text-fg text-balance`
+    )}>
+      <NotionFormattedRichText richText={title} />
+    </h4>
+    {subtitle && (
+      <p class="@md/cvline:col-span-2 @lg/cvline:col-span-3 hyphens-auto">
+        {subtitle}
+      </p>
+    )}
+  </div>
+  <div
+    class={classNames(
+      `col-span-3 relative bg-grayUltraLight`,
+      `h-4 pointer-events-none border-t border-grayLight`
+    )}
+  >
+    <svg
+      width="16px"
+      height="20px"
+      viewBox="0 0 16 20"
+      class="absolute bottom-0 left-0 text-bg"
+    >
+      <polygon points="0,0 16,0 16,4 0,20" fill="currentColor" />
+    </svg>
+    <svg
+      width="17px"
+      height="17px"
+      viewBox="0 0 17 17"
+      class="absolute bottom-0 left-0 text-grayLight"
+    >
+      <polyline points="17,0 0,17" stroke="currentColor" fill="none" />
+    </svg>
+  </div>
+</div>
