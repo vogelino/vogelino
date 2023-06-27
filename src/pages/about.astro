@@ -307,11 +307,13 @@ const [blocks, cv] = await (async function() {
 
     for (let i = 0, len = trigger.length; i < len; i++) {
       trigger[i].addEventListener('click', function(event) {
+        event.preventDefault();
         toggle(trigger[i]);
       });
 
       trigger[i].addEventListener('keydown', function(event) {
         if (event.which == 13) {
+          event.preventDefault();
           toggle(trigger[i]);
         }
       });
