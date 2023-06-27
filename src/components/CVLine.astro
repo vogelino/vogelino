@@ -20,8 +20,8 @@ const { timePeriod, title, subtitle } = Astro.props
   <div
     class={classNames(
       `min-h-[calc(100%-1rem)] w-[calc(100%-1rem)] ml-4 border-l border-grayLight`,
-      `p-6 gap-x-6 grid @md/cvline:grid-cols-3 @lg/cvline:grid-cols-4 @md/cvline:items-baseline`,
-      `gap-y-2`
+      `p-6 @md/cvline:gap-x-6 @md/cvline:grid @md/cvline:grid-cols-3 @lg/cvline:grid-cols-4 @md/cvline:items-baseline`,
+      `flex flex-col gap-y-2 leading-normal`
     )}
   >
     <span class="@md/cvline:row-span-2">
@@ -29,7 +29,7 @@ const { timePeriod, title, subtitle } = Astro.props
     </span>
     <h4 class={classNames(
       `@md/cvline:col-span-2 @lg/cvline:col-span-3`,
-      `text-lg leading-normal text-fg text-balance`
+      `text-lg text-fg text-balance`
     )}>
       <NotionFormattedRichText richText={title} />
     </h4>
