@@ -160,7 +160,7 @@ const cv = await loadJson<MappedNotionCV>(CV_JSON_PATH);
     content: '[role="tabpanel"]'
   };  
 
-  const toggle = function(tab) {
+  const toggle = function(tab, scroll = true) {
     const parent = tab.closest(settings.container);
     const target = tab.getAttribute('aria-controls');
     const content = document.getElementById(target);
@@ -175,7 +175,7 @@ const cv = await loadJson<MappedNotionCV>(CV_JSON_PATH);
     tab.setAttribute('aria-selected', 'true');
     content.setAttribute('aria-hidden', 'false');
 
-    if (window.innerWidth < 768) {
+    if (window.innerWidth < 768 && scroll) {
       parent.scrollIntoView({ behavior: 'smooth' })
     }
   };
@@ -196,7 +196,7 @@ const cv = await loadJson<MappedNotionCV>(CV_JSON_PATH);
         }
       });
 
-      toggle(trigger[0]);
+      toggle(trigger[0], false);
     };
   };
 
