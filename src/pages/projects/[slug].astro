@@ -49,7 +49,7 @@ const { project, nextProject, prevProject } = Astro.props;
       `gap-[5vw]`
     )}
   >
-    <article class="col-span-3 md:col-span-2 text-2xl leading-normal">
+    <article class="col-span-3 md:col-span-2 text-xl md:text-2xl leading-normal">
       <NotionTextContents blocks={project.blocks || []} />
     </article>
     <aside class="col-span-4 md:col-span-1">

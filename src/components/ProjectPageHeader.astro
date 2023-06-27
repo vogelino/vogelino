@@ -12,9 +12,12 @@ const project = Astro.props;
 const highlightClasses = `bg-alt rounded-full pl-3 pr-2 mr-1 pt-2 pb-1 decoration-clone leading-relaxed`;
 ---
 
-<div class="relative overflow-hidden w-screen">
+<div class="relative overflow-hidden w-screen max-w-[1440px] mx-auto">
   <div
-    class="w-screen h-[60vh] overflow-hidden md:h-screen absolute top-0 left-0 -z-10 border-b border-grayMed"
+    class={classNames(
+      `w-screen absolute top-0 left-1/2 -translate-x-1/2 -z-10 max-w-[1440px]`,
+      `h-[60vh] overflow-hidden md:h-screen border-b border-grayMed`
+    )}
   >
     <Img
       src={`/images/bg-images/${project.slug}.webp`}

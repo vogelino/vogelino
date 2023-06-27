@@ -18,12 +18,12 @@ const { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{[title, "Vogelino"].join(" – ")}</title>
   </head>
-  <body class="w-screen overflow-x-hidden">
+  <body class="w-screen overflow-x-hidden mx-auto max-w-[1440px] min-[1440px]:border-x min-[1440px]:border-grayMed">
     <header
       aria-label="Main header"
       class={classNames(
-        `fixed top-0 left-0 w-screen z-40 text-fg border-b border-grayMed`,
-        `bg-bg`
+        `fixed top-0 left-1/2 w-screen z-40 text-fg border-b border-grayMed`,
+        `bg-bg -translate-x-1/2 max-w-[1440px] min-[1440px]:border-x min-[1440px]:border-grayMed`
       )}
     >
       <div class="px-6 py-5 flex">
