@@ -1,0 +1,39 @@
+---
+import classNames from "../utils/classNames";
+import LogoInteractive from "./LogoInteractive.astro";
+import HeaderMenuLink from "./HeaderMenuLink.astro";
+---
+<header
+  aria-label="Main header"
+  class={classNames(
+    `fixed top-0 left-1/2 -translate-x-1/2 w-screen z-40`,
+    `bg-bg text-fg border-b border-grayMed px-6`,
+    `max-w-[1440px] min-[1440px]:border-x min-[1440px]:border-grayMed`,
+    `flex justify-between items-center h-[69px]`,
+  )}
+>
+  <LogoInteractive />
+  <nav class={classNames(
+    `fixed top-[69px] left-0 w-screen h-[calc(100dvh-69px)] bg-bg`,
+    `sm:static sm:w-auto sm:h-auto sm:bg-none`,
+  )}>
+    <ul class={classNames(
+      `flex flex-col sm:flex-row sm:gap-2 items-center`
+    )}>
+      <HeaderMenuLink
+        href="/"
+        title="Projects"
+      />
+      <HeaderMenuLink
+        href="/about"
+        title="About"
+      />
+      <HeaderMenuLink
+        href="/inspirations"
+        title="Sites I like"
+      />
+    </ul>
+  </nav>
+</header>
+
+

@@ -1,6 +1,7 @@
 ---
 import classNames from "../utils/classNames";
 import ArrowUp from "./icons/ArrowUp.astro";
+import Logo from "./Logo.astro";
 
 const year = String(new Date().getFullYear())
 ---
@@ -11,7 +12,7 @@ const year = String(new Date().getFullYear())
     `tracking-wide text-grayDark`, 
   )}> 
     <span>{year}</span>
-    <span>Lucas Vogel</span>
+    <span><Logo className="scale-75" /></span>
     <a
       href="#"
       id="back-to-top"

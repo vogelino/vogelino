@@ -1,338 +1,52 @@
 ---
-import { notion } from "../utils/notion";
 import classNames from "../utils/classNames";
 import Layout from "../layouts/Layout.astro";
-import NotionTextContents from "../components/NotionTextContents.astro";
-import { ORIGINAL_ABOUT_BLOCKS_JSON_PATH, CV_JSON_PATH } from "../../scripts/paths";
-import { loadJson } from "../../scripts/lib/loadJson";
-import type { MappedNotionCV } from "../../scripts/lib/parseOriginalNotionCV";
-import type { BlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
-import CVLine from "../components/CVLine.astro"
-import Tabs from "../components/Tabs.astro"
-import Link from "../components/icons/Link.astro";
 import Pdf from "../components/icons/Pdf.astro";
-import LinkedIn from "../components/icons/LinkedIn.astro";
-import GitHub from "../components/icons/GitHub.astro";
-import Dribbble from "../components/icons/Dribbble.astro";
-
-const [blocks, cv] = await (async function() {
-  const blocks = await loadJson<BlockResponseBlock[]>(
-    ORIGINAL_ABOUT_BLOCKS_JSON_PATH
-  );
-  const cv = await loadJson<MappedNotionCV>(
-    CV_JSON_PATH
-  );
-  return [blocks, cv]
-})()
+import AboutCVTable from "../components/AboutCVTable.astro";
+import AboutCVExperience from "../components/AboutCVExperience.astro";
+import AboutDescription from "../components/AboutDescription.astro";
+import SocialIcons from "../components/SocialIcons.astro";
+import FancyHeadline from "../components/FancyHeadline.astro";
+import IconTextLink from "../components/IconTextLink.astro";
 ---
 
 <Layout title="About me">
-  <div
-    class={classNames(
-      `grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 pt-[68px]`,
-      `bg-gray-200 min-h-screen gap-px`
-    )}
-  >
-    <section
-      class={classNames(
-        `h-full px-6 py-5`,
-        `md:col-span-2 lg:col-span-3 bg-bg`
-      )}
-    >
-      <h1
-        class={classNames(
-          `text-5xl md:text-7xl 2xl:text-8xl`,
-          `leading-[1em] text-balance`,
-          `pb-[2vmax] pt-[1.5vmax]`,
-          `uppercase font-bold inline-block`
-        )}
-      >
-        About <span
-          class="font-special font-normal inline-block bg-alt px-5 pt-1 pb-2 rounded-full"
-          >me</span
-        >
-      </h1>
-      <section class="text-xl md:text-2xl leading-normal">
-        <div class="max-w-2xl">
-          <NotionTextContents blocks={blocks} />
-        </div>
-      </section>
+  <div class={classNames(
+    `grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 pt-[68px]`,
+    `bg-gray-200 min-h-screen gap-px`
+  )}>
+    <section class={classNames(
+      `h-full px-6 py-5`,
+      `md:col-span-2 lg:col-span-3 bg-bg`
+    )}>
+      <AboutDescription />
     </section>
-    <section
-      class={classNames(
-        `h-full pt-5`,
-        `order-1 md:order-last lg:col-span-2 bg-bg`
-      )}
-    >
-      <h2
-        class={classNames(
-          `text-5xl md:text-7xl 2xl:text-8xl`,
-          `leading-[1em] text-balance`,
-          `pb-[2vmax] pt-[1.5vmax] px-6`,
-          `uppercase font-bold inline-block`,
-          `flex flex-wrap justify-between items-center gap-8`
+    <section class={classNames(
+      `h-full pt-5 @container/sidebar`,
+      `order-1 md:order-last lg:col-span-2 bg-bg`
+    )}>
+      <FancyHeadline
+        tag="h2"
+        title="My **CV**"
+        className={classNames(
+          `pb-[2vmax] pt-[1.5vmax]`,
+          `flex flex-wrap justify-between items-center`,
+          `px-6 gap-x-8 gap-y-4`,
         )}
       >
-        <span>
-          My
-          <span class="font-special font-normal inline-block bg-alt px-5 pt-1 pb-2 rounded-full">
-            CV
-          </span
-        >
-        </span>
-        <a
+        <IconTextLink
           href={`https://www.linkedin.com/in/vogelino/`}
-          target="_blank"
-          class={classNames(
-            `text-xl px-4 py-1 rounded-full bg-alt text-fg font-bold`,
-            `transition-colors flex gap-2 items-center`,
-            `hover:bg-fg hover:text-alt focus:ring-2 focus:ring-fg focus:outline-none`
-          )}
+          ariaLabel={`Download my curriculum as a PDF file`}
+          text={`PDF`}
         >
-          <span class="pt-px">PDF</span> <Pdf />
-        </a>
-      </h2>
-      <dl class="grid grid-cols-[2fr,3fr] sm:grid-cols-[auto,1fr] border-b border-grayMed text-lg">
-        <dt class="px-6 py-2 border-t border-grayLight"><strong>Full name</strong></dt>
-        <dd class="px-6 py-2 border-t border-grayLight">Lucas Vogel Urzúa</dd>
-        <dt class="px-6 py-2 border-t border-grayLight"><strong>Nationality</strong></dt>
-        <dd class="px-6 py-2 border-t border-grayLight">Swiss & Chilean</dd>
-        <dt class="px-6 py-2 border-t border-grayLight"><strong>Birth date & place</strong></dt>
-        <dd class="px-6 py-2 border-t border-grayLight">21. June 1993, Lausanne, CH</dd>
-        <dt class="px-6 py-2 border-t border-grayLight"><strong>Languages</strong></dt>
-        <dd class="px-6 py-2 border-t border-grayLight">French, German, Spanish & English</dd>
-      </dl>
-      <section class="flex flex-wrap px-6 gap-2 bg-grayUltraLight pt-6">
-        <a
-          href={`https://github.com/vogelino`}
-          target="_blank"
-          class={classNames(
-            `text-xl px-1.5 py-1 -ml-1.5 rounded-full`,
-            `transition-colors flex items-center`,
-            `hover:bg-fg hover:text-alt focus:ring-2 focus:ring-fg focus:outline-none`
-          )}
-        >
-           <GitHub />
-        </a>
-        <a
-          href={`https://www.linkedin.com/in/vogelino/`}
-          target="_blank"
-          class={classNames(
-            `text-xl px-1.5 py-1 rounded-full`,
-            `transition-colors flex items-center`,
-            `hover:bg-fg hover:text-alt focus:ring-2 focus:ring-fg focus:outline-none`
-          )}
-        >
-           <LinkedIn />
-        </a>
-        <a
-          href={`https://dribbble.com/vogelino`}
-          target="_blank"
-          class={classNames(
-            `text-xl px-1.5 py-1 rounded-full`,
-            `transition-colors flex items-center`,
-            `hover:bg-fg hover:text-alt focus:ring-2 focus:ring-fg focus:outline-none`
-          )}
-        >
-           <Dribbble />
-        </a>
-      </section>
-      <div data-tab-component class="pt-16 bg-grayUltraLight">
-        <div
-          role="tablist"
-          aria-label="Curriculum tabbed sections"
-          class="flex"
-        >
-          <button
-            role="tab" 
-            aria-selected="true"
-            aria-controls="work-content"
-            id="work"
-          >
-            Work
-          </button>
-          <button
-            role="tab" 
-            aria-selected="false"
-            aria-controls="education-content"
-            id="education"
-          >
-            Education
-          </button>
-          <button
-            role="tab" 
-            aria-selected="false"
-            aria-controls="teaching-content"
-            id="teaching"
-          >
-            Teaching
-          </button>
-          <button
-            role="tab" 
-            aria-selected="false"
-            aria-controls="internships-content"
-            id="internships"
-          >
-            Internships
-          </button>
-        </div>
-        <section
-          id="work-content"
-          role="tabpanel" 
-          aria-labelledby="work"
-          tabindex="0"
-        >
-          <ul>
-            {cv.work.map((cvLine) => (
-              <CVLine
-                title={cvLine.title}
-                location={cvLine.location}
-                certification={cvLine.certification}
-                timePeriod={cvLine.timePeriod}
-                />
-            ))}
-          </ul>
-        </section>
-        <section
-          id="education-content"
-          role="tabpanel" 
-          aria-labelledby="education"
-          tabindex="0"
-        >
-          <ul>
-            {cv.education.map((cvLine) => (
-              <CVLine
-                title={cvLine.title}
-                location={cvLine.location}
-                certification={cvLine.certification}
-                timePeriod={cvLine.timePeriod}
-                />
-            ))}
-          </ul>
-        </section>
-        <section
-          id="teaching-content"
-          role="tabpanel" 
-          aria-labelledby="teaching"
-          tabindex="0"
-        >
-          <ul>
-            {cv.teaching.map((cvLine) => (
-              <CVLine
-                title={cvLine.title}
-                location={cvLine.location}
-                certification={cvLine.certification}
-                timePeriod={cvLine.timePeriod}
-                />
-            ))}
-          </ul>
-        </section>
-        <section
-          id="internships-content"
-          role="tabpanel" 
-          aria-labelledby="internships"
-          tabindex="0"
-        >
-          <ul>
-            {cv.internships.map((cvLine) => (
-              <CVLine
-                title={cvLine.title}
-                location={cvLine.location}
-                certification={cvLine.certification}
-                timePeriod={cvLine.timePeriod}
-                />
-            ))}
-          </ul>
-        </section>
-      </div>
+          <Pdf />
+        </IconTextLink>
+      </FancyHeadline>
+      <AboutCVTable />
+      <SocialIcons className="bg-grayUltraLight pt-6" />
+      <AboutCVExperience />
     </section>
   </div>
 </Layout>
 
-<style>
-  [role="tabpanel"][aria-hidden="true"] {
-    display: none;
-  }
 
-  [role="tabpanel"] {
-    @apply z-0 -mt-px;
-  }
-
-  [role="tab"] {
-    @apply transition-colors z-10 text-xl md:text-2xl uppercase;
-    @apply tracking-wide px-6 pt-3 pb-2 border -ml-px rounded-t;
-    @apply border-bg border-b-grayMed;
-  }
-
-  [role="tab"][aria-selected="true"] {
-    @apply bg-bg border-grayMed z-20 border-b-bg;
-  }
-
-  [role="tab"][aria-selected="false"] {
-    @apply bg-grayUltraLight transition-colors;
-  }
-
-  [role="tab"][aria-selected="false"]:hover {
-    @apply bg-alt;
-  }
-
-  [role="tablist"]:focus,
-  [role="tabpanel"]:focus,
-  [role="tab"]:focus {
-    @apply outline-none ring-inset ring-2 ring-fg z-30;
-  }
-
-  [role="tablist"] {
-    @apply max-w-full overflow-x-auto pt-[2px];
-  }
-</style>
-
-<script>
-  const settings = {
-    container: '[data-tab-component]',
-    trigger: '[role="tab"]',
-    content: '[role="tabpanel"]'
-  };  
-
-  const toggle = function(tab) {
-    const parent = tab.closest(settings.container);
-    const target = tab.getAttribute('aria-controls');
-    const content = document.getElementById(target);
-    const toggles = parent.querySelectorAll(settings.trigger);
-    const all_content = parent.querySelectorAll(settings.content);
-
-    for (let i = 0, len = toggles.length; i < len; i++) {
-      toggles[i].setAttribute('aria-selected', 'false');
-      all_content[i].setAttribute('aria-hidden', 'true');
-    }
-
-    tab.setAttribute('aria-selected', 'true');
-    content.setAttribute('aria-hidden', 'false');
-
-    if (window.innerWidth < 768) {
-      parent.scrollIntoView({ behavior: 'smooth' })
-    }
-  };
-
-  const bindEventListeners = function() {
-    const trigger = document.querySelectorAll(settings.trigger);
-
-    for (let i = 0, len = trigger.length; i < len; i++) {
-      trigger[i].addEventListener('click', function(event) {
-        event.preventDefault();
-        toggle(trigger[i]);
-      });
-
-      trigger[i].addEventListener('keydown', function(event) {
-        if (event.which == 13) {
-          event.preventDefault();
-          toggle(trigger[i]);
-        }
-      });
-
-      toggle(trigger[0]);
-    };
-  };
-
-  bindEventListeners();
-</script>

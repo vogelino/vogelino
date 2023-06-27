@@ -4,6 +4,7 @@ import { loadJson } from "../../scripts/lib/loadJson";
 import type { MappedNotionProject } from "../../scripts/lib/parseOriginalNotionProjects";
 import { PROJECTS_JSON_PATH } from "../../scripts/paths";
 import Thumbnail from "../components/Thumbnail.astro";
+import FancyHeadline from "../components/FancyHeadline.astro";
 import Layout from "../layouts/Layout.astro";
 
 const projects = (
@@ -45,7 +46,7 @@ const projects = (
           `flex gap-x-6 md:gap-x-8 gap-y-2 pr-0 md:pr-0 items-center`
         )}
       >
-        <h1 class="uppercase text-5xl">Salut!</h1>
+        <FancyHeadline title="Salut!" />
         <p class="text-2xl text-balance">
           I'm a 29 years old swiss & chilean
           <span class="bg-alt px-2.5 py-1 rounded-full -ml-1 decoration-clone">
@@ -100,9 +101,7 @@ const projects = (
           `flex gap-x-6 md:gap-x-8 gap-y-2 items-center`
         )}
       >
-        <h2 class="uppercase font-bold md:font-normal text-3xl md:text-5xl">
-          Projects
-        </h2>
+        <FancyHeadline title="Projects" />
         <p class="text-lg md:text-2xl text-balance">
           This is a selection of some of the
           <span class="bg-alt px-2.5 py-1 rounded-full -ml-1 decoration-clone">

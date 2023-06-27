@@ -1,0 +1,22 @@
+---
+import classNames from "../utils/classNames";
+import NotionTextContents from "../components/NotionTextContents.astro";
+import { ORIGINAL_ABOUT_BLOCKS_JSON_PATH } from "../../scripts/paths";
+import { loadJson } from "../../scripts/lib/loadJson";
+import type { BlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
+import FancyHeadline from "../components/FancyHeadline.astro";
+
+const blocks = await loadJson<BlockResponseBlock[]>(
+  ORIGINAL_ABOUT_BLOCKS_JSON_PATH
+);
+---
+<FancyHeadline
+  title="About **me**"
+  class={classNames(`pb-[2vmax] pt-[1.5vmax]`)}
+/>
+<section class="text-xl md:text-2xl leading-normal">
+  <div class="max-w-2xl">
+    <NotionTextContents blocks={blocks} />
+  </div>
+</section>
+

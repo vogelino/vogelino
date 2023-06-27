@@ -1,0 +1,37 @@
+---
+import classNames from "../utils/classNames";
+import IconLink from "./IconLink.astro";
+import LinkedIn from "./icons/LinkedIn.astro";
+import GitHub from "./icons/GitHub.astro";
+import Dribbble from "./icons/Dribbble.astro";
+
+export interface Props {
+  className?: string;
+}
+
+const { className } = Astro.props;
+---
+<div class={classNames(
+  className,
+  `flex flex-wrap px-6 gap-2`
+)}>
+  <IconLink
+    href={`https://github.com/vogelino`}
+    ariaLabel={`My GitHub profile`}
+  >
+    <GitHub />
+  </IconLink>
+  <IconLink
+    href={`https://www.linkedin.com/in/vogelino/`}
+    ariaLabel={`My LinkedIn profile`}
+  >
+    <LinkedIn />
+  </IconLink>
+  <IconLink
+    href={`https://dribbble.com/vogelino`}
+    ariaLabel={`My Dribbble profile`}
+  >
+    <Dribbble />
+  </IconLink>
+</div>
+

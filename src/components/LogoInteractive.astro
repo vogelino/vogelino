@@ -1,0 +1,21 @@
+---
+import Logo from "./Logo.astro";
+import classNames from "../utils/classNames";
+---
+<a
+  href="/"
+  class={classNames(
+    `relative group w-56 h-10 -ml-4 py-2 rounded-full`,
+    `focus:ring-2 focus:ring-fg focus:outline-none`,
+  )}
+  aria-label="Logo (Link to Homepage)"
+>
+  <Logo 
+    className="absolute top-1.5 left-4 text-alt/0 group-hover:text-alt"
+    filled={true}
+  />
+  <Logo
+    className="absolute top-1.5 left-4"
+    filled={false}
+  />
+</a>
