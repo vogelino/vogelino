@@ -2,6 +2,7 @@
 import classNames from "../utils/classNames";
 import LogoInteractive from "./LogoInteractive.astro";
 import HeaderMenuLink from "./HeaderMenuLink.astro";
+import SocialIcons from "./SocialIcons.astro";
 ---
 <header
   aria-label="Main header"
@@ -13,10 +14,22 @@ import HeaderMenuLink from "./HeaderMenuLink.astro";
   )}
 >
   <LogoInteractive />
-  <nav class={classNames(
-    `fixed top-[69px] left-0 w-screen h-[calc(100dvh-69px)] bg-bg`,
-    `sm:static sm:w-auto sm:h-auto sm:bg-none`,
-  )}>
+  <button
+    aria-label="Toggle the mobile menu"
+    id="burger-menu"
+    aria-hidden="false"
+    class="sm:hidden"
+  >
+    <span />
+  </button>
+  <nav
+    id="menu"
+    aria-label="Main navigation menu"
+    class={classNames(
+      `fixed top-[69px] left-0 w-screen h-[calc(100dvh-69px)] bg-bg`,
+      `hidden sm:static sm:block sm:w-auto sm:h-auto sm:bg-none`,
+    )}
+  >
     <ul class={classNames(
       `flex flex-col sm:flex-row sm:gap-2 items-center`
     )}>
@@ -32,8 +45,101 @@ import HeaderMenuLink from "./HeaderMenuLink.astro";
         href="/inspirations"
         title="Sites I like"
       />
+      <li
+        aria-hidden="false"
+        id="social-icons"
+        class="sm:hidden w-screen py-5 text-grayDark"
+      >
+        <SocialIcons />
+      </li>
     </ul>
   </nav>
 </header>
 
+<style>
+#burger-menu {
+  cursor: pointer;
+  height: 39px;
+  width: 39px;
+  overflow: visible;
+  position: relative;
+  z-index: 2;
+  @apply -mr-2;
+}
+#burger-menu:focus {
+  @apply ring-2 ring-fg outline-none rounded-full;
+}
+#burger-menu span,
+#burger-menu span:before,
+#burger-menu span:after {
+  @apply bg-fg;
+  display: block;
+  height: 2px;
+  opacity: 1;
+  position: absolute;
+  transition: 0.3s ease-in-out;
+}
+#burger-menu span:before,
+#burger-menu span:after {
+  content: "";
+}
+#burger-menu span:before {
+  left: 0px;
+  top: -10px;
+  width: 27px;
+}
+#burger-menu span {
+  right: 6px;
+  top: 18px;
+  width: 27px;
+}
+#burger-menu span:after {
+  left: 0px;
+  top: 10px;
+  width: 27px;
+}
+#burger-menu.close span:before {
+  top: 0px;
+  transform: rotate(90deg);
+  width: 27px;
+}
+#burger-menu.close span {
+  transform: rotate(-45deg);
+  top: 18px;
+  width: 27px;
+}
+#burger-menu.close span:after {
+  top: 0px;
+  left: 0;
+  transform: rotate(90deg);
+  opacity: 0;
+  width: 0;
+}
+</style>
+
+<script>
+const burgerMenu = document.getElementById('burger-menu');
+const menu = document.getElementById('menu');
+const socialIcons = document.getElementById('social-icons');
+
+burgerMenu.addEventListener('click', () => {
+  burgerMenu.classList.toggle("close");
+  menu.classList.toggle("hidden");
+});
+
+const updateVisibility = () => {
+  if (window.innerWidth < 768) {
+    burgerMenu.setAttribute('aria-hidden', "false");
+    socialIcons.setAttribute('aria-hidden', "false");
+  } else {
+    burgerMenu.setAttribute('aria-hidden', "true");
+    socialIcons.setAttribute('aria-hidden', "true");
+  }
+}
+
+const mediaQuery = window.matchMedia(`@media screen and (max-width: 767px)`)
+mediaQuery.addEventListener(`change`, updateVisibility)
+
+updateVisibility()
+</script>
 
