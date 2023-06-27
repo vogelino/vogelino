@@ -9,8 +9,8 @@ export interface Props {
 
 const { href, title, className } = Astro.props;
 
-const pathname = new URL(Astro.request.url).pathname;
-const active = pathname === href;
+const pathname = new URL(Astro.request.url).pathname.replaceAll('/', '');
+const active = pathname === href.replaceAll('/', '');
 ---
 <li className="inline-block w-full sm:w-auto">
   <a
