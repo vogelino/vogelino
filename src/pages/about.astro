@@ -8,6 +8,7 @@ import { loadJson } from "../../scripts/lib/loadJson";
 import type { MappedNotionCV } from "../../scripts/lib/parseOriginalNotionCV";
 import type { BlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import CVLine from "../components/CVLine.astro"
+import Tabs from "../components/Tabs.astro"
 import Link from "../components/icons/Link.astro";
 import Pdf from "../components/icons/Pdf.astro";
 import LinkedIn from "../components/icons/LinkedIn.astro";
@@ -134,54 +135,190 @@ const [blocks, cv] = await (async function() {
            <Dribbble />
         </a>
       </section>
-      <h3 class="text-3xl md:text-4xl 2xl:text-5xl uppercase px-6 mb-3">
-        Work
-      </h3>
-      <ul>
-        {cv.work.map((cvLine) => (
-          <CVLine
-            title={cvLine.title}
-            subtitle={cvLine.location}
-            timePeriod={cvLine.timePeriod}
-            />
-        ))}
-      </ul>
-      <h3 class="text-3xl md:text-4xl 2xl:text-5xl uppercase px-6 mb-3 mt-12">
-        Education
-      </h3>
-      <ul>
-        {cv.education.map((cvLine) => (
-          <CVLine
-            title={cvLine.title}
-            subtitle={cvLine.location}
-            timePeriod={cvLine.timePeriod}
-            />
-        ))}
-      </ul>
-      <h3 class="text-3xl md:text-4xl 2xl:text-5xl uppercase px-6 mb-3 mt-12">
-        Teaching
-      </h3>
-      <ul>
-        {cv.teaching.map((cvLine) => (
-          <CVLine
-            title={cvLine.title}
-            subtitle={cvLine.location}
-            timePeriod={cvLine.timePeriod}
-            />
-        ))}
-      </ul>
-      <h3 class="text-3xl md:text-4xl 2xl:text-5xl uppercase px-6 mb-3 mt-12">
-        Internships
-      </h3>
-      <ul>
-        {cv.internships.map((cvLine) => (
-          <CVLine
-            title={cvLine.title}
-            subtitle={cvLine.location}
-            timePeriod={cvLine.timePeriod}
-            />
-        ))}
-      </ul>
+      <div data-tab-component>
+        <div
+          role="tablist"
+          aria-label="Curriculum tabbed sections"
+          class="flex"
+        >
+          <button
+            role="tab" 
+            aria-selected="true"
+            aria-controls="work-content"
+            id="work"
+          >
+            Work
+          </button>
+          <button
+            role="tab" 
+            aria-selected="false"
+            aria-controls="education-content"
+            id="education"
+          >
+            Education
+          </button>
+          <button
+            role="tab" 
+            aria-selected="false"
+            aria-controls="teaching-content"
+            id="teaching"
+          >
+            Teaching
+          </button>
+          <button
+            role="tab" 
+            aria-selected="false"
+            aria-controls="internships-content"
+            id="internships"
+          >
+            Internships
+          </button>
+        </div>
+        <section
+          id="work-content"
+          role="tabpanel" 
+          aria-labelledby="work"
+          tabindex="0"
+        >
+          <ul>
+            {cv.work.map((cvLine) => (
+              <CVLine
+                title={cvLine.title}
+                subtitle={cvLine.location}
+                timePeriod={cvLine.timePeriod}
+                />
+            ))}
+          </ul>
+        </section>
+        <section
+          id="education-content"
+          role="tabpanel" 
+          aria-labelledby="education"
+          tabindex="0"
+        >
+          <ul>
+            {cv.education.map((cvLine) => (
+              <CVLine
+                title={cvLine.title}
+                subtitle={cvLine.location}
+                timePeriod={cvLine.timePeriod}
+                />
+            ))}
+          </ul>
+        </section>
+        <section
+          id="teaching-content"
+          role="tabpanel" 
+          aria-labelledby="teaching"
+          tabindex="0"
+        >
+          <ul>
+            {cv.teaching.map((cvLine) => (
+              <CVLine
+                title={cvLine.title}
+                subtitle={cvLine.location}
+                timePeriod={cvLine.timePeriod}
+                />
+            ))}
+          </ul>
+        </section>
+        <section
+          id="internships-content"
+          role="tabpanel" 
+          aria-labelledby="internships"
+          tabindex="0"
+        >
+          <ul>
+            {cv.internships.map((cvLine) => (
+              <CVLine
+                title={cvLine.title}
+                subtitle={cvLine.location}
+                timePeriod={cvLine.timePeriod}
+                />
+            ))}
+          </ul>
+        </section>
+      </div>
     </section>
   </div>
 </Layout>
+
+<style>
+  [role="tabpanel"][aria-hidden="true"] {
+    display: none;
+  }
+
+  [role="tabpanel"] {
+    @apply z-0 -mt-px;
+  }
+
+  [role="tab"] {
+    @apply transition-colors z-10 text-xl md:text-2xl uppercase px-6 pt-3 pb-2 border -ml-px rounded-t border-grayLight;
+  }
+
+  [role="tab"][aria-selected="true"] {
+    @apply bg-bg border-grayMed z-20 border-b-bg;
+  }
+
+  [role="tab"][aria-selected="false"] {
+    @apply bg-grayUltraLight transition-colors;
+  }
+
+  [role="tab"][aria-selected="false"]:hover {
+    @apply bg-alt;
+  }
+
+  [role="tablist"]:focus,
+  [role="tabpanel"]:focus,
+  [role="tab"]:focus {
+    @apply outline-none ring-inset ring-2 ring-fg z-30;
+  }
+
+  [role="tablist"] {
+    @apply max-w-full overflow-x-auto pt-[2px];
+  }
+</style>
+
+<script>
+  const settings = {
+    container: '[data-tab-component]',
+    trigger: '[role="tab"]',
+    content: '[role="tabpanel"]'
+  };  
+
+  const toggle = function(tab) {
+    const parent = tab.closest(settings.container);
+    const target = tab.getAttribute('aria-controls');
+    const content = document.getElementById(target);
+    const toggles = parent.querySelectorAll(settings.trigger);
+    const all_content = parent.querySelectorAll(settings.content);
+
+    for (let i = 0, len = toggles.length; i < len; i++) {
+      toggles[i].setAttribute('aria-selected', 'false');
+      all_content[i].setAttribute('aria-hidden', 'true');
+    }
+
+    tab.setAttribute('aria-selected', 'true');
+    content.setAttribute('aria-hidden', 'false');
+  };
+
+  const bindEventListeners = function() {
+    const trigger = document.querySelectorAll(settings.trigger);
+
+    for (let i = 0, len = trigger.length; i < len; i++) {
+      trigger[i].addEventListener('click', function(event) {
+        toggle(trigger[i]);
+      });
+
+      trigger[i].addEventListener('keydown', function(event) {
+        if (event.which == 13) {
+          toggle(trigger[i]);
+        }
+      });
+
+      toggle(trigger[0]);
+    };
+  };
+
+  bindEventListeners();
+</script>
