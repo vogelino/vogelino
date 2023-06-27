@@ -15,19 +15,20 @@ import SocialIcons from "./SocialIcons.astro";
 >
   <LogoInteractive />
   <button
-    aria-label="Toggle the mobile menu"
+    aria-label="Hide the main navitation menu"
     id="burger-menu"
     aria-hidden="false"
-    class="sm:hidden"
+    aria-expanded="false"
+    class="sm:hidden sm:invisible"
   >
     <span />
   </button>
   <nav
     id="menu"
-    aria-label="Main navigation menu"
+    aria-labelledby="burger-menu"
     class={classNames(
       `fixed top-[69px] left-0 w-screen h-[calc(100dvh-69px)] bg-bg`,
-      `hidden sm:static sm:block sm:w-auto sm:h-auto sm:bg-none`,
+      `invisible hidden sm:static sm:block sm:w-auto sm:h-auto sm:bg-none`,
     )}
   >
     <ul class={classNames(
@@ -125,6 +126,12 @@ const socialIcons = document.getElementById('social-icons');
 burgerMenu.addEventListener('click', () => {
   burgerMenu.classList.toggle("close");
   menu.classList.toggle("hidden");
+  menu.classList.toggle("invisible");
+
+  const isOpened = !!burgerMenu.classList.contains('close');
+  const verb = isOpened ? `Hide` : `Show`;
+  burgerMenu.setAttribute('aria-label', `${verb} the main navitation menu`);
+  burgerMenu.setAttribute('aria-expanded', `${isOpened}`);
 });
 
 const updateVisibility = () => {
