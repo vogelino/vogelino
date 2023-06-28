@@ -45,11 +45,15 @@ const { project, nextProject, prevProject } = Astro.props;
   <ProjectPageHeader {...project} />
   <div
     class={classNames(
-      `grid grid-cols-3 container mx-auto max-w-6xl px-4 sm:px-8 pb-[20vw] md:pb-[10vw] 2xl:pb-[5vw]`,
+      `grid grid-cols-3 container mx-auto max-w-6xl`,
+      `px-4 sm:px-8 pb-[20vw] md:pb-[10vw] 2xl:pb-[5vw]`,
       `gap-[5vw]`
     )}
   >
-    <article class="col-span-3 md:col-span-2 text-xl md:text-2xl leading-normal">
+    <article class={classNames(
+      `col-span-3 md:col-span-2 text-xl md:text-2xl leading-normal`,
+      `first-letter:text-6xl first-letter:font-special`
+    )}>
       <NotionTextContents blocks={project.blocks || []} />
     </article>
     <aside class="col-span-4 md:col-span-1">

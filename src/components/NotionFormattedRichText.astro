@@ -10,22 +10,29 @@ export interface Props {
 }
 
 const { richText } = Astro.props;
-const highlightClasses = classNames(
-  `bg-alt rounded-full pl-3 pr-2 mr-1 pt-2 pb-1`,
-  `decoration-clone leading-relaxed hyphen-auto`,
-  `focus:outline-none`,
-)
 ---
 
 {richText
-  .map((item) => {
+  .map((item, idx) => {
     const text = item.plain_text;
     if (!text) return false;
     const { bold, italic } = item.annotations;
+    const nextItem = richText[idx + 1];
 
     if (item.href) {
       return (
-        <a href={item.href} target="_blank" class={highlightClasses}>
+        <a
+          href={item.href}
+          target="_blank"
+          class={classNames(
+            `underline decoration-alt underline-offset-4`,
+            `decoration-clone leading-relaxed hyphen-auto`,
+            `focus:outline-none focus:ring-2 focus:ring-fg`,
+            `focus:ring-offset-8 focus:ring-offset-bg`,
+            `focus:rounded-full focus:no-underline pt-1`,
+            `bg-alt/20 hover:bg-alt hover:decoration-fg`,
+          )}
+        >
           {bold && italic && <strong><em>{text}</em></strong>}
           {bold && !italic && <strong>{text}</strong>}
           {!bold && italic && <em>{text}</em>}

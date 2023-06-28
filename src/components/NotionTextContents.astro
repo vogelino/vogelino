@@ -1,4 +1,5 @@
 ---
+import classNames from "../utils/classNames";
 import type { BlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import * as astroComponents from "astro-imagetools/components";
 import NotionFormattedRichText from "./NotionFormattedRichText.astro"
@@ -16,7 +17,22 @@ const { blocks } = Astro.props;
   blocks.map((block) => {
     if (block.type === "paragraph") {
       return (
-        <p class="mb-5 hyphens-auto">
+        <p class={classNames(
+          `mb-5 hyphens-auto`,
+          
+          `first-of-type:first-letter:font-special first-of-type:first-letter:float-left`,
+          `first-of-type:first-letter:font-normal`,
+          
+          `first-of-type:first-letter:text-6xl`,
+          `first-of-type:first-letter:leading-[32px]`,
+          `first-of-type:first-letter:pr-2.5`,
+          `first-of-type:first-letter:pt-2.5`,
+
+          `md:first-of-type:first-letter:text-7xl`,
+          `md:first-of-type:first-letter:leading-[48px]`,
+          `md:first-of-type:first-letter:pr-3`,
+          `md:first-of-type:first-letter:pt-3`,
+        )}>
           <NotionFormattedRichText richText={block.paragraph.rich_text} />
         </p>
       );
@@ -52,3 +68,21 @@ const { blocks } = Astro.props;
     }
   })
 }
+
+<style>
+  p {
+    -webkit-hyphens: auto;
+    -webkit-hyphenate-limit-before: 3;
+    -webkit-hyphenate-limit-after: 3;
+    -webkit-hyphenate-limit-chars: 6 3 3;
+    -webkit-hyphenate-limit-lines: 2;
+    -webkit-hyphenate-limit-last: always;   
+    -webkit-hyphenate-limit-zone: 8%;
+
+    hyphens: auto;
+    hyphenate-limit-chars: 6 3 3;
+    hyphenate-limit-lines: 2;
+    hyphenate-limit-last: always;   
+    hyphenate-limit-zone: 8%;
+  }
+</style>
