@@ -1,7 +1,9 @@
 ---
 import { loadJson } from "../../scripts/lib/loadJson";
+import classNames from "../utils/classNames";
 import { INSPIRATIONS_JSON_PATH } from "../../scripts/paths";
 import Layout from "../layouts/Layout.astro";
+import FancyHeadline from "../components/FancyHeadline.astro";
 import * as astroComponents from "astro-imagetools/components";
 import type { MappedNotionInspirationLinkType } from "../../scripts/lib/parseOriginalNotionInspirations";
 
@@ -11,13 +13,15 @@ const notionLinks = await loadJson<MappedNotionInspirationLinkType[]>(
   INSPIRATIONS_JSON_PATH
 );
 ---
-
 <Layout title="Inspirations">
   <ul
     class="grid mt-24 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 px-8 pb-16 container mx-auto"
   >
-    <div class="relative h-full flex items-center">
-      <h1 class="uppercase text-7xl font-extrabold">Sites <br />I like</h1>
+    <div class="relative h-full flex items-center sm:justify-center">
+      <FancyHeadline
+        title="Cool <br class='hidden sm:block' />**Sites**"
+        className="sm:text-center"
+      />
     </div>
     {
       notionLinks.map((link) => {
@@ -27,8 +31,12 @@ const notionLinks = await loadJson<MappedNotionInspirationLinkType[]>(
               href={link.url}
               target="_blank"
               rel="noopener nofollow"
-              class="flex flex-col gap-4 group"
-            >
+              class={classNames(
+                `flex flex-col gap-4 group`,
+                `focus:ring-2 focus:ring-fg focus:outline-none`,
+                `focus:overflow-hidden focus:rounded-lg`,
+                `focus:ring-offset-8 focus:ring-offset-bg`,
+              )}>
               <span class="relative block aspect-[140/73] bg-zinc-100 rounded overflow-hidden">
                 <Img
                   src={link.thumbnail}
