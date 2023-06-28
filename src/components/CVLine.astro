@@ -14,7 +14,7 @@ export interface props {
 
 const { timePeriod, title, location, certification } = Astro.props
 ---
-<div class={classNames(
+<li class={classNames(
   `text-grayDark bg-bg relative flex flex-col`,
   `border-t border-grayMed text-lg`,
   `@container/cvline`
@@ -29,12 +29,12 @@ const { timePeriod, title, location, certification } = Astro.props
     <span class={certification ? `@md/cvline:row-span-3` : `@md/cvline:row-span-2`}>
       {timePeriod}
     </span>
-    <h4 class={classNames(
+    <h3 class={classNames(
       `@md/cvline:col-span-2 @lg/cvline:col-span-3`,
       `text-lg text-fg text-balance font-bold`
     )}>
       <NotionFormattedRichText richText={title} />
-    </h4>
+    </h3>
     {location && (
       <p class="@md/cvline:col-span-2 @lg/cvline:col-span-3 hyphens-auto">
         {location}
@@ -74,4 +74,4 @@ const { timePeriod, title, location, certification } = Astro.props
       <polyline points="17,0 0,17" stroke="currentColor" fill="none" />
     </svg>
   </div>
-</div>
+</li>

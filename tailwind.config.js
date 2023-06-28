@@ -28,15 +28,16 @@ module.exports = {
     extend: {
       fontFamily: {
         special: ["lobular", ...fallbackFonts],
+
         sans: ["FUNGIS", ...fallbackFonts],
         serif: ["serif"],
         mono: ["monospace"],
       },
       colors: {
-        fg: "#FF0040",
-        fgDark: "#D60039",
+        fg: "#e30002",
+        fgDark: "#a40002",
         bg: "#FCFEFF",
-        alt: "#FFEB84",
+        alt: "#ffef9b",
         grayDark: "#5D7280",
         grayMed: "#D0DFE7",
         grayLight: "#E1ECF2",

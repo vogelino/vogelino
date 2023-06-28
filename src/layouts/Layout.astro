@@ -34,3 +34,8 @@ const { title } = Astro.props;
 
   </body>
 </html>
+
+<script defer>
+  import { inject } from '@vercel/analytics';
+  inject();
+</script>

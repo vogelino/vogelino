@@ -17,12 +17,12 @@ const notionLinks = await loadJson<MappedNotionInspirationLinkType[]>(
   <ul
     class="grid mt-24 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 px-8 pb-16 container mx-auto"
   >
-    <div class="relative h-full flex items-center sm:justify-center">
+    <li class="relative h-full flex items-center sm:justify-center">
       <FancyHeadline
         title="Cool <br class='hidden sm:block' />**Sites**"
         className="sm:text-center"
       />
-    </div>
+    </li>
     {
       notionLinks.map((link) => {
         return (

@@ -34,7 +34,6 @@ const {
     `col-span-2 focus-visible:outline-none`,
     highlighted && `sm:col-span-4 md:col-span-2 xl:col-span-4 xl:row-span-2`
   )}
-  role="heading"
   aria-label={title}
 >
   <div
@@ -122,7 +121,7 @@ const {
         "z-10 tracking-wide leading-4 text-lg"
       )}
     >
-      <h3
+      <p
         aria-label={`project type: ${type}`}
         class={classNames(
           "origin-bottom-left -rotate-90 translate-x-7",
@@ -130,17 +129,17 @@ const {
         )}
       >
         {type.toLowerCase()}
-      </h3>
+      </p>
     </div>
     <div
       class={classNames(
-        `absolute top-4 left-1 whitespace-nowrap suppercase transition`,
-        `z-10 tracking-wide leading-4 text-lg text-grayDark opacity-50`,
-        `group-hover:text-white group-hover:opacity-70`,
-        `group-focus:text-white group-focus:opacity-70`
+        `absolute top-5 left-1 whitespace-nowrap suppercase transition`,
+        `z-10 tracking-wide leading-4 text-lg text-grayDark`,
+        `group-hover:text-white`,
+        `group-focus:text-white`
       )}
     >
-      <h3
+      <p
         aria-label={`project type: ${type}`}
         class={classNames(
           "origin-bottom-left -rotate-90 translate-x-7 translate-y-full",
@@ -148,7 +147,7 @@ const {
         )}
       >
         {year}
-      </h3>
+      </p>
     </div>
   </div>
   <div></div>
