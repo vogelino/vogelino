@@ -14,9 +14,10 @@ const highlightClasses = `bg-alt rounded-full pl-3 pr-2 mr-1 pt-2 pb-1 decoratio
 
 <div class="relative overflow-hidden w-screen max-w-[1440px] mx-auto">
   <div
+    aria-hidden="true"
     class={classNames(
       `w-screen absolute top-0 left-1/2 -translate-x-1/2 -z-10 max-w-[1440px]`,
-      `h-[60vh] overflow-hidden md:h-screen border-b border-grayMed`
+      `h-[80svh] overflow-hidden md:h-screen border-b border-grayMed`
     )}
   >
     <Img
@@ -85,7 +86,9 @@ const highlightClasses = `bg-alt rounded-full pl-3 pr-2 mr-1 pt-2 pb-1 decoratio
               `font-special antialiased absolute left-1/2 -translate-x-1/2`,
               `top-0 text-2xl -translate-y-1/2 px-4 pb-1 rounded-full bg-fg text-alt`,
               `transition-colors hover:bg-alt hover:text-fg border-2 border-fg`,
-              `hover:scale-110 special-button flex gap-2 items-center`
+              `hover:scale-110 special-button flex gap-2 items-center`,
+              `focus:ring-2 focus:ring-fg focus:ring-offset-4 ring-offset-alt`,
+              `focus:outline-none`
             )}
           >
             <span>Launch</span> <Link className="mt-1" />
