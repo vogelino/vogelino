@@ -46,7 +46,7 @@ module.exports = {
       backgroundImage: {
         "tooth-pattern": "url('/images/tooth-pattern.svg')",
       },
-      height: { screen: ['100vh', '100dvh'] },
+      height: { screen: ['100vh', '100svh'] },
     },
   },
   plugins: [
