@@ -52,10 +52,9 @@ import classNames from '../utils/classNames'
 
 			this.frame = 0
 
-			window.addEventListener('resize', this.resize)
 			this.resize()
 
-			window.requestAnimationFrame(this.loop)
+			requestAnimationFrame(this.loop)
 		}
 
 		resize() {
@@ -79,6 +78,7 @@ import classNames from '../utils/classNames'
 			}
 
 			patternCtx.putImageData(patternData, 0, 0)
+			this.resize()
 		}
 
 		draw() {
@@ -101,7 +101,7 @@ import classNames from '../utils/classNames'
 				this.draw()
 			}
 
-			window.requestAnimationFrame(this.loop)
+			requestAnimationFrame(this.loop)
 		}
 	}
 
