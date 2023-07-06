@@ -126,6 +126,48 @@ const withoutBgClasses = 'border-b-transparent'
 		requestAnimationFrame(updateHeaderBg)
 	}
 	updateHeaderBg()
+
+	const scrollUp = 'translate-y-0'
+	const scrollDown = '-translate-y-full'
+	let lastScroll =
+		window.pageYOffset ??
+		document.documentElement.scrollTop ??
+		document.body.scrollTop ??
+		0
+
+	function updateScrollUpAndDownVisibility() {
+		if (!header) return
+
+		const currentScroll =
+			window.pageYOffset ??
+			document.documentElement.scrollTop ??
+			document.body.scrollTop ??
+			0
+
+		if (currentScroll <= 69) {
+			header.classList.remove(scrollUp)
+			requestAnimationFrame(updateScrollUpAndDownVisibility)
+			return
+		}
+
+		if (currentScroll > lastScroll && !header.classList.contains(scrollDown)) {
+			// down
+			header.classList.remove(scrollUp)
+			header.classList.add(scrollDown)
+		} else if (
+			currentScroll < lastScroll &&
+			header.classList.contains(scrollDown)
+		) {
+			// up
+			header.classList.remove(scrollDown)
+			header.classList.add(scrollUp)
+		}
+		lastScroll = currentScroll
+
+		requestAnimationFrame(updateScrollUpAndDownVisibility)
+	}
+
+	updateScrollUpAndDownVisibility()
 </script>
 
 <style>
