@@ -2,8 +2,7 @@
 const plugin = require('tailwindcss/plugin');
 
 const fallbackFonts = [
-  "ui-sans-serif",
-  "system-ui",
+  "ui-sans-serif", "system-ui",
   "-apple-system",
   "BlinkMacSystemFont",
   "Segoe UI",
@@ -46,7 +45,8 @@ module.exports = {
       backgroundImage: {
         "tooth-pattern": "url('/images/tooth-pattern.svg')",
       },
-      height: { screen: ['100vh', '100svh'] },
+      height: { screen: '100svh' },
+      width: { screen: '100svw' },
     },
   },
   plugins: [
