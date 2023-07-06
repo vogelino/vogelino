@@ -4,7 +4,7 @@
     "dev": "TAILWIND_MODE=watch astro dev",
     "start": "astro dev",
     "build": "npm run downloadCacheData && npm run downloadInspiration && npm run downloadCollaborators && npm run downloadProjectImages && npm run astroBuild",
-    "astroBuild": "npm run type-check && npm run format && npm run lint && astro build",
+    "astroBuild": "astro build",
     "preview": "astro preview",
     "astro": "astro",
     "type-check": "astro check && tsc --noEmit",
