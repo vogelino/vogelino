@@ -1,0 +1,29 @@
+---
+import * as astroComponents from 'astro-imagetools/components'
+
+const { Img } = astroComponents
+
+const { project } = Astro.props
+---
+
+<li
+	class:list={[
+		`splide__slide`,
+		`w-screen h-[calc(100svh-154px)] px-6 !my-16`,
+		`flex items-center justify-center`,
+	]}
+>
+	<div
+		class:list={[
+			`rounded overflow-hidden shadow-lg shadow-grayMed`,
+			`ring ring-1 ring-black/5`,
+		]}
+	>
+		<Img
+			src={`/images/thumbnails/${project.slug}.webp`}
+			alt={`Screenshot of the project ${project.title}`}
+			layout="fullWidth"
+			attributes={{ img: { 'data-action': 'zoom' } }}
+		/>
+	</div>
+</li>
