@@ -42,8 +42,8 @@ const withoutBgClasses = 'border-b-transparent'
 		id="menu"
 		aria-labelledby="burger-menu"
 		class={classNames(
-			`fixed top-[69px] left-0 w-screen h-[calc(100dvh-69px)] bg-bg`,
-			`opacity-0 pointer-events-none sm:opacity-100 sm:pointer-events-auto`,
+			`fixed top-[69px] left-0 w-screen h-[calc(100dvh-69px)] bg-bg sm:bg-transparent`,
+			`opacity-0 pointer-events-none sm:opacity-100 sm:static sm:pointer-events-auto`,
 			`sm:w-auto sm:h-auto sm:bg-none transition-opacity`,
 		)}
 	>
@@ -61,67 +61,6 @@ const withoutBgClasses = 'border-b-transparent'
 		</ul>
 	</nav>
 </header>
-
-<style>
-	#burger-menu {
-		cursor: pointer;
-		height: 39px;
-		width: 39px;
-		overflow: visible;
-		position: relative;
-		z-index: 2;
-		@apply -mr-2;
-	}
-	#burger-menu:focus {
-		@apply ring-2 ring-fg outline-none rounded-full;
-	}
-	#burger-menu span,
-	#burger-menu span:before,
-	#burger-menu span:after {
-		@apply bg-fg;
-		display: block;
-		height: 2px;
-		opacity: 1;
-		position: absolute;
-		transition: 0.3s ease-in-out;
-	}
-	#burger-menu span:before,
-	#burger-menu span:after {
-		content: '';
-	}
-	#burger-menu span:before {
-		left: 0px;
-		top: -10px;
-		width: 27px;
-	}
-	#burger-menu span {
-		right: 6px;
-		top: 18px;
-		width: 27px;
-	}
-	#burger-menu span:after {
-		left: 0px;
-		top: 10px;
-		width: 27px;
-	}
-	#burger-menu.close span:before {
-		top: 0px;
-		transform: rotate(90deg);
-		width: 27px;
-	}
-	#burger-menu.close span {
-		transform: rotate(-45deg);
-		top: 18px;
-		width: 27px;
-	}
-	#burger-menu.close span:after {
-		top: 0px;
-		left: 0;
-		transform: rotate(90deg);
-		opacity: 0;
-		width: 0;
-	}
-</style>
 
 <script defer>
 	// -- Hamburger menu
@@ -188,3 +127,64 @@ const withoutBgClasses = 'border-b-transparent'
 	}
 	updateHeaderBg()
 </script>
+
+<style>
+	#burger-menu {
+		cursor: pointer;
+		height: 39px;
+		width: 39px;
+		overflow: visible;
+		position: relative;
+		z-index: 2;
+		@apply -mr-2;
+	}
+	#burger-menu:focus {
+		@apply ring-2 ring-fg outline-none rounded-full;
+	}
+	#burger-menu span,
+	#burger-menu span:before,
+	#burger-menu span:after {
+		@apply bg-fg;
+		display: block;
+		height: 2px;
+		opacity: 1;
+		position: absolute;
+		transition: 0.3s ease-in-out;
+	}
+	#burger-menu span:before,
+	#burger-menu span:after {
+		content: '';
+	}
+	#burger-menu span:before {
+		left: 0px;
+		top: -10px;
+		width: 27px;
+	}
+	#burger-menu span {
+		right: 6px;
+		top: 18px;
+		width: 27px;
+	}
+	#burger-menu span:after {
+		left: 0px;
+		top: 10px;
+		width: 27px;
+	}
+	#burger-menu.close span:before {
+		top: 0px;
+		transform: rotate(90deg);
+		width: 27px;
+	}
+	#burger-menu.close span {
+		transform: rotate(-45deg);
+		top: 18px;
+		width: 27px;
+	}
+	#burger-menu.close span:after {
+		top: 0px;
+		left: 0;
+		transform: rotate(90deg);
+		opacity: 0;
+		width: 0;
+	}
+</style>
