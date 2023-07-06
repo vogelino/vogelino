@@ -1,0 +1,72 @@
+---
+import ProjectSliderSlide from '../components/ProjectSliderSlide.astro'
+
+const { project } = Astro.props
+---
+
+<div
+	class="splide h-[calc(100svh-16px)] w-screen"
+	aria-label="List of project images"
+>
+	<div
+		class:list={[
+			`splide__track h-[calc(100svh-16px)] w-screen`,
+			`border-b-grayMed border-b bg-grayUltraLight`,
+		]}
+	>
+		<ul class="splide__list w-screen h-[calc(100svh-16px)]">
+			<ProjectSliderSlide project={project} />
+			<ProjectSliderSlide project={project} />
+			<ProjectSliderSlide project={project} />
+			<ProjectSliderSlide project={project} />
+			<ProjectSliderSlide project={project} />
+			<ProjectSliderSlide project={project} />
+		</ul>
+	</div>
+</div>
+
+<script>
+	import Splide from '@splidejs/splide'
+
+	const slider = new Splide('.splide', {
+		rewind: true,
+		arrows: false,
+		pagination: true,
+		paginationKeyboard: true,
+	})
+
+	slider.mount()
+
+	const nextButton = document.getElementById('project-next')
+	const prevButton = document.getElementById('project-prev')
+
+	nextButton.addEventListener('click', (evt) => {
+		evt.preventDefault()
+		slider.go('>')
+	})
+	prevButton.addEventListener('click', (evt) => {
+		evt.preventDefault()
+		slider.go('<')
+	})
+</script>
+
+<style is:global>
+	.splide__slide img {
+		@apply rounded max-w-[calc(100svw-48px)] max-h-[calc(100svh-154px)];
+	}
+	.splide__pagination {
+		@apply absolute left-1/2 opacity-0 sm:opacity-100 bottom-7 gap-3 -translate-x-1/2;
+	}
+
+	.splide__pagination li {
+		@apply w-3 h-3;
+	}
+
+	button.splide__pagination__page {
+		@apply w-3 h-3 rounded-full bg-grayMed transition-colors;
+	}
+
+	button.splide__pagination__page[aria-selected='true'] {
+		@apply bg-fg;
+	}
+</style>
