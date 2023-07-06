@@ -47,20 +47,20 @@ const { project, nextProject, prevProject } = Astro.props
 <Layout title={project.title} withHeaderBg={false}>
 	<main class:list={[`flex flex-col`]}>
 		<div
-			class="splide h-[calc(100dvh-16px)] w-screen"
+			class="splide h-[calc(100svh-16px)] w-screen"
 			aria-label="List of project images"
 		>
 			<div
 				class:list={[
-					`splide__track h-[calc(100dvh-16px)] w-screen bg-grayUltraLight`,
+					`splide__track h-[calc(100svh-16px)] w-screen bg-grayUltraLight`,
 					`border-b-grayMed border-b`,
 				]}
 			>
-				<ul class:list={[`splide__list`, `w-screen h-[calc(100dvh-16px)]`]}>
+				<ul class:list={[`splide__list`, `w-screen h-[calc(100svh-16px)]`]}>
 					<li
 						class:list={[
 							`splide__slide`,
-							`w-screen h-[calc(100dvh-16px)] px-6 py-16`,
+							`w-screen h-[calc(100svh-16px)] px-6 py-16`,
 							`flex items-center justify-center`,
 						]}
 					>
@@ -79,7 +79,7 @@ const { project, nextProject, prevProject } = Astro.props
 					</li><li
 						class:list={[
 							`splide__slide`,
-							`w-screen h-[calc(100dvh-69px-16px)] pt-[69px]`,
+							`w-screen h-[calc(100svh-69px-16px)] pt-[69px]`,
 							`flex items-center justify-center px-6`,
 						]}
 					>
@@ -98,7 +98,7 @@ const { project, nextProject, prevProject } = Astro.props
 					</li><li
 						class:list={[
 							`splide__slide`,
-							`w-screen h-[calc(100dvh-69px-16px)] pt-[69px]`,
+							`w-screen h-[calc(100svh-69px-16px)] pt-[69px]`,
 							`flex items-center justify-center px-6`,
 						]}
 					>
