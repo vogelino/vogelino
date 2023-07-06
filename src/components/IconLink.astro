@@ -1,23 +1,23 @@
 ---
-import classNames from "../utils/classNames";
+import classNames from '../utils/classNames'
 
 export interface Props {
-  href: string;
-  ariaLabel: string;
+	href: string
+	ariaLabel: string
 }
 
-const { href, ariaLabel } = Astro.props;
+const { href, ariaLabel } = Astro.props
 ---
-<a
-  href={href}
-  aria-label={ariaLabel}
-  target="_blank"
-  class={classNames(
-    `text-xl px-1.5 py-1 -ml-1.5 rounded-full`,
-    `transition-colors flex items-center`,
-    `hover:bg-fg hover:text-alt focus:ring-2 focus:ring-fg focus:outline-none`
-  )}
->
-  <slot />
-</a>
 
+<a
+	href={href}
+	aria-label={ariaLabel}
+	target="_blank"
+	class={classNames(
+		`text-xl px-1.5 py-1 -ml-1.5 rounded-full`,
+		`transition-colors flex items-center`,
+		`hover:bg-fg hover:text-alt focus:ring-2 focus:ring-fg focus:outline-none`,
+	)}
+>
+	<slot />
+</a>

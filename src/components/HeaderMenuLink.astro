@@ -1,38 +1,36 @@
 ---
-import classNames from "../utils/classNames";
+import classNames from '../utils/classNames'
 
 export interface Props {
-  href: string;
-  title: string;
-  className?: string;
+	href: string
+	title: string
+	className?: string
 }
 
-const { href, title, className } = Astro.props;
+const { href, title, className } = Astro.props
 
-const pathname = new URL(Astro.request.url).pathname.replaceAll('/', '');
-const active = pathname === href.replaceAll('/', '');
+const pathname = new URL(Astro.request.url).pathname.replaceAll('/', '')
+const active = pathname === href.replaceAll('/', '')
 ---
-<li className="inline-block w-full sm:w-auto">
-  <a
-    href={href}
-    aria-label={`Header menu link: ${title} page`}
-    class={classNames(
-      `uppercase sm:normal-case text-3xl tracking-wide`,
-      `pb-5 px-6 border-b border-grayLight`,
-      `sm:tracking-normal sm:border-none sm:py-1`,
-      `inline-block w-screen sm:w-auto sm:rounded-full`,
-      `focus:ring-2 focus:ring-fg focus:outline-none`,
-      !active && [
-        `pt-6 sm:text-xl hover-hover:hover:bg-alt sm:px-4 sm:pt-2`,
-      ],
-      active && [
-        `text-4xl pt-4`,
-        `font-special bg-alt sm:text-[26px] sm:px-3 sm:pb-1 sm:pt-0`,
-      ],
-    )}
-    tabindex={active ? -1 : 0}
-  >
-    {title}
-  </a>
-</li>
 
+<li className="inline-block w-full sm:w-auto">
+	<a
+		href={href}
+		aria-label={`Header menu link: ${title} page`}
+		class={classNames(
+			`uppercase sm:normal-case text-3xl tracking-wide`,
+			`pb-5 px-6 border-b border-grayLight`,
+			`sm:tracking-normal sm:border-none sm:py-1`,
+			`inline-block w-screen sm:w-auto sm:rounded-full`,
+			`focus:ring-2 focus:ring-fg focus:outline-none`,
+			!active && [`pt-6 sm:text-xl hover-hover:hover:bg-alt sm:px-4 sm:pt-2`],
+			active && [
+				`text-4xl pt-4`,
+				`font-special bg-alt sm:text-[26px] sm:px-3 sm:pb-1 sm:pt-0`,
+			],
+		)}
+		tabindex={active ? -1 : 0}
+	>
+		{title}
+	</a>
+</li>

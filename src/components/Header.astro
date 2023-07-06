@@ -1,152 +1,190 @@
 ---
-import classNames from "../utils/classNames";
-import LogoInteractive from "./LogoInteractive.astro";
-import HeaderMenuLink from "./HeaderMenuLink.astro";
-import SocialIcons from "./SocialIcons.astro";
+import classNames from '../utils/classNames'
+import LogoInteractive from './LogoInteractive.astro'
+import HeaderMenuLink from './HeaderMenuLink.astro'
+import SocialIcons from './SocialIcons.astro'
+
+export interface Props {
+	noBg?: boolean
+}
+
+const { withBg = true } = Astro.props
+
+const withBgClasses = 'bg-bg border-grayMed'
+const withoutBgClasses = 'border-b-transparent'
 ---
+
 <header
-  aria-label="Main header"
-  class={classNames(
-    `fixed top-0 left-1/2 -translate-x-1/2 w-screen z-40`,
-    `bg-bg text-fg border-b border-grayMed px-6`,
-    `max-w-[1440px] min-[1440px]:border-x min-[1440px]:border-grayMed`,
-    `flex justify-between items-center h-[69px]`,
-  )}
+	aria-label="Main header"
+	class={classNames(
+		`fixed top-0 left-1/2 -translate-x-1/2 w-screen z-40`,
+		`text-fg px-6 max-w-[1440px] min-[1440px]:border-x`,
+		`min-[1440px]:border-x-grayMed border-b`,
+		`flex justify-between items-center h-[69px]`,
+		`transition`,
+		withBg ? withBgClasses : withoutBgClasses,
+	)}
+	data-withBg={`${withBg}`}
+	data-withBgClasses={withBgClasses}
+	data-withoutBgClasses={withoutBgClasses}
 >
-  <LogoInteractive />
-  <button
-    aria-label="Hide the main navitation menu"
-    id="burger-menu"
-    aria-hidden="false"
-    aria-expanded="false"
-    class="sm:hidden sm:invisible"
-  >
-    <span />
-  </button>
-  <nav
-    id="menu"
-    aria-labelledby="burger-menu"
-    class={classNames(
-      `fixed top-[69px] left-0 w-screen h-[calc(100dvh-69px)] bg-bg`,
-      `invisible hidden sm:static sm:visible sm:block sm:w-auto sm:h-auto sm:bg-none`,
-    )}
-  >
-    <ul class={classNames(
-      `flex flex-col sm:flex-row sm:gap-2 items-center`
-    )}>
-      <HeaderMenuLink
-        href="/"
-        title="Projects"
-      />
-      <HeaderMenuLink
-        href="/about"
-        title="About"
-      />
-      <HeaderMenuLink
-        href="/inspirations"
-        title="Cool sites"
-      />
-      <li
-        aria-hidden="false"
-        id="social-icons"
-        class="sm:hidden w-screen py-5 text-grayDark"
-      >
-        <SocialIcons />
-      </li>
-    </ul>
-  </nav>
+	<LogoInteractive />
+	<button
+		aria-label="Hide the main navitation menu"
+		id="burger-menu"
+		aria-hidden="false"
+		aria-expanded="false"
+		class="sm:hidden sm:invisible"
+	>
+		<span></span>
+	</button>
+	<nav
+		id="menu"
+		aria-labelledby="burger-menu"
+		class={classNames(
+			`fixed top-[69px] left-0 w-screen h-[calc(100dvh-69px)] bg-bg`,
+			`opacity-0 pointer-events-none sm:opacity-100 sm:pointer-events-auto`,
+			`sm:w-auto sm:h-auto sm:bg-none transition-opacity`,
+		)}
+	>
+		<ul class={classNames(`flex flex-col sm:flex-row sm:gap-2 items-center`)}>
+			<HeaderMenuLink href="/" title="Projects" />
+			<HeaderMenuLink href="/about" title="About" />
+			<HeaderMenuLink href="/inspirations" title="Cool sites" />
+			<li
+				aria-hidden="false"
+				id="social-icons"
+				class="sm:hidden w-screen py-5 text-grayDark"
+			>
+				<SocialIcons />
+			</li>
+		</ul>
+	</nav>
 </header>
 
 <style>
-#burger-menu {
-  cursor: pointer;
-  height: 39px;
-  width: 39px;
-  overflow: visible;
-  position: relative;
-  z-index: 2;
-  @apply -mr-2;
-}
-#burger-menu:focus {
-  @apply ring-2 ring-fg outline-none rounded-full;
-}
-#burger-menu span,
-#burger-menu span:before,
-#burger-menu span:after {
-  @apply bg-fg;
-  display: block;
-  height: 2px;
-  opacity: 1;
-  position: absolute;
-  transition: 0.3s ease-in-out;
-}
-#burger-menu span:before,
-#burger-menu span:after {
-  content: "";
-}
-#burger-menu span:before {
-  left: 0px;
-  top: -10px;
-  width: 27px;
-}
-#burger-menu span {
-  right: 6px;
-  top: 18px;
-  width: 27px;
-}
-#burger-menu span:after {
-  left: 0px;
-  top: 10px;
-  width: 27px;
-}
-#burger-menu.close span:before {
-  top: 0px;
-  transform: rotate(90deg);
-  width: 27px;
-}
-#burger-menu.close span {
-  transform: rotate(-45deg);
-  top: 18px;
-  width: 27px;
-}
-#burger-menu.close span:after {
-  top: 0px;
-  left: 0;
-  transform: rotate(90deg);
-  opacity: 0;
-  width: 0;
-}
+	#burger-menu {
+		cursor: pointer;
+		height: 39px;
+		width: 39px;
+		overflow: visible;
+		position: relative;
+		z-index: 2;
+		@apply -mr-2;
+	}
+	#burger-menu:focus {
+		@apply ring-2 ring-fg outline-none rounded-full;
+	}
+	#burger-menu span,
+	#burger-menu span:before,
+	#burger-menu span:after {
+		@apply bg-fg;
+		display: block;
+		height: 2px;
+		opacity: 1;
+		position: absolute;
+		transition: 0.3s ease-in-out;
+	}
+	#burger-menu span:before,
+	#burger-menu span:after {
+		content: '';
+	}
+	#burger-menu span:before {
+		left: 0px;
+		top: -10px;
+		width: 27px;
+	}
+	#burger-menu span {
+		right: 6px;
+		top: 18px;
+		width: 27px;
+	}
+	#burger-menu span:after {
+		left: 0px;
+		top: 10px;
+		width: 27px;
+	}
+	#burger-menu.close span:before {
+		top: 0px;
+		transform: rotate(90deg);
+		width: 27px;
+	}
+	#burger-menu.close span {
+		transform: rotate(-45deg);
+		top: 18px;
+		width: 27px;
+	}
+	#burger-menu.close span:after {
+		top: 0px;
+		left: 0;
+		transform: rotate(90deg);
+		opacity: 0;
+		width: 0;
+	}
 </style>
 
 <script defer>
-const burgerMenu = document.getElementById('burger-menu');
-const menu = document.getElementById('menu');
-const socialIcons = document.getElementById('social-icons');
+	// -- Hamburger menu
+	const burgerMenu = document.getElementById('burger-menu')
+	const menu = document.getElementById('menu')
+	const socialIcons = document.getElementById('social-icons')
 
-burgerMenu.addEventListener('click', () => {
-  burgerMenu.classList.toggle("close");
-  menu.classList.toggle("hidden");
-  menu.classList.toggle("invisible");
+	// -- Header background toggle
+	const header = document.querySelector('header[aria-label="Main header"]')
+	const withBg = header.dataset.withbg
 
-  const isOpened = !!burgerMenu.classList.contains('close');
-  const verb = isOpened ? `Hide` : `Show`;
-  burgerMenu.setAttribute('aria-label', `${verb} the main navitation menu`);
-  burgerMenu.setAttribute('aria-expanded', `${isOpened}`);
-});
+	const withBgClassString = header.dataset.withbgclasses || ''
+	const withoutBgClassString = header.dataset.withoutbgclasses || ''
+	const withBgClasses = withBgClassString.trim().split(' ')
+	const withoutBgClasses = withoutBgClassString.trim().split(' ')
 
-const updateVisibility = () => {
-  if (window.innerWidth < 768) {
-    burgerMenu.setAttribute('aria-hidden', "false");
-    socialIcons.setAttribute('aria-hidden', "false");
-  } else {
-    burgerMenu.setAttribute('aria-hidden', "true");
-    socialIcons.setAttribute('aria-hidden', "true");
-  }
-}
+	// -- Hamburger menu logic
+	burgerMenu.addEventListener('click', () => {
+		burgerMenu.classList.toggle('close')
+		menu.classList.toggle('opacity-0')
+		menu.classList.toggle('pointer-events-none')
 
-const mediaQuery = window.matchMedia(`@media screen and (max-width: 767px)`)
-mediaQuery.addEventListener(`change`, updateVisibility)
+		const isOpened = !!burgerMenu.classList.contains('close')
+		const verb = isOpened ? `Hide` : `Show`
+		burgerMenu.setAttribute('aria-label', `${verb} the main navitation menu`)
+		burgerMenu.setAttribute('aria-expanded', `${isOpened}`)
+	})
 
-updateVisibility()
+	const updateVisibility = () => {
+		if (window.innerWidth < 768) {
+			burgerMenu.setAttribute('aria-hidden', 'false')
+			socialIcons.setAttribute('aria-hidden', 'false')
+		} else {
+			burgerMenu.setAttribute('aria-hidden', 'true')
+			socialIcons.setAttribute('aria-hidden', 'true')
+		}
+	}
+
+	const mediaQuery = window.matchMedia(`@media screen and (max-width: 767px)`)
+	mediaQuery.addEventListener(`change`, updateVisibility)
+
+	updateVisibility()
+
+	// -- Header background logic
+	function updateHeaderBg() {
+		if (!header) return
+
+		const isOpened = !!burgerMenu.classList.contains('close')
+		const scrollOffset =
+			window.pageYOffset ??
+			document.documentElement.scrollTop ??
+			document.body.scrollTop ??
+			0
+
+		if (withBg !== 'false' || scrollOffset >= 50 || isOpened) {
+			header.classList.add(...withBgClasses)
+			header.classList.remove(...withoutBgClasses)
+		} else if (scrollOffset < 50 && !isOpened) {
+			header.classList.remove(...withBgClasses)
+			header.classList.add(...withoutBgClasses)
+		}
+
+		requestAnimationFrame(updateHeaderBg)
+	}
+	updateHeaderBg()
 </script>
-

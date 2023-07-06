@@ -1,41 +1,46 @@
 ---
-import classNames from "../utils/classNames";
-import Footer from "../components/Footer.astro";
-import Header from "../components/Header.astro";
-import OverlayTexture from "../components/OverlayTexture.astro";
-import GlobalStyles from "../components/GlobalStyles.astro";
+import classNames from '../utils/classNames'
+import Footer from '../components/Footer.astro'
+import Header from '../components/Header.astro'
+import OverlayTexture from '../components/OverlayTexture.astro'
+import GlobalStyles from '../components/GlobalStyles.astro'
 
 export interface Props {
-  title: string;
+	title: string
+	withHeaderBg?: boolean
 }
 
-const { title } = Astro.props;
+const { title, withHeaderBg = true } = Astro.props
 ---
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <meta name="description" content="Interface design and development portfolio of Lucas Vogel" />
-    <title>{[title, "Vogelino"].join(" – ")}</title>
-  </head>
-  <body class={classNames(
-    `bg-bg text-fg w-screen overflow-x-hidden mx-auto`,
-    `max-w-[1440px] min-[1440px]:border-x min-[1440px]:border-grayMed`,
-  )}>
-    <Header />
-    <slot />
-    <Footer />
-    <OverlayTexture />
-    <GlobalStyles />
-
-  </body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<meta
+			name="description"
+			content="Interface design and development portfolio of Lucas Vogel"
+		/>
+		<title>{[title, 'Vogelino'].join(' – ')}</title>
+	</head>
+	<body
+		class={classNames(
+			`bg-bg text-fg w-screen overflow-x-hidden mx-auto`,
+			`max-w-[1440px] min-[1440px]:border-x min-[1440px]:border-grayMed`,
+		)}
+	>
+		<Header withBg={withHeaderBg} />
+		<slot />
+		<Footer />
+		<OverlayTexture />
+		<GlobalStyles />
+	</body>
 </html>
 
 <script defer>
-  import { inject } from '@vercel/analytics';
-  inject();
+	import { inject } from '@vercel/analytics'
+	inject()
 </script>

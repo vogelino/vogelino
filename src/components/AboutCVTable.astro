@@ -1,27 +1,17 @@
 ---
-import classNames from "../utils/classNames";
-import CVTableRow from "./CVTableRow.astro";
+import classNames from '../utils/classNames'
+import CVTableRow from './CVTableRow.astro'
 ---
-<dl class={classNames(
-  `grid @xs/sidebar:grid-cols-[2fr,3fr]`,
-  `@sm/sidebar:grid-cols-[auto,1fr]`,
-  `border-b border-grayMed text-lg`,
-)}>
-  <CVTableRow
-    title="Full name"
-    value="Lucas Vogel Urzúa"
-  />
-  <CVTableRow
-    title="Nationality"
-    value="Swiss & Chilean"
-  />
-  <CVTableRow
-    title="Birth date & place"
-    value="Lausanne, CH"
-  />
-  <CVTableRow
-    title="Languages"
-    value="French, Spanish, German, English"
-  />
-</dl>
 
+<dl
+	class={classNames(
+		`grid @xs/sidebar:grid-cols-[2fr,3fr]`,
+		`@sm/sidebar:grid-cols-[auto,1fr]`,
+		`border-b border-grayMed text-lg`,
+	)}
+>
+	<CVTableRow title="Full name" value="Lucas Vogel Urzúa" />
+	<CVTableRow title="Nationality" value="Swiss & Chilean" />
+	<CVTableRow title="Birth date & place" value="Lausanne, CH" />
+	<CVTableRow title="Languages" value="French, Spanish, German, English" />
+</dl>

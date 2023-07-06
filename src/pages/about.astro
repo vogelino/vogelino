@@ -1,52 +1,56 @@
 ---
-import classNames from "../utils/classNames";
-import Layout from "../layouts/Layout.astro";
-import Pdf from "../components/icons/Pdf.astro";
-import AboutCVTable from "../components/AboutCVTable.astro";
-import AboutCVExperience from "../components/AboutCVExperience.astro";
-import AboutDescription from "../components/AboutDescription.astro";
-import SocialIcons from "../components/SocialIcons.astro";
-import FancyHeadline from "../components/FancyHeadline.astro";
-import IconTextLink from "../components/IconTextLink.astro";
+import classNames from '../utils/classNames'
+import Layout from '../layouts/Layout.astro'
+import Pdf from '../components/icons/Pdf.astro'
+import AboutCVTable from '../components/AboutCVTable.astro'
+import AboutCVExperience from '../components/AboutCVExperience.astro'
+import AboutDescription from '../components/AboutDescription.astro'
+import SocialIcons from '../components/SocialIcons.astro'
+import FancyHeadline from '../components/FancyHeadline.astro'
+import IconTextLink from '../components/IconTextLink.astro'
 ---
 
 <Layout title="About me">
-  <div class={classNames(
-    `grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 pt-[68px]`,
-    `bg-gray-200 min-h-screen gap-px`
-  )}>
-    <section class={classNames(
-      `h-full px-6 py-5`,
-      `md:col-span-2 lg:col-span-3 bg-bg`
-    )}>
-      <AboutDescription />
-    </section>
-    <section class={classNames(
-      `h-full pt-5 @container/sidebar`,
-      `order-1 md:order-last lg:col-span-2 bg-bg`
-    )}>
-      <FancyHeadline
-        tag="h2"
-        title="My **CV**"
-        className={classNames(
-          `pb-[2vmax] pt-[1.5vmax]`,
-          `flex flex-wrap justify-between items-center`,
-          `px-6 gap-x-8 gap-y-4`,
-        )}
-      >
-        <IconTextLink
-          href={`https://www.linkedin.com/in/vogelino/`}
-          ariaLabel={`Download my curriculum as a PDF file`}
-          text={`PDF`}
-        >
-          <Pdf />
-        </IconTextLink>
-      </FancyHeadline>
-      <AboutCVTable />
-      <SocialIcons className="bg-grayUltraLight pt-6" />
-      <AboutCVExperience />
-    </section>
-  </div>
+	<div
+		class={classNames(
+			`grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 pt-[68px]`,
+			`bg-gray-200 min-h-screen gap-px`,
+		)}
+	>
+		<section
+			class={classNames(
+				`h-full px-6 py-5`,
+				`md:col-span-2 lg:col-span-3 bg-bg`,
+			)}
+		>
+			<AboutDescription />
+		</section>
+		<section
+			class={classNames(
+				`h-full pt-5 @container/sidebar`,
+				`order-1 md:order-last lg:col-span-2 bg-bg`,
+			)}
+		>
+			<FancyHeadline
+				tag="h2"
+				title="My **CV**"
+				className={classNames(
+					`pb-[2vmax] pt-[1.5vmax]`,
+					`flex flex-wrap justify-between items-center`,
+					`px-6 gap-x-8 gap-y-4`,
+				)}
+			>
+				<IconTextLink
+					href={`https://www.linkedin.com/in/vogelino/`}
+					ariaLabel={`Download my curriculum as a PDF file`}
+					text={`PDF`}
+				>
+					<Pdf />
+				</IconTextLink>
+			</FancyHeadline>
+			<AboutCVTable />
+			<SocialIcons className="bg-grayUltraLight pt-6" />
+			<AboutCVExperience />
+		</section>
+	</div>
 </Layout>
-
-

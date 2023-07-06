@@ -33,6 +33,7 @@ export interface MappedNotionProject extends Record<string, unknown> {
   bgImage: string;
   year: number;
   url: null | string;
+  clients: MappedCollaboratorPageType[];
   collaborators: MappedCollaboratorPageType[];
   supervisors: MappedCollaboratorPageType[];
   colleagues: MappedCollaboratorPageType[];

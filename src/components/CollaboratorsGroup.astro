@@ -1,51 +1,51 @@
 ---
-import type { MappedCollaboratorPageType } from "../../scripts/lib/parseOriginalNotionProjects";
-import classNames from "../utils/classNames";
-import CollaboratorItem from "./CollaboratorItem.astro";
+import type { MappedCollaboratorPageType } from '../../scripts/lib/parseOriginalNotionProjects'
+import classNames from '../utils/classNames'
+import CollaboratorItem from './CollaboratorItem.astro'
 
 export interface Props {
-  collaborators: MappedCollaboratorPageType[];
+	collaborators: MappedCollaboratorPageType[]
 }
 
-const props = Astro.props;
+const props = Astro.props
 ---
 
 {
-  !!props.collaborators.length && (
-    <div class={classNames(`text-grayDark bg-bg relative flex flex-col`)}>
-      <div class="min-h-[calc(100%-1rem)] w-[calc(100%-1rem)] ml-4 border-l border-grayLight">
-        <h2 class="p-4 uppercase">
-          <slot />
-        </h2>
-        <ul>
-          {props.collaborators.map((collaborator) => (
-            <CollaboratorItem collaborator={collaborator} />
-          ))}
-        </ul>
-      </div>
-      <div
-        class={classNames(
-          `col-span-3 relative bg-grayUltraLight`,
-          `h-4 pointer-events-none border-t border-grayLight`
-        )}
-      >
-        <svg
-          width="16px"
-          height="20px"
-          viewBox="0 0 16 20"
-          class="absolute bottom-0 left-0 text-bg"
-        >
-          <polygon points="0,0 16,0 16,4 0,20" fill="currentColor" />
-        </svg>
-        <svg
-          width="17px"
-          height="17px"
-          viewBox="0 0 17 17"
-          class="absolute bottom-0 left-0 text-grayLight"
-        >
-          <polyline points="17,0 0,17" stroke="currentColor" fill="none" />
-        </svg>
-      </div>
-    </div>
-  )
+	!!props.collaborators.length && (
+		<div class={classNames(`text-grayDark bg-bg relative flex flex-col`)}>
+			<div class="min-h-[calc(100%-1rem)] w-[calc(100%-1rem)] ml-4 border-l border-grayLight">
+				<h2 class="p-4 uppercase">
+					<slot />
+				</h2>
+				<ul>
+					{props.collaborators.map((collaborator) => (
+						<CollaboratorItem collaborator={collaborator} />
+					))}
+				</ul>
+			</div>
+			<div
+				class={classNames(
+					`col-span-3 relative bg-grayUltraLight`,
+					`h-4 pointer-events-none border-t border-grayLight`,
+				)}
+			>
+				<svg
+					width="16px"
+					height="20px"
+					viewBox="0 0 16 20"
+					class="absolute bottom-0 left-0 text-bg"
+				>
+					<polygon points="0,0 16,0 16,4 0,20" fill="currentColor" />
+				</svg>
+				<svg
+					width="17px"
+					height="17px"
+					viewBox="0 0 17 17"
+					class="absolute bottom-0 left-0 text-grayLight"
+				>
+					<polyline points="17,0 0,17" stroke="currentColor" fill="none" />
+				</svg>
+			</div>
+		</div>
+	)
 }
