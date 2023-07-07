@@ -24,6 +24,7 @@ const { project } = Astro.props
 			alt={`Screenshot of the project ${project.title}`}
 			layout="fullWidth"
 			attributes={{ img: { 'data-action': 'zoom' } }}
+			loading="eager"
 		/>
 	</div>
 </li>
