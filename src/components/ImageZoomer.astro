@@ -1,0 +1,87 @@
+---
+import Cross from '../components/icons/Cross.astro'
+---
+
+<div
+	id="zoom-container"
+	class:list={[
+		`fixed inset-0 overflow-hidden`,
+		`opacity-0 pointer-events-none`,
+		`transition-opacity bg-black`,
+		`flex items-center justify-center`,
+		`z-50`,
+	]}
+>
+	<button
+		id="zoom-close"
+		class:list={[
+			`absolute z-50 top-4 right-4 text-fg`,
+			`rounded-full w-10 h-10 bg-bg`,
+			`flex items-center justify-center`,
+			`border border-grayLight`,
+		]}
+	>
+		<Cross className="pointer-events-none" />
+	</button>
+</div>
+
+<script>
+	import { Zoom as ZoomIt } from 'zoom-it'
+
+	function init() {
+		const parentEl = document.getElementById('zoom-container')
+		const closeButton = document.getElementById('zoom-close')
+		const zoomableImgEls = document.querySelectorAll('img[data-action="zoom"]')
+		const zoomableImages = Array.from(zoomableImgEls)
+		let zoomItInst
+
+		zoomableImages.forEach((imgEl) => {
+			imgEl.addEventListener('click', zoomOnImage)
+		})
+
+		function preventDefaultFnc(evt) {
+			if (evt.target === closeButton) return
+			evt.preventDefault()
+		}
+
+		function zoomOnImage(evt) {
+			evt.preventDefault()
+
+			const imgEl = evt.target
+			imgEl.removeEventListener('click', zoomOnImage)
+			const zoomImg = imgEl.cloneNode(true)
+
+			parentEl.prepend(zoomImg)
+			document.body.classList.add('overflow-hidden')
+			document.body.addEventListener('touchstart', preventDefaultFnc, {
+				passive: false,
+			})
+			parentEl.classList.remove('opacity-0', 'pointer-events-none')
+			zoomItInst = new ZoomIt(zoomImg, { maxZoom: 2, rotate: false })
+
+			const onClose = (evt) => {
+				evt.preventDefault()
+
+				imgEl.addEventListener('click', zoomOnImage)
+
+				parentEl.addEventListener('transitionend', function emptyParent(evt) {
+					evt.preventDefault()
+
+					if (zoomItInst) zoomItInst.destroy()
+
+					zoomImg.remove()
+					parentEl.removeEventListener('transitionend', emptyParent)
+
+					document.body.classList.remove('overflow-hidden')
+					document.body.removeEventListener('touchstart', preventDefaultFnc)
+				})
+				parentEl.classList.add('opacity-0', 'pointer-events-none')
+			}
+
+			closeButton.addEventListener('click', onClose)
+			parentEl.addEventListener('click', onClose)
+		}
+	}
+
+	init()
+</script>

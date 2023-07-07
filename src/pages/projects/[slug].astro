@@ -12,6 +12,7 @@ import NotionTextContents from '../../components/NotionTextContents.astro'
 import SeeOneMore from '../../components/SeeOneMore.astro'
 import ProjectSlider from '../../components/ProjectSlider.astro'
 import ArrowUp from '../../components/icons/ArrowUp.astro'
+import ImageZoomer from '../../components/ImageZoomer.astro'
 
 export async function getStaticPaths() {
 	const notionProjects = await loadJson<MappedNotionProject[]>(
@@ -174,6 +175,7 @@ const { project, nextProject, prevProject } = Astro.props
 			</section>
 		</section>
 	</main>
+	<ImageZoomer />
 </Layout>
 
 <script defer>
