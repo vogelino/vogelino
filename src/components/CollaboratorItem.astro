@@ -9,10 +9,15 @@ export interface Props {
 
 const { collaborator } = Astro.props
 
-const commonContainerClasses = `grid grid-cols-[45px,1fr] items-center border-t border-grayLight`
+const commonContainerClasses = `grid grid-cols-[45px,1fr] items-center`
 ---
 
-<li class={!collaborator.url ? commonContainerClasses : ''}>
+<li
+	class:list={[
+		!collaborator.url ? commonContainerClasses : '',
+		`bg-bg border-b border-grayLight`,
+	]}
+>
 	{!collaborator.url && <CollaboratorItemContent collaborator={collaborator} />}
 	{
 		collaborator.url && (

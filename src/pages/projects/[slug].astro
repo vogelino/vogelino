@@ -1,7 +1,6 @@
 ---
 import '@splidejs/splide/css/core'
 import Layout from '../../layouts/Layout.astro'
-import ProjectPageHeader from '../../components/ProjectPageHeader.astro'
 import CollaboratorsGroup from '../../components/CollaboratorsGroup.astro'
 import classNames from '../../utils/classNames'
 import { loadJson } from '../../../scripts/lib/loadJson'
@@ -11,8 +10,8 @@ import Thumbnail from '../../components/Thumbnail.astro'
 import NotionTextContents from '../../components/NotionTextContents.astro'
 import SeeOneMore from '../../components/SeeOneMore.astro'
 import ProjectSlider from '../../components/ProjectSlider.astro'
-import ArrowUp from '../../components/icons/ArrowUp.astro'
 import ImageZoomer from '../../components/ImageZoomer.astro'
+import ProjectSliderNav from '../../components/ProjectSliderNav.astro'
 
 export async function getStaticPaths() {
 	const notionProjects = await loadJson<MappedNotionProject[]>(
@@ -32,8 +31,6 @@ export async function getStaticPaths() {
 	})
 }
 
-const highlightClasses = `bg-alt rounded-full pl-3 pr-2 mr-1 pt-2 pb-1 decoration-clone leading-relaxed`
-
 export interface Props {
 	project: MappedNotionProject
 	nextProject: MappedNotionProject
@@ -47,90 +44,23 @@ const { project, nextProject, prevProject } = Astro.props
 	<main class:list={[`flex flex-col`]}>
 		<ProjectSlider project={project} />
 		<section>
-			<nav
-				class:list={[`flex w-screen justify-between px-6`, `-translate-y-full`]}
+			<ProjectSliderNav />
+			<div
+				class:list={[
+					`px-6 lg:px-8 leading-normal`,
+					`sm:text-xl lg:text-2xl mt-4`,
+					`xl:grid xl:grid-cols-[5fr,2fr] 2xl:grid-cols-[2fr,1fr] xl:gap-8`,
+				]}
 			>
-				<button
-					aria-label="Scroll to the text description of the project"
-					id="about-tab"
-					class:list={[
-						`transition-colors z-10 text-xl md:text-2xl uppercase`,
-						`tracking-wide px-6 pt-4 pb-2 border -ml-px rounded-t`,
-						`bg-bg border-grayMed z-20 border-b-bg`,
-						`focus:outline-none focus:ring-inset focus:ring-2`,
-						`focus:ring-fg focus:z-30 focus:rounded`,
-						`hover-hover:hover:bg-alt`,
-					]}
-				>
-					Project info
-				</button>
-				<div class="flex -gap-px">
-					<button
-						aria-label="Slide prev project image in"
-						id="project-prev"
-						class:list={[
-							`transition-colors z-10 text-xl md:text-2xl uppercase`,
-							`tracking-wide px-4 pt-4 pb-3 border -ml-px rounded-tl`,
-							`bg-bg border-grayMed z-20`,
-							`focus:outline-none focus:ring-inset focus:ring-2`,
-							`focus:ring-fg focus:z-30 focus:rounded`,
-							`hover-hover:hover:bg-alt`,
-						]}
-					>
-						<ArrowUp className="-rotate-90" />
-					</button>
-					<button
-						aria-label="Slide next project image in"
-						id="project-next"
-						class:list={[
-							`transition-colors z-10 text-xl md:text-2xl uppercase`,
-							`tracking-wide px-4 pt-4 pb-3 border -ml-px rounded-tr`,
-							`bg-bg border-grayMed z-20`,
-							`focus:outline-none focus:ring-inset focus:ring-2`,
-							`focus:ring-fg focus:z-30 focus:rounded`,
-							`hover-hover:hover:bg-alt`,
-						]}
-					>
-						<ArrowUp className="rotate-90" />
-					</button>
+				<div class:list={[`md:columns-2 md:gap-6 lg:gap-8`, `mb-16`]}>
+					<NotionTextContents blocks={project.blocks} />
 				</div>
-			</nav>
-			<div class="px-6 text-xl md:text-2xl leading-normal">
-				<span class="text-xl block mb-3 md:mb-6">{project.year}</span>
-				<h1
-					class={classNames(
-						`text-3xl md:text-6xl 2xl:text-8xl`,
-						`leading-[1em] text-balance`,
-						`uppercase font-bold`,
-					)}
-				>
-					{project.title}
-				</h1>
-				<p
-					class="text-2xl md:text-3xl mt-4 max-w-2xl mb-6 md:mb-8 text-balance"
-				>
-					{
-						project.description.map(
-							(part) =>
-								part.text &&
-								(part.link ? (
-									<a href={part.link} class={highlightClasses} target="_blank">
-										{part.text.trim()}
-									</a>
-								) : (
-									<span class={part.highlighted ? highlightClasses : ''}>
-										{part.text.trim()}
-									</span>
-								)),
-						)
-					}
-				</p>
-				<NotionTextContents blocks={project.blocks} />
-				<aside class="col-span-4 md:col-span-1">
+				<aside class="mb-32 @container/collabs">
 					<div
 						class={classNames(
-							`border border-grayLight bg-grayMed items-stretch`,
-							`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-[1px]`,
+							`items-stretch`,
+							`grid grid-cols-1 @sm/collabs:grid-cols-2`,
+							`text-base lg:text-xl`,
 						)}
 					>
 						<CollaboratorsGroup collaborators={project.clients}>
@@ -153,17 +83,17 @@ const { project, nextProject, prevProject } = Astro.props
 			</div>
 			<section
 				class={classNames(
-					`flex flex-col`,
+					`flex flex-col sm:px-6 lg:px-8`,
 					`md:grid md:grid-cols-[1fr,0,0,0,1fr] xl:grid-cols-[0,450px,1fr,450px,0]`,
-					`border-t border-grayMed`,
 				)}
 			>
 				<Thumbnail
 					{...prevProject}
 					highlighted={false}
 					rotationClass="rotate-1"
+					className="md:border-l border-grayLight"
 				/>
-				<div class="flex items-center justify-center">
+				<div class="flex items-center justify-center border-t border-grayLight">
 					<SeeOneMore className="hidden xl:block" />
 				</div>
 				<Thumbnail
@@ -177,12 +107,3 @@ const { project, nextProject, prevProject } = Astro.props
 	</main>
 	<ImageZoomer />
 </Layout>
-
-<script defer>
-	const infoButton = document.getElementById('about-tab')
-	infoButton?.addEventListener('click', (evt) => {
-		evt.preventDefault()
-		const infoButtonTop = infoButton.getBoundingClientRect().top
-		window.scrollTo({ top: infoButtonTop, behavior: 'smooth' })
-	})
-</script>

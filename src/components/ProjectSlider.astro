@@ -2,19 +2,66 @@
 import ProjectSliderSlide from '../components/ProjectSliderSlide.astro'
 
 const { project } = Astro.props
+
+const highlightClasses = `bg-alt rounded-full pl-3 pr-2 mr-1 pt-2 pb-1 decoration-clone leading-relaxed`
 ---
 
 <div
-	class="splide h-[calc(100svh-16px)] w-screen"
+	class:list={[
+		`splide h-[calc(100svh-16px)] w-screen overflow-x-hidden mx-auto`,
+		`max-w-[1440px] min-[1440px]:border-x min-[1440px]:border-grayMed`,
+	]}
 	aria-label="List of project images"
 >
 	<div
 		class:list={[
-			`splide__track h-[calc(100svh-16px)] w-screen`,
+			`splide__track h-[calc(100svh-16px)] w-screen max-w-[1440px]`,
 			`border-b-grayMed border-b bg-grayUltraLight`,
 		]}
 	>
-		<ul class="splide__list w-screen h-[calc(100svh-16px)]">
+		<ul class="splide__list w-screen h-[calc(100svh-16px)] max-w-[1440px]">
+			<li
+				class:list={[
+					`splide__slide`,
+					`w-screen h-[calc(100svh-154px)] px-6 !my-16 max-w-[1440px]`,
+					`flex flex-col items-center justify-center`,
+				]}
+			>
+				<span class="text-xl block mb-3 md:mb-6">{project.year}</span>
+				<h1
+					class:list={[
+						`text-4xl sm:text-5xl md:text-6xl 2xl:text-8xl`,
+						`leading-[1em] text-balance`,
+						`uppercase font-bold text-center`,
+						`xs:max-w-[80%] sm:max-w-[70%] md:max-w-[60%] lg:max-w-[50%]`,
+					]}
+				>
+					{project.title}
+				</h1>
+				<p
+					class:list={[
+						`mb-6 md:mb-8 text-balance text-center`,
+						`text-xl sm:text-2xl lg:text-3xl mt-4`,
+						`xs:max-w-[80%] sm:max-w-[70%] md:max-w-[60%] lg:max-w-[50%]`,
+					]}
+				>
+					{
+						project.description.map(
+							(part) =>
+								part.text &&
+								(part.link ? (
+									<a href={part.link} class={highlightClasses} target="_blank">
+										{part.text.trim()}
+									</a>
+								) : (
+									<span class={part.highlighted ? highlightClasses : ''}>
+										{part.text.trim()}
+									</span>
+								)),
+						)
+					}
+				</p>
+			</li>
 			<ProjectSliderSlide project={project} />
 			<ProjectSliderSlide project={project} />
 			<ProjectSliderSlide project={project} />

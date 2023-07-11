@@ -12,12 +12,18 @@ const props = Astro.props
 
 {
 	!!props.collaborators.length && (
-		<div class={classNames(`text-grayDark bg-bg relative flex flex-col`)}>
+		<div
+			class={classNames(
+				`text-grayDark bg-bg relative flex flex-col`,
+				`basis-full md:basis-1/2 border border-grayLight`,
+				`-ml-px -mt-px`,
+			)}
+		>
 			<div class="min-h-[calc(100%-1rem)] w-[calc(100%-1rem)] ml-4 border-l border-grayLight">
 				<h2 class="p-4 uppercase">
 					<slot />
 				</h2>
-				<ul>
+				<ul class="border-t border-grayMed">
 					{props.collaborators.map((collaborator) => (
 						<CollaboratorItem collaborator={collaborator} />
 					))}
