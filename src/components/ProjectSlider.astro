@@ -62,12 +62,11 @@ const highlightClasses = `bg-alt rounded-full pl-3 pr-2 mr-1 pt-2 pb-1 decoratio
 					}
 				</p>
 			</li>
-			<ProjectSliderSlide project={project} />
-			<ProjectSliderSlide project={project} />
-			<ProjectSliderSlide project={project} />
-			<ProjectSliderSlide project={project} />
-			<ProjectSliderSlide project={project} />
-			<ProjectSliderSlide project={project} />
+			{
+				project.media.map((i) => (
+					<ProjectSliderSlide projectName={project.title} imageUrl={i} />
+				))
+			}
 		</ul>
 	</div>
 </div>

@@ -1,4 +1,5 @@
 import type {
+  NotionImageType,
   NotionRelationType,
   RawNotionProjectWithBlocksType,
 } from "./getOriginalNotionProjects";
@@ -8,6 +9,8 @@ import slugify from "slugify";
 import { contentTypeToImgExtension } from "./contentTypeToImgExtension";
 import { parseNotionFileUrl } from "./parseNotionFileUrl";
 import { BlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
+import parseNotionImageName from "./parseNotionImageName";
+import { MEDIA_RESIZED_EXPORT_PATH } from "../paths";
 
 export interface MappedCollaboratorPageType {
   id: string;
@@ -58,7 +61,7 @@ function mapOriginalNotionProject(
   rawProject: RawNotionProjectWithBlocksType,
   rawCollaborators: RawNotionCollaboratorType[]
 ): MappedNotionProject {
-  const { Name, NameShort, Description, Type, Year, URL } =
+  const { Name, NameShort, Description, Type, Year, URL, Media } =
     rawProject.properties;
   const fullTitle = Name.title.map(({ plain_text }) => plain_text).join("");
   const slug = slugify(fullTitle, {
@@ -108,14 +111,19 @@ function mapOriginalNotionProject(
     clients: mapNotionCollaborators(rawCollaborators, clientsIds),
     highlighted,
     blocks: rawProject.properties.blocks,
+    media: mapNotionMedia(Media.files)
   };
+}
+
+function mapNotionMedia(media: NotionImageType[]) {
+  return media.map((image, idx) => `${MEDIA_RESIZED_EXPORT_PATH}/${parseNotionImageName(image, idx)}`)
 }
 
 function getRealtionExtractor(rawProject: RawNotionProjectWithBlocksType) {
   return (key: string): string[] =>
     (
       rawProject.properties[
-        key as keyof typeof rawProject.properties
+      key as keyof typeof rawProject.properties
       ] as NotionRelationType
     ).relation.map(({ id }) => id);
 }

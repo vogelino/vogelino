@@ -3,7 +3,12 @@ import * as astroComponents from 'astro-imagetools/components'
 
 const { Img } = astroComponents
 
-const { project } = Astro.props
+export interface Props {
+	projectName: string
+	imageUrl: string
+}
+
+const { projectName, imageUrl } = Astro.props
 ---
 
 <li
@@ -20,8 +25,8 @@ const { project } = Astro.props
 		]}
 	>
 		<Img
-			src={`/images/thumbnails/${project.slug}.webp`}
-			alt={`Screenshot of the project ${project.title}`}
+			src={`/${imageUrl}`}
+			alt={`Screenshot of the project ${projectName}`}
 			layout="fullWidth"
 			attributes={{ img: { 'data-action': 'zoom' } }}
 			loading="eager"
