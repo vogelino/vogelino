@@ -1,5 +1,6 @@
 ---
 import ProjectSliderSlide from '../components/ProjectSliderSlide.astro'
+import Link from './icons/Link.astro'
 
 const { project } = Astro.props
 
@@ -30,7 +31,7 @@ const highlightClasses = `bg-alt rounded-full pl-3 pr-2 mr-1 pt-2 pb-1 decoratio
 				<span class="text-xl block mb-3 md:mb-6">{project.year}</span>
 				<h1
 					class:list={[
-						`text-4xl sm:text-5xl md:text-6xl 2xl:text-8xl`,
+						`text-4xl sm:text-5xl md:text-6xl 2xl:text-7xl`,
 						`leading-[1em] text-balance`,
 						`uppercase font-bold text-center`,
 						`xs:max-w-[80%] sm:max-w-[70%] md:max-w-[60%] lg:max-w-[50%]`,
@@ -61,6 +62,22 @@ const highlightClasses = `bg-alt rounded-full pl-3 pr-2 mr-1 pt-2 pb-1 decoratio
 						)
 					}
 				</p>
+				{
+					project.url && (
+						<a
+							href={project.url}
+							target="_blank"
+							class:list={[
+								`font-special antialiased`,
+								`top-0 text-2xl px-4 pb-1 rounded-full bg-fg text-alt`,
+								`transition-colors hover:bg-alt hover:text-fg border-2 border-fg`,
+								`hover:scale-110 special-button flex gap-2 items-center`,
+							]}
+						>
+							<span>Launch</span> <Link className="mt-1" />
+						</a>
+					)
+				}
 			</li>
 			{
 				project.media.map((i) => (
