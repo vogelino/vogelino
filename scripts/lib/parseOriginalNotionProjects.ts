@@ -33,6 +33,7 @@ export interface MappedNotionProject extends Record<string, unknown> {
   type: string;
   slug: string;
   thumbnail: string;
+  illustration: string;
   bgImage: string;
   year: number;
   url: null | string;
@@ -86,6 +87,7 @@ function mapOriginalNotionProject(
     !!rawProject.properties["Highlight in portfolio"].checkbox;
 
   const thumbnail = `/images/thumbnails/${slug}.webp`;
+  const illustration = `/images/illustration/${slug}.webp`;
   const bgImage = `/images/bg-images/${slug}.webp`;
   const getRelationIds = getRealtionExtractor(rawProject);
   const collaboratorsIds = getRelationIds("In collaboration with");
@@ -101,6 +103,7 @@ function mapOriginalNotionProject(
     type,
     slug,
     thumbnail,
+    illustration,
     bgImage,
     year: Year.number,
     url: URL.url,

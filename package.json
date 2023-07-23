@@ -3,7 +3,7 @@
   "scripts": {
     "dev": "TAILWIND_MODE=watch astro dev",
     "start": "astro dev",
-    "build": "npm run downloadCacheData && npm run downloadInspiration && npm run downloadCollaborators && npm run downloadProjectImages && npm run astroBuild",
+    "build": "npm run downloadCacheData && npm run downloadInspiration && npm run downloadCollaborators && npm run downloadProjectImages && npm run optimizeSVGs && npm run astroBuild",
     "astroBuild": "astro build",
     "preview": "astro preview",
     "astro": "astro",
@@ -13,6 +13,7 @@
     "downloadCollaborators": "npx ts-node -P scripts/tsconfig.json scripts/downloadNotionCollaboratorsImages.ts",
     "downloadProjectImages": "npx ts-node -P scripts/tsconfig.json scripts/downloadNotionProjectImages.ts",
     "downloadDrawings": "npx ts-node -P scripts/tsconfig.json scripts/downloadNotionDrawings.ts",
+    "optimizeSVGs": "svgo public/images/**/*.svg",
     "lint": "eslint 'src/**/*.{js,ts,astro}'",
     "lint-fix": "npm run lint -- --fix",
     "format": "npx prettier --write src"
@@ -42,6 +43,7 @@
     "puppeteer": "14.1.1",
     "sharp": "0.31.0",
     "slugify": "1.6.5",
+    "svgo": "3.0.2",
     "tailwindcss": "3.3.2",
     "tailwindcss-touch": "1.0.1",
     "ts-node": "10.8.0",

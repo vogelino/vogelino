@@ -11,6 +11,7 @@ import {
 import { loadJson } from './lib/loadJson'
 import parseNotionImageName from './lib/parseNotionImageName'
 import { saveAndResizeImage } from './lib/saveAndResizeImage'
+import { optimize } from 'svgo'
 
 const WIDTH = 1440
 const HEIGHT = 960
@@ -57,7 +58,7 @@ async function downloadNotionProjectImages() {
     // ILLUSTRATION
     await saveAndResizeImage({
       fileUrl: illustration,
-      fileName: `${slug}.webp`,
+      fileName: `${slug}.svg`,
       folder: `illustrations`,
     })
 

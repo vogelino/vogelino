@@ -23,11 +23,17 @@ const highlightClasses = `bg-alt rounded-full pl-3 pr-2 mr-1 pt-2 pb-1 decoratio
 		<ul class="splide__list w-screen h-[calc(100svh-16px)] max-w-[1440px]">
 			<li
 				class:list={[
-					`splide__slide`,
+					`splide__slide relative`,
 					`w-screen h-[calc(100svh-188px)] px-6 !my-20 max-w-[1440px]`,
 					`flex flex-col items-center justify-center`,
 				]}
 			>
+				<img
+					src={`/images/illustrations/${project.slug}.svg`}
+					alt={`Illustration for the project ${project.title}`}
+					width="300px"
+					class="absolute bottom-0 left-0"
+				/>
 				<span class="text-xl block mb-3 md:mb-6">{project.year}</span>
 				<h1
 					class:list={[
