@@ -10,7 +10,7 @@ import { contentTypeToImgExtension } from "./contentTypeToImgExtension";
 import { parseNotionFileUrl } from "./parseNotionFileUrl";
 import { BlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import parseNotionImageName from "./parseNotionImageName";
-import { MEDIA_RESIZED_EXPORT_PATH } from "../paths";
+import { IMAGE_DEST_EXPORT_PATH } from "../paths";
 
 export interface MappedCollaboratorPageType {
   id: string;
@@ -116,7 +116,8 @@ function mapOriginalNotionProject(
 }
 
 function mapNotionMedia(media: NotionImageType[]) {
-  return media.map((image, idx) => `${MEDIA_RESIZED_EXPORT_PATH}/${parseNotionImageName(image, idx)}`)
+  return media.map((image, idx) =>
+    `${IMAGE_DEST_EXPORT_PATH}/projects-media/${parseNotionImageName(image, idx)}`)
 }
 
 function getRealtionExtractor(rawProject: RawNotionProjectWithBlocksType) {

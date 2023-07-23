@@ -53,6 +53,7 @@ export interface RawNotionProjectType extends Record<string, unknown> {
     Description: NotionRichTextType;
     NameShort: NotionRichTextType;
     Thumbnail: NotionFilesType;
+    Illustration: NotionFilesType;
     BgImage: NotionFilesType;
     Media: NotionFilesType;
     Year: {
@@ -97,6 +98,12 @@ export async function getOriginalNotionProjects(
           property: "Show in portfolio",
           checkbox: {
             equals: true,
+          },
+        },
+        {
+          property: "Illustration",
+          files: {
+            is_not_empty: true,
           },
         },
         {
