@@ -1,106 +1,110 @@
 ---
-import classNames from "../utils/classNames";
+import classNames from '../utils/classNames'
 ---
+
 <canvas
-  id="overlay-texture"
-  aria-hidden="true"
-  class={classNames(
-    `bg-bg fixed inset-0 z-50`,
-    `pointer-events-none mix-blend-multiply`,
-  )}
-/>
+	id="overlay-texture"
+	aria-hidden="true"
+	class={classNames(
+		`bg-bg fixed inset-0 z-[999]`,
+		`pointer-events-none mix-blend-multiply`,
+	)}></canvas>
 
 <script defer>
-class Grain {
-  constructor (el) {
-    /**
-     * Options
-     * Increase the pattern size if visible pattern
-     */
-    this.patternSize = 150;
-    this.patternScaleX = 1;
-    this.patternScaleY = 1;
-    this.patternRefreshInterval = 3; // 8
-    this.patternAlpha = 15; // int between 0 and 255,
+	class Grain {
+		constructor(el) {
+			/**
+			 * Options
+			 * Increase the pattern size if visible pattern
+			 */
+			this.patternSize = 150
+			this.patternScaleX = 1
+			this.patternScaleY = 1
+			this.patternRefreshInterval = 3 // 8
+			this.patternAlpha = 15 // int between 0 and 255,
 
-    /**
-     * Create canvas
-     */
-    this.canvas = el;
-    this.ctx = this.canvas.getContext('2d');
-    this.ctx.scale(this.patternScaleX, this.patternScaleY);
+			/**
+			 * Create canvas
+			 */
+			this.canvas = el
+			this.ctx = this.canvas.getContext('2d')
+			this.ctx.scale(this.patternScaleX, this.patternScaleY)
 
-    /**
-     * Create a canvas that will be used to generate grain and used as a
-     * pattern on the main canvas.
-     */
-    this.patternCanvas = document.createElement('canvas');
-    this.patternCanvas.width = this.patternSize;
-    this.patternCanvas.height = this.patternSize;
-    this.patternCtx = this.patternCanvas.getContext('2d');
-    this.patternData = this.patternCtx.createImageData(this.patternSize, this.patternSize);
-    this.patternPixelDataLength = this.patternSize * this.patternSize * 4; // rgba = 4
+			/**
+			 * Create a canvas that will be used to generate grain and used as a
+			 * pattern on the main canvas.
+			 */
+			this.patternCanvas = document.createElement('canvas')
+			this.patternCanvas.width = this.patternSize
+			this.patternCanvas.height = this.patternSize
+			this.patternCtx = this.patternCanvas.getContext('2d')
+			this.patternData = this.patternCtx.createImageData(
+				this.patternSize,
+				this.patternSize,
+			)
+			this.patternPixelDataLength = this.patternSize * this.patternSize * 4 // rgba = 4
 
-    /**
-     * Prebind prototype function, so later its easier to user
-     */
-    this.resize = this.resize.bind(this);
-    this.loop = this.loop.bind(this);
-    
-    this.frame = 0;
-    
-    window.addEventListener('resize', this.resize);
-    this.resize();
+			/**
+			 * Prebind prototype function, so later its easier to user
+			 */
+			this.resize = this.resize.bind(this)
+			this.loop = this.loop.bind(this)
 
-    window.requestAnimationFrame(this.loop);
-  }
-  
-  resize () {
-    this.canvas.width = window.innerWidth * devicePixelRatio;
-    this.canvas.height = window.innerHeight * devicePixelRatio;
-  }
+			this.frame = 0
 
-  update () {
-    const {patternPixelDataLength, patternData, patternAlpha, patternCtx} = this;
+			this.resize()
 
-    // put a random shade of gray into every pixel of the pattern
-    for (let i = 0; i < patternPixelDataLength; i += 4) {
-      // const value = (Math.random() * 255) | 0;
-      const value = Math.random() * 255;
+			requestAnimationFrame(this.loop)
+		}
 
-      patternData.data[i] = value;
-      patternData.data[i + 1] = value;
-      patternData.data[i + 2] = value;
-      patternData.data[i + 3] = patternAlpha;
-    }
+		resize() {
+			this.canvas.width = window.innerWidth * devicePixelRatio
+			this.canvas.height = window.innerHeight * devicePixelRatio
+		}
 
-    patternCtx.putImageData(patternData, 0, 0);
-  }
+		update() {
+			const { patternPixelDataLength, patternData, patternAlpha, patternCtx } =
+				this
 
-  draw () {
-    const {ctx, patternCanvas, canvas, viewHeight} = this;
-    const {width, height} = canvas;
+			// put a random shade of gray into every pixel of the pattern
+			for (let i = 0; i < patternPixelDataLength; i += 4) {
+				// const value = (Math.random() * 255) | 0;
+				const value = Math.random() * 255
 
-    // clear canvas
-    ctx.clearRect(0, 0, width, height);
+				patternData.data[i] = value
+				patternData.data[i + 1] = value
+				patternData.data[i + 2] = value
+				patternData.data[i + 3] = patternAlpha
+			}
 
-    // fill the canvas using the pattern
-    ctx.fillStyle = ctx.createPattern(patternCanvas, 'repeat');
-    ctx.fillRect(0, 0, width, height);
-  }
+			patternCtx.putImageData(patternData, 0, 0)
+			this.resize()
+		}
 
-  loop () {
-    // only update grain every n frames
-    const shouldDraw = ++this.frame % this.patternRefreshInterval === 0;
-    if (shouldDraw) {
-      this.update();
-      this.draw();
-    }
+		draw() {
+			const { ctx, patternCanvas, canvas } = this
+			const { width, height } = canvas
 
-    window.requestAnimationFrame(this.loop);
-  }
-}
+			// clear canvas
+			ctx.clearRect(0, 0, width, height)
 
-const el = document.getElementById('overlay-texture');
-const grain = new Grain(el);
+			// fill the canvas using the pattern
+			ctx.fillStyle = ctx.createPattern(patternCanvas, 'repeat')
+			ctx.fillRect(0, 0, width, height)
+		}
+
+		loop() {
+			// only update grain every n frames
+			const shouldDraw = ++this.frame % this.patternRefreshInterval === 0
+			if (shouldDraw) {
+				this.update()
+				this.draw()
+			}
+
+			requestAnimationFrame(this.loop)
+		}
+	}
+
+	const el = document.getElementById('overlay-texture')
+	new Grain(el)
 </script>

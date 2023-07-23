@@ -1,40 +1,39 @@
 ---
-import classNames from "../utils/classNames";
-import ArrowUp from "./icons/ArrowUp.astro";
-import Logo from "./Logo.astro";
+import classNames from '../utils/classNames'
+import ArrowUp from './icons/ArrowUp.astro'
+import Logo from './Logo.astro'
 
 const year = String(new Date().getFullYear())
 ---
 
-<footer class=" pt-6 pb-5 border-t border-grayMed">
-  <section class={classNames(
-    `px-6 flex justify-between gap-4 flex-wrap uppercase items-center`,
-    `tracking-wide text-grayDark`, 
-  )}> 
-    <span>{year}</span>
-    <span><Logo className="scale-75" /></span>
-    <a
-      href="#"
-      id="back-to-top"
-      aria-label="Scroll to top"
-      class={classNames(
-        `p-1 bg-alt text-fg rounded-full`,
-        `hover:bg-fg hover:text-alt transition-colors`,
-        `focus:ring-2 focus:ring-fg focus:outline-none`,
-      )}
-    >
-      <ArrowUp />
-    </a>
-  </section>
+<footer class="pt-6 pb-5 border-t border-grayMed">
+	<section
+		class={classNames(
+			`px-6 flex justify-between gap-4 flex-wrap uppercase items-center`,
+			`tracking-wide text-grayDark`,
+		)}
+	>
+		<span>{year}</span>
+		<span><Logo className="scale-75" /></span>
+		<button
+			id="back-to-top"
+			aria-label="Scroll to top"
+			class={classNames(
+				`p-1 bg-alt text-fg rounded-full`,
+				`hover:bg-fg hover:text-alt transition-colors`,
+				`focus:ring-2 focus:ring-fg focus:outline-none`,
+			)}
+		>
+			<ArrowUp />
+		</button>
+	</section>
 </footer>
 
 <script defer>
-  const backToTopBtn = document.getElementById('back-to-top')
+	const backToTopBtn = document.getElementById('back-to-top')
 
-  backToTopBtn.addEventListener('click', (event) => {
-    event.preventDefault();
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  })
-
+	backToTopBtn.addEventListener('click', (event) => {
+		event.preventDefault()
+		window.scrollTo({ top: 0, behavior: 'smooth' })
+	})
 </script>
-

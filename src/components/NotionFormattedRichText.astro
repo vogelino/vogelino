@@ -1,48 +1,56 @@
 ---
-import type { BlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
-import * as astroComponents from "astro-imagetools/components";
-import classNames from "../utils/classNames";
-
-const { Img } = astroComponents;
+import classNames from '../utils/classNames'
+import type { NotionTextType } from '../../scripts/lib/getOriginalNotionProjects'
 
 export interface Props {
-  richText: NotionTextType;
+	richText: NotionTextType[]
 }
 
-const { richText } = Astro.props;
+const { richText } = Astro.props
 ---
 
-{richText
-  .map((item, idx) => {
-    const text = item.plain_text;
-    if (!text) return false;
-    const { bold, italic } = item.annotations;
-    const nextItem = richText[idx + 1];
+{
+	richText
+		.map((item, idx) => {
+			const text = item.plain_text
+			if (!text) return false
+			const { bold, italic } = item.annotations
+			const nextItem = richText[idx + 1]
 
-    if (item.href) {
-      return (
-        <a
-          href={item.href}
-          target="_blank"
-          class={classNames(
-            `underline decoration-alt underline-offset-4`,
-            `decoration-clone leading-relaxed hyphen-auto`,
-            `focus:outline-none focus:ring-2 focus:ring-fg`,
-            `focus:ring-offset-8 focus:ring-offset-bg`,
-            `focus:rounded-full focus:no-underline pt-1`,
-            `bg-alt/20 hover:bg-alt hover:decoration-fg`,
-          )}
-        >
-          {bold && italic && <strong><em>{text}</em></strong>}
-          {bold && !italic && <strong>{text}</strong>}
-          {!bold && italic && <em>{text}</em>}
-          {!bold && !italic && text}
-        </a>
-      );
-    }
-    if (bold && italic) return <strong><em>{text}</em></strong>;
-    if (bold && !italic) return <strong>{text}</strong>;
-    if (!bold && italic) return <em>{text}</em>;
-    return <>{text}</>;
-  })
-  .filter(Boolean)}
+			if (item.href) {
+				return (
+					<a
+						href={item.href}
+						target="_blank"
+						class={classNames(
+							`underline decoration-alt underline-offset-4`,
+							`decoration-clone leading-relaxed hyphen-auto`,
+							`focus:outline-none focus:ring-2 focus:ring-fg`,
+							`focus:ring-offset-8 focus:ring-offset-bg`,
+							`focus:rounded-full focus:no-underline pt-1`,
+							`bg-alt/20 hover:bg-alt hover:decoration-fg`,
+						)}
+					>
+						{bold && italic && (
+							<strong>
+								<em>{text}</em>
+							</strong>
+						)}
+						{bold && !italic && <strong>{text}</strong>}
+						{!bold && italic && <em>{text}</em>}
+						{!bold && !italic && text}
+					</a>
+				)
+			}
+			if (bold && italic)
+				return (
+					<strong>
+						<em>{text}</em>
+					</strong>
+				)
+			if (bold && !italic) return <strong>{text}</strong>
+			if (!bold && italic) return <em>{text}</em>
+			return <>{text}</>
+		})
+		.filter(Boolean)
+}

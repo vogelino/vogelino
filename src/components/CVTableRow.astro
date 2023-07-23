@@ -1,17 +1,15 @@
 ---
-
 export interface Props {
-  title: string;
-  value: string;
+	title: string
+	value: string
 }
 
-const { title, value } = Astro.props;
+const { title, value } = Astro.props
 ---
+
 <dt class="px-6 pt-4 @xs/sidebar:py-2 border-t border-grayLight">
-  <strong>{title}</strong>
+	<strong>{title}</strong>
 </dt>
 <dd class="px-6 pb-3 @xs/sidebar:py-2 @xs/sidebar:border-t border-grayLight">
-  {value}
+	{value}
 </dd>
-
-

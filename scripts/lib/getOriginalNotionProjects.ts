@@ -4,11 +4,13 @@ import { getOriginalNotionPageBlocks } from "./getOriginalNotionPageBlocks";
 
 export interface NotionImageType {
   type: string;
+  name: string;
   external?: {
     url: string;
   };
   file?: {
     url: string;
+    expiry_time: string;
   };
 }
 
@@ -52,6 +54,7 @@ export interface RawNotionProjectType extends Record<string, unknown> {
     NameShort: NotionRichTextType;
     Thumbnail: NotionFilesType;
     BgImage: NotionFilesType;
+    Media: NotionFilesType;
     Year: {
       number: number;
     };
@@ -98,6 +101,12 @@ export async function getOriginalNotionProjects(
         },
         {
           property: "Thumbnail",
+          files: {
+            is_not_empty: true,
+          },
+        },
+        {
+          property: "Media",
           files: {
             is_not_empty: true,
           },
