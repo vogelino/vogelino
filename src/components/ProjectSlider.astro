@@ -17,7 +17,7 @@ const highlightClasses = `bg-alt rounded-full pl-3 pr-2 mr-1 pt-2 pb-1 decoratio
 	<div
 		class:list={[
 			`splide__track h-[calc(100svh-16px)] w-screen max-w-[1440px]`,
-			`border-b-grayMed border-b bg-grayUltraLight`,
+			`border-b-grayMed border-b bg-grayUltraLight relative`,
 		]}
 	>
 		<ul class="splide__list w-screen h-[calc(100svh-16px)] max-w-[1440px]">
@@ -25,65 +25,72 @@ const highlightClasses = `bg-alt rounded-full pl-3 pr-2 mr-1 pt-2 pb-1 decoratio
 				class:list={[
 					`splide__slide relative`,
 					`w-screen h-[calc(100svh-188px)] px-6 !my-20 max-w-[1440px]`,
-					`flex flex-col items-center justify-center`,
+					`grid md:grid-cols-2 items-center`,
 				]}
 			>
-				<img
-					src={`/images/illustrations/${project.slug}.svg`}
-					alt={`Illustration for the project ${project.title}`}
-					width="300px"
-					class="absolute bottom-0 left-0"
-				/>
-				<span class="text-xl block mb-3 md:mb-6">{project.year}</span>
-				<h1
-					class:list={[
-						`text-4xl sm:text-5xl md:text-6xl 2xl:text-7xl`,
-						`leading-[1em] text-balance`,
-						`uppercase font-bold text-center`,
-						`xs:max-w-[80%] sm:max-w-[70%] md:max-w-[60%] lg:max-w-[50%]`,
-					]}
-				>
-					{project.title}
-				</h1>
-				<p
-					class:list={[
-						`mb-6 md:mb-8 text-balance text-center`,
-						`text-xl sm:text-2xl lg:text-3xl mt-4`,
-						`xs:max-w-[80%] sm:max-w-[70%] md:max-w-[60%] lg:max-w-[50%]`,
-					]}
-				>
+				<div class:list={[`flex flex-col text-center`]}>
+					<span class="text-xl block mb-3 md:mb-6">{project.year}</span>
+					<h1
+						class:list={[
+							`text-4xl sm:text-5xl md:text-6xl 2xl:text-7xl`,
+							`leading-[1em] text-balance`,
+							`uppercase font-bold`,
+							//`xs:max-w-[80%] sm:max-w-[70%] md:max-w-[60%] lg:max-w-[50%]`,
+						]}
+					>
+						{project.title}
+					</h1>
+					<p
+						class:list={[
+							`mb-6 md:mb-8 text-balance`,
+							`text-xl sm:text-2xl lg:text-3xl mt-4`,
+							// `xs:max-w-[80%] sm:max-w-[70%] md:max-w-[60%] lg:max-w-[50%]`,
+						]}
+					>
+						{
+							project.description.map(
+								(part) =>
+									part.text &&
+									(part.link ? (
+										<a
+											href={part.link}
+											class={highlightClasses}
+											target="_blank"
+										>
+											{part.text.trim()}
+										</a>
+									) : (
+										<span class={part.highlighted ? highlightClasses : ''}>
+											{part.text.trim()}
+										</span>
+									)),
+							)
+						}
+					</p>
 					{
-						project.description.map(
-							(part) =>
-								part.text &&
-								(part.link ? (
-									<a href={part.link} class={highlightClasses} target="_blank">
-										{part.text.trim()}
-									</a>
-								) : (
-									<span class={part.highlighted ? highlightClasses : ''}>
-										{part.text.trim()}
-									</span>
-								)),
+						project.url && (
+							<a
+								href={project.url}
+								target="_blank"
+								class:list={[
+									`font-special antialiased`,
+									`top-0 text-2xl px-4 pb-1 rounded-full bg-fg text-alt`,
+									`transition-colors hover:bg-alt hover:text-fg border-2 border-fg`,
+									`hover:scale-110 special-button flex gap-2 items-center`,
+								]}
+							>
+								<span>Launch</span> <Link className="mt-1" />
+							</a>
 						)
 					}
-				</p>
-				{
-					project.url && (
-						<a
-							href={project.url}
-							target="_blank"
-							class:list={[
-								`font-special antialiased`,
-								`top-0 text-2xl px-4 pb-1 rounded-full bg-fg text-alt`,
-								`transition-colors hover:bg-alt hover:text-fg border-2 border-fg`,
-								`hover:scale-110 special-button flex gap-2 items-center`,
-							]}
-						>
-							<span>Launch</span> <Link className="mt-1" />
-						</a>
-					)
-				}
+				</div>
+				<div class="flex items-center justify-center">
+					<img
+						src={`/images/illustrations/${project.slug}.svg`}
+						alt={`Illustration for the project ${project.title}`}
+						class="max-w-[260px]"
+					/>
+				</div>
 			</li>
 			{
 				project.media.map((i) => (
@@ -120,7 +127,7 @@ const highlightClasses = `bg-alt rounded-full pl-3 pr-2 mr-1 pt-2 pb-1 decoratio
 </script>
 
 <style is:global>
-	.splide__slide img {
+	.splide__img {
 		@apply rounded max-w-[calc(100svw-48px)] max-h-[calc(100svh-154px)];
 	}
 	.splide__pagination {
