@@ -3,62 +3,65 @@ import ArrowUp from './icons/ArrowUp.astro'
 ---
 
 <nav
-  class:list={[
-    `flex w-screen justify-between px-6`,
-    `-translate-y-full max-w-[1440px]`,
-  ]}
+	class:list={[
+		`flex w-screen justify-between px-6`,
+		`-translate-y-full max-w-[1440px]`,
+	]}
 >
-  <button
-    aria-label="Scroll to the text description of the project"
-    id="about-tab"
-    class:list={[
-      `transition-colors z-10 text-xl md:text-2xl uppercase`,
-      `tracking-wide px-6 pt-4 pb-2 border -ml-px rounded-t`,
-      `bg-bg border-grayMed z-20 border-b-bg`,
-      `focus:outline-none focus:ring-inset focus:ring-2`,
-      `focus:ring-fg focus:z-30 focus:rounded`,
-      `hover-hover:hover:bg-alt`,
-    ]}
-  >
-    Project info
-  </button>
-  <div class="flex -gap-px">
-    <button
-      aria-label="Slide prev project image in"
-      id="project-prev"
-      class:list={[
-        `transition-colors z-10 text-xl md:text-2xl uppercase`,
-        `tracking-wide px-4 pt-4 pb-3 border -ml-px rounded-tl`,
-        `bg-bg border-grayMed z-20`,
-        `focus:outline-none focus:ring-inset focus:ring-2`,
-        `focus:ring-fg focus:z-30 focus:rounded`,
-        `hover-hover:hover:bg-alt`,
-      ]}
-    >
-      <ArrowUp className="-rotate-90" />
-    </button>
-    <button
-      aria-label="Slide next project image in"
-      id="project-next"
-      class:list={[
-        `transition-colors z-10 text-xl md:text-2xl uppercase`,
-        `tracking-wide px-4 pt-4 pb-3 border -ml-px rounded-tr`,
-        `bg-bg border-grayMed z-20`,
-        `focus:outline-none focus:ring-inset focus:ring-2`,
-        `focus:ring-fg focus:z-30 focus:rounded`,
-        `hover-hover:hover:bg-alt`,
-      ]}
-    >
-      <ArrowUp className="rotate-90" />
-    </button>
-  </div>
+	<button
+		aria-label="Scroll to the text description of the project"
+		id="about-tab"
+		class:list={[
+			`transition-colors z-10 text-lg sm:text-xl md:text-2xl uppercase`,
+			`tracking-wide px-6 pt-4 pb-2 border -ml-px rounded-t`,
+			`bg-bg border-grayMed z-20 border-b-bg`,
+			`focus:outline-none focus:ring-inset focus:ring-2`,
+			`focus:ring-fg focus:z-30 focus:rounded`,
+			`hover-hover:hover:bg-alt`,
+		]}
+	>
+		<span class="hidden sm:inline">
+			Project{' '}
+		</span>
+		info
+	</button>
+	<div class="flex -gap-px">
+		<button
+			aria-label="Slide prev project image in"
+			id="project-prev"
+			class:list={[
+				`transition-colors z-10 text-xl md:text-2xl uppercase`,
+				`tracking-wide px-4 pt-4 pb-3 border -ml-px rounded-tl`,
+				`bg-bg border-grayMed z-20`,
+				`focus:outline-none focus:ring-inset focus:ring-2`,
+				`focus:ring-fg focus:z-30 focus:rounded`,
+				`hover-hover:hover:bg-alt`,
+			]}
+		>
+			<ArrowUp className="-rotate-90" />
+		</button>
+		<button
+			aria-label="Slide next project image in"
+			id="project-next"
+			class:list={[
+				`transition-colors z-10 text-xl md:text-2xl uppercase`,
+				`tracking-wide px-4 pt-4 pb-3 border -ml-px rounded-tr`,
+				`bg-bg border-grayMed z-20`,
+				`focus:outline-none focus:ring-inset focus:ring-2`,
+				`focus:ring-fg focus:z-30 focus:rounded`,
+				`hover-hover:hover:bg-alt`,
+			]}
+		>
+			<ArrowUp className="rotate-90" />
+		</button>
+	</div>
 </nav>
 
 <script defer>
 const infoButton = document.getElementById('about-tab')
 infoButton?.addEventListener('click', (evt) => {
-    evt.preventDefault()
-    const infoButtonTop = infoButton.getBoundingClientRect().top
-    window.scrollTo({ top: infoButtonTop, behavior: 'smooth' })
-  })
+  evt.preventDefault()
+  const infoButtonTop = infoButton.getBoundingClientRect().top
+  window.scrollTo({ top: infoButtonTop, behavior: 'smooth' })
+})
 </script>
