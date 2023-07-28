@@ -45,6 +45,8 @@ const projects = (
 				class={classNames([
 					`rounded`,
 					`group-focus-visible:ring-2 group-focus-visible:ring-fg`,
+					`group-focus-visible:relative`,
+					`group-focus-visible:overflow-hidden`,
 				])}
 			>
 				<div
@@ -63,19 +65,21 @@ const projects = (
 							multimedia designer.
 						</span>
 					</p>
-				</div>
-				<div
-					class={classNames(
-						`absolute -top-32 -right-10`,
-						`transition-transform`,
-						`hover-hover:group-hover:scale-110`,
-						`xl:hover-hover:group-hover:scale-150`,
-					)}
-					inert
-				>
-					<MoreAboutMeSVG
-						className={`text-bg hover-hover:group-hover:text-alt`}
-					/>
+					<div
+						class={classNames(
+							`absolute -top-32 -right-10`,
+							`transition-transform`,
+							`hover-hover:group-hover:scale-110`,
+							`xl:hover-hover:group-hover:scale-150`,
+							`group-focus-visible:-top-[8.5rem]`,
+							`group-focus-visible:-right-[3rem]`,
+						)}
+						inert
+					>
+						<MoreAboutMeSVG
+							className={`text-bg hover-hover:group-hover:text-alt`}
+						/>
+					</div>
 				</div>
 			</div>
 		</a>
