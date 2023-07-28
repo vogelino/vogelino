@@ -1,19 +1,74 @@
 ---
 import Logo from './Logo.astro'
+import LogoV from './LogoV.astro'
 import classNames from '../utils/classNames'
+
+export interface Props {
+	isMinimal?: boolean
+}
+
+const { isMinimal } = Astro.props
 ---
 
 <a
 	href="/"
 	class={classNames(
-		`relative group w-56 h-10 -ml-4 py-2 rounded-full`,
-		`focus:ring-2 focus:ring-fg focus:outline-none`,
+		`logo`,
+		`relative group h-10 -ml-4 py-2 rounded-full`,
+		`focus-visible:ring-2 focus-visible:ring-fg focus:outline-none`,
 	)}
 	aria-label="Logo (Link to Homepage)"
 >
 	<Logo
-		className="absolute top-1.5 left-4 text-alt/0 group-hover:text-alt"
-		filled={true}
+		className={classNames(
+			`logo-large`,
+			isMinimal && `hidden sm:inline-block`,
+			`absolute top-1.5 left-2`,
+			`text-alt/0 hover-hover:group-hover:text-alt transition-colors`,
+		)}
+		filled
 	/>
-	<Logo className="absolute top-1.5 left-4" filled={false} />
+	<Logo
+		className={classNames(
+			`logo-large`,
+			isMinimal && `hidden sm:inline-block`,
+			`absolute top-1.5 left-2`,
+		)}
+	/>
+	{
+		isMinimal && (
+			<>
+				<LogoV
+					className={classNames([
+						`logo-small`,
+						`sm:hidden inline-block absolute top-1.5 left-2`,
+						`text-alt/0 hover-hover:group-hover:text-alt transition-colors`,
+					])}
+					filled
+				/>
+				<LogoV
+					className={classNames([
+						`logo-small`,
+						`sm:hidden inline-block absolute top-1.5 left-2`,
+					])}
+				/>
+			</>
+		)
+	}
 </a>
+
+<style is:global>
+	.logo {
+		width: 42px;
+	}
+	.logo-visible .logo {
+		width: 205px;
+	}
+	.logo-visible .logo-small {
+		display: none;
+	}
+
+	.logo-visible .logo-large {
+		display: inline-block;
+	}
+</style>

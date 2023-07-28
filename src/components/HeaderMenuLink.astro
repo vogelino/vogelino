@@ -13,7 +13,7 @@ const pathname = new URL(Astro.request.url).pathname.replaceAll('/', '')
 const active = pathname === href.replaceAll('/', '')
 ---
 
-<li className="inline-block w-full sm:w-auto">
+<li class="inline-block w-full sm:w-auto">
 	<a
 		href={href}
 		aria-label={`Header menu link: ${title} page`}
@@ -22,7 +22,7 @@ const active = pathname === href.replaceAll('/', '')
 			`pb-5 px-6 border-b border-grayLight`,
 			`sm:tracking-normal sm:border-none sm:py-1`,
 			`inline-block w-screen sm:w-auto sm:rounded-full`,
-			`focus:ring-2 focus:ring-fg focus:outline-none`,
+			`focus-visible:ring-2 focus-visible:ring-fg outline-none`,
 			!active && [`pt-6 sm:text-xl hover-hover:hover:bg-alt sm:px-4 sm:pt-2`],
 			active && [
 				`text-4xl pt-4`,

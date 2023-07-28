@@ -5,7 +5,7 @@ import HeaderMenuLink from './HeaderMenuLink.astro'
 import SocialIcons from './SocialIcons.astro'
 
 export interface Props {
-	noBg?: boolean
+	withBg?: boolean
 }
 
 const { withBg = true } = Astro.props
@@ -18,7 +18,7 @@ const withoutBgClasses = 'border-b-transparent'
 	aria-label="Main header"
 	class={classNames(
 		`fixed top-0 left-1/2 -translate-x-1/2 w-screen z-40`,
-		`text-fg px-6 max-w-[1440px] min-[1440px]:border-x`,
+		`text-fg px-8 max-w-[1440px] min-[1440px]:border-x`,
 		`min-[1440px]:border-x-grayMed border-b`,
 		`flex justify-between items-center h-[69px]`,
 		`transition`,
@@ -28,7 +28,7 @@ const withoutBgClasses = 'border-b-transparent'
 	data-withBgClasses={withBgClasses}
 	data-withoutBgClasses={withoutBgClasses}
 >
-	<LogoInteractive />
+	<LogoInteractive isMinimal={!withBg} />
 	<button
 		aria-label="Hide the main navitation menu"
 		id="burger-menu"
@@ -63,111 +63,111 @@ const withoutBgClasses = 'border-b-transparent'
 </header>
 
 <script defer>
-	// -- Hamburger menu
-	const burgerMenu = document.getElementById('burger-menu')
-	const menu = document.getElementById('menu')
-	const socialIcons = document.getElementById('social-icons')
+// -- Hamburger menu
+const burgerMenu = document.getElementById('burger-menu')
+const menu = document.getElementById('menu')
+const socialIcons = document.getElementById('social-icons')
 
-	// -- Header background toggle
-	const header = document.querySelector('header[aria-label="Main header"]')
-	const withBg = header.dataset.withbg
+// -- Header background toggle
+const header = document.querySelector('header[aria-label="Main header"]')
+const withBg = header.dataset.withbg
 
-	const withBgClassString = header.dataset.withbgclasses || ''
-	const withoutBgClassString = header.dataset.withoutbgclasses || ''
-	const withBgClasses = withBgClassString.trim().split(' ')
-	const withoutBgClasses = withoutBgClassString.trim().split(' ')
+const withBgClassString = header.dataset.withbgclasses || ''
+const withoutBgClassString = header.dataset.withoutbgclasses || ''
+const withBgClasses = withBgClassString.trim().split(' ')
+const withoutBgClasses = withoutBgClassString.trim().split(' ')
 
-	// -- Hamburger menu logic
-	burgerMenu.addEventListener('click', () => {
-		burgerMenu.classList.toggle('close')
-		menu.classList.toggle('opacity-0')
-		menu.classList.toggle('pointer-events-none')
+// -- Hamburger menu logic
+burgerMenu.addEventListener('click', () => {
+	burgerMenu.classList.toggle('close')
+	menu.classList.toggle('opacity-0')
+	menu.classList.toggle('pointer-events-none')
 
-		const isOpened = !!burgerMenu.classList.contains('close')
-		const verb = isOpened ? `Hide` : `Show`
-		burgerMenu.setAttribute('aria-label', `${verb} the main navitation menu`)
-		burgerMenu.setAttribute('aria-expanded', `${isOpened}`)
-	})
+	const isOpened = !!burgerMenu.classList.contains('close')
+	const verb = isOpened ? `Hide` : `Show`
+	burgerMenu.setAttribute('aria-label', `${verb} the main navitation menu`)
+	burgerMenu.setAttribute('aria-expanded', `${isOpened}`)
+})
 
-	const updateVisibility = () => {
-		if (window.innerWidth < 768) {
-			burgerMenu.setAttribute('aria-hidden', 'false')
-			socialIcons.setAttribute('aria-hidden', 'false')
-		} else {
-			burgerMenu.setAttribute('aria-hidden', 'true')
-			socialIcons.setAttribute('aria-hidden', 'true')
-		}
+const updateVisibility = () => {
+	if (window.innerWidth < 768) {
+		burgerMenu.setAttribute('aria-hidden', 'false')
+		socialIcons.setAttribute('aria-hidden', 'false')
+	} else {
+		burgerMenu.setAttribute('aria-hidden', 'true')
+		socialIcons.setAttribute('aria-hidden', 'true')
 	}
+}
 
-	const mediaQuery = window.matchMedia(`@media screen and (max-width: 767px)`)
-	mediaQuery.addEventListener(`change`, updateVisibility)
+const mediaQuery = window.matchMedia(`@media screen and (max-width: 767px)`)
+mediaQuery.addEventListener(`change`, updateVisibility)
 
-	updateVisibility()
+updateVisibility()
 
-	// -- Header background logic
-	function updateHeaderBg() {
-		if (!header) return
+// -- Header background logic
+function updateHeaderBg() {
+	if (!header) return
 
-		const isOpened = !!burgerMenu.classList.contains('close')
-		const scrollOffset =
-			window.pageYOffset ??
-			document.documentElement.scrollTop ??
-			document.body.scrollTop ??
-			0
-
-		if (withBg !== 'false' || scrollOffset >= 50 || isOpened) {
-			header.classList.add(...withBgClasses)
-			header.classList.remove(...withoutBgClasses)
-		} else if (scrollOffset < 50 && !isOpened) {
-			header.classList.remove(...withBgClasses)
-			header.classList.add(...withoutBgClasses)
-		}
-
-		requestAnimationFrame(updateHeaderBg)
-	}
-	updateHeaderBg()
-
-	const scrollUp = 'translate-y-0'
-	const scrollDown = '-translate-y-full'
-	let lastScroll =
+	const isOpened = !!burgerMenu.classList.contains('close')
+	const scrollOffset =
 		window.pageYOffset ??
 		document.documentElement.scrollTop ??
 		document.body.scrollTop ??
 		0
 
-	function updateScrollUpAndDownVisibility() {
-		if (!header) return
-
-		const currentScroll =
-			window.pageYOffset ??
-			document.documentElement.scrollTop ??
-			document.body.scrollTop ??
-			0
-
-		if (currentScroll <= 69) {
-			header.classList.remove(scrollUp)
-			requestAnimationFrame(updateScrollUpAndDownVisibility)
-			return
-		}
-
-		if (currentScroll > lastScroll && !header.classList.contains(scrollDown)) {
-			// down
-			header.classList.remove(scrollUp)
-			header.classList.add(scrollDown)
-		} else if (
-			currentScroll < lastScroll &&
-			header.classList.contains(scrollDown)
-		) {
-			// up
-			header.classList.remove(scrollDown)
-			header.classList.add(scrollUp)
-		}
-		lastScroll = currentScroll
-
-		requestAnimationFrame(updateScrollUpAndDownVisibility)
+	if (withBg !== 'false' || scrollOffset >= 50 || isOpened) {
+		header.classList.add(...withBgClasses)
+		header.classList.remove(...withoutBgClasses)
+	} else if (scrollOffset < 50 && !isOpened) {
+		header.classList.remove(...withBgClasses)
+		header.classList.add(...withoutBgClasses)
 	}
 
-	updateScrollUpAndDownVisibility()
+	requestAnimationFrame(updateHeaderBg)
+}
+updateHeaderBg()
+
+const scrollUp = ['translate-y-0', 'logo-visible']
+const scrollDown = '-translate-y-full'
+let lastScroll =
+	window.pageYOffset ??
+	document.documentElement.scrollTop ??
+	document.body.scrollTop ??
+	0
+
+function updateScrollUpAndDownVisibility() {
+	if (!header) return
+
+	const currentScroll =
+		window.pageYOffset ??
+		document.documentElement.scrollTop ??
+		document.body.scrollTop ??
+		0
+
+	if (currentScroll <= 69) {
+		header.classList.remove(...scrollUp)
+		requestAnimationFrame(updateScrollUpAndDownVisibility)
+		return
+	}
+
+	if (currentScroll > lastScroll && !header.classList.contains(scrollDown)) {
+		// down
+		header.classList.remove(...scrollUp)
+		header.classList.add(scrollDown)
+	} else if (
+		currentScroll < lastScroll &&
+		header.classList.contains(scrollDown)
+	) {
+		// up
+		header.classList.remove(scrollDown)
+		header.classList.add(...scrollUp)
+	}
+	lastScroll = currentScroll
+
+	requestAnimationFrame(updateScrollUpAndDownVisibility)
+}
+
+updateScrollUpAndDownVisibility()
 </script>
 
 <style>
@@ -180,8 +180,12 @@ const withoutBgClasses = 'border-b-transparent'
 		z-index: 2;
 		@apply -mr-2;
 	}
+	#burger-menu:focus-visible,
 	#burger-menu:focus {
-		@apply ring-2 ring-fg outline-none rounded-full;
+		@apply outline-none;
+	}
+	#burger-menu:focus-visible {
+		@apply ring-2 ring-fg rounded-full;
 	}
 	#burger-menu span,
 	#burger-menu span:before,
