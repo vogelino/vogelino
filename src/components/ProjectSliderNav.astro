@@ -15,8 +15,8 @@ import ArrowUp from './icons/ArrowUp.astro'
 			`transition-colors z-10 text-lg sm:text-xl md:text-2xl uppercase`,
 			`tracking-wide px-6 pt-4 pb-2 border -ml-px rounded-t`,
 			`bg-bg border-grayMed z-20 border-b-bg`,
-			`focus:outline-none focus:ring-inset focus:ring-2`,
-			`focus:ring-fg focus:z-30 focus:rounded`,
+			`outline-none focus-visible:ring-inset focus-visible:ring-2`,
+			`focus-visible:ring-fg focus-visible:z-30 focus-visible:rounded`,
 			`hover-hover:hover:bg-alt`,
 		]}
 	>
@@ -33,8 +33,8 @@ import ArrowUp from './icons/ArrowUp.astro'
 				`transition-colors z-10 text-xl md:text-2xl uppercase`,
 				`tracking-wide px-4 pt-4 pb-3 border -ml-px rounded-tl`,
 				`bg-bg border-grayMed z-20`,
-				`focus:outline-none focus:ring-inset focus:ring-2`,
-				`focus:ring-fg focus:z-30 focus:rounded`,
+				`outline-none focus-visible:ring-inset focus-visible:ring-2`,
+				`focus-visible:ring-fg focus-visible:z-30 focus-visible:rounded`,
 				`hover-hover:hover:bg-alt`,
 			]}
 		>
@@ -47,8 +47,8 @@ import ArrowUp from './icons/ArrowUp.astro'
 				`transition-colors z-10 text-xl md:text-2xl uppercase`,
 				`tracking-wide px-4 pt-4 pb-3 border -ml-px rounded-tr`,
 				`bg-bg border-grayMed z-20`,
-				`focus:outline-none focus:ring-inset focus:ring-2`,
-				`focus:ring-fg focus:z-30 focus:rounded`,
+				`outline-none focus-visible:ring-inset focus-visible:ring-2`,
+				`focus-visible:ring-fg focus-visible:z-30 focus-visible:rounded`,
 				`hover-hover:hover:bg-alt`,
 			]}
 		>
@@ -60,8 +60,8 @@ import ArrowUp from './icons/ArrowUp.astro'
 <script defer>
 const infoButton = document.getElementById('about-tab')
 infoButton?.addEventListener('click', (evt) => {
-  evt.preventDefault()
-  const infoButtonTop = infoButton.getBoundingClientRect().top
-  window.scrollTo({ top: infoButtonTop, behavior: 'smooth' })
+	evt.preventDefault()
+	const infoButtonTop = infoButton.getBoundingClientRect().top
+	window.scrollTo({ top: infoButtonTop, behavior: 'smooth' })
 })
 </script>

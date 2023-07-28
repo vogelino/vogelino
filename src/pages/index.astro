@@ -11,11 +11,11 @@ const projects = (
 	await loadJson<MappedNotionProject[]>(PROJECTS_JSON_PATH)
 ).map((w) => {
 	const classes = [
-		`group-focus:rotate-1 group-hover:rotate-1`,
-		`group-focus:rotate-0 group-hover:rotate-0`,
-		`group-focus:rotate-2 group-hover:rotate-2`,
-		`group-focus:-rotate-1 group-hover:-rotate-1`,
-		`group-focus:-rotate-2 group-hover:-rotate-2`,
+		`group-focus-visible:rotate-1 group-hover:rotate-1`,
+		`group-focus-visible:rotate-0 group-hover:rotate-0`,
+		`group-focus-visible:rotate-2 group-hover:rotate-2`,
+		`group-focus-visible:-rotate-1 group-hover:-rotate-1`,
+		`group-focus-visible:-rotate-2 group-hover:-rotate-2`,
 	]
 	const rotationClass = classes[Math.floor(Math.random() * classes.length)]
 	return {
@@ -36,8 +36,8 @@ const projects = (
 			href="/about"
 			class={classNames(
 				`bg-bg flex flex-col-reverse md:flex-row`,
-				`focus:ring-2 focus:ring-fg group focus:outline-none`,
-				`focus:ring-inset focus:ring-offset-bg overflow-hidden`,
+				`focus-visible:ring-2 focus-visible:ring-fg group outline-none`,
+				`focus-visible:ring-inset focus-visible:ring-offset-bg overflow-hidden`,
 			)}
 		>
 			<div
@@ -63,8 +63,8 @@ const projects = (
 					class={classNames(
 						`-top-32 -right-10 md:-bottom-20 md:left-4`,
 						`group-hover:scale-110 transition-transform absolute`,
-						`rounded-full group-focus:ring-4 group-focus:ring-fg`,
-						`group-focus:ring-offset-4 group-focus:ring-offset-bg`,
+						`rounded-full group-focus-visible:ring-4 group-focus-visible:ring-fg`,
+						`group-focus-visible:ring-offset-4 group-focus-visible:ring-offset-bg`,
 					)}
 				>
 					<svg

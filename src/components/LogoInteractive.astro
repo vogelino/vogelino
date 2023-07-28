@@ -15,7 +15,7 @@ const { isMinimal } = Astro.props
 	class={classNames(
 		`logo`,
 		`relative group h-10 -ml-4 py-2 rounded-full`,
-		`focus-visible:ring-2 focus-visible:ring-fg focus:outline-none`,
+		`focus-visible:ring-2 focus-visible:ring-fg outline-none`,
 	)}
 	aria-label="Logo (Link to Homepage)"
 >
@@ -58,17 +58,16 @@ const { isMinimal } = Astro.props
 </a>
 
 <style is:global>
-	.logo {
-		width: 42px;
+	header[aria-label='Main header'] .logo {
+		@apply w-[42px] md:w-[205px];
 	}
-	.logo-visible .logo {
+	header[aria-label='Main header'].logo-visible .logo {
 		width: 205px;
 	}
-	.logo-visible .logo-small {
+	header[aria-label='Main header'].logo-visible .logo-small {
 		display: none;
 	}
-
-	.logo-visible .logo-large {
+	header[aria-label='Main header'].logo-visible .logo-large {
 		display: inline-block;
 	}
 </style>
