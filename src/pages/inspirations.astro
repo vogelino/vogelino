@@ -16,7 +16,10 @@ const notionLinks = await loadJson<MappedNotionInspirationLinkType[]>(
 
 <Layout title="Inspirations">
 	<ul
-		class="grid mt-24 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 px-8 pb-16 container mx-auto"
+		class={classNames(
+			`grid mt-24 sm:grid-cols-2 md:grid-cols-3`,
+			`lg:grid-cols-4 gap-8 px-8 pb-16 container mx-auto`,
+		)}
 	>
 		<li class="relative h-full flex items-center sm:justify-center">
 			<FancyHeadline
@@ -45,8 +48,10 @@ const notionLinks = await loadJson<MappedNotionInspirationLinkType[]>(
 									alt={`Cover image of "${link.url}"`}
 									attributes={{
 										img: {
-											class:
-												'w-full aspect-[140/73] rounded object-cover transition-transform group-hover:scale-110',
+											class: classNames(
+												`w-full aspect-[140/73] rounded object-cover`,
+												`transition-transform hover-hover:group-hover:scale-110`,
+											),
 										},
 									}}
 								/>

@@ -46,13 +46,14 @@ const { project, nextProject, prevProject } = Astro.props
 		<section>
 			<ProjectSliderNav />
 			<div
-				class:list={[
+				class={classNames([
 					`px-6 lg:px-8 leading-normal`,
 					`sm:text-xl lg:text-2xl mt-4`,
-					`xl:grid xl:grid-cols-[5fr,2fr] 2xl:grid-cols-[2fr,1fr] xl:gap-8`,
-				]}
+					`xl:grid xl:grid-cols-[5fr,2fr]`,
+					`2xl:grid-cols-[2fr,1fr] xl:gap-8`,
+				])}
 			>
-				<div class:list={[`md:columns-2 md:gap-6 lg:gap-8`, `mb-16`]}>
+				<div class={classNames([`md:columns-2 md:gap-6 lg:gap-8`, `mb-16`])}>
 					<NotionTextContents blocks={project.blocks} />
 				</div>
 				<aside class="mb-32 @container/collabs">

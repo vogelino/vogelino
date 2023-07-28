@@ -28,9 +28,11 @@ const commonContainerClasses = `grid grid-cols-[45px,1fr] items-center`
 				rel="noreferrer nofollow"
 				class={classNames(
 					commonContainerClasses,
-					`group focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-fg`,
+					`group focus-visible:ring-2 focus-visible:ring-offset-2 `,
+					`focus-visible:ring-fg focus-visible:rounded-sm`,
 					`outline-none relative focus-visible:z-10`,
-					`hover:bg-fg hover:text-white transition-colors`,
+					`hover-hover:hover:bg-fg hover-hover:hover:text-white`,
+					`transition-colors`,
 				)}
 			>
 				{<CollaboratorItemContent collaborator={collaborator} />}

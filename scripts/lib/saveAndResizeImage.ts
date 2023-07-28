@@ -7,13 +7,11 @@ import fs from 'node:fs/promises'
 import { dirname, extname } from 'path'
 import { createDirectoriesIfNotAlreadyThere } from "./createDirectoriesIfNotAlreadyThere";
 import { IMAGE_DEST_EXPORT_PATH, IMAGE_TMP_EXPORT_PATH } from "../paths";
-import { optimize } from "svgo";
-import { streamToString } from "./streamToString";
 
 interface SaveAndResizeImageParamsType {
   fileName: string;
   folder: string;
-  fileUrl?: string;
+  fileUrl?: string//;
   resize?: sharp.ResizeOptions;
 }
 

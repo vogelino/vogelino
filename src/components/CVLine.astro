@@ -24,8 +24,11 @@ const { timePeriod, title, location, certification } = Astro.props
 >
 	<div
 		class={classNames(
-			`min-h-[calc(100%-1rem)] w-[calc(100%-1rem)] ml-4 border-l border-grayLight`,
-			`p-6 @md/cvline:gap-x-6 @md/cvline:grid @md/cvline:grid-cols-3 @lg/cvline:grid-cols-4 @md/cvline:items-baseline`,
+			`min-h-[calc(100%-1rem)] w-[calc(100%-1rem)]`,
+			`p-6 ml-4 border-l border-grayLight`,
+			`@md/cvline:gap-x-6 @md/cvline:grid`,
+			`@md/cvline:grid-cols-3 @lg/cvline:grid-cols-4`,
+			`@md/cvline:items-baseline`,
 			`flex flex-col gap-y-2 leading-normal`,
 		)}
 	>
