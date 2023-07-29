@@ -8,10 +8,12 @@ import { PROJECTS_JSON_PATH } from '../../../scripts/paths'
 import type { MappedNotionProject } from '../../../scripts/lib/parseOriginalNotionProjects'
 import Thumbnail from '../../components/Thumbnail.astro'
 import NotionTextContents from '../../components/NotionTextContents.astro'
-import SeeOneMore from '../../components/SeeOneMore.astro'
+import SeeOneMore from '../../components/SeeOneMoreStroke.astro'
 import ProjectSlider from '../../components/ProjectSlider.astro'
 import ImageZoomer from '../../components/ImageZoomer.astro'
 import ProjectSliderNav from '../../components/ProjectSliderNav.astro'
+import SeeOneMoreStroke from '../../components/SeeOneMoreStroke.astro'
+import SeeOneMoreFill from '../../components/SeeOneMoreFill.astro'
 
 export async function getStaticPaths() {
 	const notionProjects = await loadJson<MappedNotionProject[]>(
@@ -56,12 +58,12 @@ const { project, nextProject, prevProject } = Astro.props
 				<div class={classNames([`md:columns-2 md:gap-6 lg:gap-8`, `mb-16`])}>
 					<NotionTextContents blocks={project.blocks} />
 				</div>
-				<aside class="mb-32 @container/collabs">
+				<aside class="@container/collabs">
 					<div
 						class={classNames(
 							`items-stretch`,
 							`grid grid-cols-1 @sm/collabs:grid-cols-2`,
-							`text-base lg:text-xl`,
+							`text-base @lg/collabs:text-xl`,
 						)}
 					>
 						<CollaboratorsGroup collaborators={project.clients}>
@@ -84,7 +86,7 @@ const { project, nextProject, prevProject } = Astro.props
 			</div>
 			<section
 				class={classNames(
-					`flex flex-col sm:px-6 lg:px-8`,
+					`flex flex-col sm:px-6 lg:px-8 mb-8 mt-32`,
 					`md:grid md:grid-cols-[1fr,0,0,0,1fr] xl:grid-cols-[0,450px,1fr,450px,0]`,
 				)}
 			>
@@ -94,8 +96,18 @@ const { project, nextProject, prevProject } = Astro.props
 					rotationClass="rotate-1"
 					className="md:border-l border-grayLight"
 				/>
-				<div class="flex items-center justify-center border-t border-grayLight">
-					<SeeOneMore className="hidden xl:block" />
+				<div
+					class={classNames(
+						`flex items-center justify-center`,
+						`mb-8 relative`,
+					)}
+				>
+					<div class="relative">
+						<SeeOneMoreFill className="text-alt hidden xl:block" />
+						<SeeOneMoreStroke
+							className="hidden xl:block absolute top-0 left-0"
+						/>
+					</div>
 				</div>
 				<Thumbnail
 					{...nextProject}

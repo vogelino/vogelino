@@ -54,9 +54,6 @@ module.exports = {
 			transitionTimingFunction: {
 				'out-extreme': 'cubic-bezier(.12,.98,.13,.98)',
 			},
-			dropShadow: {
-				xlUltraLightGray: '0 0 20px rgba(225,236,242,0.5)',
-			},
 		},
 	},
 	plugins: [
