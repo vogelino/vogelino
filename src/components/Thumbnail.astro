@@ -1,7 +1,7 @@
 ---
 import classNames from '../utils/classNames'
-import * as astroComponents from 'astro-imagetools/components'
 import type { MappedNotionProject } from '../../scripts/lib/parseOriginalNotionProjects'
+import * as astroComponents from 'astro-imagetools/components'
 
 const { Img } = astroComponents
 
@@ -32,7 +32,7 @@ const {
 		`col-span-2 focus-visible:outline-none`,
 		highlighted && `sm:col-span-4 md:col-span-2 xl:col-span-4 xl:row-span-2`,
 	)}
-	aria-label={title}
+	aria-label={nameShort || title}
 >
 	<div
 		class={classNames(
@@ -187,9 +187,10 @@ const {
 
 				'leading-6 @xl/thumb:leading-10',
 				`text-3xl @xl/thumb:text-5xl`,
+				`hyphens-none`,
 			)}
-			>{nameShort || title}
-		</span>
+			set:html={nameShort || title}
+		/>
 	</h2>
 	<div
 		class={classNames(

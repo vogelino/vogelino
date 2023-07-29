@@ -1,6 +1,7 @@
 import type {
   NotionImageType,
   NotionRelationType,
+  NotionTextType,
   RawNotionProjectWithBlocksType,
 } from "./getOriginalNotionProjects";
 import fetch from "node-fetch";
@@ -29,7 +30,7 @@ export interface MappedNotionProject extends Record<string, unknown> {
   id: string;
   title: string;
   nameShort: null | string;
-  description: MappedNotionTextContentsType;
+  description: NotionTextType[];
   type: string;
   slug: string;
   thumbnail: string;
@@ -65,7 +66,10 @@ function mapOriginalNotionProject(
   const { Name, NameShort, Description, Type, Year, URL, Media } =
     rawProject.properties;
   const fullTitle = Name.title.map(({ plain_text }) => plain_text).join("");
-  const slug = slugify(fullTitle, {
+  const nameShort = NameShort.rich_text
+    .map(({ text }) => text?.content)
+    .join(" ");
+  const slug = slugify(nameShort || fullTitle, {
     lower: true,
     strict: true,
     trim: true,
@@ -73,16 +77,7 @@ function mapOriginalNotionProject(
   });
 
   const type = Type.select.name;
-  const description = Description.rich_text.map(
-    ({ text, annotations, href }) => ({
-      text: text.content,
-      link: href,
-      highlighted: annotations.bold,
-    })
-  );
-  const nameShort = NameShort.rich_text
-    .map(({ text }) => text?.content)
-    .join(" ");
+  const description = Description.rich_text;
   const highlighted =
     !!rawProject.properties["Highlight in portfolio"].checkbox;
 

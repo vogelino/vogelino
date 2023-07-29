@@ -33,11 +33,11 @@ const { richText } = Astro.props
 					>
 						{bold && italic && (
 							<strong>
-								<em>{text}</em>
+								<em set:html={text} />
 							</strong>
 						)}
-						{bold && !italic && <strong>{text}</strong>}
-						{!bold && italic && <em>{text}</em>}
+						{bold && !italic && <strong set:html={text} />}
+						{!bold && italic && <em set:html={text} />}
 						{!bold && !italic && text}
 					</a>
 				)
@@ -45,12 +45,12 @@ const { richText } = Astro.props
 			if (bold && italic)
 				return (
 					<strong>
-						<em>{text}</em>
+						<em set:html={text} />
 					</strong>
 				)
-			if (bold && !italic) return <strong>{text}</strong>
-			if (!bold && italic) return <em>{text}</em>
-			return <>{text}</>
+			if (bold && !italic) return <strong set:html={text} />
+			if (!bold && italic) return <em set:html={text} />
+			return <span set:html={text} />
 		})
 		.filter(Boolean)
 }

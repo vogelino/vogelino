@@ -60,13 +60,17 @@ const highlightClasses = `bg-alt rounded-full pl-3 pr-2 mr-1 pt-2 pb-1 decoratio
 						(part) =>
 							part.text &&
 							(part.link ? (
-								<a href={part.link} class={highlightClasses} target="_blank">
-									{part.text.trim()}
-								</a>
+								<a
+									href={part.link}
+									class={highlightClasses}
+									target="_blank"
+									set:html={part.text.trim()}
+								/>
 							) : (
-								<span class={part.highlighted ? highlightClasses : ''}>
-									{part.text.trim()}
-								</span>
+								<span
+									class={part.highlighted ? highlightClasses : ''}
+									set:html={part.text.trim()}
+								/>
 							)),
 					)
 				}

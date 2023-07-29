@@ -42,7 +42,7 @@ export interface Props {
 const { project, nextProject, prevProject } = Astro.props
 ---
 
-<Layout title={project.title} withHeaderBg={false}>
+<Layout title={project.nameShort || project.title} withHeaderBg={false}>
 	<main class:list={[`flex flex-col`]}>
 		<ProjectSlider project={project} />
 		<section>
@@ -112,7 +112,7 @@ const { project, nextProject, prevProject } = Astro.props
 				<Thumbnail
 					{...nextProject}
 					highlighted={false}
-					className="xl:border-l md:border-l-grayMed"
+					className="md:border-l md:border-l-grayMed"
 					rotationClass="-rotate-1"
 				/>
 			</section>
