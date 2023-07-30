@@ -28,7 +28,7 @@ const { projectName, imageUrl } = Astro.props
 			`focus-visible:ring-offset-4 focus-visible:ring-offset-grayUltraLight`,
 			`hover-hover:hover:cursor-zoom-in`,
 		)}
-		href={`/${imageUrl}`}
+		href={`/${imageUrl.replace('public/', '')}`}
 	>
 		<Img
 			src={`/${imageUrl}`}
