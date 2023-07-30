@@ -4,6 +4,7 @@ import classNames from '../utils/classNames'
 import NotionFormattedRichText from './NotionFormattedRichText.astro'
 import Link from './icons/Link.astro'
 import * as astroComponents from 'astro-imagetools/components'
+import 'glightbox/dist/css/glightbox.min.css'
 
 const { Img } = astroComponents
 
@@ -136,6 +137,7 @@ const { project } = Astro.props
 
 <script>
 	import Splide from '@splidejs/splide'
+	import GLightbox from 'glightbox'
 
 	const slider = new Splide('.splide', {
 		rewind: true,
@@ -157,6 +159,13 @@ const { project } = Astro.props
 	prevButton.addEventListener('click', (evt) => {
 		evt.preventDefault()
 		slider.go('<')
+	})
+
+	const lightbox = GLightbox({
+		touchNavigation: true,
+		loop: true,
+		autoplayVideos: true,
+		zoom: true,
 	})
 </script>
 
@@ -185,5 +194,30 @@ const { project } = Astro.props
 	button.splide__pagination__page[aria-selected='true'] {
 		@apply bg-fg focus-visible:ring-2 focus-visible:ring-fg;
 		@apply focus-visible:ring-offset-2 focus-visible:ring-offset-bg;
+	}
+
+	/* GLIGHTBOX */
+	.glightbox-container.glightbox-clean .goverlay {
+		@apply bg-grayUltraLight;
+	}
+	.glightbox-container.glightbox-clean .gbtn,
+	.glightbox-container.glightbox-clean .gclose {
+		@apply w-12 h-12 bg-grayUltraLight rounded-full opacity-100;
+		@apply ring-1 ring-grayMed transition;
+		@apply outline-none focus-visible:ring-offset-2;
+		@apply focus-visible:ring-offset-grayUltraLight;
+		@apply focus-visible:ring-2 focus-visible:ring-fg;
+		@apply hover-hover:hover:bg-alt hover-hover:hover:ring-alt;
+	}
+	.glightbox-container.glightbox-clean .gbtn svg path,
+	.glightbox-container.glightbox-clean .gclose svg path {
+		fill: currentColor;
+	}
+
+	.glightbox-container.glightbox-clean .gslide-media {
+		@apply shadow-xl shadow-grayDark/40;
+	}
+	.glightbox-container.glightbox-clean .gslide-media img {
+		@apply rounded-md ring-1 ring-black/5;
 	}
 </style>

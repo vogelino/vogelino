@@ -1,5 +1,6 @@
 ---
 import * as astroComponents from 'astro-imagetools/components'
+import classNames from '../utils/classNames'
 
 const { Img } = astroComponents
 
@@ -18,11 +19,16 @@ const { projectName, imageUrl } = Astro.props
 		`flex items-center justify-center`,
 	]}
 >
-	<div
-		class:list={[
+	<a
+		class={classNames(
+			`glightbox`,
 			`rounded overflow-hidden shadow-lg shadow-grayMed`,
-			`ring ring-1 ring-black/5 max-w-full max-h-full`,
-		]}
+			`ring-1 ring-black/5 max-w-full max-h-full`,
+			`outline-none focus-visible:ring-2 focus-visible:ring-fg`,
+			`focus-visible:ring-offset-4 focus-visible:ring-offset-grayUltraLight`,
+			`hover-hover:hover:cursor-zoom-in`,
+		)}
+		href={`/${imageUrl}`}
 	>
 		<Img
 			src={`/${imageUrl}`}
@@ -31,5 +37,5 @@ const { projectName, imageUrl } = Astro.props
 			attributes={{ img: { class: 'splide__img' } }}
 			loading="eager"
 		/>
-	</div>
+	</a>
 </li>
