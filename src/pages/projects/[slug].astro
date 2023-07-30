@@ -8,9 +8,7 @@ import { PROJECTS_JSON_PATH } from '../../../scripts/paths'
 import type { MappedNotionProject } from '../../../scripts/lib/parseOriginalNotionProjects'
 import Thumbnail from '../../components/Thumbnail.astro'
 import NotionTextContents from '../../components/NotionTextContents.astro'
-import SeeOneMore from '../../components/SeeOneMoreStroke.astro'
 import ProjectSlider from '../../components/ProjectSlider.astro'
-import ImageZoomer from '../../components/ImageZoomer.astro'
 import ProjectSliderNav from '../../components/ProjectSliderNav.astro'
 import SeeOneMoreStroke from '../../components/SeeOneMoreStroke.astro'
 import SeeOneMoreFill from '../../components/SeeOneMoreFill.astro'
@@ -118,5 +116,4 @@ const { project, nextProject, prevProject } = Astro.props
 			</section>
 		</section>
 	</main>
-	<ImageZoomer />
 </Layout>
