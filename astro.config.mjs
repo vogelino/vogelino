@@ -9,6 +9,5 @@ import { astroImageTools } from 'astro-imagetools'
  */
 export default defineConfig({
 	integrations: [tailwind(), prefetch(), sitemap(), astroImageTools],
-	site:
-		process.env.BASE_URL || process.env.VERCEL_URL || `https://vogelino.com`,
+	site: `https://vogelino22.vercel.app`,
 })
