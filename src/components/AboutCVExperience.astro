@@ -133,6 +133,7 @@ const cv = await loadJson<MappedNotionCV>(CV_JSON_PATH)
 		@apply transition-colors z-10 text-xl md:text-2xl uppercase;
 		@apply tracking-wide px-6 pt-3 pb-2 border -ml-px rounded-t;
 		@apply border-transparent border-b-grayMed;
+		@apply motion-reduce:transition-none;
 	}
 
 	[role='tab'][aria-selected='true'] {
@@ -142,6 +143,7 @@ const cv = await loadJson<MappedNotionCV>(CV_JSON_PATH)
 	[role='tab'][aria-selected='false'] {
 		@apply bg-grayUltraLight transition-colors;
 		@apply hover-hover:hover:bg-alt;
+		@apply motion-reduce:transition-none;
 	}
 
 	[role='tablist']:focus-visible,

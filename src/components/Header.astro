@@ -22,7 +22,7 @@ const withoutBgClasses = 'border-b-transparent'
 		`text-fg px-8 max-w-[1440px] min-[1440px]:border-x`,
 		`min-[1440px]:border-x-grayMed border-b`,
 		`flex justify-between items-center h-[69px]`,
-		`transition`,
+		`transition motion-reduce:transition-none`,
 		withBg ? withBgClasses : withoutBgClasses,
 	)}
 	data-withBg={`${withBg}`}
@@ -46,6 +46,7 @@ const withoutBgClasses = 'border-b-transparent'
 			`fixed top-[69px] left-0 w-screen h-[calc(100svh-69px)] bg-bg sm:bg-transparent`,
 			`opacity-0 pointer-events-none sm:opacity-100 sm:static sm:pointer-events-auto`,
 			`sm:w-auto sm:h-auto sm:bg-none transition-opacity`,
+			`motion-reduce:transition-none`,
 		)}
 	>
 		<ul class={classNames(`flex flex-col sm:flex-row sm:gap-2 items-center`)}>
@@ -197,6 +198,7 @@ updateScrollUpAndDownVisibility()
 		opacity: 1;
 		position: absolute;
 		transition: 0.3s ease-in-out;
+		@apply motion-reduce:transition-none;
 	}
 	#burger-menu span:before,
 	#burger-menu span:after {

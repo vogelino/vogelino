@@ -11,7 +11,10 @@ const { className } = Astro.props
 	width="210"
 	height="210"
 	xmlns="http://www.w3.org/2000/svg"
-	class={classNames(className, `transition animate-spin`)}
+	class={classNames(
+		className,
+		`transition animate-spin motion-reduce:animate-none`,
+	)}
 	style="animation-duration: 16000ms; animation-direction: reverse;"
 >
 	<g fill="none" fill-rule="evenodd">

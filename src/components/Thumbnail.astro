@@ -44,40 +44,48 @@ const {
 		<div
 			class={classNames(
 				rotationClass,
-				`absolute inset-4 border-0 border-alt rounded shadow-md`,
-				`hover-hover:group-hover:hover:border-2`,
-				`overflow-hidden transition`,
+				`motion-reduce:rotate-0`,
+				`motion-reduce:group-focus-visible:rotate-0`,
+				`motion-reduce:hover-hover:group-hover:rotate-0`,
+				`motion-reduce:group-focus-visible:scale-95`,
+				`motion-reduce:hover-hover:group-hover:scale-95`,
+				`absolute inset-4 border-alt rounded shadow-md`,
+				`overflow-hidden transition motion-reduce:transition-none`,
 				`group-focus-visible:opacity-100 @sm/thumb:group-focus-visible:scale-100`,
 				`ease-out-extreme duration-700`,
 
 				`scale-95`,
 				`translate-x-0`,
 				`translate-y-0`,
-				`border-2`,
-				`border-t-[12px]`,
+				`ring-1 ring-grayMed`,
 				`opacity-100`,
 
 				`@sm/thumb:hover-hover:scale-75`,
 				`@sm/thumb:hover-hover:-translate-x-4`,
 				`@sm/thumb:hover-hover:-translate-y-8`,
-				`@sm/thumb:hover-hover:border-0`,
-				`@sm/thumb:hover-hover:border-t-0`,
 				`@sm/thumb:hover-hover:opacity-0`,
 
 				`@sm/thumb:hover-hover:group-hover:scale-95`,
 				`@sm/thumb:hover-hover:group-hover:translate-x-0`,
 				`@sm/thumb:hover-hover:group-hover:translate-y-0`,
-				`@sm/thumb:hover-hover:group-hover:border-2`,
-				`@sm/thumb:hover-hover:group-hover:border-t-[12px]`,
 				`@sm/thumb:hover-hover:group-hover:opacity-100`,
 
 				`@xl/thumb:hover-hover:scale-95`,
 				`@xl/thumb:hover-hover:group-hover:scale-75`,
 				`@xl/thumb:hover-hover:translate-x-0`,
 				`@xl/thumb:hover-hover:translate-y-0`,
-				`@xl/thumb:hover-hover:border-2`,
-				`@xl/thumb:hover-hover:border-t-[12px]`,
 				`@xl/thumb:hover-hover:opacity-100`,
+
+				`@sm/thumb:motion-reduce:scale-95`,
+				`@sm/thumb:motion-reduce:translate-x-0`,
+				`@sm/thumb:motion-reduce:translate-y-0`,
+				`@sm/thumb:motion-reduce:opacity-100`,
+
+				`@xl/thumb:scale-95`,
+				`@xl/thumb:group-hover:scale-75`,
+				`@xl/thumb:translate-x-0`,
+				`@xl/thumb:translate-y-0`,
+				`@xl/thumb:opacity-100`,
 			)}
 		>
 			<Img
@@ -98,13 +106,16 @@ const {
 				`translate-y-px origin-bottom-left`,
 				`w-[40vmin] @sm/thumb:w-[300px] transition-all`,
 				`absolute bottom-0 left-[7.5vh]`,
+				`motion-reduce:transition-none`,
 
 				`scale-75 translate-x-0`,
 
 				`@sm/thumb:hover-hover:scale-100`,
-
 				`@sm/thumb:group-hover:scale-50`,
 				`@sm/thumb:group-hover:translate-x-0`,
+				`motion-reduce:scale-100`,
+				`motion-reduce:scale-50`,
+				`motion-reduce:translate-x-0`,
 			)}
 		/>
 	</div>
@@ -135,8 +146,8 @@ const {
 			class={classNames(
 				`absolute top-5 left-1 whitespace-nowrap suppercase transition`,
 				`z-10 tracking-wide leading-4 text-lg text-grayDark`,
-				`hover-hover:group-hover:text-white`,
 				`group-focus-visible:text-white`,
+				`motion-reduce:transition-none`,
 			)}
 		>
 			<p
@@ -158,6 +169,10 @@ const {
 			`@xl/thumb:pb-2.5`,
 			`hover-hover:group-hover:pt-[18px] hover-hover:group-hover:px-1`,
 			'group-focus-visible:pt-[18px] group-focus-visible:px-1',
+			`hover-hover:group-hover:pt-4`,
+			'group-focus-visible:pt-4',
+			`hover-hover:group-hover:pb-2`,
+			'group-focus-visible:pb-2',
 			`pointer-events-none flex items-center`,
 		)}
 	>
@@ -174,7 +189,7 @@ const {
 				`group-focus-visible:tracking-tight`,
 
 				`hover-hover:group-hover:px-3 hover-hover:group-hover:-mt-3`,
-				`hover-hover:group-hover:pb-2 hover-hover:group-hover:pt-2`,
+				`hover-hover:group-hover:pb-3 hover-hover:group-hover:pt-2`,
 
 				`group-focus-visible:px-3 group-focus-visible:-mt-3`,
 				`group-focus-visible:pb-2 group-focus-visible:pt-2`,

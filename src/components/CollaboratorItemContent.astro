@@ -18,6 +18,7 @@ const commonAvatarProps = {
 	class: classNames(
 		`object-cover aspect-square`,
 		`transition-opacity bg-white`,
+		`motion-reduce:transition-none`,
 	),
 }
 
@@ -56,6 +57,7 @@ const isWebpAvatar =
 		class={classNames(
 			`absolute inset-0 z-10 bg-grayMed mix-blend-soft-light`,
 			`group-hover:bg-fg transition-colors`,
+			`motion-reduce:transition-none`,
 		)}></span>
 </span>
 <span

@@ -92,7 +92,7 @@ const highlightClasses = `bg-alt rounded-full pl-3 pr-2 mr-1 pt-2 pb-1 decoratio
 							`transition-colors hover:bg-alt hover:text-fg border-2 border-fg`,
 							`hover:scale-110 special-button flex gap-2 items-center`,
 							`focus-visible:ring-2 focus-visible:ring-fg focus-visible:ring-offset-4 ring-offset-alt`,
-							`outline-none`,
+							`outline-none motion-reduce:transition-none`,
 						)}
 					>
 						<span>Launch</span> <Link className="mt-1" />
@@ -136,5 +136,6 @@ const highlightClasses = `bg-alt rounded-full pl-3 pr-2 mr-1 pt-2 pb-1 decoratio
 		transition: opacity 200ms ease-in-out,
 			transform 500ms cubic-bezier(0, 2.09, 0.27, 0.86);
 		will-change: transform, color, background-color;
+		@apply motion-reduce:transition-none;
 	}
 </style>
