@@ -1,0 +1,22 @@
+{
+    "theme_color": "#e30002",
+    "background_color": "#FFEF9B",
+    "display": "fullscreen",
+    "scope": "/",
+    "start_url": "/",
+    "name": "Vogelino - Lucas Vogel's portfolio",
+    "short_name": "Vogelino",
+    "description": "The online portfolio of Lucas Vogel (Vogelino), a swiss/chilean berlin-based creative technologist",
+    "icons": [
+        {
+            "src": "/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
