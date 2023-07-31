@@ -48,20 +48,22 @@ const { project } = Astro.props
 						)}
 					>
 						<span
-							class="sm:text-lg md:text-xl inline-block mb-2 sm:mb-3 md:mb-6"
-							>{project.year}</span
+							class={classNames(
+								`sm:text-lg md:text-xl inline-block mb-2 sm:mb-3 md:mb-6`,
+								`select-text`,
+							)}>{project.year}</span
 						>
 						<h1
 							class:list={[
 								`text-3xl sm:text-5xl md:text-6xl 2xl:text-7xl`,
 								`leading-[1em] text-balance`,
-								`uppercase font-bold`,
+								`uppercase font-bold select-text`,
 							]}
 							set:html={project.title}
 						/>
 						<p
 							class:list={[
-								`text-balance`,
+								`text-balance select-text`,
 								`text-lg sm:text-xl md:text-2xl lg:text-3xl mt-2 sm:mt-3 md:mt-4`,
 							]}
 						>
