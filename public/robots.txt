@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vogelino.com/sitemap-index.xml
