@@ -169,6 +169,9 @@ const { project } = Astro.props
 		autoplayVideos: true,
 		zoom: true,
 	})
+	lightbox.on('slide_changed', ({ current }) => {
+		slider.go(current.slideIndex + 1)
+	})
 </script>
 
 <style is:global>
