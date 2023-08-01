@@ -4,7 +4,7 @@ import classNames from '../utils/classNames'
 import NotionFormattedRichText from './NotionFormattedRichText.astro'
 import Link from './icons/Link.astro'
 import * as astroComponents from 'astro-imagetools/components'
-import 'glightbox/dist/css/glightbox.min.css'
+import 'photoswipe/style.css'
 
 const { Img } = astroComponents
 
@@ -13,11 +13,13 @@ const { project } = Astro.props
 
 <div
 	class:list={[
+		`pswp-gallery`,
 		`splide h-[calc(100svh-16px)] w-screen overflow-x-hidden mx-auto`,
 		`max-w-[1438px]`,
 		`outline-none group`,
 	]}
 	aria-label="List of project images"
+	id="main-slider"
 >
 	<div
 		class:list={[
@@ -139,7 +141,7 @@ const { project } = Astro.props
 
 <script>
 	import Splide from '@splidejs/splide'
-	import GLightbox from 'glightbox'
+	import PhotoSwipeLightbox from 'photoswipe/lightbox'
 
 	const slider = new Splide('.splide', {
 		rewind: true,
@@ -163,15 +165,26 @@ const { project } = Astro.props
 		slider.go('<')
 	})
 
-	const lightbox = GLightbox({
-		touchNavigation: true,
-		loop: true,
-		autoplayVideos: true,
-		zoom: true,
+	const zoomableImgs = Array.from(document.querySelectorAll('.powerswipe-link'))
+	zoomableImgs.forEach((liEl: HTMLLIElement) => {
+		const img = liEl.querySelector('img')
+		const width = img.getAttribute('width')
+		const height = img.getAttribute('height')
+		img.style.aspectRatio = `${width}/${height}`
+		liEl.setAttribute('data-pswp-width', width)
+		liEl.setAttribute('data-pswp-height', height)
 	})
-	lightbox.on('slide_changed', ({ current }) => {
-		slider.go(current.slideIndex + 1)
+
+	const lightbox = new PhotoSwipeLightbox({
+		gallery: '#main-slider',
+		children: '.powerswipe-link',
+		showHideAnimationType: 'fade',
+		wheelToZoom: true,
+		allowPanToNext: false,
+		preloadFirstSlide: false,
+		pswpModule: () => import('photoswipe'),
 	})
+	lightbox.init()
 </script>
 
 <style is:global>
@@ -201,28 +214,7 @@ const { project } = Astro.props
 		@apply focus-visible:ring-offset-2 focus-visible:ring-offset-bg;
 	}
 
-	/* GLIGHTBOX */
-	.glightbox-container.glightbox-clean .goverlay {
-		@apply bg-grayUltraLight;
-	}
-	.glightbox-container.glightbox-clean .gbtn,
-	.glightbox-container.glightbox-clean .gclose {
-		@apply w-12 h-12 bg-grayUltraLight rounded-full opacity-100;
-		@apply ring-1 ring-grayMed transition motion-reduce:transition-none;
-		@apply outline-none focus-visible:ring-offset-2;
-		@apply focus-visible:ring-offset-grayUltraLight;
-		@apply focus-visible:ring-2 focus-visible:ring-fg;
-		@apply hover-hover:hover:bg-alt hover-hover:hover:ring-alt;
-	}
-	.glightbox-container.glightbox-clean .gbtn svg path,
-	.glightbox-container.glightbox-clean .gclose svg path {
-		fill: currentColor;
-	}
-
-	.glightbox-container.glightbox-clean .gslide-media {
-		@apply shadow-xl shadow-grayDark/40;
-	}
-	.glightbox-container.glightbox-clean .gslide-media img {
-		@apply rounded-md ring-1 ring-black/5;
+	.pswp {
+		z-index: 998 !important;
 	}
 </style>
