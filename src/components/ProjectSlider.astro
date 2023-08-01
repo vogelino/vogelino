@@ -102,7 +102,7 @@ const { project } = Astro.props
 					class={classNames(
 						`w-full max-w-[50%] h-full relative`,
 						`border-2 border-r-0 rounded-l-md border-alt`,
-						`shadow-xl shadow-grayLight`,
+						`shadow-xl shadow-grayLight dark:shadow-grayUltraLight`,
 					)}
 				>
 					<Img
@@ -184,6 +184,10 @@ const { project } = Astro.props
 		preloadFirstSlide: false,
 		pswpModule: () => import('photoswipe'),
 	})
+
+	lightbox.on('change', () => {
+		slider.go(lightbox.pswp.currIndex + 1)
+	})
 	lightbox.init()
 </script>
 
@@ -214,7 +218,26 @@ const { project } = Astro.props
 		@apply focus-visible:ring-offset-2 focus-visible:ring-offset-bg;
 	}
 
-	.pswp {
+	body .pswp {
 		z-index: 998 !important;
+		--pswp-bg: var(--bg);
+		--pswp-placeholder-bg: var(--grayUltraLight);
+		--pswp-preloader-color: var(--grayMed);
+		--pswp-preloader-color-secondary: var(--bg);
+		--pswp-icon-color: var(--fg);
+		--pswp-icon-color-secondary: var(--grayUltraLight);
+		--pswp-icon-stroke-color: var(--grayUltraLight);
+		--pswp-icon-stroke-width: 2px;
+		--pswp-error-text-color: var(--pswp-icon-color);
+	}
+
+	body .pswp .pswp__bg {
+		opacity: 1 !important;
+	}
+
+	.pswp .pswp__button {
+		@apply outline-none focus-visible:ring-2 focus-visible:ring-fg;
+		@apply focus-visible:ring-offset-2 focus-visible:ring-offset-bg;
+		@apply focus-visible:rounded-md;
 	}
 </style>

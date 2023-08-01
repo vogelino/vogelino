@@ -48,5 +48,34 @@
 		::selection {
 			@apply text-alt bg-fg;
 		}
+
+		:root {
+			--fg: #e30002;
+			--fgDark: #a40002;
+			--bg: #fcfeff;
+			--alt: #ffef9b;
+			--grayDark: #5d7280;
+			--grayMed: #d0dfe7;
+			--grayLight: #e1ecf2;
+			--grayUltraLight: #f1faff;
+		}
+		@media (prefers-color-scheme: dark) {
+			:root {
+				--fg: #ffef9b;
+				--fgDark: #f0dc78;
+				--bg: #101010;
+				--alt: #e30002;
+				--grayDark: #222222;
+				--grayMed: #393939;
+				--grayLight: #2c2c2c;
+				--grayUltraLight: #000000;
+			}
+		}
+
+		::-moz-selection,
+		::selection {
+			background: var(--bg, #ffef9b);
+			color: var(--fg, #e30002);
+		}
 	}
 </style>
