@@ -179,41 +179,12 @@ updateScrollUpAndDownVisibility()
 </script>
 
 <script defer>
-function getUserPreference() {
-	return localStorage.getItem('theme') || 'light'
-}
-
-function saveUserPreference(userPreference) {
-	localStorage.setItem('theme', userPreference)
-}
-
-function getAppliedMode(userPreference) {
-	if (userPreference === 'light') return 'light'
-	if (userPreference === 'dark') return 'dark'
-	if (matchMedia('(prefers-color-scheme: dark)').matches) return 'dark'
-	return 'light'
-}
-
-function setAppliedMode(mode) {
-	document.documentElement.dataset.appliedMode = mode
-}
-
-function rotatePreferences(userPreference) {
-	if (userPreference === 'light') return 'dark'
-	if (userPreference === 'dark') return 'light'
-	return 'light'
-}
-
-const themeToggler = document.getElementById('theme-toggle')
-
-let userPreference = getUserPreference()
-setAppliedMode(getAppliedMode(userPreference))
-
-themeToggler.addEventListener('change', () => {
-	const newUserPref = rotatePreferences(userPreference)
-	userPreference = newUserPref
-	saveUserPreference(newUserPref)
-	setAppliedMode(getAppliedMode(newUserPref))
+const themeToggler = document.querySelector('#theme-toggle > input')
+themeToggler.checked = theme === 'light'
+themeToggler.addEventListener('change', (evt) => {
+	let newUserPref = evt.target.checked ? 'light' : 'dark'
+	document.documentElement.dataset.appliedMode = newUserPref
+	localStorage.setItem('theme', newUserPref)
 })
 </script>
 

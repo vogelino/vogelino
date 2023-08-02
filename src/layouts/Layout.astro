@@ -35,11 +35,12 @@ const { title, withHeaderBg = true } = Astro.props
 			content="Interface design and development portfolio of Lucas Vogel"
 		/>
 		<title>{[title, 'Vogelino'].join(' – ')}</title>
-		<script>
-			const theme = localStorage.getItem('theme') || 'light'
+		<script is:inline>
+			const userPreference = matchMedia('(prefers-color-scheme: dark)').matches
+				? 'dark'
+				: 'light'
+			const theme = localStorage.getItem('theme') || userPreference
 			document.documentElement.dataset.appliedMode = theme
-			document.querySelector('#theme-toggle > input').checked =
-				theme === 'light'
 		</script>
 	</head>
 	<body
