@@ -3,6 +3,7 @@ import classNames from '../utils/classNames'
 import LogoInteractive from './LogoInteractive.astro'
 import HeaderMenuLink from './HeaderMenuLink.astro'
 import SocialIcons from './SocialIcons.astro'
+import ThemeToggle from './ThemeToggle.astro'
 
 export interface Props {
 	withBg?: boolean
@@ -54,11 +55,16 @@ const withoutBgClasses = 'border-b-transparent'
 			<HeaderMenuLink href="/about" title="About" />
 			<HeaderMenuLink href="/inspirations" title="Cool sites" />
 			<li
-				aria-hidden="false"
 				id="social-icons"
-				class="sm:hidden w-screen py-5 text-grayDark"
+				class={classNames(
+					`w-full sm:w-auto py-5 sm:p-0 text-grayDark`,
+					`flex justify-between pr-5 sm:pr-0`,
+				)}
 			>
-				<SocialIcons />
+				<div class="sm:hidden"><SocialIcons /></div>
+				<div class="text-fg">
+					<ThemeToggle />
+				</div>
 			</li>
 		</ul>
 	</nav>
@@ -170,6 +176,45 @@ function updateScrollUpAndDownVisibility() {
 }
 
 updateScrollUpAndDownVisibility()
+</script>
+
+<script defer>
+function getUserPreference() {
+	return localStorage.getItem('theme') || 'light'
+}
+
+function saveUserPreference(userPreference) {
+	localStorage.setItem('theme', userPreference)
+}
+
+function getAppliedMode(userPreference) {
+	if (userPreference === 'light') return 'light'
+	if (userPreference === 'dark') return 'dark'
+	if (matchMedia('(prefers-color-scheme: dark)').matches) return 'dark'
+	return 'light'
+}
+
+function setAppliedMode(mode) {
+	document.documentElement.dataset.appliedMode = mode
+}
+
+function rotatePreferences(userPreference) {
+	if (userPreference === 'light') return 'dark'
+	if (userPreference === 'dark') return 'light'
+	return 'light'
+}
+
+const themeToggler = document.getElementById('theme-toggle')
+
+let userPreference = getUserPreference()
+setAppliedMode(getAppliedMode(userPreference))
+
+themeToggler.addEventListener('change', () => {
+	const newUserPref = rotatePreferences(userPreference)
+	userPreference = newUserPref
+	saveUserPreference(newUserPref)
+	setAppliedMode(getAppliedMode(newUserPref))
+})
 </script>
 
 <style>

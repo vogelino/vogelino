@@ -49,7 +49,7 @@
 			@apply text-alt bg-fg;
 		}
 
-		:root {
+		:root[data-applied-mode='light'] {
 			--fg: #e30002;
 			--bg: #fcfeff;
 			--alt: #ffef9b;
@@ -58,8 +58,19 @@
 			--grayLight: #e1ecf2;
 			--grayUltraLight: #f1faff;
 		}
+
+		:root[data-applied-mode='dark'] {
+			--fg: #ffef9b;
+			--bg: #1c1c1c;
+			--alt: #e30002;
+			--grayDark: #ababab;
+			--grayMed: #000000;
+			--grayLight: #2c2c2c;
+			--grayUltraLight: #0d0d0d;
+		}
+
 		@media (prefers-contrast: more) {
-			:root {
+			:root[data-applied-mode='light'] {
 				--fg: #b60003;
 				--bg: #ffffff;
 				--alt: #ffef9b;
@@ -68,21 +79,7 @@
 				--grayLight: #b7c3ca;
 				--grayUltraLight: #ffffff;
 			}
-		}
-		@media (prefers-color-scheme: dark) {
-			:root {
-				--fg: #ffef9b;
-				--bg: #1c1c1c;
-				--alt: #e30002;
-				--grayDark: #ababab;
-				--grayMed: #000000;
-				--grayLight: #2c2c2c;
-				--grayUltraLight: #0d0d0d;
-			}
-		}
-
-		@media (prefers-color-scheme: dark) and (prefers-contrast: more) {
-			:root {
+			:root[data-applied-mode='dark'] {
 				--fg: #fff6c8;
 				--bg: #000000;
 				--alt: #000000;

@@ -20,6 +20,7 @@ const fallbackFonts = [
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+	darkMode: ['class', '[data-applied-mode="dark"]'],
 	content: [
 		'./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}',
 		'./pages/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}',
@@ -35,7 +36,6 @@ module.exports = {
 			},
 			colors: {
 				fg: 'var(--fg)',
-				fgDark: 'var(--fgDark)',
 				bg: 'var(--bg)',
 				alt: 'var(--alt)',
 				grayDark: 'var(--grayDark)',
