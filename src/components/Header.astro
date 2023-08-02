@@ -55,13 +55,12 @@ const withoutBgClasses = 'border-b-transparent'
 			<HeaderMenuLink href="/about" title="About" />
 			<HeaderMenuLink href="/inspirations" title="Cool sites" />
 			<li
-				id="social-icons"
 				class={classNames(
 					`w-full sm:w-auto py-5 sm:p-0 text-grayDark`,
 					`flex justify-between pr-5 sm:pr-0`,
 				)}
 			>
-				<div class="sm:hidden"><SocialIcons /></div>
+				<div class="sm:hidden" id="social-icons"><SocialIcons /></div>
 				<div class="text-fg">
 					<ThemeToggle />
 				</div>

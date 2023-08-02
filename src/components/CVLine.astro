@@ -13,9 +13,11 @@ export interface props {
 }
 
 const { timePeriod, title, location, certification } = Astro.props
+const titlePlain = title.map((t) => t.plain_text).join(' ')
 ---
 
 <li
+	aria-label={`${timePeriod}: ${titlePlain} ${location ? `, ${location}` : ''}`}
 	class={classNames(
 		`text-grayDark bg-bg relative flex flex-col`,
 		`border-t border-grayMed text-lg`,
@@ -47,7 +49,10 @@ const { timePeriod, title, location, certification } = Astro.props
 		</h3>
 		{
 			location && (
-				<p class="@md/cvline:col-span-2 @lg/cvline:col-span-3 hyphens-auto">
+				<p
+					class="@md/cvline:col-span-2 @lg/cvline:col-span-3 hyphens-auto"
+					aria-label={`Location: ${location}`}
+				>
 					{location}
 				</p>
 			)
@@ -55,6 +60,7 @@ const { timePeriod, title, location, certification } = Astro.props
 		{
 			certification && (
 				<p
+					aria-label={`Certification: ${certification}`}
 					class={classNames(
 						`@md/cvline:col-span-2 @lg/cvline:col-span-3 hyphens-auto text-fg`,
 						`grid grid-cols-[auto,1fr] gap-2 items-center`,
@@ -74,6 +80,7 @@ const { timePeriod, title, location, certification } = Astro.props
 		)}
 	>
 		<svg
+			aria-hidden="true"
 			width="16px"
 			height="20px"
 			viewBox="0 0 16 20"
@@ -82,6 +89,7 @@ const { timePeriod, title, location, certification } = Astro.props
 			<polygon points="0,0 16,0 16,4 0,20" fill="currentColor"></polygon>
 		</svg>
 		<svg
+			aria-hidden="true"
 			width="17px"
 			height="17px"
 			viewBox="0 0 17 17"

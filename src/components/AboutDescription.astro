@@ -15,7 +15,7 @@ const blocks = await loadJson<BlockObjectResponse[]>(
 	title="About **me**"
 	className={classNames(`pb-[2vmax] pt-[1.5vmax]`)}
 />
-<section class="text-xl md:text-2xl leading-normal">
+<section class="text-xl md:text-2xl leading-normal" aria-label="description">
 	<div class="max-w-2xl">
 		<NotionTextContents blocks={blocks} />
 	</div>

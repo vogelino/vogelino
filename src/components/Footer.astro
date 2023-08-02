@@ -6,14 +6,14 @@ import Logo from './Logo.astro'
 const year = String(new Date().getFullYear())
 ---
 
-<footer class="pt-6 pb-5 border-t border-grayMed">
+<footer class="pt-6 pb-5 border-t border-grayMed" aria-label="Main page footer">
 	<section
 		class={classNames(
 			`px-6 flex justify-between gap-4 flex-wrap uppercase items-center`,
 			`tracking-wide text-grayDark`,
 		)}
 	>
-		<span>{year}</span>
+		<span aria-label={`Copyright ${year}`}>{year}</span>
 		<span><Logo className="scale-75" /></span>
 		<button
 			id="back-to-top"

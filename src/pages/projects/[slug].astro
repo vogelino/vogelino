@@ -43,7 +43,7 @@ const { project, nextProject, prevProject } = Astro.props
 <Layout title={project.nameShort || project.title} withHeaderBg={false}>
 	<main class:list={[`flex flex-col`]}>
 		<ProjectSlider project={project} />
-		<section>
+		<section aria-label="Project information">
 			<ProjectSliderNav />
 			<div
 				class={classNames([
@@ -53,10 +53,13 @@ const { project, nextProject, prevProject } = Astro.props
 					`2xl:grid-cols-[2fr,1fr] xl:gap-8`,
 				])}
 			>
-				<div class={classNames([`md:columns-2 md:gap-6 lg:gap-8`, `mb-16`])}>
+				<div
+					class={classNames([`md:columns-2 md:gap-6 lg:gap-8`, `mb-16`])}
+					aria-label="Project description"
+				>
 					<NotionTextContents blocks={project.blocks} />
 				</div>
-				<aside class="@container/collabs">
+				<aside class="@container/collabs" aria-label="Project collaborators">
 					<div
 						class={classNames(
 							`items-stretch`,
@@ -64,25 +67,31 @@ const { project, nextProject, prevProject } = Astro.props
 							`text-base @lg/collabs:text-xl`,
 						)}
 					>
-						<CollaboratorsGroup collaborators={project.clients}>
-							Made for
-						</CollaboratorsGroup>
-						<CollaboratorsGroup collaborators={project.colleagues}>
-							Made with
-						</CollaboratorsGroup>
-						<CollaboratorsGroup collaborators={project.supervisors}>
-							Supervised by
-						</CollaboratorsGroup>
-						<CollaboratorsGroup collaborators={project.institutions}>
-							Made @
-						</CollaboratorsGroup>
-						<CollaboratorsGroup collaborators={project.collaborators}>
-							In collaboration with
-						</CollaboratorsGroup>
+						<CollaboratorsGroup
+							collaborators={project.clients}
+							title={`Made for`}
+						/>
+						<CollaboratorsGroup
+							collaborators={project.colleagues}
+							title={`Made with`}
+						/>
+						<CollaboratorsGroup
+							collaborators={project.supervisors}
+							title={`Supervised by`}
+						/>
+						<CollaboratorsGroup
+							collaborators={project.institutions}
+							title={`Made at`}
+						/>
+						<CollaboratorsGroup
+							collaborators={project.collaborators}
+							title={`Collaborators`}
+						/>
 					</div>
 				</aside>
 			</div>
 			<section
+				aria-label="More projects"
 				class={classNames(
 					`flex flex-col sm:px-6 lg:px-8 mb-8 mt-32`,
 					`md:grid md:grid-cols-[1fr,0,0,0,1fr] xl:grid-cols-[0,450px,1fr,450px,0]`,
@@ -95,6 +104,7 @@ const { project, nextProject, prevProject } = Astro.props
 					className="md:border-l border-grayLight"
 				/>
 				<div
+					aria-hidden="true"
 					class={classNames(
 						`flex items-center justify-center`,
 						`mb-8 relative`,

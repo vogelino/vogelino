@@ -17,6 +17,7 @@ const commonContainerClasses = `grid grid-cols-[45px,1fr] items-center`
 		!collaborator.url ? commonContainerClasses : '',
 		`bg-bg border-b border-grayLight`,
 	]}
+	aria-label={`Collaborator: ${collaborator.name}`}
 >
 	{!collaborator.url && <CollaboratorItemContent collaborator={collaborator} />}
 	{

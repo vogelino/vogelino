@@ -7,9 +7,15 @@ export interface Props {
 const { title, value } = Astro.props
 ---
 
-<dt class="px-6 pt-4 @xs/sidebar:py-2 border-t border-grayLight">
+<dt
+	class="px-6 pt-4 @xs/sidebar:py-2 border-t border-grayLight"
+	aria-label={title}
+>
 	<strong>{title}</strong>
 </dt>
-<dd class="px-6 pb-3 @xs/sidebar:py-2 @xs/sidebar:border-t border-grayLight">
+<dd
+	class="px-6 pb-3 @xs/sidebar:py-2 @xs/sidebar:border-t border-grayLight"
+	aria-label={value}
+>
 	{value}
 </dd>

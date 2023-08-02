@@ -14,14 +14,18 @@ const notionLinks = await loadJson<MappedNotionInspirationLinkType[]>(
 )
 ---
 
-<Layout title="Inspirations">
+<Layout title="List of cool site I like">
 	<ul
+		aria-label="List of cool sites I like"
 		class={classNames(
 			`grid pt-24 sm:grid-cols-2 md:grid-cols-3`,
 			`lg:grid-cols-4 gap-8 px-8 pb-16 container mx-auto`,
 		)}
 	>
-		<li class="relative h-full flex items-center sm:justify-center">
+		<li
+			class="relative h-full flex items-center sm:justify-center"
+			aria-label={`Title: Cool sites`}
+		>
 			<FancyHeadline
 				title="Cool <br class='hidden sm:block' />**Sites**"
 				className="sm:text-center"
@@ -30,7 +34,7 @@ const notionLinks = await loadJson<MappedNotionInspirationLinkType[]>(
 		{
 			notionLinks.map((link) => {
 				return (
-					<li>
+					<li aria-label={`Cool site: "${link.title}" (${link.url})`}>
 						<a
 							href={link.url}
 							target="_blank"
@@ -45,7 +49,7 @@ const notionLinks = await loadJson<MappedNotionInspirationLinkType[]>(
 							<span class="relative block aspect-[140/73] bg-zinc-100 rounded overflow-hidden">
 								<Img
 									src={link.thumbnail}
-									alt={`Cover image of "${link.url}"`}
+									alt={`Cover image of "${link.title}"`}
 									attributes={{
 										img: {
 											class: classNames(

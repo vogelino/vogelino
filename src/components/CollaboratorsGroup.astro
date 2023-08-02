@@ -5,6 +5,7 @@ import CollaboratorItem from './CollaboratorItem.astro'
 
 export interface Props {
 	collaborators: MappedCollaboratorPageType[]
+	title: string
 }
 
 const props = Astro.props
@@ -18,12 +19,11 @@ const props = Astro.props
 				`basis-full md:basis-1/2 border border-grayLight`,
 				`-ml-px -mt-px`,
 			)}
+			aria-label={`Collaborators group: ${props.title}`}
 		>
 			<div class="min-h-[calc(100%-1rem)] w-[calc(100%-1rem)] ml-4 border-l border-grayLight">
-				<h2 class="p-4 uppercase leading-4">
-					<slot />
-				</h2>
-				<ul class="border-t border-grayMed">
+				<h2 class="p-4 uppercase leading-4">{props.title}</h2>
+				<ul class="border-t border-grayMed" aria-label="Collaborators list">
 					{props.collaborators.map((collaborator) => (
 						<CollaboratorItem collaborator={collaborator} />
 					))}
@@ -40,6 +40,7 @@ const props = Astro.props
 					height="20px"
 					viewBox="0 0 16 20"
 					class="absolute bottom-0 left-0 text-bg"
+					aria-hidden="true"
 				>
 					<polygon points="0,0 16,0 16,4 0,20" fill="currentColor" />
 				</svg>
@@ -48,6 +49,7 @@ const props = Astro.props
 					height="17px"
 					viewBox="0 0 17 17"
 					class="absolute bottom-0 left-0 text-grayLight"
+					aria-hidden="true"
 				>
 					<polyline points="17,0 0,17" stroke="currentColor" fill="none" />
 				</svg>

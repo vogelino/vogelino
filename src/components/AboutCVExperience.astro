@@ -48,7 +48,7 @@ const cv = await loadJson<MappedNotionCV>(CV_JSON_PATH)
 		aria-labelledby="work"
 		tabindex="0"
 	>
-		<ul>
+		<ul aria-label="Work experience">
 			{
 				cv.work.map((cvLine) => (
 					<CVLine
@@ -67,7 +67,7 @@ const cv = await loadJson<MappedNotionCV>(CV_JSON_PATH)
 		aria-labelledby="education"
 		tabindex="0"
 	>
-		<ul>
+		<ul aria-label="Education">
 			{
 				cv.education.map((cvLine) => (
 					<CVLine
@@ -86,7 +86,7 @@ const cv = await loadJson<MappedNotionCV>(CV_JSON_PATH)
 		aria-labelledby="teaching"
 		tabindex="0"
 	>
-		<ul>
+		<ul aria-label="Teaching experience">
 			{
 				cv.teaching.map((cvLine) => (
 					<CVLine
@@ -105,7 +105,7 @@ const cv = await loadJson<MappedNotionCV>(CV_JSON_PATH)
 		aria-labelledby="internships"
 		tabindex="0"
 	>
-		<ul>
+		<ul aria-label="Internships">
 			{
 				cv.internships.map((cvLine) => (
 					<CVLine
