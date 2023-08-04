@@ -9,7 +9,7 @@ export interface Props {
 
 const { collaborator } = Astro.props
 
-const commonContainerClasses = `grid grid-cols-[45px,1fr] items-center`
+const commonContainerClasses = `grid grid-cols-[45px,1fr] items-center dark:text-white`
 ---
 
 <li
@@ -30,10 +30,11 @@ const commonContainerClasses = `grid grid-cols-[45px,1fr] items-center`
 				class={classNames(
 					commonContainerClasses,
 					`group focus-visible:ring-2 focus-visible:ring-offset-2 `,
-					`focus-visible:ring-fg focus-visible:rounded-sm`,
+					`focus-visible:ring-fg focus-visible:ring-offset-bg focus-visible:rounded-sm`,
 					`outline-none relative focus-visible:z-10`,
 					`hover-hover:hover:bg-fg hover-hover:hover:text-white`,
-					`transition-colors`,
+					`dark:hover-hover:hover:text-bg`,
+					`transition-colors motion-reduce:transition-none`,
 				)}
 			>
 				{<CollaboratorItemContent collaborator={collaborator} />}

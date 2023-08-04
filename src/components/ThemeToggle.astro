@@ -1,9 +1,18 @@
 ---
+import classNames from '../utils/classNames'
 ---
 
-<label id="theme-toggle" class="theme-toggle" title="Toggle theme">
-	<input type="checkbox" />
-	<span class="theme-toggle-sr">Toggle theme</span>
+<button
+	id="theme-toggle"
+	class={classNames(
+		`theme-toggle inline-flex w-10 h-10 items-center justify-center`,
+		`focus-visible:ring-2 focus-visible:ring-fg outline-none`,
+		`focus-visible:rounded-full`,
+	)}
+	title="Dark mode"
+	role="switch"
+	aria-checked="false"
+>
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		aria-hidden="true"
@@ -30,7 +39,7 @@
 			d="M16 9.5c-3.6 0-6.4 2.9-6.4 6.4s2.8 6.5 6.4 6.5 6.4-2.9 6.4-6.4-2.8-6.5-6.4-6.5z"
 		></path>
 	</svg>
-</label>
+</button>
 
 <style is:global>
 	.theme-toggle {
@@ -41,46 +50,23 @@
 		transition: transform calc(var(--theme-toggle__within--duration))
 			cubic-bezier(0, 0, 0, 1.25);
 	}
-	.theme-toggle
-		input[type='checkbox']:checked
-		~ .theme-toggle__within
-		.theme-toggle__within__circle,
-	.theme-toggle--toggled:not(label).theme-toggle
-		.theme-toggle__within
+	.theme-toggle[aria-checked='false']
+		> .theme-toggle__within
 		.theme-toggle__within__circle {
 		transform: scale(1.5);
 	}
-	.theme-toggle
-		input[type='checkbox']:checked
-		~ .theme-toggle__within
-		.theme-toggle__within__inner,
-	.theme-toggle--toggled:not(label).theme-toggle
-		.theme-toggle__within
+	.theme-toggle[aria-checked='false']
+		> .theme-toggle__within
 		.theme-toggle__within__inner {
 		transform: translate3d(3px, -3px, 0) scale(1.2);
 	}
-	.theme-toggle input[type='checkbox']:checked ~ .theme-toggle__within g path,
-	.theme-toggle--toggled:not(label).theme-toggle .theme-toggle__within g path {
+	.theme-toggle[aria-checked='false'] > .theme-toggle__within g path {
 		transform: scale(0.65);
 	}
 	.theme-toggle {
 		border: none;
 		background: 0 0;
 		cursor: pointer;
-	}
-	.theme-toggle input[type='checkbox'] {
-		display: none;
-	}
-	.theme-toggle .theme-toggle-sr {
-		position: absolute;
-		width: 1px;
-		height: 1px;
-		padding: 0;
-		margin: -1px;
-		overflow: hidden;
-		clip: rect(0, 0, 0, 0);
-		white-space: nowrap;
-		border-width: 0;
 	}
 	@media (prefers-reduced-motion: reduce) {
 		.theme-toggle:not(.theme-toggle--force-motion) * {

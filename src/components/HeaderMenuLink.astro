@@ -13,7 +13,7 @@ const pathname = new URL(Astro.request.url).pathname.replaceAll('/', '')
 const active = pathname === href.replaceAll('/', '')
 ---
 
-<li class="inline-block w-full sm:w-auto">
+<li class="inline-block w-full sm:w-auto" aria-label=`Main menu Link: ${title}`>
 	<a
 		href={href}
 		aria-label={`Header menu link: ${title} page`}

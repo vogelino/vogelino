@@ -42,7 +42,7 @@ const withoutBgClasses = 'border-b-transparent'
 	</button>
 	<nav
 		id="menu"
-		aria-labelledby="burger-menu"
+		aria-label="Main navigation"
 		class={classNames(
 			`fixed top-[69px] left-0 w-screen h-[calc(100svh-69px)] bg-bg sm:bg-transparent`,
 			`opacity-0 pointer-events-none sm:opacity-100 sm:static sm:pointer-events-auto`,
@@ -50,18 +50,22 @@ const withoutBgClasses = 'border-b-transparent'
 			`motion-reduce:transition-none`,
 		)}
 	>
-		<ul class={classNames(`flex flex-col sm:flex-row sm:gap-2 items-center`)}>
+		<ul
+			class={classNames(`flex flex-col sm:flex-row sm:gap-2 items-center`)}
+			aria-label="Main menu items"
+		>
 			<HeaderMenuLink href="/" title="Projects" />
 			<HeaderMenuLink href="/about" title="About" />
 			<HeaderMenuLink href="/inspirations" title="Cool sites" />
 			<li
+				aria-label="Main menu link: Other actions"
 				class={classNames(
 					`w-full sm:w-auto py-5 sm:p-0 text-grayDark`,
-					`flex justify-between pr-5 sm:pr-0`,
+					`flex justify-between items-center pr-5 sm:pr-0`,
 				)}
 			>
 				<div class="sm:hidden" id="social-icons"><SocialIcons /></div>
-				<div class="text-fg">
+				<div class="text-fg inline-flex items-center">
 					<ThemeToggle />
 				</div>
 			</li>
@@ -70,121 +74,137 @@ const withoutBgClasses = 'border-b-transparent'
 </header>
 
 <script defer>
-// -- Hamburger menu
-const burgerMenu = document.getElementById('burger-menu')
-const menu = document.getElementById('menu')
-const socialIcons = document.getElementById('social-icons')
+	// -- Hamburger menu
+	const burgerMenu = document.getElementById('burger-menu')
+	const menu = document.getElementById('menu')
+	const socialIcons = document.getElementById('social-icons')
 
-// -- Header background toggle
-const header = document.querySelector('header[aria-label="Main header"]')
-const withBg = header.dataset.withbg
+	// -- Header background toggle
+	const header = document.querySelector('header[aria-label="Main header"]')
+	const withBg = header.dataset.withbg
 
-const withBgClassString = header.dataset.withbgclasses || ''
-const withoutBgClassString = header.dataset.withoutbgclasses || ''
-const withBgClasses = withBgClassString.trim().split(' ')
-const withoutBgClasses = withoutBgClassString.trim().split(' ')
+	const withBgClassString = header.dataset.withbgclasses || ''
+	const withoutBgClassString = header.dataset.withoutbgclasses || ''
+	const withBgClasses = withBgClassString.trim().split(' ')
+	const withoutBgClasses = withoutBgClassString.trim().split(' ')
 
-// -- Hamburger menu logic
-burgerMenu.addEventListener('click', () => {
-	burgerMenu.classList.toggle('close')
-	menu.classList.toggle('opacity-0')
-	menu.classList.toggle('pointer-events-none')
+	// -- Hamburger menu logic
+	burgerMenu.addEventListener('click', () => {
+		burgerMenu.classList.toggle('close')
+		menu.classList.toggle('opacity-0')
+		menu.classList.toggle('pointer-events-none')
 
-	const isOpened = !!burgerMenu.classList.contains('close')
-	const verb = isOpened ? `Hide` : `Show`
-	burgerMenu.setAttribute('aria-label', `${verb} the main navitation menu`)
-	burgerMenu.setAttribute('aria-expanded', `${isOpened}`)
-})
+		const isOpened = !!burgerMenu.classList.contains('close')
+		const verb = isOpened ? `Hide` : `Show`
+		burgerMenu.setAttribute('aria-label', `${verb} the main navitation menu`)
+		burgerMenu.setAttribute('aria-expanded', `${isOpened}`)
+	})
 
-const updateVisibility = () => {
-	if (window.innerWidth < 768) {
-		burgerMenu.setAttribute('aria-hidden', 'false')
-		socialIcons.setAttribute('aria-hidden', 'false')
-	} else {
-		burgerMenu.setAttribute('aria-hidden', 'true')
-		socialIcons.setAttribute('aria-hidden', 'true')
+	const updateVisibility = () => {
+		if (window.innerWidth < 768) {
+			burgerMenu.setAttribute('aria-hidden', 'false')
+			socialIcons.setAttribute('aria-hidden', 'false')
+		} else {
+			burgerMenu.setAttribute('aria-hidden', 'true')
+			socialIcons.setAttribute('aria-hidden', 'true')
+		}
 	}
-}
 
-const mediaQuery = window.matchMedia(`@media screen and (max-width: 767px)`)
-mediaQuery.addEventListener(`change`, updateVisibility)
+	const mediaQuery = window.matchMedia(`@media screen and (max-width: 767px)`)
+	mediaQuery.addEventListener(`change`, updateVisibility)
 
-updateVisibility()
+	updateVisibility()
 
-// -- Header background logic
-function updateHeaderBg() {
-	if (!header) return
+	// -- Header background logic
+	function updateHeaderBg() {
+		if (!header) return
 
-	const isOpened = !!burgerMenu.classList.contains('close')
-	const scrollOffset =
+		const isOpened = !!burgerMenu.classList.contains('close')
+		const scrollOffset =
+			window.pageYOffset ??
+			document.documentElement.scrollTop ??
+			document.body.scrollTop ??
+			0
+
+		if (withBg !== 'false' || scrollOffset >= 50 || isOpened) {
+			header.classList.add(...withBgClasses)
+			header.classList.remove(...withoutBgClasses)
+		} else if (scrollOffset < 50 && !isOpened) {
+			header.classList.remove(...withBgClasses)
+			header.classList.add(...withoutBgClasses)
+		}
+
+		requestAnimationFrame(updateHeaderBg)
+	}
+	updateHeaderBg()
+
+	const scrollUp = ['translate-y-0', 'logo-visible']
+	const scrollDown = '-translate-y-full'
+	let lastScroll =
 		window.pageYOffset ??
 		document.documentElement.scrollTop ??
 		document.body.scrollTop ??
 		0
 
-	if (withBg !== 'false' || scrollOffset >= 50 || isOpened) {
-		header.classList.add(...withBgClasses)
-		header.classList.remove(...withoutBgClasses)
-	} else if (scrollOffset < 50 && !isOpened) {
-		header.classList.remove(...withBgClasses)
-		header.classList.add(...withoutBgClasses)
-	}
+	function updateScrollUpAndDownVisibility() {
+		if (!header) return
 
-	requestAnimationFrame(updateHeaderBg)
-}
-updateHeaderBg()
+		const currentScroll =
+			window.pageYOffset ??
+			document.documentElement.scrollTop ??
+			document.body.scrollTop ??
+			0
 
-const scrollUp = ['translate-y-0', 'logo-visible']
-const scrollDown = '-translate-y-full'
-let lastScroll =
-	window.pageYOffset ??
-	document.documentElement.scrollTop ??
-	document.body.scrollTop ??
-	0
+		if (currentScroll <= 69) {
+			header.classList.remove(...scrollUp)
+			requestAnimationFrame(updateScrollUpAndDownVisibility)
+			return
+		}
 
-function updateScrollUpAndDownVisibility() {
-	if (!header) return
+		if (currentScroll > lastScroll && !header.classList.contains(scrollDown)) {
+			// down
+			header.classList.remove(...scrollUp)
+			header.classList.add(scrollDown)
+		} else if (
+			currentScroll < lastScroll &&
+			header.classList.contains(scrollDown)
+		) {
+			// up
+			header.classList.remove(scrollDown)
+			header.classList.add(...scrollUp)
+		}
+		lastScroll = currentScroll
 
-	const currentScroll =
-		window.pageYOffset ??
-		document.documentElement.scrollTop ??
-		document.body.scrollTop ??
-		0
-
-	if (currentScroll <= 69) {
-		header.classList.remove(...scrollUp)
 		requestAnimationFrame(updateScrollUpAndDownVisibility)
-		return
 	}
 
-	if (currentScroll > lastScroll && !header.classList.contains(scrollDown)) {
-		// down
-		header.classList.remove(...scrollUp)
-		header.classList.add(scrollDown)
-	} else if (
-		currentScroll < lastScroll &&
-		header.classList.contains(scrollDown)
-	) {
-		// up
-		header.classList.remove(scrollDown)
-		header.classList.add(...scrollUp)
-	}
-	lastScroll = currentScroll
-
-	requestAnimationFrame(updateScrollUpAndDownVisibility)
-}
-
-updateScrollUpAndDownVisibility()
+	updateScrollUpAndDownVisibility()
 </script>
 
 <script defer>
-const themeToggler = document.querySelector('#theme-toggle > input')
-themeToggler.checked = theme === 'light'
-themeToggler.addEventListener('change', (evt) => {
-	let newUserPref = evt.target.checked ? 'light' : 'dark'
-	document.documentElement.dataset.appliedMode = newUserPref
-	localStorage.setItem('theme', newUserPref)
-})
+	const darkModePreference = window.matchMedia('(prefers-color-scheme: dark)')
+	const themeToggler = document.getElementById('theme-toggle')
+	const initialTheme = localStorage.getItem('theme')
+	updateToggler(initialTheme)
+
+	themeToggler.addEventListener('click', () => {
+		let newUserPref =
+			themeToggler.getAttribute('aria-checked') === 'true' ? 'light' : 'dark'
+		updateToggler(newUserPref)
+	})
+
+	darkModePreference.addEventListener('change', (e) =>
+		updateToggler(e.matches ? 'dark' : 'light'),
+	)
+
+	function updateToggler(theme) {
+		const finalTheme = theme || (darkModePreference.matches ? 'dark' : 'light')
+		const isDark = finalTheme === 'dark'
+		document.documentElement.dataset.appliedMode = finalTheme
+		theme && localStorage.setItem('theme', theme)
+
+		themeToggler.setAttribute('aria-checked', isDark.toString())
+	}
 </script>
 
 <style>
