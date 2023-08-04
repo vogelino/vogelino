@@ -1,17 +1,30 @@
 ---
-import { loadJson } from '../../scripts/lib/loadJson'
-import classNames from '../utils/classNames'
-import { INSPIRATIONS_JSON_PATH } from '../../scripts/paths'
-import Layout from '../layouts/Layout.astro'
-import FancyHeadline from '../components/FancyHeadline.astro'
+import { loadJson } from '../../../scripts/lib/loadJson'
+import classNames from '../../utils/classNames'
+import { INSPIRATIONS_JSON_PATH } from '../../../scripts/paths'
+import Layout from '../../layouts/Layout.astro'
+import FancyHeadline from '../../components/FancyHeadline.astro'
 import * as astroComponents from 'astro-imagetools/components'
-import type { MappedNotionInspirationLinkType } from '../../scripts/lib/parseOriginalNotionInspirations'
+import type { MappedNotionInspirationLinkType } from '../../../scripts/lib/parseOriginalNotionInspirations'
+import Pagination from '../../components/Pagination.astro'
 
 const { Img } = astroComponents
 
-const notionLinks = await loadJson<MappedNotionInspirationLinkType[]>(
-	INSPIRATIONS_JSON_PATH,
-)
+const firstPath = 'inspirations'
+
+export async function getStaticPaths({ paginate }) {
+	const notionLinks = await loadJson<MappedNotionInspirationLinkType[]>(
+		INSPIRATIONS_JSON_PATH,
+	)
+
+	return paginate(notionLinks, {
+		pageSize: 47,
+	})
+}
+
+const { page } = Astro.props
+const notionLinks = page.data || []
+console.log(page)
 ---
 
 <Layout title="List of cool site I like">
@@ -86,4 +99,15 @@ const notionLinks = await loadJson<MappedNotionInspirationLinkType[]>(
 			})
 		}
 	</ul>
+	<div class="py-6 border-t border-grayLight">
+		<Pagination
+			length={page.lastPage}
+			currentUrl={page.url.current}
+			currentPage={page.currentPage}
+			firstUrl={`/${firstPath}`}
+			prevUrl={page.url.prev}
+			nextUrl={page.url.next}
+			lastUrl={`/${firstPath}/${page.lastPage}`}
+		/>
+	</div>
 </Layout>
