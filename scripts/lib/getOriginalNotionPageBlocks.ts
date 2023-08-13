@@ -1,14 +1,16 @@
-import type { Client } from "@notionhq/client";
-import { BlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
+import { z } from 'zod'
+import { NotionBlockSchema } from './../schemas/notionSchema'
+import type { Client } from '@notionhq/client'
+import { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
 
 export const getOriginalNotionPageBlocks = async (
-  pageId: string,
-  notion: Client
+	pageId: string,
+	notion: Client,
 ): Promise<BlockObjectResponse[]> => {
-  const blocksResponse = await notion.blocks.children.list({
-    block_id: pageId,
-  });
+	const blocksResponse = await notion.blocks.children.list({
+		block_id: pageId,
+	})
 
-  const blocks = blocksResponse.results as unknown as BlockObjectResponse[];
-  return blocks;
-};
+	const blocks = blocksResponse.results
+	return z.array(NotionBlockSchema).parse(blocks)
+}
