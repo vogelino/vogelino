@@ -19,7 +19,7 @@ const { project } = Astro.props
 		`splide__slide relative`,
 		`w-screen h-[calc(100svh-188px)] max-w-[1440px]`,
 		`items-stretch !mt-20 mb-0 !md:my-20`,
-		`gap-6 justify-between`,
+		`gap-[8vw] justify-between`,
 		`flex flex-col sm:flex-row`,
 	]}
 >
@@ -82,59 +82,63 @@ const { project } = Astro.props
 	</div>
 	<div
 		class={classNames(
-			`w-full sm:max-w-[50%] h-full relative`,
+			`w-full sm:max-w-[40%] lg:max-w-[50%] h-full relative`,
 			`rounded-l-md border-alt`,
 		)}
 	>
-		<div
-			class={classNames(`intro-slide-tilted-shadow absolute inset-0`)}
-			aria-hidden="true"
-		>
+		<div class={classNames(`absolute top-1/2 -translate-y-1/2 right-4`)}>
 			<div
-				class={classNames(
-					`absolute inset-0 bg-gradient-to-t from-grayMed to-grayMed/0`,
-					`dark:from-grayUltraDark dark:to-grayUltraDark/0`,
-					`blur translate-y-[40px] translate-x-[48px]`,
-				)}
+				class={classNames(`intro-slide-tilted-shadow absolute inset-0`)}
+				aria-hidden="true"
 			>
+				<div
+					class={classNames(
+						`absolute inset-0 bg-gradient-to-t from-grayMed to-grayMed/0`,
+						`dark:from-grayUltraDark dark:to-grayUltraDark/0`,
+						`blur translate-y-[40px] translate-x-[48px]`,
+					)}
+				>
+				</div>
 			</div>
+			<Img
+				src={`/images/thumbnails/${project.slug}.webp`}
+				alt={`Thumbnail for the project "${project.title}"`}
+				layout="fixed"
+				attributes={{
+					img: {
+						class: classNames(
+							`max-h-[50vh] sm:max-h-[70vh] md:max-h-[80vh]`,
+							`rounded !object-top`,
+							`intro-slide-tilted-image`,
+							`ring-1 ring-grayLight`,
+							`dark:saturate-[1.1] dark:contrast-[1.1]`,
+						),
+					},
+				}}
+			/>
+			<img
+				src={`/images/illustrations/${project.slug}.svg`}
+				alt={`Illustration for the project ${project.title}`}
+				class={classNames(
+					`max-h-[23vh] max-w-[260px] absolute bottom-0`,
+					`sm:-left-12 lg:right-[16%]`,
+					`pointer-events-none scale-50 xs:scale-75 sm:scale-100`,
+					`origin-bottom-left`,
+				)}
+			/>
 		</div>
-		<Img
-			src={`/images/thumbnails/${project.slug}.webp`}
-			alt={`Thumbnail for the project "${project.title}"`}
-			layout="fixed"
-			attributes={{
-				img: {
-					class: classNames(
-						`!h-full rounded !object-top`,
-						`absolute top-0 right-px`,
-						`intro-slide-tilted-image`,
-						`ring-1 ring-grayLight`,
-					),
-				},
-			}}
-		/>
-		<img
-			src={`/images/illustrations/${project.slug}.svg`}
-			alt={`Illustration for the project ${project.title}`}
-			class={classNames(
-				`max-h-[23vh] max-w-[260px] absolute bottom-0`,
-				`sm:-left-12 lg:right-[16%]`,
-				`pointer-events-none scale-50 xs:scale-75 sm:scale-100`,
-				`origin-bottom-left`,
-			)}
-		/>
 	</div>
 </li>
 
 <style is:global>
 	.intro-slide-tilted-image {
-		transform: perspective(1735px) rotateX(27deg) rotateY(346deg) rotateZ(17deg);
+		transform: perspective(1735px) rotateX(27deg) rotateY(346deg) rotateZ(17deg)
+			translateX(-6vw);
 		transform-style: preserve-3d;
 	}
 	.intro-slide-tilted-shadow {
 		transform: perspective(1524px) rotateX(48deg) rotateY(347deg) rotateZ(24deg)
-			scaleX(0.95) translateX(20px);
+			scaleX(0.95) translateX(-5vw);
 		transform-style: preserve-3d;
 	}
 </style>
