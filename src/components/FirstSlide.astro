@@ -19,27 +19,26 @@ const { project } = Astro.props
 		`splide__slide relative`,
 		`w-screen h-[calc(100svh-188px)] max-w-[1440px]`,
 		`items-stretch !mt-20 mb-0 !md:my-20`,
-		`gap-[8vw] justify-between`,
+		`justify-center gap-[3vh]`,
 		`flex flex-col sm:flex-row`,
 	]}
 >
 	<div
 		class={classNames(
-			`sm:basis-[180px] shrink-0 grow flex flex-col`,
-			`items-start justify-start md:justify-center px-6`,
-			`md:items-center py-4 sm:py-0`,
+			`sm:basis-[180px] sm:shrink-0 sm:grow flex flex-col`,
+			`items-start sm:items-center justify-start sm:justify-center p-6`,
 		)}
 	>
 		<div class={classNames('inline-flex flex-col items-start max-w-md')}>
 			<span
 				class={classNames(
-					`sm:text-lg md:text-xl inline-block mb-3 sm:mb-3 md:mb-6`,
+					`sm:text-lg md:text-xl inline-block mb-[1vh] xs:mb-3 sm:mb-3 md:mb-6`,
 					`select-text`,
 				)}>{project.year}</span
 			>
 			<h1
 				class:list={[
-					`text-5xl md:text-6xl 2xl:text-7xl`,
+					`text-3xl sm:text-5xl md:text-6xl 2xl:text-7xl`,
 					`leading-[0.9em] sm:leading-[1em] text-balance`,
 					`uppercase font-bold select-text`,
 				]}
@@ -48,7 +47,8 @@ const { project } = Astro.props
 			<p
 				class:list={[
 					`text-balance select-text`,
-					`text-lg sm:text-xl md:text-2xl lg:text-3xl mt-1 sm:mt-3 md:mt-4`,
+					`leading-[1.2em] sm:leading-[1.3em] md:leading-[1.4em]`,
+					`sm:text-xl md:text-2xl mt-[1vh] sm:mt-3 md:mt-4`,
 				]}
 			>
 				<NotionFormattedRichText richText={project.description} />
@@ -68,7 +68,7 @@ const { project } = Astro.props
 							`flex items-center`,
 							`px-2 pb-0.5 md:px-4 md:pb-1 text-xl md:text-2xl`,
 							`gap-1 md:gap-2`,
-							`mt-2 sm:mt-4 md:mt-5`,
+							`mt-[2vh] sm:mt-4 md:mt-5`,
 							`outline-none focus-visible:ring-2`,
 							`focus-visible:ring-fg focus-visible:ring-offset-2`,
 							`focus-visible:ring-offset-bg`,
@@ -82,13 +82,17 @@ const { project } = Astro.props
 	</div>
 	<div
 		class={classNames(
-			`w-full sm:max-w-[40%] lg:max-w-[50%] h-full relative`,
-			`rounded-l-md border-alt`,
+			`flex justify-center items-center px-6 xs:py-6`,
+			`basis-[45vw] sm:basis-[50vw] md:basis-[60vw] max-h-full relative`,
 		)}
 	>
-		<div class={classNames(`absolute top-1/2 -translate-y-1/2 right-4`)}>
+		<div class="relative w-full">
 			<div
-				class={classNames(`intro-slide-tilted-shadow absolute inset-0`)}
+				class={classNames(
+					`z-0`,
+					`max-h-[30vh] sm:max-h-[70vh] md:max-h-[80vh]`,
+					`intro-slide-tilted-shadow absolute inset-0`,
+				)}
 				aria-hidden="true"
 			>
 				<div
@@ -107,11 +111,12 @@ const { project } = Astro.props
 				attributes={{
 					img: {
 						class: classNames(
-							`max-h-[50vh] sm:max-h-[70vh] md:max-h-[80vh]`,
-							`rounded !object-top`,
+							`max-h-[30vh] sm:max-h-[70vh] md:max-h-[80vh]`,
+							`w-full rounded !object-top`,
 							`intro-slide-tilted-image`,
 							`ring-1 ring-grayLight`,
 							`dark:saturate-[1.1] dark:contrast-[1.1]`,
+							`z-10 relative`,
 						),
 					},
 				}}
@@ -120,10 +125,11 @@ const { project } = Astro.props
 				src={`/images/illustrations/${project.slug}.svg`}
 				alt={`Illustration for the project ${project.title}`}
 				class={classNames(
-					`max-h-[23vh] max-w-[260px] absolute bottom-0`,
-					`sm:-left-12 lg:right-[16%]`,
-					`pointer-events-none scale-50 xs:scale-75 sm:scale-100`,
-					`origin-bottom-left`,
+					`z-20 intro-slide-tilted-illustration`,
+					`max-h-[23vh] max-w-[260px] absolute`,
+					`-left-4 sm:-left-12 lg:right-[16%]`,
+					`pointer-events-none scale-75 sm:scale-100`,
+					`origin-bottom-left top-full -translate-y-full`,
 				)}
 			/>
 		</div>
@@ -132,13 +138,21 @@ const { project } = Astro.props
 
 <style is:global>
 	.intro-slide-tilted-image {
-		transform: perspective(1735px) rotateX(27deg) rotateY(346deg) rotateZ(17deg)
-			translateX(-6vw);
+		transform: perspective(1735px) rotateX(27deg) rotateY(346deg) rotateZ(17deg);
+		-webkit-transform: translateZ(-1000px) perspective(1735px) rotateX(27deg)
+			rotateY(346deg) rotateZ(17deg);
 		transform-style: preserve-3d;
 	}
 	.intro-slide-tilted-shadow {
 		transform: perspective(1524px) rotateX(48deg) rotateY(347deg) rotateZ(24deg)
-			scaleX(0.95) translateX(-5vw);
+			scaleX(0.95);
+		-webkit-transform: translateZ(-2000px) perspective(1524px) rotateX(48deg)
+			rotateY(347deg) rotateZ(24deg) scaleX(0.95);
+		transform-style: preserve-3d;
+	}
+
+	.intro-slide-tilted-illustration {
+		-webkit-transform: translateZ(1000px);
 		transform-style: preserve-3d;
 	}
 </style>
