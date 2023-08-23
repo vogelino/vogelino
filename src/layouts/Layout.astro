@@ -35,7 +35,12 @@ const { title, withHeaderBg = true } = Astro.props
 			content="Interface design and development portfolio of Lucas Vogel"
 		/>
 		<title>{[title, 'Vogelino'].join(' – ')}</title>
+		<script
+			src="https://js.sentry-cdn.com/a99f64c0ac2ef8d9ffa6598ac9da36aa.min.js"
+			crossorigin="anonymous"></script>
 		<script is:inline>
+			Sentry.onLoad(() => Sentry.init())
+
 			const userPref = localStorage.getItem('theme')
 			const userPreference =
 				userPref ||
@@ -61,4 +66,6 @@ const { title, withHeaderBg = true } = Astro.props
 <script>
 	import { inject } from '@vercel/analytics'
 	inject()
+
+	throw new Error('test SENTRY')
 </script>
