@@ -4,6 +4,7 @@ import LogoInteractive from './LogoInteractive.astro'
 import HeaderMenuLink from './HeaderMenuLink.astro'
 import SocialIcons from './SocialIcons.astro'
 import ThemeToggle from './ThemeToggle.astro'
+import AvailableForHireBanner from './AvailableForHireBanner.astro'
 
 export interface Props {
 	withBg?: boolean
@@ -22,7 +23,8 @@ const withoutBgClasses = 'border-b-transparent'
 		`fixed top-0 left-1/2 -translate-x-1/2 w-screen z-40`,
 		`text-fg px-8 max-w-[1440px] min-[1440px]:border-x`,
 		`min-[1440px]:border-x-grayMed border-b`,
-		`flex justify-between items-center h-[69px]`,
+		`flex justify-between items-center h-[101px]`,
+		`pt-8`,
 		`transition motion-reduce:transition-none`,
 		withBg ? withBgClasses : withoutBgClasses,
 	)}
@@ -71,6 +73,7 @@ const withoutBgClasses = 'border-b-transparent'
 			</li>
 		</ul>
 	</nav>
+	<AvailableForHireBanner />
 </header>
 
 <script defer>
@@ -138,8 +141,9 @@ const withoutBgClasses = 'border-b-transparent'
 	}
 	updateHeaderBg()
 
-	const scrollUp = ['translate-y-0', 'logo-visible']
-	const scrollDown = '-translate-y-full'
+	const scrollUpClass = [`scrolled-up`, `logo-visible`]
+	const scrollDownClass = `scrolled-down`
+	const scrollTopClass = `scrolled-top`
 	let lastScroll =
 		window.pageYOffset ??
 		document.documentElement.scrollTop ??
@@ -156,22 +160,29 @@ const withoutBgClasses = 'border-b-transparent'
 			0
 
 		if (currentScroll <= 69) {
-			header.classList.remove(...scrollUp)
+			header.classList.remove(...scrollUpClass)
+			header.classList.remove(scrollDownClass)
+			header.classList.add(scrollTopClass)
 			requestAnimationFrame(updateScrollUpAndDownVisibility)
 			return
+		} else {
+			header.classList.remove(scrollTopClass)
 		}
 
-		if (currentScroll > lastScroll && !header.classList.contains(scrollDown)) {
+		if (
+			currentScroll > lastScroll &&
+			!header.classList.contains(scrollDownClass)
+		) {
 			// down
-			header.classList.remove(...scrollUp)
-			header.classList.add(scrollDown)
+			header.classList.remove(...scrollUpClass)
+			header.classList.add(scrollDownClass)
 		} else if (
 			currentScroll < lastScroll &&
-			header.classList.contains(scrollDown)
+			header.classList.contains(scrollDownClass)
 		) {
 			// up
-			header.classList.remove(scrollDown)
-			header.classList.add(...scrollUp)
+			header.classList.remove(scrollDownClass)
+			header.classList.add(...scrollUpClass)
 		}
 		lastScroll = currentScroll
 
@@ -208,6 +219,15 @@ const withoutBgClasses = 'border-b-transparent'
 </script>
 
 <style>
+	header[aria-label='Main header'].scrolled-down {
+		@apply -translate-y-full;
+	}
+	header[aria-label='Main header'].scrolled-up {
+		@apply translate-y-0;
+	}
+	header[aria-label='Main header']:not(.scrolled-top) {
+		@apply pt-0 h-[69px];
+	}
 	#burger-menu {
 		cursor: pointer;
 		height: 39px;

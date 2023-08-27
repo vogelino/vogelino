@@ -1,0 +1,66 @@
+---
+import classNames from '../utils/classNames'
+export type Props = {}
+
+const items = [...Array(5).fill(0)]
+---
+
+<a
+	aria-label="Banner: Available for Hire"
+	href="mailto:contact@vogelino.com?subject=Available for Hire&body=Hi, I'm interested in hiring you for a project."
+	target="_blank"
+	rel="noopener noreferrer"
+	class={classNames(
+		`available-for-hire`,
+		`h-8 fixed top-0 left-0 z-10 bg-fg text-alt`,
+		`overflow-hidden w-full`,
+		`transition-colors motion-reduce:transition-none translate-y-0`,
+		`hover-hover:hover:bg-alt hover-hover:hover:text-fg`,
+		`select-none`,
+	)}
+>
+	<div
+		aria-hidden="true"
+		class="absolute animated-banner left-0 top-[5px] flex gap-4 tracking-wide"
+	>
+		{
+			items.map(() => (
+				<div class="flex gap-6 whitespace-nowrap uppercase">
+					<span class="font-special -mt-[4px] text-lg pl-1">
+						Available for Hire
+					</span>
+					<span>Available for Hire</span>
+				</div>
+			))
+		}
+		{
+			items.map(() => (
+				<div class="flex gap-6 whitespace-nowrap uppercase">
+					<span class="font-special -mt-[4px] text-lg">Available for Hire</span>
+					<span>Available for Hire</span>
+				</div>
+			))
+		}
+	</div>
+</a>
+
+<style is:global>
+	header[aria-label='Main header']:not(.scrolled-top) .available-for-hire {
+		@apply -translate-y-full;
+	}
+
+	.animated-banner {
+		animation: banner 100s linear infinite;
+		@apply motion-reduce:animate-none;
+		will-change: transform;
+	}
+
+	@keyframes banner {
+		0% {
+			transform: translateX(0);
+		}
+		100% {
+			transform: translateX(-50%);
+		}
+	}
+</style>
