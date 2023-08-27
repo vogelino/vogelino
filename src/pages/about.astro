@@ -8,6 +8,7 @@ import AboutDescription from '../components/AboutDescription.astro'
 import SocialIcons from '../components/SocialIcons.astro'
 import FancyHeadline from '../components/FancyHeadline.astro'
 import IconTextLink from '../components/IconTextLink.astro'
+import PDFLinkDropdown from '../components/PDFLinkDropdown.astro'
 ---
 
 <Layout title="About me">
@@ -42,13 +43,7 @@ import IconTextLink from '../components/IconTextLink.astro'
 					`px-6 gap-x-8 gap-y-4`,
 				)}
 			>
-				<IconTextLink
-					href={`https://www.linkedin.com/in/vogelino/`}
-					ariaLabel={`Download my curriculum as a PDF file`}
-					text={`PDF`}
-				>
-					<Pdf />
-				</IconTextLink>
+				<PDFLinkDropdown />
 			</FancyHeadline>
 			<AboutCVTable />
 			<SocialIcons className="bg-grayUltraLight pt-6" />
