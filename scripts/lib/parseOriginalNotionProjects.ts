@@ -35,7 +35,6 @@ export interface MappedNotionProject extends Record<string, unknown> {
 	slug: string
 	thumbnail: string
 	illustration: string
-	bgImage: string
 	year: number
 	url: null | string
 	clients: MappedCollaboratorPageType[]
@@ -83,7 +82,6 @@ function mapOriginalNotionProject(
 
 	const thumbnail = `/images/thumbnails/${slug}.webp`
 	const illustration = `/images/illustration/${slug}.webp`
-	const bgImage = `/images/bg-images/${slug}.webp`
 	const getRelationIds = getRealtionExtractor(rawProject)
 	const collaboratorsIds = getRelationIds('In collaboration with')
 	const supervisorsIds = getRelationIds('Supervised by')
@@ -99,7 +97,6 @@ function mapOriginalNotionProject(
 		slug,
 		thumbnail,
 		illustration,
-		bgImage,
 		year: Year.number,
 		url: URL.url,
 		collaborators: mapNotionCollaborators(rawCollaborators, collaboratorsIds),

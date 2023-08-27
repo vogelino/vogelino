@@ -32,7 +32,6 @@ async function downloadNotionProjectImages() {
 		const thumbnail = originalProject.properties.Thumbnail.files[0].file?.url
 		const illustration =
 			originalProject.properties.Illustration.files[0].file?.url
-		const bgImage = originalProject.properties.BgImage.files[0].file?.url
 		const mediaImages = originalProject.properties.Media.files
 
 		if (mediaImages.length === 0)
@@ -57,18 +56,6 @@ async function downloadNotionProjectImages() {
 			fileUrl: illustration,
 			fileName: `${slug}.svg`,
 			folder: `illustrations`,
-		})
-
-		// BG IMAGE
-		await saveAndResizeImage({
-			fileUrl: bgImage,
-			fileName: `${slug}.webp`,
-			folder: `bg-images`,
-			resize: {
-				width: WIDTH,
-				height: HEIGHT,
-				position: 'center',
-			},
 		})
 
 		// SLIDER IMAGES
