@@ -46,7 +46,7 @@ const withoutBgClasses = 'border-b-transparent'
 		id="menu"
 		aria-label="Main navigation"
 		class={classNames(
-			`fixed top-[69px] left-0 w-screen h-[calc(100svh-69px)] bg-bg sm:bg-transparent`,
+			`fixed top-[101px] left-0 w-screen h-[calc(100svh-69px)] bg-bg sm:bg-transparent`,
 			`opacity-0 pointer-events-none sm:opacity-100 sm:static sm:pointer-events-auto`,
 			`sm:w-auto sm:h-auto sm:bg-none transition-opacity`,
 			`motion-reduce:transition-none`,
@@ -227,6 +227,10 @@ const withoutBgClasses = 'border-b-transparent'
 	}
 	header[aria-label='Main header']:not(.scrolled-top) {
 		@apply pt-0 h-[69px];
+	}
+
+	header[aria-label='Main header']:not(.scrolled-top) #menu {
+		@apply top-[69px];
 	}
 	#burger-menu {
 		cursor: pointer;
