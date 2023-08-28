@@ -67,18 +67,21 @@ const projects = (
 					</p>
 					<div
 						class={classNames(
+							'w-[210px] h-[210px]',
 							`absolute -top-32 -right-10`,
 							`transition-transform motion-reduce:transition-none`,
-							`hover-hover:group-hover:scale-110`,
+							`hover-hover:group-hover:scale-125`,
 							`xl:hover-hover:group-hover:scale-150`,
 							`group-focus-visible:-top-[8.5rem]`,
 							`group-focus-visible:-right-[3rem]`,
 						)}
 						inert
 					>
-						<MoreAboutMeSVG
-							className={`text-bg hover-hover:group-hover:text-alt`}
-						/>
+						<div class="scale-50 origin-top-left w-[420px] h-[420px]">
+							<MoreAboutMeSVG
+								className={`text-bg hover-hover:group-hover:text-alt`}
+							/>
+						</div>
 					</div>
 				</div>
 			</div>

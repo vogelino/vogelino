@@ -16,7 +16,7 @@ const { project } = Astro.props
 
 <li
 	class:list={[
-		`splide__slide relative`,
+		`splide__slide splide__intro relative`,
 		`w-screen h-[calc(100svh-188px)] max-w-[1440px]`,
 		`items-stretch !mt-20 mb-0 !md:my-20`,
 		`justify-center gap-[3vh]`,
@@ -149,6 +149,15 @@ const { project } = Astro.props
 		-webkit-transform: translateZ(-2000px) perspective(1524px) rotateX(48deg)
 			rotateY(347deg) rotateZ(24deg) scaleX(0.95);
 		transform-style: preserve-3d;
+	}
+
+	.splide__intro {
+		@apply opacity-0 translate-y-8 transition motion-reduce:transition-none;
+		@apply ease-out-extreme duration-1000;
+	}
+
+	.splide__intro.is-visible {
+		@apply opacity-100 translate-y-0;
 	}
 
 	.intro-slide-tilted-illustration {
