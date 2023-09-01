@@ -29,11 +29,15 @@ const year = String(new Date().getFullYear())
 	</section>
 </footer>
 
-<script defer>
-const backToTopBtn = document.getElementById('back-to-top')
+<script>
+	function setupScrollToTopBtn() {
+		const backToTopBtn = document.getElementById('back-to-top')
 
-backToTopBtn.addEventListener('click', (event) => {
-	event.preventDefault()
-	window.scrollTo({ top: 0, behavior: 'smooth' })
-})
+		backToTopBtn.addEventListener('click', (event) => {
+			event.preventDefault()
+			window.scrollTo({ top: 0, behavior: 'smooth' })
+		})
+	}
+	document.addEventListener('astro:page-load', setupScrollToTopBtn)
+	setupScrollToTopBtn()
 </script>

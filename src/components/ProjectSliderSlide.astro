@@ -1,8 +1,7 @@
 ---
-import * as astroComponents from 'astro-imagetools/components'
+import { type AstroGlobImageType } from '../utils/astroTypes'
 import classNames from '../utils/classNames'
-
-const { Img } = astroComponents
+import { Image } from 'astro:assets'
 
 export interface Props {
 	projectName: string
@@ -10,34 +9,44 @@ export interface Props {
 }
 
 const { projectName, imageUrl } = Astro.props
+
+const sliderImage = await Astro.glob<AstroGlobImageType<'webp'>>(
+	'/src/assets/images/projects-media/*.webp',
+).then(
+	(images) =>
+		images.find((image) => image.default.src.includes(imageUrl))?.default,
+)
 ---
 
-<li
-	class:list={[
-		`splide__slide`,
-		`w-screen h-[calc(100svh-188x)] px-6 !mt-24 !mb-20`,
-		`flex items-center justify-center`,
-	]}
->
-	<a
-		class={classNames(
-			`powerswipe-link`,
-			`rounded overflow-hidden shadow-lg`,
-			`shadow-grayMed dark:shadow-grayUltraLight`,
-			`contrast-more:shadow-bg`,
-			`ring-1 ring-black/5 max-w-full max-h-full`,
-			`outline-none focus-visible:ring-2 focus-visible:ring-fg`,
-			`focus-visible:ring-offset-4 focus-visible:ring-offset-grayUltraLight`,
-			`hover-hover:hover:cursor-zoom-in`,
-		)}
-		href={`/${imageUrl.replace('public/', '')}`}
-	>
-		<Img
-			src={`/${imageUrl}`}
-			alt={`Screenshot of the project ${projectName}`}
-			layout="fullWidth"
-			attributes={{ img: { class: 'splide__img' } }}
-			loading="eager"
-		/>
-	</a>
-</li>
+{
+	sliderImage && (
+		<li
+			class={classNames(
+				`splide__slide`,
+				`w-screen h-[calc(100svh-188x)] px-6 !mt-24 !mb-20`,
+				`flex items-center justify-center`,
+			)}
+		>
+			<a
+				class={classNames(
+					`powerswipe-link`,
+					`rounded overflow-hidden shadow-lg`,
+					`shadow-grayMed dark:shadow-grayUltraLight`,
+					`contrast-more:shadow-bg`,
+					`ring-1 ring-black/5 max-w-full max-h-full`,
+					`outline-none focus-visible:ring-2 focus-visible:ring-fg`,
+					`focus-visible:ring-offset-4 focus-visible:ring-offset-grayUltraLight`,
+					`hover-hover:hover:cursor-zoom-in`,
+				)}
+				href={sliderImage.src}
+			>
+				<Image
+					src={sliderImage}
+					alt={`Screenshot of the project ${projectName}`}
+					class="splide__img"
+					loading="eager"
+				/>
+			</a>
+		</li>
+	)
+}

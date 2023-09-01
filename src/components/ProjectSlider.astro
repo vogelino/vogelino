@@ -1,8 +1,9 @@
 ---
-import { MappedNotionProject } from '../../scripts/lib/parseOriginalNotionProjects'
+import type { MappedNotionProject } from '../../scripts/lib/parseOriginalNotionProjects'
 import ProjectSliderSlide from '../components/ProjectSliderSlide.astro'
 import 'photoswipe/style.css'
 import FirstSlide from './FirstSlide.astro'
+import classNames from '../utils/classNames'
 
 export interface Props {
 	project: MappedNotionProject
@@ -12,20 +13,20 @@ const { project } = Astro.props
 ---
 
 <div
-	class:list={[
+	class={classNames(
 		`pswp-gallery`,
 		`splide h-[calc(100svh-16px)] w-screen overflow-x-hidden mx-auto`,
 		`max-w-[1438px]`,
 		`outline-none group`,
-	]}
+	)}
 	aria-label="List of project images"
 	id="main-slider"
 >
 	<div
-		class:list={[
+		class={classNames(
 			`splide__track h-[calc(100svh-16px)] w-screen max-w-[1439px]`,
 			`border-b-grayMed border-b bg-grayUltraLight relative`,
-		]}
+		)}
 	>
 		<ul class="splide__list w-screen h-[calc(100svh-16px)] max-w-[1440px]">
 			<FirstSlide project={project} />
@@ -42,57 +43,67 @@ const { project } = Astro.props
 	import Splide from '@splidejs/splide'
 	import PhotoSwipeLightbox from 'photoswipe/lightbox'
 
-	const slider = new Splide('.splide', {
-		rewind: true,
-		arrows: false,
-		pagination: true,
-		paginationKeyboard: true,
-		keyboard: true,
-	})
+	function setupSlider() {
+		const splides = document.querySelectorAll('.splide')
+		if (splides.length === 0) return
+		const slider = new Splide('.splide', {
+			rewind: true,
+			arrows: false,
+			pagination: true,
+			paginationKeyboard: true,
+			keyboard: true,
+		})
 
-	slider.mount()
+		slider.mount()
 
-	const nextButton = document.getElementById('project-next')
-	const prevButton = document.getElementById('project-prev')
+		const nextButton = document.getElementById('project-next')
+		const prevButton = document.getElementById('project-prev')
 
-	nextButton.addEventListener('click', (evt) => {
-		evt.preventDefault()
-		slider.go('>')
-	})
-	prevButton.addEventListener('click', (evt) => {
-		evt.preventDefault()
-		slider.go('<')
-	})
+		nextButton.addEventListener('click', (evt) => {
+			evt.preventDefault()
+			slider.go('>')
+		})
+		prevButton.addEventListener('click', (evt) => {
+			evt.preventDefault()
+			slider.go('<')
+		})
 
-	const zoomableImgs = Array.from(document.querySelectorAll('.powerswipe-link'))
-	zoomableImgs.forEach((liEl: HTMLLIElement) => {
-		const img = liEl.querySelector('img')
-		const width = img.getAttribute('width')
-		const height = img.getAttribute('height')
-		img.style.aspectRatio = `${width}/${height}`
-		liEl.setAttribute('data-pswp-width', width)
-		liEl.setAttribute('data-pswp-height', height)
-	})
+		const zoomableImgs = Array.from(
+			document.querySelectorAll('.powerswipe-link'),
+		)
+		zoomableImgs.forEach((liEl) => {
+			const img = liEl.querySelector('img')
+			const width = img.getAttribute('width')
+			const height = img.getAttribute('height')
+			img.style.aspectRatio = `${width}/${height}`
+			liEl.setAttribute('data-pswp-width', width)
+			liEl.setAttribute('data-pswp-height', height)
+		})
 
-	const lightbox = new PhotoSwipeLightbox({
-		gallery: '#main-slider',
-		children: '.powerswipe-link',
-		showHideAnimationType: 'fade',
-		wheelToZoom: true,
-		allowPanToNext: false,
-		preloadFirstSlide: false,
-		pswpModule: () => import('photoswipe'),
-	})
+		const lightbox = new PhotoSwipeLightbox({
+			gallery: '#main-slider',
+			children: '.powerswipe-link',
+			showHideAnimationType: 'fade',
+			wheelToZoom: true,
+			allowPanToNext: false,
+			preloadFirstSlide: false,
+			pswpModule: () => import('photoswipe'),
+		})
 
-	lightbox.on('change', () => {
-		slider.go(lightbox.pswp.currIndex + 1)
-	})
-	lightbox.init()
+		lightbox.on('change', () => {
+			slider.go(lightbox.pswp.currIndex + 1)
+		})
+		lightbox.init()
+	}
+	document.addEventListener('astro:page-load', setupSlider)
 </script>
 
 <style is:global>
+	.splide {
+		@apply visible;
+	}
 	.splide__img {
-		@apply rounded max-w-[calc(100svw-48px)] max-h-[calc(100svh-154px)];
+		@apply rounded max-w-[calc(100svw-48px)] max-h-[calc(100svh-154px)] w-auto h-auto;
 	}
 	.splide__pagination {
 		@apply absolute left-1/2 opacity-0 sm:opacity-100 bottom-7 gap-1.5 -translate-x-1/2;

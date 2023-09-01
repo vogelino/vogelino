@@ -4,11 +4,10 @@ import classNames from '../../utils/classNames'
 import { INSPIRATIONS_JSON_PATH } from '../../../scripts/paths'
 import Layout from '../../layouts/Layout.astro'
 import FancyHeadline from '../../components/FancyHeadline.astro'
-import * as astroComponents from 'astro-imagetools/components'
 import type { MappedNotionInspirationLinkType } from '../../../scripts/lib/parseOriginalNotionInspirations'
 import Pagination from '../../components/Pagination.astro'
-
-const { Img } = astroComponents
+import { Image } from 'astro:assets'
+import type { AstroGlobImageType } from '../../utils/astroTypes'
 
 const firstPath = 'inspirations'
 
@@ -23,7 +22,15 @@ export async function getStaticPaths({ paginate }) {
 }
 
 const { page } = Astro.props
-const notionLinks = page.data || []
+
+const thumbnails = await Astro.glob<AstroGlobImageType<'webp'>>(
+	`/src/assets/images/inspirations/*.webp`,
+).then((files) => files.map((file) => file.default))
+
+const notionLinks = (page.data || []).map((link) => ({
+	...link,
+	thumbnail: thumbnails.find((thumbnail) => thumbnail.src.includes(link.id)),
+}))
 ---
 
 <Layout title="List of cool site I like">
@@ -45,6 +52,7 @@ const notionLinks = page.data || []
 		</li>
 		{
 			notionLinks.map((link) => {
+				if (!link.thumbnail) return null
 				return (
 					<li aria-label={`Cool site: "${link.title}" (${link.url})`}>
 						<a
@@ -59,27 +67,28 @@ const notionLinks = page.data || []
 							)}
 						>
 							<span class="relative block aspect-[140/73] bg-zinc-100 rounded overflow-hidden">
-								<Img
+								<Image
 									src={link.thumbnail}
 									alt={`Cover image of "${link.title}"`}
-									attributes={{
-										img: {
-											class: classNames(
-												`w-full aspect-[140/73] rounded object-cover`,
-												`transition-transform hover-hover:group-hover:scale-110`,
-												`motion-reduce:transition-none`,
-												`motion-reduce:hover-hover:group-hover:scale-100`,
-											),
-										},
-									}}
+									class={classNames(
+										`w-full aspect-[140/73] rounded object-cover`,
+										`transition-transform hover-hover:group-hover:scale-110`,
+										`motion-reduce:transition-none`,
+										`motion-reduce:hover-hover:group-hover:scale-100`,
+									)}
 								/>
 								<span class="absolute inset-0 pointer-events-none bg-zinc-100 mix-blend-multiply" />
 							</span>
 							<div class="grid grid-cols-[1rem,1fr] gap-3">
-								<span
-									class="inline-grid w-4 h-4 mt-0.5 rounded overflow-hidden bg-zinc-100 bg-cover bg-center leading-4"
-									style={`background-image: url("https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&size=32&url=${link.url}")`}
-								/>
+								<span class="inline-block w-4 h-4 relative mt-0.5 rounded overflow-hidden bg-zinc-100 bg-cover bg-center leading-4">
+									<Image
+										src={`https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&size=32&url=${link.url}`}
+										alt={`Favicon of "${link.title}"`}
+										class="absolute inset-0 object-cover"
+										width={16}
+										height={16}
+									/>
+								</span>
 								<h3 class="inline-block leading-tight">
 									<span
 										class={classNames(

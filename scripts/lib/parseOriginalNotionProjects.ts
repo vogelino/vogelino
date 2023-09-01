@@ -111,12 +111,8 @@ function mapOriginalNotionProject(
 }
 
 function mapNotionMedia(media: NotionImageType[]) {
-	return media.map(
-		(image, idx) =>
-			`${IMAGE_DEST_EXPORT_PATH}/projects-media/${parseNotionImageName(
-				image,
-				idx,
-			)}`,
+	return media.map((image, idx) =>
+		parseNotionImageName(image, idx).replace(/\.webp$/, ''),
 	)
 }
 

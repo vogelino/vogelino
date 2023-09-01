@@ -4,6 +4,7 @@ import Footer from '../components/Footer.astro'
 import Header from '../components/Header.astro'
 import OverlayTexture from '../components/OverlayTexture.astro'
 import GlobalStyles from '../components/GlobalStyles.astro'
+import { ViewTransitions } from 'astro:transitions'
 
 export interface Props {
 	title: string
@@ -35,19 +36,24 @@ const { title, withHeaderBg = true } = Astro.props
 			content="Interface design and development portfolio of Lucas Vogel"
 		/>
 		<title>{[title, 'Vogelino'].join(' – ')}</title>
-		<script
-			src="https://js.sentry-cdn.com/a99f64c0ac2ef8d9ffa6598ac9da36aa.min.js"
-			crossorigin="anonymous"></script>
-		<script is:inline>
-			Sentry.onLoad(() => Sentry.init())
 
-			const userPref = localStorage.getItem('theme')
-			const userPreference =
-				userPref ||
-				(matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
-			document.documentElement.dataset.appliedMode = userPreference
-			userPref && localStorage.setItem('theme', userPreference)
+		<script is:inline>
+			function loadUserPrefTheme() {
+				const userPref = localStorage.getItem('theme')
+				const userPreference =
+					userPref ||
+					(matchMedia('(prefers-color-scheme: dark)').matches
+						? 'dark'
+						: 'light')
+				document.documentElement.dataset.appliedMode = userPreference
+				userPref && localStorage.setItem('theme', userPreference)
+			}
+			loadUserPrefTheme()
+
+			document.addEventListener('astro:after-swap', loadUserPrefTheme)
 		</script>
+
+		<ViewTransitions />
 	</head>
 	<body
 		class={classNames(
@@ -60,10 +66,9 @@ const { title, withHeaderBg = true } = Astro.props
 		<Footer />
 		<OverlayTexture />
 		<GlobalStyles />
+		<script>
+			import { inject } from '@vercel/analytics'
+			inject()
+		</script>
 	</body>
 </html>
-
-<script>
-	import { inject } from '@vercel/analytics'
-	inject()
-</script>

@@ -157,52 +157,57 @@ const cv = await loadJson<MappedNotionCV>(CV_JSON_PATH)
 	}
 </style>
 
-<script defer>
-const settings = {
-	container: '[data-tab-component]',
-	trigger: '[role="tab"]',
-	content: '[role="tabpanel"]',
-}
+<script>
+	function setupTabs() {
+		const settings = {
+			container: '[data-tab-component]',
+			trigger: '[role="tab"]',
+			content: '[role="tabpanel"]',
+		}
+		const container = document.querySelector(settings.container)
+		if (!container) return
 
-const toggle = function (tab, scroll = true) {
-	const parent = tab.closest(settings.container)
-	const target = tab.getAttribute('aria-controls')
-	const content = document.getElementById(target)
-	const toggles = parent.querySelectorAll(settings.trigger)
-	const all_content = parent.querySelectorAll(settings.content)
+		const toggle = function (tab, scroll = true) {
+			const parent = tab.closest(settings.container)
+			const target = tab.getAttribute('aria-controls')
+			const content = document.getElementById(target)
+			const toggles = parent.querySelectorAll(settings.trigger)
+			const all_content = parent.querySelectorAll(settings.content)
 
-	for (let i = 0, len = toggles.length; i < len; i++) {
-		toggles[i].setAttribute('aria-selected', 'false')
-		all_content[i].setAttribute('aria-hidden', 'true')
-	}
-
-	tab.setAttribute('aria-selected', 'true')
-	content.setAttribute('aria-hidden', 'false')
-
-	if (window.innerWidth < 768 && scroll) {
-		parent.scrollIntoView({ behavior: 'smooth' })
-	}
-}
-
-const bindEventListeners = function () {
-	const trigger = document.querySelectorAll(settings.trigger)
-
-	for (let i = 0, len = trigger.length; i < len; i++) {
-		trigger[i].addEventListener('click', function (event) {
-			event.preventDefault()
-			toggle(trigger[i])
-		})
-
-		trigger[i].addEventListener('keydown', function (event) {
-			if (event.which == 13) {
-				event.preventDefault()
-				toggle(trigger[i])
+			for (let i = 0, len = toggles.length; i < len; i++) {
+				toggles[i].setAttribute('aria-selected', 'false')
+				all_content[i].setAttribute('aria-hidden', 'true')
 			}
-		})
 
-		toggle(trigger[0], false)
+			tab.setAttribute('aria-selected', 'true')
+			content.setAttribute('aria-hidden', 'false')
+
+			if (window.innerWidth < 768 && scroll) {
+				parent.scrollIntoView({ behavior: 'smooth' })
+			}
+		}
+
+		const bindEventListeners = function () {
+			const trigger = document.querySelectorAll(settings.trigger)
+
+			for (let i = 0, len = trigger.length; i < len; i++) {
+				trigger[i].addEventListener('click', function (event) {
+					event.preventDefault()
+					toggle(trigger[i])
+				})
+
+				trigger[i].addEventListener('keydown', function (event: KeyboardEvent) {
+					if (event.key === 'Enter' || event.key === ' ') {
+						event.preventDefault()
+						toggle(trigger[i])
+					}
+				})
+
+				toggle(trigger[0], false)
+			}
+		}
+
+		bindEventListeners()
 	}
-}
-
-bindEventListeners()
+	document.addEventListener('astro:page-load', setupTabs)
 </script>

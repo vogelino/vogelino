@@ -1,9 +1,8 @@
 ---
 import type { MappedCollaboratorPageType } from '../../scripts/lib/parseOriginalNotionProjects'
+import type { AstroGlobImageType } from '../utils/astroTypes'
 import classNames from '../utils/classNames'
-import * as astroComponents from 'astro-imagetools/components'
-
-const { Img } = astroComponents
+import { Image } from 'astro:assets'
 
 export interface Props {
 	collaborator: MappedCollaboratorPageType
@@ -22,49 +21,44 @@ const commonAvatarProps = {
 	),
 }
 
-const isSvgAvatar = collaborator.avatar && collaborator.avatar.endsWith('.svg')
-const isWebpAvatar =
-	collaborator.avatar && collaborator.avatar.endsWith('.webp')
+const collaboratorImage = await Astro.glob<AstroGlobImageType<'webp' | 'svg'>>(
+	'/src/assets/images/collaborators/*.{svg,webp}',
+).then(
+	(files) =>
+		files.find((file) => file.default.src.includes(collaborator.id))?.default,
+)
 ---
 
-<span
-	class={classNames(
-		`relative border-r border-grayLight flex items-center text-center`,
-		`bg-bg w-[45px] h-[45px] place-content-center`,
-	)}
->
-	{
-		isSvgAvatar && (
-			<img
-				src={collaborator.avatar}
-				alt={commonAvatarProps.alt}
-				{...commonAvatarProps}
-			/>
-		)
-	}
-	{
-		isWebpAvatar && (
-			<Img
-				src={collaborator.avatar}
-				alt={commonAvatarProps.alt}
-				attributes={{
-					img: { class: commonAvatarProps.class },
-				}}
-			/>
-		)
-	}
-	<span
-		class={classNames(
-			`absolute inset-0 z-10 bg-grayMed mix-blend-soft-light`,
-			`group-hover:bg-fg transition-colors`,
-			`motion-reduce:transition-none`,
-		)}></span>
-</span>
-<span
-	class={classNames(
-		`px-4 leading-4`,
-		isInteractive && `underline decoration-grayMed`,
-	)}
->
-	{collaborator.name}
-</span>
+{
+	collaboratorImage && (
+		<>
+			<span
+				class={classNames(
+					`relative border-r border-grayLight flex items-center text-center`,
+					`bg-bg w-[45px] h-[45px] place-content-center`,
+				)}
+			>
+				<Image
+					src={collaboratorImage}
+					alt={commonAvatarProps.alt}
+					class={commonAvatarProps.class}
+				/>
+				<span
+					class={classNames(
+						`absolute inset-0 z-10 bg-grayMed mix-blend-soft-light`,
+						`group-hover:bg-fg transition-colors`,
+						`motion-reduce:transition-none`,
+					)}
+				/>
+			</span>
+			<span
+				class={classNames(
+					`px-4 leading-4`,
+					isInteractive && `underline decoration-grayMed`,
+				)}
+			>
+				{collaborator.name}
+			</span>
+		</>
+	)
+}

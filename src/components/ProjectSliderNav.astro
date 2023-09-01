@@ -13,7 +13,7 @@ import ArrowUp from './icons/ArrowUp.astro'
 	<button
 		aria-label="Scroll to the text description of the project"
 		id="about-tab"
-		class:list={[
+		class={classNames(
 			`transition-colors z-10 text-lg sm:text-xl md:text-2xl uppercase`,
 			`tracking-wide px-6 pt-4 pb-2 border -ml-px rounded-t`,
 			`bg-bg border-grayMed z-20 border-b-bg`,
@@ -21,7 +21,7 @@ import ArrowUp from './icons/ArrowUp.astro'
 			`focus-visible:ring-fg focus-visible:z-30 focus-visible:rounded`,
 			`hover-hover:hover:bg-alt`,
 			`motion-reduce:transition-none`,
-		]}
+		)}
 	>
 		<span class="hidden sm:inline">
 			Project{' '}
@@ -62,11 +62,14 @@ import ArrowUp from './icons/ArrowUp.astro'
 	</div>
 </nav>
 
-<script defer>
-const infoButton = document.getElementById('about-tab')
-infoButton?.addEventListener('click', (evt) => {
-	evt.preventDefault()
-	const infoButtonTop = infoButton.getBoundingClientRect().top
-	window.scrollTo({ top: infoButtonTop, behavior: 'smooth' })
-})
+<script>
+	function setupProjectSliderNav() {
+		const infoButton = document.getElementById('about-tab')
+		infoButton?.addEventListener('click', (evt) => {
+			evt.preventDefault()
+			const infoButtonTop = infoButton.getBoundingClientRect().top
+			window.scrollTo({ top: infoButtonTop, behavior: 'smooth' })
+		})
+	}
+	document.addEventListener('astro:page-load', setupProjectSliderNav)
 </script>

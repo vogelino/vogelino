@@ -8,6 +8,7 @@ import FancyHeadline from '../components/FancyHeadline.astro'
 import Layout from '../layouts/Layout.astro'
 import MoreAboutMeSVG from '../components/MoreAboutMeSVG.astro'
 
+
 const projects = (
 	await loadJson<MappedNotionProject[]>(PROJECTS_JSON_PATH)
 ).map((w) => {
