@@ -62,6 +62,7 @@ async function downloadNotionProjectImages() {
 		for (let imageIdx in mediaImages) {
 			const image = mediaImages[imageIdx]
 			const mediaName = parseNotionImageName(image, +imageIdx)
+			const mediaExtension = mediaName.split('.').pop()
 
 			if (!image.file) {
 				logIndented(`⏭ Skipping (already exists)`)
@@ -72,11 +73,14 @@ async function downloadNotionProjectImages() {
 				fileUrl: image.file.url,
 				fileName: mediaName,
 				folder: `projects-media`,
-				resize: {
-					height: HEIGHT,
-					withoutEnlargement: true,
-					withoutReduction: false,
-				},
+				resize:
+					mediaExtension === 'svg'
+						? undefined
+						: {
+								height: HEIGHT,
+								withoutEnlargement: true,
+								withoutReduction: false,
+						  },
 			})
 		}
 

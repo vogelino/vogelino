@@ -10,8 +10,8 @@ export interface Props {
 
 const { projectName, imageUrl } = Astro.props
 
-const sliderImage = await Astro.glob<AstroGlobImageType<'webp'>>(
-	'/src/assets/images/projects-media/*.webp',
+const sliderImage = await Astro.glob<AstroGlobImageType<'webp' | 'svg'>>(
+	'/src/assets/images/projects-media/*.{webp,svg}',
 ).then(
 	(images) =>
 		images.find((image) => image.default.src.includes(imageUrl))?.default,
