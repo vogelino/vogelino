@@ -128,5 +128,5 @@ import classNames from '../utils/classNames'
 		const el = document.getElementById('overlay-texture') as HTMLCanvasElement
 		if (!el.classList.contains('initialized')) new Grain(el)
 	}
-	setupGrain()
+	window.addEventListener('load', setupGrain)
 </script>

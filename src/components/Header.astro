@@ -207,7 +207,6 @@ const withoutBgClasses = 'border-b-transparent'
 		updateToggler(initialTheme)
 
 		themeToggler.addEventListener('click', () => {
-			debugger
 			const themeToggler = document.getElementById('theme-toggle')
 			const checked = themeToggler.getAttribute('aria-checked') === 'true'
 			let newUserPref = checked ? 'light' : 'dark'
@@ -231,13 +230,14 @@ const withoutBgClasses = 'border-b-transparent'
 	}
 
 	function setupHeader() {
+		debugger
 		setupHamburgerMenuUpdater()
 		setupMenuItemsVisibilityUpdater()
 		setupHeaderBgUpdater()
 		setupMenuScrolledStateUpdater()
 		setupThemeUpdater()
 	}
-	setupHeader()
+	window.addEventListener('load', setupHeader)
 </script>
 
 <style>
