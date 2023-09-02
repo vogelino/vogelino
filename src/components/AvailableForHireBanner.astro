@@ -21,15 +21,19 @@ const items = [...Array(5).fill(0)]
 >
 	<div
 		aria-hidden="true"
-		class="absolute animated-banner left-0 top-[5px] flex gap-4 tracking-wide"
+		class="absolute animated-banner left-0 top-0 flex gap-4 tracking-wide"
 	>
 		{
 			items.map(() => (
 				<div class="flex gap-6 whitespace-nowrap uppercase">
-					<span class="font-special -mt-[4px] text-lg pl-1">
-						Available for Hire
+					<span>
+						Available for
+						<span class="font-special -mt-[4px] text-lg pl-1">Hire 🤝</span>
 					</span>
-					<span>Available for Hire</span>
+					<span>
+						Now based in
+						<span class="font-special -mt-[4px] text-lg pl-1">Chile 🇨🇱</span>
+					</span>
 				</div>
 			))
 		}

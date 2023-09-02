@@ -209,5 +209,5 @@ const cv = await loadJson<MappedNotionCV>(CV_JSON_PATH)
 
 		bindEventListeners()
 	}
-	document.addEventListener('astro:page-load', setupTabs)
+	setupTabs()
 </script>

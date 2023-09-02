@@ -4,7 +4,6 @@ import Footer from '../components/Footer.astro'
 import Header from '../components/Header.astro'
 import OverlayTexture from '../components/OverlayTexture.astro'
 import GlobalStyles from '../components/GlobalStyles.astro'
-import { ViewTransitions } from 'astro:transitions'
 
 export interface Props {
 	title: string
@@ -49,11 +48,7 @@ const { title, withHeaderBg = true } = Astro.props
 				userPref && localStorage.setItem('theme', userPreference)
 			}
 			loadUserPrefTheme()
-
-			document.addEventListener('astro:after-swap', loadUserPrefTheme)
 		</script>
-
-		<ViewTransitions />
 	</head>
 	<body
 		class={classNames(

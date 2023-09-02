@@ -1,20 +1,18 @@
 ---
 import classNames from '../utils/classNames'
 import Layout from '../layouts/Layout.astro'
-import Pdf from '../components/icons/Pdf.astro'
 import AboutCVTable from '../components/AboutCVTable.astro'
 import AboutCVExperience from '../components/AboutCVExperience.astro'
 import AboutDescription from '../components/AboutDescription.astro'
 import SocialIcons from '../components/SocialIcons.astro'
 import FancyHeadline from '../components/FancyHeadline.astro'
-import IconTextLink from '../components/IconTextLink.astro'
 import PDFLinkDropdown from '../components/PDFLinkDropdown.astro'
 ---
 
 <Layout title="About me">
 	<div
 		class={classNames(
-			`grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 pt-[100px]`,
+			`grid grid-cols-1 lg:grid-cols-5 pt-[100px]`,
 			`bg-grayMed min-h-screen gap-px`,
 		)}
 	>
@@ -31,7 +29,7 @@ import PDFLinkDropdown from '../components/PDFLinkDropdown.astro'
 			aria-label="Curriculum Vitae"
 			class={classNames(
 				`h-full pt-5 @container/sidebar`,
-				`order-1 md:order-last lg:col-span-2 bg-bg`,
+				`order-1 lg:order-last lg:col-span-2 bg-bg`,
 			)}
 		>
 			<FancyHeadline

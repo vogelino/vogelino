@@ -98,7 +98,7 @@ const withoutBgClasses = 'border-b-transparent'
 		const updateMenuItemsVisibility = () => {
 			const burgerMenu = document.getElementById('burger-menu')
 			const socialIcons = document.getElementById('social-icons')
-			if (window.innerWidth < MENU_BREAKPOINT) {
+			if (window.innerWidth <= MENU_BREAKPOINT) {
 				burgerMenu.setAttribute('aria-hidden', 'false')
 				socialIcons.setAttribute('aria-hidden', 'false')
 			} else {
@@ -108,7 +108,7 @@ const withoutBgClasses = 'border-b-transparent'
 		}
 
 		const mediaQuery = window.matchMedia(
-			`@media screen and (max-width: ${MENU_BREAKPOINT - 1}px)`,
+			`@media screen and (max-width: ${MENU_BREAKPOINT}px)`,
 		)
 		mediaQuery.addEventListener(`change`, updateMenuItemsVisibility)
 
@@ -201,30 +201,33 @@ const withoutBgClasses = 'border-b-transparent'
 	}
 
 	function setupThemeUpdater() {
-		const darkModePreference = window.matchMedia('(prefers-color-scheme: dark)')
 		const themeToggler = document.getElementById('theme-toggle')
+		const darkModePreference = window.matchMedia('(prefers-color-scheme: dark)')
 		const initialTheme = localStorage.getItem('theme')
 		updateToggler(initialTheme)
 
 		themeToggler.addEventListener('click', () => {
-			let newUserPref =
-				themeToggler.getAttribute('aria-checked') === 'true' ? 'light' : 'dark'
+			debugger
+			const themeToggler = document.getElementById('theme-toggle')
+			const checked = themeToggler.getAttribute('aria-checked') === 'true'
+			let newUserPref = checked ? 'light' : 'dark'
 			updateToggler(newUserPref)
 		})
 
 		darkModePreference.addEventListener('change', (e) =>
 			updateToggler(e.matches ? 'dark' : 'light'),
 		)
+	}
 
-		function updateToggler(theme) {
-			const finalTheme =
-				theme || (darkModePreference.matches ? 'dark' : 'light')
-			const isDark = finalTheme === 'dark'
-			document.documentElement.dataset.appliedMode = finalTheme
-			theme && localStorage.setItem('theme', theme)
+	function updateToggler(theme) {
+		const themeToggler = document.getElementById('theme-toggle')
+		const darkModePreference = window.matchMedia('(prefers-color-scheme: dark)')
+		const finalTheme = theme || (darkModePreference.matches ? 'dark' : 'light')
+		const isDark = finalTheme === 'dark'
+		document.documentElement.dataset.appliedMode = finalTheme
+		theme && localStorage.setItem('theme', theme)
 
-			themeToggler.setAttribute('aria-checked', isDark.toString())
-		}
+		themeToggler.setAttribute('aria-checked', isDark.toString())
 	}
 
 	function setupHeader() {
@@ -234,7 +237,6 @@ const withoutBgClasses = 'border-b-transparent'
 		setupMenuScrolledStateUpdater()
 		setupThemeUpdater()
 	}
-	document.addEventListener('astro:page-load', setupHeader)
 	setupHeader()
 </script>
 

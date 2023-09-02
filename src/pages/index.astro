@@ -8,7 +8,6 @@ import FancyHeadline from '../components/FancyHeadline.astro'
 import Layout from '../layouts/Layout.astro'
 import MoreAboutMeSVG from '../components/MoreAboutMeSVG.astro'
 
-
 const projects = (
 	await loadJson<MappedNotionProject[]>(PROJECTS_JSON_PATH)
 ).map((w) => {
@@ -69,7 +68,7 @@ const projects = (
 					<div
 						class={classNames(
 							'w-[210px] h-[210px]',
-							`absolute -top-32 -right-10`,
+							`absolute -top-32 -right-16 xs:-right-10`,
 							`transition-transform motion-reduce:transition-none`,
 							`hover-hover:group-hover:scale-125`,
 							`xl:hover-hover:group-hover:scale-150`,
