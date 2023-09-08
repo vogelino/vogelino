@@ -11,7 +11,6 @@ export interface Props extends MappedNotionProject {
 const {
 	slug,
 	title,
-	thumbnail,
 	nameShort,
 	rotationClass,
 	highlighted,
@@ -120,6 +119,7 @@ const projectIllustration = await Astro.glob<AstroGlobImageType<'svg'>>(
 						`ease-out-extreme duration-500`,
 						`translate-y-px origin-bottom-left`,
 						`max-w-[260px] max-h-[90%] w-auto h-auto`,
+						`min-w-[100px] min-h-[100px]`,
 						`absolute bottom-0 left-[5cqw] md:left-[10cqw]`,
 						`transition-all motion-reduce:transition-none`,
 
