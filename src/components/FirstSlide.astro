@@ -39,7 +39,7 @@ const projectIllustration = await Astro.glob<AstroGlobImageType<'svg'>>(
 			<div
 				class={classNames(
 					`sm:basis-[180px] sm:shrink-0 sm:grow flex flex-col`,
-					`items-start sm:items-center justify-start sm:justify-center p-6`,
+					`items-start sm:items-center justify-start sm:justify-center p-8`,
 				)}
 			>
 				<div class={classNames('inline-flex flex-col items-start max-w-md')}>
@@ -137,7 +137,7 @@ const projectIllustration = await Astro.glob<AstroGlobImageType<'svg'>>(
 						class={classNames(
 							`z-20 intro-slide-tilted-illustration`,
 							`max-h-[23vh] max-w-[260px] absolute`,
-							`-left-4 sm:-left-12 lg:right-[16%]`,
+							`-left-4 sm:-left-12 lg:right-[16%] w-auto h-auto`,
 							`pointer-events-none scale-[0.6] xs:scale-75 sm:scale-100`,
 							`origin-bottom-left top-full -translate-y-full`,
 						)}

@@ -4,6 +4,7 @@ import ProjectSliderSlide from '../components/ProjectSliderSlide.astro'
 import 'photoswipe/style.css'
 import FirstSlide from './FirstSlide.astro'
 import classNames from '../utils/classNames'
+import GridSvgPattern from './GridSvgPattern.astro'
 
 export interface Props {
 	project: MappedNotionProject
@@ -14,7 +15,7 @@ const { project } = Astro.props
 
 <div
 	class={classNames(
-		`pswp-gallery`,
+		`pswp-gallery relative`,
 		`splide h-[calc(100svh-16px)] w-screen overflow-x-hidden mx-auto`,
 		`max-w-[1438px]`,
 		`outline-none group`,
@@ -28,6 +29,7 @@ const { project } = Astro.props
 			`border-b-grayMed border-b bg-grayUltraLight relative`,
 		)}
 	>
+		<GridSvgPattern />
 		<ul class="splide__list w-screen h-[calc(100svh-16px)] max-w-[1440px]">
 			<FirstSlide project={project} />
 			{
@@ -106,11 +108,12 @@ const { project } = Astro.props
 		@apply rounded max-w-[calc(100svw-48px)] max-h-[calc(100svh-200px)] w-auto h-auto;
 	}
 	.splide__pagination {
-		@apply absolute left-1/2 opacity-0 sm:opacity-100 bottom-7 gap-1.5 -translate-x-1/2;
+		@apply absolute left-1/2 opacity-0 sm:opacity-100 bottom-8 gap-1.5 -translate-x-1/2;
+		@apply bg-grayUltraLight border border-grayLight rounded-full px-1.5 h-[17px];
 	}
 
 	.splide__pagination li {
-		@apply w-2 h-2;
+		@apply w-[7px] h-[7px] relative;
 	}
 
 	.splide:focus-visible .splide__track {
@@ -119,8 +122,9 @@ const { project } = Astro.props
 	}
 
 	button.splide__pagination__page {
-		@apply w-2 h-2 rounded-full bg-grayMed transition-colors;
+		@apply w-[7px] h-[7px] rounded-full bg-grayMed transition-colors;
 		@apply outline-none motion-reduce:transition-none;
+		@apply absolute inset-0;
 	}
 
 	button.splide__pagination__page[aria-selected='true'] {
