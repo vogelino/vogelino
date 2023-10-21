@@ -106,13 +106,13 @@ function mapOriginalNotionProject(
 		clients: mapNotionCollaborators(rawCollaborators, clientsIds),
 		highlighted,
 		blocks: rawProject.properties.blocks,
-		media: mapNotionMedia(Media.files),
+		media: mapNotionMedia(Media.files, slug),
 	}
 }
 
-function mapNotionMedia(media: NotionImageType[]) {
+function mapNotionMedia(media: NotionImageType[], slug: string) {
 	return media.map((image, idx) =>
-		parseNotionImageName(image, idx).replace(/\.webp$/, ''),
+		parseNotionImageName(image, idx, slug).replace(/\.webp$/, ''),
 	)
 }
 

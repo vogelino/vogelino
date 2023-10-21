@@ -61,7 +61,7 @@ async function downloadNotionProjectImages() {
 		// SLIDER IMAGES
 		for (let imageIdx in mediaImages) {
 			const image = mediaImages[imageIdx]
-			const mediaName = parseNotionImageName(image, +imageIdx)
+			const mediaName = parseNotionImageName(image, +imageIdx, slug)
 			const mediaExtension = mediaName.split('.').pop()
 
 			if (!image.file) {

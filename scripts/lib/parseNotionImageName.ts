@@ -8,12 +8,15 @@ function padWithLeadingZeros(num: number, totalLength = 3) {
 export default function parseNotionImageName(
 	notionImage: NotionImageType,
 	idx: number,
+	slug: string,
 ) {
 	const paddedIdx = padWithLeadingZeros(+idx + 1, 3)
 	const { name } = notionImage
-	const nameWithoutExtArr = name.substr(0, name.lastIndexOf('.')) || name
 	const fileExtension = name.split('.').pop() === 'svg' ? 'svg' : 'webp'
-	const slugifiedName = slugify(nameWithoutExtArr)
-	const mediaDest = `${paddedIdx}-${slugifiedName}.${fileExtension}`
+	const slugifiedName = slugify(`${paddedIdx}-${slug}`, {
+		lower: true,
+		strict: true,
+	})
+	const mediaDest = `${slugifiedName}.${fileExtension}`
 	return mediaDest
 }
