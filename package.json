@@ -1,4 +1,6 @@
 {
+  "name": "vogelino22",
+  "description": "Lucas Vogel's (Vogelino) 2023 online portfolio",
   "private": true,
   "scripts": {
     "dev": "TAILWIND_MODE=watch astro dev",
