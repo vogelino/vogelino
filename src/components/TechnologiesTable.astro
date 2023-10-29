@@ -37,11 +37,11 @@ const techLogos = await Astro.glob<AstroGlobImageType<'webp' | 'svg'>>(
 										title={`${tech.name}: ${tech.description}`}
 										class="flex gap-1"
 									>
-										{techLogos.find((logo) => logo.src.includes(tech.name)) && (
+										{techLogos.find((logo) => logo.src.includes(tech.id)) && (
 											<Image
 												class="w-6 h-6"
 												src={techLogos.find((logo) =>
-													logo.src.includes(tech.name),
+													logo.src.includes(tech.id),
 												)}
 												alt={tech.name}
 											/>
