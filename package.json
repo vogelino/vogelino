@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "TAILWIND_MODE=watch astro dev",
     "start": "astro dev",
-    "build": "npm run downloadCacheData && npm run downloadInspiration && npm run downloadCollaborators && npm run downloadProjectImages && npm run astroBuild",
+    "build": "npm run downloadCacheData && npm run downloadInspiration && npm run downloadTechnologies && npm run downloadCollaborators && npm run downloadProjectImages && npm run astroBuild",
     "astroBuild": "astro build",
     "preview": "astro preview",
     "astro": "astro",
@@ -13,6 +13,7 @@
     "downloadCacheData": "npx ts-node -P scripts/tsconfig.json scripts/downloadCacheData.ts",
     "downloadInspiration": "npx ts-node -P scripts/tsconfig.json scripts/downloadNotionInspirationImages.ts",
     "downloadCollaborators": "npx ts-node -P scripts/tsconfig.json scripts/downloadNotionCollaboratorsImages.ts",
+    "downloadTechnologies": "npx ts-node -P scripts/tsconfig.json scripts/downloadNotionTechnologiesImages.ts",
     "downloadProjectImages": "npx ts-node -P scripts/tsconfig.json scripts/downloadNotionProjectImages.ts",
     "downloadDrawings": "npx ts-node -P scripts/tsconfig.json scripts/downloadNotionDrawings.ts",
     "lint": "eslint 'src/**/*.{js,ts,astro}'",

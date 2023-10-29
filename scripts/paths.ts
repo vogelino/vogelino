@@ -4,6 +4,7 @@ export const IMAGE_DEST_EXPORT_PATH = 'src/assets/images'
 export const INSPIRATION_RESIZED_EXPORT_PATH = `${IMAGE_DEST_EXPORT_PATH}/inspirations`
 export const DRAWINGS_RESIZED_EXPORT_PATH = `${IMAGE_DEST_EXPORT_PATH}/drawings`
 export const COLLABORATORS_RESIZED_EXPORT_PATH = `${IMAGE_DEST_EXPORT_PATH}/collaborators`
+export const TECHOLOGIES_EXPORT_PATH = `${IMAGE_DEST_EXPORT_PATH}/technologies`
 export const PROJECTS_JSON_PATH = 'data/projects.json'
 export const INSPIRATIONS_JSON_PATH = 'data/inspirations.json'
 export const CV_JSON_PATH = 'data/curriculum.json'

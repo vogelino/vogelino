@@ -12,6 +12,7 @@ import ProjectSlider from '../../components/ProjectSlider.astro'
 import ProjectSliderNav from '../../components/ProjectSliderNav.astro'
 import SeeOneMoreStroke from '../../components/SeeOneMoreStroke.astro'
 import SeeOneMoreFill from '../../components/SeeOneMoreFill.astro'
+import TechnologiesTable from '../../components/TechnologiesTable.astro'
 
 export async function getStaticPaths() {
 	const notionProjects = await loadJson<MappedNotionProject[]>(
@@ -89,6 +90,9 @@ const { project, nextProject, prevProject } = Astro.props
 						/>
 					</div>
 				</aside>
+			</div>
+			<div class={classNames([`px-6 lg:px-8 mt-4`])}>
+				<TechnologiesTable project={project} />
 			</div>
 			<section
 				aria-label="More projects"

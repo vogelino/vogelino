@@ -6,7 +6,7 @@ import ArrowUp from './icons/ArrowUp.astro'
 <nav
 	aria-label="Slides navigation"
 	class={classNames([
-		`flex w-screen justify-between px-8`,
+		`flex w-screen justify-between px-0`,
 		`-translate-y-full max-w-[1440px]`,
 	])}
 >
@@ -20,15 +20,12 @@ import ArrowUp from './icons/ArrowUp.astro'
 			`outline-none focus-visible:ring-inset focus-visible:ring-2`,
 			`focus-visible:ring-fg focus-visible:z-30 focus-visible:rounded`,
 			`hover-hover:hover:bg-alt justify-center`,
-			`motion-reduce:transition-none w-[calc(7rem+2px)] md:w-[calc(14rem+2px)]`,
+			`motion-reduce:transition-none w-[calc(8rem+2px)]`,
 		)}
 	>
-		<span class="hidden md:inline">
-			Project{' '}
-		</span>
-		info
+		Info
 	</button>
-	<div class="flex -gap-px">
+	<div class="flex -gap-px -mr-px min-[1438px]:mr-px">
 		<button
 			aria-label="Show the previous project image"
 			id="project-prev"

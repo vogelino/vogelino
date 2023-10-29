@@ -199,20 +199,19 @@ function mapNotionCollaborator(
 function mapNotionTechnology(
 	col: RawNotionTechnologyType,
 ): MappedTechnologyPageType {
+	const name = col.properties.Name.title
+		.map(({ plain_text }) => plain_text)
+		.join('')
+	const slug = slugify(name, { lower: true })
 	return {
-		id: col.id,
-		name: col.properties.Name.title
-			.map(({ plain_text }) => plain_text)
-			.join(''),
+		id: slug,
+		name,
 		description: col.properties.Description.rich_text
 			.map(({ plain_text }) => plain_text)
 			.join(''),
 		categories: col.properties.Categories.multi_select.map(({ name }) => name),
 		url: col.properties.URL.url || undefined,
-		logo:
-			!col.icon || !('external' in col.icon) || !col.icon.file?.url
-				? undefined
-				: col.icon.file.url,
+		logo: `/images/technologies/${slug}.svg`,
 	}
 }
 

@@ -1,0 +1,57 @@
+---
+import { Image } from 'astro:assets'
+import type { MappedNotionProject } from '../../scripts/lib/parseOriginalNotionProjects'
+import type { AstroGlobImageType } from '../utils/astroTypes'
+
+export interface Props {
+	project: MappedNotionProject
+}
+
+const { project } = Astro.props
+
+const techLogos = await Astro.glob<AstroGlobImageType<'webp' | 'svg'>>(
+	'/src/assets/images/technologies/*.svg',
+).then((files) => files.map((file) => file.default))
+---
+
+{
+	Object.keys(project.technologies).length > 0 && (
+		<section>
+			<h2 class="text-xl font-bold my-8 uppercase">Technologies</h2>
+			<div class="flex flex-wrap gap-4">
+				{Object.keys(project.technologies).map((key) => (
+					<div class="relative rounded border border-grayMed px-4 py-4">
+						<strong
+							aria-label={`The following technologies are used as a ${key}`}
+							class="-mt-4 -translate-y-1/2 -ml-2 block text-grayDark uppercase text-xs whitespace-nowrap leading-loose h-6"
+						>
+							<span class="px-2 bg-bg">{key}</span>
+						</strong>
+						<ul class="flex flex-wrap gap-4">
+							{project.technologies[key].map((tech) => (
+								<li>
+									<a
+										href={tech.url}
+										target="_blank"
+										rel="noopener nofollower"
+										title={`${tech.name}: ${tech.description}`}
+										class="flex gap-1"
+									>
+										<Image
+											src={techLogos.find((logo) =>
+												logo.src.includes(tech.logo),
+											)}
+											alt={`Logo of the technology "${tech.name}"`}
+											class="w-6 h-6 -mt-0.5"
+										/>
+										<span>{tech.name}</span>
+									</a>
+								</li>
+							))}
+						</ul>
+					</div>
+				))}
+			</div>
+		</section>
+	)
+}
