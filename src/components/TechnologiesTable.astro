@@ -1,17 +1,12 @@
 ---
-import { Image } from 'astro:assets'
 import type { MappedNotionProject } from '../../scripts/lib/parseOriginalNotionProjects'
-import type { AstroGlobImageType } from '../utils/astroTypes'
+import TechnologyItem from './TechnologyItem.astro'
 
 export interface Props {
 	project: MappedNotionProject
 }
 
 const { project } = Astro.props
-
-const techLogos = await Astro.glob<AstroGlobImageType<'webp' | 'svg'>>(
-	'/src/assets/images/technologies/*.svg',
-).then((files) => files.map((file) => file.default))
 ---
 
 {
@@ -30,26 +25,7 @@ const techLogos = await Astro.glob<AstroGlobImageType<'webp' | 'svg'>>(
 						<ul class="flex flex-wrap gap-4">
 							{project.technologies[key].map((tech) => (
 								<li>
-									<a
-										href={tech.url}
-										target="_blank"
-										rel="noopener nofollower"
-										title={`${tech.name}: ${tech.description}`}
-										class="flex gap-1"
-									>
-										{techLogos.find((logo) =>
-											logo.src.includes(`${tech.id}.svg`),
-										) && (
-											<Image
-												class="w-6 h-6"
-												src={techLogos.find((logo) =>
-													logo.src.includes(`${tech.id}.svg`),
-												)}
-												alt={tech.name}
-											/>
-										)}
-										<span>{tech.name}</span>
-									</a>
+									<TechnologyItem technology={tech} />
 								</li>
 							))}
 						</ul>
