@@ -9,6 +9,7 @@ export const INSPIRATIONS_JSON_PATH = 'data/inspirations.json'
 export const CV_JSON_PATH = 'data/curriculum.json'
 export const ORIGINAL_PROJECTS_JSON_PATH = `data/originalProjects.json`
 export const ORIGINAL_COLLABORATORS_JSON_PATH = `data/originalCollaborators.json`
+export const ORIGINAL_TECHNOLOGIES_JSON_PATH = `data/originalTechnologies.json`
 export const ORIGINAL_INSPIRATIONS_JSON_PATH = `data/originalInspirations.json`
 export const ORIGINAL_ABOUT_BLOCKS_JSON_PATH = `data/originalAboutBlocks.json`
 export const ORIGINAL_CV_JSON_PATH = `data/originalCV.json`

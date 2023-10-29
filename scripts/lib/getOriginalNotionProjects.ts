@@ -76,6 +76,7 @@ export interface RawNotionProjectType extends Record<string, unknown> {
 		'Highlight in portfolio': {
 			checkbox: boolean
 		}
+		Technologies: NotionRelationType
 	}
 }
 
