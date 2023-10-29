@@ -22,7 +22,7 @@ const { project } = Astro.props
 						>
 							<span class="px-2 bg-bg">{key}</span>
 						</strong>
-						<ul class="flex flex-wrap gap-4">
+						<ul class="flex flex-wrap gap-1">
 							{project.technologies[key].map((tech) => (
 								<li>
 									<TechnologyItem technology={tech} />
