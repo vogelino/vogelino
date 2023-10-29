@@ -100,24 +100,6 @@ export async function getOriginalNotionProjects(
 						equals: true,
 					},
 				},
-				{
-					property: 'Illustration',
-					files: {
-						is_not_empty: true,
-					},
-				},
-				{
-					property: 'Thumbnail',
-					files: {
-						is_not_empty: true,
-					},
-				},
-				{
-					property: 'Media',
-					files: {
-						is_not_empty: true,
-					},
-				},
 			],
 		},
 		sorts: [
