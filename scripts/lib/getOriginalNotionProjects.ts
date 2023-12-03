@@ -4,7 +4,6 @@ import { getOriginalNotionPageBlocks } from './getOriginalNotionPageBlocks'
 import {
 	OriginalProjectSchema,
 	OriginalProjectType,
-	ProjectSchema,
 } from '../schemas/projectSchema'
 import { z } from 'zod'
 
