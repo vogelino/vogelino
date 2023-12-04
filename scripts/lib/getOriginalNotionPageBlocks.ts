@@ -1,12 +1,11 @@
 import { z } from 'zod'
-import { NotionBlockSchema } from './../schemas/notionSchema'
+import { NotionBlockSchema, NotionBlockType } from 'notion-api-zod-schema'
 import type { Client } from '@notionhq/client'
-import { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
 
 export const getOriginalNotionPageBlocks = async (
 	pageId: string,
 	notion: Client,
-): Promise<BlockObjectResponse[]> => {
+): Promise<NotionBlockType[]> => {
 	const blocksResponse = await notion.blocks.children.list({
 		block_id: pageId,
 	})

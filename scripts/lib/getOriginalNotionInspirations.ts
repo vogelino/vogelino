@@ -6,7 +6,7 @@ import {
 } from '@notionhq/client/build/src/api-endpoints'
 import { NotionImageType } from './getOriginalNotionProjects'
 import { z } from 'zod'
-import { NotionBlockSchema } from '../schemas/notionSchema'
+import { NotionBlockSchema } from 'notion-api-zod-schema'
 
 export interface RawNotionInspirationLinkType extends Record<string, unknown> {
 	id: string

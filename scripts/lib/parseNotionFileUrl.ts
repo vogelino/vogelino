@@ -1,7 +1,9 @@
-import type { NotionFilesType } from "./getOriginalNotionProjects";
+import { NotionDatabaseFilesType } from 'notion-api-zod-schema'
 
-export function parseNotionFileUrl(file?: NotionFilesType) {
-  const firstFile = file?.files[0];
-  if (!firstFile) return "";
-  return firstFile.external?.url || firstFile.file?.url || "";
+export function parseNotionFileUrl(file?: NotionDatabaseFilesType) {
+	const firstFile = file?.files[0]
+	if (!firstFile) return ''
+	return firstFile.type === 'external'
+		? firstFile.external.url
+		: firstFile.file.url
 }

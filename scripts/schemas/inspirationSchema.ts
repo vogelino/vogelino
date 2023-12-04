@@ -1,18 +1,18 @@
 import { z } from 'zod'
 import {
-	NotionMultiSelectSchema,
+	NotionDatabaseCreatedTimeSchema,
+	NotionDatabaseMultiSelectSchema,
+	NotionDatabaseTitleSchema,
+	NotionDatabaseUrlSchema,
 	NotionPageSchema,
-	NotionTimeSchema,
-	NotionTitleSchema,
-	NotionUrlSchema,
 } from 'notion-api-zod-schema'
 
 export const OriginalInspirationLinkSchema = NotionPageSchema.extend({
 	properties: z.object({
-		Created: NotionTimeSchema,
-		URL: NotionUrlSchema,
-		Tags: NotionMultiSelectSchema,
-		Name: NotionTitleSchema,
+		Created: NotionDatabaseCreatedTimeSchema,
+		URL: NotionDatabaseUrlSchema,
+		Tags: NotionDatabaseMultiSelectSchema,
+		Name: NotionDatabaseTitleSchema,
 	}),
 })
 

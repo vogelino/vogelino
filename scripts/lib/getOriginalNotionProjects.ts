@@ -1,11 +1,11 @@
 import type { Client } from '@notionhq/client'
-import { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
 import { getOriginalNotionPageBlocks } from './getOriginalNotionPageBlocks'
 import {
 	OriginalProjectSchema,
 	OriginalProjectType,
 } from '../schemas/projectSchema'
 import { z } from 'zod'
+import { NotionBlockType } from 'notion-api-zod-schema'
 
 export interface NotionImageType {
 	type: string
@@ -87,7 +87,7 @@ export interface RawNotionProjectType extends Record<string, unknown> {
 
 export interface RawNotionProjectWithBlocksType extends OriginalProjectType {
 	properties: OriginalProjectType['properties'] & {
-		blocks: BlockObjectResponse[]
+		blocks: NotionBlockType[]
 	}
 }
 

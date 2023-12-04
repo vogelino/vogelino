@@ -1,1 +1,2 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><g fill="none" fill-rule="evenodd"><path fill="#FFF" d="M0 0h40v40H0z"/><path fill="#1D2C4D" fill-rule="nonzero" d="M25.529 17.433h2.839V27h-2.839v-9.567ZM16.264 13h2.84v14h-2.84V13ZM7 13h2.839v14H7V13Zm4.632 0h2.84v9.567h-2.84V13Zm13.878 0H33v2.8h-7.49V13Zm-4.632 0h2.858v2.8h-2.858V13Zm.024 4.42h2.839v9.566h-2.839v-9.567Z"/></g></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<Error><Code>AccessDenied</Code><Message>Request has expired</Message><X-Amz-Expires>3600</X-Amz-Expires><Expires>2023-10-29T22:49:01Z</Expires><ServerTime>2023-12-03T22:26:32Z</ServerTime><RequestId>JA26P1GKBFQCRC96</RequestId><HostId>MpUs+UDoSERH+bV8rPwD7OuJYlivjbOKJsIkeKhAF6VI2hmV2BNXBZJz7n1iYLLZHA5V+oOdLRE=</HostId></Error>
