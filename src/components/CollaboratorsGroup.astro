@@ -22,7 +22,9 @@ const props = Astro.props
 			aria-label={`Collaborators group: ${props.title}`}
 		>
 			<div class="min-h-[calc(100%-1rem)] w-[calc(100%-1rem)] ml-4 border-l border-grayLight">
-				<h2 class="p-4 uppercase leading-4">{props.title}</h2>
+				<h2 class="px-4 pt-4 pb-3.5 uppercase leading-4 tracking-wider">
+					{props.title}
+				</h2>
 				<ul class="border-t border-grayMed" aria-label="Collaborators list">
 					{props.collaborators.map((collaborator) => (
 						<CollaboratorItem collaborator={collaborator} />
@@ -31,7 +33,7 @@ const props = Astro.props
 			</div>
 			<div
 				class={classNames(
-					`col-span-3 relative bg-grayUltraLight`,
+					`col-span-3 relative bg-grayUltraLight -mt-px`,
 					`h-4 pointer-events-none border-t border-grayLight`,
 				)}
 			>

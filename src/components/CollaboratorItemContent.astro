@@ -34,8 +34,8 @@ const collaboratorImage = await Astro.glob<AstroGlobImageType<'webp' | 'svg'>>(
 		<>
 			<span
 				class={classNames(
-					`relative border-r border-grayLight flex items-center text-center`,
-					`bg-bg w-[45px] h-[45px] place-content-center`,
+					`relative border-r border-grayLight`,
+					`bg-bg w-[45px] h-[44px]`,
 				)}
 			>
 				<Image
@@ -53,7 +53,7 @@ const collaboratorImage = await Astro.glob<AstroGlobImageType<'webp' | 'svg'>>(
 			</span>
 			<span
 				class={classNames(
-					`px-4 leading-4`,
+					`px-4 leading-4 text-sm`,
 					isInteractive && `underline decoration-grayMed`,
 				)}
 			>
