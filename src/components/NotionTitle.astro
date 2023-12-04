@@ -1,0 +1,67 @@
+---
+import classNames from '../utils/classNames'
+import Info from './icons/Info.astro'
+import Edit from './icons/Edit.astro'
+import User from './icons/User.astro'
+interface RichText {
+	plain_text: string
+}
+interface Heading {
+	rich_text: RichText[]
+}
+export interface Props {
+	type: 'heading_1' | 'heading_2' | 'heading_3'
+	heading_1?: Heading
+	heading_2?: Heading
+	heading_3?: Heading
+}
+
+const block = Astro.props
+---
+
+{
+	(() => {
+		function getHeadingPrefix(text: string): astroHTML.JSX.Element {
+			const cls = 'opacity-60'
+			if (text === 'insight') return <Info class={cls} />
+			if (text === 'process') return <Edit class={cls} />
+			if (text === 'personal role') return <User class={cls} />
+			return null
+		}
+		const headingLevel = block.type.split('_')[1]
+		const headingKey = `heading_${headingLevel}` as const
+		const heading = block[headingKey]
+		const classes = classNames(
+			`my-6 -mt-6 pt-10 pb-2 border-b border-grayLight text-grayDark text-base`,
+			`first:pt-6 uppercase tracking-wider sitcky top-0 flex gap-2 items-center`,
+		)
+		const text = heading.rich_text
+			.map((text) => text.plain_text)
+			.join('')
+			.trim()
+			.toLowerCase()
+		const content = <span class="inline-block pt-1">{text}</span>
+		const prefix = getHeadingPrefix(text)
+		if (headingLevel === '1')
+			return (
+				<h2 class={classes}>
+					{prefix}
+					{content}
+				</h2>
+			)
+		if (headingLevel === '2')
+			return (
+				<h3 class={classes}>
+					{prefix}
+					{content}
+				</h3>
+			)
+		if (headingLevel === '3')
+			return (
+				<h4 class={classes}>
+					{prefix}
+					{content}
+				</h4>
+			)
+	})()
+}

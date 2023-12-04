@@ -4,6 +4,7 @@ import type { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoin
 import NotionFormattedRichText from './NotionFormattedRichText.astro'
 import { Image } from 'astro:assets'
 import type { AstroGlobImageType, AstroImageType } from '../utils/astroTypes'
+import NotionTitle from './NotionTitle.astro'
 
 export interface Props {
 	blocks: BlockObjectResponse[]
@@ -27,6 +28,13 @@ const blockImagesMap = blocks.reduce((acc, block) => {
 
 {
 	blocks.map((block) => {
+		if (
+			block.type === 'heading_1' ||
+			block.type === 'heading_2' ||
+			block.type === 'heading_3'
+		) {
+			return <NotionTitle {...block} />
+		}
 		if (block.type === 'paragraph') {
 			return (
 				<p

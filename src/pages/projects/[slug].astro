@@ -51,20 +51,23 @@ const { project, nextProject, prevProject } = Astro.props
 					`px-6 lg:px-8 leading-normal`,
 					`sm:text-xl lg:text-2xl mt-4`,
 					`xl:grid xl:grid-cols-[5fr,2fr]`,
-					`2xl:grid-cols-[2fr,1fr] xl:gap-8`,
+					`2xl:grid-cols-[3fr,1fr] xl:gap-8`,
 				])}
 			>
 				<div
-					class={classNames([`md:columns-2 md:gap-6 lg:gap-8`, `mb-16`])}
+					class={classNames([`lg:gap-8`, `mb-16 max-w-3xl`])}
 					aria-label="Project description"
 				>
 					<NotionTextContents blocks={project.blocks} />
 				</div>
-				<aside class="@container/collabs" aria-label="Project collaborators">
+				<aside
+					class="@container/collabs xl:pt-10"
+					aria-label="Project collaborators"
+				>
 					<div
 						class={classNames(
-							`items-stretch`,
-							`grid grid-cols-1 @sm/collabs:grid-cols-2`,
+							`items-stretch max-w-3xl`,
+							`grid grid-cols-1 @lg/collabs:grid-cols-2 @2xl/collabs:grid-cols-3`,
 							`text-base @lg/collabs:text-xl`,
 						)}
 					>
