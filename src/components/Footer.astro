@@ -6,7 +6,10 @@ import Logo from './Logo.astro'
 const year = String(new Date().getFullYear())
 ---
 
-<footer class="pt-6 pb-5 border-t border-grayMed" aria-label="Main page footer">
+<footer
+	class="pt-6 pb-5 border-t border-grayMed bg-bg relative"
+	aria-label="Main page footer"
+>
 	<section
 		class={classNames(
 			`px-6 flex justify-between gap-4 flex-wrap uppercase items-center`,

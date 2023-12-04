@@ -44,7 +44,10 @@ const { project, nextProject, prevProject } = Astro.props
 <Layout title={project.nameShort || project.title} withHeaderBg={false}>
 	<main class={`flex flex-col`}>
 		<ProjectSlider project={project} />
-		<section aria-label="Project information">
+		<section
+			aria-label="Project information"
+			class="bg-bg relative -mt-px border-t border-t-grayMed"
+		>
 			<ProjectSliderNav />
 			<div
 				class={classNames([
