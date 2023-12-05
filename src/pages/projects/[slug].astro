@@ -141,10 +141,9 @@ const { project, nextProject, prevProject } = Astro.props
 <script>
 	let lastScrollY = 0
 	function updateScrollOffsetCSSVariable() {
-		const scrollY = window.scrollY
-		const scrollPercentageFixed = (
-			scrollY / document.body.scrollHeight
-		).toFixed(2)
+		const scrollY =
+			document.body.scrollTop || document.documentElement.scrollTop
+		const scrollPercentageFixed = scrollY / document.body.scrollHeight
 		if (scrollY !== lastScrollY) {
 			document.documentElement.style.setProperty(
 				'--scroll-offset',
@@ -156,7 +155,8 @@ const { project, nextProject, prevProject } = Astro.props
 			)
 			lastScrollY = scrollY
 		}
-		requestAnimationFrame(updateScrollOffsetCSSVariable)
 	}
-	requestAnimationFrame(updateScrollOffsetCSSVariable)
+	window.addEventListener('scroll', updateScrollOffsetCSSVariable, {
+		passive: true,
+	})
 </script>

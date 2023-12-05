@@ -31,9 +31,9 @@ const { project } = Astro.props
 		)}
 		style={{
 			position: 'fixed !important',
-			translate: `0 calc(var(--scroll-offset, 0) * -0.3)`,
 			opacity: `calc(1 - var(--scroll-percentage, 0))`,
-			transition: 'translate 100ms ease-out, opacity 100ms ease-out',
+			willChange: 'opacity',
+			transition: 'opacity 100ms ease-out',
 		}}
 	>
 		<GridSvgPattern />

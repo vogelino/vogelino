@@ -49,7 +49,7 @@ module.exports = {
 			height: { screen: '100lvh' },
 			width: { screen: '100lvw' },
 			screens: {
-				xs: '420px',
+				xs: '400px',
 			},
 			transitionTimingFunction: {
 				'out-extreme': 'cubic-bezier(.12,.98,.13,.98)',

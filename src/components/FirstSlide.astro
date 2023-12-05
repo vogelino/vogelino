@@ -31,7 +31,7 @@ const projectIllustration = await Astro.glob<AstroGlobImageType<'svg'>>(
 			class={classNames(
 				`splide__slide splide__intro relative`,
 				`w-screen h-[calc(100svh-188px)] max-w-[1440px]`,
-				`items-stretch !mt-20 mb-0 !md:my-20`,
+				`items-stretch !mt-24 mb-0 !md:my-20`,
 				`justify-center gap-[3vh]`,
 				`flex flex-col sm:flex-row`,
 			)}
@@ -42,8 +42,8 @@ const projectIllustration = await Astro.glob<AstroGlobImageType<'svg'>>(
 					`items-start sm:items-center justify-start sm:justify-center p-8`,
 				)}
 				style={{
+					willChange: 'filter',
 					filter: `blur(calc(var(--scroll-percentage, 0) * 10px))`,
-					transition: 'filter 100ms ease-out',
 				}}
 			>
 				<div class={classNames('inline-flex flex-col items-start max-w-md')}>
@@ -52,10 +52,6 @@ const projectIllustration = await Astro.glob<AstroGlobImageType<'svg'>>(
 							`sm:text-lg md:text-xl inline-block mb-[1vh] xs:mb-3 sm:mb-3 md:mb-6`,
 							`select-text`,
 						)}
-						style={{
-							translate: `0 calc(var(--scroll-offset, 0) * -0.07)`,
-							transition: 'translate 100ms ease-out',
-						}}
 					>
 						{project.year}
 					</span>
@@ -65,10 +61,6 @@ const projectIllustration = await Astro.glob<AstroGlobImageType<'svg'>>(
 							`leading-[0.9em] sm:leading-[1em] text-balance`,
 							`uppercase font-bold select-text`,
 						)}
-						style={{
-							translate: `0 calc(var(--scroll-offset, 0) * -0.1)`,
-							transition: 'translate 100ms ease-out',
-						}}
 						set:html={project.title}
 					/>
 					<p
@@ -77,10 +69,6 @@ const projectIllustration = await Astro.glob<AstroGlobImageType<'svg'>>(
 							`leading-[1.2em] sm:leading-[1.3em] md:leading-[1.4em]`,
 							`sm:text-xl md:text-2xl mt-[1vh] sm:mt-3 md:mt-4`,
 						)}
-						style={{
-							translate: `0 calc(var(--scroll-offset, 0) * -0.13)`,
-							transition: 'translate 100ms ease-out',
-						}}
 					>
 						<NotionFormattedRichText richText={project.description} />
 					</p>
@@ -103,10 +91,6 @@ const projectIllustration = await Astro.glob<AstroGlobImageType<'svg'>>(
 								`focus-visible:ring-fg focus-visible:ring-offset-2`,
 								`focus-visible:ring-offset-bg`,
 							])}
-							style={{
-								translate: `0 calc(var(--scroll-offset, 0) * -0.16)`,
-								transition: 'translate 100ms ease-out',
-							}}
 						>
 							<span>Launch</span> <Link className="mt-1" />
 						</a>
@@ -119,8 +103,8 @@ const projectIllustration = await Astro.glob<AstroGlobImageType<'svg'>>(
 					`basis-[45vw] sm:basis-[50vw] md:basis-[60vw] max-h-full relative`,
 				)}
 				style={{
+					willChange: 'filter',
 					filter: `blur(calc(var(--scroll-percentage, 0) * 10px))`,
-					transition: 'filter 100ms ease-out',
 				}}
 			>
 				<div class="relative w-full">
