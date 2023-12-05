@@ -26,10 +26,11 @@ const { project } = Astro.props
 	<div
 		class={classNames(
 			`splide__track h-[calc(100svh-16px)] w-screen max-w-[1438px]`,
-			`top-0 fixed`,
+			`top-0`,
 			`border-b-grayMed border-b bg-grayUltraLight`,
 		)}
 		style={{
+			position: 'fixed !important',
 			translate: `0 calc(var(--scroll-offset, 0) * -0.3)`,
 			opacity: `calc(1 - var(--scroll-percentage, 0))`,
 			transition: 'translate 100ms ease-out, opacity 100ms ease-out',
