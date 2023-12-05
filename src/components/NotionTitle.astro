@@ -32,8 +32,9 @@ const block = Astro.props
 		const headingKey = `heading_${headingLevel}` as const
 		const heading = block[headingKey]
 		const classes = classNames(
-			`my-6 -mt-6 pt-10 pb-2 border-b border-grayLight text-grayDark text-base`,
-			`first:pt-6 uppercase tracking-wider sitcky top-0 flex gap-2 items-center`,
+			`my-6 -mt-6 pt-8 pb-2 first:-mt-8 border-b border-grayLight text-grayDark text-base`,
+			`uppercase tracking-wider sticky top-0 flex gap-2 items-center`,
+			`bg-bg`,
 		)
 		const text = heading.rich_text
 			.map((text) => text.plain_text)
