@@ -64,6 +64,9 @@ module.exports = {
 				'.text-balance': {
 					'text-wrap': 'balance',
 				},
+				'.text-pretty': {
+					'text-wrap': 'pretty',
+				},
 			})
 		}),
 	],

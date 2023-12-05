@@ -26,6 +26,10 @@ const sliderImage = await Astro.glob<AstroGlobImageType<'webp' | 'svg'>>(
 				`w-screen h-[calc(100svh-188x)] px-6 !mt-24 !mb-20`,
 				`flex items-center justify-center`,
 			)}
+			style={{
+				filter: `blur(calc(var(--scroll-percentage, 0) * 10px))`,
+				transition: 'filter 100ms ease-out',
+			}}
 		>
 			<a
 				class={classNames(
