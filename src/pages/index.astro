@@ -38,7 +38,7 @@ const projects = (
 			class={classNames(
 				`bg-bg hover-hover:hover:bg-alt`,
 				`outline-none overflow-hidden p-2`,
-				`group relative`,
+				`group relative @container`,
 			)}
 		>
 			<div
@@ -51,13 +51,13 @@ const projects = (
 			>
 				<div
 					class={classNames(
-						`px-6 py-8 md:px-8 md:py-10 flex-wrap 2xl:flex-nowrap`,
-						`flex gap-x-6 md:gap-x-8 gap-y-2 pr-0 md:pr-0`,
+						`px-6 py-8 @md:px-8 @md:py-10 flex-wrap 2xl:flex-nowrap`,
+						`flex gap-x-6 @md:gap-x-8 gap-y-2 pr-0 @md:pr-0`,
 						`flex-col w-full h-full justify-center`,
 					)}
 				>
 					<FancyHeadline title="I'm Lucas" />
-					<p class="text-2xl max-w-xs sm:max-w-sm text-balance">
+					<p class="text-2xl max-w-[65%] @lg:max-w-sm text-balance">
 						I
 						<span
 							class={classNames(
@@ -84,19 +84,19 @@ const projects = (
 					<div
 						class={classNames(
 							'w-[210px] h-[210px]',
-							`absolute -top-16 right-24`,
+							`absolute -top-20 @sm:-top-16 right-4 @sm:right-24`,
 							`transition-all motion-reduce:transition-none`,
 							`scale-[0.25] origin-top-right`,
 							`hover-hover:group-hover:scale-50`,
 							`hover-hover:group-hover:right-20`,
 							`hover-hover:group-hover:-top-56`,
-							`xl:hover-hover:group-hover:right-40`,
-							`xl:hover-hover:group-hover:-top-48`,
+							`@xl:hover-hover:group-hover:right-40`,
+							`@xl:hover-hover:group-hover:-top-48`,
 							`group-focus-visible:scale-50`,
 							`group-focus-visible:right-20`,
 							`group-focus-visible:-top-56`,
-							`xl:group-focus-visible:right-40`,
-							`xl:group-focus-visible:-top-48`,
+							`@xl:group-focus-visible:right-40`,
+							`@xl:group-focus-visible:-top-48`,
 						)}
 						inert
 					>
