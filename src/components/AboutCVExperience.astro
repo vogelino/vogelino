@@ -163,9 +163,15 @@ const cv = await loadJson<MappedNotionCV>(CV_JSON_PATH)
 		height: 1px;
 		position: absolute;
 		left: 0;
-		top: calc(4rem + 55px);
+		top: 120px;
 		z-index: 20;
 		background: linear-gradient(90deg, var(--grayMed) 0%, transparent 10%);
+	}
+
+	@media screen and (max-width: 767px) {
+		[data-tab-component]::after {
+			top: 116px;
+		}
 	}
 </style>
 
