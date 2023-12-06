@@ -18,7 +18,12 @@ const blocks = await loadJson<BlockObjectResponse[]>(
 	className={classNames(`pb-[2vmax] pt-[1.5vmax]`)}
 />
 <div
-	class="absolute -right-8 -top-8 w-[440px] aspect-square origin-top-right scale-50 @md:scale-[.6] @xl:scale-[.7] @2xl:scale-[.8]"
+	class={classNames(
+		`absolute -right-8 -top-8 w-[440px] aspect-square origin-top-right`,
+		`scale-50 @md:scale-[.6] @xl:scale-[.7] @2xl:scale-[.8]`,
+		`grid`,
+	)}
+	style={{ gridTemplateAreas: `'img'` }}
 >
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
@@ -26,6 +31,41 @@ const blocks = await loadJson<BlockObjectResponse[]>(
 		fill="none"
 		width="440px"
 		height="440px"
+		style={{ gridArea: `img` }}
+		aria-hidden="true"
+		class="relative z-10 mix-blend-screen"
+	>
+		<defs>
+			<clipPath id="glasses-glasses">
+				<path
+					d="M158.329 175.229c2.668-12.453 13.935-15.714 25.795-15.714 14.232 0 30.836 6.226 30.836 19.569 0 13.342-8.006 29.946-27.575 30.835-19.568.89-31.725-22.237-29.056-34.69ZM238.383 182.642c.364-14.529 16.604-19.273 25.202-19.273 15.418 0 32.614 6.019 30.539 22.237-2.075 16.219-10.377 27.871-29.353 27.871s-26.753-16.307-26.388-30.835Z"
+				></path>
+			</clipPath>
+		</defs>
+		<path
+			fill="var(--fg, #e30002)"
+			fill-opacity=".6"
+			d="M158.329 175.229c2.668-12.453 13.935-15.714 25.795-15.714 14.232 0 30.836 6.226 30.836 19.569 0 13.342-8.006 29.946-27.575 30.835-19.568.89-31.725-22.237-29.056-34.69ZM238.383 182.642c.364-14.529 16.604-19.273 25.202-19.273 15.418 0 32.614 6.019 30.539 22.237-2.075 16.219-10.377 27.871-29.353 27.871s-26.753-16.307-26.388-30.835Z"
+		></path>
+		<g clip-path="url(#glasses-glasses)">
+			<path
+				fill="var(--alt, #FCFEFF)"
+				fill-rule="evenodd"
+				d="m279.003 148.841-34.69 70.863h16.603l35.283-70.863h-17.196Zm-8.302 0-34.69 70.863h3.854l35.283-70.863h-4.447Zm-71.752 0-34.69 70.863h16.604l35.283-70.863h-17.197Zm-8.302 0-34.69 70.863h3.854l35.283-70.863h-4.447Z"
+				clip-rule="evenodd"
+				class="animate-swoosh"
+			>
+			</path>
+		</g>
+	</svg>
+	<svg
+		xmlns="http://www.w3.org/2000/svg"
+		viewBox="0 0 440 440"
+		fill="none"
+		width="440px"
+		height="440px"
+		style={{ gridArea: `img` }}
+		aria-hidden="true"
 	>
 		<defs>
 			<clipPath id="about-me-img-mask">
@@ -44,8 +84,8 @@ const blocks = await loadJson<BlockObjectResponse[]>(
 	<Image
 		src={aboutImage}
 		alt="A photo of me"
-		class={classNames(`w-full aspect-square -mt-[100%]`)}
-		style={{ clipPath: `url(#about-me-img-mask)` }}
+		class={classNames(`w-full aspect-square`)}
+		style={{ clipPath: `url(#about-me-img-mask)`, gridArea: `img` }}
 	/>
 </div>
 <section class="text-xl @md:text-2xl leading-normal" aria-label="description">

@@ -96,5 +96,21 @@
 			background: var(--bg, #ffef9b);
 			color: var(--fg, #e30002);
 		}
+
+		@keyframes swoosh {
+			0% {
+				transform: translateX(-50px);
+				opacity: 0;
+			}
+			5% {
+				transform: translateX(0px);
+				opacity: 1;
+			}
+			10%,
+			100% {
+				transform: translateX(50px);
+				opacity: 0;
+			}
+		}
 	}
 </style>
