@@ -136,7 +136,10 @@ const projects = (
 		</div>
 	</section>
 	<main
-		class="grid sm:grid-cols-4 xl:grid-cols-6 pb-32 grid-flow-dense"
+		class={classNames(
+			'grid sm:grid-cols-4 xl:grid-cols-6 grid-flow-dense',
+			`pt-px gap-px	bg-grayMed`,
+		)}
 		aria-label="List of selected works"
 	>
 		{projects.map((work) => <Thumbnail {...work} />)}

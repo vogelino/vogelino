@@ -40,7 +40,7 @@ const projectIllustration = await Astro.glob<AstroGlobImageType<'svg'>>(
 				className,
 				`group relative cursor-pointer @container/thumb`,
 				`grid grid-cols-[1rem,1fr,3rem] grid-rows-[auto,1fr,16px]`,
-				`border-y border-grayMed -mt-[1px]`,
+				`bg-bg shrink grow shadow-[0_0_0_1px_var(--grayMed)]`,
 				`col-span-2 focus-visible:outline-none`,
 				highlighted &&
 					`sm:col-span-4 md:col-span-2 xl:col-span-4 xl:row-span-2`,
@@ -142,8 +142,8 @@ const projectIllustration = await Astro.glob<AstroGlobImageType<'svg'>>(
 			</div>
 			<div
 				class={classNames(
-					`relative border-x border-b border-grayLight`,
-					`border-r-grayMed row-span-2`,
+					`relative border-l border-b border-grayLight`,
+					`row-span-2`,
 					`pointer-events-none`,
 				)}
 			>
@@ -231,7 +231,7 @@ const projectIllustration = await Astro.glob<AstroGlobImageType<'svg'>>(
 			<div
 				class={classNames(
 					`col-span-3 relative bg-grayUltraLight`,
-					`h-4 border-r border-grayMed`,
+					`h-4 border-grayMed`,
 					`pointer-events-none`,
 				)}
 			>

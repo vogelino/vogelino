@@ -42,13 +42,13 @@ const notionLinks = (page.data || []).map((link) => ({
 		)}
 	>
 		<li
-			class="relative h-full flex items-center sm:justify-center"
+			class="relative h-full flex flex-col items-start"
 			aria-label={`Title: Cool sites`}
 		>
-			<FancyHeadline
-				title="Cool <br class='hidden sm:block' />**Sites**"
-				className="sm:text-center"
-			/>
+			<FancyHeadline title="Cool <br class='hidden sm:block' />**Sites**" />
+			<p class="mt-4 text-balance leading-tight">
+				Bookmarks, Design inspirations and innovative websites I saved.
+			</p>
 		</li>
 		{
 			notionLinks.map((link) => {

@@ -10,7 +10,10 @@ import classNames from '../utils/classNames'
 		`pointer-events-none mix-blend-multiply`,
 		`dark:mix-blend-screen dark:opacity-60`,
 		`motion-reduce:hidden`,
-	)}></canvas>
+	)}
+	style={{
+		transform: 'translate3d(0, 0, 0)',
+	}}></canvas>
 
 <script>
 	function setupGrain() {
