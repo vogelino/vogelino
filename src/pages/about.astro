@@ -7,6 +7,7 @@ import AboutDescription from '../components/AboutDescription.astro'
 import SocialIcons from '../components/SocialIcons.astro'
 import FancyHeadline from '../components/FancyHeadline.astro'
 import PDFLinkDropdown from '../components/PDFLinkDropdown.astro'
+import AboutImage from '../components/AboutImage.astro'
 ---
 
 <Layout title="About me">
@@ -23,6 +24,7 @@ import PDFLinkDropdown from '../components/PDFLinkDropdown.astro'
 				`md:col-span-2 lg:col-span-3 bg-bg overflow-x-hidden`,
 			)}
 		>
+			<AboutImage />
 			<AboutDescription />
 		</section>
 		<section
