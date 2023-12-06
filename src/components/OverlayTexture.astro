@@ -17,6 +17,10 @@ import classNames from '../utils/classNames'
 
 <script>
 	function setupGrain() {
+		if (iOS()) {
+			document.getElementById('overlay-texture').remove()
+			return
+		}
 		class Grain {
 			patternSize: number
 			patternScaleX: number
@@ -132,4 +136,19 @@ import classNames from '../utils/classNames'
 		if (!el.classList.contains('initialized')) new Grain(el)
 	}
 	window.addEventListener('load', setupGrain)
+
+	function iOS() {
+		return (
+			[
+				'iPad Simulator',
+				'iPhone Simulator',
+				'iPod Simulator',
+				'iPad',
+				'iPhone',
+				'iPod',
+			].includes(navigator.platform) ||
+			// iPad on iOS 13 detection
+			(navigator.userAgent.includes('Mac') && 'ontouchend' in document)
+		)
+	}
 </script>
