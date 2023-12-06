@@ -19,14 +19,15 @@ export async function getStaticPaths() {
 		PROJECTS_JSON_PATH,
 	)
 	return notionProjects.map((notionProject, idx) => {
-		const nextIdx = idx + 1 > notionProjects.length - 1 ? 0 : idx + 1
+		const nextIdx = idx + 1 >= notionProjects.length ? 0 : idx + 1
 		const prevIdx = idx - 1 < 0 ? notionProjects.length - 1 : idx - 1
 		return {
 			params: { slug: notionProject.slug },
 			props: {
 				project: notionProject,
-				prevProject: notionProjects[prevIdx],
-				nextProject: notionProjects[nextIdx],
+				prevProject:
+					notionProjects[prevIdx] || notionProjects[notionProjects.length - 1],
+				nextProject: notionProjects[nextIdx] || notionProjects[0],
 			},
 		}
 	})
