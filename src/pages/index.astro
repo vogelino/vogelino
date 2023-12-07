@@ -36,7 +36,7 @@ const projects = (
 		<a
 			href="/about"
 			class={classNames(
-				`bg-bg hover-hover:hover:bg-alt`,
+				`bg-bg hover-hover:hover:bg-alt transition-colors`,
 				`outline-none overflow-hidden p-2`,
 				`group relative @container`,
 			)}
@@ -107,22 +107,23 @@ const projects = (
 				</div>
 			</div>
 		</a>
-		<button
+		<a
 			class={classNames(
-				`bg-bg hover-hover:hover:bg-alt`,
-				`outline-none overflow-hidden p-2`,
-				`group relative @container`,
+				`bg-bg hover-hover:hover:bg-alt transition-colors`,
+				`outline-none p-2 border-r border-grayMed`,
+				`group relative @container text-left z-30`,
 			)}
+			title="Scroll to projects"
+			href="#projects"
 		>
 			<div
 				class={classNames(
 					`px-6 py-8 md:px-8 md:py-10 flex-wrap 2xl:flex-nowrap`,
 					`flex gap-x-6 md:gap-x-8 gap-y-2 pr-0 md:pr-0`,
-					`flex-col w-full h-full justify-start`,
+					`flex-col w-full h-full items-start justify-start`,
 					`rounded`,
 					`group-focus-visible:ring-2 group-focus-visible:ring-fg`,
 					`group-focus-visible:relative`,
-					`group-focus-visible:overflow-hidden`,
 				)}
 			>
 				<FancyHeadline title="Projects" />
@@ -143,9 +144,10 @@ const projects = (
 					fill="var(--fg)"
 					fill-rule="nonzero"></path>
 			</svg>
-		</button>
+		</a>
 	</section>
 	<main
+		id="projects"
 		class={classNames(
 			'grid sm:grid-cols-4 xl:grid-cols-6 grid-flow-dense',
 			`pt-px gap-px	bg-grayMed`,
