@@ -3,6 +3,7 @@ import classNames from '../utils/classNames'
 import Info from './icons/Info.astro'
 import Edit from './icons/Edit.astro'
 import User from './icons/User.astro'
+import Award from './icons/Award.astro'
 interface RichText {
 	plain_text: string
 }
@@ -26,6 +27,7 @@ const block = Astro.props
 			if (text === 'insight') return <Info class={cls} />
 			if (text === 'process') return <Edit class={cls} />
 			if (text === 'personal role') return <User class={cls} />
+			if (text === 'recognition') return <Award class={cls} />
 			return null
 		}
 		const headingLevel = block.type.split('_')[1]
