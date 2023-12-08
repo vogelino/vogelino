@@ -90,9 +90,8 @@ const ogImageUrl = ogImage?.src
 		<script>
 			import { inject } from '@vercel/analytics'
 			import { injectSpeedInsights } from '@vercel/speed-insights'
-			injectSpeedInsights()
+			injectSpeedInsights({ framework: 'astro' })
 			inject()
 		</script>
-		<SpeedInsights />
 	</body>
 </html>
