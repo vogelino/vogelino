@@ -5,6 +5,7 @@ import Header from '../components/Header.astro'
 import OverlayTexture from '../components/OverlayTexture.astro'
 import GlobalStyles from '../components/GlobalStyles.astro'
 import type { AstroGlobImageType } from '../utils/astroTypes'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
 export interface Props {
 	title: string
@@ -91,5 +92,6 @@ const ogImageUrl = ogImage?.src
 			import { inject } from '@vercel/analytics'
 			inject()
 		</script>
+		<SpeedInsights />
 	</body>
 </html>

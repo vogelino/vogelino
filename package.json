@@ -53,6 +53,7 @@
   "dependencies": {
     "@splidejs/splide": "4.1.4",
     "@vercel/analytics": "1.0.1",
+    "@vercel/speed-insights": "1.0.1",
     "photoswipe": "5.3.8"
   }
 }
