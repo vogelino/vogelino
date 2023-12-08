@@ -21,6 +21,19 @@ export async function getStaticPaths({ paginate }) {
 	})
 }
 
+export interface Props {
+	page: {
+		data: MappedNotionInspirationLinkType[]
+		url: {
+			current: string
+			prev: string
+			next: string
+		}
+		currentPage: number
+		lastPage: number
+	}
+}
+
 const { page } = Astro.props
 
 const thumbnails = await Astro.glob<AstroGlobImageType<'webp'>>(
@@ -33,7 +46,7 @@ const notionLinks = (page.data || []).map((link) => ({
 }))
 ---
 
-<Layout title="List of cool site I like">
+<Layout title="List of cool site I like" slug="inspirations">
 	<ul
 		aria-label="List of cool sites I like"
 		class={classNames(

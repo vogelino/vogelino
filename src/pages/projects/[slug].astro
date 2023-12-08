@@ -42,7 +42,11 @@ export interface Props {
 const { project, nextProject, prevProject } = Astro.props
 ---
 
-<Layout title={project.nameShort || project.title} withHeaderBg={false}>
+<Layout
+	title={project.nameShort || project.title}
+	slug={project.slug}
+	withHeaderBg={false}
+>
 	<main class={`flex flex-col w-screen max-w-[1438px] overflow-x-hidden`}>
 		<ProjectSlider project={project} />
 		<section
