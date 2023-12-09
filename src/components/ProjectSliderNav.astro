@@ -1,0 +1,72 @@
+---
+import classNames from '../utils/classNames'
+import ArrowUp from './icons/ArrowUp.astro'
+---
+
+<nav
+	aria-label="Slides navigation"
+	class={classNames([
+		`flex w-screen justify-between px-0`,
+		`-translate-y-full max-w-[1440px]`,
+	])}
+>
+	<button
+		aria-label="Scroll to the text description of the project"
+		id="about-tab"
+		class={classNames(
+			`transition-colors z-10 text-2xl uppercase`,
+			`tracking-wide px-6 pt-3 pb-1.5 xs:pt-5 xs:pb-3 border -ml-px rounded-t`,
+			`bg-bg border-grayMed z-20 border-b-bg`,
+			`outline-none focus-visible:ring-inset focus-visible:ring-2`,
+			`focus-visible:ring-fg focus-visible:z-30 focus-visible:rounded`,
+			`hover-hover:hover:bg-alt justify-center`,
+			`motion-reduce:transition-none xs:w-[calc(8rem+2px)]`,
+		)}
+	>
+		Info
+	</button>
+	<div class="flex -gap-px -mr-px min-[1438px]:mr-px">
+		<button
+			aria-label="Show the previous project image"
+			id="project-prev"
+			class={classNames([
+				`transition-colors z-10 text-xl md:text-2xl uppercase`,
+				`tracking-wide px-3 xs:px-5 pt-4 pb-3 border -ml-px rounded-tl`,
+				`bg-bg border-grayMed z-20`,
+				`outline-none focus-visible:ring-inset focus-visible:ring-2`,
+				`focus-visible:ring-fg focus-visible:z-30 focus-visible:rounded`,
+				`hover-hover:hover:bg-alt`,
+				`motion-reduce:transition-none`,
+			])}
+		>
+			<ArrowUp className="-rotate-90" />
+		</button>
+		<button
+			aria-label="Show the next project image"
+			id="project-next"
+			class={classNames([
+				`transition-colors z-10 text-xl md:text-2xl uppercase`,
+				`tracking-wide px-3 xs:px-5 pt-4 pb-3 border -ml-px rounded-tr`,
+				`bg-bg border-grayMed z-20`,
+				`outline-none focus-visible:ring-inset focus-visible:ring-2`,
+				`focus-visible:ring-fg focus-visible:z-30 focus-visible:rounded`,
+				`hover-hover:hover:bg-alt`,
+				`motion-reduce:transition-none`,
+			])}
+		>
+			<ArrowUp className="rotate-90" />
+		</button>
+	</div>
+</nav>
+
+<script>
+	function setupProjectSliderNav() {
+		const infoButton = document.getElementById('about-tab')
+		infoButton?.addEventListener('click', (evt) => {
+			evt.preventDefault()
+			const infoButtonTop = infoButton.getBoundingClientRect().top
+			window.scrollTo({ top: infoButtonTop, behavior: 'smooth' })
+		})
+	}
+	setupProjectSliderNav()
+</script>

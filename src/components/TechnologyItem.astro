@@ -1,0 +1,40 @@
+---
+import { Image } from 'astro:assets'
+import type { MappedTechnologyPageType } from '../../scripts/lib/parseOriginalNotionProjects'
+import type { AstroGlobImageType } from '../utils/astroTypes'
+import classNames from '../utils/classNames'
+
+export interface Props {
+	technology: MappedTechnologyPageType
+}
+
+const { technology } = Astro.props
+
+const files = await Astro.glob<AstroGlobImageType<'webp' | 'svg'>>(
+	'/src/assets/images/technologies/*.svg',
+)
+const techLogo = files.find((file) =>
+	file.default.src.includes(`${technology.id}.`),
+)?.default
+---
+
+<a
+	href={technology.url}
+	target="_blank"
+	rel="noopener nofollower"
+	title={`${technology.name}: ${technology.description}`}
+	class={classNames(
+		`flex gap-1 transition-colors px-3 py-1 rounded-full`,
+		`hover-hover:hover:bg-alt dark:hover-hover:hover:bg-grayUltraLight`,
+		`focus-visible:ring-2 focus-visible:ring-fg focus-visible:outline-none`,
+	)}
+>
+	<Image
+		class="w-6 h-6"
+		src={techLogo}
+		alt={technology.name}
+		id={technology.id}
+	/>
+
+	<span class="mt-0.5">{technology.name}</span>
+</a>

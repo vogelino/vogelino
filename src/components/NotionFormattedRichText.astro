@@ -1,0 +1,57 @@
+---
+import classNames from '../utils/classNames'
+import type { NotionTextType } from '../../scripts/lib/getOriginalNotionProjects'
+
+export interface Props {
+	richText: NotionTextType[]
+}
+
+const { richText } = Astro.props
+---
+
+{
+	richText
+		.map((item, idx) => {
+			const text = item.plain_text
+			if (!text) return false
+			const { bold, italic } = item.annotations
+
+			if (item.href) {
+				return (
+					<a
+						href={item.href}
+						target="_blank"
+						class={classNames(
+							`underline decoration-alt underline-offset-4 decoration-wavy`,
+							`decoration-clone leading-relaxed hyphen-auto dark:decoration-from-font`,
+							`outline-none focus-visible:ring-2 focus-visible:ring-fg`,
+							`focus-visible:ring-offset-8 focus-visible:ring-offset-alt`,
+							`focus-visible:rounded-full focus-visible:no-underline pt-1`,
+							`bg-alt/20 focus-visible:bg-alt [text-decoration-skip-ink:none]`,
+							`hover-hover:hover:bg-alt hover-hover:hover:decoration-fg`,
+							`transition-colors motion-reduce:transition-none`,
+						)}
+					>
+						{bold && italic && (
+							<strong>
+								<em set:html={text} />
+							</strong>
+						)}
+						{bold && !italic && <strong set:html={text} />}
+						{!bold && italic && <em set:html={text} />}
+						{!bold && !italic && text}
+					</a>
+				)
+			}
+			if (bold && italic)
+				return (
+					<strong>
+						<em set:html={text} />
+					</strong>
+				)
+			if (bold && !italic) return <strong set:html={text} />
+			if (!bold && italic) return <em set:html={text} />
+			return <span set:html={text} />
+		})
+		.filter(Boolean)
+}

@@ -1,0 +1,100 @@
+---
+import classNames from '../utils/classNames'
+import type { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
+import NotionFormattedRichText from '../components/NotionFormattedRichText.astro'
+import Certificate from '../components/icons/Certificate.astro'
+
+export interface props {
+	timePeriod: string
+	title: BlockObjectResponse[]
+	location: string | null
+	certification: string | null
+}
+
+const { timePeriod, title, location, certification } = Astro.props
+const titlePlain = title.map((t) => t.plain_text).join(' ')
+---
+
+<li
+	aria-label={`${timePeriod}: ${titlePlain} ${location ? `, ${location}` : ''}`}
+	class={classNames(
+		`text-grayDark bg-bg relative flex flex-col`,
+		`border-t border-grayMed text-lg`,
+		`@container/cvline`,
+	)}
+>
+	<div
+		class={classNames(
+			`min-h-[calc(100%-1rem)] w-[calc(100%-1rem)]`,
+			`p-6 ml-4 border-l border-grayLight`,
+			`@md/cvline:gap-x-6 @md/cvline:grid`,
+			`@md/cvline:grid-cols-3 @lg/cvline:grid-cols-4`,
+			`@md/cvline:items-baseline`,
+			`flex flex-col gap-y-2 leading-normal`,
+		)}
+	>
+		<span
+			class={certification ? `@md/cvline:row-span-3` : `@md/cvline:row-span-2`}
+		>
+			{timePeriod}
+		</span>
+		<h3
+			class={classNames(
+				`@md/cvline:col-span-2 @lg/cvline:col-span-3`,
+				`text-lg text-fg text-balance font-bold`,
+			)}
+		>
+			<NotionFormattedRichText richText={title} />
+		</h3>
+		{
+			location && (
+				<p
+					class="@md/cvline:col-span-2 @lg/cvline:col-span-3 hyphens-auto"
+					aria-label={`Location: ${location}`}
+				>
+					{location}
+				</p>
+			)
+		}
+		{
+			certification && (
+				<p
+					aria-label={`Certification: ${certification}`}
+					class={classNames(
+						`@md/cvline:col-span-2 @lg/cvline:col-span-3 hyphens-auto text-fg`,
+						`grid grid-cols-[auto,1fr] gap-2 items-center`,
+						`pt-4 border-t border-grayLight text-base leading-tight`,
+					)}
+				>
+					<Certificate />
+					<span class="pt-[2px]">{certification}</span>
+				</p>
+			)
+		}
+	</div>
+	<div
+		class={classNames(
+			`col-span-3 relative bg-grayUltraLight`,
+			`h-4 pointer-events-none border-t border-grayLight`,
+		)}
+	>
+		<svg
+			aria-hidden="true"
+			width="16px"
+			height="20px"
+			viewBox="0 0 16 20"
+			class="absolute bottom-0 left-0 text-bg"
+		>
+			<polygon points="0,0 16,0 16,4 0,20" fill="currentColor"></polygon>
+		</svg>
+		<svg
+			aria-hidden="true"
+			width="17px"
+			height="17px"
+			viewBox="0 0 17 17"
+			class="absolute bottom-0 left-0 text-grayLight"
+		>
+			<polyline points="17,0 0,17" stroke="currentColor" fill="none"></polyline>
+		</svg>
+	</div>
+</li>

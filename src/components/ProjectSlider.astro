@@ -1,0 +1,164 @@
+---
+import type { MappedNotionProject } from '../../scripts/lib/parseOriginalNotionProjects'
+import ProjectSliderSlide from '../components/ProjectSliderSlide.astro'
+import 'photoswipe/style.css'
+import FirstSlide from './FirstSlide.astro'
+import classNames from '../utils/classNames'
+import GridSvgPattern from './GridSvgPattern.astro'
+
+export interface Props {
+	project: MappedNotionProject
+}
+
+const { project } = Astro.props
+---
+
+<div
+	class={classNames(
+		`pswp-gallery relative`,
+		`splide h-[calc(100svh-16px)] w-screen overflow-x-hidden`,
+		`max-w-[1438px]`,
+		`outline-none group`,
+	)}
+	aria-label="List of project images"
+	id="main-slider"
+>
+	<div
+		class={classNames(
+			`splide__track h-[calc(100svh-16px)] w-screen max-w-[1438px]`,
+			`top-0`,
+			`border-b-grayMed border-b bg-grayUltraLight`,
+		)}
+		style={{
+			position: 'fixed !important',
+			opacity: `calc(1 - var(--scroll-percentage, 0))`,
+			willChange: 'opacity',
+			transition: 'opacity 100ms ease-out',
+		}}
+	>
+		<GridSvgPattern />
+		<ul class="splide__list w-screen h-[calc(100svh-16px)] max-w-[1440px]">
+			<FirstSlide project={project} />
+			{
+				project.media.map((i) => (
+					<ProjectSliderSlide projectName={project.title} imageUrl={i} />
+				))
+			}
+		</ul>
+	</div>
+</div>
+
+<script>
+	import Splide from '@splidejs/splide'
+	import PhotoSwipeLightbox from 'photoswipe/lightbox'
+
+	function setupSlider() {
+		const splides = document.querySelectorAll('.splide')
+		if (splides.length === 0) return
+		const slider = new Splide('.splide', {
+			rewind: true,
+			arrows: false,
+			pagination: true,
+			paginationKeyboard: true,
+			keyboard: true,
+		})
+
+		slider.mount()
+
+		const nextButton = document.getElementById('project-next')
+		const prevButton = document.getElementById('project-prev')
+
+		nextButton.addEventListener('click', (evt) => {
+			evt.preventDefault()
+			slider.go('>')
+		})
+		prevButton.addEventListener('click', (evt) => {
+			evt.preventDefault()
+			slider.go('<')
+		})
+
+		const zoomableImgs = Array.from(
+			document.querySelectorAll('.powerswipe-link'),
+		)
+		zoomableImgs.forEach((liEl) => {
+			const img = liEl.querySelector('img')
+			const width = img.getAttribute('width')
+			const height = img.getAttribute('height')
+			img.style.aspectRatio = `${width}/${height}`
+			liEl.setAttribute('data-pswp-width', width)
+			liEl.setAttribute('data-pswp-height', height)
+		})
+
+		const lightbox = new PhotoSwipeLightbox({
+			gallery: '#main-slider',
+			children: '.powerswipe-link',
+			showHideAnimationType: 'fade',
+			wheelToZoom: true,
+			allowPanToNext: false,
+			preloadFirstSlide: false,
+			pswpModule: () => import('photoswipe'),
+		})
+
+		lightbox.on('change', () => {
+			slider.go(lightbox.pswp.currIndex + 1)
+		})
+		lightbox.init()
+	}
+	setupSlider()
+</script>
+
+<style is:global>
+	.splide {
+		@apply visible;
+	}
+	.splide__img {
+		@apply rounded max-w-[calc(100svw-48px)] max-h-[calc(100svh-200px)] w-auto h-auto;
+	}
+	.splide__pagination {
+		@apply absolute left-1/2 opacity-0 sm:opacity-100 bottom-8 gap-1.5 -translate-x-1/2;
+		@apply bg-grayUltraLight border border-grayLight rounded-full px-1.5 h-[17px];
+	}
+
+	.splide__pagination li {
+		@apply w-[7px] h-[7px] relative;
+	}
+
+	.splide:focus-visible .splide__track {
+		@apply ring-2 ring-fg ring-offset-4 ring-offset-grayUltraLight;
+		@apply ring-inset rounded-lg;
+	}
+
+	button.splide__pagination__page {
+		@apply w-[7px] h-[7px] rounded-full bg-grayMed transition-colors;
+		@apply outline-none motion-reduce:transition-none;
+		@apply absolute inset-0;
+	}
+
+	button.splide__pagination__page[aria-selected='true'] {
+		@apply bg-fg focus-visible:ring-2 focus-visible:ring-fg;
+		@apply focus-visible:ring-offset-2 focus-visible:ring-offset-bg;
+	}
+
+	body .pswp {
+		z-index: 998 !important;
+		--pswp-bg: var(--bg);
+		--pswp-placeholder-bg: var(--grayUltraLight);
+		--pswp-preloader-color: var(--grayMed);
+		--pswp-preloader-color-secondary: var(--bg);
+		--pswp-icon-color: var(--fg);
+		--pswp-icon-color-secondary: var(--grayUltraLight);
+		--pswp-icon-stroke-color: var(--grayUltraLight);
+		--pswp-icon-stroke-width: 2px;
+		--pswp-error-text-color: var(--pswp-icon-color);
+	}
+
+	body .pswp .pswp__bg {
+		opacity: 1 !important;
+	}
+
+	.pswp .pswp__button {
+		@apply outline-none focus-visible:ring-2 focus-visible:ring-fg;
+		@apply focus-visible:ring-offset-2 focus-visible:ring-offset-bg;
+		@apply focus-visible:rounded-md;
+	}
+</style>

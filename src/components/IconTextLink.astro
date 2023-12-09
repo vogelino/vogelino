@@ -1,0 +1,27 @@
+---
+import classNames from '../utils/classNames'
+
+export interface Props {
+	href: string
+	ariaLabel: string
+	text: string
+}
+
+const { href, ariaLabel, text } = Astro.props
+---
+
+<a
+	href={href}
+	aria-label={ariaLabel}
+	target="_blank"
+	class={classNames(
+		`text-xl px-4 py-1 rounded-full bg-alt text-fg font-bold`,
+		`transition-colors flex gap-2 items-center -ml-4`,
+		`hover-hover:hover:bg-fg hover-hover:hover:text-alt`,
+		`focus-visible:ring-2 focus-visible:ring-fg outline-none`,
+		`motion-reduce:transition-none`,
+	)}
+>
+	<span class="pt-px">{text}</span>
+	<slot />
+</a>

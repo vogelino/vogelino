@@ -1,0 +1,134 @@
+---
+import { loadJson } from '../../../scripts/lib/loadJson'
+import classNames from '../../utils/classNames'
+import { INSPIRATIONS_JSON_PATH } from '../../../scripts/paths'
+import Layout from '../../layouts/Layout.astro'
+import FancyHeadline from '../../components/FancyHeadline.astro'
+import type { MappedNotionInspirationLinkType } from '../../../scripts/lib/parseOriginalNotionInspirations'
+import Pagination from '../../components/Pagination.astro'
+import { Image } from 'astro:assets'
+import type { AstroGlobImageType } from '../../utils/astroTypes'
+
+const firstPath = 'inspirations'
+
+export async function getStaticPaths({ paginate }) {
+	const notionLinks = await loadJson<MappedNotionInspirationLinkType[]>(
+		INSPIRATIONS_JSON_PATH,
+	)
+
+	return paginate(notionLinks, {
+		pageSize: 47,
+	})
+}
+
+export interface Props {
+	page: {
+		data: MappedNotionInspirationLinkType[]
+		url: {
+			current: string
+			prev: string
+			next: string
+		}
+		currentPage: number
+		lastPage: number
+	}
+}
+
+const { page } = Astro.props
+
+const thumbnails = await Astro.glob<AstroGlobImageType<'webp'>>(
+	`/src/assets/images/inspirations/*.webp`,
+).then((files) => files.map((file) => file.default))
+
+const notionLinks = (page.data || []).map((link) => ({
+	...link,
+	thumbnail: thumbnails.find((thumbnail) => thumbnail.src.includes(link.id)),
+}))
+---
+
+<Layout title="List of cool site I like" slug="inspirations">
+	<ul
+		aria-label="List of cool sites I like"
+		class={classNames(
+			`grid pt-32 sm:grid-cols-2 md:grid-cols-3`,
+			`lg:grid-cols-4 gap-8 px-8 pb-16 container mx-auto`,
+		)}
+	>
+		<li
+			class="relative h-full flex flex-col items-start"
+			aria-label={`Title: Cool sites`}
+		>
+			<FancyHeadline title="Cool <br class='hidden sm:block' />**Sites**" />
+			<p class="mt-4 text-balance leading-tight">
+				Bookmarks, design inspiration and innovative websites I like.
+			</p>
+		</li>
+		{
+			notionLinks.map((link) => {
+				if (!link.thumbnail) return null
+				return (
+					<li aria-label={`Cool site: "${link.title}" (${link.url})`}>
+						<a
+							href={link.url}
+							target="_blank"
+							rel="noopener nofollow"
+							class={classNames(
+								`flex flex-col gap-4 group`,
+								`focus-visible:ring-2 focus-visible:ring-fg outline-none`,
+								`focus-visible:overflow-hidden focus-visible:rounded-lg`,
+								`focus-visible:ring-offset-8 focus-visible:ring-offset-bg`,
+							)}
+						>
+							<span class="relative block aspect-[140/73] bg-zinc-100 rounded overflow-hidden">
+								<Image
+									src={link.thumbnail}
+									alt={`Cover image of "${link.title}"`}
+									class={classNames(
+										`w-full aspect-[140/73] rounded object-cover`,
+										`transition-transform hover-hover:group-hover:scale-110`,
+										`motion-reduce:transition-none`,
+										`motion-reduce:hover-hover:group-hover:scale-100`,
+									)}
+								/>
+								<span class="absolute inset-0 pointer-events-none bg-zinc-100 mix-blend-multiply" />
+							</span>
+							<div class="grid grid-cols-[1rem,1fr] gap-3">
+								<span class="inline-block w-4 h-4 relative mt-0.5 rounded overflow-hidden bg-zinc-100 bg-cover bg-center leading-4">
+									<Image
+										src={`https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&size=32&url=${link.url}`}
+										alt={`Favicon of "${link.title}"`}
+										class="absolute inset-0 object-cover"
+										width={16}
+										height={16}
+									/>
+								</span>
+								<h3 class="inline-block leading-tight">
+									<span
+										class={classNames(
+											`px-3 -ml-2 py-2 rounded-full`,
+											`hover-hover:group-hover:bg-alt`,
+											`transition-colors motion-reduce:transition-none`,
+										)}
+									>
+										{link.title}
+									</span>
+								</h3>
+							</div>
+						</a>
+					</li>
+				)
+			})
+		}
+	</ul>
+	<div class="py-6 border-t border-grayLight">
+		<Pagination
+			length={page.lastPage}
+			currentUrl={page.url.current}
+			currentPage={page.currentPage}
+			firstUrl={`/${firstPath}`}
+			prevUrl={page.url.prev}
+			nextUrl={page.url.next}
+			lastUrl={`/${firstPath}/${page.lastPage}`}
+		/>
+	</div>
+</Layout>

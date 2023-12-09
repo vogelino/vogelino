@@ -1,55 +1,64 @@
 ---
-import * as astroComponents from "astro-imagetools/components";
-import type { MappedCollaboratorPageType } from "../../scripts/lib/parseOriginalNotionProjects";
-import classNames from "../utils/classNames";
-
-const { Img } = astroComponents;
+import type { MappedCollaboratorPageType } from '../../scripts/lib/parseOriginalNotionProjects'
+import type { AstroGlobImageType } from '../utils/astroTypes'
+import classNames from '../utils/classNames'
+import { Image } from 'astro:assets'
 
 export interface Props {
-  collaborator: MappedCollaboratorPageType;
+	collaborator: MappedCollaboratorPageType
 }
 
-const { collaborator } = Astro.props;
+const { collaborator } = Astro.props
 
-const isInteractive = Boolean(collaborator.url);
+const isInteractive = Boolean(collaborator.url)
 
 const commonAvatarProps = {
-  alt: `Portrait image of ${collaborator.name}`,
-  class: classNames(
-    `object-cover aspect-square`,
-    `transition-opacity bg-white`
-  ),
-};
+	alt: `Portrait image of ${collaborator.name}`,
+	class: classNames(
+		`object-cover aspect-square`,
+		`transition-opacity bg-white`,
+		`motion-reduce:transition-none`,
+	),
+}
 
-const isSvgAvatar = collaborator.avatar && collaborator.avatar.endsWith(".svg");
-const isWebpAvatar =
-  collaborator.avatar && collaborator.avatar.endsWith(".webp");
+const collaboratorImage = await Astro.glob<AstroGlobImageType<'webp' | 'svg'>>(
+	'/src/assets/images/collaborators/*.{svg,webp}',
+).then(
+	(files) =>
+		files.find((file) => file.default.src.includes(collaborator.id))?.default,
+)
 ---
 
-<span
-  class={classNames(
-    `relative border-r border-grayLight flex items-center text-center`,
-    `bg-bg w-[45px] h-[45px] place-content-center`
-  )}
->
-  {isSvgAvatar && <img src={collaborator.avatar} {...commonAvatarProps} />}
-  {
-    isWebpAvatar && (
-      <Img
-        src={collaborator.avatar}
-        alt={commonAvatarProps.alt}
-        attributes={{
-          img: { class: commonAvatarProps.class },
-        }}
-      />
-    )
-  }
-  <span
-    class={classNames(
-      `absolute inset-0 z-10 bg-grayMed mix-blend-soft-light`,
-      `group-hover:bg-fg transition-colors`
-    )}></span>
-</span>
-<span class={classNames(`px-4`, isInteractive && `underline decoration-alt`)}>
-  {collaborator.name}
-</span>
+{
+	collaboratorImage && (
+		<>
+			<span
+				class={classNames(
+					`relative border-r border-grayLight`,
+					`bg-bg w-[45px] h-[44px]`,
+				)}
+			>
+				<Image
+					src={collaboratorImage}
+					alt={commonAvatarProps.alt}
+					class={commonAvatarProps.class}
+				/>
+				<span
+					class={classNames(
+						`absolute inset-0 z-10 bg-grayMed mix-blend-soft-light`,
+						`group-hover:bg-fg transition-colors`,
+						`motion-reduce:transition-none`,
+					)}
+				/>
+			</span>
+			<span
+				class={classNames(
+					`px-4 leading-4 text-sm`,
+					isInteractive && `underline decoration-grayMed`,
+				)}
+			>
+				{collaborator.name}
+			</span>
+		</>
+	)
+}

@@ -1,35 +1,44 @@
 ---
-import type { MappedCollaboratorPageType } from "../../scripts/lib/parseOriginalNotionProjects";
-import classNames from "../utils/classNames";
-import CollaboratorItemContent from "./CollaboratorItemContent.astro";
+import type { MappedCollaboratorPageType } from '../../scripts/lib/parseOriginalNotionProjects'
+import classNames from '../utils/classNames'
+import CollaboratorItemContent from './CollaboratorItemContent.astro'
 
 export interface Props {
-  collaborator: MappedCollaboratorPageType;
+	collaborator: MappedCollaboratorPageType
 }
 
-const { collaborator } = Astro.props;
+const { collaborator } = Astro.props
 
-const commonContainerClasses = `grid grid-cols-[45px,1fr] items-center border-t border-grayLight`;
+const commonContainerClasses = `grid grid-cols-[45px,1fr] items-center dark:text-white`
 ---
 
-<li class={!collaborator.url ? commonContainerClasses : ""}>
-  {!collaborator.url && <CollaboratorItemContent collaborator={collaborator} />}
-  {
-    collaborator.url && (
-      <a
-        href={collaborator.url}
-        title={`Site of ${collaborator.name}`}
-        target="_blank"
-        rel="noreferrer nofollow"
-        class={classNames(
-          commonContainerClasses,
-          `group focus:ring-2 focus:ring-offset-2 focus:ring-fg`,
-          `focus:outline-none relative focus:z-10`,
-          `hover:bg-fg hover:text-white transition-colors`
-        )}
-      >
-        {<CollaboratorItemContent collaborator={collaborator} />}
-      </a>
-    )
-  }
+<li
+	class={classNames(
+		!collaborator.url ? commonContainerClasses : '',
+		`bg-bg border-y -mt-px border-grayLight`,
+	)}
+	aria-label={`Collaborator: ${collaborator.name}`}
+>
+	{!collaborator.url && <CollaboratorItemContent collaborator={collaborator} />}
+	{
+		collaborator.url && (
+			<a
+				href={collaborator.url}
+				title={`Site of ${collaborator.name}`}
+				target="_blank"
+				rel="noreferrer nofollow"
+				class={classNames(
+					commonContainerClasses,
+					`group focus-visible:ring-2 focus-visible:ring-offset-2 `,
+					`focus-visible:ring-fg focus-visible:ring-offset-bg focus-visible:rounded-sm`,
+					`outline-none relative focus-visible:z-10`,
+					`hover-hover:hover:bg-fg hover-hover:hover:text-white`,
+					`dark:hover-hover:hover:text-bg`,
+					`transition-colors motion-reduce:transition-none`,
+				)}
+			>
+				{<CollaboratorItemContent collaborator={collaborator} />}
+			</a>
+		)
+	}
 </li>

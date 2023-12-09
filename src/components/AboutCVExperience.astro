@@ -1,0 +1,231 @@
+---
+import type { MappedNotionCV } from '../../scripts/lib/parseOriginalNotionCV'
+import { CV_JSON_PATH } from '../../scripts/paths'
+import { loadJson } from '../../scripts/lib/loadJson'
+import CVLine from '../components/CVLine.astro'
+
+const cv = await loadJson<MappedNotionCV>(CV_JSON_PATH)
+---
+
+<div data-tab-component class="pt-16 bg-grayUltraLight relative z-10">
+	<div role="tablist" aria-label="Curriculum tabbed sections" class="flex">
+		<button
+			role="tab"
+			aria-selected="true"
+			aria-controls="work-content"
+			id="work"
+		>
+			Work
+		</button>
+		<button
+			role="tab"
+			aria-selected="false"
+			aria-controls="education-content"
+			id="education"
+		>
+			Education
+		</button>
+		<button
+			role="tab"
+			aria-selected="false"
+			aria-controls="teaching-content"
+			id="teaching"
+		>
+			Teaching
+		</button>
+		<button
+			role="tab"
+			aria-selected="false"
+			aria-controls="internships-content"
+			id="internships"
+		>
+			Internships
+		</button>
+	</div>
+	<section
+		id="work-content"
+		role="tabpanel"
+		aria-labelledby="work"
+		tabindex="0"
+		class="relative"
+	>
+		<ul aria-label="Work experience">
+			{
+				cv.work.map((cvLine) => (
+					<CVLine
+						title={cvLine.title}
+						location={cvLine.location}
+						certification={cvLine.certification}
+						timePeriod={cvLine.timePeriod}
+					/>
+				))
+			}
+		</ul>
+	</section>
+	<section
+		id="education-content"
+		role="tabpanel"
+		aria-labelledby="education"
+		tabindex="0"
+	>
+		<ul aria-label="Education">
+			{
+				cv.education.map((cvLine) => (
+					<CVLine
+						title={cvLine.title}
+						location={cvLine.location}
+						certification={cvLine.certification}
+						timePeriod={cvLine.timePeriod}
+					/>
+				))
+			}
+		</ul>
+	</section>
+	<section
+		id="teaching-content"
+		role="tabpanel"
+		aria-labelledby="teaching"
+		tabindex="0"
+	>
+		<ul aria-label="Teaching experience">
+			{
+				cv.teaching.map((cvLine) => (
+					<CVLine
+						title={cvLine.title}
+						location={cvLine.location}
+						certification={cvLine.certification}
+						timePeriod={cvLine.timePeriod}
+					/>
+				))
+			}
+		</ul>
+	</section>
+	<section
+		id="internships-content"
+		role="tabpanel"
+		aria-labelledby="internships"
+		tabindex="0"
+	>
+		<ul aria-label="Internships">
+			{
+				cv.internships.map((cvLine) => (
+					<CVLine
+						title={cvLine.title}
+						location={cvLine.location}
+						certification={cvLine.certification}
+						timePeriod={cvLine.timePeriod}
+					/>
+				))
+			}
+		</ul>
+	</section>
+</div>
+
+<style>
+	[role='tabpanel'][aria-hidden='true'] {
+		display: none;
+	}
+
+	[role='tabpanel'] {
+		@apply z-0 -mt-px;
+	}
+
+	[role='tab'] {
+		@apply transition-colors z-10 text-xl md:text-2xl uppercase;
+		@apply tracking-wide px-6 pt-3 pb-2 border -ml-px rounded-t;
+		@apply border-transparent border-b-grayMed;
+		@apply motion-reduce:transition-none;
+	}
+
+	[role='tab'][aria-selected='true'] {
+		@apply bg-bg border-grayMed z-20 border-b-bg;
+	}
+
+	[role='tab'][aria-selected='false'] {
+		@apply bg-grayUltraLight transition-colors;
+		@apply hover-hover:hover:bg-alt;
+		@apply motion-reduce:transition-none;
+	}
+
+	[role='tablist']:focus-visible,
+	[role='tabpanel']:focus-visible,
+	[role='tab']:focus-visible {
+		@apply outline-none ring-inset ring-2 ring-fg z-30 rounded;
+	}
+
+	[role='tablist'] {
+		@apply max-w-full overflow-x-auto pt-[2px];
+	}
+
+	[data-tab-component]::after {
+		content: '';
+		width: 100%;
+		height: 1px;
+		position: absolute;
+		left: 0;
+		top: 120px;
+		z-index: 20;
+		background: linear-gradient(90deg, var(--grayMed) 0%, transparent 10%);
+	}
+
+	@media screen and (max-width: 767px) {
+		[data-tab-component]::after {
+			top: 116px;
+		}
+	}
+</style>
+
+<script>
+	function setupTabs() {
+		const settings = {
+			container: '[data-tab-component]',
+			trigger: '[role="tab"]',
+			content: '[role="tabpanel"]',
+		}
+		const container = document.querySelector(settings.container)
+		if (!container) return
+
+		const toggle = function (tab, scroll = true) {
+			const parent = tab.closest(settings.container)
+			const target = tab.getAttribute('aria-controls')
+			const content = document.getElementById(target)
+			const toggles = parent.querySelectorAll(settings.trigger)
+			const all_content = parent.querySelectorAll(settings.content)
+
+			for (let i = 0, len = toggles.length; i < len; i++) {
+				toggles[i].setAttribute('aria-selected', 'false')
+				all_content[i].setAttribute('aria-hidden', 'true')
+			}
+
+			tab.setAttribute('aria-selected', 'true')
+			content.setAttribute('aria-hidden', 'false')
+
+			if (window.innerWidth < 768 && scroll) {
+				parent.scrollIntoView({ behavior: 'smooth' })
+			}
+		}
+
+		const bindEventListeners = function () {
+			const trigger = document.querySelectorAll(settings.trigger)
+
+			for (let i = 0, len = trigger.length; i < len; i++) {
+				trigger[i].addEventListener('click', function (event) {
+					event.preventDefault()
+					toggle(trigger[i])
+				})
+
+				trigger[i].addEventListener('keydown', function (event: KeyboardEvent) {
+					if (event.key === 'Enter' || event.key === ' ') {
+						event.preventDefault()
+						toggle(trigger[i])
+					}
+				})
+
+				toggle(trigger[0], false)
+			}
+		}
+
+		bindEventListeners()
+	}
+	setupTabs()
+</script>

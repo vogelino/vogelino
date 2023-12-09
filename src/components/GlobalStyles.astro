@@ -1,0 +1,121 @@
+---
+---
+
+<style is:global>
+	@tailwind base;
+	@tailwind components;
+	@tailwind utilities;
+
+	@layer base {
+		@font-face {
+			font-family: 'FUNGIS';
+			src: url('/fonts/fungis/fungis-regular.eot');
+			src: url('/fonts/fungis/fungis-regular.eot?#iefix')
+					format('embedded-opentype'),
+				url('/fonts/fungis/fungis-regular.woff') format('woff'),
+				url('/fonts/fungis/fungis-regular.ttf') format('truetype');
+			font-style: normal;
+			font-weight: normal;
+			text-rendering: optimizeLegibility;
+			font-display: swap;
+		}
+
+		@font-face {
+			font-family: 'FUNGIS';
+			src: url('/fonts/fungis/fungis-bold.eot');
+			src: url('/fonts/fungis/fungis-bold.eot?#iefix')
+					format('embedded-opentype'),
+				url('/fonts/fungis/fungis-bold.woff') format('woff'),
+				url('/fonts/fungis/fungis-bold.ttf') format('truetype');
+			font-style: normal;
+			font-weight: bold;
+			text-rendering: optimizeLegibility;
+			font-display: swap;
+		}
+
+		@font-face {
+			font-family: 'Lobular';
+			src: url('/fonts/lobular/lobular-regular.eot');
+			src: url('/fonts/lobular/lobular-regular.woff2') format('woff2'),
+				url('/fonts/lobular/lobular-regular.woff') format('woff');
+			font-style: normal;
+			font-weight: normal;
+			text-rendering: optimizeLegibility;
+			font-display: swap;
+		}
+
+		::-moz-selection,
+		::selection {
+			@apply text-alt bg-fg;
+		}
+
+		:root,
+		:root[data-applied-mode='light'] {
+			--fg: #e30002;
+			--bg: #fcfeff;
+			--alt: #ffef9b;
+			--grayDark: #5d7280;
+			--grayMed: #d0dfe7;
+			--grayLight: #e1ecf2;
+			--grayUltraLight: #f1faff;
+		}
+
+		:root[data-applied-mode='dark'] {
+			--fg: #ffef9b;
+			--bg: #1c1c1c;
+			--alt: #e30002;
+			--grayDark: #ababab;
+			--grayMed: #000000;
+			--grayLight: #2c2c2c;
+			--grayUltraLight: #0d0d0d;
+		}
+
+		@media (prefers-contrast: more) {
+			:root[data-applied-mode='light'] {
+				--fg: #b60003;
+				--bg: #ffffff;
+				--alt: #ffef9b;
+				--grayDark: #1d2022;
+				--grayMed: #666c6f;
+				--grayLight: #b7c3ca;
+				--grayUltraLight: #ffffff;
+			}
+			:root[data-applied-mode='dark'] {
+				--fg: #fff6c8;
+				--bg: #000000;
+				--alt: #000000;
+				--grayDark: #fff6c8;
+				--grayMed: #e30002;
+				--grayLight: #e30002;
+				--grayUltraLight: #000;
+			}
+		}
+
+		html,
+		body {
+			scroll-behavior: smooth;
+		}
+
+		::-moz-selection,
+		::selection {
+			background: var(--bg, #ffef9b);
+			color: var(--fg, #e30002);
+		}
+
+		@keyframes swoosh {
+			0% {
+				transform: translateX(-50px);
+				opacity: 0;
+			}
+			5% {
+				transform: translateX(0px);
+				opacity: 1;
+			}
+			10%,
+			100% {
+				transform: translateX(50px);
+				opacity: 0;
+			}
+		}
+	}
+</style>

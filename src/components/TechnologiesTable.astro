@@ -1,0 +1,37 @@
+---
+import type { MappedNotionProject } from '../../scripts/lib/parseOriginalNotionProjects'
+import TechnologyItem from './TechnologyItem.astro'
+
+export interface Props {
+	project: MappedNotionProject
+}
+
+const { project } = Astro.props
+---
+
+{
+	Object.keys(project.technologies).length > 0 && (
+		<section class="@container">
+			<h2 class="text-xl font-bold my-8 uppercase">Technologies</h2>
+			<div class="flex flex-wrap gap-4">
+				{Object.keys(project.technologies).map((key) => (
+					<div class="relative rounded border border-grayMed px-1 pt-0 pb-3 @md:px-4 @md:py-4">
+						<strong
+							aria-label={`The following technologies are used as a ${key}`}
+							class="mt-0.5 @md:-mt-4 -translate-y-1/2 ml-1 @md:-ml-2 block text-grayDark uppercase text-xs whitespace-nowrap leading-loose h-6"
+						>
+							<span class="px-2 bg-bg">{key}</span>
+						</strong>
+						<ul class="flex flex-wrap gap-0 @md:gap-1">
+							{project.technologies[key].map((tech) => (
+								<li>
+									<TechnologyItem technology={tech} />
+								</li>
+							))}
+						</ul>
+					</div>
+				))}
+			</div>
+		</section>
+	)
+}
