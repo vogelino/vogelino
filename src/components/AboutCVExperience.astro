@@ -51,14 +51,16 @@ const cv = await loadJson<MappedNotionCV>(CV_JSON_PATH)
 	>
 		<ul aria-label="Work experience">
 			{
-				cv.work.map((cvLine) => (
-					<CVLine
-						title={cvLine.title}
-						location={cvLine.location}
-						certification={cvLine.certification}
-						timePeriod={cvLine.timePeriod}
-					/>
-				))
+				cv.work
+					.toReversed()
+					.map((cvLine) => (
+						<CVLine
+							title={cvLine.title}
+							location={cvLine.location}
+							certification={cvLine.certification}
+							timePeriod={cvLine.timePeriod}
+						/>
+					))
 			}
 		</ul>
 	</section>
@@ -70,14 +72,16 @@ const cv = await loadJson<MappedNotionCV>(CV_JSON_PATH)
 	>
 		<ul aria-label="Education">
 			{
-				cv.education.map((cvLine) => (
-					<CVLine
-						title={cvLine.title}
-						location={cvLine.location}
-						certification={cvLine.certification}
-						timePeriod={cvLine.timePeriod}
-					/>
-				))
+				cv.education
+					.toReversed()
+					.map((cvLine) => (
+						<CVLine
+							title={cvLine.title}
+							location={cvLine.location}
+							certification={cvLine.certification}
+							timePeriod={cvLine.timePeriod}
+						/>
+					))
 			}
 		</ul>
 	</section>
@@ -89,14 +93,16 @@ const cv = await loadJson<MappedNotionCV>(CV_JSON_PATH)
 	>
 		<ul aria-label="Teaching experience">
 			{
-				cv.teaching.map((cvLine) => (
-					<CVLine
-						title={cvLine.title}
-						location={cvLine.location}
-						certification={cvLine.certification}
-						timePeriod={cvLine.timePeriod}
-					/>
-				))
+				cv.teaching
+					.toReversed()
+					.map((cvLine) => (
+						<CVLine
+							title={cvLine.title}
+							location={cvLine.location}
+							certification={cvLine.certification}
+							timePeriod={cvLine.timePeriod}
+						/>
+					))
 			}
 		</ul>
 	</section>
@@ -108,14 +114,16 @@ const cv = await loadJson<MappedNotionCV>(CV_JSON_PATH)
 	>
 		<ul aria-label="Internships">
 			{
-				cv.internships.map((cvLine) => (
-					<CVLine
-						title={cvLine.title}
-						location={cvLine.location}
-						certification={cvLine.certification}
-						timePeriod={cvLine.timePeriod}
-					/>
-				))
+				cv.internships
+					.toReversed()
+					.map((cvLine) => (
+						<CVLine
+							title={cvLine.title}
+							location={cvLine.location}
+							certification={cvLine.certification}
+							timePeriod={cvLine.timePeriod}
+						/>
+					))
 			}
 		</ul>
 	</section>
@@ -163,14 +171,14 @@ const cv = await loadJson<MappedNotionCV>(CV_JSON_PATH)
 		height: 1px;
 		position: absolute;
 		left: 0;
-		top: 120px;
+		top: 119px;
 		z-index: 20;
 		background: linear-gradient(90deg, var(--grayMed) 0%, transparent 10%);
 	}
 
 	@media screen and (max-width: 767px) {
 		[data-tab-component]::after {
-			top: 116px;
+			top: 115px;
 		}
 	}
 </style>
