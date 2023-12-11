@@ -52,7 +52,7 @@ const cv = await loadJson<MappedNotionCV>(CV_JSON_PATH)
 		<ul aria-label="Work experience">
 			{
 				cv.work
-					.toReversed()
+					.reverse()
 					.map((cvLine) => (
 						<CVLine
 							title={cvLine.title}
@@ -73,7 +73,7 @@ const cv = await loadJson<MappedNotionCV>(CV_JSON_PATH)
 		<ul aria-label="Education">
 			{
 				cv.education
-					.toReversed()
+					.reverse()
 					.map((cvLine) => (
 						<CVLine
 							title={cvLine.title}
@@ -94,7 +94,7 @@ const cv = await loadJson<MappedNotionCV>(CV_JSON_PATH)
 		<ul aria-label="Teaching experience">
 			{
 				cv.teaching
-					.toReversed()
+					.reverse()
 					.map((cvLine) => (
 						<CVLine
 							title={cvLine.title}
@@ -115,7 +115,7 @@ const cv = await loadJson<MappedNotionCV>(CV_JSON_PATH)
 		<ul aria-label="Internships">
 			{
 				cv.internships
-					.toReversed()
+					.reverse()
 					.map((cvLine) => (
 						<CVLine
 							title={cvLine.title}
