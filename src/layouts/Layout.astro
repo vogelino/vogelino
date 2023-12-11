@@ -77,15 +77,16 @@ const ogImageUrl = ogImage?.src
 		</script>
 	</head>
 	<body
+		id="body"
 		class={classNames(
 			`bg-bg text-fg w-screen overflow-x-hidden mx-auto antialiased relative`,
 			`max-w-[1440px] min-[1440px]:border-x min-[1440px]:border-grayMed`,
+			`!overflow-y-auto`,
 		)}
 	>
 		<Header withBg={withHeaderBg} />
 		<slot />
 		<Footer />
-		<OverlayTexture />
 		<GlobalStyles />
 		<script>
 			import { inject } from '@vercel/analytics'
