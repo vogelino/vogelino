@@ -4,20 +4,13 @@ import Info from './icons/Info.astro'
 import Edit from './icons/Edit.astro'
 import User from './icons/User.astro'
 import Award from './icons/Award.astro'
-interface RichText {
-	plain_text: string
-}
-interface Heading {
-	rich_text: RichText[]
-}
-export interface Props {
-	type: 'heading_1' | 'heading_2' | 'heading_3'
-	heading_1?: Heading
-	heading_2?: Heading
-	heading_3?: Heading
+
+export type Props = {
+	level: '1' | '2' | '3'
 }
 
-const block = Astro.props
+const { level } = Astro.props
+const slotText = await Astro.slots.render('default')
 ---
 
 {
@@ -30,36 +23,32 @@ const block = Astro.props
 			if (text === 'recognition') return <Award class={cls} />
 			return null
 		}
-		const headingLevel = block.type.split('_')[1]
-		const headingKey = `heading_${headingLevel}` as const
-		const heading = block[headingKey]
 		const classes = classNames(
 			`my-6 -mt-6 pt-8 pb-2 first:-mt-8 border-b border-grayLight text-grayDark text-base`,
 			`uppercase tracking-wider sticky top-0 flex gap-2 items-center`,
 			`bg-bg`,
 		)
-		const text = heading.rich_text
-			.map((text) => text.plain_text)
-			.join('')
-			.trim()
-			.toLowerCase()
-		const content = <span class="inline-block pt-1">{text}</span>
-		const prefix = getHeadingPrefix(text)
-		if (headingLevel === '1')
+		const content = (
+			<span class="inline-block pt-1">
+				<slot />
+			</span>
+		)
+		const prefix = getHeadingPrefix(slotText)
+		if (level === '1')
 			return (
 				<h2 class={classes}>
 					{prefix}
 					{content}
 				</h2>
 			)
-		if (headingLevel === '2')
+		if (level === '2')
 			return (
 				<h3 class={classes}>
 					{prefix}
 					{content}
 				</h3>
 			)
-		if (headingLevel === '3')
+		if (level === '3')
 			return (
 				<h4 class={classes}>
 					{prefix}

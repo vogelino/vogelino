@@ -1,29 +1,27 @@
 ---
 import classNames from '../utils/classNames'
-import { loadJson } from '../../scripts/lib/loadJson'
-import type { MappedNotionProject } from '../../scripts/lib/parseOriginalNotionProjects'
-import { PROJECTS_JSON_PATH } from '../../scripts/paths'
 import Thumbnail from '../components/Thumbnail.astro'
 import FancyHeadline from '../components/FancyHeadline.astro'
 import Layout from '../layouts/Layout.astro'
 import MoreAboutMeSVG from '../components/MoreAboutMeSVG.astro'
+import { getCollection } from 'astro:content'
 
-const projects = (
-	await loadJson<MappedNotionProject[]>(PROJECTS_JSON_PATH)
-).map((w) => {
-	const classes = [
-		`group-focus-visible:rotate-1 hover-hover:group-hover:rotate-1`,
-		`group-focus-visible:rotate-0 hover-hover:group-hover:rotate-0`,
-		`group-focus-visible:rotate-2 hover-hover:group-hover:rotate-2`,
-		`group-focus-visible:-rotate-1 hover-hover:group-hover:-rotate-1`,
-		`group-focus-visible:-rotate-2 hover-hover:group-hover:-rotate-2`,
-	]
-	const rotationClass = classes[Math.floor(Math.random() * classes.length)]
-	return {
-		...w,
-		rotationClass,
-	}
-})
+const projects = (await getCollection('projects'))
+	.sort((a, b) => b.data.year - a.data.year)
+	.map((w) => {
+		const classes = [
+			`group-focus-visible:rotate-1 hover-hover:group-hover:rotate-1`,
+			`group-focus-visible:rotate-0 hover-hover:group-hover:rotate-0`,
+			`group-focus-visible:rotate-2 hover-hover:group-hover:rotate-2`,
+			`group-focus-visible:-rotate-1 hover-hover:group-hover:-rotate-1`,
+			`group-focus-visible:-rotate-2 hover-hover:group-hover:-rotate-2`,
+		]
+		const rotationClass = classes[Math.floor(Math.random() * classes.length)]
+		return {
+			project: w,
+			rotationClass,
+		}
+	})
 ---
 
 <Layout title="Welcome" slug="home">
