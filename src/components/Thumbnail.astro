@@ -1,23 +1,17 @@
 ---
 import classNames from '../utils/classNames'
-import type { MappedNotionProject } from '../../scripts/lib/parseOriginalNotionProjects'
 import { Image } from 'astro:assets'
 import type { AstroGlobImageType } from '../utils/astroTypes'
+import type { CollectionEntry } from 'astro:content'
 
-export interface Props extends MappedNotionProject {
+export interface Props {
+	project: CollectionEntry<'projects'>
 	rotationClass: string
 	className?: string
 }
-const {
-	slug,
-	title,
-	nameShort,
-	rotationClass,
-	highlighted,
-	className = '',
-	type,
-	year,
-} = Astro.props
+const { project, rotationClass, className } = Astro.props
+const slug = project.slug
+const { title, nameShort, highlighted, type, year } = project.data
 
 const projectThumbnail = await Astro.glob<AstroGlobImageType<'webp'>>(
 	`/src/assets/images/thumbnails/*.webp`,

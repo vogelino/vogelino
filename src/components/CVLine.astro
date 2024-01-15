@@ -1,8 +1,8 @@
 ---
 import classNames from '../utils/classNames'
 import type { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
-import NotionFormattedRichText from '../components/NotionFormattedRichText.astro'
 import Certificate from '../components/icons/Certificate.astro'
+import { mdLinksToHtml } from '../utils/markdownUtil'
 
 export interface props {
 	timePeriod: string
@@ -12,11 +12,10 @@ export interface props {
 }
 
 const { timePeriod, title, location, certification } = Astro.props
-const titlePlain = title.map((t) => t.plain_text).join(' ')
 ---
 
 <li
-	aria-label={`${timePeriod}: ${titlePlain} ${location ? `, ${location}` : ''}`}
+	aria-label={`${timePeriod}: ${title} ${location ? `, ${location}` : ''}`}
 	class={classNames(
 		`text-grayDark bg-bg relative flex flex-col`,
 		`border-t border-grayMed text-lg`,
@@ -43,9 +42,8 @@ const titlePlain = title.map((t) => t.plain_text).join(' ')
 				`@md/cvline:col-span-2 @lg/cvline:col-span-3`,
 				`text-lg text-fg text-balance font-bold`,
 			)}
-		>
-			<NotionFormattedRichText richText={title} />
-		</h3>
+			set:html={mdLinksToHtml(title)}
+		/>
 		{
 			location && (
 				<p

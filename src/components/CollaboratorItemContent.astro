@@ -1,19 +1,19 @@
 ---
-import type { MappedCollaboratorPageType } from '../../scripts/lib/parseOriginalNotionProjects'
+import type { CollectionEntry } from 'astro:content'
 import type { AstroGlobImageType } from '../utils/astroTypes'
 import classNames from '../utils/classNames'
 import { Image } from 'astro:assets'
 
 export interface Props {
-	collaborator: MappedCollaboratorPageType
+	collaborator: CollectionEntry<'collaborators'>
 }
 
 const { collaborator } = Astro.props
 
-const isInteractive = Boolean(collaborator.url)
+const isInteractive = Boolean(collaborator.data.url)
 
 const commonAvatarProps = {
-	alt: `Portrait image of ${collaborator.name}`,
+	alt: `Portrait image of ${collaborator.data.name}`,
 	class: classNames(
 		`object-cover aspect-square`,
 		`transition-opacity bg-white`,
@@ -25,7 +25,7 @@ const collaboratorImage = await Astro.glob<AstroGlobImageType<'webp' | 'svg'>>(
 	'/src/assets/images/collaborators/*.{svg,webp}',
 ).then(
 	(files) =>
-		files.find((file) => file.default.src.includes(collaborator.id))?.default,
+		files.find((file) => file.default.src.includes(collaborator.slug))?.default,
 )
 ---
 
@@ -57,7 +57,7 @@ const collaboratorImage = await Astro.glob<AstroGlobImageType<'webp' | 'svg'>>(
 					isInteractive && `underline decoration-grayMed`,
 				)}
 			>
-				{collaborator.name}
+				{collaborator.data.name}
 			</span>
 		</>
 	)

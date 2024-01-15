@@ -1,13 +1,13 @@
 ---
-import type { MappedNotionProject } from '../../scripts/lib/parseOriginalNotionProjects'
 import ProjectSliderSlide from '../components/ProjectSliderSlide.astro'
 import 'photoswipe/style.css'
 import FirstSlide from './FirstSlide.astro'
 import classNames from '../utils/classNames'
 import GridSvgPattern from './GridSvgPattern.astro'
+import type { CollectionEntry } from 'astro:content'
 
 export interface Props {
-	project: MappedNotionProject
+	project: CollectionEntry<'projects'>
 }
 
 const { project } = Astro.props
@@ -40,8 +40,8 @@ const { project } = Astro.props
 		<ul class="splide__list w-screen h-[calc(100svh-16px)] max-w-[1440px]">
 			<FirstSlide project={project} />
 			{
-				project.media.map((i) => (
-					<ProjectSliderSlide projectName={project.title} imageUrl={i} />
+				project.data.media.map((i) => (
+					<ProjectSliderSlide projectName={project.data.title} imageUrl={i} />
 				))
 			}
 		</ul>

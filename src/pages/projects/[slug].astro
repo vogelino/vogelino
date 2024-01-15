@@ -3,20 +3,18 @@ import '@splidejs/splide/css/core'
 import Layout from '../../layouts/Layout.astro'
 import CollaboratorsGroup from '../../components/CollaboratorsGroup.astro'
 import classNames from '../../utils/classNames'
-import { loadJson } from '../../../scripts/lib/loadJson'
-import { PROJECTS_JSON_PATH } from '../../../scripts/paths'
-import type { MappedNotionProject } from '../../../scripts/lib/parseOriginalNotionProjects'
 import Thumbnail from '../../components/Thumbnail.astro'
-import NotionTextContents from '../../components/NotionTextContents.astro'
+import TextContents from '../../components/TextContents.astro'
 import ProjectSlider from '../../components/ProjectSlider.astro'
 import ProjectSliderNav from '../../components/ProjectSliderNav.astro'
 import SeeOneMoreStroke from '../../components/SeeOneMoreStroke.astro'
 import SeeOneMoreFill from '../../components/SeeOneMoreFill.astro'
 import TechnologiesTable from '../../components/TechnologiesTable.astro'
+import { getCollection, type CollectionEntry } from 'astro:content'
 
 export async function getStaticPaths() {
-	const notionProjects = await loadJson<MappedNotionProject[]>(
-		PROJECTS_JSON_PATH,
+	const notionProjects = (await getCollection('projects')).sort(
+		(a, b) => b.data.year - a.data.year,
 	)
 	return notionProjects.map((notionProject, idx) => {
 		const nextIdx = idx + 1 >= notionProjects.length ? 0 : idx + 1
@@ -34,17 +32,19 @@ export async function getStaticPaths() {
 }
 
 export interface Props {
-	project: MappedNotionProject
-	nextProject: MappedNotionProject
-	prevProject: MappedNotionProject
+	project: CollectionEntry<'projects'>
+	nextProject: CollectionEntry<'projects'>
+	prevProject: CollectionEntry<'projects'>
 }
 
-const { project, nextProject, prevProject } = Astro.props
+const post = Astro.props
+const { project, nextProject, prevProject } = post
+const { Content } = await project.render()
 ---
 
 <Layout
-	title={project.nameShort || project.title}
-	slug={project.slug}
+	title={project.data.nameShort || project.data.title}
+	slug={project.id}
 	withHeaderBg={false}
 >
 	<main class={`flex flex-col w-screen max-w-[1438px] overflow-x-hidden`}>
@@ -66,7 +66,7 @@ const { project, nextProject, prevProject } = Astro.props
 					class={classNames([`lg:gap-8 relative`, `mb-16 max-w-3xl`])}
 					aria-label="Project description"
 				>
-					<NotionTextContents blocks={project.blocks} />
+					<TextContents Content={Content} />
 				</div>
 				<aside
 					class="@container/collabs xl:pt-10 relative"
@@ -80,23 +80,23 @@ const { project, nextProject, prevProject } = Astro.props
 						)}
 					>
 						<CollaboratorsGroup
-							collaborators={project.clients}
+							collaborators={project.data.clients}
 							title={`Made for`}
 						/>
 						<CollaboratorsGroup
-							collaborators={project.colleagues}
+							collaborators={project.data.colleagues}
 							title={`Made with`}
 						/>
 						<CollaboratorsGroup
-							collaborators={project.supervisors}
+							collaborators={project.data.supervisors}
 							title={`Supervised by`}
 						/>
 						<CollaboratorsGroup
-							collaborators={project.institutions}
+							collaborators={project.data.institutions}
 							title={`Made at`}
 						/>
 						<CollaboratorsGroup
-							collaborators={project.collaborators}
+							collaborators={project.data.collaborators}
 							title={`Collaborators`}
 						/>
 					</div>
@@ -113,8 +113,10 @@ const { project, nextProject, prevProject } = Astro.props
 				)}
 			>
 				<Thumbnail
-					{...prevProject}
-					highlighted={false}
+					project={{
+						...prevProject,
+						data: { ...prevProject.data, highlighted: false },
+					}}
 					rotationClass="rotate-1"
 				/>
 				<div
@@ -132,11 +134,14 @@ const { project, nextProject, prevProject } = Astro.props
 					</div>
 				</div>
 				<Thumbnail
-					{...nextProject}
-					highlighted={false}
+					project={{
+						...nextProject,
+						data: { ...nextProject.data, highlighted: false },
+					}}
 					rotationClass="-rotate-1"
 				/>
 			</section>
+			{console.log(nextProject)}
 		</section>
 	</main>
 </Layout>

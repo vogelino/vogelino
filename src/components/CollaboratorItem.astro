@@ -1,10 +1,10 @@
 ---
-import type { MappedCollaboratorPageType } from '../../scripts/lib/parseOriginalNotionProjects'
+import type { CollectionEntry } from 'astro:content'
 import classNames from '../utils/classNames'
 import CollaboratorItemContent from './CollaboratorItemContent.astro'
 
 export interface Props {
-	collaborator: MappedCollaboratorPageType
+	collaborator: CollectionEntry<'collaborators'>
 }
 
 const { collaborator } = Astro.props
@@ -14,17 +14,21 @@ const commonContainerClasses = `grid grid-cols-[45px,1fr] items-center dark:text
 
 <li
 	class={classNames(
-		!collaborator.url ? commonContainerClasses : '',
+		!collaborator.data.url ? commonContainerClasses : '',
 		`bg-bg border-y -mt-px border-grayLight`,
 	)}
-	aria-label={`Collaborator: ${collaborator.name}`}
+	aria-label={`Collaborator: ${collaborator.data.name}`}
 >
-	{!collaborator.url && <CollaboratorItemContent collaborator={collaborator} />}
 	{
-		collaborator.url && (
+		!collaborator.data.url && (
+			<CollaboratorItemContent collaborator={collaborator} />
+		)
+	}
+	{
+		collaborator.data.url && (
 			<a
-				href={collaborator.url}
-				title={`Site of ${collaborator.name}`}
+				href={collaborator.data.url}
+				title={`Site of ${collaborator.data.name}`}
 				target="_blank"
 				rel="noreferrer nofollow"
 				class={classNames(
