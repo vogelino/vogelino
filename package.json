@@ -21,6 +21,7 @@
     "format": "npx prettier --write src"
   },
   "devDependencies": {
+    "@astrojs/mdx": "2.0.4",
     "@astrojs/prefetch": "0.4.1",
     "@astrojs/sitemap": "3.0.4",
     "@astrojs/tailwind": "5.1.0",

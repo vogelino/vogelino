@@ -1,12 +1,11 @@
 ---
-import type { MappedNotionProject } from '../../scripts/lib/parseOriginalNotionProjects'
+import type { CollectionEntry } from 'astro:content'
 import type { AstroGlobImageType } from '../utils/astroTypes'
 import classNames from '../utils/classNames'
-import NotionFormattedRichText from './NotionFormattedRichText.astro'
 import Link from './icons/Link.astro'
 import { Image } from 'astro:assets'
 export interface Props {
-	project: MappedNotionProject
+	project: CollectionEntry<'projects'>
 }
 
 const { project } = Astro.props
@@ -53,7 +52,7 @@ const projectIllustration = await Astro.glob<AstroGlobImageType<'svg'>>(
 							`select-text`,
 						)}
 					>
-						{project.year}
+						{project.data.year}
 					</span>
 					<h1
 						class={classNames(
@@ -61,7 +60,7 @@ const projectIllustration = await Astro.glob<AstroGlobImageType<'svg'>>(
 							`leading-[0.9em] sm:leading-[1em] text-balance`,
 							`uppercase font-bold select-text`,
 						)}
-						set:html={project.title}
+						set:html={project.data.title}
 					/>
 					<p
 						class={classNames(
@@ -69,13 +68,17 @@ const projectIllustration = await Astro.glob<AstroGlobImageType<'svg'>>(
 							`leading-[1.2em] sm:leading-[1.3em] md:leading-[1.4em]`,
 							`sm:text-xl md:text-2xl mt-[1vh] sm:mt-3 md:mt-4`,
 						)}
-					>
-						<NotionFormattedRichText richText={project.description} />
-					</p>
+						set:html={project.data.description
+							.replaceAll(/(?:\*)(.*?)(?:\*)/g, '<strong>$1</strong>')
+							.replaceAll(
+								/\[(.*?)\]\((.*?)\)/g,
+								'<a href="$2" target="_blank" rel="noopener noreferrer" class="hover-hover:hover:bg-alt hover-hover:hover:underline">$1</a>',
+							)}
+					/>
 
-					{project.url && (
+					{project.data.url && (
 						<a
-							href={project.url}
+							href={project.data.url}
 							target="_blank"
 							class={classNames([
 								`font-special antialiased`,
@@ -136,12 +139,12 @@ const projectIllustration = await Astro.glob<AstroGlobImageType<'svg'>>(
 					>
 						<Image
 							src={projectThumbnail}
-							alt={`Thumbnail for the project "${project.title}"`}
+							alt={`Thumbnail for the project "${project.data.title}"`}
 						/>
 					</div>
 					<Image
 						src={projectIllustration}
-						alt={`Illustration for the project ${project.title}`}
+						alt={`Illustration for the project ${project.data.title}`}
 						class={classNames(
 							`z-20 intro-slide-tilted-illustration`,
 							`max-h-[23vh] max-w-[260px] absolute`,

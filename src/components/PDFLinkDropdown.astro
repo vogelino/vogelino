@@ -1,25 +1,7 @@
 ---
+import { aboutFrontmatter } from '../parsedContents/about'
 import classNames from '../utils/classNames'
 import Pdf from './icons/Pdf.astro'
-
-const pdfLinks = [
-	{
-		code: 'EN',
-		label: 'English',
-	},
-	{
-		code: 'FR',
-		label: 'Français',
-	},
-	{
-		code: 'ES',
-		label: 'Español',
-	},
-	{
-		code: 'DE',
-		label: 'Deutsch',
-	},
-]
 ---
 
 <div class="group relative inline-block text-left">
@@ -71,7 +53,7 @@ const pdfLinks = [
 		<div class="py-1" role="none">
 			<!-- Active: "bg-grayMed text-fg", Not Active: "text-fg" -->
 			{
-				pdfLinks.map(({ code, label }) => (
+				aboutFrontmatter.cvPdfs.map(({ code, label }) => (
 					<a
 						href={`./pdfs/LucasVogel-Curriculum-2023-${code.toUpperCase()}.pdf`}
 						class={classNames(
