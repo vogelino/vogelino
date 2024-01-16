@@ -130,7 +130,7 @@ const withoutBgClasses = 'border-b-transparent'
 
 			const isOpened = !!burgerMenu.classList.contains('close')
 			const scrollOffset =
-				window.pageYOffset ??
+				window.scrollY ??
 				document.documentElement.scrollTop ??
 				document.body.scrollTop ??
 				0
@@ -152,7 +152,7 @@ const withoutBgClasses = 'border-b-transparent'
 		const scrollDownClass = `scrolled-down`
 		const scrollTopClass = `scrolled-top`
 		let lastScroll =
-			window.pageYOffset ??
+			window.scrollY ??
 			document.documentElement.scrollTop ??
 			document.body.scrollTop ??
 			0
@@ -162,7 +162,7 @@ const withoutBgClasses = 'border-b-transparent'
 			if (!header) return
 
 			const currentScroll =
-				window.pageYOffset ??
+				window.scrollY ??
 				document.documentElement.scrollTop ??
 				document.body.scrollTop ??
 				0

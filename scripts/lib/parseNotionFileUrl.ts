@@ -1,4 +1,4 @@
-import { NotionFilesType } from './getOriginalNotionInspirations'
+import type { NotionFilesType } from './getOriginalNotionInspirations'
 
 export function parseNotionFileUrl(file?: NotionFilesType) {
 	const firstFile = file?.files[0]

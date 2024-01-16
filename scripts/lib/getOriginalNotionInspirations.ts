@@ -1,5 +1,5 @@
 import type { Client } from '@notionhq/client'
-import {
+import type {
 	BlockObjectResponse,
 	ImageBlockObjectResponse,
 } from '@notionhq/client/build/src/api-endpoints'

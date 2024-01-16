@@ -31,8 +31,10 @@ function mapNotionInspirationLink(
 	}
 	const validation = inspirationSchema.safeParse(inspiration)
 	if (!validation.success) {
+		const val = validation as unknown as { error: { message: string } }
+		const error = val.error.message as string
 		console.log(
-			`Error parsing inspiration ${inspiration.id}: ${validation.error}`,
+			`Error parsing inspiration ${inspiration.id}: ${error}`,
 			JSON.stringify(inspiration, null, 2),
 		)
 	}

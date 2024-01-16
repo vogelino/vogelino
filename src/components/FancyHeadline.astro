@@ -25,12 +25,14 @@ const htmlTitle = highlight(title)
 ---
 
 <Tag
-	class={classNames(
-		className,
-		`text-4xl md:text-5xl 2xl:text-7xl`,
-		`!leading-[0.7em] text-balance pt-[0.2em]`,
-		`uppercase font-normal inline-block`,
-	)}
+	{...{
+		class: classNames(
+			className,
+			`text-4xl md:text-5xl 2xl:text-7xl`,
+			`!leading-[0.7em] text-balance pt-[0.2em]`,
+			`uppercase font-normal inline-block`,
+		),
+	}}
 >
 	<span set:html={htmlTitle} />
 	<slot />

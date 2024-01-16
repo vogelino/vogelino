@@ -18,6 +18,7 @@ const active = pathname === href.replaceAll('/', '')
 		href={href}
 		aria-label={`Header menu link: ${title} page`}
 		class={classNames(
+			className,
 			`uppercase sm:normal-case text-3xl tracking-wide`,
 			`pb-5 px-6 border-b border-grayLight`,
 			`sm:tracking-normal sm:border-none sm:py-1`,

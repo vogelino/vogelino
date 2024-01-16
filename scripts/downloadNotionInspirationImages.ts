@@ -1,10 +1,10 @@
-import { MappedNotionInspirationLinkType } from './lib/parseOriginalNotionInspirations'
+import type { MappedNotionInspirationLinkType } from './lib/parseOriginalNotionInspirations'
 import * as dotenv from 'dotenv'
 dotenv.config()
 import { doesFileExists } from './lib/doesFileExist'
 import { logEnd, logH1, logIndented, logSecondary } from './lib/logUtil'
 import { INSPIRATION_RESIZED_EXPORT_PATH } from './paths'
-import { RawNotionInspirationLinkType } from './lib/getOriginalNotionInspirations'
+import type { RawNotionInspirationLinkType } from './lib/getOriginalNotionInspirations'
 import { parseNotionFileUrl } from './lib/parseNotionFileUrl'
 import { saveAndResizeImage } from './lib/saveAndResizeImage'
 
