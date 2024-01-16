@@ -4,26 +4,41 @@ import classNames from '../../utils/classNames'
 import { INSPIRATIONS_JSON_PATH } from '../../../scripts/paths'
 import Layout from '../../layouts/Layout.astro'
 import FancyHeadline from '../../components/FancyHeadline.astro'
-import type { MappedNotionInspirationLinkType } from '../../../scripts/lib/parseOriginalNotionInspirations'
 import Pagination from '../../components/Pagination.astro'
 import { Image } from 'astro:assets'
 import type { AstroGlobImageType } from '../../utils/astroTypes'
+import {
+	inspirationSchema,
+	type InspirationType,
+} from '../../schemas/inspirations'
 
 const firstPath = 'inspirations'
 
 export async function getStaticPaths({ paginate }) {
-	const notionLinks = await loadJson<MappedNotionInspirationLinkType[]>(
+	const rawInspirations = await loadJson<InspirationType[]>(
 		INSPIRATIONS_JSON_PATH,
 	)
+	const parsedInspirations = rawInspirations.reduce((acc, inspiration) => {
+		try {
+			return [...acc, inspirationSchema.parse(inspiration)]
+		} catch (error) {
+			console.log(
+				`Error parsing inspiration:`,
+				JSON.stringify(inspiration, null, 2),
+			)
+			console.log(error)
+			return acc
+		}
+	}, [] as InspirationType[])
 
-	return paginate(notionLinks, {
+	return paginate(parsedInspirations, {
 		pageSize: 47,
 	})
 }
 
 export interface Props {
 	page: {
-		data: MappedNotionInspirationLinkType[]
+		data: InspirationType[]
 		url: {
 			current: string
 			prev: string

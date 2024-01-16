@@ -1,5 +1,5 @@
 import slugify from 'slugify'
-import { NotionImageType } from './getOriginalNotionProjects'
+import type { NotionImageType } from './getOriginalNotionInspirations'
 
 function padWithLeadingZeros(num: number, totalLength = 3) {
 	return String(num).padStart(totalLength, '0')
