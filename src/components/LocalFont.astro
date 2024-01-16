@@ -12,8 +12,8 @@ const makeFontPath = (...args) => join(appDir, 'public', 'fonts', ...args)
 			name: 'FUNGIS',
 			preload: false,
 			display: 'swap',
-			selector: '.font-sans',
 			fallback: 'sans-serif',
+			cssVariable: 'font-fungis',
 			src: [
 				{
 					style: 'normal',
@@ -49,3 +49,8 @@ const makeFontPath = (...args) => join(appDir, 'public', 'fonts', ...args)
 		},
 	]}
 />
+
+<style>
+html { font-family: var(--font-fungis) } 
+.font-sans { font-family: var(--font-fungis) } 
+</style>
