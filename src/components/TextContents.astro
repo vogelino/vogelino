@@ -1,0 +1,22 @@
+---
+import type { AstroComponentFactory } from 'astro/runtime/server/index.js'
+import ContentTitleH1 from './ContentTitleH1.astro'
+import ContentTitleH2 from './ContentTitleH2.astro'
+import ContentTitleH3 from './ContentTitleH3.astro'
+import ContentLink from './ContentLink.astro'
+
+export interface Props {
+	Content: AstroComponentFactory
+}
+
+const { Content } = Astro.props
+---
+
+<Content
+	components={{
+		h1: ContentTitleH1,
+		h2: ContentTitleH2,
+		h3: ContentTitleH3,
+		a: ContentLink,
+	}}
+/>

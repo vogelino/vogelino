@@ -1,11 +1,11 @@
 ---
 import { Image } from 'astro:assets'
-import type { MappedTechnologyPageType } from '../../scripts/lib/parseOriginalNotionProjects'
 import type { AstroGlobImageType } from '../utils/astroTypes'
 import classNames from '../utils/classNames'
+import type { CollectionEntry } from 'astro:content'
 
 export interface Props {
-	technology: MappedTechnologyPageType
+	technology: CollectionEntry<'technologies'>
 }
 
 const { technology } = Astro.props
@@ -14,15 +14,15 @@ const files = await Astro.glob<AstroGlobImageType<'webp' | 'svg'>>(
 	'/src/assets/images/technologies/*.svg',
 )
 const techLogo = files.find((file) =>
-	file.default.src.includes(`${technology.id}.`),
+	file.default.src.includes(`${technology.slug}.`),
 )?.default
 ---
 
 <a
-	href={technology.url}
+	href={technology.data.url}
 	target="_blank"
 	rel="noopener nofollower"
-	title={`${technology.name}: ${technology.description}`}
+	title={`${technology.data.name}: ${technology.data.description}`}
 	class={classNames(
 		`flex gap-1 transition-colors px-3 py-1 rounded-full`,
 		`hover-hover:hover:bg-alt dark:hover-hover:hover:bg-grayUltraLight`,
@@ -32,9 +32,9 @@ const techLogo = files.find((file) =>
 	<Image
 		class="w-6 h-6"
 		src={techLogo}
-		alt={technology.name}
+		alt={technology.data.name}
 		id={technology.id}
 	/>
 
-	<span class="mt-0.5">{technology.name}</span>
+	<span class="mt-0.5">{technology.data.name}</span>
 </a>

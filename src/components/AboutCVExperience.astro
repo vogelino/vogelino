@@ -1,10 +1,8 @@
 ---
-import type { MappedNotionCV } from '../../scripts/lib/parseOriginalNotionCV'
-import { CV_JSON_PATH } from '../../scripts/paths'
-import { loadJson } from '../../scripts/lib/loadJson'
 import CVLine from '../components/CVLine.astro'
+import { aboutFrontmatter } from '../parsedContents/about'
 
-const cv = await loadJson<MappedNotionCV>(CV_JSON_PATH)
+const cv = aboutFrontmatter.cv
 ---
 
 <div data-tab-component class="pt-16 bg-grayUltraLight relative z-10">
@@ -20,18 +18,18 @@ const cv = await loadJson<MappedNotionCV>(CV_JSON_PATH)
 		<button
 			role="tab"
 			aria-selected="false"
-			aria-controls="education-content"
-			id="education"
-		>
-			Education
-		</button>
-		<button
-			role="tab"
-			aria-selected="false"
 			aria-controls="teaching-content"
 			id="teaching"
 		>
 			Teaching
+		</button>
+		<button
+			role="tab"
+			aria-selected="false"
+			aria-controls="education-content"
+			id="education"
+		>
+			Education
 		</button>
 		<button
 			role="tab"
