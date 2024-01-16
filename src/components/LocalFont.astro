@@ -50,7 +50,7 @@ const makeFontPath = (...args) => join(appDir, 'public', 'fonts', ...args)
 	]}
 />
 
-<style>
-html { font-family: var(--font-fungis) } 
+<style is:global>
+html { font-family: var(--font-fungis) !important; } 
 .font-sans { font-family: var(--font-fungis) } 
 </style>
