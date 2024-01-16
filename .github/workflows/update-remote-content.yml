@@ -3,6 +3,7 @@ on: [push]
 jobs:
   Fetch-Notion-Inspirations:
     runs-on: ubuntu-latest
+    environment: production
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -15,7 +16,6 @@ jobs:
 
       - name: Fetch Notion Inspirations
         env:
-          NOTION_PORTFOLIO_DATABASE_ID: ${{ secrets.NOTION_PORTFOLIO_DATABASE_ID }}
           NOTION_INSPIRATION_DATABASE_ID: ${{ secrets.NOTION_INSPIRATION_DATABASE_ID }}
           NOTION_API_SECRET: ${{ secrets.NOTION_API_SECRET }}
         run: npm run downloadInspirations
