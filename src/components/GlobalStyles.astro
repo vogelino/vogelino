@@ -7,43 +7,6 @@
 	@tailwind utilities;
 
 	@layer base {
-		@font-face {
-			font-family: 'FUNGIS';
-			src: url('/fonts/fungis/fungis-regular.eot');
-			src: url('/fonts/fungis/fungis-regular.eot?#iefix')
-					format('embedded-opentype'),
-				url('/fonts/fungis/fungis-regular.woff') format('woff'),
-				url('/fonts/fungis/fungis-regular.ttf') format('truetype');
-			font-style: normal;
-			font-weight: normal;
-			text-rendering: optimizeLegibility;
-			font-display: swap;
-		}
-
-		@font-face {
-			font-family: 'FUNGIS';
-			src: url('/fonts/fungis/fungis-bold.eot');
-			src: url('/fonts/fungis/fungis-bold.eot?#iefix')
-					format('embedded-opentype'),
-				url('/fonts/fungis/fungis-bold.woff') format('woff'),
-				url('/fonts/fungis/fungis-bold.ttf') format('truetype');
-			font-style: normal;
-			font-weight: bold;
-			text-rendering: optimizeLegibility;
-			font-display: swap;
-		}
-
-		@font-face {
-			font-family: 'Lobular';
-			src: url('/fonts/lobular/lobular-regular.eot');
-			src: url('/fonts/lobular/lobular-regular.woff2') format('woff2'),
-				url('/fonts/lobular/lobular-regular.woff') format('woff');
-			font-style: normal;
-			font-weight: normal;
-			text-rendering: optimizeLegibility;
-			font-display: swap;
-		}
-
 		::-moz-selection,
 		::selection {
 			@apply text-alt bg-fg;
@@ -120,7 +83,7 @@
 			hyphenate-limit-zone: 8%;
 
 			@apply mb-5 hyphens-auto;
-			@apply first-of-type:first-letter:font-special first-of-type:first-letter:float-left;
+			@apply first-of-type:first-letter:float-left;
 			@apply first-of-type:first-letter:font-normal;
 			@apply first-of-type:first-letter:text-[3em];
 			@apply first-of-type:first-letter:leading-[0.65em];

@@ -1,0 +1,51 @@
+---
+import { join } from 'node:path'
+import { AstroFont } from 'astro-font'
+
+const appDir = process.cwd()
+const makeFontPath = (...args) => join(appDir, 'public', 'fonts', ...args)
+---
+
+<AstroFont
+	config={[
+		{
+			name: 'FUNGIS',
+			preload: false,
+			display: 'swap',
+			selector: '.font-sans',
+			fallback: 'sans-serif',
+			src: [
+				{
+					style: 'normal',
+					weight: 'normal',
+					path: makeFontPath('fungis', 'fungis-regular.woff'),
+					css: {
+						'text-rendering': 'optimizeLegibility',
+					},
+				},
+				{
+					style: 'normal',
+					weight: 'bold',
+					path: makeFontPath('fungis', 'fungis-bold.woff'),
+					css: {
+						'text-rendering': 'optimizeLegibility',
+					},
+				},
+			],
+		},
+		{
+			name: 'Lobular',
+			preload: true,
+			display: 'swap',
+			fallback: 'sans-serif',
+			selector: '.font-special',
+			src: [
+				{
+					style: 'normal',
+					weight: 'normal',
+					path: makeFontPath('lobular', 'lobular-regular.woff2'),
+				},
+			],
+		},
+	]}
+/>

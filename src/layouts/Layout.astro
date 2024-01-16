@@ -2,6 +2,7 @@
 import classNames from '../utils/classNames'
 import Footer from '../components/Footer.astro'
 import Header from '../components/Header.astro'
+import LocalFont from '../components/LocalFont.astro'
 import GlobalStyles from '../components/GlobalStyles.astro'
 import type { AstroGlobImageType } from '../utils/astroTypes'
 
@@ -60,28 +61,7 @@ const ogImageUrl = ogImage?.src
 				<meta property="og:image:height" content={String(ogImage.height)} />
 			)
 		}
-
-		<link
-			rel="preload"
-			href="/fonts/fungis/fungis-regular.woff"
-			as="font"
-			type="font/woff"
-			crossorigin
-		/>
-		<link
-			rel="preload"
-			href="/fonts/fungis/fungis-bold.woff"
-			as="font"
-			type="font/woff"
-			crossorigin
-		/>
-		<link
-			rel="preload"
-			href="/fonts/lobular/lobular-regular.woff2"
-			as="font"
-			type="font/woff2"
-			crossorigin
-		/>
+		<LocalFont />
 
 		<script is:inline>
 			function loadUserPrefTheme() {

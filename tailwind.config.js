@@ -1,23 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 const plugin = require('tailwindcss/plugin')
 
-const fallbackFonts = [
-	'ui-sans-serif',
-	'system-ui',
-	'-apple-system',
-	'BlinkMacSystemFont',
-	'Segoe UI',
-	'Roboto',
-	'Helvetica Neue',
-	'Arial',
-	'Noto Sans',
-	'sans-serif',
-	'Apple Color Emoji',
-	'Segoe UI Emoji',
-	'Segoe UI Symbol',
-	'Noto Color Emoji',
-]
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
 	darkMode: ['class', '[data-applied-mode="dark"]'],
@@ -28,9 +11,6 @@ module.exports = {
 	theme: {
 		extend: {
 			fontFamily: {
-				special: ['lobular', ...fallbackFonts],
-
-				sans: ['FUNGIS', ...fallbackFonts],
 				serif: ['serif'],
 				mono: ['monospace'],
 			},
