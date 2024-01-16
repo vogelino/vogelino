@@ -1,8 +1,7 @@
 name: Update remote content to local files and commit
 on:
   schedule:
-    # Runs every day at 00:10 Santiago de Chile time
-    - cron: '10 3 * * *'
+    - cron: '30 21 * * *'
 jobs:
   Fetch-Notion-Inspirations:
     runs-on: ubuntu-latest
