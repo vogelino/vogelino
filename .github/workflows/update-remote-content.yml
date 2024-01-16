@@ -1,5 +1,7 @@
 name: Update remote content to local files and commit
-on: [push]
+on:
+  schedule:
+    - cron: '0 0 * * *'
 jobs:
   Fetch-Notion-Inspirations:
     runs-on: ubuntu-latest
