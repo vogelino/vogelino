@@ -4,10 +4,7 @@ import { notion } from './lib/notion'
 import { createDirectoriesIfNotAlreadyThere } from './lib/createDirectoriesIfNotAlreadyThere'
 import { getOriginalNotionInspirations } from './lib/getOriginalNotionInspirations'
 import { parseOriginalNotionInspirations } from './lib/parseOriginalNotionInspirations'
-import {
-	INSPIRATIONS_JSON_PATH,
-	ORIGINAL_INSPIRATIONS_JSON_PATH,
-} from './paths'
+import { INSPIRATIONS_JSON_PATH } from './paths'
 import { writeJsonFile } from './lib/writeJsonFile'
 import { logEnd, logH1, logIndented, logSecondary } from './lib/logUtil'
 import { downloadNotionInspirationImages } from './downloadNotionInspirationImages'
@@ -20,14 +17,8 @@ async function downloadInspirations() {
 		inspirationsDatabaseId,
 		notion,
 	)
-	logIndented(`✅ Successfully downloaded raw inspirations`)
-	logSecondary([`💾 Saving raw inspirations`])
 
 	await createDirectoriesIfNotAlreadyThere('data')
-	await writeJsonFile(ORIGINAL_INSPIRATIONS_JSON_PATH, originalInspirations)
-
-	logIndented(`🛟 Saved raw inspirations ✔️`)
-	logIndented(ORIGINAL_INSPIRATIONS_JSON_PATH, 1)
 
 	logSecondary([`🧹 Parsing raw inspirations`])
 	const inspirations = await parseOriginalNotionInspirations(

@@ -1,0 +1,25 @@
+name: Update remote content to local files and commit
+on:
+  schedule:
+    - cron: '0 0 * * *'
+jobs:
+  Fetch-Notion-Inspirations:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Fetch Notion Inspirations
+        run: npm run downloadInspirations
+
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: 'chore(content): Update inspirations from Notion'
+          add: 'src/assets/data/inspirations.json'
