@@ -38,7 +38,7 @@ const makeFontPath = (...args) => join(appDir, 'public', 'fonts', ...args)
 			preload: true,
 			display: 'swap',
 			fallback: 'sans-serif',
-			selector: '.font-special',
+			cssVariable: 'font-lobular',
 			src: [
 				{
 					style: 'normal',
@@ -49,8 +49,3 @@ const makeFontPath = (...args) => join(appDir, 'public', 'fonts', ...args)
 		},
 	]}
 />
-
-<style is:global>
-html { font-family: var(--font-fungis) !important; } 
-.font-sans { font-family: var(--font-fungis) } 
-</style>

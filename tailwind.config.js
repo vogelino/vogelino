@@ -11,6 +11,8 @@ module.exports = {
 	theme: {
 		extend: {
 			fontFamily: {
+				special: ['var(--font-lobular)', ...fallbackFonts],
+				sans: ['var(--font-fungis)', ...fallbackFonts],
 				serif: ['serif'],
 				mono: ['monospace'],
 			},
