@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "TAILWIND_MODE=watch astro dev",
     "start": "astro dev",
-    "build": "npm run code-qa && astro build",
+    "build": "npm run code-qa && npm run downloadInspirations && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "type-check": "astro check && tsc --noEmit",
