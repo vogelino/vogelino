@@ -1,5 +1,25 @@
 [
   {
+    "id": "732254f9-51b1-42da-92e7-6ee9a349710e",
+    "title": "Scroll-driven Animations",
+    "url": "https://scroll-driven-animations.style/"
+  },
+  {
+    "id": "b3b84195-7d98-476e-ac78-562f3c3ff7da",
+    "title": "View Timeline Ranges",
+    "url": "https://scroll-driven-animations.style/tools/view-timeline/ranges"
+  },
+  {
+    "id": "92e87137-74e4-4e01-919f-92b97eabe711",
+    "title": "Mobbin",
+    "url": "https://mobbin.com"
+  },
+  {
+    "id": "98e229aa-088c-4a73-b24f-b8c7de435ad9",
+    "title": "React Email",
+    "url": "https://react.email/"
+  },
+  {
     "id": "152b352d-588c-4803-b71b-22931b1024d8",
     "title": "ikeryou.jp - Creative Coding",
     "url": "ikeryou.jp"
