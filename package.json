@@ -48,6 +48,7 @@
   },
   "dependencies": {
     "@astrojs/check": "0.4.1",
+    "@astrojs/rss": "4.0.4",
     "@splidejs/splide": "4.1.4",
     "@vercel/analytics": "1.0.1",
     "@vercel/speed-insights": "1.0.1",

@@ -21,6 +21,7 @@ const projectSchema = z.object({
 	description: z.string(),
 	type: z.string(),
 	year: z.number(),
+	pubDate: z.coerce.date(),
 	url: z.string().url().nullable().optional(),
 	collaborators: z.array(reference('collaborators')).default([]),
 	colleagues: z.array(reference('collaborators')).default([]),
