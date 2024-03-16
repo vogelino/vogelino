@@ -1,5 +1,35 @@
 [
   {
+    "id": "4d7577f9-8160-44e3-a3ba-25a3dbaf9cf5",
+    "title": "Fundamentals of Data Visualisation",
+    "url": "https://clauswilke.com/dataviz/index.html"
+  },
+  {
+    "id": "3c19df2d-23e9-4ca3-b09e-66afcaaf4bb8",
+    "title": "Functional UI Kit",
+    "url": "https://functional-ui-kit.com/"
+  },
+  {
+    "id": "0fd4b3c4-3f3d-423e-8808-6de355e3efc8",
+    "title": "Tempo.js",
+    "url": "https://tempo.formkit.com/"
+  },
+  {
+    "id": "86b9ca64-2245-46ac-8464-7bc81b32e2db",
+    "title": "IESSI",
+    "url": "https://iessi.fr/"
+  },
+  {
+    "id": "b25394d1-6215-4348-8316-8ab880731897",
+    "title": "iwantmyname",
+    "url": "https://iwantmyname.com/"
+  },
+  {
+    "id": "b7291cb3-eb06-4c79-97ee-329c1f862559",
+    "title": "History of Icons",
+    "url": "https://historyoficons.com/"
+  },
+  {
     "id": "887607bf-c05b-44f5-be6f-82870c76185c",
     "title": "page-speed.dev",
     "url": "https://page-speed.dev/vogelino.com"
