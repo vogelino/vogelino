@@ -21,9 +21,8 @@ async function downloadInspirations() {
 	await createDirectoriesIfNotAlreadyThere('data')
 
 	logSecondary([`🧹 Parsing raw inspirations`])
-	const inspirations = await parseOriginalNotionInspirations(
-		originalInspirations,
-	)
+	const inspirations =
+		await parseOriginalNotionInspirations(originalInspirations)
 	logIndented(`✅ Successfully parsed raw inspirations`)
 
 	logSecondary([`💾 Saving ${inspirations.length} parsed inspirations`])
