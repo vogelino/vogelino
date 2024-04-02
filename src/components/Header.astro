@@ -14,6 +14,7 @@ const { withBg = true } = Astro.props
 
 const withBgClasses = 'bg-bg border-grayMed'
 const withoutBgClasses = 'border-b-transparent'
+const availableForHire = import.meta.env.AVAILABLE_FOR_HIRE === 'true'
 ---
 
 <header
@@ -24,8 +25,9 @@ const withoutBgClasses = 'border-b-transparent'
 		`text-fg px-10 max-w-[1440px] min-[1440px]:border-x`,
 		`min-[1440px]:border-x-grayMed border-b`,
 		`flex justify-between items-center h-[101px]`,
-		`pt-8 scrolled-top`,
+		`scrolled-top`,
 		`transition motion-reduce:transition-none`,
+		availableForHire && `pt-8`,
 		withBg ? withBgClasses : withoutBgClasses,
 	)}
 	data-withBg={`${withBg}`}
@@ -73,7 +75,7 @@ const withoutBgClasses = 'border-b-transparent'
 			</li>
 		</ul>
 	</nav>
-	<AvailableForHireBanner />
+	{import.meta.env.AVAILABLE_FOR_HIRE === 'true' && <AvailableForHireBanner />}
 </header>
 
 <script>
