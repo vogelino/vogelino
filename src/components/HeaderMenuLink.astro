@@ -7,13 +7,17 @@ export interface Props {
 	className?: string
 }
 
-const { href, title, className } = Astro.props
+const { href, title, className, ...props } = Astro.props
 
 const pathname = new URL(Astro.request.url).pathname.replaceAll('/', '')
 const active = pathname === href.replaceAll('/', '')
 ---
 
-<li class="inline-block w-full sm:w-auto" aria-label=`Main menu Link: ${title}`>
+<li
+	class="inline-block w-full sm:w-auto"
+	aria-label=`Main menu Link: ${title}`
+	{...props}
+>
 	<a
 		href={href}
 		aria-label={`Header menu link: ${title} page`}

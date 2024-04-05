@@ -105,6 +105,7 @@ const { project } = Astro.props
 		lightbox.init()
 	}
 	setupSlider()
+	document.addEventListener('astro:after-swap', setupSlider)
 </script>
 
 <style is:global>

@@ -29,7 +29,7 @@ const ogImageUrl = ogImage?.src
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" transition:name="html">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -85,17 +85,20 @@ const ogImageUrl = ogImage?.src
 		/>
 
 		<script is:inline>
-			function loadUserPrefTheme() {
+			function loadUserPrefTheme(doc) {
 				const userPref = localStorage.getItem('theme')
 				const userPreference =
 					userPref ||
 					(matchMedia('(prefers-color-scheme: dark)').matches
 						? 'dark'
 						: 'light')
-				document.documentElement.dataset.appliedMode = userPreference
+				doc.documentElement.dataset.appliedMode = userPreference
 				userPref && localStorage.setItem('theme', userPreference)
 			}
-			loadUserPrefTheme()
+			loadUserPrefTheme(document)
+			document.addEventListener('astro:before-swap', ({ newDocument }) =>
+				loadUserPrefTheme(newDocument),
+			)
 		</script>
 		<ViewTransitions />
 	</head>

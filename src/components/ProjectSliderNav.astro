@@ -69,4 +69,5 @@ import ArrowUp from './icons/ArrowUp.astro'
 		})
 	}
 	setupProjectSliderNav()
+	document.addEventListener('astro:after-swap', setupProjectSliderNav)
 </script>

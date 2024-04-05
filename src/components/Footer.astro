@@ -9,6 +9,7 @@ const year = String(new Date().getFullYear())
 <footer
 	class="pt-6 pb-5 border-t border-grayMed bg-bg relative"
 	aria-label="Main page footer"
+	transition:name="footer"
 >
 	<section
 		class={classNames(
@@ -42,4 +43,5 @@ const year = String(new Date().getFullYear())
 		})
 	}
 	setupScrollToTopBtn()
+	document.addEventListener('astro:after-swap', setupScrollToTopBtn)
 </script>

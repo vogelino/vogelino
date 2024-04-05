@@ -34,7 +34,7 @@ const availableForHire = import.meta.env.AVAILABLE_FOR_HIRE === 'true'
 	data-withBgClasses={withBgClasses}
 	data-withoutBgClasses={withoutBgClasses}
 >
-	<LogoInteractive isMinimal={!withBg} />
+	<LogoInteractive isMinimal={!withBg} transition:name="header-logo" />
 	<button
 		aria-label="Hide the main navitation menu"
 		id="burger-menu"
@@ -58,11 +58,24 @@ const availableForHire = import.meta.env.AVAILABLE_FOR_HIRE === 'true'
 			class={classNames(`flex flex-col md:flex-row md:gap-2 items-center`)}
 			aria-label="Main menu items"
 		>
-			<HeaderMenuLink href="/" title="Projects" />
-			<HeaderMenuLink href="/about" title="About" />
-			<HeaderMenuLink href="/inspirations" title="Cool sites" />
+			<HeaderMenuLink
+				href="/"
+				title="Projects"
+				transition:name="header-project-link"
+			/>
+			<HeaderMenuLink
+				href="/about"
+				title="About"
+				transition:name="header-about-link"
+			/>
+			<HeaderMenuLink
+				href="/inspirations"
+				title="Cool sites"
+				transition:name="header-sites-link"
+			/>
 			<li
 				aria-label="Main menu link: Other actions"
+				transition:name="header-theme-toggle"
 				class={classNames(
 					`w-full md:w-auto py-5 md:p-0 text-grayDark`,
 					`flex justify-between items-center pr-5 md:pr-0`,
@@ -79,11 +92,11 @@ const availableForHire = import.meta.env.AVAILABLE_FOR_HIRE === 'true'
 </header>
 
 <script>
-	function setupHamburgerMenuUpdater() {
-		const burgerMenu = document.getElementById('burger-menu')
+	function setupHamburgerMenuUpdater(doc: Document) {
+		const burgerMenu = doc.getElementById('burger-menu')
 		burgerMenu.addEventListener('click', () => {
-			const burgerMenu = document.getElementById('burger-menu')
-			const menu = document.getElementById('menu')
+			const burgerMenu = doc.getElementById('burger-menu')
+			const menu = doc.getElementById('menu')
 			burgerMenu.classList.toggle('close')
 			menu.classList.toggle('opacity-0')
 			menu.classList.toggle('pointer-events-none')
@@ -95,11 +108,11 @@ const availableForHire = import.meta.env.AVAILABLE_FOR_HIRE === 'true'
 		})
 	}
 
-	function setupMenuItemsVisibilityUpdater() {
+	function setupMenuItemsVisibilityUpdater(doc: Document) {
 		const MENU_BREAKPOINT = 768
 		const updateMenuItemsVisibility = () => {
-			const burgerMenu = document.getElementById('burger-menu')
-			const socialIcons = document.getElementById('social-icons')
+			const burgerMenu = doc.getElementById('burger-menu')
+			const socialIcons = doc.getElementById('social-icons')
 			if (window.innerWidth <= MENU_BREAKPOINT) {
 				burgerMenu.setAttribute('aria-hidden', 'false')
 				socialIcons.setAttribute('aria-hidden', 'false')
@@ -116,13 +129,13 @@ const availableForHire = import.meta.env.AVAILABLE_FOR_HIRE === 'true'
 
 		updateMenuItemsVisibility()
 	}
-	function setupHeaderBgUpdater() {
+	function setupHeaderBgUpdater(doc: Document) {
 		function updateHeaderBg() {
-			const header: HTMLElement = document.querySelector(
+			const header: HTMLElement = doc.querySelector(
 				'header[aria-label="Main header"]',
 			)
 			if (!header) return
-			const burgerMenu = document.getElementById('burger-menu')
+			const burgerMenu = doc.getElementById('burger-menu')
 			const withBg = header.dataset.withbg
 
 			const withBgClassString = header.dataset.withbgclasses || ''
@@ -133,8 +146,8 @@ const availableForHire = import.meta.env.AVAILABLE_FOR_HIRE === 'true'
 			const isOpened = !!burgerMenu.classList.contains('close')
 			const scrollOffset =
 				window.scrollY ??
-				document.documentElement.scrollTop ??
-				document.body.scrollTop ??
+				doc.documentElement.scrollTop ??
+				doc.body.scrollTop ??
 				0
 
 			if (withBg !== 'false' || scrollOffset >= 50 || isOpened) {
@@ -149,24 +162,21 @@ const availableForHire = import.meta.env.AVAILABLE_FOR_HIRE === 'true'
 		}
 		updateHeaderBg()
 	}
-	function setupMenuScrolledStateUpdater() {
+	function setupMenuScrolledStateUpdater(doc: Document) {
 		const scrollUpClass = [`scrolled-up`, `logo-visible`]
 		const scrollDownClass = `scrolled-down`
 		const scrollTopClass = `scrolled-top`
 		let lastScroll =
-			window.scrollY ??
-			document.documentElement.scrollTop ??
-			document.body.scrollTop ??
-			0
+			window.scrollY ?? doc.documentElement.scrollTop ?? doc.body.scrollTop ?? 0
 
 		function updateScrollUpAndDownVisibility() {
-			const header = document.querySelector('header[aria-label="Main header"]')
+			const header = doc.querySelector('header[aria-label="Main header"]')
 			if (!header) return
 
 			const currentScroll =
 				window.scrollY ??
-				document.documentElement.scrollTop ??
-				document.body.scrollTop ??
+				doc.documentElement.scrollTop ??
+				doc.body.scrollTop ??
 				0
 
 			if (currentScroll <= 69) {
@@ -202,43 +212,44 @@ const availableForHire = import.meta.env.AVAILABLE_FOR_HIRE === 'true'
 		updateScrollUpAndDownVisibility()
 	}
 
-	function setupThemeUpdater() {
-		const themeToggler = document.getElementById('theme-toggle')
+	function setupThemeUpdater(doc: Document) {
+		const themeToggler = doc.getElementById('theme-toggle')
 		const darkModePreference = window.matchMedia('(prefers-color-scheme: dark)')
 		const initialTheme = localStorage.getItem('theme')
-		updateToggler(initialTheme)
+		updateToggler(initialTheme, doc)
 
 		themeToggler.addEventListener('click', () => {
-			const themeToggler = document.getElementById('theme-toggle')
+			const themeToggler = doc.getElementById('theme-toggle')
 			const checked = themeToggler.getAttribute('aria-checked') === 'true'
 			let newUserPref = checked ? 'light' : 'dark'
-			updateToggler(newUserPref)
+			updateToggler(newUserPref, doc)
 		})
 
 		darkModePreference.addEventListener('change', (e) =>
-			updateToggler(e.matches ? 'dark' : 'light'),
+			updateToggler(e.matches ? 'dark' : 'light', doc),
 		)
 	}
 
-	function updateToggler(theme) {
-		const themeToggler = document.getElementById('theme-toggle')
+	function updateToggler(theme: string, doc: Document) {
+		const themeToggler = doc.getElementById('theme-toggle')
 		const darkModePreference = window.matchMedia('(prefers-color-scheme: dark)')
 		const finalTheme = theme || (darkModePreference.matches ? 'dark' : 'light')
 		const isDark = finalTheme === 'dark'
-		document.documentElement.dataset.appliedMode = finalTheme
+		doc.documentElement.dataset.appliedMode = finalTheme
 		theme && localStorage.setItem('theme', theme)
 
 		themeToggler.setAttribute('aria-checked', isDark.toString())
 	}
 
-	function setupHeader() {
-		setupHamburgerMenuUpdater()
-		setupMenuItemsVisibilityUpdater()
-		setupHeaderBgUpdater()
-		setupMenuScrolledStateUpdater()
-		setupThemeUpdater()
+	function setupHeader(doc: Document) {
+		setupHamburgerMenuUpdater(doc)
+		setupMenuItemsVisibilityUpdater(doc)
+		setupHeaderBgUpdater(doc)
+		setupMenuScrolledStateUpdater(doc)
+		setupThemeUpdater(doc)
 	}
-	window.addEventListener('load', setupHeader)
+	window.addEventListener('load', () => setupHeader(document))
+	document.addEventListener('astro:after-swap', (ev) => setupHeader(document))
 </script>
 
 <style>

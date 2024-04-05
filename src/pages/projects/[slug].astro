@@ -164,7 +164,10 @@ const { Content } = await project.render()
 			lastScrollY = scrollY
 		}
 	}
-	window.addEventListener('scroll', updateScrollOffsetCSSVariable, {
-		passive: true,
-	})
+	function setupScrollOffsetCSSVariable() {
+		window.addEventListener('scroll', updateScrollOffsetCSSVariable, {
+			passive: true,
+		})
+	}
+	setupScrollOffsetCSSVariable()
 </script>

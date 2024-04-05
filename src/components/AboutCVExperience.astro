@@ -234,4 +234,5 @@ const cv = aboutFrontmatter.cv
 		bindEventListeners()
 	}
 	setupTabs()
+	document.addEventListener('astro:after-swap', setupTabs)
 </script>
