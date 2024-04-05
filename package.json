@@ -16,7 +16,9 @@
     "code-qa": "npm run type-check && npm run format && npm run lint-fix"
   },
   "devDependencies": {
+    "@astrojs/check": "0.4.1",
     "@astrojs/mdx": "2.1.1",
+    "@astrojs/rss": "4.0.4",
     "@astrojs/sitemap": "3.0.5",
     "@astrojs/tailwind": "5.1.0",
     "@astrojs/ts-plugin": "1.4.0",
@@ -46,14 +48,13 @@
     "tailwindcss-touch": "1.0.1",
     "ts-node": "10.8.0",
     "typescript": "5.2.2",
-    "zod": "3.22.4",
-    "@astrojs/check": "0.4.1",
-    "@astrojs/rss": "4.0.4"
+    "zod": "3.22.4"
   },
   "dependencies": {
-    "photoswipe": "5.3.8",
+    "@playform/inline": "0.0.1",
     "@splidejs/splide": "4.1.4",
     "@vercel/analytics": "1.0.1",
-    "@vercel/speed-insights": "1.0.1"
+    "@vercel/speed-insights": "1.0.1",
+    "photoswipe": "5.3.8"
   }
 }
