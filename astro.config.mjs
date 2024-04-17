@@ -15,12 +15,12 @@ export default defineConfig({
 		sentry({
 			dsn: process.env.SENTRY_DSN,
 			sourceMapsUploadOptions: {
-				project: 'vogelino',
+				project: 'vogelino-portfolio',
 				authToken: process.env.SENTRY_AUTH_TOKEN,
 			},
-			telemetry: false,
 		}),
 	],
+	telemetry: false,
 	prefetch: true,
 	site: `https://vogelino.com`,
 })
