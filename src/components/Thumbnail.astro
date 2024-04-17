@@ -1,8 +1,8 @@
 ---
-import classNames from '../utils/classNames'
 import { Image } from 'astro:assets'
-import type { AstroGlobImageType } from '../utils/astroTypes'
 import type { CollectionEntry } from 'astro:content'
+import type { AstroGlobImageType } from '../utils/astroTypes'
+import classNames from '../utils/classNames'
 
 export interface Props {
 	project: CollectionEntry<'projects'>
@@ -10,20 +10,27 @@ export interface Props {
 	className?: string
 }
 const { project, rotationClass, className } = Astro.props
-const slug = project.slug
+const slug = project.slug.toLowerCase().trim()
 const { title, nameShort, highlighted, type, year } = project.data
 
 const projectThumbnail = await Astro.glob<AstroGlobImageType<'webp'>>(
 	`/src/assets/images/thumbnails/*.webp`,
 ).then(
-	(files) => files.find((file) => file.default.src.includes(slug))?.default,
+	(files) =>
+		files.find((file) => file.default.src.trim().toLowerCase().includes(slug))
+			?.default,
 )
 
 const projectIllustration = await Astro.glob<AstroGlobImageType<'svg'>>(
 	`/src/assets/images/illustrations/*.svg`,
 ).then(
-	(files) => files.find((file) => file.default.src.includes(slug))?.default,
+	(files) =>
+		files.find((file) => file.default.src.trim().toLowerCase().includes(slug))
+			?.default,
 )
+
+if (slug === 'fast-assembled-furniture')
+	console.log(projectThumbnail, projectIllustration)
 ---
 
 {
