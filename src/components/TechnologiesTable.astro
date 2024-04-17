@@ -38,7 +38,7 @@ const technologiesMap = project.data.technologies.reduce((acc, item) => {
 						<span class="px-2 bg-bg">{key}</span>
 					</strong>
 					<ul class="flex flex-wrap gap-0 @md:gap-1">
-						{technologiesMap.get(key).map((tech) => (
+						{[...new Set(technologiesMap.get(key))].map((tech) => (
 							<li>
 								<TechnologyItem technology={tech} />
 							</li>
