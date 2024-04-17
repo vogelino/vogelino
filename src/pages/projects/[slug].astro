@@ -11,6 +11,9 @@ import SeeOneMoreStroke from '../../components/SeeOneMoreStroke.astro'
 import SeeOneMoreFill from '../../components/SeeOneMoreFill.astro'
 import TechnologiesTable from '../../components/TechnologiesTable.astro'
 import { getCollection, type CollectionEntry } from 'astro:content'
+import Link from '../../components/icons/Link.astro'
+import RoundedButton from '../../components/RoundedButton.astro'
+import GitHub from '../../components/icons/GitHub.astro'
 
 export async function getStaticPaths() {
 	const notionProjects = (await getCollection('projects')).sort(
@@ -69,7 +72,10 @@ const { Content } = await project.render()
 					<TextContents Content={Content} />
 				</div>
 				<aside
-					class="@container/collabs xl:pt-10 relative"
+					class={classNames(
+						'@container/collabs relative',
+						!project.data.url && !project.data.repo && 'xl:pt-10',
+					)}
 					aria-label="Project collaborators"
 				>
 					<div
@@ -79,6 +85,34 @@ const { Content } = await project.render()
 							`text-base @lg/collabs:text-xl`,
 						)}
 					>
+						{
+							(project.data.url ||
+								project.data.repo ||
+								project.data.links.length > 0) && (
+								<div
+									class={classNames(
+										'flex flex-wrap gap-x-4 gap-y-2 pb-8 mb-8 xl:-mt-8',
+										'border-b border-grayLight col-span-full',
+									)}
+								>
+									<RoundedButton url={project.data.url} icon={Link}>
+										Launch
+									</RoundedButton>
+									<RoundedButton
+										url={project.data.repo}
+										icon={GitHub}
+										variant="secondary"
+									>
+										Code
+									</RoundedButton>
+									{project.data.links.map(({ url, label }) => (
+										<RoundedButton url={url} icon={Link} variant="secondary">
+											{label}
+										</RoundedButton>
+									))}
+								</div>
+							)
+						}
 						<CollaboratorsGroup
 							collaborators={project.data.clients}
 							title={`Made for`}

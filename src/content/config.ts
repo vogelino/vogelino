@@ -23,6 +23,16 @@ const projectSchema = z.object({
 	year: z.number(),
 	pubDate: z.coerce.date(),
 	url: z.string().url().nullable().optional(),
+	repo: z.string().url().nullable().optional(),
+	links: z
+		.array(
+			z.object({
+				url: z.string(),
+				label: z.string(),
+			}),
+		)
+		.optional()
+		.default([]),
 	collaborators: z.array(reference('collaborators')).default([]),
 	colleagues: z.array(reference('collaborators')).default([]),
 	supervisors: z.array(reference('collaborators')).default([]),
