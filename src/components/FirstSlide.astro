@@ -137,6 +137,7 @@ const projectIllustration = await Astro.glob<AstroGlobImageType<'svg'>>(
 						<Image
 							src={projectThumbnail}
 							alt={`Thumbnail for the project "${project.data.title}"`}
+							loading="eager"
 						/>
 					</div>
 					<Image
@@ -149,6 +150,7 @@ const projectIllustration = await Astro.glob<AstroGlobImageType<'svg'>>(
 							`pointer-events-none scale-[0.6] xs:scale-75 sm:scale-100`,
 							`origin-bottom-left top-full -translate-y-full`,
 						)}
+						loading="eager"
 					/>
 				</div>
 			</div>
