@@ -5,12 +5,12 @@ import Layout from '../layouts/Layout.astro'
 
 <Layout title="Sentry Test" slug="sentry-test">
 	<div class="w-full h-screen flex justify-center items-center">
-		<RoundedButton url="#" id="button">Generate Error</RoundedButton>
+		<RoundedButton url="#" id="sentry-button">Generate Error</RoundedButton>
 	</div>
 </Layout>
 
-<script>
-	document.getElementById('button')?.addEventListener('click', (evt) => {
+<script is:inline>
+	document.getElementById('sentry-button')?.addEventListener('click', (evt) => {
 		evt.preventDefault()
 		throw new Error('Oh No! A Sentry Error')
 	})
