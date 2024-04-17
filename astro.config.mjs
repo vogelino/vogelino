@@ -20,7 +20,6 @@ export default defineConfig({
 			},
 		}),
 	],
-	telemetry: false,
 	prefetch: true,
 	site: `https://vogelino.com`,
 })

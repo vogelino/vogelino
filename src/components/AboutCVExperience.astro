@@ -5,7 +5,11 @@ import { aboutFrontmatter } from '../parsedContents/about'
 const cv = aboutFrontmatter.cv
 ---
 
-<div data-tab-component class="pt-16 bg-grayUltraLight relative z-10">
+<div
+	id="tab-component"
+	class="pt-16 bg-grayUltraLight relative z-10"
+	transition:persist
+>
 	<div role="tablist" aria-label="Curriculum tabbed sections" class="flex">
 		<button
 			role="tab"
@@ -184,7 +188,7 @@ const cv = aboutFrontmatter.cv
 <script>
 	function setupTabs() {
 		const settings = {
-			container: '[data-tab-component]',
+			container: '#tab-component',
 			trigger: '[role="tab"]',
 			content: '[role="tabpanel"]',
 		}
