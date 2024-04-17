@@ -18,6 +18,7 @@ export default defineConfig({
 				project: 'vogelino',
 				authToken: process.env.SENTRY_AUTH_TOKEN,
 			},
+			telemetry: false,
 		}),
 	],
 	prefetch: true,

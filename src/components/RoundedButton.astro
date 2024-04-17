@@ -1,8 +1,9 @@
 ---
 import type { JSX } from 'astro/jsx-runtime'
+import type { HTMLAttributes } from 'astro/types'
 import classNames from '../utils/classNames'
 
-export interface Props {
+export interface Props extends HTMLAttributes<'button'> {
 	url?: string
 	class?: string
 	icon?: JSX.Element
