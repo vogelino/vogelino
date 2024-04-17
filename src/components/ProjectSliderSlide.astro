@@ -1,7 +1,7 @@
 ---
+import { Image } from 'astro:assets'
 import { type AstroGlobImageType } from '../utils/astroTypes'
 import classNames from '../utils/classNames'
-import { Image } from 'astro:assets'
 
 export interface Props {
 	projectName: string
@@ -49,6 +49,7 @@ const sliderImage = await Astro.glob<AstroGlobImageType<'webp' | 'svg'>>(
 					alt={`Screenshot of the project ${projectName}`}
 					class="splide__img"
 					loading="eager"
+					quality={100}
 				/>
 			</a>
 		</li>
