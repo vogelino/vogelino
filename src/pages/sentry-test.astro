@@ -3,14 +3,15 @@ import RoundedButton from '../components/RoundedButton.astro'
 import Layout from '../layouts/Layout.astro'
 ---
 
-<Layout title="Welcome" slug="home">
-	<div class="w-full h-full flex justify-center items-center">
-		<RoundedButton id="button">Generate Error</RoundedButton>
+<Layout title="Sentry Test" slug="sentry-test">
+	<div class="w-full h-screen flex justify-center items-center">
+		<RoundedButton url="#" id="button">Generate Error</RoundedButton>
 	</div>
 </Layout>
 
 <script>
-	document.getElementById('button')?.addEventListener('click', () => {
+	document.getElementById('button')?.addEventListener('click', (evt) => {
+		evt.preventDefault()
 		throw new Error('Oh No! A Sentry Error')
 	})
 </script>
