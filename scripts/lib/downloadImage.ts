@@ -1,5 +1,5 @@
-import { contentTypeToImgExtension } from './contentTypeToImgExtension'
 import fetch from 'node-fetch'
+import { contentTypeToImgExtension } from './contentTypeToImgExtension'
 import { logIndented } from './logUtil'
 
 export const downloadImage = async (
@@ -12,7 +12,6 @@ export const downloadImage = async (
 	setTimeout(() => {
 		if (timeoutExceeded) throw new Error(`Timout exceeded for file "${url}"`)
 	}, 10000)
-	console.log(url)
 	const response = await fetch(url)
 	timeoutExceeded = false
 	const contentType = response.headers.get('content-type')
