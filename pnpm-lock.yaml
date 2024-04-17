@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@playform/inline':
-    specifier: 0.0.1
-    version: 0.0.1
+    specifier: 0.0.2
+    version: 0.0.2
   '@sentry/astro':
     specifier: ^7.110.1
     version: 7.110.1(astro@4.6.2)
@@ -1333,8 +1333,8 @@ packages:
     engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
     dev: true
 
-  /@playform/inline@0.0.1:
-    resolution: {integrity: sha512-eY0aYenTHqueSxmvl2SSinvAmSLwyWFn12/zHjhzVHgaI8IlVL+0BOO+0B7hGLMioAPPztZeyUm/OuYeTG6KQg==}
+  /@playform/inline@0.0.2:
+    resolution: {integrity: sha512-2+h7t4mydMVJjP+U8PZhFz7iUlCqf/oGZX/Y5hUO72WeP6YD76MxkRSMCLJjXbqQkIQ2e5N3irbhz0JKKzMBTQ==}
     dependencies:
       '@playform/pipe': 0.0.2
       critters: 0.0.22
@@ -1801,6 +1801,7 @@ packages:
     resolution: {integrity: sha512-E+Fa9z3wSQpzgYQdYmme5X3OTuejnnTx88A6p6vkkJosR3KBz+HpE3kqNm98VE6cfLFcISx7zW7MsJkH6KwbTw==}
     dependencies:
       undici-types: 5.26.5
+    dev: false
 
   /@types/node@20.12.7:
     resolution: {integrity: sha512-wq0cICSkRLVaf3UGLMGItu/PtdY7oaXaI/RVU+xliKVOtRna3PRY57ZDfztpDL0n11vfymMUnXv8QwYCO7L1wg==}
@@ -1810,7 +1811,7 @@ packages:
   /@types/sax@1.2.7:
     resolution: {integrity: sha512-rO73L89PJxeYM3s3pPPjiPgVVcymqU490g0YO5n5By0k2Erzj6tay/4lr1CHAAU4JyOWd1rpQ8bCf6cZfHU96A==}
     dependencies:
-      '@types/node': 20.12.4
+      '@types/node': 17.0.45
     dev: true
 
   /@types/semver@7.5.6:
