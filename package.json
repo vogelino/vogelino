@@ -52,6 +52,7 @@
   },
   "dependencies": {
     "@playform/inline": "0.0.1",
+    "@sentry/astro": "^7.110.1",
     "@splidejs/splide": "4.1.4",
     "@vercel/analytics": "1.0.1",
     "@vercel/speed-insights": "1.0.1",
