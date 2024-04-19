@@ -1,4 +1,3 @@
-import type { VercelRequest } from "@vercel/node";
 import fetch from "node-fetch";
 import zod from "zod";
 
@@ -7,21 +6,20 @@ const requestBodySchema = zod.object({
 });
 type RequestBodySchemaType = zod.infer<typeof requestBodySchema>;
 
-export async function POST(req: VercelRequest) {
+export async function POST(req: Request) {
   let reqBody: RequestBodySchemaType | undefined;
   try {
     console.log("Parsing reqBody", JSON.stringify(req.body, null, 2));
-    // @ts-ignore
-    reqBody = JSON.parse(await req.json());
+    reqBody = await req.json();
     reqBody = requestBodySchema.parse(reqBody);
   } catch (err) {
     const { error, status } = getError(err, 400);
     const errorMessage = `Error parsing request body: ${error.message}.
     Body received:
-    ${JSON.stringify(reqBody, null, 2)}`;
+    ${JSON.stringify(await req.json(), null, 2)}`;
     return new Response(errorMessage, { status });
   }
-  const authBearerToken = req.headers.authorization;
+  const authBearerToken = req.headers.get("Authorization");
   if (!authBearerToken) {
     return new Response("Unauthorized", { status: 401 });
   }
