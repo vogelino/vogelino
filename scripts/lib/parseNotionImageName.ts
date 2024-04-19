@@ -8,7 +8,7 @@ function padWithLeadingZeros(num: number, totalLength = 3) {
 export default function parseNotionImageName(
 	notionImage: NotionImageType,
 	idx: number,
-	slug: string,
+	slug: string
 ) {
 	const paddedIdx = padWithLeadingZeros(+idx + 1, 3)
 	const { name } = notionImage

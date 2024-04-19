@@ -1,4 +1,5 @@
 import rss from '@astrojs/rss'
+import type { APIContext } from 'astro'
 import { getCollection } from 'astro:content'
 
 function stripMarkdown(str: string) {
@@ -9,7 +10,7 @@ function stripMarkdown(str: string) {
 		.replaceAll(/&.*?;/gi, '')
 }
 
-export async function GET(context) {
+export async function GET(context: APIContext) {
 	const projects = (await getCollection('projects')).map((p) => ({
 		title: `New project: ${stripMarkdown(p.data.title)}!`,
 		pubDate: p.data.pubDate,
@@ -29,8 +30,7 @@ export async function GET(context) {
 				link: '/inspirations',
 			},
 			{
-				title:
-					"Website release! Lucas Vogel's multimedia portfolio is out there!",
+				title: "Website release! Lucas Vogel's multimedia portfolio is out there!",
 				description:
 					'I am happy to announce the release of my new portfolio website. It is a multimedia portfolio that showcases my work in interface design and development. I hope you enjoy it!',
 				pubDate: new Date('2023-12-01'),

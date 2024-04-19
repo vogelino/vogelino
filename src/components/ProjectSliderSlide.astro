@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets'
-import { type AstroGlobImageType } from '../utils/astroTypes'
+import type { AstroGlobImageType } from '../utils/astroTypes'
 import classNames from '../utils/classNames'
 
 export interface Props {
@@ -11,11 +11,8 @@ export interface Props {
 const { projectName, imageUrl } = Astro.props
 
 const sliderImage = await Astro.glob<AstroGlobImageType<'webp' | 'svg'>>(
-	'/src/assets/images/projects-media/*.{webp,svg}',
-).then(
-	(images) =>
-		images.find((image) => image.default.src.includes(imageUrl))?.default,
-)
+	'/src/assets/images/projects-media/*.{webp,svg}'
+).then((images) => images.find((image) => image.default.src.includes(imageUrl))?.default)
 ---
 
 {

@@ -29,7 +29,7 @@ const projectSchema = z.object({
 			z.object({
 				url: z.string(),
 				label: z.string(),
-			}),
+			})
 		)
 		.optional()
 		.default([]),

@@ -3,7 +3,7 @@ import { contentTypeToImgExtension } from './contentTypeToImgExtension'
 import { logIndented } from './logUtil'
 
 export const downloadImage = async (
-	url: string,
+	url: string
 ): Promise<{
 	imageExt: string
 	data: NodeJS.ReadableStream

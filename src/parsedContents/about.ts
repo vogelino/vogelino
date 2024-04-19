@@ -19,7 +19,7 @@ const aboutSchema = z.object({
 		z.object({
 			label: z.string(),
 			code: z.string().length(2),
-		}),
+		})
 	),
 	cv: z.object({
 		work: z.array(cvLineSchema),

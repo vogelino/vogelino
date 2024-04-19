@@ -12,18 +12,14 @@ import { downloadNotionInspirationImages } from './downloadNotionInspirationImag
 const inspirationsDatabaseId = process.env.NOTION_INSPIRATION_DATABASE_ID || ''
 
 async function downloadInspirations() {
-	logH1(`Downloading inspirations from Notion`)
-	const originalInspirations = await getOriginalNotionInspirations(
-		inspirationsDatabaseId,
-		notion,
-	)
+	logH1('Downloading inspirations from Notion')
+	const originalInspirations = await getOriginalNotionInspirations(inspirationsDatabaseId, notion)
 
 	await createDirectoriesIfNotAlreadyThere('data')
 
-	logSecondary([`🧹 Parsing raw inspirations`])
-	const inspirations =
-		await parseOriginalNotionInspirations(originalInspirations)
-	logIndented(`✅ Successfully parsed raw inspirations`)
+	logSecondary(['🧹 Parsing raw inspirations'])
+	const inspirations = await parseOriginalNotionInspirations(originalInspirations)
+	logIndented('✅ Successfully parsed raw inspirations')
 
 	logSecondary([`💾 Saving ${inspirations.length} parsed inspirations`])
 	await Promise.all([writeJsonFile(INSPIRATIONS_JSON_PATH, inspirations)])

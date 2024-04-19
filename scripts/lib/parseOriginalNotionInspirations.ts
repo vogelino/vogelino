@@ -1,15 +1,14 @@
 import { inspirationSchema } from '../../src/schemas/inspirations'
 import type { RawNotionInspirationLinkType } from './getOriginalNotionInspirations'
 
-export interface MappedNotionInspirationLinkType
-	extends Record<string, unknown> {
+export interface MappedNotionInspirationLinkType extends Record<string, unknown> {
 	id: string
 	title: string
 	url: string
 }
 
 function mapNotionInspirationLink(
-	rawLink: RawNotionInspirationLinkType,
+	rawLink: RawNotionInspirationLinkType
 ): MappedNotionInspirationLinkType {
 	const { Name, URL } = rawLink.properties
 
@@ -24,14 +23,14 @@ function mapNotionInspirationLink(
 		const error = val.error.message as string
 		console.log(
 			`Error parsing inspiration ${inspiration.id}: ${error}`,
-			JSON.stringify(inspiration, null, 2),
+			JSON.stringify(inspiration, null, 2)
 		)
 	}
 	return inspiration
 }
 
 export async function parseOriginalNotionInspirations(
-	originalInspirations: RawNotionInspirationLinkType[],
+	originalInspirations: RawNotionInspirationLinkType[]
 ): Promise<MappedNotionInspirationLinkType[]> {
 	return originalInspirations.map(mapNotionInspirationLink)
 }

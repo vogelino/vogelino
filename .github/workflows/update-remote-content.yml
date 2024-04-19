@@ -1,7 +1,7 @@
 name: Update remote content to local files and commit
 on:
   schedule:
-    - cron: '30 21 * * *'
+    - cron: "30 21 * * *"
   repository_dispatch:
     types: [update-inspirations]
 jobs:
@@ -27,5 +27,5 @@ jobs:
       - name: Commit changes
         uses: EndBug/add-and-commit@v9
         with:
-          message: 'chore(content): Update inspirations from Notion'
-          add: 'src/assets/data/inspirations.json'
+          message: "chore(content): Update inspirations from Notion"
+          add: "src"
