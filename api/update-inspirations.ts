@@ -11,7 +11,8 @@ export async function POST(req: VercelRequest) {
   let reqBody: RequestBodySchemaType | undefined;
   try {
     console.log("Parsing reqBody", JSON.stringify(req.body, null, 2));
-    reqBody = requestBodySchema.parse(req.body);
+    // @ts-ignore
+    reqBody = requestBodySchema.parse(await req.json());
   } catch (err) {
     const { error, status } = getError(err, 400);
     const errorMessage = `Error parsing request body: ${
