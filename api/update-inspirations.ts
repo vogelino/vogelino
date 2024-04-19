@@ -3,7 +3,7 @@ import fetch from "node-fetch";
 import zod from "zod";
 
 const requestBodySchema = zod.object({
-  webhookUrl: zod.string().url(),
+  webhook_url: zod.string().url(),
 });
 type RequestBodySchemaType = zod.infer<typeof requestBodySchema>;
 
@@ -20,7 +20,9 @@ export async function POST(req: VercelRequest) {
   if (!authBearerToken) {
     return new Response("Unauthorized", { status: 401 });
   }
-  const response = await fetch(reqBody.webhookUrl, {
+  console.log("reqBody", reqBody);
+  console.log("authorization", authBearerToken);
+  const response = await fetch(reqBody.webhook_url, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
