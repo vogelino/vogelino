@@ -6,26 +6,27 @@ const requestBodySchema = zod.object({
 });
 type RequestBodySchemaType = zod.infer<typeof requestBodySchema>;
 
+export const config = {
+  runtime: "edge",
+};
+
 export async function POST(req: Request) {
-  let reqBody: RequestBodySchemaType | undefined;
+  const { searchParams } = new URL(req.url);
+  const webhook_url = searchParams.get("webhook_url");
   try {
-    console.log("Parsing reqBody", JSON.stringify(req.body, null, 2));
-    reqBody = await req.json();
-    reqBody = requestBodySchema.parse(reqBody);
+    zod.string().url().parse(webhook_url);
   } catch (err) {
     const { error, status } = getError(err, 400);
-    const errorMessage = `Error parsing request body: ${error.message}.
-    Body received:
-    ${JSON.stringify(await req.json(), null, 2)}`;
+    const errorMessage = `Error parsing webhook_url: ${error.message}`;
     return new Response(errorMessage, { status });
   }
   const authBearerToken = req.headers.get("Authorization");
   if (!authBearerToken) {
     return new Response("Unauthorized", { status: 401 });
   }
-  console.log("reqBody", reqBody);
+  console.log("webhook_url", webhook_url);
   console.log("authorization", authBearerToken);
-  const response = await fetch(reqBody.webhook_url, {
+  const response = await fetch(webhook_url, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
