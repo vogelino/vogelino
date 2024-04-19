@@ -38,7 +38,10 @@ module.exports = async (req, res) => {
       "Content-Type": "application/json",
       Authorization: `Bearer ${authBearerToken}`,
     },
-    body: JSON.stringify({ env: { BUILD_TYPE: "webhook" } }),
+    body: JSON.stringify({
+      env: { BUILD_TYPE: "webhook" },
+      event_type: "update-inspirations",
+    }),
   });
 
   if (!response.ok) {
