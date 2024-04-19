@@ -3,7 +3,7 @@ import fetch from "node-fetch";
 import zod from "zod";
 
 const requestBodySchema = zod.object({
-  webhookUrl: zod.string(),
+  webhook_url: zod.string().url(),
 });
 type RequestBodySchemaType = zod.infer<typeof requestBodySchema>;
 
@@ -12,12 +12,13 @@ export async function POST(req: VercelRequest) {
   try {
     console.log("Parsing reqBody", JSON.stringify(req.body, null, 2));
     // @ts-ignore
-    reqBody = requestBodySchema.parse(await req.json());
+    reqBody = JSON.parse(req.body);
+    reqBody = requestBodySchema.parse(reqBody);
   } catch (err) {
     const { error, status } = getError(err, 400);
-    const errorMessage = `Error parsing request body: ${
-      error.message
-    }. Body: ${JSON.stringify(req.body)}`;
+    const errorMessage = `Error parsing request body: ${error.message}.
+    Body received:
+    ${JSON.stringify(reqBody, null, 2)}`;
     return new Response(errorMessage, { status });
   }
   const authBearerToken = req.headers.authorization;
@@ -26,7 +27,7 @@ export async function POST(req: VercelRequest) {
   }
   console.log("reqBody", reqBody);
   console.log("authorization", authBearerToken);
-  const response = await fetch(reqBody.webhookUrl, {
+  const response = await fetch(reqBody.webhook_url, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
