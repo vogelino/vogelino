@@ -1,17 +1,4 @@
 {
-<<<<<<< Updated upstream
-=======
-<<<<<<< Updated upstream
-	"extends": "astro/tsconfigs/base",
-	"compilerOptions": {
-		"plugins": [
-			{
-				"name": "@astrojs/ts-plugin"
-			}
-		]
-	}
-=======
->>>>>>> Stashed changes
   "extends": "astro/tsconfigs/base",
   "compilerOptions": {
     "plugins": [
@@ -20,10 +7,5 @@
       }
     ]
   },
-<<<<<<< Updated upstream
-  "exclude": ["dist", "tailwind.config.js", "postcss.config.js"]
-=======
   "exclude": ["dist", "tailwind.config.js", "postcss.config.js", "api"]
->>>>>>> Stashed changes
->>>>>>> Stashed changes
 }
