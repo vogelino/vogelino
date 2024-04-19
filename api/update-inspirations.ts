@@ -1,3 +1,4 @@
+import type { VercelRequest, VercelResponse } from "@vercel/node";
 import fetch from "node-fetch";
 import zod from "zod";
 
@@ -6,24 +7,18 @@ const requestBodySchema = zod.object({
 });
 type RequestBodySchemaType = zod.infer<typeof requestBodySchema>;
 
-export async function POST(req: Request, res: Response) {
+export async function POST(req: VercelRequest, res: VercelResponse) {
   let reqBody: RequestBodySchemaType | undefined;
   try {
-    reqBody = await req.json();
-    reqBody = requestBodySchema.parse(reqBody);
+    reqBody = requestBodySchema.parse(req.body);
   } catch (err) {
     const { error, status } = getError(err, 400);
-    const resBody = {
-      status,
-      statusText: `Invalid request body: ${error.message}`,
-    };
-    return new Response(JSON.stringify(resBody), resBody);
+    return res.status(status).json({
+      error: `Invalid request body: ${error.message}`,
+    });
   }
-  const authBearerToken = req.headers.get("Authorization");
-  if (!authBearerToken) {
-    const resBody = { status: 401, statusText: "Unauthorized" };
-    return new Response(JSON.stringify(resBody), resBody);
-  }
+  const authBearerToken = req.headers.authorization;
+  if (!authBearerToken) return res.status(401).json({ error: "Unauthorized" });
   const response = await fetch(reqBody.webhookUrl, {
     method: "POST",
     headers: {
@@ -40,11 +35,10 @@ export async function POST(req: Request, res: Response) {
 
   try {
     const result = await response.json();
-    return new Response(JSON.stringify(result), { status: 200 });
+    return res.status(200).json(result);
   } catch (err) {
     const { status, error } = getError(err, 500);
-    const resBody = { status, statusText: error.message };
-    return new Response(JSON.stringify(resBody), resBody);
+    return res.status(status).json({ error: error.message });
   }
 }
 

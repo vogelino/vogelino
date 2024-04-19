@@ -31,6 +31,7 @@
     "@types/marked": "4.0.7",
     "@types/node-fetch": "2.6.11",
     "@types/sharp": "0.30.5",
+    "@vercel/node": "^3.0.27",
     "astro": "4.6.2",
     "autoprefixer": "10.4.14",
     "biome-config-astro": "1.1.0",
