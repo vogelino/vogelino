@@ -12,7 +12,7 @@ export async function POST(req: VercelRequest) {
   try {
     console.log("Parsing reqBody", JSON.stringify(req.body, null, 2));
     // @ts-ignore
-    reqBody = JSON.parse(req.body);
+    reqBody = JSON.parse(await req.json());
     reqBody = requestBodySchema.parse(reqBody);
   } catch (err) {
     const { error, status } = getError(err, 400);
