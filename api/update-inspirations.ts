@@ -3,7 +3,7 @@ import fetch from "node-fetch";
 import zod from "zod";
 
 const requestBodySchema = zod.object({
-  webhookUrl: zod.string().url(),
+  webhookUrl: zod.string(),
 });
 type RequestBodySchemaType = zod.infer<typeof requestBodySchema>;
 
