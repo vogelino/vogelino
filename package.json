@@ -5,16 +5,18 @@
   "scripts": {
     "dev": "TAILWIND_MODE=watch astro dev",
     "start": "astro dev",
-    "build": "pnpm run code-qa && pnpm run downloadInspirations && astro build",
+    "build": "if [ \"$BUILD_TYPE\" = \"webhook\" ]; then npm run build-webhook; else npm run build-regular; fi",
+    "build-regular": "bun run code-qa && astro build",
+    "build-webhook": "bun run code-qa && bun run downloadInspirations && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "type-check": "astro check",
-    "downloadInspirations": "npx ts-node -P scripts/tsconfig.json scripts/downloadInspirations.ts",
+    "downloadInspirations": "bun scripts/downloadInspirations.ts",
     "format": "biome format . --write",
     "lint": "biome lint .",
     "lint:fix": "biome lint . --apply",
     "lint:fix:unsafe": "biome lint . --apply-unsafe",
-    "code-qa": "pnpm run type-check && pnpm run format && pnpm run lint:fix"
+    "code-qa": "bun run type-check && bun run format && bun run lint:fix"
   },
   "devDependencies": {
     "@astrojs/check": "0.5.10",
@@ -39,7 +41,6 @@
     "slugify": "1.6.5",
     "tailwindcss": "3.3.6",
     "tailwindcss-touch": "1.0.1",
-    "ts-node": "10.8.0",
     "typescript": "5.2.2",
     "zod": "3.22.4"
   },
@@ -50,6 +51,5 @@
     "@vercel/analytics": "1.2.2",
     "@vercel/speed-insights": "1.0.10",
     "photoswipe": "5.4.3"
-  },
-  "packageManager": "pnpm@9.0.4"
+  }
 }
