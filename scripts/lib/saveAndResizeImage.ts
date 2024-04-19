@@ -1,12 +1,12 @@
+import fs from 'node:fs/promises'
+import { dirname } from 'node:path'
+import type sharp from 'sharp'
+import { IMAGE_DEST_EXPORT_PATH, IMAGE_TMP_EXPORT_PATH } from '../paths'
+import { createDirectoriesIfNotAlreadyThere } from './createDirectoriesIfNotAlreadyThere'
 import { doesFileExists } from './doesFileExist'
 import { downloadImage } from './downloadImage'
 import { logIndented } from './logUtil'
 import { resizeImage } from './resizeImage'
-import type sharp from 'sharp'
-import fs from 'node:fs/promises'
-import { dirname, extname } from 'node:path'
-import { createDirectoriesIfNotAlreadyThere } from './createDirectoriesIfNotAlreadyThere'
-import { IMAGE_DEST_EXPORT_PATH, IMAGE_TMP_EXPORT_PATH } from '../paths'
 
 interface SaveAndResizeImageParamsType {
 	fileName: string

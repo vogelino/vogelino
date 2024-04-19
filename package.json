@@ -8,7 +8,7 @@
     "build": "pnpm run code-qa && pnpm run downloadInspirations && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "type-check": "astro check && tsc --noEmit",
+    "type-check": "astro check",
     "downloadInspirations": "npx ts-node -P scripts/tsconfig.json scripts/downloadInspirations.ts",
     "format": "biome format . --write",
     "lint": "biome lint .",

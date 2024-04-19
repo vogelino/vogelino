@@ -1,4 +1,5 @@
 import rss from '@astrojs/rss'
+import type { APIContext } from 'astro'
 import { getCollection } from 'astro:content'
 
 function stripMarkdown(str: string) {
@@ -9,7 +10,7 @@ function stripMarkdown(str: string) {
 		.replaceAll(/&.*?;/gi, '')
 }
 
-export async function GET(context) {
+export async function GET(context: APIContext) {
 	const projects = (await getCollection('projects')).map((p) => ({
 		title: `New project: ${stripMarkdown(p.data.title)}!`,
 		pubDate: p.data.pubDate,
