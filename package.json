@@ -11,7 +11,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "type-check": "astro check",
-    "downloadInspirations": "bunx ts-node -P scripts/tsconfig.json scripts/downloadInspirations.ts",
+    "downloadInspirations": "bun scripts/downloadInspirations.ts",
     "format": "biome format . --write",
     "lint": "biome lint .",
     "lint:fix": "biome lint . --apply",
