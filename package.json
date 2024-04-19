@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "TAILWIND_MODE=watch astro dev",
     "start": "astro dev",
-    "build": "bun run code-qa && bun run downloadInspirations && astro build",
+    "build": "if [ \"$BUILD_TYPE\" = \"webhook\" ]; then npm run build-webhook; else npm run build-regular; fi",
+    "build-regular": "bun run code-qa && astro build",
+    "build-webhook": "bun run code-qa && bun run downloadInspirations && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "type-check": "astro check",
