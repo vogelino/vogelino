@@ -437,6 +437,13 @@ declare module 'astro:content' {
   collection: "collaborators";
   data: InferEntrySchema<"collaborators">
 } & { render(): Render[".md"] };
+"odis.md": {
+	id: "odis.md";
+  slug: "odis";
+  body: string;
+  collection: "collaborators";
+  data: InferEntrySchema<"collaborators">
+} & { render(): Render[".md"] };
 "paul-klinski.md": {
 	id: "paul-klinski.md";
   slug: "paul-klinski";
@@ -454,6 +461,13 @@ declare module 'astro:content' {
 "stefan-thomas.md": {
 	id: "stefan-thomas.md";
   slug: "stefan-thomas";
+  body: string;
+  collection: "collaborators";
+  data: InferEntrySchema<"collaborators">
+} & { render(): Render[".md"] };
+"technologiestiftung.md": {
+	id: "technologiestiftung.md";
+  slug: "technologiestiftung";
   body: string;
   collection: "collaborators";
   data: InferEntrySchema<"collaborators">
@@ -528,6 +542,13 @@ declare module 'astro:content' {
 "letterstories.mdx": {
 	id: "letterstories.mdx";
   slug: "letterstories";
+  body: string;
+  collection: "projects";
+  data: InferEntrySchema<"projects">
+} & { render(): Render[".mdx"] };
+"odis.mdx": {
+	id: "odis.mdx";
+  slug: "odis";
   body: string;
   collection: "projects";
   data: InferEntrySchema<"projects">
@@ -775,6 +796,13 @@ declare module 'astro:content' {
 "maptiler.md": {
 	id: "maptiler.md";
   slug: "maptiler";
+  body: string;
+  collection: "technologies";
+  data: InferEntrySchema<"technologies">
+} & { render(): Render[".md"] };
+"mdx.md": {
+	id: "mdx.md";
+  slug: "mdx";
   body: string;
   collection: "technologies";
   data: InferEntrySchema<"technologies">
