@@ -15,9 +15,9 @@ function highlight(text: string): string {
 	return text.replace(
 		/\*\*(.*?)\*\*/gm,
 		`<span class="${classNames(
-			`font-special font-normal inline-block`,
-			`bg-alt px-[0.25em] -ml-[0.25em] pt-[0.19em] pb-[0.28em] rounded-full`,
-		)}">$1</span>`,
+			'font-special font-normal inline-block',
+			'bg-alt px-[0.25em] -ml-[0.25em] pt-[0.19em] pb-[0.28em] rounded-full'
+		)}">$1</span>`
 	)
 }
 

@@ -1,31 +1,24 @@
 ---
+import { Image } from 'astro:assets'
 import { loadJson } from '../../../scripts/lib/loadJson'
-import classNames from '../../utils/classNames'
 import { INSPIRATIONS_JSON_PATH } from '../../../scripts/paths'
-import Layout from '../../layouts/Layout.astro'
 import FancyHeadline from '../../components/FancyHeadline.astro'
 import Pagination from '../../components/Pagination.astro'
-import { Image } from 'astro:assets'
+import Layout from '../../layouts/Layout.astro'
+import { inspirationSchema, type InspirationType } from '../../schemas/inspirations'
 import type { AstroGlobImageType } from '../../utils/astroTypes'
-import {
-	inspirationSchema,
-	type InspirationType,
-} from '../../schemas/inspirations'
+import classNames from '../../utils/classNames'
 
 const firstPath = 'inspirations'
 
 export async function getStaticPaths({ paginate }) {
-	const rawInspirations = await loadJson<InspirationType[]>(
-		INSPIRATIONS_JSON_PATH,
-	)
+	const rawInspirations = await loadJson<InspirationType[]>(INSPIRATIONS_JSON_PATH)
 	const parsedInspirations = rawInspirations.reduce((acc, inspiration) => {
 		try {
-			return [...acc, inspirationSchema.parse(inspiration)]
+			acc.push(inspirationSchema.parse(inspiration))
+			return acc
 		} catch (error) {
-			console.log(
-				`Error parsing inspiration:`,
-				JSON.stringify(inspiration, null, 2),
-			)
+			console.log('Error parsing inspiration:', JSON.stringify(inspiration, null, 2))
 			console.log(error)
 			return acc
 		}
@@ -52,7 +45,7 @@ export interface Props {
 const { page } = Astro.props
 
 const thumbnails = await Astro.glob<AstroGlobImageType<'webp'>>(
-	`/src/assets/images/inspirations/*.webp`,
+	'/src/assets/images/inspirations/*.webp'
 ).then((files) => files.map((file) => file.default))
 
 const notionLinks = (page.data || []).map((link) => ({

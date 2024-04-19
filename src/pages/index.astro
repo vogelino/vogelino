@@ -10,11 +10,11 @@ const projects = (await getCollection('projects'))
 	.sort((a, b) => b.data.year - a.data.year)
 	.map((w) => {
 		const classes = [
-			`group-focus-visible:rotate-1 hover-hover:group-hover:rotate-1`,
-			`group-focus-visible:rotate-0 hover-hover:group-hover:rotate-0`,
-			`group-focus-visible:rotate-2 hover-hover:group-hover:rotate-2`,
-			`group-focus-visible:-rotate-1 hover-hover:group-hover:-rotate-1`,
-			`group-focus-visible:-rotate-2 hover-hover:group-hover:-rotate-2`,
+			'group-focus-visible:rotate-1 hover-hover:group-hover:rotate-1',
+			'group-focus-visible:rotate-0 hover-hover:group-hover:rotate-0',
+			'group-focus-visible:rotate-2 hover-hover:group-hover:rotate-2',
+			'group-focus-visible:-rotate-1 hover-hover:group-hover:-rotate-1',
+			'group-focus-visible:-rotate-2 hover-hover:group-hover:-rotate-2',
 		]
 		const rotationClass = classes[Math.floor(Math.random() * classes.length)]
 		return {

@@ -21,5 +21,5 @@ export default defineConfig({
 		}),
 	],
 	prefetch: true,
-	site: `https://vogelino.com`,
+	site: 'https://vogelino.com',
 })

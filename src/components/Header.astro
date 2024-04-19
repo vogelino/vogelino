@@ -1,10 +1,10 @@
 ---
 import classNames from '../utils/classNames'
-import LogoInteractive from './LogoInteractive.astro'
+import AvailableForHireBanner from './AvailableForHireBanner.astro'
 import HeaderMenuLink from './HeaderMenuLink.astro'
+import LogoInteractive from './LogoInteractive.astro'
 import SocialIcons from './SocialIcons.astro'
 import ThemeToggle from './ThemeToggle.astro'
-import AvailableForHireBanner from './AvailableForHireBanner.astro'
 
 export interface Props {
 	withBg?: boolean
@@ -249,7 +249,7 @@ const availableForHire = import.meta.env.AVAILABLE_FOR_HIRE === 'true'
 		setupThemeUpdater(doc)
 	}
 	window.addEventListener('load', () => setupHeader(document))
-	document.addEventListener('astro:after-swap', (ev) => setupHeader(document))
+	document.addEventListener('astro:after-swap', () => setupHeader(document))
 </script>
 
 <style>

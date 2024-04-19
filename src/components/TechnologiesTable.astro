@@ -11,16 +11,14 @@ const allTechnologies = await getCollection('technologies')
 const technologiesMap = project.data.technologies.reduce((acc, item) => {
 	const tech = allTechnologies.find((tech) => tech.slug === item.slug)
 	if (!tech) return acc
-	tech.data.categories.forEach((category) => {
+	for (const category of tech.data.categories) {
 		const entries = acc.get(category) || []
 		entries.push(tech)
 		acc.set(
 			category,
-			entries.filter((entry) =>
-				project.data.technologies.find(({ slug }) => slug === entry.slug),
-			),
+			entries.filter((entry) => project.data.technologies.find(({ slug }) => slug === entry.slug))
 		)
-	})
+	}
 	return acc
 }, new Map<string, CollectionEntry<'technologies'>[]>())
 ---

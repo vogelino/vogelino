@@ -12,7 +12,7 @@ export interface Props {
 const props = Astro.props
 const collaboratorsFromCollection = await getCollection('collaborators')
 const allCollaborators = collaboratorsFromCollection.filter((collaborator) =>
-	props.collaborators.find(({ slug }) => slug === collaborator.slug),
+	props.collaborators.find(({ slug }) => slug === collaborator.slug)
 )
 ---
 

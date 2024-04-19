@@ -16,9 +16,7 @@ import RoundedButton from '../../components/RoundedButton.astro'
 import GitHub from '../../components/icons/GitHub.astro'
 
 export async function getStaticPaths() {
-	const notionProjects = (await getCollection('projects')).sort(
-		(a, b) => b.data.year - a.data.year,
-	)
+	const notionProjects = (await getCollection('projects')).sort((a, b) => b.data.year - a.data.year)
 	return notionProjects.map((notionProject, idx) => {
 		const nextIdx = idx + 1 >= notionProjects.length ? 0 : idx + 1
 		const prevIdx = idx - 1 < 0 ? notionProjects.length - 1 : idx - 1
@@ -26,8 +24,7 @@ export async function getStaticPaths() {
 			params: { slug: notionProject.slug },
 			props: {
 				project: notionProject,
-				prevProject:
-					notionProjects[prevIdx] || notionProjects[notionProjects.length - 1],
+				prevProject: notionProjects[prevIdx] || notionProjects[notionProjects.length - 1],
 				nextProject: notionProjects[nextIdx] || notionProjects[0],
 			},
 		}
