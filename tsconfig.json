@@ -7,5 +7,5 @@
       }
     ]
   },
-  "exclude": ["dist", "tailwind.config.js", "postcss.config.js", "api"]
+  "exclude": ["dist", "tailwind.config.js", "postcss.config.js", "src/api"]
 }
