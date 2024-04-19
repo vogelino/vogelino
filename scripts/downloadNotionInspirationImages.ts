@@ -24,7 +24,8 @@ export async function downloadNotionInspirationImages({
 		if (!rawInspiration.cover) {
 			return acc
 		}
-		return acc.concat([rawInspiration.id, parseNotionFileUrl({ files: [rawInspiration.cover] })])
+		acc.push([rawInspiration.id, parseNotionFileUrl({ files: [rawInspiration.cover] })])
+		return acc
 	}, [] as string[][])
 
 	for (const [pageId, url] of images) {

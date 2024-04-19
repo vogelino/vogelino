@@ -15,7 +15,8 @@ export async function getStaticPaths({ paginate }) {
 	const rawInspirations = await loadJson<InspirationType[]>(INSPIRATIONS_JSON_PATH)
 	const parsedInspirations = rawInspirations.reduce((acc, inspiration) => {
 		try {
-			return acc.concat([inspirationSchema.parse(inspiration)])
+			acc.push(inspirationSchema.parse(inspiration))
+			return acc
 		} catch (error) {
 			console.log('Error parsing inspiration:', JSON.stringify(inspiration, null, 2))
 			console.log(error)
