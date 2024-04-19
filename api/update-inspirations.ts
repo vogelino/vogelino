@@ -13,16 +13,12 @@ export async function POST(req: VercelRequest) {
     reqBody = requestBodySchema.parse(req.body);
   } catch (err) {
     const { error, status } = getError(err, 400);
-    const resBody = {
-      status,
-      statusText: `Invalid request body: ${error.message}`,
-    };
-    return new Response(JSON.stringify(resBody), resBody);
+    const errorMessage = `Error parsing request body: ${error.message}`;
+    return new Response(errorMessage, { status });
   }
   const authBearerToken = req.headers.authorization;
   if (!authBearerToken) {
-    const resBody = { status: 401, statusText: "Unauthorized" };
-    return new Response(JSON.stringify(resBody), resBody);
+    return new Response("Unauthorized", { status: 401 });
   }
   const response = await fetch(reqBody.webhookUrl, {
     method: "POST",
@@ -43,8 +39,7 @@ export async function POST(req: VercelRequest) {
     return new Response(JSON.stringify(result), { status: 200 });
   } catch (err) {
     const { status, error } = getError(err, 500);
-    const resBody = { status, statusText: error.message };
-    return new Response(JSON.stringify(resBody), resBody);
+    return new Response(`Error: ${error.message}`, { status });
   }
 }
 
