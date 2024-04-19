@@ -5,13 +5,11 @@
   "scripts": {
     "dev": "TAILWIND_MODE=watch astro dev",
     "start": "astro dev",
-    "build": "if [ \"$BUILD_TYPE\" = \"webhook\" ]; then npm run build-webhook; else npm run build-regular; fi",
     "build-regular": "bun run code-qa && astro build",
-    "build-webhook": "bun run code-qa && bun run downloadInspirations && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "type-check": "astro check",
-    "downloadInspirations": "bun scripts/downloadInspirations.ts",
+    "downloadInspirations": "npx ts-node -P scripts/tsconfig.json scripts/downloadInspirations.ts",
     "format": "biome format . --write",
     "lint": "biome lint .",
     "lint:fix": "biome lint . --apply",
@@ -42,6 +40,7 @@
     "slugify": "1.6.5",
     "tailwindcss": "3.3.6",
     "tailwindcss-touch": "1.0.1",
+    "ts-node": "10.8.0",
     "typescript": "5.2.2",
     "zod": "3.22.4"
   },
