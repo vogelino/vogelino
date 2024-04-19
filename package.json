@@ -1,11 +1,11 @@
 {
-  "name": "vogelino22",
-  "description": "Lucas Vogel's (Vogelino) 2023 online portfolio",
+  "name": "vogelino",
+  "description": "Lucas Vogel's (Vogelino) 2024 online portfolio",
   "private": true,
   "scripts": {
     "dev": "TAILWIND_MODE=watch astro dev",
     "start": "astro dev",
-    "build": "npm run code-qa && npm run downloadInspirations && astro build",
+    "build": "pnpm run code-qa && pnpm run downloadInspirations && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "type-check": "astro check && tsc --noEmit",
@@ -14,7 +14,7 @@
     "lint": "biome lint .",
     "lint:fix": "biome lint . --apply",
     "lint:fix:unsafe": "biome lint . --apply-unsafe",
-    "code-qa": "npm run type-check && npm run format && npm run lint:fix"
+    "code-qa": "pnpm run type-check && pnpm run format && pnpm run lint:fix"
   },
   "devDependencies": {
     "@astrojs/check": "0.5.10",
