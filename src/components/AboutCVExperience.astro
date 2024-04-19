@@ -200,7 +200,7 @@ const cv = aboutFrontmatter.cv
 		const tabs = [...document.querySelectorAll(settings.trigger)]
 		const contents = [...document.querySelectorAll(settings.content)]
 
-		const toggle = function (tab, scroll = true) {
+		const toggle = function (tab: HTMLButtonElement, scroll = true) {
 			const target = tab.getAttribute('aria-controls')
 			const content = document.getElementById(target)
 
@@ -221,8 +221,8 @@ const cv = aboutFrontmatter.cv
 			}
 		}
 
-		tabs.forEach((t) => {
-			const onToggle = (evt) => {
+		tabs.forEach((t: HTMLButtonElement) => {
+			const onToggle = (evt: MouseEvent | KeyboardEvent) => {
 				evt.preventDefault()
 				toggle(t)
 			}

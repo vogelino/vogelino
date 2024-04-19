@@ -11,11 +11,9 @@ export interface Props {
 const { technology } = Astro.props
 
 const files = await Astro.glob<AstroGlobImageType<'webp' | 'svg'>>(
-	'/src/assets/images/technologies/*.svg',
+	'/src/assets/images/technologies/*.svg'
 )
-const techLogo = files.find((file) =>
-	file.default.src.includes(`${technology.slug}.`),
-)?.default
+const techLogo = files.find((file) => file.default.src.includes(`${technology.slug}.`))?.default
 ---
 
 <a

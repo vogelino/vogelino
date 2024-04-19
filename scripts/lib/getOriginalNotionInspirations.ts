@@ -50,7 +50,7 @@ export interface RawNotionInspirationLinkType extends Record<string, unknown> {
 export async function getOriginalNotionInspirations(
 	databaseId: string,
 	notion: Client,
-	nextCursor?: string,
+	nextCursor?: string
 ): Promise<RawNotionInspirationLinkType[]> {
 	const response = await notion.databases.query({
 		database_id: databaseId,
@@ -58,8 +58,7 @@ export async function getOriginalNotionInspirations(
 		start_cursor: nextCursor,
 	})
 
-	const inspirations =
-		response.results as unknown as RawNotionInspirationLinkType[]
+	const inspirations = response.results as unknown as RawNotionInspirationLinkType[]
 
 	const linksImageRequests = inspirations.map(async (inspiration) => {
 		const blocksResponse = await notion.blocks.children.list({
@@ -72,7 +71,7 @@ export async function getOriginalNotionInspirations(
 		return [inspiration.id, imageBlock]
 	})
 
-	let linksImages = (await Promise.all(linksImageRequests)) as unknown as [
+	const linksImages = (await Promise.all(linksImageRequests)) as unknown as [
 		string,
 		ImageBlockObjectResponse,
 	][]
@@ -80,14 +79,14 @@ export async function getOriginalNotionInspirations(
 	const imagerlsMap = linksImages
 		.filter(([pageId, imageBlock]) => pageId && imageBlock)
 		.reduce(
-			(acc, [pageId, imageBlock]) => ({
-				...acc,
-				[pageId]:
+			(acc, [pageId, imageBlock]) => {
+				acc[pageId] =
 					imageBlock.image.type === 'external'
 						? imageBlock.image.external.url
-						: imageBlock.image.file.url,
-			}),
-			{} as Record<string, string>,
+						: imageBlock.image.file.url
+				return acc
+			},
+			{} as Record<string, string>
 		)
 
 	const inspirationsWithImages = inspirations.map((inspiration) => ({
@@ -101,11 +100,7 @@ export async function getOriginalNotionInspirations(
 	}))
 
 	if (response.next_cursor && response.has_more) {
-		const nextPage = await getOriginalNotionInspirations(
-			databaseId,
-			notion,
-			response.next_cursor,
-		)
+		const nextPage = await getOriginalNotionInspirations(databaseId, notion, response.next_cursor)
 		return [...inspirationsWithImages, ...nextPage]
 	}
 

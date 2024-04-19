@@ -19,12 +19,8 @@ const {
 	description = 'Interface design and development portfolio of Lucas Vogel',
 	withHeaderBg = true,
 } = Astro.props
-const ogImages = await Astro.glob<AstroGlobImageType<'png'>>(
-	'/src/assets/images/og/*.png',
-)
-const ogImage = ogImages.find((file) =>
-	file.default.src.includes(slug),
-)?.default
+const ogImages = await Astro.glob<AstroGlobImageType<'png'>>('/src/assets/images/og/*.png')
+const ogImage = ogImages.find((file) => file.default.src.includes(slug))?.default
 const ogImageUrl = ogImage?.src
 ---
 

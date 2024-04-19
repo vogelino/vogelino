@@ -8,8 +8,8 @@ const IPP = 100
 
 export async function getAllNotionInspirationImages(
 	databaseId: string,
-	onlyExternal: boolean = true,
-	nextCursor?: string,
+	onlyExternal = true,
+	nextCursor?: string
 ): Promise<[string, string][]> {
 	const response = await notion.databases.query({
 		database_id: databaseId,
@@ -34,8 +34,7 @@ export async function getAllNotionInspirationImages(
 	][]
 	if (onlyExternal) {
 		linksImages = linksImages.filter(
-			([_pageId, imageBlock]) =>
-				imageBlock && imageBlock.image.type === 'external',
+			([_pageId, imageBlock]) => imageBlock && imageBlock.image.type === 'external'
 		)
 	}
 
@@ -48,14 +47,14 @@ export async function getAllNotionInspirationImages(
 					imageBlock.image.type === 'external'
 						? imageBlock.image.external.url
 						: imageBlock.image.file.url,
-				] as [string, string],
+				] as [string, string]
 		)
 
 	if (response.next_cursor && response.has_more) {
 		const nextPage = await getAllNotionInspirationImages(
 			databaseId,
 			onlyExternal,
-			response.next_cursor,
+			response.next_cursor
 		)
 		return [...onlyImageUrls, ...nextPage]
 	}
