@@ -1,4 +1,4 @@
-const LINE = `--------------------------------`
+const LINE = '--------------------------------'
 const DOTTED_LINE = LINE.split('')
 	.map((char, idx) => (idx % 2 ? char : ' '))
 	.join('')
@@ -16,7 +16,7 @@ export const logDottedLine = () => {
 }
 
 export const logIndented = (text: string, depth = 0) => {
-	const indentation = [...Array(depth)].map(() => `   `).join('')
+	const indentation = [...Array(depth)].map(() => '   ').join('')
 	log(`${indentation}-> ${text}`)
 }
 

@@ -4,7 +4,7 @@ import { logIndented } from './logUtil'
 import { resizeImage } from './resizeImage'
 import type sharp from 'sharp'
 import fs from 'node:fs/promises'
-import { dirname, extname } from 'path'
+import { dirname, extname } from 'node:path'
 import { createDirectoriesIfNotAlreadyThere } from './createDirectoriesIfNotAlreadyThere'
 import { IMAGE_DEST_EXPORT_PATH, IMAGE_TMP_EXPORT_PATH } from '../paths'
 
@@ -24,14 +24,13 @@ export async function saveAndResizeImage({
 	const fileAndFolder = `${folder}/${fileName}`
 	const destPath = `${IMAGE_DEST_EXPORT_PATH}/${fileAndFolder}`
 	const tmpPath = `${IMAGE_TMP_EXPORT_PATH}/${fileAndFolder}`
-	if (!fileUrl)
-		throw new Error(`fileUrl was undefined for destination "${fileAndFolder}"`)
+	if (!fileUrl) throw new Error(`fileUrl was undefined for destination "${fileAndFolder}"`)
 
 	// CHECK FOR EXISTING DESTINATION FILE
 	const alreadyExist = await doesFileExists(destPath)
 
 	if (alreadyExist) {
-		logIndented(`⏭ Skipping (already exists)`)
+		logIndented('⏭ Skipping (already exists)')
 		return
 	}
 
@@ -49,13 +48,13 @@ export async function saveAndResizeImage({
 	// SAVING (TMP) FILE
 	logIndented(`💾 Saving file into: ${firstSavePath}`)
 	await fs.writeFile(firstSavePath, data)
-	logIndented(`🛟 Saved ✔️`)
+	logIndented('🛟 Saved ✔️')
 
 	if (!resize) return
 
 	// RESIZING FILE
 	logIndented(`📐 Resizing (${resize?.width}x${resize?.height})`)
 	await resizeImage(tmpPath, destPath, resize)
-	logIndented(`✅ Saved and resized!`, 1)
+	logIndented('✅ Saved and resized!', 1)
 	await fs.unlink(tmpPath)
 }

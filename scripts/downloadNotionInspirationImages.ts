@@ -1,12 +1,12 @@
-import type { MappedNotionInspirationLinkType } from './lib/parseOriginalNotionInspirations'
 import * as dotenv from 'dotenv'
-dotenv.config()
 import { doesFileExists } from './lib/doesFileExist'
-import { logEnd, logH1, logIndented, logSecondary } from './lib/logUtil'
-import { INSPIRATION_RESIZED_EXPORT_PATH } from './paths'
 import type { RawNotionInspirationLinkType } from './lib/getOriginalNotionInspirations'
+import { logEnd, logH1, logIndented, logSecondary } from './lib/logUtil'
 import { parseNotionFileUrl } from './lib/parseNotionFileUrl'
+import type { MappedNotionInspirationLinkType } from './lib/parseOriginalNotionInspirations'
 import { saveAndResizeImage } from './lib/saveAndResizeImage'
+import { INSPIRATION_RESIZED_EXPORT_PATH } from './paths'
+dotenv.config()
 
 const WIDTH = 560
 const HEIGHT = 292
@@ -24,13 +24,7 @@ export async function downloadNotionInspirationImages({
 		if (!rawInspiration.cover) {
 			return acc
 		}
-		return [
-			...acc,
-			[
-				rawInspiration.id,
-				parseNotionFileUrl({ files: [rawInspiration.cover] }),
-			],
-		]
+		return acc.concat([rawInspiration.id, parseNotionFileUrl({ files: [rawInspiration.cover] })])
 	}, [] as string[][])
 
 	for (const [pageId, url] of images) {
@@ -54,9 +48,7 @@ export async function downloadNotionInspirationImages({
 		const filePath = `${INSPIRATION_RESIZED_EXPORT_PATH}/${inspiration.id}.webp`
 		const fileExists = await doesFileExists(filePath)
 		if (!fileExists) {
-			logSecondary([
-				`⛔️ Missing file found for inspiration "${inspiration.title}"!`,
-			])
+			logSecondary([`⛔️ Missing file found for inspiration "${inspiration.title}"!`])
 			logIndented(filePath)
 		}
 	}

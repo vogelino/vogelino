@@ -1,6 +1,7 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.7.0/schema.json",
-  "extends": [
-    "biome-config-astro"
-  ]
+	"$schema": "https://biomejs.dev/schemas/1.7.0/schema.json",
+	"extends": ["biome-config-astro"],
+	"linter": {
+		"ignore": ["node_modules", "dist", "data", ".vscode", "public", ".github", "types.d.ts"]
+	}
 }

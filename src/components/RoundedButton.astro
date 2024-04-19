@@ -10,13 +10,7 @@ export interface Props extends HTMLAttributes<'button'> {
 	variant?: 'primary' | 'secondary'
 }
 
-const {
-	url,
-	class: className,
-	icon: Icon,
-	variant = 'primary',
-	...rest
-} = Astro.props
+const { url, class: className, icon: Icon, variant = 'primary', ...rest } = Astro.props
 ---
 
 {
