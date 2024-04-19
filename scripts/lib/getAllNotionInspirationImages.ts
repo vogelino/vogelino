@@ -8,7 +8,7 @@ const IPP = 100
 
 export async function getAllNotionInspirationImages(
 	databaseId: string,
-	onlyExternal: boolean = true,
+	onlyExternal = true,
 	nextCursor?: string,
 ): Promise<[string, string][]> {
 	const response = await notion.databases.query({

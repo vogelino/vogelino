@@ -72,7 +72,7 @@ export async function getOriginalNotionInspirations(
 		return [inspiration.id, imageBlock]
 	})
 
-	let linksImages = (await Promise.all(linksImageRequests)) as unknown as [
+	const linksImages = (await Promise.all(linksImageRequests)) as unknown as [
 		string,
 		ImageBlockObjectResponse,
 	][]

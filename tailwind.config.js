@@ -62,7 +62,7 @@ module.exports = {
 	plugins: [
 		require('@tailwindcss/container-queries'),
 		require('tailwindcss-touch')(),
-		plugin(function ({ addUtilities, addVariant }) {
+		plugin(({ addUtilities, addVariant }) => {
 			addUtilities({
 				'.text-balance': {
 					'text-wrap': 'balance',
