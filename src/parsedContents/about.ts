@@ -1,5 +1,5 @@
-import { Content, frontmatter } from '../content/content/about.mdx'
 import { z } from 'astro:content'
+import { Content, frontmatter } from '../content/content/about.mdx'
 
 const cvLineSchema = z.object({
 	title: z.string(),

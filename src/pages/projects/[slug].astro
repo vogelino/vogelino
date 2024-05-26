@@ -1,19 +1,19 @@
 ---
+import { type CollectionEntry, getCollection } from 'astro:content'
 import '@splidejs/splide/css/core'
-import Layout from '../../layouts/Layout.astro'
 import CollaboratorsGroup from '../../components/CollaboratorsGroup.astro'
-import classNames from '../../utils/classNames'
-import Thumbnail from '../../components/Thumbnail.astro'
-import TextContents from '../../components/TextContents.astro'
 import ProjectSlider from '../../components/ProjectSlider.astro'
 import ProjectSliderNav from '../../components/ProjectSliderNav.astro'
-import SeeOneMoreStroke from '../../components/SeeOneMoreStroke.astro'
-import SeeOneMoreFill from '../../components/SeeOneMoreFill.astro'
-import TechnologiesTable from '../../components/TechnologiesTable.astro'
-import { getCollection, type CollectionEntry } from 'astro:content'
-import Link from '../../components/icons/Link.astro'
 import RoundedButton from '../../components/RoundedButton.astro'
+import SeeOneMoreFill from '../../components/SeeOneMoreFill.astro'
+import SeeOneMoreStroke from '../../components/SeeOneMoreStroke.astro'
+import TechnologiesTable from '../../components/TechnologiesTable.astro'
+import TextContents from '../../components/TextContents.astro'
+import Thumbnail from '../../components/Thumbnail.astro'
 import GitHub from '../../components/icons/GitHub.astro'
+import Link from '../../components/icons/Link.astro'
+import Layout from '../../layouts/Layout.astro'
+import classNames from '../../utils/classNames'
 
 export async function getStaticPaths() {
 	const notionProjects = (await getCollection('projects')).sort((a, b) => b.data.year - a.data.year)

@@ -1,10 +1,10 @@
 ---
-import classNames from '../utils/classNames'
-import Thumbnail from '../components/Thumbnail.astro'
-import FancyHeadline from '../components/FancyHeadline.astro'
-import Layout from '../layouts/Layout.astro'
-import MoreAboutMeSVG from '../components/MoreAboutMeSVG.astro'
 import { getCollection } from 'astro:content'
+import FancyHeadline from '../components/FancyHeadline.astro'
+import MoreAboutMeSVG from '../components/MoreAboutMeSVG.astro'
+import Thumbnail from '../components/Thumbnail.astro'
+import Layout from '../layouts/Layout.astro'
+import classNames from '../utils/classNames'
 
 const projects = (await getCollection('projects'))
 	.sort((a, b) => b.data.year - a.data.year)

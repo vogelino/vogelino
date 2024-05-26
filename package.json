@@ -10,11 +10,8 @@
     "astro": "astro",
     "type-check": "astro check",
     "downloadInspirations": "npx ts-node -P scripts/tsconfig.json scripts/downloadInspirations.ts",
-    "format": "biome format . --write",
-    "lint": "biome lint .",
-    "lint:fix": "biome lint . --apply",
-    "lint:fix:unsafe": "biome lint . --apply-unsafe",
-    "code-qa": "bun run type-check && bun run format && bun run lint:fix"
+    "check": "biome check . --apply",
+    "code-qa": "bun run type-check && bun run check"
   },
   "devDependencies": {
     "@astrojs/check": "0.5.10",

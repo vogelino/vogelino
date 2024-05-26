@@ -1,13 +1,13 @@
 import * as dotenv from 'dotenv'
 dotenv.config()
-import { notion } from './lib/notion'
+import { downloadNotionInspirationImages } from './downloadNotionInspirationImages'
 import { createDirectoriesIfNotAlreadyThere } from './lib/createDirectoriesIfNotAlreadyThere'
 import { getOriginalNotionInspirations } from './lib/getOriginalNotionInspirations'
-import { parseOriginalNotionInspirations } from './lib/parseOriginalNotionInspirations'
-import { INSPIRATIONS_JSON_PATH } from './paths'
-import { writeJsonFile } from './lib/writeJsonFile'
 import { logEnd, logH1, logIndented, logSecondary } from './lib/logUtil'
-import { downloadNotionInspirationImages } from './downloadNotionInspirationImages'
+import { notion } from './lib/notion'
+import { parseOriginalNotionInspirations } from './lib/parseOriginalNotionInspirations'
+import { writeJsonFile } from './lib/writeJsonFile'
+import { INSPIRATIONS_JSON_PATH } from './paths'
 
 const inspirationsDatabaseId = process.env.NOTION_INSPIRATION_DATABASE_ID || ''
 
