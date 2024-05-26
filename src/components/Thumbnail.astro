@@ -110,6 +110,7 @@ const projectIllustration = await Astro.glob<AstroGlobImageType<'svg'>>(
 					alt={`Illustration for the project "${nameShort}"`}
 					src={projectIllustration}
 					class={classNames(
+						`webfeedsFeaturedVisual`,
 						`ease-out-extreme duration-500`,
 						`translate-y-px origin-bottom-left`,
 						`max-w-[260px] max-h-[90%] w-auto h-auto`,
