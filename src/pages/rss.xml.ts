@@ -1,4 +1,4 @@
-import rss from "@astrojs/rss";
+import rss, { type RSSFeedItem } from "@astrojs/rss";
 import type { APIContext } from "astro";
 import {
   getCollection,
@@ -87,7 +87,7 @@ function getOgImage(slug: string) {
   return image[1].default;
 }
 
-async function getRSSProjectItems(site: string) {
+async function getRSSProjectItems(site: string): Promise<RSSFeedItem[]> {
   const projectsData = await getCollection("projects");
   return await Promise.all(
     projectsData.map(async (p) => {
@@ -107,6 +107,8 @@ async function getRSSProjectItems(site: string) {
         link: `/projects/${p.slug}/`,
         enclosure: getEnclosureByImage(site, ogImage),
         content: await getHTMLContentBySlug("projects", p.slug),
+        customData:
+          ogImage && `<webfeeds:cover image="${site}${ogImage.src}" />`,
       };
     })
   );
