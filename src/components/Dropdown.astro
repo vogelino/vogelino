@@ -155,8 +155,18 @@ export type Props = {
         dropDownButton.setAttribute("tabindex", "0");
       });
       for (const menuItem of menuItems) {
-        menuItem.addEventListener("click", () => {
-          dropDownButton.setAttribute("aria-expanded", "false");
+        menuItem.addEventListener("touchend", () => {
+          const IS_IPAD = navigator.userAgent.match(/iPad/i) != null;
+          const IS_IPHONE =
+            navigator.userAgent.match(/iPhone/i) != null ||
+            navigator.userAgent.match(/iPod/i) != null;
+          const isIOS = IS_IPAD || IS_IPHONE;
+
+          if (isIOS) {
+            const menuLink = menuItem.getAttribute("href");
+            if (!menuLink) return;
+            window.open(menuLink, "_blank");
+          }
         });
         menuItem.addEventListener("keydown", (event: KeyboardEvent) => {
           if (event.key === "Escape") {
