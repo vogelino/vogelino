@@ -1,15 +1,18 @@
 ---
-import { Image } from 'astro:assets'
-import type { InspirationType } from '../../schemas/inspirations'
-import classNames from '../../utils/classNames'
-const { link } = Astro.props
+import { Image } from "astro:assets";
+import type { InspirationType } from "../../schemas/inspirations";
+import classNames from "../../utils/classNames";
+const { link } = Astro.props;
 
 export type Props = {
-	link: InspirationType
-}
+  link: InspirationType;
+};
 ---
 
-<li aria-label={`Cool site: "${link.title}" (${link.url})`} class="relative group">
+<li
+  aria-label={`Cool site: "${link.title}" (${link.url})`}
+  class="relative group @container"
+>
   <a
     href={link.url}
     target="_blank"
@@ -63,12 +66,35 @@ export type Props = {
       </h3>
     </div>
   </a>
-  <a href={`/inspirations/${link.id}`} class={classNames(
-    `absolute bottom-0 right-0`,
-    `hover-hover:opacity-0`,
-    `hover-hover:group-hover:opacity-100 focus-visible:opacity-100 transition-opacity`,
-    `focusable p-2 rounded-full`
-  )}>
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+  <a
+    href={`/inspirations/${link.id}`}
+    aria-label={`Permalink to the inspiration "${link.title} (${link.url})"`}
+    class={classNames(
+      // the top value represents the width of the container
+      `top-[55cqw] right-0`,
+      `absolute`,
+      `hover-hover:opacity-0`,
+      `hover-hover:group-hover:opacity-100 focus-visible:opacity-100 transition-opacity`,
+      `focusable p-2 rounded-full`
+    )}
+  >
+    <svg
+      role="img"
+      aria-label="Link icon"
+      xmlns="http://www.w3.org/2000/svg"
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="lucide lucide-link"
+      ><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"
+      ></path><path
+        d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"
+      ></path></svg
+    >
   </a>
 </li>
