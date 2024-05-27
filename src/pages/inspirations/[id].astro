@@ -1,35 +1,36 @@
 ---
-import FancyHeadline from '../../components/FancyHeadline.astro'
-import Layout from '../../layouts/Layout.astro'
-import type { InspirationType } from '../../schemas/inspirations'
-import { getParsedInspirations } from './[...page].astro'
-import InspirationItem from './_InspirationItem.astro'
+import FancyHeadline from "../../components/FancyHeadline.astro";
+import Layout from "../../layouts/Layout.astro";
+import type { InspirationType } from "../../schemas/inspirations";
+import { getParsedInspirations } from "./[...page].astro";
+import InspirationItem from "./_InspirationItem.astro";
 
 export async function getStaticPaths() {
-	const inspirations = (await getParsedInspirations()).sort(
-		(a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-	)
-	return inspirations.map((inspiration, idx) => {
-		const nextIdx = idx + 1 >= inspirations.length ? 0 : idx + 1
-		const prevIdx = idx - 1 < 0 ? inspirations.length - 1 : idx - 1
-		return {
-			params: { id: inspiration.id },
-			props: {
-				inspiration: inspiration,
-				prevInspiration: inspirations[prevIdx] || inspirations[inspirations.length - 1],
-				nextInspiration: inspirations[nextIdx] || inspirations[0],
-			},
-		}
-	})
+  const inspirations = (await getParsedInspirations()).sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
+  return inspirations.map((inspiration, idx) => {
+    const nextIdx = idx + 1 >= inspirations.length ? 0 : idx + 1;
+    const prevIdx = idx - 1 < 0 ? inspirations.length - 1 : idx - 1;
+    return {
+      params: { id: inspiration.id },
+      props: {
+        inspiration: inspiration,
+        prevInspiration:
+          inspirations[prevIdx] || inspirations[inspirations.length - 1],
+        nextInspiration: inspirations[nextIdx] || inspirations[0],
+      },
+    };
+  });
 }
 
-const { inspiration } = Astro.props
+const { inspiration } = Astro.props;
 
 export type Props = {
-	inspiration: InspirationType
-	nextInspiration: InspirationType
-	prevInspiration: InspirationType
-}
+  inspiration: InspirationType;
+  nextInspiration: InspirationType;
+  prevInspiration: InspirationType;
+};
 ---
 
 <Layout title="List of cool site I like" slug="inspirations">

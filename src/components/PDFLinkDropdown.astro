@@ -2,19 +2,16 @@
 import { aboutFrontmatter } from "../parsedContents/about";
 import Dropdown from "./Dropdown.astro";
 import Pdf from "./icons/Pdf.astro";
-
 ---
 
 <Dropdown
+  id="PDFList"
   triggerText="PDF"
   icon={Pdf}
-	positionHorizontal="right"
-  options={
-		aboutFrontmatter.cvPdfs.map(({ code, label }) => ({
-			text: label,
-			suffix: code,
-			href: `./pdfs/LucasVogel-Curriculum-2023-${code.toUpperCase()}.pdf`,
-		}))
-	}
->
-</Dropdown>
+  positionHorizontal="right"
+  options={aboutFrontmatter.cvPdfs.map(({ code, label }) => ({
+    text: label,
+    suffix: code,
+    href: `./pdfs/LucasVogel-Curriculum-2023-${code.toUpperCase()}.pdf`,
+  }))}
+/>

@@ -1,8 +1,8 @@
-export default function classNames(...classes: unknown[] | unknown[][]): string {
-	const flatClasses = classes.map((className: unknown) => {
-		if (typeof className === 'string') return className
-		if (Array.isArray(className)) return classNames(...className)
-		return ''
-	})
-	return flatClasses.filter(Boolean).join(' ')
+import { type ClassValue, clsx } from 'clsx'
+import { twMerge } from 'tailwind-merge'
+
+export default function classNames(...inputs: ClassValue[]) {
+	return twMerge(clsx(inputs))
 }
+
+export const cn = classNames

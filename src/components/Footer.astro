@@ -22,6 +22,7 @@ const year = String(new Date().getFullYear());
     <div class="flex items-center flex-wrap gap-6">
       <span aria-label={`Copyright ${year}`}>{year}</span>
       <Dropdown
+        id="rssList"
         triggerText={``}
         icon={Rss}
         positionVertical="up"

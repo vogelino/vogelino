@@ -1,89 +1,166 @@
 ---
-import type { JSX } from 'astro/jsx-runtime'
-import classNames from '../utils/classNames'
+import type { JSX } from "astro/jsx-runtime";
+import classNames from "../utils/classNames";
 
-const { icon: Icon, triggerText, options, positionVertical = 'down', positionHorizontal = 'left' } = Astro.props
+const {
+  id,
+  icon: Icon,
+  triggerText,
+  options,
+  positionVertical = "down",
+  positionHorizontal = "left",
+} = Astro.props;
 
 export type Props = {
-	icon?: JSX.Element
-	triggerText: JSX.Element
-	options: { text: JSX.Element; href: string; suffix?: JSX.Element }[]
-	positionVertical?: 'down' | 'up'
-	positionHorizontal?: 'left' | 'right'
-}
+  id: string;
+  icon?: JSX.Element;
+  triggerText: JSX.Element;
+  options: { text: JSX.Element; href: string; suffix?: JSX.Element }[];
+  positionVertical?: "down" | "up";
+  positionHorizontal?: "left" | "right";
+};
 ---
 
-<div class="group relative inline-block text-left">
-	<div>
-		<button
-			type="button"
-			aria-label="Download my CV as PDF file in different languages"
-			class={classNames(
-				!(Icon && !triggerText) && 'gap-x-1.5',
-				'text-xl bg-alt text-fg',
-				'inline-flex w-full justify-center items-center',
-				'rounded-full py-1 font-semibold',
-				'ring-grayMed hover-hover:hover:bg-fg',
-				'hover-hover:hover:text-alt',
-				'transition-colors motion-reduce:transition-none',
-				'focus-visible:outline-none focus-visible:ring-2',
-				'focus-visible:ring-fg',
-				(Icon && !triggerText) ? 'px-2.5' : 'px-4'
-			)}
-			id="menu-button"
-			aria-expanded="true"
-			aria-haspopup="true"
-		>
-			{Icon && <Icon />}
-			{triggerText && <span class="pt-0.5">{triggerText}</span>}
-			<svg
-				class="-mr-1 h-5 w-5"
-				viewBox="0 0 20 20"
-				fill="currentColor"
-				aria-hidden="true"
-			>
-				<path
-					fill-rule="evenodd"
-					d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-					clip-rule="evenodd"></path>
-			</svg>
-		</button>
-	</div>
-	<div
-		class={classNames(
-			positionVertical === 'up' ? 'bottom-full' : 'top-full',
-			positionHorizontal === 'left' ? 'left-0' : 'right-0',
-			'absolute z-10 my-2 origin-top-right',
-			'bg-bg shadow-md border rounded border-grayMed',
-			'transition-opacity motion-reduce:transition-none',
-			'opacity-0 pointer-events-none whitespace-nowrap',
-			'focus:opacity-100 focus:pointer-events-auto',
-			'focus-visible:opacity-100 focus-visible:pointer-events-auto',
-			'group-focus-within:opacity-100 group-focus-within:pointer-events-auto',
-		)}
-		aria-labelledby="menu-button"
-	>
-		<div class="py-1" role="none">
-			{
-				options.map(({ text, href, suffix }) => (
-					<a
-						href={href}
-						class={classNames(
-							'flex gap-8 justify-between px-4 py-2 text-base normal-case',
-							'text-fg hover-hover:hover:bg-alt',
-							'transition-colors motion-reduce:transition-none',
-							'focus-visible:outline-none focus-visible:ring-2',
-							'focus-visible:ring-fg focus-visible:rounded-sm',
-						)}
-						role="menuitem"
-						id="menu-item-0"
-						target="_blank"
-					>
-						<span>{text}</span>
-						{suffix && <span class="text-grayDark">{suffix}</span>}
-					</a>
-				))
-			}
-		</div>
-	</div>
+<div class="relative inline-block text-left dropdown-menu" id={id}>
+  <div>
+    <button
+      id={`dropdown-button-${id}`}
+      type="button"
+      aria-label="Download my CV as PDF file in different languages"
+      aria-expanded="false"
+      aria-controls={`dropdown-${id}`}
+      class={classNames(
+        "dropdown-button",
+        !(Icon && !triggerText) && "gap-x-1.5",
+        "text-xl bg-alt text-fg",
+        "inline-flex w-full justify-center items-center",
+        "rounded-full py-1 font-semibold",
+        "ring-grayMed hover-hover:hover:bg-fg",
+        "hover-hover:hover:text-alt",
+        "transition-colors motion-reduce:transition-none",
+        "focusable",
+        Icon && !triggerText ? "px-2.5" : "px-4"
+      )}
+      id="menu-button"
+      aria-expanded="true"
+      aria-haspopup="true"
+    >
+      {Icon && <Icon />}
+      {triggerText && <span class="pt-0.5">{triggerText}</span>}
+      <svg
+        class={classNames(
+          "-mr-1 h-5 w-5",
+          positionVertical === "up" ? "rotate-180" : "rotate-0"
+        )}
+        viewBox="0 0 20 20"
+        fill="currentColor"
+        aria-hidden="true"
+      >
+        <path
+          stroke="currentColor"
+          fill-rule="evenodd"
+          d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+          clip-rule="evenodd"></path>
+      </svg>
+    </button>
+  </div>
+  <div
+    role="menu"
+    aria-orientation="vertical"
+    id={`dropdown-${id}`}
+    aria-labelledby={id}
+    class={classNames(
+      positionVertical === "up" ? "bottom-full" : "top-full",
+      positionHorizontal === "left" ? "left-0" : "right-0",
+      "absolute z-10 my-2 origin-top-right",
+      "bg-bg shadow-md border rounded border-grayMed",
+      "transition-opacity motion-reduce:transition-none",
+      "opacity-0 pointer-events-none whitespace-nowrap",
+      "focus-within:opacity-100 focus-within:pointer-events-auto"
+    )}
+    aria-labelledby="menu-button"
+  >
+    <div class="py-1" role="group">
+      {
+        options.map(({ text, href, suffix }, idx) => (
+          <a
+            href={href}
+            class={classNames(
+              "flex gap-8 justify-between px-4 py-2 text-base normal-case",
+              "text-fg hover-hover:hover:bg-alt",
+              "transition-colors motion-reduce:transition-none",
+              "focus-visible:outline-none focus-visible:ring-2",
+              "focus-visible:ring-fg focus-visible:rounded-sm"
+            )}
+            role="menuitem"
+            id={`menu-item-${idx + 1}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span>{text}</span>
+            {suffix && <span class="text-grayDark">{suffix}</span>}
+          </a>
+        ))
+      }
+    </div>
+  </div>
 </div>
+
+<script>
+  const dropdowns = document.querySelectorAll(".dropdown-menu");
+
+  for (const dropdown of dropdowns) {
+    initDropdown(dropdown.id);
+  }
+
+  function initDropdown(id: string) {
+    const parent = document.getElementById(id);
+    const dropDownButton = document.getElementById(`dropdown-button-${id}`);
+    const dropDownMenu = document.getElementById(`dropdown-${id}`);
+    const menuItems = dropDownMenu?.querySelectorAll("[role='menuitem']") as
+      | HTMLLinkElement[]
+      | undefined;
+
+    if (
+      !parent ||
+      !id ||
+      !dropDownButton ||
+      !dropDownMenu ||
+      !menuItems ||
+      !menuItems.length
+    )
+      return;
+
+    dropDownButton.addEventListener("focus", (event) => {
+      const menuHasFocus = dropDownMenu.contains(document.activeElement);
+      if (menuHasFocus) return;
+      menuItems[0]?.focus();
+    });
+    dropDownMenu.addEventListener("focusin", () => {
+      dropDownButton.setAttribute("aria-expanded", "true");
+      dropDownButton.setAttribute("tabindex", "-1");
+    });
+    dropDownMenu.addEventListener("focusout", () => {
+      dropDownButton.setAttribute("aria-expanded", "false");
+      dropDownButton.setAttribute("tabindex", "0");
+    });
+    for (const menuItem of menuItems) {
+      menuItem.addEventListener("click", () => {
+        dropDownButton.setAttribute("aria-expanded", "false");
+      });
+      menuItem.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          dropDownButton.setAttribute("aria-expanded", "false");
+          menuItem.blur();
+        }
+      });
+      menuItem.addEventListener("blur", () => {
+        setTimeout(() => {
+          const containsFocus = parent?.contains(document.activeElement);
+          if (containsFocus) return;
+          dropDownButton.setAttribute("aria-expanded", "false");
+        }, 50);
+      });
+    }
+  }
+</script>

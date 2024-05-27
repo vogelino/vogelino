@@ -1,53 +1,53 @@
 ---
-import AboutCVExperience from '../components/AboutCVExperience.astro'
-import AboutCVTable from '../components/AboutCVTable.astro'
-import AboutDescription from '../components/AboutDescription.astro'
-import AboutImage from '../components/AboutImage.astro'
-import FancyHeadline from '../components/FancyHeadline.astro'
-import PDFLinkDropdown from '../components/PDFLinkDropdown.astro'
-import SocialIcons from '../components/SocialIcons.astro'
-import Layout from '../layouts/Layout.astro'
-import classNames from '../utils/classNames'
+import AboutCVExperience from "../components/AboutCVExperience.astro";
+import AboutCVTable from "../components/AboutCVTable.astro";
+import AboutDescription from "../components/AboutDescription.astro";
+import AboutImage from "../components/AboutImage.astro";
+import FancyHeadline from "../components/FancyHeadline.astro";
+import PDFLinkDropdown from "../components/PDFLinkDropdown.astro";
+import SocialIcons from "../components/SocialIcons.astro";
+import Layout from "../layouts/Layout.astro";
+import classNames from "../utils/classNames";
 ---
 
 <Layout title="About me" slug="about">
-	<div
-		class={classNames(
-			`grid grid-cols-1 lg:grid-cols-5 pt-[100px]`,
-			`bg-grayMed min-h-screen gap-px`,
-		)}
-	>
-		<section
-			aria-label="About me"
-			class={classNames(
-				`h-full px-6 py-5 relative @container`,
-				`md:col-span-2 lg:col-span-3 bg-bg overflow-x-hidden`,
-			)}
-		>
-			<AboutImage />
-			<AboutDescription />
-		</section>
-		<section
-			aria-label="Curriculum Vitae"
-			class={classNames(
-				`h-full pt-5 @container/sidebar`,
-				`order-1 lg:order-last lg:col-span-2 bg-bg`,
-			)}
-		>
-			<FancyHeadline
-				tag="h2"
-				title="My **CV**"
-				className={classNames(
-					`pb-[2vmax] pt-[1.5vmax]`,
-					`flex flex-wrap justify-between items-center`,
-					`px-6 gap-x-8 gap-y-4`,
-				)}
-			>
-				<PDFLinkDropdown />
-			</FancyHeadline>
-			<AboutCVTable />
-			<SocialIcons className="bg-grayUltraLight pt-6" />
-			<AboutCVExperience />
-		</section>
-	</div>
+  <div
+    class={classNames(
+      `grid grid-cols-1 lg:grid-cols-5 pt-[100px]`,
+      `bg-grayMed min-h-screen gap-px`
+    )}
+  >
+    <section
+      aria-label="About me"
+      class={classNames(
+        `h-full px-6 py-5 relative @container`,
+        `md:col-span-2 lg:col-span-3 bg-bg overflow-x-hidden`
+      )}
+    >
+      <AboutImage />
+      <AboutDescription />
+    </section>
+    <section
+      aria-label="Curriculum Vitae"
+      class={classNames(
+        `h-full pt-5 @container/sidebar`,
+        `order-1 lg:order-last lg:col-span-2 bg-bg`
+      )}
+    >
+      <FancyHeadline
+        tag="h2"
+        title="My **CV**"
+        className={classNames(
+          `pb-[2vmax] pt-[1.5vmax]`,
+          `flex flex-wrap justify-between items-center`,
+          `px-6 gap-x-8 gap-y-4 w-full`
+        )}
+      >
+        <PDFLinkDropdown />
+      </FancyHeadline>
+      <AboutCVTable />
+      <SocialIcons className="bg-grayUltraLight pt-6" />
+      <AboutCVExperience />
+    </section>
+  </div>
 </Layout>

@@ -1,39 +1,39 @@
 ---
-import classNames from '../utils/classNames'
+import classNames from "../utils/classNames";
 
 export interface Props {
-	title: string
-	tag?: string
-	className?: string
+  title: string;
+  tag?: string;
+  className?: string;
 }
 
-const { title, className, tag } = Astro.props
+const { title, className, tag } = Astro.props;
 
-const Tag = tag || 'h1'
+const Tag = tag || "h1";
 
 function highlight(text: string): string {
-	return text.replace(
-		/\*\*(.*?)\*\*/gm,
-		`<span class="${classNames(
-			'font-special font-normal inline-block',
-			'bg-alt px-[0.25em] -ml-[0.25em] pt-[0.19em] pb-[0.28em] rounded-full'
-		)}">$1</span>`
-	)
+  return text.replace(
+    /\*\*(.*?)\*\*/gm,
+    `<span class="${classNames(
+      "font-special font-normal inline-block",
+      "bg-alt px-[0.25em] -ml-[0.25em] pt-[0.19em] pb-[0.28em] rounded-full"
+    )}">$1</span>`
+  );
 }
 
-const htmlTitle = highlight(title)
+const htmlTitle = highlight(title);
 ---
 
 <Tag
-	{...{
-		class: classNames(
-			className,
-			`text-4xl md:text-5xl 2xl:text-7xl`,
-			`!leading-[0.7em] text-balance pt-[0.2em]`,
-			`uppercase font-normal inline-block`,
-		),
-	}}
+  {...{
+    class: classNames(
+      `text-4xl md:text-5xl 2xl:text-7xl`,
+      `!leading-[0.7em] text-balance pt-[0.2em]`,
+      `uppercase font-normal inline-block`,
+      className
+    ),
+  }}
 >
-	<span set:html={htmlTitle} />
-	<slot />
+  <span set:html={htmlTitle} />
+  <slot />
 </Tag>
