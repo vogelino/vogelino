@@ -42,9 +42,18 @@ export async function createRSSFeed(
   const ogAbout = ogImages.find((file) => file.url.includes("about"))?.image;
   return rss({
     title: options.title || "Vogelino – Lucas Vogel's multimedia portfolio",
-    description:
+    description: wrapInCdata(`${
       options.description ||
-      "Interface design and development portfolio of Lucas Vogel",
+      "Interface design and development portfolio of Lucas Vogel"
+    }
+      There are currently the following RSS Feeds available:
+      <ul>
+        <li>All contents RSS feed: ${site}/rss.xml</li>
+        <li>Only pages RSS feed: ${site}/rss-pages-only.xml</li>
+        <li>Only projects RSS feed: ${site}/rss-projects-only.xml</li>
+        <li>Only inspirations RSS feed: ${site}/rss-inspirations-only.xml</li>
+      </ul>
+      `),
     site,
     xmlns: {
       content: "http://purl.org/rss/1.0/modules/content/",
