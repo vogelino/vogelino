@@ -1,24 +1,24 @@
 ---
-import type { JSX } from 'astro/jsx-runtime'
-import classNames from '../utils/classNames'
+import type { JSX } from "astro/jsx-runtime";
+import classNames from "../utils/classNames";
 
 const {
-	id,
-	icon: Icon,
-	triggerText,
-	options,
-	positionVertical = 'down',
-	positionHorizontal = 'left',
-} = Astro.props
+  id,
+  icon: Icon,
+  triggerText,
+  options,
+  positionVertical = "down",
+  positionHorizontal = "left",
+} = Astro.props;
 
 export type Props = {
-	id: string
-	icon?: JSX.Element
-	triggerText: JSX.Element
-	options: { text: JSX.Element; href: string; suffix?: JSX.Element }[]
-	positionVertical?: 'down' | 'up'
-	positionHorizontal?: 'left' | 'right'
-}
+  id: string;
+  icon?: JSX.Element;
+  triggerText: JSX.Element;
+  options: { text: JSX.Element; href: string; suffix?: JSX.Element }[];
+  positionVertical?: "down" | "up";
+  positionHorizontal?: "left" | "right";
+};
 ---
 
 <div class="relative inline-block text-left dropdown-menu" id={id}>
@@ -107,60 +107,73 @@ export type Props = {
 </div>
 
 <script>
-  const dropdowns = document.querySelectorAll(".dropdown-menu");
+  function initListeners() {
+    const dropdowns = document.querySelectorAll(".dropdown-menu");
 
-  for (const dropdown of dropdowns) {
-    initDropdown(dropdown.id);
-  }
+    for (const dropdown of dropdowns) {
+      initDropdown(dropdown.id);
+    }
 
-  function initDropdown(id: string) {
-    const parent = document.getElementById(id);
-    const dropDownButton = document.getElementById(`dropdown-button-${id}`);
-    const dropDownMenu = document.getElementById(`dropdown-${id}`);
-    const menuItems = dropDownMenu?.querySelectorAll("[role='menuitem']") as
-      | HTMLLinkElement[]
-      | undefined;
+    function initDropdown(id: string) {
+      const parent = document.getElementById(id);
+      const dropDownButton = document.getElementById(`dropdown-button-${id}`);
+      const dropDownMenu = document.getElementById(`dropdown-${id}`);
+      const menuItems = dropDownMenu?.querySelectorAll("[role='menuitem']") as
+        | HTMLLinkElement[]
+        | undefined;
 
-    if (
-      !parent ||
-      !id ||
-      !dropDownButton ||
-      !dropDownMenu ||
-      !menuItems ||
-      !menuItems.length
-    )
-      return;
+      if (
+        !parent ||
+        !id ||
+        !dropDownButton ||
+        !dropDownMenu ||
+        !menuItems ||
+        !menuItems.length
+      )
+        return;
 
-    dropDownButton.addEventListener("focus", (event) => {
-      const menuHasFocus = dropDownMenu.contains(document.activeElement);
-      if (menuHasFocus) return;
-      menuItems[0]?.focus();
-    });
-    dropDownMenu.addEventListener("focusin", () => {
-      dropDownButton.setAttribute("aria-expanded", "true");
-      dropDownButton.setAttribute("tabindex", "-1");
-    });
-    dropDownMenu.addEventListener("focusout", () => {
-      dropDownButton.setAttribute("aria-expanded", "false");
-      dropDownButton.setAttribute("tabindex", "0");
-    });
-    for (const menuItem of menuItems) {
-      menuItem.addEventListener("click", () => {
+      dropDownButton.addEventListener("touchstart", () => {
+        const isExpanded =
+          dropDownButton.getAttribute("aria-expanded") === "true";
+        dropDownButton.setAttribute(
+          "aria-expanded",
+          Boolean(!isExpanded).toString()
+        );
+        dropDownButton.setAttribute("tabindex", isExpanded ? "-1" : "0");
+      });
+      dropDownButton.addEventListener("focus", (event) => {
+        const menuHasFocus = dropDownMenu.contains(document.activeElement);
+        if (menuHasFocus) return;
+        menuItems[0]?.focus();
+      });
+      dropDownMenu.addEventListener("focusin", () => {
+        dropDownButton.setAttribute("aria-expanded", "true");
+        dropDownButton.setAttribute("tabindex", "-1");
+      });
+      dropDownMenu.addEventListener("focusout", () => {
         dropDownButton.setAttribute("aria-expanded", "false");
+        dropDownButton.setAttribute("tabindex", "0");
       });
-      menuItem.addEventListener("keydown", (event) => {
-        if (event.key === "Escape") {
+      for (const menuItem of menuItems) {
+        menuItem.addEventListener("click", () => {
           dropDownButton.setAttribute("aria-expanded", "false");
-          menuItem.blur();
-        }
-      });
-      menuItem.addEventListener("blur", () => {
-        setTimeout(() => {
-          const containsFocus = parent?.contains(document.activeElement);
-          if (containsFocus) return;
-          dropDownButton.setAttribute("aria-expanded", "false");
-        }, 50);
-      });
+        });
+        menuItem.addEventListener("keydown", (event: KeyboardEvent) => {
+          if (event.key === "Escape") {
+            dropDownButton.setAttribute("aria-expanded", "false");
+            menuItem.blur();
+          }
+        });
+        menuItem.addEventListener("blur", () => {
+          setTimeout(() => {
+            const containsFocus = parent?.contains(document.activeElement);
+            if (containsFocus) return;
+            dropDownButton.setAttribute("aria-expanded", "false");
+          }, 50);
+        });
+      }
     }
   }
+  initListeners();
+  document.addEventListener("astro:after-swap", initListeners);
 </script>
