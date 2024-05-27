@@ -1,24 +1,24 @@
 ---
-import type { JSX } from "astro/jsx-runtime";
-import classNames from "../utils/classNames";
+import type { JSX } from 'astro/jsx-runtime'
+import classNames from '../utils/classNames'
 
 const {
-  id,
-  icon: Icon,
-  triggerText,
-  options,
-  positionVertical = "down",
-  positionHorizontal = "left",
-} = Astro.props;
+	id,
+	icon: Icon,
+	triggerText,
+	options,
+	positionVertical = 'down',
+	positionHorizontal = 'left',
+} = Astro.props
 
 export type Props = {
-  id: string;
-  icon?: JSX.Element;
-  triggerText: JSX.Element;
-  options: { text: JSX.Element; href: string; suffix?: JSX.Element }[];
-  positionVertical?: "down" | "up";
-  positionHorizontal?: "left" | "right";
-};
+	id: string
+	icon?: JSX.Element
+	triggerText: JSX.Element
+	options: { text: JSX.Element; href: string; suffix?: JSX.Element }[]
+	positionVertical?: 'down' | 'up'
+	positionHorizontal?: 'left' | 'right'
+}
 ---
 
 <div class="relative inline-block text-left dropdown-menu" id={id}>
