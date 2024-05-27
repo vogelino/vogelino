@@ -1,5 +1,4 @@
 ---
-import { Image } from 'astro:assets'
 import { loadJson } from '../../../scripts/lib/loadJson'
 import { INSPIRATIONS_JSON_PATH } from '../../../scripts/paths'
 import FancyHeadline from '../../components/FancyHeadline.astro'
@@ -8,14 +7,30 @@ import Layout from '../../layouts/Layout.astro'
 import { type InspirationType, inspirationSchema } from '../../schemas/inspirations'
 import type { AstroGlobImageType } from '../../utils/astroTypes'
 import classNames from '../../utils/classNames'
+import InspirationItem from './_InspirationItem.astro'
 
 const firstPath = 'inspirations'
 
 export async function getStaticPaths({ paginate }) {
+	const parsedInspirations = await getParsedInspirations()
+	return paginate(parsedInspirations, {
+		pageSize: 47,
+	})
+}
+
+export async function getParsedInspirations(): Promise<InspirationType[]> {
 	const rawInspirations = await loadJson<InspirationType[]>(INSPIRATIONS_JSON_PATH)
+	const thumbnails = await Astro.glob<AstroGlobImageType<'webp'>>(
+		'/src/assets/images/inspirations/*.webp'
+	).then((files) => files.map((file) => file.default))
 	const parsedInspirations = rawInspirations.reduce((acc, inspiration) => {
 		try {
-			acc.push(inspirationSchema.parse(inspiration))
+			acc.push(
+				inspirationSchema.parse({
+					...inspiration,
+					thumbnail: thumbnails.find((thumbnail) => thumbnail.src.includes(inspiration.id)),
+				})
+			)
 			return acc
 		} catch (error) {
 			console.log('Error parsing inspiration:', JSON.stringify(inspiration, null, 2))
@@ -24,9 +39,7 @@ export async function getStaticPaths({ paginate }) {
 		}
 	}, [] as InspirationType[])
 
-	return paginate(parsedInspirations, {
-		pageSize: 47,
-	})
+	return parsedInspirations
 }
 
 export interface Props {
@@ -43,15 +56,6 @@ export interface Props {
 }
 
 const { page } = Astro.props
-
-const thumbnails = await Astro.glob<AstroGlobImageType<'webp'>>(
-	'/src/assets/images/inspirations/*.webp'
-).then((files) => files.map((file) => file.default))
-
-const notionLinks = (page.data || []).map((link) => ({
-	...link,
-	thumbnail: thumbnails.find((thumbnail) => thumbnail.src.includes(link.id)),
-}))
 ---
 
 <Layout title="List of cool site I like" slug="inspirations">
@@ -72,58 +76,10 @@ const notionLinks = (page.data || []).map((link) => ({
 			</p>
 		</li>
 		{
-			notionLinks.map((link) => {
+			page.data.map((link) => {
 				if (!link.thumbnail) return null
 				return (
-					<li aria-label={`Cool site: "${link.title}" (${link.url})`}>
-						<a
-							href={link.url}
-							target="_blank"
-							rel="noopener nofollow"
-							class={classNames(
-								`flex flex-col gap-4 group`,
-								`focus-visible:ring-2 focus-visible:ring-fg outline-none`,
-								`focus-visible:overflow-hidden focus-visible:rounded-lg`,
-								`focus-visible:ring-offset-8 focus-visible:ring-offset-bg`,
-							)}
-						>
-							<span class="relative block aspect-[140/73] bg-zinc-100 rounded overflow-hidden">
-								<Image
-									src={link.thumbnail}
-									alt={`Cover image of "${link.title}"`}
-									class={classNames(
-										`w-full aspect-[140/73] rounded object-cover`,
-										`transition-transform hover-hover:group-hover:scale-110`,
-										`motion-reduce:transition-none`,
-										`motion-reduce:hover-hover:group-hover:scale-100`,
-									)}
-								/>
-								<span class="absolute inset-0 pointer-events-none bg-zinc-100 mix-blend-multiply" />
-							</span>
-							<div class="grid grid-cols-[1rem,1fr] gap-3">
-								<span class="inline-block w-4 h-4 relative mt-0.5 rounded overflow-hidden bg-zinc-100 bg-cover bg-center leading-4">
-									<Image
-										src={`https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&size=32&url=${link.url}`}
-										alt={`Favicon of "${link.title}"`}
-										class="absolute inset-0 object-cover"
-										width={16}
-										height={16}
-									/>
-								</span>
-								<h3 class="inline-block leading-tight">
-									<span
-										class={classNames(
-											`px-3 -ml-2 py-2 rounded-full`,
-											`hover-hover:group-hover:bg-alt`,
-											`transition-colors motion-reduce:transition-none`,
-										)}
-									>
-										{link.title}
-									</span>
-								</h3>
-							</div>
-						</a>
-					</li>
+					<InspirationItem link={link} />
 				)
 			})
 		}

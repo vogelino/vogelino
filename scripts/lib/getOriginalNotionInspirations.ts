@@ -40,6 +40,9 @@ export interface RawNotionInspirationLinkType extends Record<string, unknown> {
 		URL: {
 			url: string
 		}
+		Date: {
+			created_time: string
+		}
 	}
 	children: {
 		type: 'image'

@@ -202,7 +202,7 @@ const cv = aboutFrontmatter.cv
 
 		const toggle = function (tab: HTMLButtonElement, scroll = true) {
 			const target = tab.getAttribute('aria-controls')
-			const content = document.getElementById(target)
+			const content = document.getElementById(target as string)
 
 			tabs.forEach((t) => {
 				t.setAttribute('aria-selected', 'false')
@@ -213,8 +213,8 @@ const cv = aboutFrontmatter.cv
 			})
 
 			tab.setAttribute('aria-selected', 'true')
-			content.setAttribute('aria-hidden', 'false')
-			content.classList.remove('hidden')
+			content?.setAttribute('aria-hidden', 'false')
+			content?.classList.remove('hidden')
 
 			if (window.innerWidth < 768 && scroll) {
 				container.scrollIntoView({ behavior: 'smooth' })

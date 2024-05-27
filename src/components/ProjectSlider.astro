@@ -68,11 +68,11 @@ const { project } = Astro.props
 		const nextButton = document.getElementById('project-next')
 		const prevButton = document.getElementById('project-prev')
 
-		nextButton.addEventListener('click', (evt) => {
+		nextButton?.addEventListener('click', (evt) => {
 			evt.preventDefault()
 			slider.go('>')
 		})
-		prevButton.addEventListener('click', (evt) => {
+		prevButton?.addEventListener('click', (evt) => {
 			evt.preventDefault()
 			slider.go('<')
 		})
@@ -82,8 +82,10 @@ const { project } = Astro.props
 		)
 		zoomableImgs.forEach((liEl) => {
 			const img = liEl.querySelector('img')
+			if (!img) return
 			const width = img.getAttribute('width')
 			const height = img.getAttribute('height')
+			if (!width || !height) return
 			img.style.aspectRatio = `${width}/${height}`
 			liEl.setAttribute('data-pswp-width', width)
 			liEl.setAttribute('data-pswp-height', height)
@@ -100,6 +102,7 @@ const { project } = Astro.props
 		})
 
 		lightbox.on('change', () => {
+			if (!lightbox.pswp) return
 			slider.go(lightbox.pswp.currIndex + 1)
 		})
 		lightbox.init()

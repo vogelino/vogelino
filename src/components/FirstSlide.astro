@@ -81,11 +81,11 @@ const projectIllustration = await Astro.glob<AstroGlobImageType<'svg'>>(
 							'border-t border-grayLight col-span-full',
 						)}
 					>
-						<RoundedButton url={project.data.url} icon={Link}>
+						<RoundedButton url={project.data.url || undefined} icon={Link}>
 							Launch
 						</RoundedButton>
 						<RoundedButton
-							url={project.data.repo}
+							url={project.data.repo || undefined}
 							icon={GitHub}
 							variant="secondary"
 						>

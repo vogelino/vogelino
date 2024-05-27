@@ -27,12 +27,14 @@ const techLogo = files.find((file) => file.default.src.includes(`${technology.sl
 		`focus-visible:ring-2 focus-visible:ring-fg focus-visible:outline-none`,
 	)}
 >
-	<Image
-		class="w-6 h-6"
-		src={techLogo}
-		alt={technology.data.name}
-		id={technology.id}
-	/>
+	{techLogo && (
+		<Image
+			class="w-6 h-6"
+			src={techLogo}
+			alt={technology.data.name}
+			id={technology.id}
+		/>
+	)}
 
 	<span class="mt-0.5">{technology.data.name}</span>
 </a>

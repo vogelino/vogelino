@@ -94,9 +94,10 @@ const availableForHire = import.meta.env.AVAILABLE_FOR_HIRE === 'true'
 <script>
 	function setupHamburgerMenuUpdater(doc: Document) {
 		const burgerMenu = doc.getElementById('burger-menu')
-		burgerMenu.addEventListener('click', () => {
+		burgerMenu?.addEventListener('click', () => {
 			const burgerMenu = doc.getElementById('burger-menu')
 			const menu = doc.getElementById('menu')
+			if (!burgerMenu || !menu) return
 			burgerMenu.classList.toggle('close')
 			menu.classList.toggle('opacity-0')
 			menu.classList.toggle('pointer-events-none')
@@ -113,6 +114,7 @@ const availableForHire = import.meta.env.AVAILABLE_FOR_HIRE === 'true'
 		const updateMenuItemsVisibility = () => {
 			const burgerMenu = doc.getElementById('burger-menu')
 			const socialIcons = doc.getElementById('social-icons')
+			if (!burgerMenu || !socialIcons) return
 			if (window.innerWidth <= MENU_BREAKPOINT) {
 				burgerMenu.setAttribute('aria-hidden', 'false')
 				socialIcons.setAttribute('aria-hidden', 'false')
@@ -133,7 +135,7 @@ const availableForHire = import.meta.env.AVAILABLE_FOR_HIRE === 'true'
 		function updateHeaderBg() {
 			const header: HTMLElement = doc.querySelector(
 				'header[aria-label="Main header"]',
-			)
+			) as HTMLElement
 			if (!header) return
 			const burgerMenu = doc.getElementById('burger-menu')
 			const withBg = header.dataset.withbg
@@ -143,7 +145,7 @@ const availableForHire = import.meta.env.AVAILABLE_FOR_HIRE === 'true'
 			const withBgClasses = withBgClassString.trim().split(' ')
 			const withoutBgClasses = withoutBgClassString.trim().split(' ')
 
-			const isOpened = !!burgerMenu.classList.contains('close')
+			const isOpened = !!burgerMenu?.classList.contains('close')
 			const scrollOffset =
 				window.scrollY ??
 				doc.documentElement.scrollTop ??
@@ -216,11 +218,11 @@ const availableForHire = import.meta.env.AVAILABLE_FOR_HIRE === 'true'
 		const themeToggler = doc.getElementById('theme-toggle')
 		const darkModePreference = window.matchMedia('(prefers-color-scheme: dark)')
 		const initialTheme = localStorage.getItem('theme')
-		updateToggler(initialTheme, doc)
+		updateToggler(initialTheme as string, doc)
 
-		themeToggler.addEventListener('click', () => {
+		themeToggler?.addEventListener('click', () => {
 			const themeToggler = doc.getElementById('theme-toggle')
-			const checked = themeToggler.getAttribute('aria-checked') === 'true'
+			const checked = themeToggler?.getAttribute('aria-checked') === 'true'
 			let newUserPref = checked ? 'light' : 'dark'
 			updateToggler(newUserPref, doc)
 		})
@@ -238,7 +240,7 @@ const availableForHire = import.meta.env.AVAILABLE_FOR_HIRE === 'true'
 		doc.documentElement.dataset.appliedMode = finalTheme
 		theme && localStorage.setItem('theme', theme)
 
-		themeToggler.setAttribute('aria-checked', isDark.toString())
+		themeToggler?.setAttribute('aria-checked', isDark.toString())
 	}
 
 	function setupHeader(doc: Document) {

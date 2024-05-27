@@ -1,11 +1,12 @@
 {
-  "extends": "astro/tsconfigs/base",
-  "compilerOptions": {
-    "plugins": [
-      {
-        "name": "@astrojs/ts-plugin"
-      }
-    ]
-  },
-  "exclude": ["dist", "tailwind.config.js", "postcss.config.js", "src/api"]
+	"extends": "astro/tsconfigs/base",
+	"compilerOptions": {
+		"strictNullChecks": true,
+		"plugins": [
+			{
+				"name": "@astrojs/ts-plugin"
+			}
+		]
+	},
+	"exclude": ["dist", "tailwind.config.js", "postcss.config.js", "src/api"]
 }

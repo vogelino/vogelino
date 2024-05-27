@@ -5,17 +5,19 @@ export interface MappedNotionInspirationLinkType extends Record<string, unknown>
 	id: string
 	title: string
 	url: string
+	date: string
 }
 
 function mapNotionInspirationLink(
 	rawLink: RawNotionInspirationLinkType
 ): MappedNotionInspirationLinkType {
-	const { Name, URL } = rawLink.properties
+	const { Name, URL, Date: inspirationDate } = rawLink.properties
 
 	const inspiration = {
 		id: rawLink.id,
 		title: Name.title.map((item) => item.plain_text).join(''),
 		url: URL.url,
+		date: inspirationDate.created_time,
 	}
 	const validation = inspirationSchema.safeParse(inspiration)
 	if (!validation.success) {

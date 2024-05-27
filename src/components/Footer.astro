@@ -37,7 +37,7 @@ const year = String(new Date().getFullYear())
 	function setupScrollToTopBtn() {
 		const backToTopBtn = document.getElementById('back-to-top')
 
-		backToTopBtn.addEventListener('click', (event) => {
+		backToTopBtn?.addEventListener('click', (event) => {
 			event.preventDefault()
 			window.scrollTo({ top: 0, behavior: 'smooth' })
 		})
