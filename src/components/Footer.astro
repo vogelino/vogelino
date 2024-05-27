@@ -1,47 +1,75 @@
 ---
-import classNames from '../utils/classNames'
-import Logo from './Logo.astro'
-import ArrowUp from './icons/ArrowUp.astro'
+import classNames from "../utils/classNames";
+import Dropdown from "./Dropdown.astro";
+import Logo from "./Logo.astro";
+import ArrowUp from "./icons/ArrowUp.astro";
+import Rss from "./icons/Rss.astro";
 
-const year = String(new Date().getFullYear())
+const year = String(new Date().getFullYear());
 ---
 
 <footer
-	class="pt-6 pb-5 border-t border-grayMed bg-bg relative"
-	aria-label="Main page footer"
-	transition:name="footer"
+  class="pt-6 pb-5 border-t border-grayMed bg-bg relative"
+  aria-label="Main page footer"
+  transition:name="footer"
 >
-	<section
-		class={classNames(
-			`px-6 flex justify-between gap-4 flex-wrap uppercase items-center`,
-			`tracking-wide text-grayDark`,
-		)}
-	>
-		<span aria-label={`Copyright ${year}`}>{year}</span>
-		<span><Logo className="scale-75" /></span>
-		<button
-			id="back-to-top"
-			aria-label="Scroll to top"
-			class={classNames(
-				`p-1 bg-alt text-fg rounded-full`,
-				`hover:bg-fg hover:text-alt transition-colors`,
-				`focus-visible:ring-2 focus-visible:ring-fg outline-none`,
-			)}
-		>
-			<ArrowUp />
-		</button>
-	</section>
+  <section
+    class={classNames(
+      `px-6 flex justify-between gap-4 flex-wrap uppercase items-center`,
+      `tracking-wide text-grayDark`
+    )}
+  >
+    <div class="flex items-center flex-wrap gap-6">
+      <span aria-label={`Copyright ${year}`}>{year}</span>
+      <Dropdown
+        triggerText={``}
+        icon={Rss}
+        positionVertical="up"
+        positionHorizontal="left"
+        options={[
+          {
+            text: `RSS with all contents`,
+            href: `/rss.xml`,
+          },
+          {
+            text: `RSS with pages only`,
+            href: `/rss-pages-only.xml`,
+          },
+          {
+            text: `RSS with projects only`,
+            href: `/rss-projects-only.xml`,
+          },
+          {
+            text: `RSS with inspirations only`,
+            href: `/rss-inspirations-only.xml`,
+          },
+        ]}
+      />
+    </div><span><Logo className="scale-75" /></span>
+
+    <button
+      id="back-to-top"
+      aria-label="Scroll to top"
+      class={classNames(
+        `p-1 bg-alt text-fg rounded-full`,
+        `hover:bg-fg hover:text-alt transition-colors`,
+        `focus-visible:ring-2 focus-visible:ring-fg outline-none`
+      )}
+    >
+      <ArrowUp />
+    </button>
+  </section>
 </footer>
 
 <script>
-	function setupScrollToTopBtn() {
-		const backToTopBtn = document.getElementById('back-to-top')
+  function setupScrollToTopBtn() {
+    const backToTopBtn = document.getElementById("back-to-top");
 
-		backToTopBtn?.addEventListener('click', (event) => {
-			event.preventDefault()
-			window.scrollTo({ top: 0, behavior: 'smooth' })
-		})
-	}
-	setupScrollToTopBtn()
-	document.addEventListener('astro:after-swap', setupScrollToTopBtn)
+    backToTopBtn?.addEventListener("click", (event) => {
+      event.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+  setupScrollToTopBtn();
+  document.addEventListener("astro:after-swap", setupScrollToTopBtn);
 </script>

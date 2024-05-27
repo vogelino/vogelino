@@ -1,0 +1,89 @@
+---
+import type { JSX } from 'astro/jsx-runtime'
+import classNames from '../utils/classNames'
+
+const { icon: Icon, triggerText, options, positionVertical = 'down', positionHorizontal = 'left' } = Astro.props
+
+export type Props = {
+	icon?: JSX.Element
+	triggerText: JSX.Element
+	options: { text: JSX.Element; href: string; suffix?: JSX.Element }[]
+	positionVertical?: 'down' | 'up'
+	positionHorizontal?: 'left' | 'right'
+}
+---
+
+<div class="group relative inline-block text-left">
+	<div>
+		<button
+			type="button"
+			aria-label="Download my CV as PDF file in different languages"
+			class={classNames(
+				!(Icon && !triggerText) && 'gap-x-1.5',
+				'text-xl bg-alt',
+				'inline-flex w-full justify-center items-center',
+				'rounded-full py-1 font-semibold',
+				'ring-grayMed hover-hover:hover:bg-fg',
+				'hover-hover:hover:text-alt',
+				'transition-colors motion-reduce:transition-none',
+				'focus-visible:outline-none focus-visible:ring-2',
+				'focus-visible:ring-fg',
+				(Icon && !triggerText) ? 'px-2.5' : 'px-4'
+			)}
+			id="menu-button"
+			aria-expanded="true"
+			aria-haspopup="true"
+		>
+			{Icon && <Icon />}
+			{triggerText && <span class="pt-0.5">{triggerText}</span>}
+			<svg
+				class="-mr-1 h-5 w-5"
+				viewBox="0 0 20 20"
+				fill="currentColor"
+				aria-hidden="true"
+			>
+				<path
+					fill-rule="evenodd"
+					d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+					clip-rule="evenodd"></path>
+			</svg>
+		</button>
+	</div>
+	<div
+		class={classNames(
+			positionVertical === 'up' ? 'bottom-full' : 'top-full',
+			positionHorizontal === 'left' ? 'left-0' : 'right-0',
+			'absolute z-10 my-2 origin-top-right',
+			'bg-bg shadow-md border rounded border-grayMed',
+			'transition-opacity motion-reduce:transition-none',
+			'opacity-0 pointer-events-none whitespace-nowrap',
+			'focus:opacity-100 focus:pointer-events-auto',
+			'focus-visible:opacity-100 focus-visible:pointer-events-auto',
+			'group-focus-within:opacity-100 group-focus-within:pointer-events-auto',
+		)}
+		aria-labelledby="menu-button"
+	>
+		<div class="py-1" role="none">
+			{
+				options.map(({ text, href, suffix }) => (
+					<a
+						href={href}
+						class={classNames(
+							'flex gap-8 justify-between px-4 py-2 text-base normal-case',
+							'text-fg hover-hover:hover:bg-alt',
+							'transition-colors motion-reduce:transition-none',
+							'focus-visible:outline-none focus-visible:ring-2',
+							'focus-visible:ring-fg focus-visible:rounded-sm',
+						)}
+						role="menuitem"
+						id="menu-item-0"
+						target="_blank"
+					>
+						<span>{text}</span>
+						{suffix && <span class="text-grayDark">{suffix}</span>}
+					</a>
+				))
+			}
+		</div>
+	</div>
+</div>
