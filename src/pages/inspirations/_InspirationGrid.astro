@@ -1,0 +1,61 @@
+---
+import type { Page } from "astro";
+import FancyHeadline from "../../components/FancyHeadline.astro";
+import Pagination from "../../components/Pagination.astro";
+import Layout from "../../layouts/Layout.astro";
+import classNames from "../../utils/classNames";
+import InspirationItem from "./_InspirationItem.astro";
+
+export interface Props {
+  page: Page;
+  disableGrid?: true;
+}
+
+const { page, disableGrid = false } = Astro.props;
+---
+
+<Layout
+  title="List of cool site I like"
+  slug="inspirations"
+  disableScroll={disableGrid}
+>
+  <slot />
+  <ul
+    aria-hidden={disableGrid ? "true" : "false"}
+    aria-label="List of cool sites I like"
+    class={classNames(
+      `grid pt-32 sm:grid-cols-2 md:grid-cols-3`,
+      `lg:grid-cols-4 gap-8 px-8 pb-16 container mx-auto`
+    )}
+  >
+    <li
+      class="relative h-full flex flex-col items-start"
+      aria-label={`Title: Cool sites`}
+    >
+      <FancyHeadline title="Cool <br class='hidden sm:block' />**Sites**" />
+      <p class="mt-4 text-balance leading-tight">
+        Bookmarks, design inspiration and innovative websites I like.
+      </p>
+    </li>
+    {
+      page.data.map((link) => {
+        if (!link.thumbnail) return null;
+        return <InspirationItem link={link} />;
+      })
+    }
+  </ul>
+  <div
+    class="py-6 border-t border-grayLight"
+    aria-hidden={disableGrid ? "true" : "false"}
+  >
+    <Pagination
+      length={page.lastPage}
+      currentUrl={page.url.current}
+      currentPage={page.currentPage}
+      firstUrl={`/inspirations`}
+      prevUrl={page.url.prev}
+      nextUrl={page.url.next}
+      lastUrl={`/inspirations/${page.lastPage}`}
+    />
+  </div>
+</Layout>

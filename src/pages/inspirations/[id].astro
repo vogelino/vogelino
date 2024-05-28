@@ -1,44 +1,167 @@
 ---
-import FancyHeadline from '../../components/FancyHeadline.astro'
-import Layout from '../../layouts/Layout.astro'
-import type { InspirationType } from '../../schemas/inspirations'
-import { getParsedInspirations } from './[...page].astro'
-import InspirationItem from './_InspirationItem.astro'
+import type { Page } from "astro";
+import FancyHeadline from "../../components/FancyHeadline.astro";
+import ArrowUp from "../../components/icons/ArrowUp.astro";
+import type { InspirationType } from "../../schemas/inspirations";
+import classNames from "../../utils/classNames";
+import { getParsedInspirations } from "./[...page].astro";
+import InspirationFavicon from "./_InspirationFavicon.astro";
+import InspirationGrid from "./_InspirationGrid.astro";
+import InspirationThumbnail from "./_InspirationThumbnail.astro";
 
 export async function getStaticPaths() {
-	const inspirations = (await getParsedInspirations()).sort(
-		(a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-	)
-	return inspirations.map((inspiration, idx) => {
-		const nextIdx = idx + 1 >= inspirations.length ? 0 : idx + 1
-		const prevIdx = idx - 1 < 0 ? inspirations.length - 1 : idx - 1
-		return {
-			params: { id: inspiration.id },
-			props: {
-				inspiration: inspiration,
-				prevInspiration: inspirations[prevIdx] || inspirations[inspirations.length - 1],
-				nextInspiration: inspirations[nextIdx] || inspirations[0],
-			},
-		}
-	})
+  const inspirations = await getParsedInspirations();
+  return inspirations.map((inspiration, idx) => {
+    const nextIdx = idx + 1 >= inspirations.length ? 0 : idx + 1;
+    const prevIdx = idx - 1 < 0 ? inspirations.length - 1 : idx - 1;
+    const currentPage = Math.ceil(idx / 47);
+    return {
+      params: { id: inspiration.id },
+      props: {
+        page: {
+          data: inspirations.filter((_, i) => {
+            const inspirationPage = Math.ceil((i + 1) / 47);
+            return inspirationPage === currentPage;
+          }),
+          start: (currentPage - 1) * 47,
+          end: (currentPage - 1) * 47 + 46,
+          size: 47,
+          total: inspirations.length,
+          currentPage,
+          lastPage: Math.ceil(inspirations.length / 47),
+          url: {
+            current: `/inspirations/${currentPage}`,
+            next:
+              currentPage + 1 < Math.ceil(inspirations.length / 47)
+                ? `/inspirations/${currentPage + 1}`
+                : undefined,
+            prev:
+              currentPage - 1 >= 0
+                ? `/inspirations/${currentPage - 1}`
+                : undefined,
+          },
+        } satisfies Page,
+        inspiration: inspiration,
+        prevInspiration:
+          inspirations[prevIdx] || inspirations[inspirations.length - 1],
+        nextInspiration: inspirations[nextIdx] || inspirations[0],
+      },
+    };
+  });
 }
 
-const { inspiration } = Astro.props
+const { inspiration, page } = Astro.props;
 
 export type Props = {
-	inspiration: InspirationType
-	nextInspiration: InspirationType
-	prevInspiration: InspirationType
-}
+  inspiration: InspirationType;
+  page: Page;
+  nextInspiration: InspirationType;
+  prevInspiration: InspirationType;
+};
 ---
 
-<Layout title="List of cool site I like" slug="inspirations">
-  <div class="flex items-center justify-center min-h-[calc(100svh-80px)]">
-    <div class="max-w-96 list-none flex flex-col gap-4 p-4">
-      <FancyHeadline title="Inspiration" />
+<InspirationGrid page={page} disableGrid>
+  <a
+    href={page.url.current}
+    title="Back to inspiration list"
+    data-page={page.currentPage}
+    class={classNames(
+      "overlay fixed px-10 inset-0 z-20 bg-opacity-10",
+      "max-w-[1440px] min-[1440px]:border-x",
+      `min-[1440px]:border-x-grayMed border-b`,
+      "top-0 left-1/2 -translate-x-1/2 w-screen",
+      "focusable"
+    )}></a>
+  <ul
+    class={classNames(
+      "fixed px-10 inset-0 z-30 bg-opacity-10",
+      "max-w-[1440px] min-h-[calc(100svh-80px)]",
+      "top-0 left-1/2 -translate-x-1/2 w-screen",
+      "flex justify-center items-center list-none",
+      "pointer-events-none"
+    )}
+  >
+    <div
+      class="max-w-lg list-none flex flex-col gap-2 p-4 pointer-events-auto bg-bg pb-4 border border-grayMed"
+    >
+      <a
+        href={page.url.current}
+        title="Back to all inspirations"
+        class="focusable flex gap-2 px-2 -ml-2 rounded-full bg-none w-fit"
+      >
+        <ArrowUp className="-rotate-90" />
+        All sites
+      </a>
+
+      <div class="relative pr-6">
+        <FancyHeadline
+          title={inspiration.title}
+          className="md:text-3xl 2xl:text-4xl !leading-[0.9em]"
+        />
+        <InspirationFavicon
+          link={inspiration}
+          class="absolute top-1/2 right-0 -translate-y-1/2"
+          size={24}
+        />
+      </div>
       <div>
-        <InspirationItem link={inspiration} />
+        <a
+          href={inspiration.url}
+          target="_blank"
+          rel="noopener nofollow"
+          class={classNames(
+            `flex flex-col gap-4 group`,
+            `focus-visible:ring-2 focus-visible:ring-fg outline-none`,
+            `focus-visible:overflow-hidden focus-visible:rounded-lg`,
+            `focus-visible:ring-offset-8 focus-visible:ring-offset-bg`
+          )}
+        >
+          <InspirationThumbnail link={inspiration} />
+          <span
+            class={classNames(
+              "px-4 py-1 pt-2 rounded-full bg-alt focusable inline-block",
+              "transition-colors hover-hover:group-hover:bg-fg hover-hover:group-hover:text-alt",
+              "text-lg flex items-center gap-2 w-fit"
+            )}
+          >
+            Open site <ArrowUp className="w-5 h-5 rotate-45 -translate-y-0.5" />
+          </span>
+        </a>
       </div>
     </div>
-  </div>
-</Layout>
+  </ul>
+</InspirationGrid>
+
+<style>
+  a[title="Back to inspiration list"] {
+    background-color: rgb(252 254 255 / var(--tw-bg-opacity));
+    background-image: radial-gradient(transparent, var(--bg) 1px);
+    background-size: 4px 4px;
+    backdrop-filter: blur(4px);
+  }
+
+  :root[data-applied-mode="dark"] a[title="Back to inspiration list"] {
+    background-color: rgb(28 28 28 / var(--tw-bg-opacity));
+  }
+</style>
+
+<script>
+  function initEscapeListener() {
+    const backLink = document.querySelector(
+      "a[title='Back to inspiration list']"
+    ) as HTMLAnchorElement;
+    const page = backLink.dataset.page;
+
+    if (!page) return;
+
+    document.addEventListener("keydown", (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        window.open(page, "_self");
+      }
+    });
+  }
+
+  initEscapeListener();
+  document.addEventListener("astro:after-swap", initEscapeListener);
+</script>

@@ -1,0 +1,29 @@
+---
+import { Image } from "astro:assets";
+import type { InspirationType } from "../../schemas/inspirations";
+import classNames from "../../utils/classNames";
+
+export type Props = {
+  link: InspirationType;
+};
+
+const { link } = Astro.props;
+---
+
+<span
+  class="relative block aspect-[140/73] bg-zinc-100 rounded overflow-hidden"
+>
+  <Image
+    src={link.thumbnail}
+    alt={`Cover image of "${link.title}"`}
+    class={classNames(
+      `w-full aspect-[140/73] rounded object-cover`,
+      `transition-transform hover-hover:group-hover:scale-110`,
+      `motion-reduce:transition-none`,
+      `motion-reduce:hover-hover:group-hover:scale-100`
+    )}
+  />
+  <span
+    class="absolute inset-0 pointer-events-none bg-zinc-100 mix-blend-multiply"
+  ></span>
+</span>

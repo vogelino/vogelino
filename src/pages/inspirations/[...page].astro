@@ -1,98 +1,57 @@
 ---
-import { loadJson } from '../../../scripts/lib/loadJson'
-import { INSPIRATIONS_JSON_PATH } from '../../../scripts/paths'
-import FancyHeadline from '../../components/FancyHeadline.astro'
-import Pagination from '../../components/Pagination.astro'
-import Layout from '../../layouts/Layout.astro'
-import { type InspirationType, inspirationSchema } from '../../schemas/inspirations'
-import type { AstroGlobImageType } from '../../utils/astroTypes'
-import classNames from '../../utils/classNames'
-import InspirationItem from './_InspirationItem.astro'
-
-const firstPath = 'inspirations'
+import type { Page } from "astro";
+import { loadJson } from "../../../scripts/lib/loadJson";
+import { INSPIRATIONS_JSON_PATH } from "../../../scripts/paths";
+import {
+  inspirationSchema,
+  type InspirationType,
+} from "../../schemas/inspirations";
+import type { AstroGlobImageType } from "../../utils/astroTypes";
+import InspirationGrid from "./_InspirationGrid.astro";
 
 export async function getStaticPaths({ paginate }) {
-	const parsedInspirations = await getParsedInspirations()
-	return paginate(parsedInspirations, {
-		pageSize: 47,
-	})
+  const parsedInspirations = await getParsedInspirations();
+  return paginate(parsedInspirations, {
+    pageSize: 47,
+  });
 }
 
 export async function getParsedInspirations(): Promise<InspirationType[]> {
-	const rawInspirations = await loadJson<InspirationType[]>(INSPIRATIONS_JSON_PATH)
-	const thumbnails = await Astro.glob<AstroGlobImageType<'webp'>>(
-		'/src/assets/images/inspirations/*.webp'
-	).then((files) => files.map((file) => file.default))
-	const parsedInspirations = rawInspirations.reduce((acc, inspiration) => {
-		try {
-			acc.push(
-				inspirationSchema.parse({
-					...inspiration,
-					thumbnail: thumbnails.find((thumbnail) => thumbnail.src.includes(inspiration.id)),
-				})
-			)
-			return acc
-		} catch (error) {
-			console.log('Error parsing inspiration:', JSON.stringify(inspiration, null, 2))
-			console.log(error)
-			return acc
-		}
-	}, [] as InspirationType[])
+  const rawInspirations = await loadJson<InspirationType[]>(
+    INSPIRATIONS_JSON_PATH
+  );
+  const thumbnails = await Astro.glob<AstroGlobImageType<"webp">>(
+    "/src/assets/images/inspirations/*.webp"
+  ).then((files) => files.map((file) => file.default));
+  const parsedInspirations = rawInspirations.reduce((acc, inspiration) => {
+    try {
+      acc.push(
+        inspirationSchema.parse({
+          ...inspiration,
+          thumbnail: thumbnails.find((thumbnail) =>
+            thumbnail.src.includes(inspiration.id)
+          ),
+        })
+      );
+      return acc;
+    } catch (error) {
+      console.log(
+        "Error parsing inspiration:",
+        JSON.stringify(inspiration, null, 2)
+      );
+      console.log(error);
+      return acc;
+    }
+  }, [] as InspirationType[]);
 
-	return parsedInspirations
+  return parsedInspirations;
 }
 
 export interface Props {
-	page: {
-		data: InspirationType[]
-		url: {
-			current: string
-			prev: string
-			next: string
-		}
-		currentPage: number
-		lastPage: number
-	}
+  page: Page;
 }
 
-const { page } = Astro.props
+const { page } = Astro.props;
 ---
 
-<Layout title="List of cool site I like" slug="inspirations">
-	<ul
-		aria-label="List of cool sites I like"
-		class={classNames(
-			`grid pt-32 sm:grid-cols-2 md:grid-cols-3`,
-			`lg:grid-cols-4 gap-8 px-8 pb-16 container mx-auto`,
-		)}
-	>
-		<li
-			class="relative h-full flex flex-col items-start"
-			aria-label={`Title: Cool sites`}
-		>
-			<FancyHeadline title="Cool <br class='hidden sm:block' />**Sites**" />
-			<p class="mt-4 text-balance leading-tight">
-				Bookmarks, design inspiration and innovative websites I like.
-			</p>
-		</li>
-		{
-			page.data.map((link) => {
-				if (!link.thumbnail) return null
-				return (
-					<InspirationItem link={link} />
-				)
-			})
-		}
-	</ul>
-	<div class="py-6 border-t border-grayLight">
-		<Pagination
-			length={page.lastPage}
-			currentUrl={page.url.current}
-			currentPage={page.currentPage}
-			firstUrl={`/${firstPath}`}
-			prevUrl={page.url.prev}
-			nextUrl={page.url.next}
-			lastUrl={`/${firstPath}/${page.lastPage}`}
-		/>
-	</div>
-</Layout>
+<InspirationGrid page={page} />

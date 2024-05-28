@@ -1,27 +1,35 @@
 ---
-import { ViewTransitions } from 'astro:transitions'
-import Footer from '../components/Footer.astro'
-import GlobalStyles from '../components/GlobalStyles.astro'
-import Header from '../components/Header.astro'
-import type { AstroGlobImageType } from '../utils/astroTypes'
-import classNames from '../utils/classNames'
+import { ViewTransitions } from "astro:transitions";
+import Footer from "../components/Footer.astro";
+import GlobalStyles from "../components/GlobalStyles.astro";
+import Header from "../components/Header.astro";
+import type { AstroGlobImageType } from "../utils/astroTypes";
+import classNames from "../utils/classNames";
 
 export interface Props {
-	title: string
-	slug: string
-	description?: string
-	withHeaderBg?: boolean
+  title: string;
+  slug: string;
+  description?: string;
+  withHeaderBg?: boolean;
+  className?: string;
+  disableScroll?: boolean;
 }
 
 const {
-	title,
-	slug,
-	description = 'Interface design and development portfolio of Lucas Vogel',
-	withHeaderBg = true,
-} = Astro.props
-const ogImages = await Astro.glob<AstroGlobImageType<'png'>>('/src/assets/images/og/*.png')
-const ogImage = ogImages.find((file) => file.default.src.includes(slug))?.default
-const ogImageUrl = ogImage?.src
+  title,
+  slug,
+  description = "Interface design and development portfolio of Lucas Vogel",
+  withHeaderBg = true,
+  className,
+  disableScroll = false,
+} = Astro.props;
+const ogImages = await Astro.glob<AstroGlobImageType<"png">>(
+  "/src/assets/images/og/*.png"
+);
+const ogImage = ogImages.find((file) =>
+  file.default.src.includes(slug)
+)?.default;
+const ogImageUrl = ogImage?.src;
 ---
 
 <!doctype html>
@@ -127,7 +135,8 @@ const ogImageUrl = ogImage?.src
     class={classNames(
       `bg-bg text-fg w-screen overflow-x-hidden mx-auto antialiased relative`,
       `max-w-[1440px] min-[1440px]:border-x min-[1440px]:border-grayMed`,
-      `!overflow-y-auto`
+      disableScroll ? `overflow-clip` : `!overflow-y-auto`,
+      className
     )}
   >
     <Header withBg={withHeaderBg} />

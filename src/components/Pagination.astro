@@ -1,87 +1,87 @@
 ---
-import classNames from '../utils/classNames'
+import classNames from "../utils/classNames";
 export interface Props {
-	length: number
-	currentUrl: string
-	currentPage: number
-	firstUrl: string
-	prevUrl: string
-	nextUrl: string
-	lastUrl: string
+  length: number;
+  currentUrl: string;
+  currentPage: number;
+  firstUrl: string;
+  prevUrl?: string;
+  nextUrl?: string;
+  lastUrl: string;
 }
 
-const { length, currentPage, firstUrl, prevUrl, nextUrl } = Astro.props
+const { length, currentPage, firstUrl, prevUrl, nextUrl } = Astro.props;
 ---
 
 <nav
-	class="flex flex-row flex-nowrap items-center justify-between md:justify-center sm:gap-2"
-	aria-label="Pagination"
+  class="flex flex-row flex-nowrap items-center justify-between md:justify-center sm:gap-2"
+  aria-label="Pagination"
 >
-	{
-		prevUrl && (
-			<a
-				class={classNames(
-					`mr-1 flex h-10 w-10 items-center justify-center rounded-full`,
-					`bg-bg hover-hover:hover:bg-alt`,
-					`outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-bg focus-visible:ring-fg`,
-					`transition-colors motion-reduce:transition-none`,
-				)}
-				href={prevUrl.replace(/1\/?$/, '')}
-				title="Previous Page"
-			>
-				<span class="sr-only">Previous Page</span>
-				<svg
-					class="block h-4 w-4 fill-current"
-					viewBox="0 0 256 512"
-					aria-hidden="true"
-					role="presentation"
-				>
-					<path d="M238.475 475.535l7.071-7.07c4.686-4.686 4.686-12.284 0-16.971L50.053 256 245.546 60.506c4.686-4.686 4.686-12.284 0-16.971l-7.071-7.07c-4.686-4.686-12.284-4.686-16.97 0L10.454 247.515c-4.686 4.686-4.686 12.284 0 16.971l211.051 211.05c4.686 4.686 12.284 4.686 16.97-.001z" />
-				</svg>
-			</a>
-		)
-	}
+  {
+    prevUrl && (
+      <a
+        class={classNames(
+          `mr-1 flex h-10 w-10 items-center justify-center rounded-full`,
+          `bg-bg hover-hover:hover:bg-alt`,
+          `outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-bg focus-visible:ring-fg`,
+          `transition-colors motion-reduce:transition-none`
+        )}
+        href={prevUrl.replace(/1\/?$/, "")}
+        title="Previous Page"
+      >
+        <span class="sr-only">Previous Page</span>
+        <svg
+          class="block h-4 w-4 fill-current"
+          viewBox="0 0 256 512"
+          aria-hidden="true"
+          role="presentation"
+        >
+          <path d="M238.475 475.535l7.071-7.07c4.686-4.686 4.686-12.284 0-16.971L50.053 256 245.546 60.506c4.686-4.686 4.686-12.284 0-16.971l-7.071-7.07c-4.686-4.686-12.284-4.686-16.97 0L10.454 247.515c-4.686 4.686-4.686 12.284 0 16.971l211.051 211.05c4.686 4.686 12.284 4.686 16.97-.001z" />
+        </svg>
+      </a>
+    )
+  }
 
-	{
-		Array.from({ length }, (_, i) => i + 1).map((page) => (
-			<a
-				class={classNames(
-					`ml-1 flex h-10 w-10 items-center justify-center rounded-full`,
-					`outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-bg focus-visible:ring-fg`,
-					`transition-colors motion-reduce:transition-none`,
-					page !== currentPage && `bg-bg hover-hover:hover:bg-alt`,
-					page === currentPage && [`cursor-default bg-fg text-alt`],
-				)}
-				href={`${firstUrl}/${page}`.replace(/1\/?$/, '')}
-				title={`Page ${page}`}
-				tabindex={page === currentPage ? -1 : undefined}
-			>
-				{page}
-			</a>
-		))
-	}
-	{
-		nextUrl && (
-			<a
-				class={classNames(
-					`ml-1 flex h-10 w-10 items-center justify-center rounded-full`,
-					`bg-bg hover-hover:hover:bg-alt`,
-					`outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-bg focus-visible:ring-fg`,
-					`transition-colors motion-reduce:transition-none`,
-				)}
-				href={nextUrl}
-				title="Next Page"
-			>
-				<span class="sr-only">Next Page</span>
-				<svg
-					class="block h-4 w-4 fill-current"
-					viewBox="0 0 256 512"
-					aria-hidden="true"
-					role="presentation"
-				>
-					<path d="M17.525 36.465l-7.071 7.07c-4.686 4.686-4.686 12.284 0 16.971L205.947 256 10.454 451.494c-4.686 4.686-4.686 12.284 0 16.971l7.071 7.07c4.686 4.686 12.284 4.686 16.97 0l211.051-211.05c4.686-4.686 4.686-12.284 0-16.971L34.495 36.465c-4.686-4.687-12.284-4.687-16.97 0z" />
-				</svg>
-			</a>
-		)
-	}
+  {
+    Array.from({ length }, (_, i) => i + 1).map((page) => (
+      <a
+        class={classNames(
+          `ml-1 flex h-10 w-10 items-center justify-center rounded-full`,
+          `outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-bg focus-visible:ring-fg`,
+          `transition-colors motion-reduce:transition-none`,
+          page !== currentPage && `bg-bg hover-hover:hover:bg-alt`,
+          page === currentPage && [`cursor-default bg-fg text-alt`]
+        )}
+        href={`${firstUrl}/${page}`.replace(/1\/?$/, "")}
+        title={`Page ${page}`}
+        tabindex={page === currentPage ? -1 : undefined}
+      >
+        {page}
+      </a>
+    ))
+  }
+  {
+    nextUrl && (
+      <a
+        class={classNames(
+          `ml-1 flex h-10 w-10 items-center justify-center rounded-full`,
+          `bg-bg hover-hover:hover:bg-alt`,
+          `outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-bg focus-visible:ring-fg`,
+          `transition-colors motion-reduce:transition-none`
+        )}
+        href={nextUrl}
+        title="Next Page"
+      >
+        <span class="sr-only">Next Page</span>
+        <svg
+          class="block h-4 w-4 fill-current"
+          viewBox="0 0 256 512"
+          aria-hidden="true"
+          role="presentation"
+        >
+          <path d="M17.525 36.465l-7.071 7.07c-4.686 4.686-4.686 12.284 0 16.971L205.947 256 10.454 451.494c-4.686 4.686-4.686 12.284 0 16.971l7.071 7.07c4.686 4.686 12.284 4.686 16.97 0l211.051-211.05c4.686-4.686 4.686-12.284 0-16.971L34.495 36.465c-4.686-4.687-12.284-4.687-16.97 0z" />
+        </svg>
+      </a>
+    )
+  }
 </nav>
