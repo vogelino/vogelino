@@ -261,8 +261,15 @@ const availableForHire = import.meta.env.AVAILABLE_FOR_HIRE === "true";
   document.addEventListener("astro:after-swap", () => setupHeader(document));
 </script>
 
+<style is:global>
+  :is(body, html):has(header[aria-label="Main header"] [aria-expanded="true"]) {
+    @apply overflow-hidden;
+  }
+</style>
 <style>
-  header[aria-label="Main header"].scrolled-down {
+  header[aria-label="Main header"]:not(
+      :has([aria-expanded="true"])
+    ).scrolled-down {
     @apply -translate-y-full;
   }
   header[aria-label="Main header"].scrolled-up {
@@ -275,6 +282,7 @@ const availableForHire = import.meta.env.AVAILABLE_FOR_HIRE === "true";
   header[aria-label="Main header"]:not(.scrolled-top) #menu {
     @apply top-[69px];
   }
+
   #burger-menu {
     cursor: pointer;
     height: 39px;
