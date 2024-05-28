@@ -30,7 +30,10 @@ export async function getStaticPaths() {
           currentPage,
           lastPage: Math.ceil(inspirations.length / 47),
           url: {
-            current: `/inspirations/${currentPage}`,
+            current:
+              currentPage === 1
+                ? "/inspirations"
+                : `/inspirations/${currentPage}`,
             next:
               currentPage + 1 < Math.ceil(inspirations.length / 47)
                 ? `/inspirations/${currentPage + 1}`
