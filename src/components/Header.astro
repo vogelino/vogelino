@@ -48,7 +48,7 @@ const availableForHire = import.meta.env.AVAILABLE_FOR_HIRE === "true";
     id="menu"
     aria-label="Main navigation"
     class={classNames(
-      `fixed top-[101px] left-0 w-screen h-[calc(100svh-69px)] bg-bg md:bg-transparent`,
+      `fixed top-[101px] left-0 w-screen h-[calc(100svh-69px)] md:bg-transparent`,
       `opacity-0 pointer-events-none md:opacity-100 md:static md:pointer-events-auto`,
       `md:w-auto md:h-auto md:bg-none transition-opacity`,
       `motion-reduce:transition-none`
@@ -271,20 +271,27 @@ const availableForHire = import.meta.env.AVAILABLE_FOR_HIRE === "true";
     @apply -translate-y-full;
   }
   header[aria-label="Main header"] {
-    @apply translate-y-0;
-    background-image: radial-gradient(var(--bg) 1px, var(--bg) 1px);
+    @apply translate-y-0 bg-opacity-0;
+    background-image: radial-gradient(transparent, var(--bg) 1px);
     background-size: 4px 4px;
     backdrop-filter: blur(8px);
   }
+  nav[aria-label="Main navigation"],
   header[aria-label="Main header"].scrolled-up {
-    @apply translate-y-0;
+    @apply translate-y-0 bg-opacity-50 dark:bg-opacity-70;
     background: none;
-    background-image: radial-gradient(
-      rgba(255, 255, 255, 0.5) 1px,
-      var(--bg) 1px
-    );
+    background-image: radial-gradient(transparent, var(--bg) 1px);
     background-size: 4px 4px;
     backdrop-filter: blur(8px);
+  }
+  nav[aria-label="Main navigation"] {
+    @apply bg-opacity-80;
+    background-color: rgb(252 254 255 / var(--tw-bg-opacity));
+  }
+
+  :root[data-applied-mode="dark"] header[aria-label="Main header"].scrolled-up,
+  :root[data-applied-mode="dark"] nav[aria-label="Main navigation"] {
+    background-color: rgb(28 28 28 / var(--tw-bg-opacity));
   }
   header[aria-label="Main header"]:not(.scrolled-top) {
     @apply pt-0 h-[69px];
