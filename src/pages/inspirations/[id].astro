@@ -14,7 +14,7 @@ export async function getStaticPaths() {
   return inspirations.map((inspiration, idx) => {
     const nextIdx = idx + 1 >= inspirations.length ? 0 : idx + 1;
     const prevIdx = idx - 1 < 0 ? inspirations.length - 1 : idx - 1;
-    const currentPage = Math.ceil(idx / 47);
+    const currentPage = Math.floor(idx / 47) + 1;
     return {
       params: { id: inspiration.id },
       props: {
@@ -31,7 +31,7 @@ export async function getStaticPaths() {
           lastPage: Math.ceil(inspirations.length / 47),
           url: {
             current:
-              currentPage === 1
+              currentPage <= 1
                 ? "/inspirations"
                 : `/inspirations/${currentPage}`,
             next:
@@ -39,9 +39,9 @@ export async function getStaticPaths() {
                 ? `/inspirations/${currentPage + 1}`
                 : undefined,
             prev:
-              currentPage - 1 >= 0
+              currentPage - 1 > 1
                 ? `/inspirations/${currentPage - 1}`
-                : undefined,
+                : `/inspirations`,
           },
         } satisfies Page,
         inspiration: inspiration,
@@ -67,7 +67,7 @@ export type Props = {
   <a
     href={page.url.current}
     title="Back to inspiration list"
-    data-page={page.currentPage}
+    data-page={page.url.current}
     class={classNames(
       "overlay fixed px-10 inset-0 z-20 bg-opacity-10",
       "max-w-[1440px] min-[1440px]:border-x",
@@ -85,7 +85,7 @@ export type Props = {
     )}
   >
     <div
-      class="max-w-lg list-none flex flex-col gap-2 p-4 pointer-events-auto bg-bg pb-4 border border-grayMed"
+      class="max-w-lg w-full list-none flex flex-col gap-2 p-4 pointer-events-auto bg-bg pb-4 border border-grayMed"
     >
       <a
         href={page.url.current}

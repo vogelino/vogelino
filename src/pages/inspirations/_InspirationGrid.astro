@@ -5,7 +5,6 @@ import Pagination from "../../components/Pagination.astro";
 import Layout from "../../layouts/Layout.astro";
 import classNames from "../../utils/classNames";
 import InspirationItem from "./_InspirationItem.astro";
-
 export interface Props {
   page: Page;
   disableGrid?: true;
@@ -25,7 +24,8 @@ const { page, disableGrid = false } = Astro.props;
     aria-label="List of cool sites I like"
     class={classNames(
       `grid pt-32 sm:grid-cols-2 md:grid-cols-3`,
-      `lg:grid-cols-4 gap-8 px-8 pb-16 container mx-auto`
+      `lg:grid-cols-4 gap-8 px-8 pb-16 container mx-auto`,
+      `min-h-[calc(100vh-174px)]`
     )}
   >
     <li
@@ -40,7 +40,14 @@ const { page, disableGrid = false } = Astro.props;
     {
       page.data.map((link) => {
         if (!link.thumbnail) return null;
-        return <InspirationItem link={link} />;
+        return (
+          <InspirationItem
+            link={link}
+            class={classNames(
+              disableGrid && link.id === Astro.params.id && `opacity-0`
+            )}
+          />
+        );
       })
     }
   </ul>

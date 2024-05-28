@@ -3,16 +3,18 @@ import type { InspirationType } from "../../schemas/inspirations";
 import classNames from "../../utils/classNames";
 import InspirationFavicon from "./_InspirationFavicon.astro";
 import InspirationThumbnail from "./_InspirationThumbnail.astro";
-const { link } = Astro.props;
+
+const { link, class: className } = Astro.props;
 
 export type Props = {
   link: InspirationType;
+  class?: string;
 };
 ---
 
 <li
   aria-label={`Cool site: "${link.title}" (${link.url})`}
-  class="relative group @container"
+  class={classNames("relative group @container", className)}
 >
   <a
     href={link.url}

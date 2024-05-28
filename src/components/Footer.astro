@@ -1,17 +1,16 @@
 ---
-import classNames from '../utils/classNames'
-import Dropdown from './Dropdown.astro'
-import Logo from './Logo.astro'
-import ArrowUp from './icons/ArrowUp.astro'
-import Rss from './icons/Rss.astro'
+import classNames from "../utils/classNames";
+import Dropdown from "./Dropdown.astro";
+import Logo from "./Logo.astro";
+import ArrowUp from "./icons/ArrowUp.astro";
+import Rss from "./icons/Rss.astro";
 
-const year = String(new Date().getFullYear())
+const year = String(new Date().getFullYear());
 ---
 
 <footer
-  class="pt-6 pb-5 border-t border-grayMed bg-bg relative"
+  class="pt-6 pb-5 border-t border-grayMed bg-bg relative z-0"
   aria-label="Main page footer"
-  transition:name="footer"
 >
   <section
     class={classNames(

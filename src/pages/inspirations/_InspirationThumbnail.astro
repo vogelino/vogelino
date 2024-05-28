@@ -11,7 +11,7 @@ const { link } = Astro.props;
 ---
 
 <span
-  class="relative block aspect-[140/73] bg-zinc-100 rounded overflow-hidden"
+  class="relative block aspect-[140/73] bg-grayUltraLight rounded overflow-hidden border border-grayLight"
 >
   <Image
     src={link.thumbnail}
@@ -24,6 +24,6 @@ const { link } = Astro.props;
     )}
   />
   <span
-    class="absolute inset-0 pointer-events-none bg-zinc-100 mix-blend-multiply"
+    class="absolute inset-0 pointer-events-none bg-grayUltraLight mix-blend-multiply opacity-50"
   ></span>
 </span>
