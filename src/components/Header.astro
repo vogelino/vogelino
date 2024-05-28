@@ -1,334 +1,341 @@
 ---
-import classNames from '../utils/classNames'
-import AvailableForHireBanner from './AvailableForHireBanner.astro'
-import HeaderMenuLink from './HeaderMenuLink.astro'
-import LogoInteractive from './LogoInteractive.astro'
-import SocialIcons from './SocialIcons.astro'
-import ThemeToggle from './ThemeToggle.astro'
+import classNames from "../utils/classNames";
+import AvailableForHireBanner from "./AvailableForHireBanner.astro";
+import HeaderMenuLink from "./HeaderMenuLink.astro";
+import LogoInteractive from "./LogoInteractive.astro";
+import SocialIcons from "./SocialIcons.astro";
+import ThemeToggle from "./ThemeToggle.astro";
 
 export interface Props {
-	withBg?: boolean
+  withBg?: boolean;
 }
 
-const { withBg = true } = Astro.props
+const { withBg = true } = Astro.props;
 
-const withBgClasses = 'bg-bg border-grayMed'
-const withoutBgClasses = 'border-b-transparent'
-const availableForHire = import.meta.env.AVAILABLE_FOR_HIRE === 'true'
+const withBgClasses = "bg-bg border-grayMed";
+const withoutBgClasses = "border-b-transparent";
+const availableForHire = import.meta.env.AVAILABLE_FOR_HIRE === "true";
 ---
 
 <header
-	aria-label="Main header"
-	class={classNames(
-		!withBg && `logo-visible`,
-		`absolute top-0 left-1/2 -translate-x-1/2 w-screen z-40`,
-		`text-fg px-10 max-w-[1440px] min-[1440px]:border-x`,
-		`min-[1440px]:border-x-grayMed border-b`,
-		`flex justify-between items-center h-[101px]`,
-		`scrolled-top`,
-		`transition motion-reduce:transition-none`,
-		availableForHire && `pt-8`,
-		withBg ? withBgClasses : withoutBgClasses,
-	)}
-	data-withBg={`${withBg}`}
-	data-withBgClasses={withBgClasses}
-	data-withoutBgClasses={withoutBgClasses}
+  aria-label="Main header"
+  class={classNames(
+    !withBg && `logo-visible`,
+    `fixed top-0 left-1/2 -translate-x-1/2 w-screen z-40`,
+    `text-fg px-10 max-w-[1440px] min-[1440px]:border-x`,
+    `min-[1440px]:border-x-grayMed border-b`,
+    `flex justify-between items-center h-[101px]`,
+    `scrolled-top`,
+    `transition-all motion-reduce:transition-none`,
+    availableForHire && `pt-8`,
+    withBg ? withBgClasses : withoutBgClasses
+  )}
+  data-withBg={`${withBg}`}
+  data-withBgClasses={withBgClasses}
+  data-withoutBgClasses={withoutBgClasses}
 >
-	<LogoInteractive isMinimal={!withBg} transition:name="header-logo" />
-	<button
-		aria-label="Hide the main navitation menu"
-		id="burger-menu"
-		aria-hidden="false"
-		aria-expanded="false"
-		class="md:hidden md:invisible"
-	>
-		<span></span>
-	</button>
-	<nav
-		id="menu"
-		aria-label="Main navigation"
-		class={classNames(
-			`fixed top-[101px] left-0 w-screen h-[calc(100svh-69px)] bg-bg md:bg-transparent`,
-			`opacity-0 pointer-events-none md:opacity-100 md:static md:pointer-events-auto`,
-			`md:w-auto md:h-auto md:bg-none transition-opacity`,
-			`motion-reduce:transition-none`,
-		)}
-	>
-		<ul
-			class={classNames(`flex flex-col md:flex-row md:gap-2 items-center`)}
-			aria-label="Main menu items"
-		>
-			<HeaderMenuLink
-				href="/"
-				title="Projects"
-				transition:name="header-project-link"
-			/>
-			<HeaderMenuLink
-				href="/about"
-				title="About"
-				transition:name="header-about-link"
-			/>
-			<HeaderMenuLink
-				href="/inspirations"
-				title="Cool sites"
-				transition:name="header-sites-link"
-			/>
-			<li
-				aria-label="Main menu link: Other actions"
-				transition:name="header-theme-toggle"
-				class={classNames(
-					`w-full md:w-auto py-5 md:p-0 text-grayDark`,
-					`flex justify-between items-center pr-5 md:pr-0`,
-				)}
-			>
-				<div class="md:hidden" id="social-icons"><SocialIcons /></div>
-				<div class="text-fg inline-flex items-center">
-					<ThemeToggle />
-				</div>
-			</li>
-		</ul>
-	</nav>
-	{import.meta.env.AVAILABLE_FOR_HIRE === 'true' && <AvailableForHireBanner />}
+  <LogoInteractive isMinimal={!withBg} transition:name="header-logo" />
+  <button
+    aria-label="Hide the main navitation menu"
+    id="burger-menu"
+    aria-hidden="false"
+    aria-expanded="false"
+    class="md:hidden md:invisible"
+  >
+    <span></span>
+  </button>
+  <nav
+    id="menu"
+    aria-label="Main navigation"
+    class={classNames(
+      `fixed top-[101px] left-0 w-screen h-[calc(100svh-69px)] bg-bg md:bg-transparent`,
+      `opacity-0 pointer-events-none md:opacity-100 md:static md:pointer-events-auto`,
+      `md:w-auto md:h-auto md:bg-none transition-opacity`,
+      `motion-reduce:transition-none`
+    )}
+  >
+    <ul
+      class={classNames(`flex flex-col md:flex-row md:gap-2 items-center`)}
+      aria-label="Main menu items"
+    >
+      <HeaderMenuLink
+        href="/"
+        title="Projects"
+        transition:name="header-project-link"
+      />
+      <HeaderMenuLink
+        href="/about"
+        title="About"
+        transition:name="header-about-link"
+      />
+      <HeaderMenuLink
+        href="/inspirations"
+        title="Cool sites"
+        transition:name="header-sites-link"
+      />
+      <li
+        aria-label="Main menu link: Other actions"
+        transition:name="header-theme-toggle"
+        class={classNames(
+          `w-full md:w-auto py-5 md:p-0 text-grayDark`,
+          `flex justify-between items-center pr-5 md:pr-0`
+        )}
+      >
+        <div class="md:hidden" id="social-icons"><SocialIcons /></div>
+        <div class="text-fg inline-flex items-center">
+          <ThemeToggle />
+        </div>
+      </li>
+    </ul>
+  </nav>
+  {import.meta.env.AVAILABLE_FOR_HIRE === "true" && <AvailableForHireBanner />}
 </header>
 
 <script>
-	function setupHamburgerMenuUpdater(doc: Document) {
-		const burgerMenu = doc.getElementById('burger-menu')
-		burgerMenu?.addEventListener('click', () => {
-			const burgerMenu = doc.getElementById('burger-menu')
-			const menu = doc.getElementById('menu')
-			if (!burgerMenu || !menu) return
-			burgerMenu.classList.toggle('close')
-			menu.classList.toggle('opacity-0')
-			menu.classList.toggle('pointer-events-none')
+  function setupHamburgerMenuUpdater(doc: Document) {
+    const burgerMenu = doc.getElementById("burger-menu");
+    burgerMenu?.addEventListener("click", () => {
+      const burgerMenu = doc.getElementById("burger-menu");
+      const menu = doc.getElementById("menu");
+      if (!burgerMenu || !menu) return;
+      burgerMenu.classList.toggle("close");
+      menu.classList.toggle("opacity-0");
+      menu.classList.toggle("pointer-events-none");
 
-			const isOpened = !!burgerMenu.classList.contains('close')
-			const verb = isOpened ? `Hide` : `Show`
-			burgerMenu.setAttribute('aria-label', `${verb} the main navitation menu`)
-			burgerMenu.setAttribute('aria-expanded', `${isOpened}`)
-		})
-	}
+      const isOpened = !!burgerMenu.classList.contains("close");
+      const verb = isOpened ? `Hide` : `Show`;
+      burgerMenu.setAttribute("aria-label", `${verb} the main navitation menu`);
+      burgerMenu.setAttribute("aria-expanded", `${isOpened}`);
+    });
+  }
 
-	function setupMenuItemsVisibilityUpdater(doc: Document) {
-		const MENU_BREAKPOINT = 768
-		const updateMenuItemsVisibility = () => {
-			const burgerMenu = doc.getElementById('burger-menu')
-			const socialIcons = doc.getElementById('social-icons')
-			if (!burgerMenu || !socialIcons) return
-			if (window.innerWidth <= MENU_BREAKPOINT) {
-				burgerMenu.setAttribute('aria-hidden', 'false')
-				socialIcons.setAttribute('aria-hidden', 'false')
-			} else {
-				burgerMenu.setAttribute('aria-hidden', 'true')
-				socialIcons.setAttribute('aria-hidden', 'true')
-			}
-		}
+  function setupMenuItemsVisibilityUpdater(doc: Document) {
+    const MENU_BREAKPOINT = 768;
+    const updateMenuItemsVisibility = () => {
+      const burgerMenu = doc.getElementById("burger-menu");
+      const socialIcons = doc.getElementById("social-icons");
+      if (!burgerMenu || !socialIcons) return;
+      if (window.innerWidth <= MENU_BREAKPOINT) {
+        burgerMenu.setAttribute("aria-hidden", "false");
+        socialIcons.setAttribute("aria-hidden", "false");
+      } else {
+        burgerMenu.setAttribute("aria-hidden", "true");
+        socialIcons.setAttribute("aria-hidden", "true");
+      }
+    };
 
-		const mediaQuery = window.matchMedia(
-			`@media screen and (max-width: ${MENU_BREAKPOINT}px)`,
-		)
-		mediaQuery.addEventListener(`change`, updateMenuItemsVisibility)
+    const mediaQuery = window.matchMedia(
+      `@media screen and (max-width: ${MENU_BREAKPOINT}px)`
+    );
+    mediaQuery.addEventListener(`change`, updateMenuItemsVisibility);
 
-		updateMenuItemsVisibility()
-	}
-	function setupHeaderBgUpdater(doc: Document) {
-		function updateHeaderBg() {
-			const header: HTMLElement = doc.querySelector(
-				'header[aria-label="Main header"]',
-			) as HTMLElement
-			if (!header) return
-			const burgerMenu = doc.getElementById('burger-menu')
-			const withBg = header.dataset.withbg
+    updateMenuItemsVisibility();
+  }
+  function setupHeaderBgUpdater(doc: Document) {
+    function updateHeaderBg() {
+      const header: HTMLElement = doc.querySelector(
+        'header[aria-label="Main header"]'
+      ) as HTMLElement;
+      if (!header) return;
+      const burgerMenu = doc.getElementById("burger-menu");
+      const withBg = header.dataset.withbg;
 
-			const withBgClassString = header.dataset.withbgclasses || ''
-			const withoutBgClassString = header.dataset.withoutbgclasses || ''
-			const withBgClasses = withBgClassString.trim().split(' ')
-			const withoutBgClasses = withoutBgClassString.trim().split(' ')
+      const withBgClassString = header.dataset.withbgclasses || "";
+      const withoutBgClassString = header.dataset.withoutbgclasses || "";
+      const withBgClasses = withBgClassString.trim().split(" ");
+      const withoutBgClasses = withoutBgClassString.trim().split(" ");
 
-			const isOpened = !!burgerMenu?.classList.contains('close')
-			const scrollOffset =
-				window.scrollY ??
-				doc.documentElement.scrollTop ??
-				doc.body.scrollTop ??
-				0
+      const isOpened = !!burgerMenu?.classList.contains("close");
+      const scrollOffset =
+        window.scrollY ??
+        doc.documentElement.scrollTop ??
+        doc.body.scrollTop ??
+        0;
 
-			if (withBg !== 'false' || scrollOffset >= 50 || isOpened) {
-				header.classList.add(...withBgClasses)
-				header.classList.remove(...withoutBgClasses)
-			} else if (scrollOffset < 50 && !isOpened) {
-				header.classList.remove(...withBgClasses)
-				header.classList.add(...withoutBgClasses)
-			}
+      if (withBg !== "false" || scrollOffset >= 50 || isOpened) {
+        header.classList.add(...withBgClasses);
+        header.classList.remove(...withoutBgClasses);
+      } else if (scrollOffset < 50 && !isOpened) {
+        header.classList.remove(...withBgClasses);
+        header.classList.add(...withoutBgClasses);
+      }
 
-			requestAnimationFrame(updateHeaderBg)
-		}
-		updateHeaderBg()
-	}
-	function setupMenuScrolledStateUpdater(doc: Document) {
-		const scrollUpClass = [`scrolled-up`, `logo-visible`]
-		const scrollDownClass = `scrolled-down`
-		const scrollTopClass = `scrolled-top`
-		let lastScroll =
-			window.scrollY ?? doc.documentElement.scrollTop ?? doc.body.scrollTop ?? 0
+      requestAnimationFrame(updateHeaderBg);
+    }
+    updateHeaderBg();
+  }
+  function setupMenuScrolledStateUpdater(doc: Document) {
+    const scrollUpClass = [`scrolled-up`, `logo-visible`];
+    const scrollDownClass = `scrolled-down`;
+    const scrollTopClass = `scrolled-top`;
+    let lastScroll =
+      window.scrollY ??
+      doc.documentElement.scrollTop ??
+      doc.body.scrollTop ??
+      0;
 
-		function updateScrollUpAndDownVisibility() {
-			const header = doc.querySelector('header[aria-label="Main header"]')
-			if (!header) return
+    function updateScrollUpAndDownVisibility() {
+      const header = doc.querySelector('header[aria-label="Main header"]');
+      if (!header) return;
 
-			const currentScroll =
-				window.scrollY ??
-				doc.documentElement.scrollTop ??
-				doc.body.scrollTop ??
-				0
+      const currentScroll =
+        window.scrollY ??
+        doc.documentElement.scrollTop ??
+        doc.body.scrollTop ??
+        0;
 
-			if (currentScroll <= 69) {
-				header.classList.remove(...scrollUpClass)
-				header.classList.remove(scrollDownClass)
-				header.classList.add(scrollTopClass)
-				requestAnimationFrame(updateScrollUpAndDownVisibility)
-				return
-			} else {
-				header.classList.remove(scrollTopClass)
-			}
+      if (currentScroll <= 69) {
+        header.classList.remove(...scrollUpClass);
+        header.classList.remove(scrollDownClass);
+        header.classList.add(scrollTopClass);
+        requestAnimationFrame(updateScrollUpAndDownVisibility);
+        return;
+      } else {
+        header.classList.remove(scrollTopClass);
+      }
 
-			if (
-				currentScroll > lastScroll &&
-				!header.classList.contains(scrollDownClass)
-			) {
-				// down
-				header.classList.remove(...scrollUpClass)
-				header.classList.add(scrollDownClass)
-			} else if (
-				currentScroll < lastScroll &&
-				header.classList.contains(scrollDownClass)
-			) {
-				// up
-				header.classList.remove(scrollDownClass)
-				header.classList.add(...scrollUpClass)
-			}
-			lastScroll = currentScroll
+      if (
+        currentScroll > lastScroll &&
+        !header.classList.contains(scrollDownClass)
+      ) {
+        // down
+        header.classList.remove(...scrollUpClass);
+        header.classList.add(scrollDownClass);
+      } else if (
+        currentScroll < lastScroll &&
+        header.classList.contains(scrollDownClass)
+      ) {
+        // up
+        header.classList.remove(scrollDownClass);
+        header.classList.add(...scrollUpClass);
+      }
+      lastScroll = currentScroll;
 
-			requestAnimationFrame(updateScrollUpAndDownVisibility)
-		}
+      requestAnimationFrame(updateScrollUpAndDownVisibility);
+    }
 
-		updateScrollUpAndDownVisibility()
-	}
+    updateScrollUpAndDownVisibility();
+  }
 
-	function setupThemeUpdater(doc: Document) {
-		const themeToggler = doc.getElementById('theme-toggle')
-		const darkModePreference = window.matchMedia('(prefers-color-scheme: dark)')
-		const initialTheme = localStorage.getItem('theme')
-		updateToggler(initialTheme as string, doc)
+  function setupThemeUpdater(doc: Document) {
+    const themeToggler = doc.getElementById("theme-toggle");
+    const darkModePreference = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    );
+    const initialTheme = localStorage.getItem("theme");
+    updateToggler(initialTheme as string, doc);
 
-		themeToggler?.addEventListener('click', () => {
-			const themeToggler = doc.getElementById('theme-toggle')
-			const checked = themeToggler?.getAttribute('aria-checked') === 'true'
-			let newUserPref = checked ? 'light' : 'dark'
-			updateToggler(newUserPref, doc)
-		})
+    themeToggler?.addEventListener("click", () => {
+      const themeToggler = doc.getElementById("theme-toggle");
+      const checked = themeToggler?.getAttribute("aria-checked") === "true";
+      let newUserPref = checked ? "light" : "dark";
+      updateToggler(newUserPref, doc);
+    });
 
-		darkModePreference.addEventListener('change', (e) =>
-			updateToggler(e.matches ? 'dark' : 'light', doc),
-		)
-	}
+    darkModePreference.addEventListener("change", (e) =>
+      updateToggler(e.matches ? "dark" : "light", doc)
+    );
+  }
 
-	function updateToggler(theme: string, doc: Document) {
-		const themeToggler = doc.getElementById('theme-toggle')
-		const darkModePreference = window.matchMedia('(prefers-color-scheme: dark)')
-		const finalTheme = theme || (darkModePreference.matches ? 'dark' : 'light')
-		const isDark = finalTheme === 'dark'
-		doc.documentElement.dataset.appliedMode = finalTheme
-		theme && localStorage.setItem('theme', theme)
+  function updateToggler(theme: string, doc: Document) {
+    const themeToggler = doc.getElementById("theme-toggle");
+    const darkModePreference = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    );
+    const finalTheme = theme || (darkModePreference.matches ? "dark" : "light");
+    const isDark = finalTheme === "dark";
+    doc.documentElement.dataset.appliedMode = finalTheme;
+    theme && localStorage.setItem("theme", theme);
 
-		themeToggler?.setAttribute('aria-checked', isDark.toString())
-	}
+    themeToggler?.setAttribute("aria-checked", isDark.toString());
+  }
 
-	function setupHeader(doc: Document) {
-		setupHamburgerMenuUpdater(doc)
-		setupMenuItemsVisibilityUpdater(doc)
-		setupHeaderBgUpdater(doc)
-		setupMenuScrolledStateUpdater(doc)
-		setupThemeUpdater(doc)
-	}
-	window.addEventListener('load', () => setupHeader(document))
-	document.addEventListener('astro:after-swap', () => setupHeader(document))
+  function setupHeader(doc: Document) {
+    setupHamburgerMenuUpdater(doc);
+    setupMenuItemsVisibilityUpdater(doc);
+    setupHeaderBgUpdater(doc);
+    setupMenuScrolledStateUpdater(doc);
+    setupThemeUpdater(doc);
+  }
+  window.addEventListener("load", () => setupHeader(document));
+  document.addEventListener("astro:after-swap", () => setupHeader(document));
 </script>
 
 <style>
-	header[aria-label='Main header'].scrolled-down {
-		@apply -translate-y-full;
-	}
-	header[aria-label='Main header'].scrolled-up {
-		@apply translate-y-0;
-	}
-	header[aria-label='Main header']:not(.scrolled-top) {
-		@apply pt-0 h-[69px];
-	}
+  header[aria-label="Main header"].scrolled-down {
+    @apply -translate-y-full;
+  }
+  header[aria-label="Main header"].scrolled-up {
+    @apply translate-y-0;
+  }
+  header[aria-label="Main header"]:not(.scrolled-top) {
+    @apply pt-0 h-[69px];
+  }
 
-	header[aria-label='Main header']:not(.scrolled-top) #menu {
-		@apply top-[69px];
-	}
-	#burger-menu {
-		cursor: pointer;
-		height: 39px;
-		width: 39px;
-		overflow: visible;
-		position: relative;
-		z-index: 2;
-		@apply -mr-2;
-	}
-	#burger-menu:focus-visible,
-	#burger-menu:focus {
-		@apply outline-none;
-	}
-	#burger-menu:focus-visible {
-		@apply ring-2 ring-fg rounded-full;
-	}
-	#burger-menu span,
-	#burger-menu span:before,
-	#burger-menu span:after {
-		@apply bg-fg;
-		display: block;
-		height: 2px;
-		opacity: 1;
-		position: absolute;
-		transition: 0.3s ease-in-out;
-		@apply motion-reduce:transition-none;
-	}
-	#burger-menu span:before,
-	#burger-menu span:after {
-		content: '';
-	}
-	#burger-menu span:before {
-		left: 0px;
-		top: -10px;
-		width: 27px;
-	}
-	#burger-menu span {
-		right: 6px;
-		top: 18px;
-		width: 27px;
-	}
-	#burger-menu span:after {
-		left: 0px;
-		top: 10px;
-		width: 27px;
-	}
-	#burger-menu.close span:before {
-		top: 0px;
-		transform: rotate(90deg);
-		width: 27px;
-	}
-	#burger-menu.close span {
-		transform: rotate(-45deg);
-		top: 18px;
-		width: 27px;
-	}
-	#burger-menu.close span:after {
-		top: 0px;
-		left: 0;
-		transform: rotate(90deg);
-		opacity: 0;
-		width: 0;
-	}
+  header[aria-label="Main header"]:not(.scrolled-top) #menu {
+    @apply top-[69px];
+  }
+  #burger-menu {
+    cursor: pointer;
+    height: 39px;
+    width: 39px;
+    overflow: visible;
+    position: relative;
+    z-index: 2;
+    @apply -mr-2;
+  }
+  #burger-menu:focus-visible,
+  #burger-menu:focus {
+    @apply outline-none;
+  }
+  #burger-menu:focus-visible {
+    @apply ring-2 ring-fg rounded-full;
+  }
+  #burger-menu span,
+  #burger-menu span:before,
+  #burger-menu span:after {
+    @apply bg-fg;
+    display: block;
+    height: 2px;
+    opacity: 1;
+    position: absolute;
+    transition: 0.3s ease-in-out;
+    @apply motion-reduce:transition-none;
+  }
+  #burger-menu span:before,
+  #burger-menu span:after {
+    content: "";
+  }
+  #burger-menu span:before {
+    left: 0px;
+    top: -10px;
+    width: 27px;
+  }
+  #burger-menu span {
+    right: 6px;
+    top: 18px;
+    width: 27px;
+  }
+  #burger-menu span:after {
+    left: 0px;
+    top: 10px;
+    width: 27px;
+  }
+  #burger-menu.close span:before {
+    top: 0px;
+    transform: rotate(90deg);
+    width: 27px;
+  }
+  #burger-menu.close span {
+    transform: rotate(-45deg);
+    top: 18px;
+    width: 27px;
+  }
+  #burger-menu.close span:after {
+    top: 0px;
+    left: 0;
+    transform: rotate(90deg);
+    opacity: 0;
+    width: 0;
+  }
 </style>
