@@ -4,11 +4,12 @@ import classNames from "../../utils/classNames";
 import InspirationFavicon from "./_InspirationFavicon.astro";
 import InspirationThumbnail from "./_InspirationThumbnail.astro";
 
-const { link, class: className } = Astro.props;
+const { link, class: className, disabled = false } = Astro.props;
 
 export type Props = {
   link: InspirationType;
   class?: string;
+  disabled?: boolean;
 };
 ---
 
@@ -20,6 +21,7 @@ export type Props = {
     href={link.url}
     target="_blank"
     rel="noopener nofollow"
+    tabindex={disabled ? "-1" : "0"}
     class={classNames(
       `flex flex-col gap-4 group`,
       `focus-visible:ring-2 focus-visible:ring-fg outline-none`,
@@ -46,6 +48,7 @@ export type Props = {
   <a
     href={`/inspirations/${link.id}`}
     aria-label={`Permalink to the inspiration "${link.title} (${link.url})"`}
+    tabindex={disabled ? "-1" : "0"}
     class={classNames(
       // the top value represents the width of the container
       `top-[55cqw] right-0`,

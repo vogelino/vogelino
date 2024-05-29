@@ -9,6 +9,7 @@ const {
   options,
   positionVertical = "down",
   positionHorizontal = "left",
+  disabled = false,
 } = Astro.props;
 
 export type Props = {
@@ -18,6 +19,7 @@ export type Props = {
   options: { text: JSX.Element; href: string; suffix?: JSX.Element }[];
   positionVertical?: "down" | "up";
   positionHorizontal?: "left" | "right";
+  disabled?: boolean;
 };
 ---
 
@@ -29,6 +31,7 @@ export type Props = {
       aria-label="Download my CV as PDF file in different languages"
       aria-expanded="false"
       aria-controls={`dropdown-${id}`}
+      tabindex={disabled ? "-1" : "0"}
       class={classNames(
         "dropdown-button",
         !(Icon && !triggerText) && "gap-x-1.5",
@@ -85,6 +88,7 @@ export type Props = {
         options.map(({ text, href, suffix }, idx) => (
           <a
             href={href}
+            tabindex={disabled ? "-1" : "0"}
             class={classNames(
               "flex gap-8 justify-between px-4 py-2 text-base normal-case",
               "text-fg hover-hover:hover:bg-alt",

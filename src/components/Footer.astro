@@ -6,6 +6,12 @@ import ArrowUp from "./icons/ArrowUp.astro";
 import Rss from "./icons/Rss.astro";
 
 const year = String(new Date().getFullYear());
+
+export type Props = {
+  disabled?: boolean;
+};
+
+const { disabled = false } = Astro.props;
 ---
 
 <footer
@@ -44,12 +50,14 @@ const year = String(new Date().getFullYear());
             href: `/rss-inspirations-only.xml`,
           },
         ]}
+        disabled={disabled}
       />
     </div><span><Logo className="scale-75" /></span>
 
     <button
       id="back-to-top"
       aria-label="Scroll to top"
+      tabindex={disabled ? "-1" : "0"}
       class={classNames(
         `p-1 bg-alt text-fg rounded-full`,
         `hover:bg-fg hover:text-alt transition-colors`,

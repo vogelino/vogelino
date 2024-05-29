@@ -68,12 +68,12 @@ export type Props = {
     href={page.url.current}
     title="Back to inspiration list"
     data-page={page.url.current}
+    tabindex="-1"
     class={classNames(
       "overlay fixed px-10 inset-0 z-20 bg-opacity-10",
       "max-w-[1440px] min-[1440px]:border-x",
       `min-[1440px]:border-x-grayMed border-b`,
-      "top-0 left-1/2 -translate-x-1/2 w-screen",
-      "focusable"
+      "top-0 left-1/2 -translate-x-1/2 w-screen"
     )}></a>
   <ul
     class={classNames(

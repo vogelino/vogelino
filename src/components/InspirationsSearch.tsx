@@ -13,8 +13,10 @@ const options: SearchOptionsType = {
 
 function InspirationsSearch({
 	searchItems,
+	disabled = false,
 }: {
 	searchItems: InspirationType[]
+	disabled?: boolean
 }) {
 	const [fuse] = createSignal(new Fuse(searchItems, options))
 	const [query, setQuery] = createSignal('')
@@ -64,13 +66,13 @@ function InspirationsSearch({
 	}
 
 	onMount(() => {
-		if (typeof document === 'undefined') return
+		if (typeof document === 'undefined' || disabled) return
 		document.addEventListener('keydown', onKeyDown)
 		document.addEventListener('keyup', onKeyUp)
 		focusSearch()
 	})
 	onCleanup(() => {
-		if (typeof document === 'undefined') return
+		if (typeof document === 'undefined' || disabled) return
 		document.removeEventListener('keydown', onKeyDown)
 		document.removeEventListener('keyup', onKeyUp)
 	})
@@ -83,9 +85,10 @@ function InspirationsSearch({
 					ref={inputRef}
 					type="text"
 					value={query()}
-					autofocus
-					onInput={handleOnSearch}
-					onFocus={posts().length > 0 ? () => setIsOpened(true) : undefined}
+					autofocus={!disabled}
+					tabIndex={disabled ? '-1' : '0'}
+					onInput={disabled ? undefined : handleOnSearch}
+					onFocus={!disabled && posts().length > 0 ? () => setIsOpened(true) : undefined}
 					placeholder="Type to search..."
 					class={cn(
 						'rounded-md border border-grayMed bg-bg pt-3 px-3 pb-2',
@@ -106,7 +109,7 @@ function InspirationsSearch({
 					<kbd class="text-base opacity-60">/</kbd>
 					<kbd class="text-base font-bold">F</kbd>
 				</span>
-				{query() && isOpened() && (
+				{!disabled && query() && isOpened() && (
 					<div
 						class={classNames(
 							'absolute top-full left-0 border-grayMed',
