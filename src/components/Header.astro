@@ -25,7 +25,7 @@ const availableForHire = import.meta.env.AVAILABLE_FOR_HIRE === "true";
     `text-fg px-10 max-w-[1440px] min-[1440px]:border-x`,
     `min-[1440px]:border-x-grayMed border-b`,
     `flex justify-between items-center h-[101px]`,
-    `scrolled-top`,
+    `scrolled-top scrolled-top`,
     `transition-all motion-reduce:transition-none`,
     availableForHire && `pt-8`,
     withBg ? withBgClasses : withoutBgClasses
@@ -272,11 +272,8 @@ const availableForHire = import.meta.env.AVAILABLE_FOR_HIRE === "true";
   }
   header[aria-label="Main header"] {
     @apply translate-y-0 bg-opacity-0;
-    background-image: radial-gradient(transparent, var(--bg) 1px);
-    background-size: 4px 4px;
-    backdrop-filter: blur(8px);
   }
-  header[aria-label="Main header"].scrolled-up {
+  header[aria-label="Main header"].scrolled-up:not(.scrolled-top) {
     @apply translate-y-0 bg-opacity-50 dark:bg-opacity-70 shadow;
     background: none;
     background-image: radial-gradient(transparent, var(--bg) 1px);
@@ -284,7 +281,8 @@ const availableForHire = import.meta.env.AVAILABLE_FOR_HIRE === "true";
     backdrop-filter: blur(8px);
   }
 
-  :root[data-applied-mode="dark"] header[aria-label="Main header"].scrolled-up {
+  :root[data-applied-mode="dark"]
+    header[aria-label="Main header"].scrolled-up:not(.scrolled-top) {
     background-color: rgb(28 28 28 / var(--tw-bg-opacity));
   }
   header[aria-label="Main header"]:not(.scrolled-top) {
