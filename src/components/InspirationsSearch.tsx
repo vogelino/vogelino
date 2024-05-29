@@ -89,9 +89,23 @@ function InspirationsSearch({
 					placeholder="Type to search..."
 					class={cn(
 						'rounded-md border border-grayMed bg-bg pt-3 px-3 pb-2',
-						'text-base text-fg focusable w-full dark:bg-grayUltraLight'
+						'text-base text-fg focusable w-full dark:bg-grayUltraLight',
+						`md:pr-24`
 					)}
 				/>
+				<span
+					class={classNames(
+						'absolute top-2.5 right-2.5 hidden md:inline-flex items-center gap-0.5',
+						'border border-grayLight rounded px-2 pt-0.5 -translate-y-[1px]',
+						`text-grayDark pointer-events-none`
+					)}
+				>
+					<kbd class="text-2xl leading-4">⌘</kbd>
+					<kbd class="text-base opacity-60">+</kbd>
+					<kbd class="text-base font-bold">K</kbd>
+					<kbd class="text-base opacity-60">/</kbd>
+					<kbd class="text-base font-bold">F</kbd>
+				</span>
 				{query() && isOpened() && (
 					<div
 						class={classNames(
