@@ -20,7 +20,7 @@ const availableForHire = import.meta.env.AVAILABLE_FOR_HIRE === "true";
 <div
   aria-hidden="true"
   class={classNames(
-    `menu-backdrop z-40`,
+    `menu-backdrop z-40 pointer-events-none`,
     `fixed w-screen opacity-0 [&.opened]:opacity-100 md:opacity-0`,
     `top-[68px] [&.scrolled-top]:top-[100px]`,
     `h-[calc(100svh-68px)] [&.scrolled-top]:h-[calc(100svh-100px)] md:[&.scrolled-top]:h-auto`
