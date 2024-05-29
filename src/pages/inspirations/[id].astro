@@ -2,6 +2,7 @@
 import type { Page } from "astro";
 import FancyHeadline from "../../components/FancyHeadline.astro";
 import ArrowUp from "../../components/icons/ArrowUp.astro";
+import ExternalLink from "../../components/icons/ExternalLink.astro";
 import type { InspirationType } from "../../schemas/inspirations";
 import classNames from "../../utils/classNames";
 import { getParsedInspirations } from "./[...page].astro";
@@ -152,7 +153,7 @@ const linkWithRef = linkUrl.toString();
               "text-lg flex items-center gap-2 w-fit"
             )}
           >
-            Open site <ArrowUp className="w-5 h-5 rotate-45 -translate-y-0.5" />
+            Open site <ExternalLink className="w-5 h-5 -mt-1" />
           </span>
         </a>
       </div>
