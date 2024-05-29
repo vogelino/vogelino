@@ -40,7 +40,7 @@ const { page, disableGrid = false, allInspirations = [] } = Astro.props;
     </div>
 
     <div class="lg:col-span-2">
-      <InspirationsSearch client:load searchItems={allInspirations} />
+      <InspirationsSearch client:visible searchItems={allInspirations} />
     </div>
   </div>
   <ul

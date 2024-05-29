@@ -3,8 +3,9 @@ import { For, createMemo, createSignal, onCleanup, onMount } from 'solid-js'
 import type { InspirationType } from '../schemas/inspirations'
 import classNames, { cn } from '../utils/classNames'
 
-const options = {
-	keys: ['title'],
+type SearchOptionsType = ConstructorParameters<typeof Fuse<InspirationType>>[1]
+const options: SearchOptionsType = {
+	keys: ['title', 'tags'],
 	includeMatches: true,
 	minMatchCharLength: 2,
 	threshold: 0.5,
@@ -18,6 +19,10 @@ function InspirationsSearch({
 	const [fuse] = createSignal(new Fuse(searchItems, options))
 	const [query, setQuery] = createSignal('')
 	const [isOpened, setIsOpened] = createSignal(false)
+	// biome-ignore lint/style/useConst: <explanation>
+	let parentRef: HTMLDivElement | undefined = undefined
+	// biome-ignore lint/style/useConst: <explanation>
+	let inputRef: HTMLInputElement | undefined = undefined
 
 	function handleOnSearch({
 		target = { value: '' },
@@ -30,42 +35,39 @@ function InspirationsSearch({
 	}
 
 	const posts = createMemo(() => {
-		return (
-			fuse()
-				.search(query())
-				.map((result) => result.item)
-				.slice(0, 5) || []
-		)
+		return fuse().search(query()).slice(0, 6) || []
 	})
 
 	function onKeyDown(event: KeyboardEvent) {
 		if (event.key === 'Escape' && typeof document !== 'undefined') {
-			const input = document.getElementById('inspirations-search-input') as HTMLInputElement
 			if (query() === '') return
-			input?.focus()
+			focusSearch()
 			setIsOpened(false)
 		}
 		// if statement when meta + f or meta + k or ctrl + f or ctrl + k is pressed
 		if ((event.metaKey || event.ctrlKey) && (event.key === 'f' || event.key === 'k')) {
 			event.preventDefault()
-			const input = document.getElementById('inspirations-search-input') as HTMLInputElement
-			input?.focus()
+			focusSearch()
 		}
 	}
 
 	function onKeyUp(event: KeyboardEvent) {
 		if (document.activeElement && document.activeElement !== document.body) {
-			const parent = document.getElementById('inspirations-search')
-			if (!parent?.contains(document.activeElement)) {
+			if (!parentRef?.contains(document.activeElement)) {
 				setIsOpened(false)
 			}
 		}
+	}
+
+	function focusSearch() {
+		inputRef?.focus()
 	}
 
 	onMount(() => {
 		if (typeof document === 'undefined') return
 		document.addEventListener('keydown', onKeyDown)
 		document.addEventListener('keyup', onKeyUp)
+		focusSearch()
 	})
 	onCleanup(() => {
 		if (typeof document === 'undefined') return
@@ -74,13 +76,14 @@ function InspirationsSearch({
 	})
 
 	return (
-		<div class="flex gap-x-4 flex-col gap-y-1 h-full justify-end" id="inspirations-search">
+		<div class="flex gap-x-4 flex-col gap-y-1 h-full justify-end" ref={parentRef}>
 			<label>Search sites</label>
 			<div class="relative">
 				<input
-					id="inspirations-search-input"
+					ref={inputRef}
 					type="text"
 					value={query()}
+					autofocus
 					onInput={handleOnSearch}
 					onFocus={posts().length > 0 ? () => setIsOpened(true) : undefined}
 					placeholder="Type to search..."
@@ -106,36 +109,55 @@ function InspirationsSearch({
 						{posts().length > 0 && (
 							<ul class={classNames(`grid @[280px]:grid-cols-2 @md:grid-cols-3 @lg:grid-cols-4`)}>
 								<For each={posts()}>
-									{(post, index) => (
-										<li>
-											<a
-												href={`/inspirations/${post.id}`}
-												class={cn(`flex flex-col gap-1 focusable p-2 rounded`)}
-											>
-												<img
-													src={post.thumbnail?.src}
-													alt={post.title}
-													class="w-full aspect-140/73 bg-grayUltraLight border border-grayLight rounded"
-												/>
-												<div class="flex gap-3 items-center mt-1">
-													<span
-														class={classNames(
-															'inline-block relative rounded overflow-clip bg-grayUltraLight bg-cover bg-center',
-															'shrink-0 grow-0 h-4 w-4 flex justify-center items-center'
-														)}
-													>
-														<img
-															src={`https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&size=32&url=${post.url}`}
-															alt={`Favicon of "${post.title}"`}
-															width={16}
-															height={16}
-														/>
-													</span>
-													<span>{post.title}</span>
-												</div>
-											</a>
-										</li>
-									)}
+									{({ item, matches }, index) => {
+										const filteredTagMatches = matches?.filter((match) => match.key === 'tags')
+										return (
+											<li>
+												<a
+													href={`/inspirations/${item.id}`}
+													class={cn(`flex flex-col gap-1 focusable p-2 rounded`)}
+												>
+													<img
+														src={item.thumbnail?.src}
+														alt={item.title}
+														class="w-full aspect-140/73 bg-grayUltraLight border border-grayLight rounded"
+													/>
+													<div class="flex gap-3 items-center mt-1">
+														<span
+															class={classNames(
+																'inline-block relative rounded overflow-clip bg-grayUltraLight bg-cover bg-center',
+																'shrink-0 grow-0 h-4 w-4 flex justify-center items-center'
+															)}
+														>
+															<img
+																src={`https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&size=32&url=${item.url}`}
+																alt={`Favicon of "${item.title}"`}
+																width={16}
+																height={16}
+															/>
+														</span>
+														<div>{item.title}</div>
+													</div>
+													{filteredTagMatches?.length && (
+														<ul class="flex flex-wrap gap-x-1.5 gap-y-1 -mt-1 mb-2 pl-7 -ml-1">
+															<For each={filteredTagMatches}>
+																{(match) => (
+																	<li
+																		class={classNames(
+																			'inline-block px-1 pb-0 pt-0.5 bg-grayUltraLight',
+																			'text-xs text-grayDark'
+																		)}
+																	>
+																		{match.value}
+																	</li>
+																)}
+															</For>
+														</ul>
+													)}
+												</a>
+											</li>
+										)
+									}}
 								</For>
 							</ul>
 						)}
