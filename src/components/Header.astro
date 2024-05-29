@@ -276,21 +276,15 @@ const availableForHire = import.meta.env.AVAILABLE_FOR_HIRE === "true";
     background-size: 4px 4px;
     backdrop-filter: blur(8px);
   }
-  nav[aria-label="Main navigation"],
   header[aria-label="Main header"].scrolled-up {
-    @apply translate-y-0 bg-opacity-50 dark:bg-opacity-70;
+    @apply translate-y-0 bg-opacity-50 dark:bg-opacity-70 shadow;
     background: none;
     background-image: radial-gradient(transparent, var(--bg) 1px);
     background-size: 4px 4px;
     backdrop-filter: blur(8px);
   }
-  nav[aria-label="Main navigation"] {
-    @apply bg-opacity-80;
-    background-color: rgb(252 254 255 / var(--tw-bg-opacity));
-  }
 
-  :root[data-applied-mode="dark"] header[aria-label="Main header"].scrolled-up,
-  :root[data-applied-mode="dark"] nav[aria-label="Main navigation"] {
+  :root[data-applied-mode="dark"] header[aria-label="Main header"].scrolled-up {
     background-color: rgb(28 28 28 / var(--tw-bg-opacity));
   }
   header[aria-label="Main header"]:not(.scrolled-top) {

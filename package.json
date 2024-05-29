@@ -44,6 +44,7 @@
   },
   "dependencies": {
     "@astrojs/react": "3.4.0",
+    "@astrojs/solid-js": "^4.2.0",
     "@playform/inline": "0.0.2",
     "@sentry/astro": "7.110.1",
     "@splidejs/splide": "4.1.4",
@@ -52,9 +53,11 @@
     "@vercel/analytics": "1.2.2",
     "@vercel/speed-insights": "1.0.10",
     "clsx": "2.1.1",
+    "fuse.js": "^7.0.0",
     "photoswipe": "5.4.3",
     "react": "18.3.1",
     "react-dom": "18.3.1",
+    "solid-js": "^1.8.17",
     "tailwind-merge": "2.3.0",
     "tailwindcss-animate": "1.0.7"
   }

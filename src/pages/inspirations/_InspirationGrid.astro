@@ -1,16 +1,19 @@
 ---
 import type { Page } from "astro";
 import FancyHeadline from "../../components/FancyHeadline.astro";
+import InspirationsSearch from "../../components/InspirationsSearch";
 import Pagination from "../../components/Pagination.astro";
 import Layout from "../../layouts/Layout.astro";
+import type { InspirationType } from "../../schemas/inspirations";
 import classNames from "../../utils/classNames";
 import InspirationItem from "./_InspirationItem.astro";
 export interface Props {
   page: Page;
+  allInspirations: InspirationType[];
   disableGrid?: true;
 }
 
-const { page, disableGrid = false } = Astro.props;
+const { page, disableGrid = false, allInspirations = [] } = Astro.props;
 ---
 
 <Layout
@@ -19,24 +22,36 @@ const { page, disableGrid = false } = Astro.props;
   disableScroll={disableGrid}
 >
   <slot />
+  <div
+    class={classNames(
+      `pt-32 px-8 pb-8 grid`,
+      `lg:grid-cols-4 gap-8`,
+      `container mx-auto`
+    )}
+  >
+    <div
+      class="relative h-full flex flex-col items-start lg:col-span-2"
+      aria-label={`Title: Cool sites`}
+    >
+      <FancyHeadline title="Cool **Sites**" />
+      <p class="mt-4 text-balance leading-tight">
+        Bookmarks, design inspiration and innovative websites I like.
+      </p>
+    </div>
+
+    <div class="lg:col-span-2">
+      <InspirationsSearch client:load searchItems={allInspirations} />
+    </div>
+  </div>
   <ul
     aria-hidden={disableGrid ? "true" : "false"}
     aria-label="List of cool sites I like"
     class={classNames(
-      `grid pt-32 sm:grid-cols-2 md:grid-cols-3`,
-      `lg:grid-cols-4 gap-8 px-8 pb-16 container mx-auto`,
+      `grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4`,
+      `gap-8 px-8 pb-16 container mx-auto`,
       `min-h-[calc(100vh-174px)]`
     )}
   >
-    <li
-      class="relative h-full flex flex-col items-start"
-      aria-label={`Title: Cool sites`}
-    >
-      <FancyHeadline title="Cool <br class='hidden sm:block' />**Sites**" />
-      <p class="mt-4 text-balance leading-tight">
-        Bookmarks, design inspiration and innovative websites I like.
-      </p>
-    </li>
     {
       page.data.map((link) => {
         if (!link.thumbnail) return null;

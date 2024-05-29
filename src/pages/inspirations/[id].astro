@@ -85,7 +85,11 @@ export type Props = {
     )}
   >
     <div
-      class="max-w-lg w-full list-none flex flex-col gap-2 p-4 pointer-events-auto bg-bg pb-4 border border-grayMed"
+      class={classNames(
+        "max-w-lg w-full list-none flex flex-col gap-2",
+        "p-4 pointer-events-auto bg-bg pb-4 border border-grayMed",
+        "shadow-lg dark:shadow-black/60"
+      )}
     >
       <a
         href={page.url.current}

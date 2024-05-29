@@ -1,19 +1,29 @@
 ---
-import type { Page } from "astro";
+import type { Page, PaginateFunction } from "astro";
 import { loadJson } from "../../../scripts/lib/loadJson";
 import { INSPIRATIONS_JSON_PATH } from "../../../scripts/paths";
 import {
-  inspirationSchema,
   type InspirationType,
+  inspirationSchema,
 } from "../../schemas/inspirations";
 import type { AstroGlobImageType } from "../../utils/astroTypes";
 import InspirationGrid from "./_InspirationGrid.astro";
 
-export async function getStaticPaths({ paginate }) {
+export async function getStaticPaths({
+  paginate,
+}: {
+  paginate: PaginateFunction;
+}) {
   const parsedInspirations = await getParsedInspirations();
   return paginate(parsedInspirations, {
     pageSize: 47,
-  });
+  }).map((page) => ({
+    ...page,
+    props: {
+      ...page.props,
+      allInspirations: parsedInspirations,
+    },
+  }));
 }
 
 export async function getParsedInspirations(): Promise<InspirationType[]> {
@@ -49,9 +59,10 @@ export async function getParsedInspirations(): Promise<InspirationType[]> {
 
 export interface Props {
   page: Page;
+  allInspirations: InspirationType[];
 }
 
-const { page } = Astro.props;
+const { page, allInspirations } = Astro.props;
 ---
 
-<InspirationGrid page={page} />
+<InspirationGrid page={page} allInspirations={allInspirations} />
