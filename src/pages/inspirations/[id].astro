@@ -61,6 +61,10 @@ export type Props = {
   nextInspiration: InspirationType;
   prevInspiration: InspirationType;
 };
+
+const linkUrl = new URL(inspiration.url);
+linkUrl.searchParams.set("ref", Astro.site?.href?.toString() ?? "");
+const linkWithRef = linkUrl.toString();
 ---
 
 <InspirationGrid page={page} disableGrid allInspirations={[]}>
@@ -129,9 +133,10 @@ export type Props = {
       }
       <div>
         <a
-          href={inspiration.url}
+          href={linkWithRef}
           target="_blank"
           rel="noopener nofollow"
+          title={`Direct external link to the cool site: "${inspiration.title} (${inspiration.url})"`}
           class={classNames(
             `flex flex-col gap-4 group`,
             `focus-visible:ring-2 focus-visible:ring-fg outline-none`,
