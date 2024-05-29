@@ -14,28 +14,28 @@ export async function getStaticPaths() {
   return inspirations.map((inspiration, idx) => {
     const nextIdx = idx + 1 >= inspirations.length ? 0 : idx + 1;
     const prevIdx = idx - 1 < 0 ? inspirations.length - 1 : idx - 1;
-    const currentPage = Math.floor(idx / 47) + 1;
+    const currentPage = Math.floor(idx / 48) + 1;
     return {
       params: { id: inspiration.id },
       props: {
         page: {
           data: inspirations.filter((_, i) => {
-            const inspirationPage = Math.ceil((i + 1) / 47);
+            const inspirationPage = Math.ceil((i + 1) / 48);
             return inspirationPage === currentPage;
           }),
-          start: (currentPage - 1) * 47,
-          end: (currentPage - 1) * 47 + 46,
-          size: 47,
+          start: (currentPage - 1) * 48,
+          end: (currentPage - 1) * 48 + 46,
+          size: 48,
           total: inspirations.length,
           currentPage,
-          lastPage: Math.ceil(inspirations.length / 47),
+          lastPage: Math.ceil(inspirations.length / 48),
           url: {
             current:
               currentPage <= 1
                 ? "/inspirations"
                 : `/inspirations/${currentPage}`,
             next:
-              currentPage + 1 < Math.ceil(inspirations.length / 47)
+              currentPage + 1 < Math.ceil(inspirations.length / 48)
                 ? `/inspirations/${currentPage + 1}`
                 : undefined,
             prev:

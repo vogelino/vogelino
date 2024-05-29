@@ -3,8 +3,8 @@ import type { Page, PaginateFunction } from "astro";
 import { loadJson } from "../../../scripts/lib/loadJson";
 import { INSPIRATIONS_JSON_PATH } from "../../../scripts/paths";
 import {
-  type InspirationType,
   inspirationSchema,
+  type InspirationType,
 } from "../../schemas/inspirations";
 import type { AstroGlobImageType } from "../../utils/astroTypes";
 import InspirationGrid from "./_InspirationGrid.astro";
@@ -16,7 +16,7 @@ export async function getStaticPaths({
 }) {
   const parsedInspirations = await getParsedInspirations();
   return paginate(parsedInspirations, {
-    pageSize: 47,
+    pageSize: 48,
   }).map((page) => ({
     ...page,
     props: {
