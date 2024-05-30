@@ -1,5 +1,29 @@
 [
   {
+    "id": "34283bfd-2bf2-4384-97c2-1ab7de00e98f",
+    "title": "query.gg",
+    "url": "https://query.gg/",
+    "date": "2024-05-30T16:56:00.000Z",
+    "tags": [
+      "Course",
+      "Development",
+      "Resource",
+      "React",
+      "Library"
+    ]
+  },
+  {
+    "id": "83253d15-e0d4-4d54-8840-568c4764c847",
+    "title": "Mother Earth AI",
+    "url": "https://mother-earth.ai/",
+    "date": "2024-05-30T16:54:00.000Z",
+    "tags": [
+      "AI",
+      "Climate Change",
+      "Communication"
+    ]
+  },
+  {
     "id": "24b5e454-14d2-482e-a47c-d0ce73887314",
     "title": "Redwood JS",
     "url": "https://redwoodjs.com/",
@@ -27,7 +51,12 @@
     "title": "Reform Collective",
     "url": "https://www.reformcollective.com/",
     "date": "2024-04-17T17:40:00.000Z",
-    "tags": []
+    "tags": [
+      "Agency",
+      "Portfolio",
+      "Webdesign",
+      "Individual Inspiration"
+    ]
   },
   {
     "id": "6cc353b6-ce7d-489e-b9ce-b273b0ffe82b",
