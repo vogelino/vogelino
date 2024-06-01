@@ -1,5 +1,27 @@
 [
   {
+    "id": "4763d417-346c-4321-bdbb-ee9c9550874e",
+    "title": "Fontsource",
+    "url": null,
+    "date": "2024-06-01T16:50:00.000Z",
+    "tags": []
+  },
+  {
+    "id": "7532172e-95e9-43b0-8ab8-8adadad38a84",
+    "title": "GSAP",
+    "url": "https://gsap.com/",
+    "date": "2024-06-01T16:48:00.000Z",
+    "tags": [
+      "Animation",
+      "Development",
+      "Library",
+      "Resource",
+      "Webdesign",
+      "Individual Inspiration",
+      "Scrollytelling"
+    ]
+  },
+  {
     "id": "34283bfd-2bf2-4384-97c2-1ab7de00e98f",
     "title": "query.gg",
     "url": "https://query.gg/",
