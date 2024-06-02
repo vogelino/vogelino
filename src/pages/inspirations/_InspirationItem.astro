@@ -1,21 +1,21 @@
 ---
-import ExternalLink from "../../components/icons/ExternalLink.astro";
-import type { InspirationType } from "../../schemas/inspirations";
-import classNames from "../../utils/classNames";
-import InspirationFavicon from "./_InspirationFavicon.astro";
-import InspirationThumbnail from "./_InspirationThumbnail.astro";
+import ExternalLink from '../../components/icons/ExternalLink.astro'
+import type { InspirationType } from '../../schemas/inspirations'
+import classNames from '../../utils/classNames'
+import InspirationFavicon from './_InspirationFavicon.astro'
+import InspirationThumbnail from './_InspirationThumbnail.astro'
 
-const { link, class: className, disabled = false } = Astro.props;
+const { link, class: className, disabled = false } = Astro.props
 
 export type Props = {
-  link: InspirationType;
-  class?: string;
-  disabled?: boolean;
-};
+	link: InspirationType
+	class?: string
+	disabled?: boolean
+}
 
-const linkUrl = new URL(link.url);
-linkUrl.searchParams.set("ref", Astro.site?.href?.toString() ?? "");
-const linkWithRef = linkUrl.toString();
+const linkUrl = new URL(link.url)
+linkUrl.searchParams.set('ref', Astro.site?.href?.toString() ?? '')
+const linkWithRef = linkUrl.toString()
 ---
 
 <li

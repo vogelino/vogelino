@@ -1,19 +1,19 @@
 ---
-import type { Page } from "astro";
-import FancyHeadline from "../../components/FancyHeadline.astro";
-import InspirationsSearch from "../../components/InspirationsSearch";
-import Pagination from "../../components/Pagination.astro";
-import Layout from "../../layouts/Layout.astro";
-import type { InspirationType } from "../../schemas/inspirations";
-import classNames from "../../utils/classNames";
-import InspirationItem from "./_InspirationItem.astro";
+import type { Page } from 'astro'
+import FancyHeadline from '../../components/FancyHeadline.astro'
+import InspirationsSearch from '../../components/InspirationsSearch'
+import Pagination from '../../components/Pagination.astro'
+import Layout from '../../layouts/Layout.astro'
+import type { InspirationType } from '../../schemas/inspirations'
+import classNames from '../../utils/classNames'
+import InspirationItem from './_InspirationItem.astro'
 export interface Props {
-  page: Page;
-  allInspirations: InspirationType[];
-  disableGrid?: true;
+	page: Page
+	allInspirations: InspirationType[]
+	disableGrid?: true
 }
 
-const { page, disableGrid = false, allInspirations = [] } = Astro.props;
+const { page, disableGrid = false, allInspirations = [] } = Astro.props
 ---
 
 <Layout

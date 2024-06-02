@@ -1,16 +1,16 @@
 ---
-import classNames from "../utils/classNames";
+import classNames from '../utils/classNames'
 
 export interface Props {
-  href: string;
-  title: string;
-  className?: string;
+	href: string
+	title: string
+	className?: string
 }
 
-const { href, title, className, ...props } = Astro.props;
+const { href, title, className, ...props } = Astro.props
 
-const pathname = new URL(Astro.request.url).pathname.replaceAll("/", "");
-const active = pathname === href.replaceAll("/", "");
+const pathname = new URL(Astro.request.url).pathname.replaceAll('/', '')
+const active = pathname === href.replaceAll('/', '')
 ---
 
 <li

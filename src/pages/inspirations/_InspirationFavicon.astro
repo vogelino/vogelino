@@ -1,15 +1,15 @@
 ---
-import { Image } from "astro:assets";
-import type { InspirationType } from "../../schemas/inspirations";
-import classNames from "../../utils/classNames";
+import { Image } from 'astro:assets'
+import type { InspirationType } from '../../schemas/inspirations'
+import classNames from '../../utils/classNames'
 
 export type Props = {
-  link: InspirationType;
-  class?: string;
-  size?: number;
-};
+	link: InspirationType
+	class?: string
+	size?: number
+}
 
-const { link, class: className, size = 16 } = Astro.props;
+const { link, class: className, size = 16 } = Astro.props
 ---
 
 <span

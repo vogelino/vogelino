@@ -1,24 +1,17 @@
 ---
-import classNames from "../utils/classNames";
+import classNames from '../utils/classNames'
 export interface Props {
-  length: number;
-  currentUrl: string;
-  currentPage: number;
-  firstUrl: string;
-  prevUrl?: string;
-  nextUrl?: string;
-  lastUrl: string;
-  disabled?: boolean;
+	length: number
+	currentUrl: string
+	currentPage: number
+	firstUrl: string
+	prevUrl?: string
+	nextUrl?: string
+	lastUrl: string
+	disabled?: boolean
 }
 
-const {
-  length,
-  currentPage,
-  firstUrl,
-  prevUrl,
-  nextUrl,
-  disabled = false,
-} = Astro.props;
+const { length, currentPage, firstUrl, prevUrl, nextUrl, disabled = false } = Astro.props
 ---
 
 <nav
