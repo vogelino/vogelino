@@ -105,7 +105,6 @@ async function saveThumbnail(url: string, id: string) {
     folder: `inspirations`,
     fileUrl: cloudinaryUrl,
   });
-  logIndented(`🛟 Saved ✔️`);
 
   return `${INSPIRATION_RESIZED_EXPORT_PATH}/${id}.webp`;
 }
@@ -118,7 +117,6 @@ async function saveFavicon(url: string, id: string) {
     folder: `inspirations-favicons`,
     fileUrl: `https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&size=${size}&url=${url}`,
   });
-  logIndented(`🛟 Saved ✔️`);
 
   return `${INSPIRATION_FAVICON_EXPORT_PATH}/${id}.png`;
 }
