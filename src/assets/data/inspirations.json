@@ -1,16 +1,28 @@
 [
   {
+    "title": "Chris Kirknielsen",
+    "tags": [
+      "Portfolio",
+      "Blog",
+      "Development",
+      "Person"
+    ],
+    "url": "https://chriskirknielsen.com/",
+    "id": "chris-kirknielsen",
+    "date": "2024-06-03T03:29:43.109Z"
+  },
+  {
+    "id": "james-lee",
     "title": "James Lee",
+    "url": "https://uptownhr.com/",
+    "date": "2024-06-03T00:31:40.949Z",
     "tags": [
       "Development",
       "CSS",
       "Blog",
       "Person",
       "Portfolio"
-    ],
-    "url": "https://uptownhr.com/",
-    "id": "james-lee",
-    "date": "2024-06-03T00:31:40.949Z"
+    ]
   },
   {
     "id": "4763d417-346c-4321-bdbb-ee9c9550874e",
