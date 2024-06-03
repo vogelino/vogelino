@@ -31,6 +31,9 @@ async function downloadInspirations() {
   logSecondary(["🚚🐙 Parsing the GitHub payload"]);
   const githubPayload = getGithubPayloadUrl();
 
+  logIndented(`✅ Payload parsed ✔️`);
+  logIndented(JSON.stringify(githubPayload, null, 2));
+
   logSecondary([`💭🧐 Parsing the inspiration from the GitHub payload`]);
   const parsedInspiration = await parseGithubInspiration(githubPayload);
 
@@ -94,23 +97,28 @@ async function parseGithubInspiration(
 }
 
 async function saveThumbnail(url: string, id: string) {
+  logIndented(`💾 Saving thumbnail for "${id}" (${url})`);
   const cloudinaryUrl = await getWebsiteScreenshotUrl(url);
+  logIndented(`🌧️ Dowloading cloudinary thumbnail url: ${cloudinaryUrl}`);
   await saveAndResizeImage({
     fileName: `${id}.webp`,
     folder: `inspirations`,
     fileUrl: cloudinaryUrl,
   });
+  logIndented(`🛟 Saved ✔️`);
 
   return `${INSPIRATION_RESIZED_EXPORT_PATH}/${id}.webp`;
 }
 
 async function saveFavicon(url: string, id: string) {
   const size = 32;
+  logIndented(`💾 Saving favicon for "${id}" (${url})`);
   await saveAndResizeImage({
     fileName: `${id}.webp`,
     folder: `inspirations-favicons`,
     fileUrl: `https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&size=${size}&url=${url}`,
   });
+  logIndented(`🛟 Saved ✔️`);
 
   return `${INSPIRATION_FAVICON_EXPORT_PATH}/${id}.png`;
 }

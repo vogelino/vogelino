@@ -11,7 +11,7 @@ export const downloadImage = async (
   let timeoutExceeded = true;
   setTimeout(() => {
     if (timeoutExceeded) throw new Error(`Timout exceeded for file "${url}"`);
-  }, 30000);
+  }, 50000);
   const response = await fetch(url);
   if (!response.ok) throw new Error(`Error while downloading "${url}"`);
   timeoutExceeded = false;
