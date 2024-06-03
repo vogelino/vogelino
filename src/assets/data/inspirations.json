@@ -1,15 +1,28 @@
 [
   {
+    "title": "All Light, Expanded",
+    "tags": [
+      "Webdesign",
+      "Individual Inspiration",
+      "Layout",
+      "Typography",
+      "Dataviz"
+    ],
+    "url": "https://alllightexpanded.com/",
+    "id": "all-light-expanded",
+    "date": "2024-06-03T20:08:28.117Z"
+  },
+  {
+    "id": "svgl",
     "title": "svgl",
+    "url": "https://svgl.app",
+    "date": "2024-06-03T19:31:43.499Z",
     "tags": [
       "Resource",
       "SVG",
       "Branding",
       "Gallery"
-    ],
-    "url": "https://svgl.app",
-    "id": "svgl",
-    "date": "2024-06-03T19:31:43.499Z"
+    ]
   },
   {
     "id": "chris-kirknielsen",
