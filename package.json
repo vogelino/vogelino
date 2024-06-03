@@ -9,7 +9,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "type-check": "astro check",
-    "downloadInspirations": "npx ts-node -P scripts/tsconfig.json scripts/downloadInspirations.ts",
+    "downloadInspiration": "npx ts-node -P scripts/tsconfig.json scripts/downloadInspiration.ts",
     "check": "biome check . --apply",
     "code-qa": "bun run type-check && bun run check"
   },
