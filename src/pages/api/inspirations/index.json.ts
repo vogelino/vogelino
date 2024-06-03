@@ -4,16 +4,17 @@ import { getParsedInspirations } from "../../inspirations/[...page].astro";
 export const GET: APIRoute = async ({ site }) => {
   const inspirations = await getParsedInspirations();
 
+  if (!site)
+    return new Response("Site property in context is not defined", {
+      status: 500,
+    });
+
   return new Response(
     JSON.stringify(
       inspirations.map((i) => ({
         ...i,
-        thumbnail: i.thumbnail
-          ? `${site}${i.thumbnail.src}`.replaceAll("//", "/")
-          : null,
-        favicon: i.favicon
-          ? `${site}${i.favicon.src}`.replaceAll("//", "/")
-          : null,
+        thumbnail: formatUrl(site, i.thumbnail?.src),
+        favicon: formatUrl(site, i.favicon?.src),
       }))
     ),
     {
@@ -24,3 +25,9 @@ export const GET: APIRoute = async ({ site }) => {
     }
   );
 };
+
+function formatUrl(site: URL, path?: string) {
+  if (!path) return null;
+  const url = new URL(path, site);
+  return url.toString();
+}
