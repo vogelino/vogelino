@@ -1,16 +1,30 @@
 [
   {
+    "title": "Chang Meng",
+    "tags": [
+      "Portfolio",
+      "Graphic Design",
+      "Webdesign",
+      "Individual Inspiration",
+      "Layout",
+      "Typography"
+    ],
+    "url": "https://2023.rca.ac.uk/students/chang-meng/",
+    "id": "chang-meng",
+    "date": "2024-06-03T20:16:32.086Z"
+  },
+  {
+    "id": "k.chen",
     "title": "K.Chen",
+    "url": "https://k-chen.nl/",
+    "date": "2024-06-03T20:12:06.610Z",
     "tags": [
       "Portfolio",
       "Typography",
       "Layout",
       "Webdesign",
       "Individual Inspiration"
-    ],
-    "url": "https://k-chen.nl/",
-    "id": "k.chen",
-    "date": "2024-06-03T20:12:06.610Z"
+    ]
   },
   {
     "id": "all-light-expanded",
