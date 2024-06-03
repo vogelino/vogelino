@@ -1,25 +1,26 @@
-import fetch from 'node-fetch'
-import { contentTypeToImgExtension } from './contentTypeToImgExtension'
-import { logIndented } from './logUtil'
+import fetch from "node-fetch";
+import { contentTypeToImgExtension } from "./contentTypeToImgExtension";
+import { logIndented } from "./logUtil";
 
 export const downloadImage = async (
-	url: string
+  url: string
 ): Promise<{
-	imageExt: string
-	data: NodeJS.ReadableStream
+  imageExt: string;
+  data: NodeJS.ReadableStream;
 }> => {
-	let timeoutExceeded = true
-	setTimeout(() => {
-		if (timeoutExceeded) throw new Error(`Timout exceeded for file "${url}"`)
-	}, 10000)
-	const response = await fetch(url)
-	timeoutExceeded = false
-	const contentType = response.headers.get('content-type')
-	const imageExt = contentTypeToImgExtension(contentType)
-	logIndented(`📄 The file is an image with the ".${imageExt}" extension`)
+  let timeoutExceeded = true;
+  setTimeout(() => {
+    if (timeoutExceeded) throw new Error(`Timout exceeded for file "${url}"`);
+  }, 30000);
+  const response = await fetch(url);
+  if (!response.ok) throw new Error(`Error while downloading "${url}"`);
+  timeoutExceeded = false;
+  const contentType = response.headers.get("content-type");
+  const imageExt = contentTypeToImgExtension(contentType);
+  logIndented(`📄 The file is an image with the ".${imageExt}" extension`);
 
-	return {
-		imageExt,
-		data: response.body,
-	}
-}
+  return {
+    imageExt,
+    data: response.body,
+  };
+};

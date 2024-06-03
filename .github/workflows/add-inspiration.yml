@@ -1,7 +1,5 @@
-name: Update remote content to local files and commit
+name: Add inspiration and commit it
 on:
-  schedule:
-    - cron: "30 21 * * *"
   repository_dispatch:
     types: [update-inspirations]
 jobs:
@@ -22,7 +20,8 @@ jobs:
         env:
           NOTION_INSPIRATION_DATABASE_ID: ${{ secrets.NOTION_INSPIRATION_DATABASE_ID }}
           NOTION_API_SECRET: ${{ secrets.NOTION_API_SECRET }}
-        run: npm run downloadInspirations
+          GITHUB_PAYLOAD: ${{ toJson(github.event.client_payload) }}
+        run: npm run downloadInspiration
 
       - name: Commit changes
         uses: EndBug/add-and-commit@v9

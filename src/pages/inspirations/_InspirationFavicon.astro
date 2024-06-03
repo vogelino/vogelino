@@ -1,15 +1,15 @@
 ---
-import { Image } from 'astro:assets'
-import type { InspirationType } from '../../schemas/inspirations'
-import classNames from '../../utils/classNames'
+import { Image } from "astro:assets";
+import type { InspirationType } from "../../schemas/inspirations";
+import classNames from "../../utils/classNames";
 
 export type Props = {
-	link: InspirationType
-	class?: string
-	size?: number
-}
+  link: InspirationType;
+  class?: string;
+  size?: number;
+};
 
-const { link, class: className, size = 16 } = Astro.props
+const { link, class: className, size = 16 } = Astro.props;
 ---
 
 <span
@@ -19,11 +19,24 @@ const { link, class: className, size = 16 } = Astro.props
   )}
   style={{ width: `${size}px`, height: `${size}px` }}
 >
-  <Image
-    src={`https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&size=32&url=${link.url}`}
-    alt={`Favicon of "${link.title}"`}
-    class="absolute inset-0 object-cover"
-    width={size}
-    height={size}
-  />
+  {
+    link.favicon && (
+      <Image
+        alt={`Favicon of "${link.title}"`}
+        class="absolute inset-0 object-cover"
+        src={link.favicon}
+      />
+    )
+  }
+  {
+    !link.favicon && (
+      <Image
+        alt={`Favicon of "${link.title}"`}
+        class="absolute inset-0 object-cover"
+        src={`https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&size=32&url=${link.url}`}
+        width={size}
+        height={size}
+      />
+    )
+  }
 </span>
