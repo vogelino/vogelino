@@ -20,6 +20,9 @@ jobs:
         env:
           NOTION_INSPIRATION_DATABASE_ID: ${{ secrets.NOTION_INSPIRATION_DATABASE_ID }}
           NOTION_API_SECRET: ${{ secrets.NOTION_API_SECRET }}
+          CLOUDINARY_API_SECRET: ${{ secrets.CLOUDINARY_API_SECRET }}
+          CLOUDINARY_API_KEY: ${{ secrets.CLOUDINARY_API_KEY }}
+          CLOUDINARY_CLOUD_NAME: ${{ secrets.CLOUDINARY_CLOUD_NAME }}
           GITHUB_PAYLOAD: ${{ toJson(github.event.client_payload) }}
         run: npm run downloadInspiration
 
