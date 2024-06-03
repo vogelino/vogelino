@@ -1,4 +1,4 @@
-type AstroImageFormatType = 'jpeg' | 'png' | 'webp' | 'avif' | 'svg'
+type AstroImageFormatType = 'jpg' | 'jpeg' | 'png' | 'webp' | 'avif' | 'svg'
 
 export interface AstroImageType<Format extends AstroImageFormatType = AstroImageFormatType> {
 	src: string

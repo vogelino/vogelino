@@ -145,7 +145,7 @@ function getTechnologyImage(slug: string) {
 
 function parseImagesForSlug(
 	slug: string,
-	images: Record<string, AstroGlobImageType<'png' | 'jpeg' | 'webp' | 'avif' | 'svg'>>
+	images: Record<string, AstroGlobImageType<'jpg' | 'png' | 'jpeg' | 'webp' | 'avif' | 'svg'>>
 ) {
 	return Object.entries(images)
 		.filter(([url]) => url.includes(slug))
@@ -288,7 +288,7 @@ function renderHTMLList(title: string, list?: string[]) {
 
 function getEnclosureByImage(
 	site: string,
-	image?: AstroImageType<'png' | 'jpeg' | 'webp' | 'avif' | 'svg'>
+	image?: AstroImageType<'jpg' | 'png' | 'jpeg' | 'webp' | 'avif' | 'svg'>
 ) {
 	if (!image) return
 	return {
