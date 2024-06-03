@@ -1,15 +1,55 @@
 [
   {
+    "title": "Chang Meng",
+    "tags": [
+      "Portfolio",
+      "Graphic Design",
+      "Webdesign",
+      "Individual Inspiration",
+      "Layout",
+      "Typography"
+    ],
+    "url": "https://2023.rca.ac.uk/students/chang-meng/",
+    "id": "chang-meng",
+    "date": "2024-06-03T20:16:32.086Z"
+  },
+  {
+    "id": "k.chen",
+    "title": "K.Chen",
+    "url": "https://k-chen.nl/",
+    "date": "2024-06-03T20:12:06.610Z",
+    "tags": [
+      "Portfolio",
+      "Typography",
+      "Layout",
+      "Webdesign",
+      "Individual Inspiration"
+    ]
+  },
+  {
+    "id": "all-light-expanded",
+    "title": "All Light, Expanded",
+    "url": "https://alllightexpanded.com/",
+    "date": "2024-06-03T20:08:28.117Z",
+    "tags": [
+      "Webdesign",
+      "Individual Inspiration",
+      "Layout",
+      "Typography",
+      "Dataviz"
+    ]
+  },
+  {
+    "id": "svgl",
     "title": "svgl",
+    "url": "https://svgl.app",
+    "date": "2024-06-03T19:31:43.499Z",
     "tags": [
       "Resource",
       "SVG",
       "Branding",
       "Gallery"
-    ],
-    "url": "https://svgl.app",
-    "id": "svgl",
-    "date": "2024-06-03T19:31:43.499Z"
+    ]
   },
   {
     "id": "chris-kirknielsen",
