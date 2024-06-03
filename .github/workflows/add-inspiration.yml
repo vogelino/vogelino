@@ -16,7 +16,7 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Fetch Notion Inspirations
+      - name: Add inspiration from github webhook payload
         env:
           NOTION_INSPIRATION_DATABASE_ID: ${{ secrets.NOTION_INSPIRATION_DATABASE_ID }}
           NOTION_API_SECRET: ${{ secrets.NOTION_API_SECRET }}
@@ -26,5 +26,5 @@ jobs:
       - name: Commit changes
         uses: EndBug/add-and-commit@v9
         with:
-          message: "chore(content): Update inspirations from Notion"
+          message: "chore(content): Add inspiration: ${{ github.event.client_payload.name }}"
           add: "src"
