@@ -1,14 +1,23 @@
 [
   {
+    "title": "Local Studio — Digital creative studio",
+    "tags": [
+      "Local Studio: design, creativity, digital, branding, marketing"
+    ],
+    "url": "https://localstudio.fr/",
+    "id": "local-studio-digital-creative-studio",
+    "date": "2024-06-04T01:55:59.595Z"
+  },
+  {
+    "id": "ray.so",
     "title": "ray.so",
+    "url": "https://ray.so",
+    "date": "2024-06-04T01:33:32.578Z",
     "tags": [
       "Tool",
       "Code",
       "Fun"
-    ],
-    "url": "https://ray.so",
-    "id": "ray.so",
-    "date": "2024-06-04T01:33:32.578Z"
+    ]
   },
   {
     "id": "chang-meng",
