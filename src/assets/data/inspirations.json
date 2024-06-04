@@ -1,14 +1,26 @@
 [
   {
+    "title": "Haunted PS1",
+    "tags": [
+      "Game",
+      "Gallery",
+      "Fun",
+      "Artistic Vision"
+    ],
+    "url": "https://hauntedps1.itch.io/",
+    "id": "haunted-ps1",
+    "date": "2024-06-04T03:04:36.423Z"
+  },
+  {
+    "id": "how-git-works",
     "title": "How Git Works",
+    "url": "https://wizardzines.com/zines/git/",
+    "date": "2024-06-04T02:20:45.332Z",
     "tags": [
       "Version Control",
       "Git Basics",
       "Software Development"
-    ],
-    "url": "https://wizardzines.com/zines/git/",
-    "id": "how-git-works",
-    "date": "2024-06-04T02:20:45.332Z"
+    ]
   },
   {
     "id": "raycast",
