@@ -1,6 +1,29 @@
 [
   {
+    "title": "Local Studio — Digital creative studio",
+    "tags": [
+      "Local Studio: design, creativity, digital, branding, marketing"
+    ],
+    "url": "https://localstudio.fr/",
+    "id": "local-studio-digital-creative-studio",
+    "date": "2024-06-04T01:55:59.595Z"
+  },
+  {
+    "id": "ray.so",
+    "title": "ray.so",
+    "url": "https://ray.so",
+    "date": "2024-06-04T01:33:32.578Z",
+    "tags": [
+      "Tool",
+      "Code",
+      "Fun"
+    ]
+  },
+  {
+    "id": "chang-meng",
     "title": "Chang Meng",
+    "url": "https://2023.rca.ac.uk/students/chang-meng/",
+    "date": "2024-06-03T20:16:32.086Z",
     "tags": [
       "Portfolio",
       "Graphic Design",
@@ -8,10 +31,7 @@
       "Individual Inspiration",
       "Layout",
       "Typography"
-    ],
-    "url": "https://2023.rca.ac.uk/students/chang-meng/",
-    "id": "chang-meng",
-    "date": "2024-06-03T20:16:32.086Z"
+    ]
   },
   {
     "id": "k.chen",
