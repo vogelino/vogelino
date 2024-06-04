@@ -1,15 +1,27 @@
 [
   {
+    "title": "Pika.style",
+    "tags": [
+      "Tool",
+      "Imagery",
+      "Resource",
+      "Development"
+    ],
+    "url": "https://pika.style/",
+    "id": "pika.style",
+    "date": "2024-06-04T04:38:53.921Z"
+  },
+  {
+    "id": "infinitown",
     "title": "Infinitown",
+    "url": "https://demos.littleworkshop.fr/infinitown",
+    "date": "2024-06-04T03:48:42.288Z",
     "tags": [
       "3D",
       "WebGL",
       "Fun",
       "Experiments"
-    ],
-    "url": "https://demos.littleworkshop.fr/infinitown",
-    "id": "infinitown",
-    "date": "2024-06-04T03:48:42.288Z"
+    ]
   },
   {
     "id": "signalis",
