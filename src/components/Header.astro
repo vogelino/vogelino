@@ -104,8 +104,6 @@ const availableForHire = import.meta.env.AVAILABLE_FOR_HIRE === 'true'
 </header>
 
 <script>
-  import * as Sentry from "@sentry/astro";
-
   function setupHamburgerMenuUpdater(doc: Document) {
     const burgerMenu = doc.getElementById("burger-menu");
     burgerMenu?.addEventListener("click", () => {
@@ -122,10 +120,6 @@ const availableForHire = import.meta.env.AVAILABLE_FOR_HIRE === 'true'
       const verb = isOpened ? `Hide` : `Show`;
       burgerMenu.setAttribute("aria-label", `${verb} the main navitation menu`);
       burgerMenu.setAttribute("aria-expanded", `${isOpened}`);
-
-      Sentry.metrics.increment("burger-menu-click", 1, {
-        tags: { action: isOpened ? "opened" : "closed" },
-      });
     });
   }
 
@@ -282,9 +276,6 @@ const availableForHire = import.meta.env.AVAILABLE_FOR_HIRE === 'true'
     theme && localStorage.setItem("theme", theme);
 
     themeToggler?.setAttribute("aria-checked", isDark.toString());
-    Sentry.metrics.increment("theme-toggle-click", 1, {
-      tags: { theme: finalTheme },
-    });
   }
 
   function setupHeader(doc: Document) {

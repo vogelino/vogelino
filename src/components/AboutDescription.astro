@@ -6,46 +6,27 @@ import TextContents from './TextContents.astro'
 ---
 
 <FancyHeadline
-  title="About <br class='@md:hidden' />**me**"
-  className={classNames(`pb-[2vmax] pt-[1.5vmax]`)}
+	title="About <br class='@md:hidden' />**me**"
+	className={classNames(`pb-[2vmax] pt-[1.5vmax]`)}
 />
 <section class="text-xl @md:text-2xl leading-normal" aria-label="description">
-  <div class="max-w-2xl">
-    <div
-      aria-hidden="true"
-      class="float-right w-1/2 @3xl:w-1/3 @4xl:w-[20%] aspect-[3/2] @3xl:aspect-square @4xl:aspect-[2/3] rounded-bl-[100%]"
-    >
-    </div>
-    <TextContents Content={AboutContent} />
-    <a
-      id="book-a-meeting-with-me"
-      href="https://cal.com/vogelino"
-      target="_blank"
-      rel="noopener noreferrer"
-      class={classNames(
-        "px-6 py-2 pt-3 rounded-full bg-alt focusable my-4 inline-block",
-        "transition-colors hover-hover:hover:bg-fg hover-hover:hover:text-alt"
-      )}
-    >
-      Book a meeting with me
-    </a>
-  </div>
+	<div class="max-w-2xl">
+		<div
+			aria-hidden="true"
+			class="float-right w-1/2 @3xl:w-1/3 @4xl:w-[20%] aspect-[3/2] @3xl:aspect-square @4xl:aspect-[2/3] rounded-bl-[100%]"
+		>
+		</div>
+		<TextContents Content={AboutContent} />
+		<a
+			href="https://cal.com/vogelino"
+			target="_blank"
+			rel="noopener noreferrer"
+			class={classNames(
+				'px-6 py-2 pt-3 rounded-full bg-alt focusable my-4 inline-block',
+				'transition-colors hover-hover:hover:bg-fg hover-hover:hover:text-alt',
+			)}
+		>
+			Book a meeting with me
+		</a>
+	</div>
 </section>
-
-<script>
-  import * as Sentry from "@sentry/astro";
-
-  function initSentryListeners() {
-    const calButton = document.getElementById("book-a-meeting-with-me");
-
-    if (!calButton) return;
-
-    calButton.addEventListener("click", () => {
-      Sentry.metrics.increment("cal-button-click", 1, {
-        tags: { href: calButton.getAttribute("href") },
-      });
-    });
-  }
-
-  document.addEventListener("astro:page-load", initSentryListeners);
-</script>

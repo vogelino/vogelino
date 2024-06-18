@@ -25,164 +25,133 @@ const projects = (await getCollection('projects'))
 ---
 
 <Layout title="Welcome" slug="home">
-  <section
-    class={classNames(
-      `grid md:grid-cols-2 gap-[1px] bg-grayMed`,
-      `text-fg pt-[101px]`
-    )}
-  >
-    <a
-      href="/about"
-      class={classNames(
-        `bg-bg hover-hover:hover:bg-alt transition-colors`,
-        `outline-none overflow-hidden p-2`,
-        `group relative @container`
-      )}
-      id="about-me-link"
-    >
-      <div
-        class={classNames([
-          `rounded`,
-          `group-focus-visible:ring-2 group-focus-visible:ring-fg`,
-          `group-focus-visible:relative`,
-          `group-focus-visible:overflow-hidden`,
-        ])}
-      >
-        <div
-          class={classNames(
-            `px-6 py-8 @md:px-8 @md:py-10 flex-wrap 2xl:flex-nowrap`,
-            `flex gap-x-6 @md:gap-x-8 gap-y-2 pr-0 @md:pr-0`,
-            `flex-col w-full h-full justify-center`
-          )}
-        >
-          <FancyHeadline title="I'm Lucas" />
-          <p class="text-2xl max-w-[65%] @lg:max-w-sm text-balance">
-            I
-            <span
-              class={classNames(
-                `bg-alt px-2.5 py-1 rounded-full -ml-1 decoration-clone`,
-                `group-hover:bg-fg group-hover:text-bg transition-colors`
-              )}>design</span
-            >
-            and
-            <span
-              class={classNames(
-                `bg-alt px-2.5 py-1 rounded-full -ml-1 decoration-clone`,
-                `group-hover:bg-fg group-hover:text-bg transition-colors`
-              )}>code</span
-            >
-            websites, applications, and more.
-            <br />
-            <span
-              class={classNames(
-                `text-base underline decoration-alt underline-offset-4 decoration-wavy`,
-                `group-hover:decoration-fg transition-colors group-hover:text-fg`
-              )}>More about me</span
-            >
-          </p>
-          <div
-            class={classNames(
-              "w-[210px] h-[210px]",
-              `absolute -top-20 @sm:-top-16 right-4 @sm:right-24`,
-              `transition-all motion-reduce:transition-none`,
-              `scale-[0.25] origin-top-right`,
-              `hover-hover:group-hover:scale-50`,
-              `hover-hover:group-hover:right-20`,
-              `hover-hover:group-hover:-top-56`,
-              `@xl:hover-hover:group-hover:right-40`,
-              `@xl:hover-hover:group-hover:-top-48`,
-              `group-focus-visible:scale-50`,
-              `group-focus-visible:right-20`,
-              `group-focus-visible:-top-56`,
-              `@xl:group-focus-visible:right-40`,
-              `@xl:group-focus-visible:-top-48`
-            )}
-            inert
-          >
-            <MoreAboutMeSVG
-              className={`text-bg hover-hover:group-hover:text-alt`}
-            />
-          </div>
-        </div>
-      </div>
-    </a>
-    <a
-      class={classNames(
-        `bg-bg hover-hover:hover:bg-alt transition-colors`,
-        `outline-none p-2 border-r border-grayMed`,
-        `group relative @container text-left z-30`
-      )}
-      title="Scroll to projects"
-      href="#projects"
-      id="scroll-to-projects-link"
-    >
-      <div
-        class={classNames(
-          `px-6 py-8 md:px-8 md:py-10 flex-wrap 2xl:flex-nowrap`,
-          `flex gap-x-6 md:gap-x-8 gap-y-2 pr-0 md:pr-0`,
-          `flex-col w-full h-full items-start justify-start`,
-          `rounded`,
-          `group-focus-visible:ring-2 group-focus-visible:ring-fg`,
-          `group-focus-visible:relative`
-        )}
-      >
-        <FancyHeadline title="Projects" />
-        <p class="text-2xl max-w-sm text-balance">
-          This is a selection of some of the
-          <span class="bg-alt px-2.5 py-1 rounded-full -ml-1 decoration-clone">
-            projects that I made.
-          </span>
-        </p>
-      </div>
-      <svg
-        aria-hidden="true"
-        width="38"
-        height="90"
-        class="absolute -bottom-8 right-6 2xl:right-16 z-10"
-        ><path
-          d="M3.342 2.776c19.013 9.76 28.544 22.856 29.574 38.143.848 12.585-4.196 26.116-13.233 38.374l-5.272 6.219 9.33-3.462.696 1.875-12.908 4.79-1.666.619.336-1.746 2.61-13.519 1.963.38-1.886 9.771 5.23-6.167c8.736-11.855 13.617-24.947 12.805-37C29.94 26.505 20.847 14.01 2.429 4.555l.913-1.78Z"
-          fill="var(--fg)"
-          fill-rule="nonzero"></path>
-      </svg>
-    </a>
-  </section>
-  <main
-    id="projects"
-    class={classNames(
-      "grid sm:grid-cols-4 xl:grid-cols-6 grid-flow-dense",
-      `pt-px gap-px	bg-grayMed`
-    )}
-    aria-label="List of selected works"
-  >
-    {projects.map((work) => <Thumbnail {...work} />)}
-  </main>
+	<section
+		class={classNames(
+			`grid md:grid-cols-2 gap-[1px] bg-grayMed`,
+			`text-fg pt-[101px]`,
+		)}
+	>
+		<a
+			href="/about"
+			class={classNames(
+				`bg-bg hover-hover:hover:bg-alt transition-colors`,
+				`outline-none overflow-hidden p-2`,
+				`group relative @container`,
+			)}
+		>
+			<div
+				class={classNames([
+					`rounded`,
+					`group-focus-visible:ring-2 group-focus-visible:ring-fg`,
+					`group-focus-visible:relative`,
+					`group-focus-visible:overflow-hidden`,
+				])}
+			>
+				<div
+					class={classNames(
+						`px-6 py-8 @md:px-8 @md:py-10 flex-wrap 2xl:flex-nowrap`,
+						`flex gap-x-6 @md:gap-x-8 gap-y-2 pr-0 @md:pr-0`,
+						`flex-col w-full h-full justify-center`,
+					)}
+				>
+					<FancyHeadline title="I'm Lucas" />
+					<p class="text-2xl max-w-[65%] @lg:max-w-sm text-balance">
+						I
+						<span
+							class={classNames(
+								`bg-alt px-2.5 py-1 rounded-full -ml-1 decoration-clone`,
+								`group-hover:bg-fg group-hover:text-bg transition-colors`,
+							)}>design</span
+						>
+						 and
+						<span
+							class={classNames(
+								`bg-alt px-2.5 py-1 rounded-full -ml-1 decoration-clone`,
+								`group-hover:bg-fg group-hover:text-bg transition-colors`,
+							)}>code</span
+						>
+						 websites, applications, and more.
+						<br />
+						<span
+							class={classNames(
+								`text-base underline decoration-alt underline-offset-4 decoration-wavy`,
+								`group-hover:decoration-fg transition-colors group-hover:text-fg`,
+							)}>More about me</span
+						>
+					</p>
+					<div
+						class={classNames(
+							'w-[210px] h-[210px]',
+							`absolute -top-20 @sm:-top-16 right-4 @sm:right-24`,
+							`transition-all motion-reduce:transition-none`,
+							`scale-[0.25] origin-top-right`,
+							`hover-hover:group-hover:scale-50`,
+							`hover-hover:group-hover:right-20`,
+							`hover-hover:group-hover:-top-56`,
+							`@xl:hover-hover:group-hover:right-40`,
+							`@xl:hover-hover:group-hover:-top-48`,
+							`group-focus-visible:scale-50`,
+							`group-focus-visible:right-20`,
+							`group-focus-visible:-top-56`,
+							`@xl:group-focus-visible:right-40`,
+							`@xl:group-focus-visible:-top-48`,
+						)}
+						inert
+					>
+						<MoreAboutMeSVG
+							className={`text-bg hover-hover:group-hover:text-alt`}
+						/>
+					</div>
+				</div>
+			</div>
+		</a>
+		<a
+			class={classNames(
+				`bg-bg hover-hover:hover:bg-alt transition-colors`,
+				`outline-none p-2 border-r border-grayMed`,
+				`group relative @container text-left z-30`,
+			)}
+			title="Scroll to projects"
+			href="#projects"
+		>
+			<div
+				class={classNames(
+					`px-6 py-8 md:px-8 md:py-10 flex-wrap 2xl:flex-nowrap`,
+					`flex gap-x-6 md:gap-x-8 gap-y-2 pr-0 md:pr-0`,
+					`flex-col w-full h-full items-start justify-start`,
+					`rounded`,
+					`group-focus-visible:ring-2 group-focus-visible:ring-fg`,
+					`group-focus-visible:relative`,
+				)}
+			>
+				<FancyHeadline title="Projects" />
+				<p class="text-2xl max-w-sm text-balance">
+					This is a selection of some of the
+					<span class="bg-alt px-2.5 py-1 rounded-full -ml-1 decoration-clone">
+						projects that I made.
+					</span>
+				</p>
+			</div>
+			<svg
+				aria-hidden="true"
+				width="38"
+				height="90"
+				class="absolute -bottom-8 right-6 2xl:right-16 z-10"
+				><path
+					d="M3.342 2.776c19.013 9.76 28.544 22.856 29.574 38.143.848 12.585-4.196 26.116-13.233 38.374l-5.272 6.219 9.33-3.462.696 1.875-12.908 4.79-1.666.619.336-1.746 2.61-13.519 1.963.38-1.886 9.771 5.23-6.167c8.736-11.855 13.617-24.947 12.805-37C29.94 26.505 20.847 14.01 2.429 4.555l.913-1.78Z"
+					fill="var(--fg)"
+					fill-rule="nonzero"></path>
+			</svg>
+		</a>
+	</section>
+	<main
+		id="projects"
+		class={classNames(
+			'grid sm:grid-cols-4 xl:grid-cols-6 grid-flow-dense',
+			`pt-px gap-px	bg-grayMed`,
+		)}
+		aria-label="List of selected works"
+	>
+		{projects.map((work) => <Thumbnail {...work} />)}
+	</main>
 </Layout>
-
-<script>
-  import * as Sentry from "@sentry/astro";
-
-  function initSentryListeners() {
-    const aboutMeLink = document.getElementById("about-me-link");
-
-    if (!aboutMeLink) return;
-
-    aboutMeLink.addEventListener("click", () => {
-      Sentry.metrics.increment("about-me-link-click", 1);
-    });
-  }
-
-  function initScrollToProjectsLink() {
-    const scrollToProjectsLink = document.getElementById(
-      "scroll-to-projects-link"
-    );
-
-    if (!scrollToProjectsLink) return;
-
-    scrollToProjectsLink.addEventListener("click", () => {
-      Sentry.metrics.increment("scroll-to-projects-link-click", 1);
-    });
-  }
-
-  document.addEventListener("astro:page-load", initSentryListeners);
-  document.addEventListener("astro:page-load", initScrollToProjectsLink);
-</script>
