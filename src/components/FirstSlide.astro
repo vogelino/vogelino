@@ -1,29 +1,26 @@
 ---
-import { Image } from "astro:assets";
-import type { CollectionEntry } from "astro:content";
-import type { AstroGlobImageType } from "../utils/astroTypes";
-import classNames from "../utils/classNames";
-import RoundedButton from "./RoundedButton.astro";
-import GitHub from "./icons/GitHub.astro";
-import Link from "./icons/Link.astro";
+import { Image } from 'astro:assets'
+import type { CollectionEntry } from 'astro:content'
+import type { AstroGlobImageType } from '../utils/astroTypes'
+import classNames from '../utils/classNames'
+import RoundedButton from './RoundedButton.astro'
+import GitHub from './icons/GitHub.astro'
+import Link from './icons/Link.astro'
 export interface Props {
-  project: CollectionEntry<"projects">;
+	project: CollectionEntry<'projects'>
 }
 
-const { project } = Astro.props;
+const { project } = Astro.props
 
-const projectThumbnail = await Astro.glob<AstroGlobImageType<"webp">>(
-  "/src/assets/images/thumbnails/*.webp"
+const projectThumbnail = await Astro.glob<AstroGlobImageType<'webp'>>(
+	'/src/assets/images/thumbnails/*.webp'
 ).then((files) => {
-  return files.find((file) => file.default.src.includes(project.slug))?.default;
-});
+	return files.find((file) => file.default.src.includes(project.slug))?.default
+})
 
-const projectIllustration = await Astro.glob<AstroGlobImageType<"svg">>(
-  "/src/assets/images/illustrations/*.svg"
-).then(
-  (files) =>
-    files.find((file) => file.default.src.includes(project.slug))?.default
-);
+const projectIllustration = await Astro.glob<AstroGlobImageType<'svg'>>(
+	'/src/assets/images/illustrations/*.svg'
+).then((files) => files.find((file) => file.default.src.includes(project.slug))?.default)
 ---
 
 {
@@ -187,7 +184,7 @@ const projectIllustration = await Astro.glob<AstroGlobImageType<"svg">>(
 </style>
 
 <script>
-  import * as Sentry from "@sentry/browser";
+  import * as Sentry from "@sentry/astro";
 
   function initSentryLaunchButton() {
     const firstSlideLaunchButton = document.getElementById(
