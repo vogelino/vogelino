@@ -188,6 +188,8 @@ const cv = aboutFrontmatter.cv
 </style>
 
 <script>
+  import * as Sentry from "@sentry/astro";
+
   function setupTabs() {
     const settings = {
       container: "#tab-component",
@@ -219,6 +221,10 @@ const cv = aboutFrontmatter.cv
       if (window.innerWidth < 768 && scroll) {
         container.scrollIntoView({ behavior: "smooth" });
       }
+
+      Sentry.metrics.increment("tab-click", 1, {
+        tags: { id: tab.getAttribute("id") },
+      });
     };
 
     tabs.forEach((t: HTMLButtonElement) => {

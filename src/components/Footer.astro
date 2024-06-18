@@ -70,12 +70,14 @@ const { disabled = false } = Astro.props
 </footer>
 
 <script>
+  import * as Sentry from "@sentry/astro";
   function setupScrollToTopBtn() {
     const backToTopBtn = document.getElementById("back-to-top");
 
     backToTopBtn?.addEventListener("click", (event) => {
       event.preventDefault();
       window.scrollTo({ top: 0, behavior: "smooth" });
+      Sentry.metrics.increment("back-to-top-click", 1);
     });
   }
   setupScrollToTopBtn();

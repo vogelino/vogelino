@@ -111,6 +111,8 @@ export type Props = {
 </div>
 
 <script>
+  import * as Sentry from "@sentry/astro";
+
   function initListeners() {
     const dropdowns = document.querySelectorAll(".dropdown-menu");
 
@@ -184,6 +186,11 @@ export type Props = {
             if (containsFocus) return;
             dropDownButton.setAttribute("aria-expanded", "false");
           }, 50);
+        });
+        menuItem.addEventListener("click", () => {
+          Sentry.metrics.increment("dropdown-click", 1, {
+            tags: { href: menuItem.getAttribute("href") },
+          });
         });
       }
     }
