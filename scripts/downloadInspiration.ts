@@ -1,7 +1,7 @@
 import * as dotenv from 'dotenv'
 import slugify from 'slugify'
 import { z } from 'zod'
-import { type InspirationType, inspirationSchema } from '../src/schemas/inspirations'
+import { inspirationSchema, type InspirationType } from '../src/schemas/inspirations'
 import { createDirectoriesIfNotAlreadyThere } from './lib/createDirectoriesIfNotAlreadyThere'
 import { getWebsiteScreenshotUrl } from './lib/getWebsiteScreenshotUrl'
 import { loadJson } from './lib/loadJson'
@@ -72,7 +72,10 @@ function getGithubPayloadUrl() {
 }
 
 async function parseGithubInspiration(githubPayload: GithubPayloadType): Promise<InspirationType> {
-	const id = slugify(githubPayload.name.toLowerCase())
+	const id = slugify(githubPayload.name. {
+		lower: true,
+		strict: true,
+	})
 	await saveFavicon(githubPayload.url, id)
 	await saveThumbnail(githubPayload.url, id)
 	return {
