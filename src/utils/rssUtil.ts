@@ -2,8 +2,15 @@ import { type ContentEntryMap, getCollection, getEntryBySlug } from 'astro:conte
 import rss, { type RSSFeedItem } from '@astrojs/rss'
 import type { APIContext } from 'astro'
 import { marked } from 'marked'
-import { getParsedInspirations } from '../pages/inspirations/[...page].astro'
 import type { AstroGlobImageType, AstroImageType } from '../utils/astroTypes'
+import { getParsedInspirations } from './getParsedInspirations'
+import {
+	getCollaborationImage,
+	getOgImage,
+	getProjectImages,
+	getProjectThumnnail,
+	getTechnologyImage,
+} from './imageUtil'
 
 function stripMarkdown(str: string) {
 	return str
@@ -92,64 +99,6 @@ export async function createRSSFeed(
 			...(options.showInspirations ? await getRSSInspirationItems(site) : []),
 		].sort((a, b) => (b.pubDate || new Date()).getTime() - (a.pubDate || new Date()).getTime()),
 	})
-}
-
-function getOgImage(slug: string) {
-	const images = parseImagesForSlug(
-		slug,
-		import.meta.glob<AstroGlobImageType<'png'>>(`/src/assets/images/og/*.png`, {
-			eager: true,
-		})
-	)
-	return images[0]
-}
-
-function getProjectThumnnail(slug: string) {
-	const images = parseImagesForSlug(
-		slug,
-		import.meta.glob<AstroGlobImageType<'png'>>(`/src/assets/images/thumbnails/*.png`, {
-			eager: true,
-		})
-	)
-	return images[0]
-}
-
-function getCollaborationImage(slug: string) {
-	const images = parseImagesForSlug(
-		slug,
-		import.meta.glob<AstroGlobImageType<'png'>>(`/src/assets/images/collaborators/*.*`, {
-			eager: true,
-		})
-	)
-	return images[0]
-}
-
-function getProjectImages(slug: string) {
-	return parseImagesForSlug(
-		slug,
-		import.meta.glob<AstroGlobImageType<'png'>>(`/src/assets/images/projects-media/*.webp`, {
-			eager: true,
-		})
-	)
-}
-
-function getTechnologyImage(slug: string) {
-	const images = parseImagesForSlug(
-		slug,
-		import.meta.glob<AstroGlobImageType<'png'>>(`/src/assets/images/technologies/*.svg`, {
-			eager: true,
-		})
-	)
-	return images[0]
-}
-
-function parseImagesForSlug(
-	slug: string,
-	images: Record<string, AstroGlobImageType<'jpg' | 'png' | 'jpeg' | 'webp' | 'avif' | 'svg'>>
-) {
-	return Object.entries(images)
-		.filter(([url]) => url.includes(slug))
-		.map(([_, { default: image }]) => image)
 }
 
 async function getRSSInspirationItems(site: string): Promise<RSSFeedItem[]> {

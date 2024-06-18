@@ -285,8 +285,7 @@ const availableForHire = import.meta.env.AVAILABLE_FOR_HIRE === 'true'
     setupMenuScrolledStateUpdater(doc);
     setupThemeUpdater(doc);
   }
-  window.addEventListener("load", () => setupHeader(document));
-  document.addEventListener("astro:after-swap", () => setupHeader(document));
+  document.addEventListener("astro:page-load", () => setupHeader(document));
 </script>
 
 <style is:global>

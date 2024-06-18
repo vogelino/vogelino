@@ -5,7 +5,7 @@ import ArrowUp from '../../components/icons/ArrowUp.astro'
 import ExternalLink from '../../components/icons/ExternalLink.astro'
 import type { InspirationType } from '../../schemas/inspirations'
 import classNames from '../../utils/classNames'
-import { getParsedInspirations } from './[...page].astro'
+import { getParsedInspirations } from '../../utils/getParsedInspirations'
 import InspirationFavicon from './_InspirationFavicon.astro'
 import InspirationGrid from './_InspirationGrid.astro'
 import InspirationThumbnail from './_InspirationThumbnail.astro'
@@ -185,5 +185,5 @@ const linkWithRef = linkUrl.toString()
   }
 
   initEscapeListener();
-  document.addEventListener("astro:after-swap", initEscapeListener);
+  document.addEventListener("astro:page-load", initEscapeListener);
 </script>

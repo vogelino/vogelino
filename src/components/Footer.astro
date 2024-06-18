@@ -79,5 +79,5 @@ const { disabled = false } = Astro.props
     });
   }
   setupScrollToTopBtn();
-  document.addEventListener("astro:after-swap", setupScrollToTopBtn);
+  document.addEventListener("astro:page-load", setupScrollToTopBtn);
 </script>

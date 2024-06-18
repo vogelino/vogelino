@@ -145,7 +145,7 @@ export type Props = {
         );
         dropDownButton.setAttribute("tabindex", isExpanded ? "-1" : "0");
       });
-      dropDownButton.addEventListener("focus", (event) => {
+      dropDownButton.addEventListener("focus", () => {
         const menuHasFocus = dropDownMenu.contains(document.activeElement);
         if (menuHasFocus) return;
         menuItems[0]?.focus();

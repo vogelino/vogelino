@@ -1,9 +1,7 @@
 ---
 import type { Page, PaginateFunction } from 'astro'
-import { loadJson } from '../../../scripts/lib/loadJson'
-import { INSPIRATIONS_JSON_PATH } from '../../../scripts/paths'
-import { type InspirationType, inspirationSchema } from '../../schemas/inspirations'
-import type { AstroGlobImageType } from '../../utils/astroTypes'
+import type { InspirationType } from '../../schemas/inspirations'
+import { getParsedInspirations } from '../../utils/getParsedInspirations'
 import InspirationGrid from './_InspirationGrid.astro'
 
 export async function getStaticPaths({
@@ -21,36 +19,6 @@ export async function getStaticPaths({
 			allInspirations: parsedInspirations,
 		},
 	}))
-}
-
-export async function getParsedInspirations(): Promise<InspirationType[]> {
-	const rawInspirations = await loadJson<InspirationType[]>(INSPIRATIONS_JSON_PATH)
-	const [thumbnails, favicons] = await Promise.all([
-		Astro.glob<AstroGlobImageType<'webp'>>('/src/assets/images/inspirations/*.webp').then((files) =>
-			files.map((file) => file.default)
-		),
-		Astro.glob<AstroGlobImageType<'webp'>>('/src/assets/images/inspirations-favicons/*.webp').then(
-			(files) => files.map((file) => file.default)
-		),
-	])
-	const parsedInspirations = rawInspirations.reduce((acc, inspiration) => {
-		try {
-			acc.push(
-				inspirationSchema.parse({
-					...inspiration,
-					thumbnail: thumbnails.find((thumbnail) => thumbnail.src.includes(inspiration.id)),
-					favicon: favicons.find((favicon) => favicon.src.includes(inspiration.id)),
-				})
-			)
-			return acc
-		} catch (error) {
-			console.log('Error parsing inspiration:', JSON.stringify(inspiration, null, 2))
-			console.log(error)
-			return acc
-		}
-	}, [] as InspirationType[])
-
-	return parsedInspirations
 }
 
 export interface Props {
