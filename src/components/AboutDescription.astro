@@ -1,8 +1,8 @@
 ---
-import FancyHeadline from "../components/FancyHeadline.astro";
-import { AboutContent } from "../parsedContents/about";
-import classNames from "../utils/classNames";
-import TextContents from "./TextContents.astro";
+import FancyHeadline from '../components/FancyHeadline.astro'
+import { AboutContent } from '../parsedContents/about'
+import classNames from '../utils/classNames'
+import TextContents from './TextContents.astro'
 ---
 
 <FancyHeadline
@@ -33,7 +33,7 @@ import TextContents from "./TextContents.astro";
 </section>
 
 <script>
-  import * as Sentry from "@sentry/browser";
+  import * as Sentry from "@sentry/astro";
 
   function initSentryListeners() {
     const calButton = document.getElementById("book-a-meeting-with-me");

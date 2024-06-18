@@ -1,16 +1,16 @@
 ---
-import type { CollectionEntry } from "astro:content";
-import "photoswipe/style.css";
-import ProjectSliderSlide from "../components/ProjectSliderSlide.astro";
-import classNames from "../utils/classNames";
-import FirstSlide from "./FirstSlide.astro";
-import GridSvgPattern from "./GridSvgPattern.astro";
+import type { CollectionEntry } from 'astro:content'
+import 'photoswipe/style.css'
+import ProjectSliderSlide from '../components/ProjectSliderSlide.astro'
+import classNames from '../utils/classNames'
+import FirstSlide from './FirstSlide.astro'
+import GridSvgPattern from './GridSvgPattern.astro'
 
 export interface Props {
-  project: CollectionEntry<"projects">;
+	project: CollectionEntry<'projects'>
 }
 
-const { project } = Astro.props;
+const { project } = Astro.props
 ---
 
 <div
@@ -52,7 +52,7 @@ const { project } = Astro.props;
 <script>
   import Splide from "@splidejs/splide";
   import PhotoSwipeLightbox from "photoswipe/lightbox";
-  import * as Sentry from "@sentry/browser";
+  import * as Sentry from "@sentry/astro";
 
   function setupSlider() {
     const sliderParent = document.getElementById("main-slider");

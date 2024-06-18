@@ -1,27 +1,27 @@
 ---
-import { getCollection } from "astro:content";
-import FancyHeadline from "../components/FancyHeadline.astro";
-import MoreAboutMeSVG from "../components/MoreAboutMeSVG.astro";
-import Thumbnail from "../components/Thumbnail.astro";
-import Layout from "../layouts/Layout.astro";
-import classNames from "../utils/classNames";
+import { getCollection } from 'astro:content'
+import FancyHeadline from '../components/FancyHeadline.astro'
+import MoreAboutMeSVG from '../components/MoreAboutMeSVG.astro'
+import Thumbnail from '../components/Thumbnail.astro'
+import Layout from '../layouts/Layout.astro'
+import classNames from '../utils/classNames'
 
-const projects = (await getCollection("projects"))
-  .sort((a, b) => b.data.year - a.data.year)
-  .map((w) => {
-    const classes = [
-      "group-focus-visible:rotate-1 hover-hover:group-hover:rotate-1",
-      "group-focus-visible:rotate-0 hover-hover:group-hover:rotate-0",
-      "group-focus-visible:rotate-2 hover-hover:group-hover:rotate-2",
-      "group-focus-visible:-rotate-1 hover-hover:group-hover:-rotate-1",
-      "group-focus-visible:-rotate-2 hover-hover:group-hover:-rotate-2",
-    ];
-    const rotationClass = classes[Math.floor(Math.random() * classes.length)];
-    return {
-      project: w,
-      rotationClass,
-    };
-  });
+const projects = (await getCollection('projects'))
+	.sort((a, b) => b.data.year - a.data.year)
+	.map((w) => {
+		const classes = [
+			'group-focus-visible:rotate-1 hover-hover:group-hover:rotate-1',
+			'group-focus-visible:rotate-0 hover-hover:group-hover:rotate-0',
+			'group-focus-visible:rotate-2 hover-hover:group-hover:rotate-2',
+			'group-focus-visible:-rotate-1 hover-hover:group-hover:-rotate-1',
+			'group-focus-visible:-rotate-2 hover-hover:group-hover:-rotate-2',
+		]
+		const rotationClass = classes[Math.floor(Math.random() * classes.length)]
+		return {
+			project: w,
+			rotationClass,
+		}
+	})
 ---
 
 <Layout title="Welcome" slug="home">
@@ -159,7 +159,7 @@ const projects = (await getCollection("projects"))
 </Layout>
 
 <script>
-  import * as Sentry from "@sentry/browser";
+  import * as Sentry from "@sentry/astro";
 
   function initSentryListeners() {
     const aboutMeLink = document.getElementById("about-me-link");
