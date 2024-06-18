@@ -1,71 +1,64 @@
 ---
-import type { Page } from "astro";
-import FancyHeadline from "../../components/FancyHeadline.astro";
-import ArrowUp from "../../components/icons/ArrowUp.astro";
-import ExternalLink from "../../components/icons/ExternalLink.astro";
-import type { InspirationType } from "../../schemas/inspirations";
-import classNames from "../../utils/classNames";
-import { getParsedInspirations } from "../../utils/getParsedInspirations";
-import InspirationFavicon from "./_InspirationFavicon.astro";
-import InspirationGrid from "./_InspirationGrid.astro";
-import InspirationThumbnail from "./_InspirationThumbnail.astro";
+import type { Page } from 'astro'
+import FancyHeadline from '../../components/FancyHeadline.astro'
+import ArrowUp from '../../components/icons/ArrowUp.astro'
+import ExternalLink from '../../components/icons/ExternalLink.astro'
+import type { InspirationType } from '../../schemas/inspirations'
+import classNames from '../../utils/classNames'
+import { getParsedInspirations } from '../../utils/getParsedInspirations'
+import InspirationFavicon from './_InspirationFavicon.astro'
+import InspirationGrid from './_InspirationGrid.astro'
+import InspirationThumbnail from './_InspirationThumbnail.astro'
 
 export async function getStaticPaths() {
-  const inspirations = await getParsedInspirations();
-  return inspirations.map((inspiration, idx) => {
-    const nextIdx = idx + 1 >= inspirations.length ? 0 : idx + 1;
-    const prevIdx = idx - 1 < 0 ? inspirations.length - 1 : idx - 1;
-    const currentPage = Math.floor(idx / 48) + 1;
-    return {
-      params: { id: inspiration.id },
-      props: {
-        page: {
-          data: inspirations.filter((_, i) => {
-            const inspirationPage = Math.ceil((i + 1) / 48);
-            return inspirationPage === currentPage;
-          }),
-          start: (currentPage - 1) * 48,
-          end: (currentPage - 1) * 48 + 46,
-          size: 48,
-          total: inspirations.length,
-          currentPage,
-          lastPage: Math.ceil(inspirations.length / 48),
-          url: {
-            current:
-              currentPage <= 1
-                ? "/inspirations"
-                : `/inspirations/${currentPage}`,
-            next:
-              currentPage + 1 < Math.ceil(inspirations.length / 48)
-                ? `/inspirations/${currentPage + 1}`
-                : undefined,
-            prev:
-              currentPage - 1 > 1
-                ? `/inspirations/${currentPage - 1}`
-                : `/inspirations`,
-          },
-        } satisfies Page,
-        inspiration: inspiration,
-        prevInspiration:
-          inspirations[prevIdx] || inspirations[inspirations.length - 1],
-        nextInspiration: inspirations[nextIdx] || inspirations[0],
-      },
-    };
-  });
+	const inspirations = await getParsedInspirations()
+	return inspirations.map((inspiration, idx) => {
+		const nextIdx = idx + 1 >= inspirations.length ? 0 : idx + 1
+		const prevIdx = idx - 1 < 0 ? inspirations.length - 1 : idx - 1
+		const currentPage = Math.floor(idx / 48) + 1
+		return {
+			params: { id: inspiration.id },
+			props: {
+				page: {
+					data: inspirations.filter((_, i) => {
+						const inspirationPage = Math.ceil((i + 1) / 48)
+						return inspirationPage === currentPage
+					}),
+					start: (currentPage - 1) * 48,
+					end: (currentPage - 1) * 48 + 46,
+					size: 48,
+					total: inspirations.length,
+					currentPage,
+					lastPage: Math.ceil(inspirations.length / 48),
+					url: {
+						current: currentPage <= 1 ? '/inspirations' : `/inspirations/${currentPage}`,
+						next:
+							currentPage + 1 < Math.ceil(inspirations.length / 48)
+								? `/inspirations/${currentPage + 1}`
+								: undefined,
+						prev: currentPage - 1 > 1 ? `/inspirations/${currentPage - 1}` : `/inspirations`,
+					},
+				} satisfies Page,
+				inspiration: inspiration,
+				prevInspiration: inspirations[prevIdx] || inspirations[inspirations.length - 1],
+				nextInspiration: inspirations[nextIdx] || inspirations[0],
+			},
+		}
+	})
 }
 
-const { inspiration, page } = Astro.props;
+const { inspiration, page } = Astro.props
 
 export type Props = {
-  inspiration: InspirationType;
-  page: Page;
-  nextInspiration: InspirationType;
-  prevInspiration: InspirationType;
-};
+	inspiration: InspirationType
+	page: Page
+	nextInspiration: InspirationType
+	prevInspiration: InspirationType
+}
 
-const linkUrl = new URL(inspiration.url);
-linkUrl.searchParams.set("ref", Astro.site?.href?.toString() ?? "");
-const linkWithRef = linkUrl.toString();
+const linkUrl = new URL(inspiration.url)
+linkUrl.searchParams.set('ref', Astro.site?.href?.toString() ?? '')
+const linkWithRef = linkUrl.toString()
 ---
 
 <InspirationGrid page={page} disableGrid allInspirations={[]}>
