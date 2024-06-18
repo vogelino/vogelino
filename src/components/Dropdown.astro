@@ -1,26 +1,26 @@
 ---
-import type { JSX } from 'astro/jsx-runtime'
-import classNames from '../utils/classNames'
+import type { JSX } from "astro/jsx-runtime";
+import classNames from "../utils/classNames";
 
 const {
-	id,
-	icon: Icon,
-	triggerText,
-	options,
-	positionVertical = 'down',
-	positionHorizontal = 'left',
-	disabled = false,
-} = Astro.props
+  id,
+  icon: Icon,
+  triggerText,
+  options,
+  positionVertical = "down",
+  positionHorizontal = "left",
+  disabled = false,
+} = Astro.props;
 
 export type Props = {
-	id: string
-	icon?: JSX.Element
-	triggerText: JSX.Element
-	options: { text: JSX.Element; href: string; suffix?: JSX.Element }[]
-	positionVertical?: 'down' | 'up'
-	positionHorizontal?: 'left' | 'right'
-	disabled?: boolean
-}
+  id: string;
+  icon?: JSX.Element;
+  triggerText: JSX.Element;
+  options: { text: JSX.Element; href: string; suffix?: JSX.Element }[];
+  positionVertical?: "down" | "up";
+  positionHorizontal?: "left" | "right";
+  disabled?: boolean;
+};
 ---
 
 <div class="relative inline-block text-left dropdown-menu" id={id}>
@@ -111,7 +111,7 @@ export type Props = {
 </div>
 
 <script>
-  import * as Sentry from "@sentry/astro";
+  import * as Sentry from "@sentry/browser";
 
   function initListeners() {
     const dropdowns = document.querySelectorAll(".dropdown-menu");
