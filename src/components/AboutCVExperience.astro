@@ -1,8 +1,8 @@
 ---
-import CVLine from '../components/CVLine.astro'
-import { aboutFrontmatter } from '../parsedContents/about'
+import CVLine from "../components/CVLine.astro";
+import { aboutFrontmatter } from "../parsedContents/about";
 
-const cv = aboutFrontmatter.cv
+const cv = aboutFrontmatter.cv;
 ---
 
 <div
@@ -188,7 +188,7 @@ const cv = aboutFrontmatter.cv
 </style>
 
 <script>
-  import * as Sentry from "@sentry/astro";
+  import * as Sentry from "@sentry/browser";
 
   function setupTabs() {
     const settings = {
