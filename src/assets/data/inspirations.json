@@ -1,14 +1,26 @@
 [
   {
+    "title": "DEF",
+    "tags": [
+      "Renewal Notice",
+      "Insurance",
+      "Policies",
+      "Client Management"
+    ],
+    "url": "https://www.defprojetos.com/",
+    "id": "def",
+    "date": "2024-06-28T12:31:00.674Z"
+  },
+  {
+    "id": "pdfslick",
     "title": "PDFSlick",
+    "url": "https://pdfslick.dev/",
+    "date": "2024-06-28T04:39:38.696Z",
     "tags": [
       "Software Development",
       "PDF Generation",
       "JavaScript Libraries"
-    ],
-    "url": "https://pdfslick.dev/",
-    "id": "pdfslick",
-    "date": "2024-06-28T04:39:38.696Z"
+    ]
   },
   {
     "id": "octopusdo-visual-sitemap-tool-website-planner-architecture",
