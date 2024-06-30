@@ -1,15 +1,26 @@
 [
   {
+    "title": "newkid",
+    "tags": [
+      "Insurance",
+      "Health Services",
+      "Customer Support"
+    ],
+    "url": "https://newkid.services/",
+    "id": "newkid",
+    "date": "2024-06-30T17:03:30.782Z"
+  },
+  {
+    "id": "calculating-empires",
     "title": "Calculating Empires",
+    "url": "https://calculatingempires.net/?pos=20855.35%2C9120.80%2C14.3675",
+    "date": "2024-06-30T17:00:44.976Z",
     "tags": [
       "City Simulation",
       "Strategy Games",
       "Urban Planning",
       "Simulation Software"
-    ],
-    "url": "https://calculatingempires.net/?pos=20855.35%2C9120.80%2C14.3675",
-    "id": "calculating-empires",
-    "date": "2024-06-30T17:00:44.976Z"
+    ]
   },
   {
     "id": "too-much-type",
