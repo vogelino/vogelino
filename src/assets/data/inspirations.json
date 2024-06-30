@@ -1,15 +1,27 @@
 [
   {
+    "title": "Too Much Type",
+    "tags": [
+      "Typography",
+      "Design",
+      "Fonts",
+      "Graphic Design"
+    ],
+    "url": "https://toomuchtype.com/",
+    "id": "too-much-type",
+    "date": "2024-06-30T16:56:45.236Z"
+  },
+  {
+    "id": "def",
     "title": "DEF",
+    "url": "https://www.defprojetos.com/",
+    "date": "2024-06-28T12:31:00.674Z",
     "tags": [
       "Renewal Notice",
       "Insurance",
       "Policies",
       "Client Management"
-    ],
-    "url": "https://www.defprojetos.com/",
-    "id": "def",
-    "date": "2024-06-28T12:31:00.674Z"
+    ]
   },
   {
     "id": "pdfslick",
