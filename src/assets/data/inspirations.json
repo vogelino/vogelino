@@ -1,14 +1,26 @@
 [
   {
+    "title": "Sliderland",
+    "tags": [
+      "Generative Art",
+      "Code",
+      "Creative Coding",
+      "JavaScript"
+    ],
+    "url": "https://sliderland.blinry.org/",
+    "id": "sliderland",
+    "date": "2024-07-04T23:26:18.786Z"
+  },
+  {
+    "id": "newkid",
     "title": "newkid",
+    "url": "https://newkid.services/",
+    "date": "2024-06-30T17:03:30.782Z",
     "tags": [
       "Insurance",
       "Health Services",
       "Customer Support"
-    ],
-    "url": "https://newkid.services/",
-    "id": "newkid",
-    "date": "2024-06-30T17:03:30.782Z"
+    ]
   },
   {
     "id": "calculating-empires",
