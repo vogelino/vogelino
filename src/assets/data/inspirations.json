@@ -1,6 +1,23 @@
 [
   {
+    "title": "Bold Geo",
+    "tags": [
+      "Map",
+      "Geo",
+      "Interactive Web Experiences",
+      "Web Development",
+      "UI Design",
+      "UX"
+    ],
+    "url": "https://boldgeo.de/",
+    "id": "bold-geo",
+    "date": "2024-07-09T16:57:25.451Z"
+  },
+  {
+    "id": "oskar-stalberg",
     "title": "Oskar Stålberg",
+    "url": "https://oskarstalberg.tumblr.com/",
+    "date": "2024-07-07T01:42:59.173Z",
     "tags": [
       "3D",
       "Game",
@@ -8,10 +25,7 @@
       "Portfolio",
       "Creative Coding",
       "Creativity"
-    ],
-    "url": "https://oskarstalberg.tumblr.com/",
-    "id": "oskar-stalberg",
-    "date": "2024-07-07T01:42:59.173Z"
+    ]
   },
   {
     "id": "musee-lam",
