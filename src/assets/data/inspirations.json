@@ -1,15 +1,27 @@
 [
   {
+    "title": "GUM",
+    "tags": [
+      "Art",
+      "Portfolio",
+      "shop",
+      "Content"
+    ],
+    "url": "https://www.gummmm.com/",
+    "id": "gum",
+    "date": "2024-07-09T18:23:19.074Z"
+  },
+  {
+    "id": "pinzle",
     "title": "PINZLE (핀즐)",
+    "url": "https://www.pinzle.world/index.html",
+    "date": "2024-07-09T17:09:37.220Z",
     "tags": [
       "Illustration",
       "Agency",
       "Art",
       "Fun"
-    ],
-    "url": "https://www.pinzle.world/index.html",
-    "id": "pinzle",
-    "date": "2024-07-09T17:09:37.220Z"
+    ]
   },
   {
     "id": "bold-geo",
