@@ -1,14 +1,28 @@
 [
   {
+    "title": "Total TypeScript",
+    "tags": [
+      "Course",
+      "Web Development",
+      "Code",
+      "Code Analysis",
+      "Coding",
+      "Resource"
+    ],
+    "url": "https://www.totaltypescript.com/",
+    "id": "total-typescript",
+    "date": "2024-07-11T15:27:17.439Z"
+  },
+  {
+    "id": "palettepauslyapp",
     "title": "palette.pausly.app",
+    "url": "https://palette.pausly.app/#W10=",
+    "date": "2024-07-11T03:39:57.095Z",
     "tags": [
       "Color Palettes",
       "Design Tools",
       "Color Schemes"
-    ],
-    "url": "https://palette.pausly.app/#W10=",
-    "id": "palettepauslyapp",
-    "date": "2024-07-11T03:39:57.095Z"
+    ]
   },
   {
     "id": "onlook-andx2013-the-developer-tool-for-designers",
