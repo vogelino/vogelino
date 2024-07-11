@@ -1,15 +1,26 @@
 [
   {
+    "title": "palette.pausly.app",
+    "tags": [
+      "Color Palettes",
+      "Design Tools",
+      "Color Schemes"
+    ],
+    "url": "https://palette.pausly.app/#W10=",
+    "id": "palettepauslyapp",
+    "date": "2024-07-11T03:39:57.095Z"
+  },
+  {
+    "id": "onlook-andx2013-the-developer-tool-for-designers",
     "title": "Onlook &#x2013; The developer tool for designers",
+    "url": "https://onlook.dev/",
+    "date": "2024-07-11T03:36:58.330Z",
     "tags": [
       "Development Tools",
       "Web Development",
       "Browser Extensions",
       "Code Analysis"
-    ],
-    "url": "https://onlook.dev/",
-    "id": "onlook-andx2013-the-developer-tool-for-designers",
-    "date": "2024-07-11T03:36:58.330Z"
+    ]
   },
   {
     "id": "gum",
