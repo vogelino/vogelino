@@ -1,6 +1,21 @@
 [
   {
+    "title": "Remove Background Web",
+    "tags": [
+      "Resource",
+      "Tool",
+      "Design",
+      "3D"
+    ],
+    "url": "https://huggingface.co/spaces/Xenova/remove-background-web",
+    "id": "remove-background-web",
+    "date": "2024-07-12T02:52:32.869Z"
+  },
+  {
+    "id": "total-typescript",
     "title": "Total TypeScript",
+    "url": "https://www.totaltypescript.com/",
+    "date": "2024-07-11T15:27:17.439Z",
     "tags": [
       "Course",
       "Web Development",
@@ -8,10 +23,7 @@
       "Code Analysis",
       "Coding",
       "Resource"
-    ],
-    "url": "https://www.totaltypescript.com/",
-    "id": "total-typescript",
-    "date": "2024-07-11T15:27:17.439Z"
+    ]
   },
   {
     "id": "palettepauslyapp",
