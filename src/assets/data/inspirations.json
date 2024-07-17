@@ -1,14 +1,25 @@
 [
   {
+    "title": "TRG23",
+    "tags": [
+      "Events",
+      "Webdesign",
+      "Individual Inspiration"
+    ],
+    "url": "https://trg23.netlify.app/",
+    "id": "trg23",
+    "date": "2024-07-17T16:35:08.505Z"
+  },
+  {
+    "id": "tweek-calendar",
     "title": "Tweek Calendar",
+    "url": "https://tweek.so/",
+    "date": "2024-07-17T15:12:34.170Z",
     "tags": [
       "Organisation",
       "Productivity",
       "App"
-    ],
-    "url": "https://tweek.so/",
-    "id": "tweek-calendar",
-    "date": "2024-07-17T15:12:34.170Z"
+    ]
   },
   {
     "id": "lummi",
