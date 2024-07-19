@@ -1,14 +1,26 @@
 [
   {
+    "title": "Code Hike",
+    "tags": [
+      "Programming",
+      "Coding Tutorials",
+      "Software Development",
+      "Tech Education"
+    ],
+    "url": "https://v1.codehike.org/",
+    "id": "code-hike",
+    "date": "2024-07-19T17:19:46.319Z"
+  },
+  {
+    "id": "trg23",
     "title": "TRG23",
+    "url": "https://trg23.netlify.app/",
+    "date": "2024-07-17T16:35:08.505Z",
     "tags": [
       "Events",
       "Webdesign",
       "Individual Inspiration"
-    ],
-    "url": "https://trg23.netlify.app/",
-    "id": "trg23",
-    "date": "2024-07-17T16:35:08.505Z"
+    ]
   },
   {
     "id": "tweek-calendar",
