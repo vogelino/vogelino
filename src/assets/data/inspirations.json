@@ -1,15 +1,28 @@
 [
   {
+    "title": "Ethicswishing",
+    "tags": [
+      "Ethics",
+      "Wishing",
+      "Philosophy",
+      "Ethical Dilemmas",
+      "Moral Philosophy"
+    ],
+    "url": "https://berjon.com/ethicswishing/",
+    "id": "ethicswishing",
+    "date": "2024-07-21T14:14:04.341Z"
+  },
+  {
+    "id": "fusekiwi-interesting-internet",
     "title": "Fuse.kiwi - Interesting Internet",
+    "url": "https://www.fuse.kiwi/",
+    "date": "2024-07-21T13:54:42.160Z",
     "tags": [
       "Web Curios",
       "Digital Culture",
       "Internet Trends",
       "Online Media"
-    ],
-    "url": "https://www.fuse.kiwi/",
-    "id": "fusekiwi-interesting-internet",
-    "date": "2024-07-21T13:54:42.160Z"
+    ]
   },
   {
     "id": "tremor",
