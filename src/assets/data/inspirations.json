@@ -1,14 +1,28 @@
 [
   {
+    "title": "Half of Eight",
+    "tags": [
+      "Gallery",
+      "Creative Coding",
+      "Interactive Web Experiences",
+      "Webdesign",
+      "Portfolio",
+      "Graphic Design"
+    ],
+    "url": "https://halfof8.com/",
+    "id": "half-of-eight",
+    "date": "2024-07-24T02:03:25.894Z"
+  },
+  {
+    "id": "landinglove",
     "title": "landing.love",
+    "url": "https://www.landing.love/",
+    "date": "2024-07-24T01:52:20.187Z",
     "tags": [
       "Gallery",
       "Webdesign",
       "Web Animations"
-    ],
-    "url": "https://www.landing.love/",
-    "id": "landinglove",
-    "date": "2024-07-24T01:52:20.187Z"
+    ]
   },
   {
     "id": "internet-gems",
