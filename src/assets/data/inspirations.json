@@ -1,15 +1,452 @@
 [
   {
+    "title": "Daily Delights",
+    "tags": [
+      "Gallery",
+      "Webdesign"
+    ],
+    "url": "https://delights.flayks.com/",
+    "id": "daily-delights",
+    "date": "2024-07-27T21:31:35.865Z"
+  },
+  {
+    "id": "half-of-eight",
+    "title": "Half of Eight",
+    "url": "https://halfof8.com/",
+    "date": "2024-07-24T02:03:25.894Z",
+    "tags": [
+      "Gallery",
+      "Creative Coding",
+      "Interactive Web Experiences",
+      "Webdesign",
+      "Portfolio",
+      "Graphic Design"
+    ]
+  },
+  {
+    "id": "landinglove",
+    "title": "landing.love",
+    "url": "https://www.landing.love/",
+    "date": "2024-07-24T01:52:20.187Z",
+    "tags": [
+      "Gallery",
+      "Webdesign",
+      "Web Animations"
+    ]
+  },
+  {
+    "id": "internet-gems",
+    "title": "Internet Gems",
+    "url": "https://ilovecreatives.com/internet-gems",
+    "date": "2024-07-24T01:49:37.584Z",
+    "tags": [
+      "Gallery",
+      "Webdesign"
+    ]
+  },
+  {
+    "id": "loadmore",
+    "title": "LOADMORE",
+    "url": "https://loadmo.re/",
+    "date": "2024-07-24T01:46:37.043Z",
+    "tags": [
+      "Gallery",
+      "Webdesign"
+    ]
+  },
+  {
+    "id": "mala-project",
+    "title": "MÁLÀ PROJECT",
+    "url": "https://www.malaproject.com/",
+    "date": "2024-07-24T01:43:06.234Z",
+    "tags": [
+      "Web Animations",
+      "Motion Design",
+      "Webdesign"
+    ]
+  },
+  {
+    "id": "ethicswishing",
+    "title": "Ethicswishing",
+    "url": "https://berjon.com/ethicswishing/",
+    "date": "2024-07-21T14:14:04.341Z",
+    "tags": [
+      "Ethics",
+      "Wishing",
+      "Philosophy",
+      "Ethical Dilemmas",
+      "Moral Philosophy"
+    ]
+  },
+  {
+    "id": "fusekiwi-interesting-internet",
+    "title": "Fuse.kiwi - Interesting Internet",
+    "url": "https://www.fuse.kiwi/",
+    "date": "2024-07-21T13:54:42.160Z",
+    "tags": [
+      "Web Curios",
+      "Digital Culture",
+      "Internet Trends",
+      "Online Media"
+    ]
+  },
+  {
+    "id": "tremor",
+    "title": "Tremor",
+    "url": "https://www.tremor.so/",
+    "date": "2024-07-20T02:45:23.590Z",
+    "tags": [
+      "Web Development",
+      "Resource",
+      "JavaScript Libraries",
+      "Library"
+    ]
+  },
+  {
+    "id": "handy-arrows",
+    "title": "Handy Arrows",
+    "url": "https://handyarrows.com/",
+    "date": "2024-07-20T02:43:25.253Z",
+    "tags": [
+      "Resource",
+      "SVG",
+      "Webdesign",
+      "Design"
+    ]
+  },
+  {
+    "id": "code-hike",
+    "title": "Code Hike",
+    "url": "https://v1.codehike.org/",
+    "date": "2024-07-19T17:19:46.319Z",
+    "tags": [
+      "Programming",
+      "Coding Tutorials",
+      "Software Development",
+      "Tech Education"
+    ]
+  },
+  {
+    "id": "trg23",
+    "title": "TRG23",
+    "url": "https://trg23.netlify.app/",
+    "date": "2024-07-17T16:35:08.505Z",
+    "tags": [
+      "Events",
+      "Webdesign",
+      "Individual Inspiration"
+    ]
+  },
+  {
+    "id": "tweek-calendar",
+    "title": "Tweek Calendar",
+    "url": "https://tweek.so/",
+    "date": "2024-07-17T15:12:34.170Z",
+    "tags": [
+      "Organisation",
+      "Productivity",
+      "App"
+    ]
+  },
+  {
+    "id": "lummi",
+    "title": "Lummi",
+    "url": "https://www.lummi.ai/",
+    "date": "2024-07-12T15:17:17.747Z",
+    "tags": [
+      "Resource",
+      "Imagery",
+      "photography"
+    ]
+  },
+  {
+    "id": "itatoys",
+    "title": "ita.toys",
+    "url": "https://ita.toys/",
+    "date": "2024-07-12T02:58:45.721Z",
+    "tags": [
+      "Fun",
+      "Individual Inspiration",
+      "Portfolio",
+      "Webdesign"
+    ]
+  },
+  {
+    "id": "neocities",
+    "title": "Neocities",
+    "url": "https://neocities.org/browse",
+    "date": "2024-07-12T02:56:42.847Z",
+    "tags": [
+      "Webdesign",
+      "Gallery",
+      "Fun"
+    ]
+  },
+  {
+    "id": "remove-background-web",
+    "title": "Remove Background Web",
+    "url": "https://huggingface.co/spaces/Xenova/remove-background-web",
+    "date": "2024-07-12T02:52:32.869Z",
+    "tags": [
+      "Resource",
+      "Tool",
+      "Design",
+      "3D"
+    ]
+  },
+  {
+    "id": "total-typescript",
+    "title": "Total TypeScript",
+    "url": "https://www.totaltypescript.com/",
+    "date": "2024-07-11T15:27:17.439Z",
+    "tags": [
+      "Course",
+      "Web Development",
+      "Code",
+      "Code Analysis",
+      "Coding",
+      "Resource"
+    ]
+  },
+  {
+    "id": "palettepauslyapp",
+    "title": "palette.pausly.app",
+    "url": "https://palette.pausly.app/#W10=",
+    "date": "2024-07-11T03:39:57.095Z",
+    "tags": [
+      "Color Palettes",
+      "Design Tools",
+      "Color Schemes"
+    ]
+  },
+  {
+    "id": "onlook-andx2013-the-developer-tool-for-designers",
+    "title": "Onlook &#x2013; The developer tool for designers",
+    "url": "https://onlook.dev/",
+    "date": "2024-07-11T03:36:58.330Z",
+    "tags": [
+      "Development Tools",
+      "Web Development",
+      "Browser Extensions",
+      "Code Analysis"
+    ]
+  },
+  {
+    "id": "gum",
+    "title": "GUM",
+    "url": "https://www.gummmm.com/",
+    "date": "2024-07-09T18:23:19.074Z",
+    "tags": [
+      "Art",
+      "Portfolio",
+      "shop",
+      "Content"
+    ]
+  },
+  {
+    "id": "pinzle",
+    "title": "PINZLE (핀즐)",
+    "url": "https://www.pinzle.world/index.html",
+    "date": "2024-07-09T17:09:37.220Z",
+    "tags": [
+      "Illustration",
+      "Agency",
+      "Art",
+      "Fun"
+    ]
+  },
+  {
+    "id": "bold-geo",
+    "title": "Bold Geo",
+    "url": "https://boldgeo.de/",
+    "date": "2024-07-09T16:57:25.451Z",
+    "tags": [
+      "Map",
+      "Geo",
+      "Interactive Web Experiences",
+      "Web Development",
+      "UI Design",
+      "UX"
+    ]
+  },
+  {
+    "id": "oskar-stalberg",
+    "title": "Oskar Stålberg",
+    "url": "https://oskarstalberg.tumblr.com/",
+    "date": "2024-07-07T01:42:59.173Z",
+    "tags": [
+      "3D",
+      "Game",
+      "Blog",
+      "Portfolio",
+      "Creative Coding",
+      "Creativity"
+    ]
+  },
+  {
+    "id": "musee-lam",
+    "title": "Musée LaM",
+    "url": "https://www.musee-lam.fr/en/collection",
+    "date": "2024-07-06T15:23:43.426Z",
+    "tags": [
+      "Museum",
+      "Art",
+      "Archive",
+      "Content"
+    ]
+  },
+  {
+    "id": "ceramics",
+    "title": "Ceramics",
+    "url": "https://www.minpindesign.com/ceramics/",
+    "date": "2024-07-05T21:24:09.627Z",
+    "tags": [
+      "Art",
+      "Individual Inspiration",
+      "Illustration"
+    ]
+  },
+  {
+    "id": "sliderland",
+    "title": "Sliderland",
+    "url": "https://sliderland.blinry.org/",
+    "date": "2024-07-04T23:26:18.786Z",
+    "tags": [
+      "Generative Art",
+      "Code",
+      "Creative Coding",
+      "JavaScript"
+    ]
+  },
+  {
+    "id": "newkid",
+    "title": "newkid",
+    "url": "https://newkid.services/",
+    "date": "2024-06-30T17:03:30.782Z",
+    "tags": [
+      "Insurance",
+      "Health Services",
+      "Customer Support"
+    ]
+  },
+  {
+    "id": "calculating-empires",
+    "title": "Calculating Empires",
+    "url": "https://calculatingempires.net/?pos=20855.35%2C9120.80%2C14.3675",
+    "date": "2024-06-30T17:00:44.976Z",
+    "tags": [
+      "City Simulation",
+      "Strategy Games",
+      "Urban Planning",
+      "Simulation Software"
+    ]
+  },
+  {
+    "id": "too-much-type",
+    "title": "Too Much Type",
+    "url": "https://toomuchtype.com/",
+    "date": "2024-06-30T16:56:45.236Z",
+    "tags": [
+      "Typography",
+      "Design",
+      "Fonts",
+      "Graphic Design"
+    ]
+  },
+  {
+    "id": "def",
+    "title": "DEF",
+    "url": "https://www.defprojetos.com/",
+    "date": "2024-06-28T12:31:00.674Z",
+    "tags": [
+      "Renewal Notice",
+      "Insurance",
+      "Policies",
+      "Client Management"
+    ]
+  },
+  {
+    "id": "pdfslick",
+    "title": "PDFSlick",
+    "url": "https://pdfslick.dev/",
+    "date": "2024-06-28T04:39:38.696Z",
+    "tags": [
+      "Software Development",
+      "PDF Generation",
+      "JavaScript Libraries"
+    ]
+  },
+  {
+    "id": "octopusdo-visual-sitemap-tool-website-planner-architecture",
+    "title": "Octopus.do, Visual Sitemap Tool, Website Planner, Architecture",
+    "url": "https://octopus.do/",
+    "date": "2024-06-26T04:10:53.858Z",
+    "tags": [
+      "Project Management",
+      "Collaborative Tools",
+      "Mind Mapping",
+      "Productivity"
+    ]
+  },
+  {
+    "id": "sketch-473",
+    "title": "sketch 473",
+    "url": "https://ikeryou.jp/sketch/473/",
+    "date": "2024-06-21T13:37:01.549Z",
+    "tags": [
+      "Sketch",
+      "Art",
+      "Drawing",
+      "Illustration"
+    ]
+  },
+  {
+    "id": "get-web-animations-inspiration-for-your-next-web-design-project-or-web-interactions-gallery",
+    "title": "Get web animations inspiration for your next web design project | Web Interactions Gallery",
+    "url": "https://www.webinteractions.gallery/",
+    "date": "2024-06-21T13:33:40.891Z",
+    "tags": [
+      "Web Animations",
+      "User Interface Design",
+      "Interactive Websites",
+      "Creative Coding"
+    ]
+  },
+  {
+    "id": "g-r-o-n-a-green-space-for-typographic-creativity",
+    "title": "G R Ö N – A green space for typographic creativity",
+    "url": "https://gron.world/",
+    "date": "2024-06-21T13:29:08.695Z",
+    "tags": [
+      "Urban Farming",
+      "Sustainable Living",
+      "Green Spaces",
+      "Eco-Friendly Architecture"
+    ]
+  },
+  {
+    "id": "plasmo",
+    "title": "Plasmo",
+    "url": "https://www.plasmo.com/",
+    "date": "2024-06-21T01:59:48.262Z",
+    "tags": [
+      "Web Development",
+      "Code",
+      "Development Tools",
+      "Library"
+    ]
+  },
+  {
+    "id": "next-intl-internationalization-i18n-for-nextjs",
     "title": "next-intl – Internationalization (i18n) for Next.js",
+    "url": "https://next-intl-docs.vercel.app/",
+    "date": "2024-06-18T12:17:19.479Z",
     "tags": [
       "Localization",
       "Internationalization",
       "JavaScript",
       "React Framework"
-    ],
-    "url": "https://next-intl-docs.vercel.app/",
-    "id": "next-intl-internationalization-i18n-for-nextjs",
-    "date": "2024-06-18T12:17:19.479Z"
+    ]
   },
   {
     "id": "wiggle-bones-for-three.js",
