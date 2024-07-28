@@ -16,6 +16,7 @@ export async function getStaticPaths() {
 		const nextIdx = idx + 1 >= inspirations.length ? 0 : idx + 1
 		const prevIdx = idx - 1 < 0 ? inspirations.length - 1 : idx - 1
 		const currentPage = Math.floor(idx / 48) + 1
+		const lastPage = Math.ceil(inspirations.length / 48)
 		return {
 			params: { id: inspiration.id },
 			props: {
@@ -29,14 +30,13 @@ export async function getStaticPaths() {
 					size: 48,
 					total: inspirations.length,
 					currentPage,
-					lastPage: Math.ceil(inspirations.length / 48),
+					lastPage,
 					url: {
 						current: currentPage <= 1 ? '/inspirations' : `/inspirations/${currentPage}`,
-						next:
-							currentPage + 1 < Math.ceil(inspirations.length / 48)
-								? `/inspirations/${currentPage + 1}`
-								: undefined,
+						next: currentPage + 1 < lastPage ? `/inspirations/${currentPage + 1}` : undefined,
 						prev: currentPage - 1 > 1 ? `/inspirations/${currentPage - 1}` : `/inspirations`,
+						first: `/inspirations`,
+						last: `/inspirations/${lastPage}`,
 					},
 				} satisfies Page,
 				inspiration: inspiration,
