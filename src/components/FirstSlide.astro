@@ -24,154 +24,154 @@ const projectIllustration = await Astro.glob<AstroGlobImageType<'svg'>>(
 ---
 
 {
-	projectIllustration && projectThumbnail && (
-		<li
-			class={classNames(
-				`splide__slide splide__intro relative`,
-				`w-screen h-[calc(100svh-188px)] max-w-[1440px]`,
-				`items-stretch !mt-24 mb-0 !md:my-20`,
-				`justify-center gap-[3vh]`,
-				`flex flex-col sm:flex-row`,
-			)}
-		>
-			<div
-				class={classNames(
-					`sm:basis-[180px] sm:shrink-0 sm:grow flex flex-col`,
-					`items-start sm:items-center justify-start sm:justify-center p-8`,
-				)}
-				style={{
-					willChange: 'filter',
-					filter: `blur(calc(var(--scroll-percentage, 0) * 30px))`,
-				}}
-			>
-				<div class={classNames('inline-flex flex-col items-start max-w-md')}>
-					<span
-						class={classNames(
-							`sm:text-lg md:text-xl inline-block mb-[1vh] xs:mb-3 sm:mb-3 md:mb-6`,
-							`select-text`,
-						)}
-					>
-						{project.data.year}
-					</span>
-					<h1
-						class={classNames(
-							`text-3xl sm:text-5xl md:text-6xl 2xl:text-7xl`,
-							`leading-[0.9em] sm:leading-[1em] text-balance`,
-							`uppercase font-bold select-text`,
-						)}
-						set:html={project.data.title}
-					/>
-					<p
-						class={classNames(
-							`text-balance select-text`,
-							`leading-[1.2em] sm:leading-[1.3em] md:leading-[1.4em]`,
-							`sm:text-xl md:text-2xl mt-[1vh] sm:mt-3 md:mt-4`,
-						)}
-						set:html={project.data.description
-							.replaceAll(/(?:\*)(.*?)(?:\*)/g, '<strong>$1</strong>')
-							.replaceAll(
-								/\[(.*?)\]\((.*?)\)/g,
-								'<a href="$2" target="_blank" rel="noopener noreferrer" class="hover-hover:hover:bg-alt hover-hover:hover:underline">$1</a>',
-							)}
-					/>
+  projectIllustration && projectThumbnail && (
+    <li
+      class={classNames(
+        `splide__slide splide__intro relative`,
+        `w-screen h-[calc(100svh-188px)] max-w-[1440px]`,
+        `items-stretch !mt-24 mb-0 !md:my-20`,
+        `justify-center gap-[3vh]`,
+        `flex flex-col sm:flex-row`
+      )}
+    >
+      <div
+        class={classNames(
+          `sm:basis-[180px] sm:shrink-0 sm:grow flex flex-col`,
+          `items-start sm:items-center justify-start sm:justify-center p-8`
+        )}
+        style={{
+          willChange: "filter",
+          filter: `blur(calc(var(--scroll-percentage, 0) * 30px))`,
+        }}
+      >
+        <div class={classNames("inline-flex flex-col items-start max-w-md")}>
+          <span
+            class={classNames(
+              `sm:text-lg md:text-xl inline-block mb-[1vh] xs:mb-3 sm:mb-3 md:mb-6`,
+              `select-text`
+            )}
+          >
+            {project.data.year}
+          </span>
+          <h1
+            class={classNames(
+              `text-3xl sm:text-5xl md:text-6xl 2xl:text-7xl`,
+              `leading-[0.9em] sm:leading-[1em] text-balance`,
+              `uppercase font-bold select-text`
+            )}
+            set:html={project.data.title}
+          />
+          <p
+            class={classNames(
+              `text-balance select-text`,
+              `leading-[1.2em] sm:leading-[1.3em] md:leading-[1.4em]`,
+              `sm:text-xl md:text-2xl mt-[1vh] sm:mt-3 md:mt-4`
+            )}
+            set:html={project.data.description
+              .replaceAll(/(?:\*)(.*?)(?:\*)/g, "<strong>$1</strong>")
+              .replaceAll(
+                /\[(.*?)\]\((.*?)\)/g,
+                '<a href="$2" target="_blank" rel="noopener noreferrer" class="hover-hover:hover:bg-alt hover-hover:hover:underline">$1</a>'
+              )}
+          />
 
-					<div
-						class={classNames(
-							'flex flex-wrap gap-x-4 gap-y-2 pt-6 mt-4',
-							'border-t border-grayLight col-span-full',
-						)}
-					>
-						<RoundedButton url={project.data.url || undefined} icon={Link}>
-							Launch
-						</RoundedButton>
-						<RoundedButton
-							url={project.data.repo || undefined}
-							icon={GitHub}
-							variant="secondary"
-						>
-							Code
-						</RoundedButton>
-					</div>
-				</div>
-			</div>
-			<div
-				class={classNames(
-					`flex justify-center items-center px-6 xs:py-6`,
-					`basis-[45vw] sm:basis-[50vw] md:basis-[60vw] max-h-full relative`,
-				)}
-				style={{
-					willChange: 'filter',
-					filter: `blur(calc(var(--scroll-percentage, 0) * 30px))`,
-				}}
-			>
-				<div class="relative w-full">
-					<div
-						class={classNames(
-							`z-0`,
-							`max-h-[30vh] sm:max-h-[70vh] md:max-h-[80vh]`,
-							`intro-slide-tilted-shadow absolute inset-0`,
-						)}
-						aria-hidden="true"
-					>
-						<div
-							class={classNames(
-								`absolute inset-0 bg-gradient-to-t from-grayMed to-grayMed/0`,
-								`dark:from-grayUltraDark dark:to-grayUltraDark/0`,
-								`blur translate-y-[40px] translate-x-[48px]`,
-							)}
-						/>
-					</div>
-					<div
-						class={classNames(
-							`max-h-[30vh] sm:max-h-[70vh] md:max-h-[80vh]`,
-							`w-full rounded bg-bg`,
-							`intro-slide-tilted-image`,
-							`ring-1 ring-grayLight`,
-							`dark:saturate-[1.1] dark:contrast-[1.1]`,
-							`z-10 relative overflow-hidden`,
-						)}
-					>
-						<Image
-							src={projectThumbnail}
-							alt={`Thumbnail for the project "${project.data.title}"`}
-							loading="eager"
-						/>
-					</div>
-					<Image
-						src={projectIllustration}
-						alt={`Illustration for the project ${project.data.title}`}
-						class={classNames(
-							`webfeedsFeaturedVisual`,
-							`z-20 intro-slide-tilted-illustration`,
-							`max-h-[23vh] max-w-[260px] absolute`,
-							`-left-4 sm:-left-12 lg:right-[16%] w-auto h-auto`,
-							`pointer-events-none scale-[0.6] xs:scale-75 sm:scale-100`,
-							`origin-bottom-left top-full -translate-y-full`,
-						)}
-						loading="eager"
-					/>
-				</div>
-			</div>
-		</li>
-	)
+          <div
+            class={classNames(
+              "flex flex-wrap gap-x-4 gap-y-2 pt-6 mt-4",
+              "border-t border-grayLight col-span-full"
+            )}
+          >
+            <RoundedButton url={project.data.url || undefined} icon={Link}>
+              Launch
+            </RoundedButton>
+            <RoundedButton
+              url={project.data.repo || undefined}
+              icon={GitHub}
+              variant="secondary"
+            >
+              Code
+            </RoundedButton>
+          </div>
+        </div>
+      </div>
+      <div
+        class={classNames(
+          `flex justify-center items-center px-6 xs:py-6`,
+          `basis-[45vw] sm:basis-[50vw] md:basis-[60vw] max-h-full relative`
+        )}
+        style={{
+          willChange: "filter",
+          filter: `blur(calc(var(--scroll-percentage, 0) * 30px))`,
+        }}
+      >
+        <div class="relative w-full">
+          <div
+            class={classNames(
+              `z-0`,
+              `max-h-[30vh] sm:max-h-[70vh] md:max-h-[80vh]`,
+              `intro-slide-tilted-shadow absolute inset-0`
+            )}
+            aria-hidden="true"
+          >
+            <div
+              class={classNames(
+                `absolute inset-0 bg-gradient-to-t from-grayMed to-grayMed/0`,
+                `dark:from-grayUltraDark dark:to-grayUltraDark/0`,
+                `blur translate-y-[40px] translate-x-[48px]`
+              )}
+            />
+          </div>
+          <div
+            class={classNames(
+              `max-h-[30vh] sm:max-h-[70vh] md:max-h-[80vh]`,
+              `w-full rounded bg-bg`,
+              `intro-slide-tilted-image`,
+              `ring-1 ring-grayLight`,
+              `dark:saturate-[1.1] dark:contrast-[1.1]`,
+              `z-10 relative overflow-hidden`
+            )}
+          >
+            <Image
+              src={projectThumbnail}
+              alt={`Thumbnail for the project "${project.data.title}"`}
+              loading="eager"
+            />
+          </div>
+          <Image
+            src={projectIllustration}
+            alt={`Illustration for the project ${project.data.title}`}
+            class={classNames(
+              `webfeedsFeaturedVisual`,
+              `z-20 intro-slide-tilted-illustration`,
+              `max-h-[23vh] max-w-[260px] absolute`,
+              `-left-4 sm:-left-12 lg:right-[16%] w-auto h-auto`,
+              `pointer-events-none scale-[0.6] xs:scale-75 sm:scale-100`,
+              `origin-bottom-left top-full -translate-y-full`
+            )}
+            loading="eager"
+          />
+        </div>
+      </div>
+    </li>
+  )
 }
 <style is:global>
-	.intro-slide-tilted-image {
-		transform: perspective(1735px) rotateX(27deg) rotateY(346deg) rotateZ(17deg);
-		-webkit-transform: translateZ(-1000px) perspective(1735px) rotateX(27deg)
-			rotateY(346deg) rotateZ(17deg);
-		transform-style: preserve-3d;
-	}
-	.intro-slide-tilted-shadow {
-		transform: perspective(1524px) rotateX(48deg) rotateY(347deg) rotateZ(24deg)
-			scaleX(0.95);
-		-webkit-transform: translateZ(-2000px) perspective(1524px) rotateX(48deg)
-			rotateY(347deg) rotateZ(24deg) scaleX(0.95);
-		transform-style: preserve-3d;
-	}
+  .intro-slide-tilted-image {
+    transform: perspective(1735px) rotateX(27deg) rotateY(346deg) rotateZ(17deg);
+    -webkit-transform: translateZ(-1000px) perspective(1735px) rotateX(27deg)
+      rotateY(346deg) rotateZ(17deg);
+    transform-style: preserve-3d;
+  }
+  .intro-slide-tilted-shadow {
+    transform: perspective(1524px) rotateX(48deg) rotateY(347deg) rotateZ(24deg)
+      scaleX(0.95);
+    -webkit-transform: translateZ(-2000px) perspective(1524px) rotateX(48deg)
+      rotateY(347deg) rotateZ(24deg) scaleX(0.95);
+    transform-style: preserve-3d;
+  }
 
-	.intro-slide-tilted-illustration {
-		-webkit-transform: translateZ(1000px) translateY(-100%);
-		transform-style: preserve-3d;
-	}
+  .intro-slide-tilted-illustration {
+    -webkit-transform: translateZ(1000px) translateY(-100%);
+    transform-style: preserve-3d;
+  }
 </style>

@@ -53,6 +53,7 @@ module.exports = {
 			},
 			transitionTimingFunction: {
 				'out-extreme': 'cubic-bezier(.12,.98,.13,.98)',
+				'in-out-extreme': 'cubic-bezier(.48,.01,0,.99)',
 			},
 			animation: {
 				swoosh: 'swoosh 4s linear infinite',
