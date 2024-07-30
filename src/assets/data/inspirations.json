@@ -1,13 +1,25 @@
 [
   {
+    "title": "Lebassis",
+    "tags": [
+      "Portfolio",
+      "Typography",
+      "Webdesign",
+      "Graphic Design"
+    ],
+    "url": "https://lebassis.com/",
+    "id": "lebassis",
+    "date": "2024-07-30T19:28:42.116Z"
+  },
+  {
+    "id": "daily-delights",
     "title": "Daily Delights",
+    "url": "https://delights.flayks.com/",
+    "date": "2024-07-27T21:31:35.865Z",
     "tags": [
       "Gallery",
       "Webdesign"
-    ],
-    "url": "https://delights.flayks.com/",
-    "id": "daily-delights",
-    "date": "2024-07-27T21:31:35.865Z"
+    ]
   },
   {
     "id": "half-of-eight",
