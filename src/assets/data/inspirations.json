@@ -1,15 +1,26 @@
 [
   {
+    "title": "Neue Montreal",
+    "tags": [
+      "Typography",
+      "Font",
+      "Webdesign"
+    ],
+    "url": "https://pangrampangram.com/products/neue-montreal",
+    "id": "neue-montreal",
+    "date": "2024-07-31T14:08:57.603Z"
+  },
+  {
+    "id": "lebassis",
     "title": "Lebassis",
+    "url": "https://lebassis.com/",
+    "date": "2024-07-30T19:28:42.116Z",
     "tags": [
       "Portfolio",
       "Typography",
       "Webdesign",
       "Graphic Design"
-    ],
-    "url": "https://lebassis.com/",
-    "id": "lebassis",
-    "date": "2024-07-30T19:28:42.116Z"
+    ]
   },
   {
     "id": "daily-delights",
