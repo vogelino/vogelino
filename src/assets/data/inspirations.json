@@ -1,14 +1,27 @@
 [
   {
+    "title": "Better Off Studio",
+    "tags": [
+      "Studio",
+      "Creativity",
+      "Portfolio",
+      "Webdesign",
+      "Scrollytelling"
+    ],
+    "url": "https://betteroff.studio/?ref=delights.flayks.com",
+    "id": "better-off-studio",
+    "date": "2024-07-31T15:06:56.046Z"
+  },
+  {
+    "id": "neue-montreal",
     "title": "Neue Montreal",
+    "url": "https://pangrampangram.com/products/neue-montreal",
+    "date": "2024-07-31T14:08:57.603Z",
     "tags": [
       "Typography",
       "Font",
       "Webdesign"
-    ],
-    "url": "https://pangrampangram.com/products/neue-montreal",
-    "id": "neue-montreal",
-    "date": "2024-07-31T14:08:57.603Z"
+    ]
   },
   {
     "id": "lebassis",
