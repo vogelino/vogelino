@@ -1,15 +1,63 @@
 [
   {
+    "title": "The Nifty Portal",
+    "tags": [
+      "Individual Inspiration",
+      "Fun",
+      "Webdesign",
+      "Layout"
+    ],
+    "url": "https://portal.thenifty.com/?ref=unboundbydefault",
+    "id": "the-nifty-portal",
+    "date": "2024-08-01T20:38:55.367Z"
+  },
+  {
+    "id": "browsing-mode",
+    "title": "Browsing Mode",
+    "url": "https://browsingmode.com/",
+    "date": "2024-08-01T19:23:10.434Z",
+    "tags": [
+      "Gallery",
+      "Webdesign"
+    ]
+  },
+  {
+    "id": "the-nifty-portal",
+    "title": "The Nifty Portal",
+    "url": "https://portal.thenifty.com/?ref=unboundbydefault",
+    "date": "2024-08-01T13:56:07.123Z",
+    "tags": [
+      "Individual Inspiration",
+      "Fun",
+      "Webdesign",
+      "UI Design"
+    ]
+  },
+  {
+    "id": "browsing-mode",
+    "title": "Browsing Mode",
+    "url": "https://browsingmode.com/",
+    "date": "2024-08-01T13:48:44.437Z",
+    "tags": [
+      "Gallery",
+      "Webdesign",
+      "Interactive Web Experiences",
+      "Interactive Websites",
+      "UI Design",
+      "UX"
+    ]
+  },
+  {
+    "id": "svelte-animations-components",
     "title": "Svelte Animations Components",
+    "url": "https://animation-svelte.vercel.app/?utm_source=substack&utm_medium=email",
+    "date": "2024-08-01T13:22:32.546Z",
     "tags": [
       "UI Design",
       "JavaScript Libraries",
       "Web Development",
       "Resource"
-    ],
-    "url": "https://animation-svelte.vercel.app/?utm_source=substack&utm_medium=email",
-    "id": "svelte-animations-components",
-    "date": "2024-08-01T13:22:32.546Z"
+    ]
   },
   {
     "id": "hans-hack",
