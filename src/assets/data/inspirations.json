@@ -1,15 +1,27 @@
 [
   {
+    "title": "Svelte Animations Components",
+    "tags": [
+      "UI Design",
+      "JavaScript Libraries",
+      "Web Development",
+      "Resource"
+    ],
+    "url": "https://animation-svelte.vercel.app/?utm_source=substack&utm_medium=email",
+    "id": "svelte-animations-components",
+    "date": "2024-08-01T13:22:32.546Z"
+  },
+  {
+    "id": "hans-hack",
     "title": "Hans Hack",
+    "url": "https://hanshack.com/",
+    "date": "2024-08-01T13:10:38.593Z",
     "tags": [
       "Portfolio",
       "Web Development",
       "Map",
       "Dataviz"
-    ],
-    "url": "https://hanshack.com/",
-    "id": "hans-hack",
-    "date": "2024-08-01T13:10:38.593Z"
+    ]
   },
   {
     "id": "type-fluidity",
