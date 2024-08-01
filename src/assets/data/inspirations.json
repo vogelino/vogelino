@@ -1,16 +1,29 @@
 [
   {
+    "title": "SAMPLE HOUSE",
+    "tags": [
+      "Design",
+      "Webdesign",
+      "Individual Inspiration",
+      "photography",
+      "Typography"
+    ],
+    "url": "https://samplehouse.nyc/?ref=delights.flayks.com",
+    "id": "sample-house",
+    "date": "2024-08-01T01:29:45.144Z"
+  },
+  {
+    "id": "better-off-studio",
     "title": "Better Off Studio",
+    "url": "https://betteroff.studio/?ref=delights.flayks.com",
+    "date": "2024-07-31T15:06:56.046Z",
     "tags": [
       "Studio",
       "Creativity",
       "Portfolio",
       "Webdesign",
       "Scrollytelling"
-    ],
-    "url": "https://betteroff.studio/?ref=delights.flayks.com",
-    "id": "better-off-studio",
-    "date": "2024-07-31T15:06:56.046Z"
+    ]
   },
   {
     "id": "neue-montreal",
