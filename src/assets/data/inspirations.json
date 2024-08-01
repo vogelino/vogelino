@@ -1,16 +1,28 @@
 [
   {
+    "title": "Daniel Shapiro",
+    "tags": [
+      "Art",
+      "Design",
+      "Portfolio",
+      "shop"
+    ],
+    "url": "https://www.helloshapiro.com/lighting",
+    "id": "daniel-shapiro",
+    "date": "2024-08-01T02:32:45.816Z"
+  },
+  {
+    "id": "sample-house",
     "title": "SAMPLE HOUSE",
+    "url": "https://samplehouse.nyc/?ref=delights.flayks.com",
+    "date": "2024-08-01T01:29:45.144Z",
     "tags": [
       "Design",
       "Webdesign",
       "Individual Inspiration",
       "photography",
       "Typography"
-    ],
-    "url": "https://samplehouse.nyc/?ref=delights.flayks.com",
-    "id": "sample-house",
-    "date": "2024-08-01T01:29:45.144Z"
+    ]
   },
   {
     "id": "better-off-studio",
