@@ -1,15 +1,29 @@
 [
   {
+    "title": "Browsing Mode",
+    "tags": [
+      "Gallery",
+      "Webdesign",
+      "Interactive Web Experiences",
+      "Interactive Websites",
+      "UI Design",
+      "UX"
+    ],
+    "url": "https://browsingmode.com/",
+    "id": "browsing-mode",
+    "date": "2024-08-01T13:48:44.437Z"
+  },
+  {
+    "id": "svelte-animations-components",
     "title": "Svelte Animations Components",
+    "url": "https://animation-svelte.vercel.app/?utm_source=substack&utm_medium=email",
+    "date": "2024-08-01T13:22:32.546Z",
     "tags": [
       "UI Design",
       "JavaScript Libraries",
       "Web Development",
       "Resource"
-    ],
-    "url": "https://animation-svelte.vercel.app/?utm_source=substack&utm_medium=email",
-    "id": "svelte-animations-components",
-    "date": "2024-08-01T13:22:32.546Z"
+    ]
   },
   {
     "id": "hans-hack",
