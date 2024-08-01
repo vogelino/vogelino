@@ -2,6 +2,11 @@ name: Add inspiration and commit it
 on:
   repository_dispatch:
     types: [update-inspirations]
+
+concurrency:
+  group: ${{ github.head_ref || github.run_id }}
+  cancel-in-progress: false
+
 jobs:
   Fetch-Notion-Inspirations:
     runs-on: ubuntu-latest
