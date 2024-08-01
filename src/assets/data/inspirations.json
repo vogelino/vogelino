@@ -1,16 +1,110 @@
 [
   {
+    "title": "Svelte Animations Components",
+    "tags": [
+      "UI Design",
+      "JavaScript Libraries",
+      "Web Development",
+      "Resource"
+    ],
+    "url": "https://animation-svelte.vercel.app/?utm_source=substack&utm_medium=email",
+    "id": "svelte-animations-components",
+    "date": "2024-08-01T13:22:32.546Z"
+  },
+  {
+    "id": "hans-hack",
+    "title": "Hans Hack",
+    "url": "https://hanshack.com/",
+    "date": "2024-08-01T13:10:38.593Z",
+    "tags": [
+      "Portfolio",
+      "Web Development",
+      "Map",
+      "Dataviz"
+    ]
+  },
+  {
+    "id": "type-fluidity",
+    "title": "Type Fluidity",
+    "url": "https://wearerequired.github.io/fluidity/",
+    "date": "2024-08-01T05:09:36.901Z",
+    "tags": [
+      "Typography",
+      "Web Development",
+      "Resource",
+      "Development Tools"
+    ]
+  },
+  {
+    "id": "font-interceptor",
+    "title": "Font Interceptor",
+    "url": "https://fontinterceptor.mschfmag.com/",
+    "date": "2024-08-01T04:47:46.500Z",
+    "tags": [
+      "Fonts",
+      "Typography",
+      "Gallery",
+      "Fun"
+    ]
+  },
+  {
+    "id": "pocketbase",
+    "title": "PocketBase",
+    "url": "https://pocketbase.io/",
+    "date": "2024-08-01T04:38:36.148Z",
+    "tags": [
+      "Database",
+      "Software",
+      "Development Tools",
+      "Resource"
+    ]
+  },
+  {
+    "id": "chris-kirknielsen",
+    "title": "Chris Kirknielsen",
+    "url": "https://chriskirknielsen.com/",
+    "date": "2024-08-01T04:29:54.970Z",
+    "tags": [
+      "Portfolio",
+      "Web Development",
+      "Software Development",
+      "CSS"
+    ]
+  },
+  {
+    "id": "nathan-terborg",
+    "title": "Nathan Terborg",
+    "url": "https://www.nathanterborg.com/selected-work",
+    "date": "2024-08-01T04:21:21.691Z",
+    "tags": [
+      "Art",
+      "Portfolio"
+    ]
+  },
+  {
+    "id": "fluid-type-generator",
+    "title": "Fluid Type Generator",
+    "url": "https://fluid-type.tolin.ski/",
+    "date": "2024-08-01T04:08:06.152Z",
+    "tags": [
+      "Typography",
+      "Resource",
+      "Web Development",
+      "CSS"
+    ]
+  },
+  {
+    "id": "scalar",
     "title": "Scalar ",
+    "url": "https://scalar.com/#description/resources",
+    "date": "2024-08-01T03:05:09.431Z",
     "tags": [
       "Documentation",
       "Web Development",
       "APIs",
       "Resource",
       "Development Tools"
-    ],
-    "url": "https://scalar.com/#description/resources",
-    "id": "scalar",
-    "date": "2024-08-01T03:05:09.431Z"
+    ]
   },
   {
     "id": "sub",
