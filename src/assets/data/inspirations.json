@@ -1,15 +1,27 @@
 [
   {
+    "title": "Hans Hack",
+    "tags": [
+      "Portfolio",
+      "Web Development",
+      "Map",
+      "Dataviz"
+    ],
+    "url": "https://hanshack.com/",
+    "id": "hans-hack",
+    "date": "2024-08-01T13:10:38.593Z"
+  },
+  {
+    "id": "type-fluidity",
     "title": "Type Fluidity",
+    "url": "https://wearerequired.github.io/fluidity/",
+    "date": "2024-08-01T05:09:36.901Z",
     "tags": [
       "Typography",
       "Web Development",
       "Resource",
       "Development Tools"
-    ],
-    "url": "https://wearerequired.github.io/fluidity/",
-    "id": "type-fluidity",
-    "date": "2024-08-01T05:09:36.901Z"
+    ]
   },
   {
     "id": "font-interceptor",
