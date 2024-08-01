@@ -4,8 +4,8 @@ on:
     types: [update-inspirations]
 
 concurrency:
-  group: ${{ github.head_ref || github.run_id }}
-  cancel-in-progress: false
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
 
 jobs:
   Fetch-Notion-Inspirations:
