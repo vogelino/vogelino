@@ -1,15 +1,27 @@
 [
   {
+    "title": "Type Fluidity",
+    "tags": [
+      "Typography",
+      "Web Development",
+      "Resource",
+      "Development Tools"
+    ],
+    "url": "https://wearerequired.github.io/fluidity/",
+    "id": "type-fluidity",
+    "date": "2024-08-01T05:09:36.901Z"
+  },
+  {
+    "id": "font-interceptor",
     "title": "Font Interceptor",
+    "url": "https://fontinterceptor.mschfmag.com/",
+    "date": "2024-08-01T04:47:46.500Z",
     "tags": [
       "Fonts",
       "Typography",
       "Gallery",
       "Fun"
-    ],
-    "url": "https://fontinterceptor.mschfmag.com/",
-    "id": "font-interceptor",
-    "date": "2024-08-01T04:47:46.500Z"
+    ]
   },
   {
     "id": "pocketbase",
