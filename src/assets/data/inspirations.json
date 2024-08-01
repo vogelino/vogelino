@@ -1,15 +1,25 @@
 [
   {
+    "title": "Browsing Mode",
+    "tags": [
+      "Gallery",
+      "Webdesign"
+    ],
+    "url": "https://browsingmode.com/",
+    "id": "browsing-mode",
+    "date": "2024-08-01T19:23:10.434Z"
+  },
+  {
+    "id": "the-nifty-portal",
     "title": "The Nifty Portal",
+    "url": "https://portal.thenifty.com/?ref=unboundbydefault",
+    "date": "2024-08-01T13:56:07.123Z",
     "tags": [
       "Individual Inspiration",
       "Fun",
       "Webdesign",
       "UI Design"
-    ],
-    "url": "https://portal.thenifty.com/?ref=unboundbydefault",
-    "id": "the-nifty-portal",
-    "date": "2024-08-01T13:56:07.123Z"
+    ]
   },
   {
     "id": "browsing-mode",
