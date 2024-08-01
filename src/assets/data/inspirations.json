@@ -1,13 +1,25 @@
 [
   {
+    "title": "Chris Kirknielsen",
+    "tags": [
+      "Portfolio",
+      "Web Development",
+      "Software Development",
+      "CSS"
+    ],
+    "url": "https://chriskirknielsen.com/",
+    "id": "chris-kirknielsen",
+    "date": "2024-08-01T04:29:54.970Z"
+  },
+  {
+    "id": "nathan-terborg",
     "title": "Nathan Terborg",
+    "url": "https://www.nathanterborg.com/selected-work",
+    "date": "2024-08-01T04:21:21.691Z",
     "tags": [
       "Art",
       "Portfolio"
-    ],
-    "url": "https://www.nathanterborg.com/selected-work",
-    "id": "nathan-terborg",
-    "date": "2024-08-01T04:21:21.691Z"
+    ]
   },
   {
     "id": "fluid-type-generator",
