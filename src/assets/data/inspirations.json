@@ -1,13 +1,100 @@
 [
   {
+    "title": "Scalar ",
+    "tags": [
+      "Documentation",
+      "Web Development",
+      "APIs",
+      "Resource",
+      "Development Tools"
+    ],
+    "url": "https://scalar.com/#description/resources",
+    "id": "scalar",
+    "date": "2024-08-01T03:05:09.431Z"
+  },
+  {
+    "id": "sub",
+    "title": "SUB",
+    "url": "https://sub.global/",
+    "date": "2024-08-01T02:53:09.832Z",
+    "tags": [
+      "Gallery",
+      "Resource",
+      "Webdesign",
+      "Architecture",
+      "Design"
+    ]
+  },
+  {
+    "id": "daniel-shapiro",
+    "title": "Daniel Shapiro",
+    "url": "https://www.helloshapiro.com/lighting",
+    "date": "2024-08-01T02:32:45.816Z",
+    "tags": [
+      "Art",
+      "Design",
+      "Portfolio",
+      "shop"
+    ]
+  },
+  {
+    "id": "sample-house",
+    "title": "SAMPLE HOUSE",
+    "url": "https://samplehouse.nyc/?ref=delights.flayks.com",
+    "date": "2024-08-01T01:29:45.144Z",
+    "tags": [
+      "Design",
+      "Webdesign",
+      "Individual Inspiration",
+      "photography",
+      "Typography"
+    ]
+  },
+  {
+    "id": "better-off-studio",
+    "title": "Better Off Studio",
+    "url": "https://betteroff.studio/?ref=delights.flayks.com",
+    "date": "2024-07-31T15:06:56.046Z",
+    "tags": [
+      "Studio",
+      "Creativity",
+      "Portfolio",
+      "Webdesign",
+      "Scrollytelling"
+    ]
+  },
+  {
+    "id": "neue-montreal",
+    "title": "Neue Montreal",
+    "url": "https://pangrampangram.com/products/neue-montreal",
+    "date": "2024-07-31T14:08:57.603Z",
+    "tags": [
+      "Typography",
+      "Font",
+      "Webdesign"
+    ]
+  },
+  {
+    "id": "lebassis",
+    "title": "Lebassis",
+    "url": "https://lebassis.com/",
+    "date": "2024-07-30T19:28:42.116Z",
+    "tags": [
+      "Portfolio",
+      "Typography",
+      "Webdesign",
+      "Graphic Design"
+    ]
+  },
+  {
+    "id": "daily-delights",
     "title": "Daily Delights",
+    "url": "https://delights.flayks.com/",
+    "date": "2024-07-27T21:31:35.865Z",
     "tags": [
       "Gallery",
       "Webdesign"
-    ],
-    "url": "https://delights.flayks.com/",
-    "id": "daily-delights",
-    "date": "2024-07-27T21:31:35.865Z"
+    ]
   },
   {
     "id": "half-of-eight",
