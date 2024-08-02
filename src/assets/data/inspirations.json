@@ -1,5 +1,63 @@
 [
   {
+    "id": "sonia-kochina",
+    "title": "Sonai Kochina",
+    "url": "https://soniakochina.com/tag/sculptures",
+    "date": "2024-08-02T16:45:00:00.000Z",
+    "tags": [
+      "Portfolio",
+      "Art",
+      "Craftsmanship",
+      "Graphic Design",
+      "UX",
+      "UI Design"
+    ]
+  },
+  {
+    "id": "design-engineer",
+    "title": "Design Engineer",
+    "url": "https://designengineer.io/",
+    "date": "2024-08-02T16:40:00:00.000Z",
+    "tags": [
+      "Jobs",
+      "UX",
+      "Webdesign",
+      "Software Development",
+      "Web Development"
+    ]
+  },
+  {
+    "id": "tobias-van-schneider",
+    "title": "Tobias van Schneider",
+    "url": "https://vanschneider.com/",
+    "date": "2024-08-02T16:38:00:00.000Z",
+    "tags": ["Portfolio", "UX", "UI Design", "Webdesign", "Web Development"]
+  },
+  {
+    "id": "smtnmt",
+    "title": "SNTMNT",
+    "url": "https://www.sntmnt.site/",
+    "date": "2024-08-02T16:35:00:00.000Z",
+    "tags": ["Art", "Jewelry", "Craftsmanship", "Portfolio", "shop"]
+  },
+  {
+    "id": "design-systems-international",
+    "name": "Design Systems International",
+    "url": "https://designsystems.international/",
+    "date": "2024-08-02T16:30:00:00.000Z",
+    "tags": [
+      "Portfolio",
+      "Software",
+      "Software Development",
+      "Agency",
+      "UI Design",
+      "UX",
+      "Webdesign",
+      "Web Development",
+      "User Interface Design"
+    ]
+  },
+  {
     "id": "the-nifty-portal",
     "title": "The Nifty Portal",
     "url": "https://portal.thenifty.com/?ref=unboundbydefault",
