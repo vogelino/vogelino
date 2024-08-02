@@ -1,13 +1,24 @@
 [
   {
+    "title": "Deux Huit Huit",
+    "tags": [
+      "Portfolio",
+      "Webdesign",
+      "Web Development"
+    ],
+    "url": "https://deuxhuithuit.com/en?utm_medium=watermark-v4&utm_source=23bis&utm_campaign=23bis",
+    "id": "deux-huit-huit",
+    "date": "2024-08-02T22:37:35.385Z"
+  },
+  {
+    "id": "pixelorama",
     "title": "Pixelorama",
+    "url": "https://orama-interactive.itch.io/pixelorama",
+    "date": "2024-08-02T22:00:56.258Z",
     "tags": [
       "Design Tools",
       "Game"
-    ],
-    "url": "https://orama-interactive.itch.io/pixelorama",
-    "id": "pixelorama",
-    "date": "2024-08-02T22:00:56.258Z"
+    ]
   },
   {
     "id": "sonia-kochina",
