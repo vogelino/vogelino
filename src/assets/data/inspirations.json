@@ -1,6 +1,22 @@
 [
   {
+    "title": "Rive",
+    "tags": [
+      "Animation",
+      "Web Animations",
+      "Web Development",
+      "Motion Design",
+      "Motion Graphics"
+    ],
+    "url": "https://rive.app/",
+    "id": "rive",
+    "date": "2024-08-04T23:34:13.456Z"
+  },
+  {
+    "id": "collection-of-dark-patterns-and-unethical-design",
     "title": "Collection of Dark Patterns and Unethical Design",
+    "url": "https://hallofshame.design/collection/",
+    "date": "2024-08-04T13:51:09.451Z",
     "tags": [
       "Dark Patterns",
       "User Experience",
@@ -8,10 +24,7 @@
       "Ethical Design",
       "Manipulative Design",
       "Hall of Shame"
-    ],
-    "url": "https://hallofshame.design/collection/",
-    "id": "collection-of-dark-patterns-and-unethical-design",
-    "date": "2024-08-04T13:51:09.451Z"
+    ]
   },
   {
     "id": "discover-buy-and-download-awesome-fonts-fonts-ninja",
