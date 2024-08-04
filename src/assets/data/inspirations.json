@@ -1,6 +1,23 @@
 [
   {
+    "title": "Collection of Dark Patterns and Unethical Design",
+    "tags": [
+      "Dark Patterns",
+      "User Experience",
+      "UX Design",
+      "Ethical Design",
+      "Manipulative Design",
+      "Hall of Shame"
+    ],
+    "url": "https://hallofshame.design/collection/",
+    "id": "collection-of-dark-patterns-and-unethical-design",
+    "date": "2024-08-04T13:51:09.451Z"
+  },
+  {
+    "id": "discover-buy-and-download-awesome-fonts-fonts-ninja",
     "title": "Discover, buy and download awesome fonts - Fonts Ninja",
+    "url": "https://fonts.ninja/",
+    "date": "2024-08-03T12:00:52.781Z",
     "tags": [
       "Font Identification",
       "Font Preview",
@@ -8,10 +25,7 @@
       "Font Marketplace",
       "Font Browser Extension",
       "Font Inspiration"
-    ],
-    "url": "https://fonts.ninja/",
-    "id": "discover-buy-and-download-awesome-fonts-fonts-ninja",
-    "date": "2024-08-03T12:00:52.781Z"
+    ]
   },
   {
     "id": "microjs-fantastic-micro-frameworks-and-micro-libraries-for-fun-and-profit",
