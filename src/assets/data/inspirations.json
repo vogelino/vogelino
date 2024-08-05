@@ -188,13 +188,6 @@
     "tags": ["Fonts", "Typography", "Gallery", "Fun"]
   },
   {
-    "id": "pocketbase",
-    "title": "PocketBase",
-    "url": "https://pocketbase.io/",
-    "date": "2024-08-01T04:38:36.148Z",
-    "tags": ["Database", "Software", "Development Tools", "Resource"]
-  },
-  {
     "id": "chris-kirknielsen",
     "title": "Chris Kirknielsen",
     "url": "https://chriskirknielsen.com/",
@@ -636,6 +629,10 @@
     "url": "https://pocketbase.io/",
     "date": "2024-06-14T10:38:11.456Z",
     "tags": [
+      "Database",
+      "Software",
+      "Development Tools",
+      "Resource",
       "Database Management",
       "NoSQL",
       "Web Development",
