@@ -1,4 +1,4 @@
-name: Add inspiration and commit it
+name: Add cool site and commit it
 on:
   repository_dispatch:
     types: [update-inspirations]
@@ -8,7 +8,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  Fetch-Notion-Inspirations:
+  Add-cool-site:
     runs-on: ubuntu-latest
     environment: production
     steps:
@@ -24,18 +24,16 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Add inspiration from github webhook payload
+      - name: Add cool site from github webhook payload
         env:
-          NOTION_INSPIRATION_DATABASE_ID: ${{ secrets.NOTION_INSPIRATION_DATABASE_ID }}
-          NOTION_API_SECRET: ${{ secrets.NOTION_API_SECRET }}
           CLOUDINARY_API_SECRET: ${{ secrets.CLOUDINARY_API_SECRET }}
           CLOUDINARY_API_KEY: ${{ secrets.CLOUDINARY_API_KEY }}
           CLOUDINARY_CLOUD_NAME: ${{ secrets.CLOUDINARY_CLOUD_NAME }}
           GITHUB_PAYLOAD: ${{ toJson(github.event.client_payload) }}
-        run: npm run downloadInspiration
+        run: npm run downloadCoolSites
 
       - name: Commit changes
         uses: EndBug/add-and-commit@v9
         with:
-          message: "chore(content): Add inspiration: ${{ github.event.client_payload.name }}"
+          message: "chore(content): Add cool site: ${{ github.event.client_payload.name }}"
           add: "src"

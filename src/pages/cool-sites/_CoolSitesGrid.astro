@@ -1,24 +1,24 @@
 ---
-import type { Page } from 'astro'
-import FancyHeadline from '../../components/FancyHeadline.astro'
-import InspirationsSearch from '../../components/InspirationsSearch'
-import Pagination from '../../components/Pagination.astro'
-import Layout from '../../layouts/Layout.astro'
-import type { InspirationType } from '../../schemas/inspirations'
-import classNames from '../../utils/classNames'
-import InspirationItem from './_InspirationItem.astro'
+import type { Page } from "astro";
+import CoolSitesSearch from "../../components/CoolSitesSearch";
+import FancyHeadline from "../../components/FancyHeadline.astro";
+import Pagination from "../../components/Pagination.astro";
+import Layout from "../../layouts/Layout.astro";
+import type { CoolSiteType } from "../../schemas/coolSites";
+import classNames from "../../utils/classNames";
+import CoolSitesItem from "./_CoolSitesItem.astro";
 export interface Props {
-	page: Page
-	allInspirations: InspirationType[]
-	disableGrid?: true
+  page: Page;
+  allCoolSites: CoolSiteType[];
+  disableGrid?: true;
 }
 
-const { page, disableGrid = false, allInspirations = [] } = Astro.props
+const { page, disableGrid = false, allCoolSites = [] } = Astro.props;
 ---
 
 <Layout
   title="List of cool site I like"
-  slug="inspirations"
+  slug="cool-sites"
   disableScroll={disableGrid}
 >
   <slot />
@@ -35,14 +35,14 @@ const { page, disableGrid = false, allInspirations = [] } = Astro.props
     >
       <FancyHeadline title="Cool **Sites**" />
       <p class="mt-4 text-balance leading-tight">
-        Bookmarks, design inspiration and innovative websites I like.
+        Bookmarks, design cool sites and innovative websites I like.
       </p>
     </div>
 
     <div class="lg:col-span-2">
-      <InspirationsSearch
+      <CoolSitesSearch
         client:visible
-        searchItems={allInspirations}
+        searchItems={allCoolSites}
         disabled={disableGrid}
       />
     </div>
@@ -61,7 +61,7 @@ const { page, disableGrid = false, allInspirations = [] } = Astro.props
       page.data.map((link) => {
         if (!link.thumbnail) return null;
         return (
-          <InspirationItem
+          <CoolSitesItem
             link={link}
             class={classNames(
               disableGrid && link.id === Astro.params.id && `opacity-0`
@@ -80,10 +80,10 @@ const { page, disableGrid = false, allInspirations = [] } = Astro.props
       length={page.lastPage}
       currentUrl={page.url.current}
       currentPage={page.currentPage}
-      firstUrl={`/inspirations`}
+      firstUrl={`/cool-sites`}
       prevUrl={page.url.prev}
       nextUrl={page.url.next}
-      lastUrl={`/inspirations/${page.lastPage}`}
+      lastUrl={`/cool-sites/${page.lastPage}`}
       disabled={disableGrid}
     />
   </div>

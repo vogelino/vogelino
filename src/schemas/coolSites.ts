@@ -10,7 +10,7 @@ const imageSchema = z
   })
   .optional();
 
-export const inspirationSchema = z.object({
+export const coolSiteSchema = z.object({
   id: z.string(),
   title: z.string(),
   url: z.string().url(),
@@ -19,4 +19,4 @@ export const inspirationSchema = z.object({
   date: z.string(),
   tags: z.string().array().default([]),
 });
-export type InspirationType = z.infer<typeof inspirationSchema>;
+export type CoolSiteType = z.infer<typeof coolSiteSchema>;

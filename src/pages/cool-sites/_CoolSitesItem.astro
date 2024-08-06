@@ -1,21 +1,21 @@
 ---
-import ExternalLink from '../../components/icons/ExternalLink.astro'
-import type { InspirationType } from '../../schemas/inspirations'
-import classNames from '../../utils/classNames'
-import InspirationFavicon from './_InspirationFavicon.astro'
-import InspirationThumbnail from './_InspirationThumbnail.astro'
+import ExternalLink from "../../components/icons/ExternalLink.astro";
+import type { CoolSiteType } from "../../schemas/coolSites";
+import classNames from "../../utils/classNames";
+import CoolSiteFavicon from "./_CoolSitesFavicon.astro";
+import CoolSiteThumbnail from "./_CoolSitesThumbnail.astro";
 
-const { link, class: className, disabled = false } = Astro.props
+const { link, class: className, disabled = false } = Astro.props;
 
 export type Props = {
-	link: InspirationType
-	class?: string
-	disabled?: boolean
-}
+  link: CoolSiteType;
+  class?: string;
+  disabled?: boolean;
+};
 
-const linkUrl = new URL(link.url)
-linkUrl.searchParams.set('ref', Astro.site?.href?.toString() ?? '')
-const linkWithRef = linkUrl.toString()
+const linkUrl = new URL(link.url);
+linkUrl.searchParams.set("ref", Astro.site?.href?.toString() ?? "");
+const linkWithRef = linkUrl.toString();
 ---
 
 <li
@@ -23,7 +23,7 @@ const linkWithRef = linkUrl.toString()
   class={classNames("relative group @container", className)}
 >
   <a
-    href={`/inspirations/${link.id}`}
+    href={`/cool-sites/${link.id}`}
     title={`Cool site permalink: "${link.title}" (${link.url})`}
     tabindex={disabled ? "-1" : "0"}
     class={classNames(
@@ -33,9 +33,9 @@ const linkWithRef = linkUrl.toString()
       `focus-visible:ring-offset-8 focus-visible:ring-offset-bg`
     )}
   >
-    <InspirationThumbnail link={link} />
+    <CoolSiteThumbnail link={link} />
     <div class="grid grid-cols-[1rem,1fr] gap-3">
-      <InspirationFavicon link={link} />
+      <CoolSiteFavicon link={link} />
       <h3 class="inline-block leading-tight pr-8">
         <span
           class={classNames(

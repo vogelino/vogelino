@@ -1,70 +1,77 @@
 ---
-import type { Page } from 'astro'
-import FancyHeadline from '../../components/FancyHeadline.astro'
-import ArrowUp from '../../components/icons/ArrowUp.astro'
-import ExternalLink from '../../components/icons/ExternalLink.astro'
-import type { InspirationType } from '../../schemas/inspirations'
-import classNames from '../../utils/classNames'
-import { getParsedInspirations } from '../../utils/getParsedInspirations'
-import InspirationFavicon from './_InspirationFavicon.astro'
-import InspirationGrid from './_InspirationGrid.astro'
-import InspirationThumbnail from './_InspirationThumbnail.astro'
+import type { Page } from "astro";
+import FancyHeadline from "../../components/FancyHeadline.astro";
+import ArrowUp from "../../components/icons/ArrowUp.astro";
+import ExternalLink from "../../components/icons/ExternalLink.astro";
+import type { CoolSiteType } from "../../schemas/coolSites";
+import classNames from "../../utils/classNames";
+import { getParsedCoolSites } from "../../utils/getParsedCoolSites";
+import CoolSitesFavicon from "./_CoolSitesFavicon.astro";
+import CoolSitesGrid from "./_CoolSitesGrid.astro";
+import CoolSitesThumbnail from "./_CoolSitesThumbnail.astro";
 
 export async function getStaticPaths() {
-	const inspirations = await getParsedInspirations()
-	return inspirations.map((inspiration, idx) => {
-		const nextIdx = idx + 1 >= inspirations.length ? 0 : idx + 1
-		const prevIdx = idx - 1 < 0 ? inspirations.length - 1 : idx - 1
-		const currentPage = Math.floor(idx / 48) + 1
-		const lastPage = Math.ceil(inspirations.length / 48)
-		return {
-			params: { id: inspiration.id },
-			props: {
-				page: {
-					data: inspirations.filter((_, i) => {
-						const inspirationPage = Math.ceil((i + 1) / 48)
-						return inspirationPage === currentPage
-					}),
-					start: (currentPage - 1) * 48,
-					end: (currentPage - 1) * 48 + 46,
-					size: 48,
-					total: inspirations.length,
-					currentPage,
-					lastPage,
-					url: {
-						current: currentPage <= 1 ? '/inspirations' : `/inspirations/${currentPage}`,
-						next: currentPage + 1 < lastPage ? `/inspirations/${currentPage + 1}` : undefined,
-						prev: currentPage - 1 > 1 ? `/inspirations/${currentPage - 1}` : `/inspirations`,
-						first: `/inspirations`,
-						last: `/inspirations/${lastPage}`,
-					},
-				} satisfies Page,
-				inspiration: inspiration,
-				prevInspiration: inspirations[prevIdx] || inspirations[inspirations.length - 1],
-				nextInspiration: inspirations[nextIdx] || inspirations[0],
-			},
-		}
-	})
+  const coolSites = await getParsedCoolSites();
+  return coolSites.map((coolSite, idx) => {
+    const nextIdx = idx + 1 >= coolSites.length ? 0 : idx + 1;
+    const prevIdx = idx - 1 < 0 ? coolSites.length - 1 : idx - 1;
+    const currentPage = Math.floor(idx / 48) + 1;
+    const lastPage = Math.ceil(coolSites.length / 48);
+    return {
+      params: { id: coolSite.id },
+      props: {
+        page: {
+          data: coolSites.filter((_, i) => {
+            const coolSitePage = Math.ceil((i + 1) / 48);
+            return coolSitePage === currentPage;
+          }),
+          start: (currentPage - 1) * 48,
+          end: (currentPage - 1) * 48 + 46,
+          size: 48,
+          total: coolSites.length,
+          currentPage,
+          lastPage,
+          url: {
+            current:
+              currentPage <= 1 ? "/cool-sites" : `/cool-sites/${currentPage}`,
+            next:
+              currentPage + 1 < lastPage
+                ? `/cool-sites/${currentPage + 1}`
+                : undefined,
+            prev:
+              currentPage - 1 > 1
+                ? `/cool-sites/${currentPage - 1}`
+                : `/cool-sites`,
+            first: `/cool-sites`,
+            last: `/cool-sites/${lastPage}`,
+          },
+        } satisfies Page,
+        coolSite: coolSite,
+        prevCoolSites: coolSites[prevIdx] || coolSites[coolSites.length - 1],
+        nextCoolSites: coolSites[nextIdx] || coolSites[0],
+      },
+    };
+  });
 }
 
-const { inspiration, page } = Astro.props
+const { coolSite, page } = Astro.props;
 
 export type Props = {
-	inspiration: InspirationType
-	page: Page
-	nextInspiration: InspirationType
-	prevInspiration: InspirationType
-}
+  coolSite: CoolSiteType;
+  page: Page;
+  nextCoolSites: CoolSiteType;
+  prevCoolSites: CoolSiteType;
+};
 
-const linkUrl = new URL(inspiration.url)
-linkUrl.searchParams.set('ref', Astro.site?.href?.toString() ?? '')
-const linkWithRef = linkUrl.toString()
+const linkUrl = new URL(coolSite.url);
+linkUrl.searchParams.set("ref", Astro.site?.href?.toString() ?? "");
+const linkWithRef = linkUrl.toString();
 ---
 
-<InspirationGrid page={page} disableGrid allInspirations={[]}>
+<CoolSitesGrid page={page} disableGrid allCoolSites={[]}>
   <a
     href={page.url.current}
-    title="Back to inspiration list"
+    title="Back to coolSite list"
     data-page={page.url.current}
     tabindex="-1"
     class={classNames(
@@ -91,28 +98,28 @@ const linkWithRef = linkUrl.toString()
     >
       <a
         href={page.url.current}
-        title="Back to all inspirations"
+        title="Back to all cool sites"
         class="focusable flex gap-2 px-2 -ml-2 rounded-full bg-none w-fit"
       >
         <ArrowUp className="-rotate-90" />
-        All sites
+        All cool sites
       </a>
 
       <div class="relative pr-6">
         <FancyHeadline
-          title={inspiration.title}
+          title={coolSite.title}
           className="md:text-3xl 2xl:text-4xl !leading-[0.9em] mb-0"
         />
-        <InspirationFavicon
-          link={inspiration}
+        <CoolSitesFavicon
+          link={coolSite}
           class="absolute top-1/2 right-0 -translate-y-1/2"
           size={24}
         />
       </div>
       {
-        inspiration.tags.length > 0 && (
+        coolSite.tags.length > 0 && (
           <ul class="flex flex-wrap gap-x-1.5 gap-y-1 -mt-1 mb-2">
-            {inspiration.tags.map((tag) => (
+            {coolSite.tags.map((tag) => (
               <li
                 class={classNames(
                   "inline-block px-2 pb-0 pt-1 bg-grayUltraLight",
@@ -130,7 +137,7 @@ const linkWithRef = linkUrl.toString()
           href={linkWithRef}
           target="_blank"
           rel="noopener nofollow"
-          title={`Direct external link to the cool site: "${inspiration.title} (${inspiration.url})"`}
+          title={`Direct external link to the cool site: "${coolSite.title} (${coolSite.url})"`}
           class={classNames(
             `flex flex-col gap-4 group`,
             `focus-visible:ring-2 focus-visible:ring-fg outline-none`,
@@ -138,7 +145,7 @@ const linkWithRef = linkUrl.toString()
             `focus-visible:ring-offset-8 focus-visible:ring-offset-bg`
           )}
         >
-          <InspirationThumbnail link={inspiration} />
+          <CoolSitesThumbnail link={coolSite} />
           <span
             class={classNames(
               "px-4 py-1 pt-2 rounded-full bg-alt focusable inline-block",
@@ -152,17 +159,17 @@ const linkWithRef = linkUrl.toString()
       </div>
     </div>
   </ul>
-</InspirationGrid>
+</CoolSitesGrid>
 
 <style>
-  a[title="Back to inspiration list"] {
+  a[title="Back to coolSite list"] {
     background-color: rgb(252 254 255 / var(--tw-bg-opacity));
     background-image: radial-gradient(transparent, var(--bg) 1px);
     background-size: 4px 4px;
     backdrop-filter: blur(4px);
   }
 
-  :root[data-applied-mode="dark"] a[title="Back to inspiration list"] {
+  :root[data-applied-mode="dark"] a[title="Back to coolSite list"] {
     background-color: rgb(28 28 28 / var(--tw-bg-opacity));
   }
 </style>
@@ -170,7 +177,7 @@ const linkWithRef = linkUrl.toString()
 <script>
   function initEscapeListener() {
     const backLink = document.querySelector(
-      "a[title='Back to inspiration list']"
+      "a[title='Back to coolSite list']"
     ) as HTMLAnchorElement;
 
     if (!backLink) return;

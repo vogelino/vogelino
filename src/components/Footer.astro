@@ -1,17 +1,17 @@
 ---
-import classNames from '../utils/classNames'
-import Dropdown from './Dropdown.astro'
-import Logo from './Logo.astro'
-import ArrowUp from './icons/ArrowUp.astro'
-import Rss from './icons/Rss.astro'
+import classNames from "../utils/classNames";
+import Dropdown from "./Dropdown.astro";
+import Logo from "./Logo.astro";
+import ArrowUp from "./icons/ArrowUp.astro";
+import Rss from "./icons/Rss.astro";
 
-const year = String(new Date().getFullYear())
+const year = String(new Date().getFullYear());
 
 export type Props = {
-	disabled?: boolean
-}
+  disabled?: boolean;
+};
 
-const { disabled = false } = Astro.props
+const { disabled = false } = Astro.props;
 ---
 
 <footer
@@ -46,8 +46,8 @@ const { disabled = false } = Astro.props
             href: `/rss-projects-only.xml`,
           },
           {
-            text: `RSS with inspirations only`,
-            href: `/rss-inspirations-only.xml`,
+            text: `RSS with cool sites only`,
+            href: `/rss-cool-sites-only.xml`,
           },
         ]}
         disabled={disabled}

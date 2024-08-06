@@ -1,203 +1,208 @@
 ---
-import { type CollectionEntry, getCollection } from 'astro:content'
-import '@splidejs/splide/css/core'
-import CollaboratorsGroup from '../../components/CollaboratorsGroup.astro'
-import ProjectSlider from '../../components/ProjectSlider.astro'
-import ProjectSliderNav from '../../components/ProjectSliderNav.astro'
-import RoundedButton from '../../components/RoundedButton.astro'
-import SeeOneMoreFill from '../../components/SeeOneMoreFill.astro'
-import SeeOneMoreStroke from '../../components/SeeOneMoreStroke.astro'
-import TechnologiesTable from '../../components/TechnologiesTable.astro'
-import TextContents from '../../components/TextContents.astro'
-import Thumbnail from '../../components/Thumbnail.astro'
-import GitHub from '../../components/icons/GitHub.astro'
-import Link from '../../components/icons/Link.astro'
-import Layout from '../../layouts/Layout.astro'
-import classNames from '../../utils/classNames'
+import { type CollectionEntry, getCollection } from "astro:content";
+import "@splidejs/splide/css/core";
+import CollaboratorsGroup from "../../components/CollaboratorsGroup.astro";
+import ProjectSlider from "../../components/ProjectSlider.astro";
+import ProjectSliderNav from "../../components/ProjectSliderNav.astro";
+import RoundedButton from "../../components/RoundedButton.astro";
+import SeeOneMoreFill from "../../components/SeeOneMoreFill.astro";
+import SeeOneMoreStroke from "../../components/SeeOneMoreStroke.astro";
+import TechnologiesTable from "../../components/TechnologiesTable.astro";
+import TextContents from "../../components/TextContents.astro";
+import Thumbnail from "../../components/Thumbnail.astro";
+import GitHub from "../../components/icons/GitHub.astro";
+import Link from "../../components/icons/Link.astro";
+import Layout from "../../layouts/Layout.astro";
+import classNames from "../../utils/classNames";
 
 export async function getStaticPaths() {
-	const notionProjects = (await getCollection('projects')).sort((a, b) => b.data.year - a.data.year)
-	return notionProjects.map((notionProject, idx) => {
-		const nextIdx = idx + 1 >= notionProjects.length ? 0 : idx + 1
-		const prevIdx = idx - 1 < 0 ? notionProjects.length - 1 : idx - 1
-		return {
-			params: { slug: notionProject.slug },
-			props: {
-				project: notionProject,
-				prevProject: notionProjects[prevIdx] || notionProjects[notionProjects.length - 1],
-				nextProject: notionProjects[nextIdx] || notionProjects[0],
-			},
-		}
-	})
+  const coolSites = (await getCollection("projects")).sort(
+    (a, b) => b.data.year - a.data.year
+  );
+  return coolSites.map((coolSite, idx) => {
+    const nextIdx = idx + 1 >= coolSites.length ? 0 : idx + 1;
+    const prevIdx = idx - 1 < 0 ? coolSites.length - 1 : idx - 1;
+    return {
+      params: { slug: coolSite.slug },
+      props: {
+        project: coolSite,
+        prevProject: coolSites[prevIdx] || coolSites[coolSites.length - 1],
+        nextProject: coolSites[nextIdx] || coolSites[0],
+      },
+    };
+  });
 }
 
 export interface Props {
-	project: CollectionEntry<'projects'>
-	nextProject: CollectionEntry<'projects'>
-	prevProject: CollectionEntry<'projects'>
+  project: CollectionEntry<"projects">;
+  nextProject: CollectionEntry<"projects">;
+  prevProject: CollectionEntry<"projects">;
 }
 
-const post = Astro.props
-const { project, nextProject, prevProject } = post
-const { Content } = await project.render()
+const post = Astro.props;
+const { project, nextProject, prevProject } = post;
+const { Content } = await project.render();
 ---
 
 <Layout
-	title={project.data.nameShort || project.data.title}
-	slug={project.slug}
-	withHeaderBg={false}
+  title={project.data.nameShort || project.data.title}
+  slug={project.slug}
+  withHeaderBg={false}
 >
-	<main class={`flex flex-col w-screen max-w-[1438px] overflow-x-hidden`}>
-		<ProjectSlider project={project} />
-		<section
-			aria-label="Project information"
-			class="bg-bg relative -mt-px border-t border-t-grayMed"
-		>
-			<ProjectSliderNav />
-			<div
-				class={classNames([
-					`px-6 lg:px-8 leading-normal`,
-					`sm:text-xl lg:text-2xl mt-4`,
-					`xl:grid xl:grid-cols-[5fr,2fr]`,
-					`2xl:grid-cols-[3fr,1fr] xl:gap-8`,
-				])}
-			>
-				<div
-					class={classNames([`lg:gap-8 relative`, `mb-16 max-w-3xl`])}
-					aria-label="Project description"
-				>
-					<TextContents Content={Content} />
-				</div>
-				<aside
-					class={classNames(
-						'@container/collabs relative',
-						!project.data.url && !project.data.repo && 'xl:pt-10',
-					)}
-					aria-label="Project collaborators"
-				>
-					<div
-						class={classNames(
-							`items-stretch max-w-3xl sticky top-20`,
-							`grid grid-cols-1 @lg/collabs:grid-cols-2 @2xl/collabs:grid-cols-3`,
-							`text-base @lg/collabs:text-xl`,
-						)}
-					>
-						{
-							(project.data.url ||
-								project.data.repo ||
-								project.data.links.length > 0) && (
-								<div
-									class={classNames(
-										'flex flex-wrap gap-x-4 gap-y-2 pb-8 mb-8 xl:-mt-8',
-										'border-b border-grayLight col-span-full',
-									)}
-								>
-									<RoundedButton url={project.data.url || undefined} icon={Link}>
-										Launch
-									</RoundedButton>
-									<RoundedButton
-										url={project.data.repo || undefined}
-										icon={GitHub}
-										variant="secondary"
-									>
-										Code
-									</RoundedButton>
-									{project.data.links.map(({ url, label }) => (
-										<RoundedButton url={url} icon={Link} variant="secondary">
-											{label}
-										</RoundedButton>
-									))}
-								</div>
-							)
-						}
-						<CollaboratorsGroup
-							collaborators={project.data.clients}
-							title={`Made for`}
-						/>
-						<CollaboratorsGroup
-							collaborators={project.data.colleagues}
-							title={`Made with`}
-						/>
-						<CollaboratorsGroup
-							collaborators={project.data.supervisors}
-							title={`Supervised by`}
-						/>
-						<CollaboratorsGroup
-							collaborators={project.data.institutions}
-							title={`Made at`}
-						/>
-						<CollaboratorsGroup
-							collaborators={project.data.collaborators}
-							title={`Collaborators`}
-						/>
-					</div>
-				</aside>
-			</div>
-			<div class={classNames([`px-6 lg:px-8 mt-4`])}>
-				<TechnologiesTable project={project} />
-			</div>
-			<section
-				aria-label="More projects"
-				class={classNames(
-					`flex flex-col sm:px-6 lg:px-8 mb-8 mt-32`,
-					`md:grid md:grid-cols-[1fr,0,0,0,1fr] xl:grid-cols-[0,450px,1fr,450px,0]`,
-				)}
-			>
-				<Thumbnail
-					project={{
-						...prevProject,
-						data: { ...prevProject.data, highlighted: false },
-					}}
-					rotationClass="rotate-1"
-				/>
-				<div
-					aria-hidden="true"
-					class={classNames(
-						`flex items-center justify-center`,
-						`mb-8 relative`,
-					)}
-				>
-					<div class="relative">
-						<SeeOneMoreFill className="text-alt hidden xl:block" />
-						<SeeOneMoreStroke
-							className="hidden xl:block absolute top-0 left-0"
-						/>
-					</div>
-				</div>
-				<Thumbnail
-					project={{
-						...nextProject,
-						data: { ...nextProject.data, highlighted: false },
-					}}
-					rotationClass="-rotate-1"
-				/>
-			</section>
-		</section>
-	</main>
+  <main class={`flex flex-col w-screen max-w-[1438px] overflow-x-hidden`}>
+    <ProjectSlider project={project} />
+    <section
+      aria-label="Project information"
+      class="bg-bg relative -mt-px border-t border-t-grayMed"
+    >
+      <ProjectSliderNav />
+      <div
+        class={classNames([
+          `px-6 lg:px-8 leading-normal`,
+          `sm:text-xl lg:text-2xl mt-4`,
+          `xl:grid xl:grid-cols-[5fr,2fr]`,
+          `2xl:grid-cols-[3fr,1fr] xl:gap-8`,
+        ])}
+      >
+        <div
+          class={classNames([`lg:gap-8 relative`, `mb-16 max-w-3xl`])}
+          aria-label="Project description"
+        >
+          <TextContents Content={Content} />
+        </div>
+        <aside
+          class={classNames(
+            "@container/collabs relative",
+            !project.data.url && !project.data.repo && "xl:pt-10"
+          )}
+          aria-label="Project collaborators"
+        >
+          <div
+            class={classNames(
+              `items-stretch max-w-3xl sticky top-20`,
+              `grid grid-cols-1 @lg/collabs:grid-cols-2 @2xl/collabs:grid-cols-3`,
+              `text-base @lg/collabs:text-xl`
+            )}
+          >
+            {
+              (project.data.url ||
+                project.data.repo ||
+                project.data.links.length > 0) && (
+                <div
+                  class={classNames(
+                    "flex flex-wrap gap-x-4 gap-y-2 pb-8 mb-8 xl:-mt-8",
+                    "border-b border-grayLight col-span-full"
+                  )}
+                >
+                  <RoundedButton
+                    url={project.data.url || undefined}
+                    icon={Link}
+                  >
+                    Launch
+                  </RoundedButton>
+                  <RoundedButton
+                    url={project.data.repo || undefined}
+                    icon={GitHub}
+                    variant="secondary"
+                  >
+                    Code
+                  </RoundedButton>
+                  {project.data.links.map(({ url, label }) => (
+                    <RoundedButton url={url} icon={Link} variant="secondary">
+                      {label}
+                    </RoundedButton>
+                  ))}
+                </div>
+              )
+            }
+            <CollaboratorsGroup
+              collaborators={project.data.clients}
+              title={`Made for`}
+            />
+            <CollaboratorsGroup
+              collaborators={project.data.colleagues}
+              title={`Made with`}
+            />
+            <CollaboratorsGroup
+              collaborators={project.data.supervisors}
+              title={`Supervised by`}
+            />
+            <CollaboratorsGroup
+              collaborators={project.data.institutions}
+              title={`Made at`}
+            />
+            <CollaboratorsGroup
+              collaborators={project.data.collaborators}
+              title={`Collaborators`}
+            />
+          </div>
+        </aside>
+      </div>
+      <div class={classNames([`px-6 lg:px-8 mt-4`])}>
+        <TechnologiesTable project={project} />
+      </div>
+      <section
+        aria-label="More projects"
+        class={classNames(
+          `flex flex-col sm:px-6 lg:px-8 mb-8 mt-32`,
+          `md:grid md:grid-cols-[1fr,0,0,0,1fr] xl:grid-cols-[0,450px,1fr,450px,0]`
+        )}
+      >
+        <Thumbnail
+          project={{
+            ...prevProject,
+            data: { ...prevProject.data, highlighted: false },
+          }}
+          rotationClass="rotate-1"
+        />
+        <div
+          aria-hidden="true"
+          class={classNames(
+            `flex items-center justify-center`,
+            `mb-8 relative`
+          )}
+        >
+          <div class="relative">
+            <SeeOneMoreFill className="text-alt hidden xl:block" />
+            <SeeOneMoreStroke
+              className="hidden xl:block absolute top-0 left-0"
+            />
+          </div>
+        </div>
+        <Thumbnail
+          project={{
+            ...nextProject,
+            data: { ...nextProject.data, highlighted: false },
+          }}
+          rotationClass="-rotate-1"
+        />
+      </section>
+    </section>
+  </main>
 </Layout>
 
 <script>
-	let lastScrollY = 0
-	function updateScrollOffsetCSSVariable() {
-		const scrollY =
-			document.body.scrollTop || document.documentElement.scrollTop
-		const scrollPercentageFixed = scrollY / document.body.scrollHeight
-		if (scrollY !== lastScrollY) {
-			document.documentElement.style.setProperty(
-				'--scroll-offset',
-				`${scrollY}px`,
-			)
-			document.documentElement.style.setProperty(
-				'--scroll-percentage',
-				`${scrollPercentageFixed}`,
-			)
-			lastScrollY = scrollY
-		}
-	}
-	function setupScrollOffsetCSSVariable() {
-		window.addEventListener('scroll', updateScrollOffsetCSSVariable, {
-			passive: true,
-		})
-	}
-	setupScrollOffsetCSSVariable()
+  let lastScrollY = 0;
+  function updateScrollOffsetCSSVariable() {
+    const scrollY =
+      document.body.scrollTop || document.documentElement.scrollTop;
+    const scrollPercentageFixed = scrollY / document.body.scrollHeight;
+    if (scrollY !== lastScrollY) {
+      document.documentElement.style.setProperty(
+        "--scroll-offset",
+        `${scrollY}px`
+      );
+      document.documentElement.style.setProperty(
+        "--scroll-percentage",
+        `${scrollPercentageFixed}`
+      );
+      lastScrollY = scrollY;
+    }
+  }
+  function setupScrollOffsetCSSVariable() {
+    window.addEventListener("scroll", updateScrollOffsetCSSVariable, {
+      passive: true,
+    });
+  }
+  setupScrollOffsetCSSVariable();
 </script>

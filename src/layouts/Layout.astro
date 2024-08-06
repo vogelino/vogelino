@@ -1,31 +1,35 @@
 ---
-import { ViewTransitions } from 'astro:transitions'
-import Footer from '../components/Footer.astro'
-import GlobalStyles from '../components/GlobalStyles.astro'
-import Header from '../components/Header.astro'
-import type { AstroGlobImageType } from '../utils/astroTypes'
-import classNames from '../utils/classNames'
+import { ViewTransitions } from "astro:transitions";
+import Footer from "../components/Footer.astro";
+import GlobalStyles from "../components/GlobalStyles.astro";
+import Header from "../components/Header.astro";
+import type { AstroGlobImageType } from "../utils/astroTypes";
+import classNames from "../utils/classNames";
 
 export interface Props {
-	title: string
-	slug: string
-	description?: string
-	withHeaderBg?: boolean
-	className?: string
-	disableScroll?: boolean
+  title: string;
+  slug: string;
+  description?: string;
+  withHeaderBg?: boolean;
+  className?: string;
+  disableScroll?: boolean;
 }
 
 const {
-	title,
-	slug,
-	description = 'Interface design and development portfolio of Lucas Vogel',
-	withHeaderBg = true,
-	className,
-	disableScroll = false,
-} = Astro.props
-const ogImages = await Astro.glob<AstroGlobImageType<'png'>>('/src/assets/images/og/*.png')
-const ogImage = ogImages.find((file) => file.default.src.includes(slug))?.default
-const ogImageUrl = ogImage?.src
+  title,
+  slug,
+  description = "Interface design and development portfolio of Lucas Vogel",
+  withHeaderBg = true,
+  className,
+  disableScroll = false,
+} = Astro.props;
+const ogImages = await Astro.glob<AstroGlobImageType<"png">>(
+  "/src/assets/images/og/*.png"
+);
+const ogImage = ogImages.find((file) =>
+  file.default.src.includes(slug)
+)?.default;
+const ogImageUrl = ogImage?.src;
 ---
 
 <!doctype html>
@@ -63,9 +67,9 @@ const ogImageUrl = ogImage?.src
     />
     <link
       rel="alternate"
-      title="Inspirations-only RSS Feed"
+      title="Cool sites-only RSS Feed"
       type="application/rss+xml"
-      href="/rss-inspirations-only.xml"
+      href="/rss-cool-sites-only.xml"
     />
 
     <meta name="generator" content={Astro.generator} />
