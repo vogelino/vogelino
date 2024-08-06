@@ -1,32 +1,32 @@
 ---
-import type { Page, PaginateFunction } from "astro";
-import type { CoolSiteType } from "../../schemas/coolSites";
-import { getParsedCoolSites } from "../../utils/getParsedCoolSites";
-import CoolSitesGrid from "./_CoolSitesGrid.astro";
+import type { Page, PaginateFunction } from 'astro'
+import type { CoolSiteType } from '../../schemas/coolSites'
+import { getParsedCoolSites } from '../../utils/getParsedCoolSites'
+import CoolSitesGrid from './_CoolSitesGrid.astro'
 
 export async function getStaticPaths({
-  paginate,
+	paginate,
 }: {
-  paginate: PaginateFunction;
+	paginate: PaginateFunction
 }) {
-  const parsedCoolSites = await getParsedCoolSites();
-  return paginate(parsedCoolSites, {
-    pageSize: 48,
-  }).map((page) => ({
-    ...page,
-    props: {
-      ...page.props,
-      allCoolSites: parsedCoolSites,
-    },
-  }));
+	const parsedCoolSites = await getParsedCoolSites()
+	return paginate(parsedCoolSites, {
+		pageSize: 48,
+	}).map((page) => ({
+		...page,
+		props: {
+			...page.props,
+			allCoolSites: parsedCoolSites,
+		},
+	}))
 }
 
 export interface Props {
-  page: Page;
-  allCoolSites: CoolSiteType[];
+	page: Page
+	allCoolSites: CoolSiteType[]
 }
 
-const { page, allCoolSites } = Astro.props;
+const { page, allCoolSites } = Astro.props
 ---
 
 <CoolSitesGrid page={page} allCoolSites={allCoolSites} />

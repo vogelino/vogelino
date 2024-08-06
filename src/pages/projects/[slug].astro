@@ -1,47 +1,45 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content";
-import "@splidejs/splide/css/core";
-import CollaboratorsGroup from "../../components/CollaboratorsGroup.astro";
-import ProjectSlider from "../../components/ProjectSlider.astro";
-import ProjectSliderNav from "../../components/ProjectSliderNav.astro";
-import RoundedButton from "../../components/RoundedButton.astro";
-import SeeOneMoreFill from "../../components/SeeOneMoreFill.astro";
-import SeeOneMoreStroke from "../../components/SeeOneMoreStroke.astro";
-import TechnologiesTable from "../../components/TechnologiesTable.astro";
-import TextContents from "../../components/TextContents.astro";
-import Thumbnail from "../../components/Thumbnail.astro";
-import GitHub from "../../components/icons/GitHub.astro";
-import Link from "../../components/icons/Link.astro";
-import Layout from "../../layouts/Layout.astro";
-import classNames from "../../utils/classNames";
+import { type CollectionEntry, getCollection } from 'astro:content'
+import '@splidejs/splide/css/core'
+import CollaboratorsGroup from '../../components/CollaboratorsGroup.astro'
+import ProjectSlider from '../../components/ProjectSlider.astro'
+import ProjectSliderNav from '../../components/ProjectSliderNav.astro'
+import RoundedButton from '../../components/RoundedButton.astro'
+import SeeOneMoreFill from '../../components/SeeOneMoreFill.astro'
+import SeeOneMoreStroke from '../../components/SeeOneMoreStroke.astro'
+import TechnologiesTable from '../../components/TechnologiesTable.astro'
+import TextContents from '../../components/TextContents.astro'
+import Thumbnail from '../../components/Thumbnail.astro'
+import GitHub from '../../components/icons/GitHub.astro'
+import Link from '../../components/icons/Link.astro'
+import Layout from '../../layouts/Layout.astro'
+import classNames from '../../utils/classNames'
 
 export async function getStaticPaths() {
-  const coolSites = (await getCollection("projects")).sort(
-    (a, b) => b.data.year - a.data.year
-  );
-  return coolSites.map((coolSite, idx) => {
-    const nextIdx = idx + 1 >= coolSites.length ? 0 : idx + 1;
-    const prevIdx = idx - 1 < 0 ? coolSites.length - 1 : idx - 1;
-    return {
-      params: { slug: coolSite.slug },
-      props: {
-        project: coolSite,
-        prevProject: coolSites[prevIdx] || coolSites[coolSites.length - 1],
-        nextProject: coolSites[nextIdx] || coolSites[0],
-      },
-    };
-  });
+	const coolSites = (await getCollection('projects')).sort((a, b) => b.data.year - a.data.year)
+	return coolSites.map((coolSite, idx) => {
+		const nextIdx = idx + 1 >= coolSites.length ? 0 : idx + 1
+		const prevIdx = idx - 1 < 0 ? coolSites.length - 1 : idx - 1
+		return {
+			params: { slug: coolSite.slug },
+			props: {
+				project: coolSite,
+				prevProject: coolSites[prevIdx] || coolSites[coolSites.length - 1],
+				nextProject: coolSites[nextIdx] || coolSites[0],
+			},
+		}
+	})
 }
 
 export interface Props {
-  project: CollectionEntry<"projects">;
-  nextProject: CollectionEntry<"projects">;
-  prevProject: CollectionEntry<"projects">;
+	project: CollectionEntry<'projects'>
+	nextProject: CollectionEntry<'projects'>
+	prevProject: CollectionEntry<'projects'>
 }
 
-const post = Astro.props;
-const { project, nextProject, prevProject } = post;
-const { Content } = await project.render();
+const post = Astro.props
+const { project, nextProject, prevProject } = post
+const { Content } = await project.render()
 ---
 
 <Layout

@@ -1,19 +1,19 @@
 ---
-import type { Page } from "astro";
-import CoolSitesSearch from "../../components/CoolSitesSearch";
-import FancyHeadline from "../../components/FancyHeadline.astro";
-import Pagination from "../../components/Pagination.astro";
-import Layout from "../../layouts/Layout.astro";
-import type { CoolSiteType } from "../../schemas/coolSites";
-import classNames from "../../utils/classNames";
-import CoolSitesItem from "./_CoolSitesItem.astro";
+import type { Page } from 'astro'
+import CoolSitesSearch from '../../components/CoolSitesSearch'
+import FancyHeadline from '../../components/FancyHeadline.astro'
+import Pagination from '../../components/Pagination.astro'
+import Layout from '../../layouts/Layout.astro'
+import type { CoolSiteType } from '../../schemas/coolSites'
+import classNames from '../../utils/classNames'
+import CoolSitesItem from './_CoolSitesItem.astro'
 export interface Props {
-  page: Page;
-  allCoolSites: CoolSiteType[];
-  disableGrid?: true;
+	page: Page
+	allCoolSites: CoolSiteType[]
+	disableGrid?: true
 }
 
-const { page, disableGrid = false, allCoolSites = [] } = Astro.props;
+const { page, disableGrid = false, allCoolSites = [] } = Astro.props
 ---
 
 <Layout

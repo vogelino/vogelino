@@ -1,71 +1,64 @@
 ---
-import type { Page } from "astro";
-import FancyHeadline from "../../components/FancyHeadline.astro";
-import ArrowUp from "../../components/icons/ArrowUp.astro";
-import ExternalLink from "../../components/icons/ExternalLink.astro";
-import type { CoolSiteType } from "../../schemas/coolSites";
-import classNames from "../../utils/classNames";
-import { getParsedCoolSites } from "../../utils/getParsedCoolSites";
-import CoolSitesFavicon from "./_CoolSitesFavicon.astro";
-import CoolSitesGrid from "./_CoolSitesGrid.astro";
-import CoolSitesThumbnail from "./_CoolSitesThumbnail.astro";
+import type { Page } from 'astro'
+import FancyHeadline from '../../components/FancyHeadline.astro'
+import ArrowUp from '../../components/icons/ArrowUp.astro'
+import ExternalLink from '../../components/icons/ExternalLink.astro'
+import type { CoolSiteType } from '../../schemas/coolSites'
+import classNames from '../../utils/classNames'
+import { getParsedCoolSites } from '../../utils/getParsedCoolSites'
+import CoolSitesFavicon from './_CoolSitesFavicon.astro'
+import CoolSitesGrid from './_CoolSitesGrid.astro'
+import CoolSitesThumbnail from './_CoolSitesThumbnail.astro'
 
 export async function getStaticPaths() {
-  const coolSites = await getParsedCoolSites();
-  return coolSites.map((coolSite, idx) => {
-    const nextIdx = idx + 1 >= coolSites.length ? 0 : idx + 1;
-    const prevIdx = idx - 1 < 0 ? coolSites.length - 1 : idx - 1;
-    const currentPage = Math.floor(idx / 48) + 1;
-    const lastPage = Math.ceil(coolSites.length / 48);
-    return {
-      params: { id: coolSite.id },
-      props: {
-        page: {
-          data: coolSites.filter((_, i) => {
-            const coolSitePage = Math.ceil((i + 1) / 48);
-            return coolSitePage === currentPage;
-          }),
-          start: (currentPage - 1) * 48,
-          end: (currentPage - 1) * 48 + 46,
-          size: 48,
-          total: coolSites.length,
-          currentPage,
-          lastPage,
-          url: {
-            current:
-              currentPage <= 1 ? "/cool-sites" : `/cool-sites/${currentPage}`,
-            next:
-              currentPage + 1 < lastPage
-                ? `/cool-sites/${currentPage + 1}`
-                : undefined,
-            prev:
-              currentPage - 1 > 1
-                ? `/cool-sites/${currentPage - 1}`
-                : `/cool-sites`,
-            first: `/cool-sites`,
-            last: `/cool-sites/${lastPage}`,
-          },
-        } satisfies Page,
-        coolSite: coolSite,
-        prevCoolSites: coolSites[prevIdx] || coolSites[coolSites.length - 1],
-        nextCoolSites: coolSites[nextIdx] || coolSites[0],
-      },
-    };
-  });
+	const coolSites = await getParsedCoolSites()
+	return coolSites.map((coolSite, idx) => {
+		const nextIdx = idx + 1 >= coolSites.length ? 0 : idx + 1
+		const prevIdx = idx - 1 < 0 ? coolSites.length - 1 : idx - 1
+		const currentPage = Math.floor(idx / 48) + 1
+		const lastPage = Math.ceil(coolSites.length / 48)
+		return {
+			params: { id: coolSite.id },
+			props: {
+				page: {
+					data: coolSites.filter((_, i) => {
+						const coolSitePage = Math.ceil((i + 1) / 48)
+						return coolSitePage === currentPage
+					}),
+					start: (currentPage - 1) * 48,
+					end: (currentPage - 1) * 48 + 46,
+					size: 48,
+					total: coolSites.length,
+					currentPage,
+					lastPage,
+					url: {
+						current: currentPage <= 1 ? '/cool-sites' : `/cool-sites/${currentPage}`,
+						next: currentPage + 1 < lastPage ? `/cool-sites/${currentPage + 1}` : undefined,
+						prev: currentPage - 1 > 1 ? `/cool-sites/${currentPage - 1}` : `/cool-sites`,
+						first: `/cool-sites`,
+						last: `/cool-sites/${lastPage}`,
+					},
+				} satisfies Page,
+				coolSite: coolSite,
+				prevCoolSites: coolSites[prevIdx] || coolSites[coolSites.length - 1],
+				nextCoolSites: coolSites[nextIdx] || coolSites[0],
+			},
+		}
+	})
 }
 
-const { coolSite, page } = Astro.props;
+const { coolSite, page } = Astro.props
 
 export type Props = {
-  coolSite: CoolSiteType;
-  page: Page;
-  nextCoolSites: CoolSiteType;
-  prevCoolSites: CoolSiteType;
-};
+	coolSite: CoolSiteType
+	page: Page
+	nextCoolSites: CoolSiteType
+	prevCoolSites: CoolSiteType
+}
 
-const linkUrl = new URL(coolSite.url);
-linkUrl.searchParams.set("ref", Astro.site?.href?.toString() ?? "");
-const linkWithRef = linkUrl.toString();
+const linkUrl = new URL(coolSite.url)
+linkUrl.searchParams.set('ref', Astro.site?.href?.toString() ?? '')
+const linkWithRef = linkUrl.toString()
 ---
 
 <CoolSitesGrid page={page} disableGrid allCoolSites={[]}>

@@ -1,21 +1,21 @@
 ---
-import ExternalLink from "../../components/icons/ExternalLink.astro";
-import type { CoolSiteType } from "../../schemas/coolSites";
-import classNames from "../../utils/classNames";
-import CoolSiteFavicon from "./_CoolSitesFavicon.astro";
-import CoolSiteThumbnail from "./_CoolSitesThumbnail.astro";
+import ExternalLink from '../../components/icons/ExternalLink.astro'
+import type { CoolSiteType } from '../../schemas/coolSites'
+import classNames from '../../utils/classNames'
+import CoolSiteFavicon from './_CoolSitesFavicon.astro'
+import CoolSiteThumbnail from './_CoolSitesThumbnail.astro'
 
-const { link, class: className, disabled = false } = Astro.props;
+const { link, class: className, disabled = false } = Astro.props
 
 export type Props = {
-  link: CoolSiteType;
-  class?: string;
-  disabled?: boolean;
-};
+	link: CoolSiteType
+	class?: string
+	disabled?: boolean
+}
 
-const linkUrl = new URL(link.url);
-linkUrl.searchParams.set("ref", Astro.site?.href?.toString() ?? "");
-const linkWithRef = linkUrl.toString();
+const linkUrl = new URL(link.url)
+linkUrl.searchParams.set('ref', Astro.site?.href?.toString() ?? '')
+const linkWithRef = linkUrl.toString()
 ---
 
 <li
