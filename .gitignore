@@ -12,6 +12,7 @@
 dist/
 .output/
 data/
+!src/assets/data/
 
 # production
 /build
