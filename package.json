@@ -1,4 +1,3 @@
-
 {
   "name": "vogelino",
   "description": "Lucas Vogel's (Vogelino) 2024 online portfolio",
@@ -10,7 +9,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "type-check": "astro check",
-    "downloadInspiration": "npx ts-node -P scripts/tsconfig.json scripts/downloadInspiration.ts",
+    "downloadCoolSites": "npx ts-node -P scripts/tsconfig.json scripts/downloadCoolSites.ts",
     "check": "biome check . --apply",
     "code-qa": "bun run type-check && bun run check"
   },
@@ -22,7 +21,6 @@
     "@astrojs/tailwind": "5.1.0",
     "@astrojs/ts-plugin": "1.9.0",
     "@biomejs/biome": "1.7.0",
-    "@notionhq/client": "2.2.14",
     "@tailwindcss/container-queries": "0.1.1",
     "@types/marked": "4.0.7",
     "@types/node-fetch": "2.6.11",
