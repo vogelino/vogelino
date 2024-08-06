@@ -33,5 +33,6 @@ export default defineConfig({
     "/inspirations/[id]": "/cool-sites/[id]",
     "/api/inspirations.json": "/api/cool-sites.json",
     "/api/inspirations/[id].json": "/api/cool-sites/[id].json",
+    "/rss-inspirations-only.xml": "/rss-cool-sites-only.xml",
   },
 });
