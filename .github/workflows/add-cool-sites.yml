@@ -21,8 +21,15 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
 
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: npm-${{ hashFiles('package-lock.json') }}
+          restore-keys: npm-
+
       - name: Install dependencies
-        run: npm install
+        run: npm ci --ignore-scripts
 
       - name: Add cool site from github webhook payload
         env:
