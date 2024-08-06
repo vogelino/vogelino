@@ -1,7 +1,7 @@
 name: Add cool site and commit it
 on:
   repository_dispatch:
-    types: [update-inspirations]
+    types: [update-cool-site]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}-${{ github.run_id }}
