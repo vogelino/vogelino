@@ -77,10 +77,7 @@ function CoolSitespirationsSearch({
   });
 
   return (
-    <div
-      class="flex gap-x-4 flex-col gap-y-1 h-full justify-end"
-      ref={parentRef}
-    >
+    <div class="flex gap-x-4 flex-col gap-y-1" ref={parentRef}>
       <label>Search sites</label>
       <div class="relative">
         <input

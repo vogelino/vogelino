@@ -1,0 +1,53 @@
+---
+import classNames from "../utils/classNames";
+import GridSvgPattern from "./GridSvgPattern.astro";
+
+const navItems = [
+  {
+    title: "Cool Sites",
+    slug: "cool-sites",
+  },
+  {
+    title: "Experiments",
+    slug: "experiments",
+  },
+  {
+    title: "Ceramics",
+    slug: "ceramics",
+  },
+  {
+    title: "Media Shelf",
+    slug: "media-shelf",
+  },
+];
+---
+
+<nav
+  class={classNames(
+    "pt-[8.3rem] shadow-[inset_0_-1px_0_0_var(--grayMed)] flex",
+    "bg-grayUltraLight relative z-10"
+  )}
+>
+  <GridSvgPattern />
+  {
+    navItems.map(({ title, slug }) => (
+      <a
+        href={`/${slug}`}
+        class={classNames(
+          "text-4xl uppercase focusable px-[calc(2rem+1px)] pt-[1.65rem] pb-[0.8rem] -ml-px bg-bg",
+          "inline-block rounded-t-2xl border-x border-t border-grayMed first-of-type:rounded-tl-none",
+          "relative z-10 transition-all ease-in-out-extreme duration-500",
+          `/${slug}` === Astro.url.pathname
+            ? classNames("font-special pt-[1.2rem] pb-3.5")
+            : classNames(
+                "bg-gradient-to-t via-bg from-grayUltraLight to-bg",
+                "hover-hover:hover:from-bg shadow-[inset_0_-1px_0_0_var(--grayMed)]"
+              )
+        )}
+        aria-label={title}
+      >
+        {title}
+      </a>
+    ))
+  }
+</nav>

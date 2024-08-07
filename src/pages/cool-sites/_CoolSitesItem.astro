@@ -1,21 +1,21 @@
 ---
-import ExternalLink from '../../components/icons/ExternalLink.astro'
-import type { CoolSiteType } from '../../schemas/coolSites'
-import classNames from '../../utils/classNames'
-import CoolSiteFavicon from './_CoolSitesFavicon.astro'
-import CoolSiteThumbnail from './_CoolSitesThumbnail.astro'
+import ExternalLink from "../../components/icons/ExternalLink.astro";
+import type { CoolSiteType } from "../../schemas/coolSites";
+import classNames from "../../utils/classNames";
+import CoolSiteFavicon from "./_CoolSitesFavicon.astro";
+import CoolSiteThumbnail from "./_CoolSitesThumbnail.astro";
 
-const { link, class: className, disabled = false } = Astro.props
+const { link, class: className, disabled = false } = Astro.props;
 
 export type Props = {
-	link: CoolSiteType
-	class?: string
-	disabled?: boolean
-}
+  link: CoolSiteType;
+  class?: string;
+  disabled?: boolean;
+};
 
-const linkUrl = new URL(link.url)
-linkUrl.searchParams.set('ref', Astro.site?.href?.toString() ?? '')
-const linkWithRef = linkUrl.toString()
+const linkUrl = new URL(link.url);
+linkUrl.searchParams.set("ref", Astro.site?.href?.toString() ?? "");
+const linkWithRef = linkUrl.toString();
 ---
 
 <li
@@ -36,7 +36,7 @@ const linkWithRef = linkUrl.toString()
     <CoolSiteThumbnail link={link} />
     <div class="grid grid-cols-[1rem,1fr] gap-3">
       <CoolSiteFavicon link={link} />
-      <h3 class="inline-block leading-tight pr-8">
+      <h3 class="inline-block leading-tight pr-8 truncate">
         <span
           class={classNames(
             `px-3 -ml-2 py-2 rounded-full`,
