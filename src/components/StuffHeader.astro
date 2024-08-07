@@ -1,23 +1,28 @@
 ---
+import { getCollection } from "astro:content";
 import classNames from "../utils/classNames";
 import GridSvgPattern from "./GridSvgPattern.astro";
 
+const [experiments, ceramics] = await Promise.all([
+  getCollection("experiments"),
+  getCollection("ceramics"),
+]);
 const navItems = [
   {
     title: "Cool Sites",
-    slug: "cool-sites",
+    path: "cool-sites",
   },
   {
     title: "Experiments",
-    slug: "experiments",
+    path: `experiments/${experiments[0].slug}`,
   },
   {
     title: "Ceramics",
-    slug: "ceramics",
+    path: `ceramics/${ceramics[0].slug}`,
   },
   {
     title: "Media Shelf",
-    slug: "media-shelf",
+    path: "media-shelf",
   },
 ];
 ---
@@ -30,14 +35,15 @@ const navItems = [
 >
   <GridSvgPattern />
   {
-    navItems.map(({ title, slug }) => (
+    navItems.map(({ title, path }) => (
       <a
-        href={`/${slug}`}
+        href={`/${path}`}
         class={classNames(
-          "text-4xl uppercase focusable px-[calc(2rem+1px)] pt-[1.65rem] pb-[0.8rem] -ml-px bg-bg",
+          "text-4xl uppercase focusable px-8 pt-[1.65rem] pb-[0.8rem] -ml-px bg-bg",
           "inline-block rounded-t-2xl border-x border-t border-grayMed first-of-type:rounded-tl-none",
-          "relative z-10 transition-all ease-in-out-extreme duration-500",
-          `/${slug}` === Astro.url.pathname
+          "relative z-10 transition-all ease-in-out-extreme duration-500 focus-visible:z-50",
+          "focus-visible:rounded-b",
+          `/${path}` === Astro.url.pathname
             ? classNames("font-special pt-[1.2rem] pb-3.5")
             : classNames(
                 "bg-gradient-to-t via-bg from-grayUltraLight to-bg",

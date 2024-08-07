@@ -1,0 +1,67 @@
+[
+  {
+    "id": "refactoring-ui",
+    "type": "book",
+    "title": "Refactoring UI",
+    "url": "https://www.refactoringui.com/",
+    "tags": [
+      "Book",
+      "Design",
+      "UI Design",
+      "Refactoring",
+      "Software Development"
+    ],
+    "date": "2024-08-07T00:00:00.000Z"
+  },
+  {
+    "id": "should-your-website-work-without-javascript",
+    "type": "video",
+    "title": "Should Your Website Work Without JavaScript?",
+    "url": "https://www.youtube.com/watch?v=NDK66t7SrSY",
+    "tags": ["Javascript", "Web Development", "Video"],
+    "date": "2024-08-07T00:00:00.000Z"
+  },
+  {
+    "id": "syntax-snack-pack-issue-25",
+    "type": "article",
+    "title": "Syntax Snack Pack Issue #25: Full Stack React without Next.js?",
+    "url": "https://syntax.fm/snackpack/16039735",
+    "tags": ["React", "Javascript", "Web Development", "Article"],
+    "date": "2024-08-07T00:00:00.000Z"
+  },
+  {
+    "id": "the-sql-takover-with-tursos-glauber-costa",
+    "type": "podcast",
+    "title": "The SQL Takover with Turso's Glauber Costa",
+    "url": "https://syntax.fm/show/803/the-sqlite-takeover-with-turso-s-glauber-costa",
+    "tags": [
+      "SQL",
+      "Podcast",
+      "Web Development",
+      "Database",
+      "Turso",
+      "Glauber Costa",
+      "Syntax",
+      "Wes Bos",
+      "Scott Tolinski"
+    ],
+    "date": "2024-08-07T00:00:00.000Z"
+  },
+  {
+    "id": "total-typescript",
+    "type": "course",
+    "title": "Total TypeScript",
+    "url": "https://totaltypescript.com/",
+    "tags": [
+      "TypeScript",
+      "Course",
+      "Web Development",
+      "Javascript",
+      "React",
+      "CSS",
+      "HTML",
+      "Matt Pocock"
+    ],
+    "date": "2024-08-07T00:00:00.000Z"
+  }
+]

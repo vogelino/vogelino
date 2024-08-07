@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "type": "array",
+  "items": {
+    "$ref": "#/definitions/MediaShefItem"
+  },
+  "definitions": {
+    "MediaShefItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "qt-uri-protocols": ["https"]
+        },
+        "id": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "date": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["book", "video", "podcast", "course", "article"]
+        }
+      },
+      "required": ["date", "id", "tags", "title", "url", "type"],
+      "title": "MediaShefItem"
+    }
+  }
+}

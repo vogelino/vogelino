@@ -1,0 +1,51 @@
+---
+import type { MediaShelfType } from "../../schemas/mediaShelf";
+import classNames from "../../utils/classNames";
+import MediaShelfThumbnail from "./_MediaShelfThumbnail.astro";
+
+const { link, class: className, disabled = false } = Astro.props;
+
+export type Props = {
+  link: MediaShelfType;
+  class?: string;
+  disabled?: boolean;
+};
+
+const linkUrl = new URL(link.url);
+linkUrl.searchParams.set("ref", Astro.site?.href?.toString() ?? "");
+const linkWithRef = linkUrl.toString();
+---
+
+<li
+  aria-label={`Cool site permalink: "${link.title}" (${link.url})`}
+  class={classNames("relative group @container", className)}
+>
+  <a
+    href={link.url}
+    title={`Media shelf item permalink: "${link.title}" (${link.url})`}
+    tabindex={disabled ? "-1" : "0"}
+    target="_blank"
+    rel="noopener nofollow"
+    class={classNames(
+      `flex flex-col gap-4 group`,
+      `focus-visible:ring-2 focus-visible:ring-fg outline-none`,
+      `focus-visible:overflow-hidden focus-visible:rounded-lg`,
+      `focus-visible:ring-offset-8 focus-visible:ring-offset-bg`
+    )}
+  >
+    <MediaShelfThumbnail link={link} />
+    <div class="flex flex-col gap-3">
+      <h3 class="inline-block leading-tight pr-8 truncate">
+        <span
+          class={classNames(
+            `px-3 -ml-2 py-2 rounded-full`,
+            `hover-hover:group-hover:bg-alt`,
+            `transition-colors motion-reduce:transition-none`
+          )}
+        >
+          {link.title}
+        </span>
+      </h3>
+    </div>
+  </a>
+</li>

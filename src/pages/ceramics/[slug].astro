@@ -1,0 +1,42 @@
+---
+import { getCollection } from "astro:content";
+import type { CeramicType } from "../../content/config";
+import Layout from "../../layouts/Layout.astro";
+import StuffLayout from "../../layouts/StuffLayout.astro";
+
+export async function getStaticPaths() {
+  const ceramics = await getCollection("ceramics");
+  return ceramics.map((ceramic) => {
+    return {
+      params: { slug: ceramic.slug },
+      props: {
+        ceramic,
+      },
+    };
+  });
+}
+
+const { ceramic } = Astro.props;
+
+export type Props = {
+  ceramic: {
+    id: string;
+    slug: string;
+    body: string;
+    collection: "ceramics";
+    data: CeramicType;
+    render: () => Promise<void>;
+  };
+};
+---
+
+<Layout
+  title={`Ceramic: ${ceramic.data.name} | Vogelino's Ceramics`}
+  slug={`ceramics`}
+>
+  <StuffLayout>
+    <Fragment>
+      <div class="flex flex-col w-full">{ceramic.data.name}</div>
+    </Fragment>
+  </StuffLayout>
+</Layout>

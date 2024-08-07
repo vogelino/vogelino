@@ -1,18 +1,18 @@
 import { For } from "solid-js";
-import type { CoolSiteType } from "../schemas/coolSites";
+import type { MediaShelfType } from "../schemas/mediaShelf";
 import classNames, { cn } from "../utils/classNames";
 import Search from "./Search";
 
-function CoolSitespirationsSearch({
+function MediaShelfSearch({
   searchItems,
   disabled = false,
 }: {
-  searchItems: CoolSiteType[];
+  searchItems: MediaShelfType[];
   disabled?: boolean;
 }) {
   return (
     <Search
-      label="Search sites"
+      label="Search media"
       searchItems={searchItems}
       disabled={disabled}
       searchOptions={{
@@ -37,19 +37,6 @@ function CoolSitespirationsSearch({
                 class="w-full aspect-140/73 bg-grayUltraLight border border-grayLight rounded"
               />
               <div class="flex gap-3 items-center mt-1">
-                <span
-                  class={classNames(
-                    "inline-block relative rounded overflow-clip bg-grayUltraLight bg-cover bg-center",
-                    "shrink-0 grow-0 h-4 w-4 flex justify-center items-center"
-                  )}
-                >
-                  <img
-                    src={`https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&size=32&url=${item.url}`}
-                    alt={`Favicon of "${item.title}"`}
-                    width={16}
-                    height={16}
-                  />
-                </span>
                 <div>{item.title}</div>
               </div>
               {filteredTagMatches?.length && (
@@ -76,4 +63,4 @@ function CoolSitespirationsSearch({
   );
 }
 
-export default CoolSitespirationsSearch;
+export default MediaShelfSearch;

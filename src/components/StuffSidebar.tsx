@@ -42,7 +42,7 @@ function StuffSidebar({
   return (
     <aside
       class={classNames(
-        "relative h-full",
+        "relative h-full overflow-clip",
         isOpened() ? "w-[min(20rem,100vw)]" : "w-16",
         "transition-all ease-in-out-extreme duration-500 flex flex-col gap-6",
         position === "left" && "shadow-[inset_-1px_0_0_0_var(--grayMed)]",

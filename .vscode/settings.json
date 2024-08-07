@@ -1,0 +1,13 @@
+{
+	"json.schemas": [
+		{
+			"fileMatch": ["**/cool-sites.json"],
+			"url": "./src/assets/data/cool-sites-schema.json"
+		},
+		{
+			"fileMatch": ["**/media-shelf.json"],
+			"url": "./src/assets/data/media-shelf-schema.json"
+		}
+	],
+	"json.validate.enable": true
+}
