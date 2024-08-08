@@ -1,8 +1,10 @@
 [![Vogelino's online portfolio](./readme/gh-banner.png)](https://vogelino.com)
 
-# Hi, Lucas Vogel(ino), at your service...
+# Hello there! I am Lucas Vogel(ino).
 
-## What you might want to know about me:
+To know more about me, visit my portfolio: [vogelino.com](https://vogelino.com)
+
+In short, you might want to know:
 
 ### ![🌆](./readme/background.svg) Background:
 
@@ -45,6 +47,27 @@
 
 ---
 
-| ![🌐](./readme/globe.svg) To know more about me, visit my portfolio: [vogelino.com](https://vogelino.com)                                                          |
-| :----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [![Screenshot of Lucas Vogel's Portfolio Website](https://github.com/vogelino/vogelino/assets/2759340/0ab10323-e948-4b36-a440-8b0d68bc7420)](https://vogelino.com) |
+### ![🔧](./readme/wrench.svg) The tech stack I most commonly use:
+
+![The tech stack I most commonly use](./readme/tech.svg)
+
+---
+
+### ![🌐](./readme/globe.svg) To know more about me, visit my portfolio: [vogelino.com](https://vogelino.com)
+
+[![Screenshot of Lucas Vogel's Portfolio Website](./readme/screenshot.png)](https://vogelino.com)
+
+---
+
+### ![🔖](./readme/bookmark.svg) For a list of cool sites I like and collect, follow this link: [vogelino.com/cool-sites](https://vogelino.com/cool-sites)
+
+---
+
+### ![🛜](./readme/rss.svg) Here are my RSS feeds:
+
+| [All contents](https://vogelino.com/rss.xml) | [Only the pages](https://vogelino.com/rss-pages-only.xml) | [Only the projects](https://vogelino.com/rss-projects-only.xml) | [Only the cool sites](https://vogelino.com/rss-cool-sites-only.xml) |
+| :------------------------------------------- | :-------------------------------------------------------- | :-------------------------------------------------------------- | :------------------------------------------------------------------ |
+
+---
+
+Looking for the README of my portfolio? It's [here](https://github.com/vogelino/vogelino/blob/main/REPO-README.md).
