@@ -1,11 +1,51 @@
-# Vogelino's online portfolio
+[![Vogelino's online portfolio](./readme/gh-banner.png)](https://vogelino.com)
 
-This is the repository of Lucas Vogel's (aka vogelino) online creative and development portfolio. This repository showcases various of my selected projects in the field of creative design and development. From web development to graphic design, this portfolio provides a comprehensive overview of my skills, expertise, and creative abilities. It is build in TypeScript with Astro and Tailwindcss.
+# Hi, Lucas Vogel(ino), at your service...
 
-[vogelino.com](https://vogelino.com)
+## What you might want to know about me:
 
-<img width="600" alt="og-home" src="https://github.com/vogelino/vogelino/assets/2759340/0ab10323-e948-4b36-a440-8b0d68bc7420">
+### ![🌆](./readme/background.svg) Background:
 
-## Contributions and Issues
+- Half Swiss🇨🇭, half Chilean🇨🇱
+- Background in Multimedia Design & BA in Interface Design
 
-If you have any suggestions, feedback, or would like to report an issue related to this portfolio, please feel free to open an issue on the [GitHub repository](https://github.com/vogelino/vogelino22). I welcome contributions and appreciate any feedback or ideas to improve the projects showcased in this portfolio.
+---
+
+### ![💼](./readme/work.svg) Professional Experience:
+
+- Software interface designer and frontend developer, usually building:
+- Specialized in pixel perfect UIs that are:
+  - Original & Maverick
+  - Easy to Use & Fun to Discover
+  - Human & Non-Corporate-Looking
+  - Smooth & Slick
+  - Fast & Responsive
+  - Accessible & SEO-friendly
+- Previously worked on complex stacks in SaaS companies such as Nexenio and Ubermetrics Technologies
+- In the last three years, worked at Berlin's public sector innovation laboratory (CityLAB Berlin), building projects for Berlin's citizens and government
+- Taught creative coding and data visualization at the University of Applied Science Potsdam (FH Potsdam) as a guest lecturer
+
+---
+
+### ![🕔](./readme/now.svg) Current Endeavors:
+
+- Since late 2023, living in Santiago, Chile and working as an independent digital product designer and developer
+- Mostly coding and designing software applications and websites
+- Enjoy different creative practices like graphic design, ceramics, illustration, and animation
+
+---
+
+### ![🏗️](./readme/build.svg) What I usually build:
+
+- Web Applications
+- Websites
+- Data Visualizations
+- Data Dashboards
+- etc.
+
+---
+
+|                 ![🌐](./readme/globe.svg) To know more about me, visit my portfolio ![🌐](./readme/globe.svg)                  |
+| :----------------------------------------------------------------------------------------------------------------------------: |
+|                                              [vogelino.com](https://vogelino.com)                                              |
+| <img width="600" alt="og-home" src="https://github.com/vogelino/vogelino/assets/2759340/0ab10323-e948-4b36-a440-8b0d68bc7420"> |
