@@ -26,7 +26,7 @@
   - Fast & Responsive
   - Accessible & SEO-friendly
 - Previously worked on complex stacks in SaaS companies such as Nexenio and Ubermetrics Technologies
-- In the last three years, worked at Berlin's public sector innovation laboratory (CityLAB Berlin), building projects for Berlin's citizens and government
+- In the last three years, worked at Berlin's public sector innovation laboratory (@technologiestiftung) as a creative technologist, building prototypes and projects for Berlin's citizens and government
 - Taught creative coding and data visualization at the University of Applied Science Potsdam (FH Potsdam) as a guest lecturer
 
 ---
