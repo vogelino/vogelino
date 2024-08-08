@@ -2,9 +2,11 @@
 
 # Hello there! I am Lucas Vogel(ino).
 
-To know more about me, visit my portfolio: [vogelino.com](https://vogelino.com)
+### ![🌐](./readme/globe.svg) To know more about me, visit my portfolio:
 
-In short, you might want to know:
+[![Screenshot of Lucas Vogel's Portfolio Website](./readme/vogelinocom.svg)](https://vogelino.com)
+
+---
 
 ### ![🌆](./readme/background.svg) Background:
 
@@ -53,12 +55,6 @@ In short, you might want to know:
 
 ---
 
-### ![🌐](./readme/globe.svg) To know more about me, visit my portfolio: [vogelino.com](https://vogelino.com)
-
-[![Screenshot of Lucas Vogel's Portfolio Website](./readme/screenshot.png)](https://vogelino.com)
-
----
-
 ### ![🔖](./readme/bookmark.svg) For a list of cool sites I like and collect, follow this link: [vogelino.com/cool-sites](https://vogelino.com/cool-sites)
 
 ---
@@ -67,6 +63,18 @@ In short, you might want to know:
 
 | [All contents](https://vogelino.com/rss.xml) | [Only the pages](https://vogelino.com/rss-pages-only.xml) | [Only the projects](https://vogelino.com/rss-projects-only.xml) | [Only the cool sites](https://vogelino.com/rss-cool-sites-only.xml) |
 | :------------------------------------------- | :-------------------------------------------------------- | :-------------------------------------------------------------- | :------------------------------------------------------------------ |
+
+---
+
+### ![🔗](./readme/socials.svg) Here are my socials:
+
+| [![Mastodon](./readme/mastodon.svg) Mastodon](https://techhub.social/@vogelino) | [![LinkedIn](./readme/linkedin.svg) Dribbble](https://www.linkedin.com/in/vogelino/) | [![Dribbble](./readme/dribbble.svg) Dribbble](https://dribbble.com/vogelino) |
+
+---
+
+### ![🌐](./readme/globe.svg) To know more about me, visit my portfolio:
+
+[![Screenshot of Lucas Vogel's Portfolio Website](./readme/vogelinocom.svg)](https://vogelino.com)
 
 ---
 
