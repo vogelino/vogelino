@@ -70,7 +70,7 @@
 
 ### ![🔗](./readme/socials.svg) Here are my socials:
 
-| [![Mastodon](./readme/mastodon.svg) Mastodon](https://techhub.social/@vogelino) | [![LinkedIn](./readme/linkedin.svg) Dribbble](https://www.linkedin.com/in/vogelino/) | [![Dribbble](./readme/dribbble.svg) Dribbble](https://dribbble.com/vogelino) |
+| [![Mastodon](./readme/mastodon.svg) Mastodon](https://techhub.social/@vogelino) | [![LinkedIn](./readme/linkedin.svg) LinkedIn](https://www.linkedin.com/in/vogelino/) | [![Dribbble](./readme/dribbble.svg) Dribbble](https://dribbble.com/vogelino) |
 | :------------------------------------------------------------------------------ | :----------------------------------------------------------------------------------- | :--------------------------------------------------------------------------- |
 
 ---
