@@ -1,6 +1,21 @@
 [
   {
+    "title": "Sergio Pradana",
+    "tags": [
+      "Architecture",
+      "Design",
+      "Portfolio",
+      "Webdesign"
+    ],
+    "url": "https://sergiopradana.info/",
+    "id": "sergio-pradana",
+    "date": "2024-08-07T21:26:26.363Z"
+  },
+  {
+    "id": "galerie",
     "title": "Galerie",
+    "url": "https://www.gobelins.fr/galerie",
+    "date": "2024-08-06T14:28:31.008Z",
     "tags": [
       "Digital Art",
       "Animation",
@@ -8,10 +23,7 @@
       "Gallery",
       "Creative Showcase",
       "Art Exhibitions"
-    ],
-    "url": "https://www.gobelins.fr/galerie",
-    "id": "galerie",
-    "date": "2024-08-06T14:28:31.008Z"
+    ]
   },
   {
     "id": "nomadic-tribe-makemepulse",
