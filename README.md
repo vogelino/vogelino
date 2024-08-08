@@ -7,7 +7,7 @@
 ### ![🌆](./readme/background.svg) Background:
 
 - Half Swiss🇨🇭, half Chilean🇨🇱
-- Background in Multimedia Design & BA in Interface Design
+- Studies in Multimedia Design _(Lausanne, CH)_ & BA in Interface Design _(Potsdam, DE)_
 
 ---
 
@@ -45,7 +45,6 @@
 
 ---
 
-|                 ![🌐](./readme/globe.svg) To know more about me, visit my portfolio ![🌐](./readme/globe.svg)                  |
-| :----------------------------------------------------------------------------------------------------------------------------: |
-|                                              [vogelino.com](https://vogelino.com)                                              |
-| <img width="600" alt="og-home" src="https://github.com/vogelino/vogelino/assets/2759340/0ab10323-e948-4b36-a440-8b0d68bc7420"> |
+| ![🌐](./readme/globe.svg) To know more about me, visit my portfolio: [vogelino.com](https://vogelino.com)                                                          |
+| :----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [![Screenshot of Lucas Vogel's Portfolio Website](https://github.com/vogelino/vogelino/assets/2759340/0ab10323-e948-4b36-a440-8b0d68bc7420)](https://vogelino.com) |
