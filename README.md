@@ -57,6 +57,8 @@
 
 ### ![🔖](./readme/bookmark.svg) For a list of cool sites I like and collect, follow this link: [vogelino.com/cool-sites](https://vogelino.com/cool-sites)
 
+[![Screenshot of Lucas Vogel's Cool Sites List](./readme/cool-sites.png)](https://vogelino.com/cool-sites)
+
 ---
 
 ### ![🛜](./readme/rss.svg) Here are my RSS feeds:
