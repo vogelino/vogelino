@@ -13,7 +13,6 @@ export type Props = {
 
 const linkUrl = new URL(link.url);
 linkUrl.searchParams.set("ref", Astro.site?.href?.toString() ?? "");
-const linkWithRef = linkUrl.toString();
 ---
 
 <li

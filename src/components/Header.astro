@@ -1,20 +1,20 @@
 ---
-import classNames from "../utils/classNames";
-import AvailableForHireBanner from "./AvailableForHireBanner.astro";
-import HeaderMenuLink from "./HeaderMenuLink.astro";
-import LogoInteractive from "./LogoInteractive.astro";
-import SocialIcons from "./SocialIcons.astro";
-import ThemeToggle from "./ThemeToggle.astro";
+import classNames from '../utils/classNames'
+import AvailableForHireBanner from './AvailableForHireBanner.astro'
+import HeaderMenuLink from './HeaderMenuLink.astro'
+import LogoInteractive from './LogoInteractive.astro'
+import SocialIcons from './SocialIcons.astro'
+import ThemeToggle from './ThemeToggle.astro'
 
 export interface Props {
-  withBg?: boolean;
+	withBg?: boolean
 }
 
-const { withBg = true } = Astro.props;
+const { withBg = true } = Astro.props
 
-const withBgClasses = "bg-bg border-grayMed";
-const withoutBgClasses = "border-b-transparent";
-const availableForHire = import.meta.env.AVAILABLE_FOR_HIRE === "true";
+const withBgClasses = 'bg-bg border-grayMed'
+const withoutBgClasses = 'border-b-transparent'
+const availableForHire = import.meta.env.AVAILABLE_FOR_HIRE === 'true'
 ---
 
 <div

@@ -1,26 +1,26 @@
 ---
-import type { Page, PaginateFunction } from "astro";
-import type { MediaShelfType } from "../../schemas/mediaShelf";
-import { getParsedMediaShelf } from "../../utils/getParsedMediaShelf";
-import MediaShelfGrid from "./_MediaShelfGrid.astro";
+import type { Page, PaginateFunction } from 'astro'
+import type { MediaShelfType } from '../../schemas/mediaShelf'
+import { getParsedMediaShelf } from '../../utils/getParsedMediaShelf'
+import MediaShelfGrid from './_MediaShelfGrid.astro'
 
 export async function getStaticPaths({
-  paginate,
+	paginate,
 }: {
-  paginate: PaginateFunction;
+	paginate: PaginateFunction
 }) {
-  const fullMediaShelf = await getParsedMediaShelf();
-  return paginate(fullMediaShelf, {
-    pageSize: 48,
-  }).map((page) => ({ ...page, props: { ...page.props, fullMediaShelf } }));
+	const fullMediaShelf = await getParsedMediaShelf()
+	return paginate(fullMediaShelf, {
+		pageSize: 48,
+	}).map((page) => ({ ...page, props: { ...page.props, fullMediaShelf } }))
 }
 
 export interface Props {
-  page: Page;
-  fullMediaShelf: MediaShelfType[];
+	page: Page
+	fullMediaShelf: MediaShelfType[]
 }
 
-const { page, fullMediaShelf } = Astro.props;
+const { page, fullMediaShelf } = Astro.props
 ---
 
 <MediaShelfGrid {page} {fullMediaShelf} />

@@ -1,13 +1,13 @@
 ---
-import StuffHeader from "../components/StuffHeader.astro";
-import StuffSidebar from "../components/StuffSidebar";
-import classNames from "../utils/classNames";
+import StuffHeader from '../components/StuffHeader.astro'
+import StuffSidebar from '../components/StuffSidebar'
+import classNames from '../utils/classNames'
 
-const showLeftSidebar = Astro.slots.has("left-sidebar");
-const showRightSidebar = Astro.slots.has("right-sidebar");
-const showOnlyLeftSidebar = showLeftSidebar && !showRightSidebar;
-const showOnlyRightSidebar = !showLeftSidebar && showRightSidebar;
-const showBothSidebars = showLeftSidebar && showRightSidebar;
+const showLeftSidebar = Astro.slots.has('left-sidebar')
+const showRightSidebar = Astro.slots.has('right-sidebar')
+const showOnlyLeftSidebar = showLeftSidebar && !showRightSidebar
+const showOnlyRightSidebar = !showLeftSidebar && showRightSidebar
+const showBothSidebars = showLeftSidebar && showRightSidebar
 ---
 
 <StuffHeader />

@@ -2,25 +2,25 @@
 // dbfabf4b0986edbcd41cfeceafa2591efba31a5cc877d5eeea8af49e5ba20047
 
 declare module 'virtual:astro-icon' {
-	export type Icon = 
-		| "arrow-down"
-		| "arrow-left"
-		| "arrow-right"
-		| "arrow-up"
-		| "book-opened"
-		| "chevron-down"
-		| "dot"
-		| "dribbble"
-		| "github"
-		| "info"
-		| "linkedin"
-		| "loup"
-		| "newspaper"
-		| "pdf"
-		| "podcast"
-		| "settings"
-		| "sidebar-collapse"
-		| "sidebar-expand"
-		| "tags"
-		| "youtube";
+	export type Icon =
+		| 'arrow-down'
+		| 'arrow-left'
+		| 'arrow-right'
+		| 'arrow-up'
+		| 'book-opened'
+		| 'chevron-down'
+		| 'dot'
+		| 'dribbble'
+		| 'github'
+		| 'info'
+		| 'linkedin'
+		| 'loup'
+		| 'newspaper'
+		| 'pdf'
+		| 'podcast'
+		| 'settings'
+		| 'sidebar-collapse'
+		| 'sidebar-expand'
+		| 'tags'
+		| 'youtube'
 }
