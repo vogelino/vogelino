@@ -2,8 +2,6 @@ import { SidebarCloseIcon, SidebarOpenIcon } from "lucide-solid";
 import { createEffect, createMemo, createSignal } from "solid-js";
 import classNames from "../utils/classNames";
 
-function updateSidebarWidth() {}
-
 function StuffSidebar({
   defaultOpen = false,
   position = "left",
