@@ -1,19 +1,20 @@
 ---
-import type { Page } from 'astro'
-import MediaShelfSearch from '../../components/MediaShelfSearch'
-import Pagination from '../../components/Pagination.astro'
-import Layout from '../../layouts/Layout.astro'
-import StuffLayout from '../../layouts/StuffLayout.astro'
-import type { MediaShelfType } from '../../schemas/mediaShelf'
-import classNames from '../../utils/classNames'
-import MediaShelfItem from './_MediaShelfItem.astro'
+import type { Page } from "astro";
+import MediaShelfSearch from "../../components/MediaShelfSearch";
+import Pagination from "../../components/Pagination.astro";
+import StuffSidebar from "../../components/StuffSidebar";
+import Layout from "../../layouts/Layout.astro";
+import StuffLayout from "../../layouts/StuffLayout.astro";
+import type { MediaShelfType } from "../../schemas/mediaShelf";
+import classNames from "../../utils/classNames";
+import MediaShelfItem from "./_MediaShelfItem.astro";
 export interface Props {
-	page: Page
-	fullMediaShelf: MediaShelfType[]
-	disableGrid?: true
+  page: Page;
+  fullMediaShelf: MediaShelfType[];
+  disableGrid?: true;
 }
 
-const { page, disableGrid = false, fullMediaShelf = [] } = Astro.props
+const { page, disableGrid = false, fullMediaShelf = [] } = Astro.props;
 ---
 
 <Layout
@@ -22,56 +23,54 @@ const { page, disableGrid = false, fullMediaShelf = [] } = Astro.props
   disableScroll={disableGrid}
 >
   <slot />
-  <StuffLayout>
-    <Fragment slot="left-sidebar">
+  <StuffLayout showLeftSidebar>
+    <StuffSidebar client:load style="grid-area: left-sidebar;" position="left">
       <MediaShelfSearch
         client:visible
         searchItems={fullMediaShelf}
         disabled={disableGrid}
       />
-    </Fragment>
-    <Fragment>
-      <div class="flex flex-col w-full">
-        <ul
-          aria-hidden={disableGrid ? "true" : "false"}
-          aria-label="List of medias I like"
-          class={classNames(
-            `grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4`,
-            `gap-8 px-8 pt-8 pb-16 container mx-auto`,
-            `min-h-[calc(100vh-174px)]`,
-            disableGrid && `pointer-events-none`
-          )}
-        >
-          {
-            page.data.map((link) => {
-              return (
-                <MediaShelfItem
-                  link={link}
-                  class={classNames(
-                    disableGrid && link.id === Astro.params.id && `opacity-0`
-                  )}
-                  disabled={disableGrid}
-                />
-              );
-            })
-          }
-        </ul>
-        <div
-          class="py-6 border-t border-grayLight"
-          aria-hidden={disableGrid ? "true" : "false"}
-        >
-          <Pagination
-            length={page.lastPage}
-            currentUrl={page.url.current}
-            currentPage={page.currentPage}
-            firstUrl={`/media-shelf`}
-            prevUrl={page.url.prev}
-            nextUrl={page.url.next}
-            lastUrl={`/media-shelf/${page.lastPage}`}
-            disabled={disableGrid}
-          />
-        </div>
+    </StuffSidebar>
+    <div class="flex flex-col w-full">
+      <ul
+        aria-hidden={disableGrid ? "true" : "false"}
+        aria-label="List of medias I like"
+        class={classNames(
+          `grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4`,
+          `gap-8 px-8 pt-8 pb-16 container mx-auto`,
+          `min-h-[calc(100vh-174px)]`,
+          disableGrid && `pointer-events-none`
+        )}
+      >
+        {
+          page.data.map((link) => {
+            return (
+              <MediaShelfItem
+                link={link}
+                class={classNames(
+                  disableGrid && link.id === Astro.params.id && `opacity-0`
+                )}
+                disabled={disableGrid}
+              />
+            );
+          })
+        }
+      </ul>
+      <div
+        class="py-6 border-t border-grayLight"
+        aria-hidden={disableGrid ? "true" : "false"}
+      >
+        <Pagination
+          length={page.lastPage}
+          currentUrl={page.url.current}
+          currentPage={page.currentPage}
+          firstUrl={`/media-shelf`}
+          prevUrl={page.url.prev}
+          nextUrl={page.url.next}
+          lastUrl={`/media-shelf/${page.lastPage}`}
+          disabled={disableGrid}
+        />
       </div>
-    </Fragment>
+    </div>
   </StuffLayout>
 </Layout>

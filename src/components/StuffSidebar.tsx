@@ -46,7 +46,8 @@ function StuffSidebar({
         isOpened() ? "w-[min(20rem,100vw)]" : "w-16",
         "transition-all ease-in-out-extreme duration-500 flex flex-col gap-6",
         position === "left" && "shadow-[inset_-1px_0_0_0_var(--grayMed)]",
-        position === "right" && "shadow-[inset_1px_0_0_0_var(--grayMed)]"
+        position === "right" && "shadow-[inset_1px_0_0_0_var(--grayMed)]",
+        className
       )}
     >
       <div
@@ -54,8 +55,7 @@ function StuffSidebar({
           "w-[min(20rem,100vw)]  overflow-x-clip overflow-y-auto",
           "transition-all ease-in-out-extreme duration-500 h-full",
           "flex flex-col gap-6 py-4 px-3",
-          isOpened() && "px-6",
-          className
+          isOpened() && "px-6"
         )}
         style={classNames(style)}
       >

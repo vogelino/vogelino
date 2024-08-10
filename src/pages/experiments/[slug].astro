@@ -1,48 +1,119 @@
 ---
-import { getCollection } from 'astro:content'
-import type { ExperimentType } from '../../content/config'
-import Layout from '../../layouts/Layout.astro'
-import StuffLayout from '../../layouts/StuffLayout.astro'
+import { getCollection } from "astro:content";
+import { createHighlighter } from "shiki";
+import { createCssVariablesTheme } from "shiki/core";
+import CodePreview from "../../components/CodePreview";
+import GridSvgPattern from "../../components/GridSvgPattern.astro";
+import StuffSidebar from "../../components/StuffSidebar";
+import type { ExperimentType } from "../../content/config";
+import Layout from "../../layouts/Layout.astro";
+import StuffLayout from "../../layouts/StuffLayout.astro";
 
 export async function getStaticPaths() {
-	const experiments = await getCollection('experiments')
-	return experiments.map((experiment) => {
-		return {
-			params: { slug: experiment.slug },
-			props: {
-				experiment,
-			},
-		}
-	})
+  const experiments = await getCollection("experiments");
+  return experiments.map((experiment) => {
+    return {
+      params: { slug: experiment.slug },
+      props: {
+        experiment,
+      },
+    };
+  });
 }
 
-const { experiment } = Astro.props
+const { experiment } = Astro.props;
 
 export type Props = {
-	experiment: {
-		id: string
-		slug: string
-		body: string
-		collection: 'experiments'
-		data: ExperimentType
-		render: () => Promise<void>
-	}
+  experiment: {
+    id: string;
+    slug: string;
+    body: string;
+    collection: "experiments";
+    data: ExperimentType;
+    render: () => Promise<void>;
+  };
+};
+
+const myTheme = createCssVariablesTheme({
+  name: "css-variables",
+  variablePrefix: "--shiki-",
+  variableDefaults: {},
+  fontStyle: true,
+});
+
+const code = `enum LogLevel {
+  ERROR,
+  WARN,
+  INFO,
+  DEBUG,
 }
+
+/**
+ * This is equivalent to:
+ * type LogLevelStrings = 'ERROR' | 'WARN' | 'INFO' | 'DEBUG';
+ */
+type LogLevelStrings = keyof typeof LogLevel;
+
+function printImportant(key: LogLevelStrings, message: string) {
+  const num = LogLevel[key];
+  if (num <= LogLevel.WARN) {
+    console.log("Log level key is:", key);
+    console.log("Log level value is:", num);
+    console.log("Log level message is:", message);
+  }
+}
+printImportant("ERROR", "This is a message");
+`;
+const highlighter = await createHighlighter({
+  langs: ["javascript"],
+  themes: [myTheme], // register the theme
+});
+
+const html = highlighter.codeToHtml(code, {
+  lang: "javascript",
+  theme: "css-variables", // use the theme
+});
 ---
 
 <Layout
   title={`Experiment: ${experiment.data.name} | Vogelino's Web Experiments`}
   slug={`experiments`}
 >
-  <StuffLayout>
-    <Fragment slot="left-sidebar">
-      {experiment.data.name}
-    </Fragment>
-    <Fragment>
-      <div class="flex flex-col w-full"></div>
-    </Fragment>
-    <Fragment slot="right-sidebar">
-      {experiment.data.name}
-    </Fragment>
+  <StuffLayout showLeftSidebar showRightSidebar>
+    <StuffSidebar
+      client:load
+      style="grid-area: left-sidebar;"
+      position="left"
+      class="shadow-none"
+    >
+      <>{experiment.data.name}</>
+    </StuffSidebar>
+    <CodePreview
+      client:load
+      codeTabs={[
+        {
+          name: "HTML",
+          id: "html",
+          codeHtmlString: html,
+        },
+      ]}
+    >
+      <GridSvgPattern className="absolute inset-0" />
+    </CodePreview>
+    <StuffSidebar
+      client:load
+      style="grid-area: right-sidebar;"
+      position="right"
+      class="shadow-none"
+    >
+      <>{experiment.data.name}</>
+    </StuffSidebar>
   </StuffLayout>
 </Layout>
+
+<style is:global>
+  .shiki {
+    background: var(--grayUltraLight) !important;
+    font-size: 1rem;
+  }
+</style>

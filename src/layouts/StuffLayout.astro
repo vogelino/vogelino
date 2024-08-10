@@ -1,13 +1,17 @@
 ---
-import StuffHeader from '../components/StuffHeader.astro'
-import StuffSidebar from '../components/StuffSidebar'
-import classNames from '../utils/classNames'
+import StuffHeader from "../components/StuffHeader.astro";
+import classNames from "../utils/classNames";
 
-const showLeftSidebar = Astro.slots.has('left-sidebar')
-const showRightSidebar = Astro.slots.has('right-sidebar')
-const showOnlyLeftSidebar = showLeftSidebar && !showRightSidebar
-const showOnlyRightSidebar = !showLeftSidebar && showRightSidebar
-const showBothSidebars = showLeftSidebar && showRightSidebar
+export type Props = {
+  showLeftSidebar?: boolean;
+  showRightSidebar?: boolean;
+};
+
+const { showLeftSidebar = false, showRightSidebar = false } = Astro.props;
+
+const showOnlyLeftSidebar = showLeftSidebar && !showRightSidebar;
+const showOnlyRightSidebar = !showLeftSidebar && showRightSidebar;
+const showBothSidebars = showLeftSidebar && showRightSidebar;
 ---
 
 <StuffHeader />
@@ -25,27 +29,5 @@ const showBothSidebars = showLeftSidebar && showRightSidebar
   )}
   style="grid-template-areas: 'left-sidebar main right-sidebar';"
 >
-  {
-    Astro.slots.has("left-sidebar") && (
-      <StuffSidebar
-        client:load
-        style="grid-area: left-sidebar;"
-        position="left"
-      >
-        <slot name="left-sidebar" />
-      </StuffSidebar>
-    )
-  }
   <slot />
-  {
-    Astro.slots.has("right-sidebar") && (
-      <StuffSidebar
-        client:load
-        style="grid-area: right-sidebar;"
-        position="right"
-      >
-        <slot name="right-sidebar" />
-      </StuffSidebar>
-    )
-  }
 </main>
