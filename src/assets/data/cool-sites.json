@@ -1,15 +1,25 @@
 [
   {
+    "title": "Zen Browser",
+    "tags": [
+      "Tool",
+      "App"
+    ],
+    "url": "https://www.zen-browser.app/",
+    "id": "zen-browser",
+    "date": "2024-08-13T02:02:27.022Z"
+  },
+  {
+    "id": "sergio-pradana",
     "title": "Sergio Pradana",
+    "url": "https://sergiopradana.info/",
+    "date": "2024-08-07T21:26:26.363Z",
     "tags": [
       "Architecture",
       "Design",
       "Portfolio",
       "Webdesign"
-    ],
-    "url": "https://sergiopradana.info/",
-    "id": "sergio-pradana",
-    "date": "2024-08-07T21:26:26.363Z"
+    ]
   },
   {
     "id": "galerie",
