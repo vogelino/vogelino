@@ -1,16 +1,29 @@
 [
   {
+    "title": "PRIMAL™ - Redefining Samples, Redefining Sound",
+    "tags": [
+      "Audio Plugins",
+      "Music Production",
+      "Sound Design",
+      "Virtual Instruments",
+      "Audio Effects"
+    ],
+    "url": "https://www.primal.audio/",
+    "id": "primaltm-redefining-samples-redefining-sound",
+    "date": "2024-08-17T12:56:54.170Z"
+  },
+  {
+    "id": "github-profile-roast",
     "title": "GitHub Profile Roast 🔥🔥🔥",
+    "url": "https://github-roast.pages.dev/",
+    "date": "2024-08-14T03:19:01.784Z",
     "tags": [
       "Fun",
       "Creative Coding",
       "AI",
       "Code",
       "Development"
-    ],
-    "url": "https://github-roast.pages.dev/",
-    "id": "github-profile-roast",
-    "date": "2024-08-14T03:19:01.784Z"
+    ]
   },
   {
     "id": "zen-browser",
