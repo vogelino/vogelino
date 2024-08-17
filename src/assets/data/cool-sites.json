@@ -1,6 +1,24 @@
 [
   {
+    "title": "Gradient Generator (1-click CSS + SVG export) [+inspo gallery]",
+    "tags": [
+      "Gradient Generator",
+      "UI Design",
+      "Web Tools",
+      "Color Picker",
+      "Design Resources",
+      "Gradient Maker",
+      "Visual Design"
+    ],
+    "url": "https://www.learnui.design/tools/gradient-generator.html",
+    "id": "gradient-generator-1-click-css-svg-export-inspo-gallery",
+    "date": "2024-08-17T13:21:02.579Z"
+  },
+  {
+    "id": "helix-or-cyberneticdev",
     "title": "Helix | cybernetic.dev",
+    "url": "https://cybernetic.dev/helix",
+    "date": "2024-08-17T13:20:31.073Z",
     "tags": [
       "Web Development",
       "Cybersecurity",
@@ -8,10 +26,7 @@
       "Software Development",
       "DevOps",
       "Tech Tools"
-    ],
-    "url": "https://cybernetic.dev/helix",
-    "id": "helix-or-cyberneticdev",
-    "date": "2024-08-17T13:20:31.073Z"
+    ]
   },
   {
     "id": "primaltm-redefining-samples-redefining-sound",
