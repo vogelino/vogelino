@@ -1,14 +1,26 @@
 [
   {
+    "title": "UICONS",
+    "tags": [
+      "Design",
+      "Design Resources",
+      "Resource",
+      "Gallery"
+    ],
+    "url": "https://www.uicons.com/",
+    "id": "uicons",
+    "date": "2024-08-19T12:11:35.382Z"
+  },
+  {
+    "id": "tooolsdesign",
     "title": "Toools.design",
+    "url": "https://www.toools.design/?ref=dailydev&utm_source=convertkit&utm_medium=email&utm_campaign=Syntax%20Snack%20Pack%20Issue%20#26:%20%20Panda",
+    "date": "2024-08-19T12:08:55.577Z",
     "tags": [
       "Design Tools",
       "Design Resources",
       "Gallery"
-    ],
-    "url": "https://www.toools.design/?ref=dailydev&utm_source=convertkit&utm_medium=email&utm_campaign=Syntax%20Snack%20Pack%20Issue%20#26:%20%20Panda",
-    "id": "tooolsdesign",
-    "date": "2024-08-19T12:08:55.577Z"
+    ]
   },
   {
     "id": "tooolsdesign",
