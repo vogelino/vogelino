@@ -1,6 +1,20 @@
 [
   {
+    "title": "Toools.design",
+    "tags": [
+      "Design Tools",
+      "Design Resources",
+      "Gallery"
+    ],
+    "url": "https://www.toools.design/?ref=dailydev&utm_source=convertkit&utm_medium=email&utm_campaign=Syntax%20Snack%20Pack%20Issue%20#26:%20%20Panda",
+    "id": "tooolsdesign",
+    "date": "2024-08-19T12:07:12.899Z"
+  },
+  {
+    "id": "gradient-generator-1-click-css-svg-export-inspo-gallery",
     "title": "Gradient Generator (1-click CSS + SVG export) [+inspo gallery]",
+    "url": "https://www.learnui.design/tools/gradient-generator.html",
+    "date": "2024-08-17T13:21:02.579Z",
     "tags": [
       "Gradient Generator",
       "UI Design",
@@ -9,10 +23,7 @@
       "Design Resources",
       "Gradient Maker",
       "Visual Design"
-    ],
-    "url": "https://www.learnui.design/tools/gradient-generator.html",
-    "id": "gradient-generator-1-click-css-svg-export-inspo-gallery",
-    "date": "2024-08-17T13:21:02.579Z"
+    ]
   },
   {
     "id": "helix-or-cyberneticdev",
