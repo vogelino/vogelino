@@ -1,15 +1,202 @@
 [
   {
+    "title": "GUILLAUME EPARS",
+    "tags": [
+      "Digital Art",
+      "3D Modeling",
+      "Animation",
+      "Visual Effects",
+      "Portfolio",
+      "Art Direction",
+      "Motion Design"
+    ],
+    "url": "https://www.guillaumeepars.com/",
+    "id": "guillaume-epars",
+    "date": "2024-08-20T12:27:56.268Z"
+  },
+  {
+    "id": "web-interactions-gallery",
+    "title": "Web Interactions Gallery",
+    "url": "https://www.webinteractions.gallery/",
+    "date": "2024-08-20T03:10:22.325Z",
+    "tags": [
+      "Gallery",
+      "Animation",
+      "Interactive Web Experiences",
+      "Interactive Websites"
+    ]
+  },
+  {
+    "id": "passo-malera",
+    "title": "Passo Malera",
+    "url": "https://www.francobollimontilessini.com",
+    "date": "2024-08-20T03:09:59.023Z",
+    "tags": [
+      "Individual Inspiration",
+      "Illustration",
+      "3D",
+      "Interactive Web Experiences"
+    ]
+  },
+  {
+    "id": "viewport-ui",
+    "title": "Viewport UI",
+    "url": "https://viewport-ui.design/",
+    "date": "2024-08-20T03:09:24.339Z",
+    "tags": [
+      "UI Design",
+      "Design Resources",
+      "Gallery",
+      "Webdesign"
+    ]
+  },
+  {
+    "id": "viewport-ui",
+    "title": "Viewport UI",
+    "url": "https://viewport-ui.design/",
+    "date": "2024-08-20T03:05:59.174Z",
+    "tags": [
+      "UI Design",
+      "Design Resources",
+      "Gallery",
+      "Webdesign"
+    ]
+  },
+  {
+    "id": "eva-decker",
+    "title": "Eva Decker",
+    "url": "https://eva.town/",
+    "date": "2024-08-20T02:59:55.833Z",
+    "tags": [
+      "Portfolio",
+      "UI Design",
+      "UX",
+      "Webdesign",
+      "Individual Inspiration"
+    ]
+  },
+  {
+    "id": "utopia",
+    "title": "Utopia",
+    "url": "https://utopia.fyi/",
+    "date": "2024-08-19T18:21:06.886Z",
+    "tags": [
+      "Design Resources",
+      "Design Tools",
+      "Webdesign",
+      "Tool"
+    ]
+  },
+  {
+    "id": "uicons",
+    "title": "UICONS",
+    "url": "https://www.uicons.com/",
+    "date": "2024-08-19T12:11:35.382Z",
+    "tags": [
+      "Design",
+      "Design Resources",
+      "Resource",
+      "Gallery"
+    ]
+  },
+  {
+    "id": "tooolsdesign",
+    "title": "Toools.design",
+    "url": "https://www.toools.design/?ref=dailydev&utm_source=convertkit&utm_medium=email&utm_campaign=Syntax%20Snack%20Pack%20Issue%20#26:%20%20Panda",
+    "date": "2024-08-19T12:08:55.577Z",
+    "tags": [
+      "Design Tools",
+      "Design Resources",
+      "Gallery"
+    ]
+  },
+  {
+    "id": "tooolsdesign",
+    "title": "Toools.design",
+    "url": "https://www.toools.design/?ref=dailydev&utm_source=convertkit&utm_medium=email&utm_campaign=Syntax%20Snack%20Pack%20Issue%20#26:%20%20Panda",
+    "date": "2024-08-19T12:07:12.899Z",
+    "tags": [
+      "Design Tools",
+      "Design Resources",
+      "Gallery"
+    ]
+  },
+  {
+    "id": "gradient-generator-1-click-css-svg-export-inspo-gallery",
+    "title": "Gradient Generator (1-click CSS + SVG export) [+inspo gallery]",
+    "url": "https://www.learnui.design/tools/gradient-generator.html",
+    "date": "2024-08-17T13:21:02.579Z",
+    "tags": [
+      "Gradient Generator",
+      "UI Design",
+      "Web Tools",
+      "Color Picker",
+      "Design Resources",
+      "Gradient Maker",
+      "Visual Design"
+    ]
+  },
+  {
+    "id": "helix-or-cyberneticdev",
+    "title": "Helix | cybernetic.dev",
+    "url": "https://cybernetic.dev/helix",
+    "date": "2024-08-17T13:20:31.073Z",
+    "tags": [
+      "Web Development",
+      "Cybersecurity",
+      "Helix Framework",
+      "Software Development",
+      "DevOps",
+      "Tech Tools"
+    ]
+  },
+  {
+    "id": "primaltm-redefining-samples-redefining-sound",
+    "title": "PRIMAL™ - Redefining Samples, Redefining Sound",
+    "url": "https://www.primal.audio/",
+    "date": "2024-08-17T12:56:54.170Z",
+    "tags": [
+      "Audio Plugins",
+      "Music Production",
+      "Sound Design",
+      "Virtual Instruments",
+      "Audio Effects"
+    ]
+  },
+  {
+    "id": "github-profile-roast",
+    "title": "GitHub Profile Roast 🔥🔥🔥",
+    "url": "https://github-roast.pages.dev/",
+    "date": "2024-08-14T03:19:01.784Z",
+    "tags": [
+      "Fun",
+      "Creative Coding",
+      "AI",
+      "Code",
+      "Development"
+    ]
+  },
+  {
+    "id": "zen-browser",
+    "title": "Zen Browser",
+    "url": "https://www.zen-browser.app/",
+    "date": "2024-08-13T02:02:27.022Z",
+    "tags": [
+      "Tool",
+      "App"
+    ]
+  },
+  {
+    "id": "sergio-pradana",
     "title": "Sergio Pradana",
+    "url": "https://sergiopradana.info/",
+    "date": "2024-08-07T21:26:26.363Z",
     "tags": [
       "Architecture",
       "Design",
       "Portfolio",
       "Webdesign"
-    ],
-    "url": "https://sergiopradana.info/",
-    "id": "sergio-pradana",
-    "date": "2024-08-07T21:26:26.363Z"
+    ]
   },
   {
     "id": "galerie",
