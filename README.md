@@ -19,7 +19,7 @@
 
 - Software interface designer and frontend developer, usually building:
 - Specialized in pixel perfect UIs that are:
-  - Original & Maverick
+  - Original & Unconventional
   - Easy to Use & Fun to Discover
   - Human & Non-Corporate-Looking
   - Smooth & Slick
