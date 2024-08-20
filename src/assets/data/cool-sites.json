@@ -1,15 +1,30 @@
 [
   {
+    "title": "GUILLAUME EPARS",
+    "tags": [
+      "Digital Art",
+      "3D Modeling",
+      "Animation",
+      "Visual Effects",
+      "Portfolio",
+      "Art Direction",
+      "Motion Design"
+    ],
+    "url": "https://www.guillaumeepars.com/",
+    "id": "guillaume-epars",
+    "date": "2024-08-20T12:27:56.268Z"
+  },
+  {
+    "id": "web-interactions-gallery",
     "title": "Web Interactions Gallery",
+    "url": "https://www.webinteractions.gallery/",
+    "date": "2024-08-20T03:10:22.325Z",
     "tags": [
       "Gallery",
       "Animation",
       "Interactive Web Experiences",
       "Interactive Websites"
-    ],
-    "url": "https://www.webinteractions.gallery/",
-    "id": "web-interactions-gallery",
-    "date": "2024-08-20T03:10:22.325Z"
+    ]
   },
   {
     "id": "passo-malera",
