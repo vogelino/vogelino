@@ -1,15 +1,27 @@
 [
   {
+    "title": "Web Interactions Gallery",
+    "tags": [
+      "Gallery",
+      "Animation",
+      "Interactive Web Experiences",
+      "Interactive Websites"
+    ],
+    "url": "https://www.webinteractions.gallery/",
+    "id": "web-interactions-gallery",
+    "date": "2024-08-20T03:10:22.325Z"
+  },
+  {
+    "id": "passo-malera",
     "title": "Passo Malera",
+    "url": "https://www.francobollimontilessini.com",
+    "date": "2024-08-20T03:09:59.023Z",
     "tags": [
       "Individual Inspiration",
       "Illustration",
       "3D",
       "Interactive Web Experiences"
-    ],
-    "url": "https://www.francobollimontilessini.com",
-    "id": "passo-malera",
-    "date": "2024-08-20T03:09:59.023Z"
+    ]
   },
   {
     "id": "viewport-ui",
