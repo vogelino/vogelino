@@ -1,15 +1,26 @@
 [
   {
+    "title": "Laurent Petit",
+    "tags": [
+      "Art",
+      "3D Modeling",
+      "Portfolio"
+    ],
+    "url": "https://laurentpetitceramist.com/",
+    "id": "laurent-petit",
+    "date": "2024-08-23T03:23:50.114Z"
+  },
+  {
+    "id": "hanneke-vleugel",
     "title": "Hanneke Vleugel",
+    "url": "https://www.hannekevleugel.nl/",
+    "date": "2024-08-23T03:21:27.166Z",
     "tags": [
       "Art",
       "3D",
       "3D Modeling",
       "Portfolio"
-    ],
-    "url": "https://www.hannekevleugel.nl/",
-    "id": "hanneke-vleugel",
-    "date": "2024-08-23T03:21:27.166Z"
+    ]
   },
   {
     "id": "charles-malherbe",
