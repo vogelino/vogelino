@@ -1,14 +1,25 @@
 [
   {
+    "title": "Hamlin Ceramics",
+    "tags": [
+      "Art",
+      "Portfolio",
+      "3D Modeling"
+    ],
+    "url": "https://www.hamlinceramics.com/",
+    "id": "hamlin-ceramics",
+    "date": "2024-08-23T03:25:30.966Z"
+  },
+  {
+    "id": "laurent-petit",
     "title": "Laurent Petit",
+    "url": "https://laurentpetitceramist.com/",
+    "date": "2024-08-23T03:23:50.114Z",
     "tags": [
       "Art",
       "3D Modeling",
       "Portfolio"
-    ],
-    "url": "https://laurentpetitceramist.com/",
-    "id": "laurent-petit",
-    "date": "2024-08-23T03:23:50.114Z"
+    ]
   },
   {
     "id": "hanneke-vleugel",
