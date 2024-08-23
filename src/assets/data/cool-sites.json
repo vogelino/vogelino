@@ -1,15 +1,27 @@
 [
   {
+    "title": "Hanneke Vleugel",
+    "tags": [
+      "Art",
+      "3D",
+      "3D Modeling",
+      "Portfolio"
+    ],
+    "url": "https://www.hannekevleugel.nl/",
+    "id": "hanneke-vleugel",
+    "date": "2024-08-23T03:21:27.166Z"
+  },
+  {
+    "id": "charles-malherbe",
     "title": "charles malherbe",
+    "url": "https://www.charlesmalherbe.com/#gallery_1-15",
+    "date": "2024-08-23T03:19:47.934Z",
     "tags": [
       "Art",
       "Artistic Vision",
       "3D",
       "Portfolio"
-    ],
-    "url": "https://www.charlesmalherbe.com/#gallery_1-15",
-    "id": "charles-malherbe",
-    "date": "2024-08-23T03:19:47.934Z"
+    ]
   },
   {
     "id": "",
