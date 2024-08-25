@@ -1,14 +1,24 @@
 [
   {
+    "title": "Franziska Gödicke",
+    "tags": [
+      "Portfolio",
+      "Architecture"
+    ],
+    "url": "https://franziskagoedicke.com/",
+    "id": "franziska-godicke",
+    "date": "2024-08-25T17:49:21.254Z"
+  },
+  {
+    "id": "tamara-van-san",
     "title": "Tamara Van San",
+    "url": "https://www.tamaravansan.org/",
+    "date": "2024-08-25T15:41:12.578Z",
     "tags": [
       "Portfolio",
       "3D Modeling",
       "Art"
-    ],
-    "url": "https://www.tamaravansan.org/",
-    "id": "tamara-van-san",
-    "date": "2024-08-25T15:41:12.578Z"
+    ]
   },
   {
     "id": "moran-moran",
