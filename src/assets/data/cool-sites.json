@@ -1,6 +1,20 @@
 [
   {
+    "title": "Tamara Van San",
+    "tags": [
+      "Portfolio",
+      "3D Modeling",
+      "Art"
+    ],
+    "url": "https://www.tamaravansan.org/",
+    "id": "tamara-van-san",
+    "date": "2024-08-25T15:41:12.578Z"
+  },
+  {
+    "id": "moran-moran",
     "title": "Morán Morán",
+    "url": "https://moranmorangallery.com/",
+    "date": "2024-08-24T23:42:11.040Z",
     "tags": [
       "Art Gallery",
       "Contemporary Art",
@@ -8,10 +22,7 @@
       "Visual Arts",
       "Curated Collections",
       "Latin American Art"
-    ],
-    "url": "https://moranmorangallery.com/",
-    "id": "moran-moran",
-    "date": "2024-08-24T23:42:11.040Z"
+    ]
   },
   {
     "id": "hamlin-ceramics",
