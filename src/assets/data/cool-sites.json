@@ -1,13 +1,24 @@
 [
   {
+    "title": "José van den Tweel",
+    "tags": [
+      "Portfolio",
+      "3D Modeling",
+      "Art"
+    ],
+    "url": "https://www.vd2l-keramiek.nl/kunstwerken/13343349_industrie.html",
+    "id": "jose-van-den-tweel",
+    "date": "2024-08-25T17:50:19.352Z"
+  },
+  {
+    "id": "franziska-godicke",
     "title": "Franziska Gödicke",
+    "url": "https://franziskagoedicke.com/",
+    "date": "2024-08-25T17:49:21.254Z",
     "tags": [
       "Portfolio",
       "Architecture"
-    ],
-    "url": "https://franziskagoedicke.com/",
-    "id": "franziska-godicke",
-    "date": "2024-08-25T17:49:21.254Z"
+    ]
   },
   {
     "id": "tamara-van-san",
