@@ -1,14 +1,25 @@
 [
   {
+    "title": "Florian Kilian Jaritz",
+    "tags": [
+      "Architecture",
+      "Portfolio",
+      "friends"
+    ],
+    "url": "https://fkjaritz.com/",
+    "id": "florian-kilian-jaritz",
+    "date": "2024-08-25T17:52:58.860Z"
+  },
+  {
+    "id": "jose-van-den-tweel",
     "title": "José van den Tweel",
+    "url": "https://www.vd2l-keramiek.nl/kunstwerken/13343349_industrie.html",
+    "date": "2024-08-25T17:50:19.352Z",
     "tags": [
       "Portfolio",
       "3D Modeling",
       "Art"
-    ],
-    "url": "https://www.vd2l-keramiek.nl/kunstwerken/13343349_industrie.html",
-    "id": "jose-van-den-tweel",
-    "date": "2024-08-25T17:50:19.352Z"
+    ]
   },
   {
     "id": "franziska-godicke",
