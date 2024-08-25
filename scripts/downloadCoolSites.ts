@@ -112,16 +112,17 @@ async function saveThumbnail(url: string, id: string) {
 async function saveFavicon(url: string, id: string) {
   const size = 32;
   logIndented(`💾 Saving favicon for "${id}" (${url})`);
+  const domain = new URL(url).hostname;
   try {
     await saveAndResizeImage({
       fileName: `${id}.webp`,
       folder: `cool-sites-favicons`,
-      fileUrl: `https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&size=${size}&url=${url}`,
+      fileUrl: `https://www.google.com/s2/favicons?domain=${domain}&sz=${size}`,
     });
 
     return `${COOL_SITE_FAVICON_EXPORT_PATH}/${id}.png`;
   } catch (error) {
-    logIndented(`💾 Failed to save favicon for "${id}" (${url})`);
-    return `http://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&size=${size}&url=${url}`;
+    logIndented(`💾 Failed to save favicon for "${id}" (${domain})`);
+    return `https://www.google.com/s2/favicons?domain=${domain}&sz=${size}`;
   }
 }
