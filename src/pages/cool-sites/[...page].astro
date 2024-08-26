@@ -2,7 +2,7 @@
 import type { Page, PaginateFunction } from 'astro'
 import type { CoolSiteType } from '../../schemas/coolSites'
 import { getParsedCoolSites } from '../../utils/getParsedCoolSites'
-import CoolSitesGrid from './_CoolSitesGrid.astro'
+import CoolSitesPage from './_CoolSitesPage.astro'
 
 export async function getStaticPaths({
 	paginate,
@@ -29,4 +29,4 @@ export interface Props {
 const { page, allCoolSites } = Astro.props
 ---
 
-<CoolSitesGrid page={page} allCoolSites={allCoolSites} />
+<CoolSitesPage page={page} allCoolSites={allCoolSites} />

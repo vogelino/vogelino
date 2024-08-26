@@ -1,0 +1,64 @@
+import type { Page } from "astro";
+import type { CoolSiteType } from "../schemas/coolSites";
+import classNames from "../utils/classNames";
+import CoolSitesItem from "./CoolSiteItem";
+import Pagination from "./Pagination";
+
+function CoolSitesGrid({
+  page,
+  disableGrid = false,
+  referrerUrl,
+  selectedId,
+}: {
+  page: Page<CoolSiteType>;
+  disableGrid?: boolean;
+  allCoolSites: CoolSiteType[];
+  referrerUrl: string;
+  selectedId?: CoolSiteType["id"];
+}) {
+  return (
+    <div class="flex flex-col w-full">
+      <ul
+        aria-hidden={disableGrid ? "true" : "false"}
+        aria-label="List of cool sites I like"
+        class={classNames(
+          `grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4`,
+          `gap-8 px-8 pt-8 pb-16 container mx-auto`,
+          `min-h-[calc(100vh-174px)]`,
+          disableGrid && `pointer-events-none`
+        )}
+      >
+        {page.data.map((link) => {
+          if (!link.thumbnail) return null;
+          return (
+            <CoolSitesItem
+              link={link}
+              class={classNames(
+                disableGrid && link.id === selectedId && `opacity-0`
+              )}
+              disabled={disableGrid}
+              referrerUrl={referrerUrl}
+            />
+          );
+        })}
+      </ul>
+      <div
+        class="py-6 border-t border-grayLight"
+        aria-hidden={disableGrid ? "true" : "false"}
+      >
+        <Pagination
+          length={page.lastPage}
+          currentUrl={page.url.current}
+          currentPage={page.currentPage}
+          firstUrl={`/cool-sites`}
+          prevUrl={page.url.prev}
+          nextUrl={page.url.next}
+          lastUrl={`/cool-sites/${page.lastPage}`}
+          disabled={disableGrid}
+        />
+      </div>
+    </div>
+  );
+}
+
+export default CoolSitesGrid;

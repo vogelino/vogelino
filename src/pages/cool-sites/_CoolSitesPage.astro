@@ -1,0 +1,41 @@
+---
+import type { Page } from "astro";
+import CoolSitesGrid from "../../components/CoolSitesGrid";
+import CoolSitesSearch from "../../components/CoolSitesSearch";
+import StuffSidebar from "../../components/StuffSidebar";
+import Layout from "../../layouts/Layout.astro";
+import StuffLayout from "../../layouts/StuffLayout.astro";
+import type { CoolSiteType } from "../../schemas/coolSites";
+
+export interface Props {
+  page: Page;
+  allCoolSites: CoolSiteType[];
+  disableGrid?: true;
+}
+
+const { page, disableGrid = false, allCoolSites = [] } = Astro.props;
+---
+
+<Layout
+  title="List of cool site I like"
+  slug="cool-sites"
+  disableScroll={disableGrid}
+>
+  <slot />
+  <StuffLayout showLeftSidebar>
+    <StuffSidebar client:load style="grid-area: left-sidebar;" position="left">
+      <CoolSitesSearch
+        client:load={!disableGrid}
+        searchItems={allCoolSites}
+        disabled={disableGrid}
+      />
+    </StuffSidebar>
+    <CoolSitesGrid
+      page={page}
+      disableGrid={disableGrid}
+      allCoolSites={allCoolSites}
+      referrerUrl={Astro.site?.href?.toString() ?? ""}
+      selectedId={Astro.params.id}
+    />
+  </StuffLayout>
+</Layout>

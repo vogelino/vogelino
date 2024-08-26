@@ -1,14 +1,14 @@
 ---
 import type { Page } from 'astro'
+import CoolSitesFavicon from '../../components/CoolSiteFavicon'
+import CoolSiteThumbnail from '../../components/CoolSiteThumbnail'
 import FancyHeadline from '../../components/FancyHeadline.astro'
 import ArrowUp from '../../components/icons/ArrowUp.astro'
-import ExternalLink from '../../components/icons/ExternalLink.astro'
+import ExternalLink from '../../components/icons/ExternalLink'
 import type { CoolSiteType } from '../../schemas/coolSites'
 import classNames from '../../utils/classNames'
 import { getParsedCoolSites } from '../../utils/getParsedCoolSites'
-import CoolSitesFavicon from './_CoolSitesFavicon.astro'
-import CoolSitesGrid from './_CoolSitesGrid.astro'
-import CoolSitesThumbnail from './_CoolSitesThumbnail.astro'
+import CoolSitesPage from './_CoolSitesPage.astro'
 
 export async function getStaticPaths() {
 	const coolSites = await getParsedCoolSites()
@@ -61,7 +61,7 @@ linkUrl.searchParams.set('ref', Astro.site?.href?.toString() ?? '')
 const linkWithRef = linkUrl.toString()
 ---
 
-<CoolSitesGrid page={page} disableGrid allCoolSites={[]}>
+<CoolSitesPage page={page} disableGrid allCoolSites={[]}>
   <a
     href={page.url.current}
     title="Back to coolSite list"
@@ -138,7 +138,7 @@ const linkWithRef = linkUrl.toString()
             `focus-visible:ring-offset-8 focus-visible:ring-offset-bg`
           )}
         >
-          <CoolSitesThumbnail link={coolSite} />
+          <CoolSiteThumbnail link={coolSite} />
           <span
             class={classNames(
               "px-4 py-1 pt-2 rounded-full bg-alt focusable inline-block",
@@ -152,7 +152,7 @@ const linkWithRef = linkUrl.toString()
       </div>
     </div>
   </ul>
-</CoolSitesGrid>
+</CoolSitesPage>
 
 <style>
   a[title="Back to coolSite list"] {
