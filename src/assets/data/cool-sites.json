@@ -1,14 +1,25 @@
 [
   {
-    "title": "Yuki Ando",
+    "title": "Megan Bogonovich",
     "tags": [
       "Ceramics",
       "Portfolio",
       "Art"
     ],
-    "url": "https://www.rkgallery.com/artists/yuki-ando",
+    "url": "https://www.meganbogonovich.com/",
+    "id": "megan-bogonovich",
+    "date": "2024-08-26T13:16:22.320Z"
+  },
+  {
     "id": "yuki-ando",
-    "date": "2024-08-26T13:15:30.699Z"
+    "title": "Yuki Ando",
+    "url": "https://www.rkgallery.com/artists/yuki-ando",
+    "date": "2024-08-26T13:15:30.699Z",
+    "tags": [
+      "Ceramics",
+      "Portfolio",
+      "Art"
+    ]
   },
   {
     "id": "eva-zethraeus",
