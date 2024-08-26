@@ -1,32 +1,32 @@
 ---
-import { getCollection } from "astro:content";
-import classNames from "../utils/classNames";
-import GridSvgPattern from "./GridSvgPattern.astro";
+import { getCollection } from 'astro:content'
+import classNames from '../utils/classNames'
+import GridSvgPattern from './GridSvgPattern.astro'
 
 const [experiments, ceramics] = await Promise.all([
-  getCollection("experiments"),
-  getCollection("ceramics"),
-]);
+	getCollection('experiments'),
+	getCollection('ceramics'),
+])
 const navItems = [
-  {
-    title: "Cool Sites",
-    path: "cool-sites",
-  },
-  {
-    title: "Experiments",
-    path: `experiments/${experiments[0].slug}`,
-  },
-  {
-    title: "Ceramics",
-    path: `ceramics/${ceramics[0].slug}`,
-  },
-  {
-    title: "Media Shelf",
-    path: "media-shelf",
-  },
-];
+	{
+		title: 'Cool Sites',
+		path: 'cool-sites',
+	},
+	{
+		title: 'Experiments',
+		path: `experiments/${experiments[0].slug}`,
+	},
+	{
+		title: 'Ceramics',
+		path: `ceramics/${ceramics[0].slug}`,
+	},
+	{
+		title: 'Media Shelf',
+		path: 'media-shelf',
+	},
+]
 
-const pathname = new URL(Astro.request.url).pathname.replaceAll("/", "");
+const pathname = new URL(Astro.request.url).pathname.replaceAll('/', '')
 ---
 
 <nav

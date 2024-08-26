@@ -1,20 +1,20 @@
 ---
-import type { Page } from "astro";
-import MediaShelfSearch from "../../components/MediaShelfSearch";
-import Pagination from "../../components/Pagination.astro";
-import StuffSidebar from "../../components/StuffSidebar";
-import Layout from "../../layouts/Layout.astro";
-import StuffLayout from "../../layouts/StuffLayout.astro";
-import type { MediaShelfType } from "../../schemas/mediaShelf";
-import classNames from "../../utils/classNames";
-import MediaShelfItem from "./_MediaShelfItem.astro";
+import type { Page } from 'astro'
+import MediaShelfSearch from '../../components/MediaShelfSearch'
+import Pagination from '../../components/Pagination.astro'
+import StuffSidebar from '../../components/StuffSidebar'
+import Layout from '../../layouts/Layout.astro'
+import StuffLayout from '../../layouts/StuffLayout.astro'
+import type { MediaShelfType } from '../../schemas/mediaShelf'
+import classNames from '../../utils/classNames'
+import MediaShelfItem from './_MediaShelfItem.astro'
 export interface Props {
-  page: Page;
-  fullMediaShelf: MediaShelfType[];
-  disableGrid?: true;
+	page: Page
+	fullMediaShelf: MediaShelfType[]
+	disableGrid?: true
 }
 
-const { page, disableGrid = false, fullMediaShelf = [] } = Astro.props;
+const { page, disableGrid = false, fullMediaShelf = [] } = Astro.props
 ---
 
 <Layout

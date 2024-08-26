@@ -1,18 +1,18 @@
 ---
-import type { MediaShelfType } from "../../schemas/mediaShelf";
-import classNames from "../../utils/classNames";
-import MediaShelfThumbnail from "./_MediaShelfThumbnail.astro";
+import type { MediaShelfType } from '../../schemas/mediaShelf'
+import classNames from '../../utils/classNames'
+import MediaShelfThumbnail from './_MediaShelfThumbnail.astro'
 
-const { link, class: className, disabled = false } = Astro.props;
+const { link, class: className, disabled = false } = Astro.props
 
 export type Props = {
-  link: MediaShelfType;
-  class?: string;
-  disabled?: boolean;
-};
+	link: MediaShelfType
+	class?: string
+	disabled?: boolean
+}
 
-const linkUrl = new URL(link.url);
-linkUrl.searchParams.set("ref", Astro.site?.href?.toString() ?? "");
+const linkUrl = new URL(link.url)
+linkUrl.searchParams.set('ref', Astro.site?.href?.toString() ?? '')
 ---
 
 <li

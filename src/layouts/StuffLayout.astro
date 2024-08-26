@@ -1,17 +1,17 @@
 ---
-import StuffHeader from "../components/StuffHeader.astro";
-import classNames from "../utils/classNames";
+import StuffHeader from '../components/StuffHeader.astro'
+import classNames from '../utils/classNames'
 
 export type Props = {
-  showLeftSidebar?: boolean;
-  showRightSidebar?: boolean;
-};
+	showLeftSidebar?: boolean
+	showRightSidebar?: boolean
+}
 
-const { showLeftSidebar = false, showRightSidebar = false } = Astro.props;
+const { showLeftSidebar = false, showRightSidebar = false } = Astro.props
 
-const showOnlyLeftSidebar = showLeftSidebar && !showRightSidebar;
-const showOnlyRightSidebar = !showLeftSidebar && showRightSidebar;
-const showBothSidebars = showLeftSidebar && showRightSidebar;
+const showOnlyLeftSidebar = showLeftSidebar && !showRightSidebar
+const showOnlyRightSidebar = !showLeftSidebar && showRightSidebar
+const showBothSidebars = showLeftSidebar && showRightSidebar
 ---
 
 <StuffHeader />

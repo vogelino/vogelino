@@ -1,6 +1,7 @@
-import { SidebarCloseIcon, SidebarOpenIcon } from "lucide-solid";
 import { createEffect, createMemo, createSignal } from "solid-js";
 import classNames from "../utils/classNames";
+import SidebarArrowLeft from "./icons/SidebarArrowLeft";
+import SidebarArrowRight from "./icons/SidebarArrowRight";
 
 function StuffSidebar({
   defaultOpen = false,
@@ -67,8 +68,8 @@ function StuffSidebar({
           )}
           onClick={() => setIsOpened(!isOpened())}
         >
-          {showSidebarLeftOpenIcon() && <SidebarCloseIcon />}
-          {showSidebarRightOpenIcon() && <SidebarOpenIcon />}
+          {showSidebarLeftOpenIcon() && <SidebarArrowRight />}
+          {showSidebarRightOpenIcon() && <SidebarArrowLeft />}
           <span
             class={classNames(
               "inline-block whitespace-nowrap pt-1 overflow-clip",

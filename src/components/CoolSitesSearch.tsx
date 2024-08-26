@@ -1,6 +1,7 @@
 import { For } from "solid-js";
 import type { CoolSiteType } from "../schemas/coolSites";
 import classNames, { cn } from "../utils/classNames";
+import { getFaviconUrl } from "../utils/imageUtil";
 import Search from "./Search";
 
 function CoolSitespirationsSearch({
@@ -44,7 +45,7 @@ function CoolSitespirationsSearch({
                   )}
                 >
                   <img
-                    src={`https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&size=32&url=${item.url}`}
+                    src={getFaviconUrl({ url: item.url })}
                     alt={`Favicon of "${item.title}"`}
                     width={16}
                     height={16}

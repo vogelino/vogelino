@@ -23,6 +23,7 @@ export default defineConfig({
     solidJs(),
   ],
   prefetch: true,
+  output: "static",
   site:
     process.env.NODE_ENV === "development"
       ? "http://localhost:4321"

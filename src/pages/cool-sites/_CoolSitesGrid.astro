@@ -26,7 +26,7 @@ const { page, disableGrid = false, allCoolSites = [] } = Astro.props;
   <StuffLayout showLeftSidebar>
     <StuffSidebar client:load style="grid-area: left-sidebar;" position="left">
       <CoolSitesSearch
-        client:visible
+        client:load
         searchItems={allCoolSites}
         disabled={disableGrid}
       />
