@@ -1,4 +1,10 @@
-import { createEffect, createMemo, createSignal, onMount } from "solid-js";
+import {
+  type JSXElement,
+  createEffect,
+  createMemo,
+  createSignal,
+  onMount,
+} from "solid-js";
 import classNames from "../utils/classNames";
 import SidebarArrowLeft from "./icons/SidebarArrowLeft";
 import SidebarArrowRight from "./icons/SidebarArrowRight";
@@ -14,7 +20,7 @@ function StuffSidebar({
   position?: "left" | "right";
   class?: string;
   style?: string;
-  children?: Element;
+  children?: JSXElement;
 }) {
   const [isOpened, setIsOpened] = createSignal(defaultOpen);
 

@@ -1,10 +1,10 @@
 import { type Component, type JSX, splitProps } from "solid-js";
 import classNames from "../utils/classNames";
 
-interface Props extends JSX.ButtonHTMLAttributes<HTMLButtonElement> {
+interface Props extends JSX.ButtonHTMLAttributes<HTMLAnchorElement> {
   url?: string;
   class?: string;
-  icon?: JSX.Element;
+  icon?: (props: { class: string }) => JSX.Element;
   variant?: "primary" | "secondary";
   children?: JSX.Element;
 }

@@ -1,0 +1,17 @@
+---
+import type { Page } from 'astro'
+import type { CoolSiteType } from '../../schemas/coolSites'
+import { getParsedCoolSites } from '../../utils/getParsedCoolSites'
+import CoolSitesPage from './_CoolSitesPage.astro'
+
+export const prerender = false
+
+export interface Props {
+	page: Page
+	allCoolSites: CoolSiteType[]
+}
+
+const allCoolSites = await getParsedCoolSites()
+---
+
+<CoolSitesPage allCoolSites={allCoolSites} />

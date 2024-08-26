@@ -10,44 +10,13 @@ import classNames from '../../utils/classNames'
 import { getParsedCoolSites } from '../../utils/getParsedCoolSites'
 import CoolSitesPage from './_CoolSitesPage.astro'
 
-export async function getStaticPaths() {
-	const coolSites = await getParsedCoolSites()
-	return coolSites.map((coolSite, idx) => {
-		const nextIdx = idx + 1 >= coolSites.length ? 0 : idx + 1
-		const prevIdx = idx - 1 < 0 ? coolSites.length - 1 : idx - 1
-		const currentPage = Math.floor(idx / 48) + 1
-		const lastPage = Math.ceil(coolSites.length / 48)
-		return {
-			params: { id: coolSite.id },
-			props: {
-				page: {
-					data: coolSites.filter((_, i) => {
-						const coolSitePage = Math.ceil((i + 1) / 48)
-						return coolSitePage === currentPage
-					}),
-					start: (currentPage - 1) * 48,
-					end: (currentPage - 1) * 48 + 46,
-					size: 48,
-					total: coolSites.length,
-					currentPage,
-					lastPage,
-					url: {
-						current: currentPage <= 1 ? '/cool-sites' : `/cool-sites/${currentPage}`,
-						next: currentPage + 1 < lastPage ? `/cool-sites/${currentPage + 1}` : undefined,
-						prev: currentPage - 1 > 1 ? `/cool-sites/${currentPage - 1}` : `/cool-sites`,
-						first: `/cool-sites`,
-						last: `/cool-sites/${lastPage}`,
-					},
-				} satisfies Page,
-				coolSite: coolSite,
-				prevCoolSites: coolSites[prevIdx] || coolSites[coolSites.length - 1],
-				nextCoolSites: coolSites[nextIdx] || coolSites[0],
-			},
-		}
-	})
-}
+export const prerender = false
 
-const { coolSite, page } = Astro.props
+const coolSites = await getParsedCoolSites()
+const coolSite = coolSites.find((s) => s.id === Astro.params.id)
+const idx = coolSites.findIndex((s) => s.id === Astro.params.id)
+
+if (!coolSite) throw new Error(`Cool site with id "${Astro.params.id}" not found`)
 
 export type Props = {
 	coolSite: CoolSiteType
@@ -59,13 +28,15 @@ export type Props = {
 const linkUrl = new URL(coolSite.url)
 linkUrl.searchParams.set('ref', Astro.site?.href?.toString() ?? '')
 const linkWithRef = linkUrl.toString()
+
+const initialPage = Math.floor(idx / 48) + 1
 ---
 
-<CoolSitesPage page={page} disableGrid allCoolSites={[]}>
+<CoolSitesPage initialPage={initialPage} disableGrid allCoolSites={coolSites}>
   <a
-    href={page.url.current}
+    href={`/cool-sites?page=${initialPage}`}
     title="Back to coolSite list"
-    data-page={page.url.current}
+    data-page={`/cool-sites?page=${initialPage}`}
     tabindex="-1"
     class={classNames(
       "overlay fixed px-10 inset-0 z-20 bg-opacity-10",
@@ -90,7 +61,7 @@ const linkWithRef = linkUrl.toString()
       )}
     >
       <a
-        href={page.url.current}
+        href={`/cool-sites?page=${initialPage}`}
         title="Back to all cool sites"
         class="focusable flex gap-2 px-2 -ml-2 rounded-full bg-none w-fit"
       >

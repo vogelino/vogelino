@@ -1,6 +1,5 @@
-import type { Page } from "astro";
 import slugify from "slugify";
-import { createMemo, createSignal, onMount } from "solid-js";
+import { createEffect, createMemo, createSignal, onMount } from "solid-js";
 import type { CoolSiteType } from "../schemas/coolSites";
 import classNames from "../utils/classNames";
 import CoolSitesItem from "./CoolSiteItem";
@@ -10,26 +9,22 @@ import RoundedButton from "./RoundedButton";
 import StuffSidebar from "./StuffSidebar";
 import Tag from "./Tag";
 
-type CoolSiteTagType = {
-  name: string;
-  slug: string;
-  count: number;
-};
-
 function CoolSitesGrid({
-  page,
   disableGrid = false,
   referrerUrl,
   selectedId,
   allCoolSites,
+  initialPage = 1,
 }: {
-  page: Page<CoolSiteType>;
   disableGrid?: boolean;
   allCoolSites: CoolSiteType[];
   referrerUrl: string;
   selectedId?: CoolSiteType["id"];
+  initialPage?: number;
 }) {
   const [tags, setTags] = createSignal<string[]>([]);
+  const [page, setPage] = createSignal<number>(initialPage);
+  const itemsPerPage = 48;
 
   onMount(() => {
     const searchParams = new URLSearchParams(window.location.search);
@@ -37,22 +32,24 @@ function CoolSitesGrid({
     setTags(tags?.split(",") || []);
   });
 
-  const filteredPage = createMemo(() => {
-    if (tags().length === 0) return page;
-    return {
-      ...page,
-      data: allCoolSites
-        .filter((link) => {
-          return link.tags.some((tag) =>
-            tags().find(
-              (t) =>
-                slugify(t, { lower: true, strict: true }) ===
-                slugify(tag, { lower: true, strict: true })
-            )
-          );
-        })
-        .slice(0, 48),
-    };
+  const filteredCoolSites = createMemo(() => {
+    if (tags().length === 0) return allCoolSites;
+    return allCoolSites.filter((link) => {
+      return link.tags.some((tag) =>
+        tags().find(
+          (t) =>
+            slugify(t, { lower: true, strict: true }) ===
+            slugify(tag, { lower: true, strict: true })
+        )
+      );
+    });
+  });
+
+  const currentPageData = createMemo(() => {
+    return filteredCoolSites().slice(
+      (page() - 1 >= 0 ? page() - 1 : 0) * itemsPerPage,
+      page() * itemsPerPage
+    );
   });
 
   const allTags = createMemo(() => {
@@ -82,6 +79,18 @@ function CoolSitesGrid({
     return slugify(t, { lower: true, strict: true }) === slug;
   };
 
+  createEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    searchParams.set("tags", tags().join(","));
+    searchParams.set("page", `${page()}`);
+    // Shallow update of the url without reloading
+    window.history.pushState(
+      null,
+      "",
+      `/cool-sites?${searchParams.toString()}`
+    );
+  });
+
   return (
     <>
       <StuffSidebar style="grid-area: left-sidebar;" position="left">
@@ -89,13 +98,13 @@ function CoolSitesGrid({
           searchItems={allCoolSites}
           disabled={disableGrid}
         />
-        <div className="flex flex-wrap gap-1 mt-4">
+        <div class="flex flex-wrap gap-1 mt-4">
           {allTags().map(({ name, slug, count }) => {
             const isTagFn = isTag(slug);
             const isActive = !!tags().find(isTagFn);
             const otherTags = tags().filter((t) => !isTagFn(t));
             const linkTags = isActive ? otherTags : [...otherTags, slug];
-            const basePath = `/cool-sites${page.currentPage === 1 ? "" : `/${page.currentPage}`}`;
+            const basePath = `/cool-sites${page() === 1 ? "" : `/${page()}`}`;
             return (
               <Tag
                 link={`${basePath}${linkTags.length > 0 ? `?tags=${linkTags.join(",")}` : ""}`}
@@ -103,13 +112,17 @@ function CoolSitesGrid({
                 slug={slug}
                 count={count}
                 isActive={isActive}
+                onClick={(evt) => {
+                  evt.preventDefault();
+                  setTags(isActive ? otherTags : [...otherTags, slug]);
+                }}
               />
             );
           })}
         </div>
       </StuffSidebar>
       <div class="flex flex-col w-full">
-        {filteredPage().data.length > 0 && (
+        {currentPageData().length > 0 && (
           <ul
             aria-hidden={disableGrid ? "true" : "false"}
             aria-label="List of cool sites I like"
@@ -120,7 +133,7 @@ function CoolSitesGrid({
               disableGrid && `pointer-events-none`
             )}
           >
-            {filteredPage().data.map((link) => {
+            {currentPageData().map((link) => {
               if (!link.thumbnail) return null;
               return (
                 <CoolSitesItem
@@ -135,15 +148,15 @@ function CoolSitesGrid({
             })}
           </ul>
         )}
-        {filteredPage().data.length === 0 && (
+        {filteredCoolSites().length === 0 && (
           <div class="flex flex-col items-center justify-center gap-4 text-center min-h-[calc(100vh-174px)]">
-            <div className="flex flex-col gap-2">
+            <div class="flex flex-col gap-2">
               <p class="text-xl">No cool sites found with the selected tags:</p>
               <ul class="flex gap-0.5 items-start">
                 {tags().map((tag) => (
                   <li>
                     <a
-                      href={`/cool-sites/${page.currentPage === 1 ? "" : page.currentPage}?tags=${tag}`}
+                      href={`/cool-sites/${page() === 1 ? "" : page()}?tags=${tag}`}
                       class="text-sm text-grayDark hover:text-fg"
                     >
                       {tag}
@@ -151,9 +164,7 @@ function CoolSitesGrid({
                   </li>
                 ))}
               </ul>
-              <RoundedButton
-                url={`/cool-sites/${page.currentPage === 1 ? "" : page.currentPage}`}
-              >
+              <RoundedButton url={`/cool-sites/${page() === 1 ? "" : page()}`}>
                 Reset Tags
               </RoundedButton>
             </div>
@@ -164,14 +175,12 @@ function CoolSitesGrid({
           aria-hidden={disableGrid ? "true" : "false"}
         >
           <Pagination
-            length={page.lastPage}
-            currentUrl={page.url.current}
-            currentPage={page.currentPage}
-            firstUrl={`/cool-sites`}
-            prevUrl={page.url.prev}
-            nextUrl={page.url.next}
-            lastUrl={`/cool-sites/${page.lastPage}`}
+            totalItems={filteredCoolSites().length}
+            itemsPerPage={itemsPerPage}
+            currentPage={page()}
             disabled={disableGrid}
+            basePath="/cool-sites"
+            onPageChange={setPage}
           />
         </div>
       </div>

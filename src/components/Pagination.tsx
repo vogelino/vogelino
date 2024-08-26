@@ -1,28 +1,27 @@
 import classNames from "../utils/classNames";
 
 function Pagination({
-  prevUrl,
-  nextUrl,
-  disabled = false,
-  length,
   currentPage,
-  firstUrl,
+  totalItems,
+  itemsPerPage,
+  disabled = false,
+  basePath,
+  onPageChange,
 }: {
-  length: number;
-  currentUrl: string;
   currentPage: number;
-  firstUrl: string;
-  prevUrl?: string;
-  nextUrl?: string;
-  lastUrl: string;
+  totalItems: number;
+  itemsPerPage: number;
   disabled?: boolean;
+  basePath: string;
+  onPageChange: (page: number) => void;
 }) {
+  const pagesCount = Math.ceil(totalItems / itemsPerPage);
   return (
     <nav
       class="flex flex-row flex-nowrap items-center justify-between md:justify-center sm:gap-2"
       aria-label="Pagination"
     >
-      {prevUrl && (
+      {currentPage > 1 && (
         <a
           class={classNames(
             `mr-1 flex h-10 w-10 items-center justify-center rounded-full`,
@@ -30,9 +29,13 @@ function Pagination({
             `outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-bg focus-visible:ring-fg`,
             `transition-colors motion-reduce:transition-none`
           )}
-          href={prevUrl.replace(/1\/?$/, "")}
+          href={`${basePath}?page=${currentPage - 1}`}
           tabindex={disabled ? "-1" : "0"}
           title="Previous Page"
+          onClick={(e) => {
+            e.preventDefault();
+            onPageChange(currentPage - 1);
+          }}
         >
           <span class="sr-only">Previous Page</span>
           <svg
@@ -46,7 +49,7 @@ function Pagination({
         </a>
       )}
 
-      {Array.from({ length }, (_, i) => i + 1).map((page) => (
+      {Array.from({ length: pagesCount }, (_, i) => i + 1).map((page) => (
         <a
           class={classNames(
             `ml-1 flex h-10 w-10 items-center justify-center rounded-full`,
@@ -55,14 +58,18 @@ function Pagination({
             page !== currentPage && `bg-bg hover-hover:hover:bg-alt`,
             page === currentPage && [`cursor-default bg-fg text-alt`]
           )}
-          href={`${firstUrl}/${page}`.replace(/1\/?$/, "")}
+          href={`${basePath}?page=${page}`}
           title={`Page ${page}`}
           tabindex={page === currentPage || disabled ? -1 : undefined}
+          onClick={(e) => {
+            e.preventDefault();
+            onPageChange(page);
+          }}
         >
           {page}
         </a>
       ))}
-      {nextUrl && (
+      {currentPage !== pagesCount && (
         <a
           class={classNames(
             `ml-1 flex h-10 w-10 items-center justify-center rounded-full`,
@@ -70,9 +77,13 @@ function Pagination({
             `outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-bg focus-visible:ring-fg`,
             `transition-colors motion-reduce:transition-none`
           )}
-          href={nextUrl}
+          href={`${basePath}?page=${currentPage + 1}`}
           tabindex={disabled ? "-1" : "0"}
           title="Next Page"
+          onClick={(e) => {
+            e.preventDefault();
+            onPageChange(currentPage + 1);
+          }}
         >
           <span class="sr-only">Next Page</span>
           <svg

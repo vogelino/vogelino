@@ -6,6 +6,7 @@ function Tag(tag: {
   count: number;
   link: string;
   isActive: boolean;
+  onClick: (evt: MouseEvent) => void;
 }) {
   return (
     <a
@@ -17,6 +18,10 @@ function Tag(tag: {
         `transition w-fit`,
         tag.isActive && `bg-alt text-fg`
       )}
+      onClick={(evt) => {
+        evt.preventDefault();
+        tag.onClick(evt);
+      }}
     >
       {tag.name}
       <span class="text-xs ml-2 opacity-50">{tag.count}</span>

@@ -1,17 +1,16 @@
 ---
-import type { Page } from 'astro'
 import CoolSitesGrid from '../../components/CoolSitesGrid'
 import Layout from '../../layouts/Layout.astro'
 import StuffLayout from '../../layouts/StuffLayout.astro'
 import type { CoolSiteType } from '../../schemas/coolSites'
 
 export interface Props {
-	page: Page
 	allCoolSites: CoolSiteType[]
 	disableGrid?: true
+	initialPage?: number
 }
 
-const { page, disableGrid = false, allCoolSites = [] } = Astro.props
+const { disableGrid = false, initialPage = 1, allCoolSites = [] } = Astro.props
 ---
 
 <Layout
@@ -24,11 +23,11 @@ const { page, disableGrid = false, allCoolSites = [] } = Astro.props
     
     <CoolSitesGrid
       client:load={!disableGrid}
-      page={page}
       disableGrid={disableGrid}
       allCoolSites={allCoolSites}
       referrerUrl={Astro.site?.href?.toString() ?? ""}
       selectedId={Astro.params.id}
+      initialPage={initialPage}
     />
   </StuffLayout>
 </Layout>
