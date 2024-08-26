@@ -1,14 +1,25 @@
 [
   {
+    "title": "Sharif Farrag",
+    "tags": [
+      "Ceramics",
+      "Art",
+      "Portfolio"
+    ],
+    "url": "https://shariffarrag.com/",
+    "id": "sharif-farrag",
+    "date": "2024-08-26T13:29:11.169Z"
+  },
+  {
+    "id": "megan-bogonovich",
     "title": "Megan Bogonovich",
+    "url": "https://www.meganbogonovich.com/",
+    "date": "2024-08-26T13:16:22.320Z",
     "tags": [
       "Ceramics",
       "Portfolio",
       "Art"
-    ],
-    "url": "https://www.meganbogonovich.com/",
-    "id": "megan-bogonovich",
-    "date": "2024-08-26T13:16:22.320Z"
+    ]
   },
   {
     "id": "yuki-ando",
