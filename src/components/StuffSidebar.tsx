@@ -1,4 +1,4 @@
-import { createEffect, createMemo, createSignal } from "solid-js";
+import { createEffect, createMemo, createSignal, onMount } from "solid-js";
 import classNames from "../utils/classNames";
 import SidebarArrowLeft from "./icons/SidebarArrowLeft";
 import SidebarArrowRight from "./icons/SidebarArrowRight";
@@ -38,6 +38,18 @@ function StuffSidebar({
       `${isOpened() ? "min(20rem,100vw)" : "4rem"}`
     );
   });
+
+  const toggleSidebar = () => {
+    localStorage.setItem(`is-${position}-sidebar-opened`, `${!isOpened()}`);
+    setIsOpened(!isOpened());
+  };
+
+  onMount(() => {
+    const wasOpened =
+      localStorage.getItem(`is-${position}-sidebar-opened`) === "true";
+    setIsOpened(wasOpened);
+  });
+
   return (
     <aside
       class={classNames(
@@ -66,7 +78,7 @@ function StuffSidebar({
             "items-center justify-center transition duration-500 ease-in-out-extreme",
             isOpened() && "-translate-x-2"
           )}
-          onClick={() => setIsOpened(!isOpened())}
+          onClick={toggleSidebar}
         >
           {showSidebarLeftOpenIcon() && <SidebarArrowRight />}
           {showSidebarRightOpenIcon() && <SidebarArrowLeft />}
