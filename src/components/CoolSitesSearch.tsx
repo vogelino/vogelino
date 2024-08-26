@@ -1,7 +1,7 @@
 import { For } from "solid-js";
 import type { CoolSiteType } from "../schemas/coolSites";
 import classNames, { cn } from "../utils/classNames";
-import { getFaviconUrl } from "../utils/imageUtil";
+import { getFaviconUrl } from "../utils/getFaviconUrl";
 import Search from "./Search";
 
 function CoolSitespirationsSearch({

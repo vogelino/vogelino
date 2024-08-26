@@ -1,6 +1,6 @@
 import type { CoolSiteType } from "../schemas/coolSites";
 import classNames from "../utils/classNames";
-import { getFaviconUrl } from "../utils/imageUtil";
+import { getFaviconUrl } from "../utils/getFaviconUrl";
 
 function CoolSitesFavicon({
   link,
