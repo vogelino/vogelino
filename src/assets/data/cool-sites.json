@@ -1,6 +1,72 @@
 [
   {
+    "title": "Florian Kilian Jaritz",
+    "tags": ["Architecture", "Portfolio", "friends"],
+    "url": "https://fkjaritz.com/",
+    "id": "florian-kilian-jaritz",
+    "date": "2024-08-25T17:52:58.860Z"
+  },
+  {
+    "id": "jose-van-den-tweel",
+    "title": "José van den Tweel",
+    "url": "https://www.vd2l-keramiek.nl/kunstwerken/13343349_industrie.html",
+    "date": "2024-08-25T17:50:19.352Z",
+    "tags": ["Portfolio", "Ceramics", "Art"]
+  },
+  {
+    "id": "franziska-godicke",
+    "title": "Franziska Gödicke",
+    "url": "https://franziskagoedicke.com/",
+    "date": "2024-08-25T17:49:21.254Z",
+    "tags": ["Portfolio", "Architecture"]
+  },
+  {
+    "id": "tamara-van-san",
+    "title": "Tamara Van San",
+    "url": "https://www.tamaravansan.org/",
+    "date": "2024-08-25T15:41:12.578Z",
+    "tags": ["Portfolio", "Ceramics", "Art"]
+  },
+  {
+    "id": "hamlin-ceramics",
+    "title": "Hamlin Ceramics",
+    "url": "https://www.hamlinceramics.com/",
+    "date": "2024-08-23T03:25:30.966Z",
+    "tags": ["Art", "Portfolio", "Ceramics"]
+  },
+  {
+    "id": "laurent-petit",
+    "title": "Laurent Petit",
+    "url": "https://laurentpetitceramist.com/",
+    "date": "2024-08-23T03:23:50.114Z",
+    "tags": ["Art", "Ceramics", "Portfolio"]
+  },
+  {
+    "id": "hanneke-vleugel",
+    "title": "Hanneke Vleugel",
+    "url": "https://www.hannekevleugel.nl/",
+    "date": "2024-08-23T03:21:27.166Z",
+    "tags": ["Art", "3D", "Ceramics", "Portfolio"]
+  },
+  {
+    "id": "charles-malherbe",
+    "title": "charles malherbe",
+    "url": "https://www.charlesmalherbe.com/#gallery_1-15",
+    "date": "2024-08-23T03:19:47.934Z",
+    "tags": ["Art", "Artistic Vision", "3D", "Portfolio"]
+  },
+  {
+    "id": "simonlaveuve",
+    "title": "𝔖𝔦𝔪𝔬𝔫 𝔏𝔞𝔳𝔢𝔲𝔳𝔢",
+    "url": "https://www.simonlaveuve.com/",
+    "date": "2024-08-23T03:17:54.773Z",
+    "tags": ["Art", "Artistic Vision", "Ceramics", "Portfolio"]
+  },
+  {
+    "id": "guillaume-epars",
     "title": "Guillaume Epars",
+    "url": "https://www.guillaumeepars.com/",
+    "date": "2024-08-20T12:27:56.268Z",
     "tags": [
       "Cinematography",
       "Video",
@@ -9,10 +75,7 @@
       "photography",
       "Lighting",
       "Portfolio"
-    ],
-    "url": "https://www.guillaumeepars.com/",
-    "id": "guillaume-epars",
-    "date": "2024-08-20T12:27:56.268Z"
+    ]
   },
   {
     "id": "web-interactions-gallery",
