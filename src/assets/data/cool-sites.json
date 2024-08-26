@@ -1,14 +1,25 @@
 [
   {
-    "title": "SOUTHER SALAZAR",
+    "title": "Eva Zethraeus",
     "tags": [
       "Ceramics",
       "Art",
       "Portfolio"
     ],
-    "url": "https://www.southersalazar.com/page-s",
+    "url": "https://www.evazethraeus.se/2017-2/",
+    "id": "eva-zethraeus",
+    "date": "2024-08-26T13:09:48.727Z"
+  },
+  {
     "id": "souther-salazar",
-    "date": "2024-08-25T21:47:28.872Z"
+    "title": "SOUTHER SALAZAR",
+    "url": "https://www.southersalazar.com/page-s",
+    "date": "2024-08-25T21:47:28.872Z",
+    "tags": [
+      "Ceramics",
+      "Art",
+      "Portfolio"
+    ]
   },
   {
     "id": "florian-kilian-jaritz",
