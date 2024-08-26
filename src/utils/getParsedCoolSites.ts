@@ -1,12 +1,10 @@
 import { ZodError } from 'zod'
-import { loadJson } from '../../scripts/lib/loadJson'
-import { COOL_SITES_JSON_PATH } from '../../scripts/paths'
+import rawCoolSites from '../assets/data/cool-sites.json'
 import { type CoolSiteType, coolSiteSchema } from '../schemas/coolSites'
 import { getCoolSiteImages } from './imageUtil'
 import { logZodErrorToTerminal } from './logZodErrorToTerminal'
 
 export async function getParsedCoolSites(): Promise<CoolSiteType[]> {
-	const rawCoolSites = await loadJson<CoolSiteType[]>(COOL_SITES_JSON_PATH)
 	const parsedCoolSites = rawCoolSites.reduce((acc, coolSite) => {
 		const { thumbnail, favicon } = getCoolSiteImages(coolSite.id)
 		const newCoolSite = { ...coolSite, thumbnail, favicon }
