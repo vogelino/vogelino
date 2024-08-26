@@ -67,7 +67,7 @@ function CoolSitesGrid({
         slug: slugify(tag, { lower: true, strict: true }),
         count,
       }))
-      .filter(({ count }) => count > 1)
+      .filter(({ count }) => count > 5)
       .sort((a, b) => {
         if (a.count > b.count) return -1;
         if (a.count < b.count) return 1;

@@ -22,6 +22,9 @@ function CoolSitesItem({
     <li
       aria-label={`Cool site permalink: "${link.title}" (${link.url})`}
       class={classNames("relative group @container", className)}
+      style={{
+        "view-transition-name": `cool-site-${link.id}`,
+      }}
     >
       <a
         href={`/cool-sites/${link.id}`}

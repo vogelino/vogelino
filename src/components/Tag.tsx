@@ -9,9 +9,8 @@ function Tag(tag: {
   onClick: (evt: MouseEvent) => void;
 }) {
   return (
-    <a
-      href={tag.link}
-      title={`Tag: ${tag.name}`}
+    <button
+      type="button"
       class={classNames(
         `px-2.5 pt-[0.2rem] leading-tight bg-grayUltraLight text-grayDark`,
         `text-sm rounded-full focusable hover-hover:hover:bg-fg hover-hover:hover:text-alt`,
@@ -20,12 +19,13 @@ function Tag(tag: {
       )}
       onClick={(evt) => {
         evt.preventDefault();
+        evt.stopPropagation();
         tag.onClick(evt);
       }}
     >
       {tag.name}
       <span class="text-xs ml-2 opacity-50">{tag.count}</span>
-    </a>
+    </button>
   );
 }
 

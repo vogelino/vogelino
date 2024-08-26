@@ -20,16 +20,17 @@ function Pagination({
     <nav
       class="flex flex-row flex-nowrap items-center justify-between md:justify-center sm:gap-2"
       aria-label="Pagination"
+      style={{ "view-transition-name": "pagination" }}
     >
       {currentPage > 1 && (
-        <a
+        <button
+          type="button"
           class={classNames(
             `mr-1 flex h-10 w-10 items-center justify-center rounded-full`,
             `bg-bg hover-hover:hover:bg-alt`,
             `outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-bg focus-visible:ring-fg`,
             `transition-colors motion-reduce:transition-none`
           )}
-          href={`${basePath}?page=${currentPage - 1}`}
           tabindex={disabled ? "-1" : "0"}
           title="Previous Page"
           onClick={(e) => {
@@ -46,11 +47,12 @@ function Pagination({
           >
             <path d="M238.475 475.535l7.071-7.07c4.686-4.686 4.686-12.284 0-16.971L50.053 256 245.546 60.506c4.686-4.686 4.686-12.284 0-16.971l-7.071-7.07c-4.686-4.686-12.284-4.686-16.97 0L10.454 247.515c-4.686 4.686-4.686 12.284 0 16.971l211.051 211.05c4.686 4.686 12.284 4.686 16.97-.001z" />
           </svg>
-        </a>
+        </button>
       )}
 
       {Array.from({ length: pagesCount }, (_, i) => i + 1).map((page) => (
-        <a
+        <button
+          type="button"
           class={classNames(
             `ml-1 flex h-10 w-10 items-center justify-center rounded-full`,
             `outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-bg focus-visible:ring-fg`,
@@ -58,7 +60,6 @@ function Pagination({
             page !== currentPage && `bg-bg hover-hover:hover:bg-alt`,
             page === currentPage && [`cursor-default bg-fg text-alt`]
           )}
-          href={`${basePath}?page=${page}`}
           title={`Page ${page}`}
           tabindex={page === currentPage || disabled ? -1 : undefined}
           onClick={(e) => {
@@ -67,17 +68,17 @@ function Pagination({
           }}
         >
           {page}
-        </a>
+        </button>
       ))}
       {currentPage !== pagesCount && (
-        <a
+        <button
+          type="button"
           class={classNames(
             `ml-1 flex h-10 w-10 items-center justify-center rounded-full`,
             `bg-bg hover-hover:hover:bg-alt`,
             `outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-bg focus-visible:ring-fg`,
             `transition-colors motion-reduce:transition-none`
           )}
-          href={`${basePath}?page=${currentPage + 1}`}
           tabindex={disabled ? "-1" : "0"}
           title="Next Page"
           onClick={(e) => {
@@ -94,7 +95,7 @@ function Pagination({
           >
             <path d="M17.525 36.465l-7.071 7.07c-4.686 4.686-4.686 12.284 0 16.971L205.947 256 10.454 451.494c-4.686 4.686-4.686 12.284 0 16.971l7.071 7.07c4.686 4.686 12.284 4.686 16.97 0l211.051-211.05c4.686-4.686 4.686-12.284 0-16.971L34.495 36.465c-4.686-4.687-12.284-4.687-16.97 0z" />
           </svg>
-        </a>
+        </button>
       )}
     </nav>
   );

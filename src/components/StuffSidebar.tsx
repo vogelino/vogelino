@@ -66,6 +66,7 @@ function StuffSidebar({
         position === "right" && "shadow-[inset_1px_0_0_0_var(--grayMed)]",
         className
       )}
+      style={{ "view-transition-name": `sidebar-${position}` }}
     >
       <div
         class={classNames(
