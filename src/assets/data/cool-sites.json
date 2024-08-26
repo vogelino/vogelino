@@ -1,14 +1,25 @@
 [
   {
+    "title": "Yuki Ando",
+    "tags": [
+      "Ceramics",
+      "Portfolio",
+      "Art"
+    ],
+    "url": "https://www.rkgallery.com/artists/yuki-ando",
+    "id": "yuki-ando",
+    "date": "2024-08-26T13:15:30.699Z"
+  },
+  {
+    "id": "eva-zethraeus",
     "title": "Eva Zethraeus",
+    "url": "https://www.evazethraeus.se/2017-2/",
+    "date": "2024-08-26T13:09:48.727Z",
     "tags": [
       "Ceramics",
       "Art",
       "Portfolio"
-    ],
-    "url": "https://www.evazethraeus.se/2017-2/",
-    "id": "eva-zethraeus",
-    "date": "2024-08-26T13:09:48.727Z"
+    ]
   },
   {
     "id": "souther-salazar",
