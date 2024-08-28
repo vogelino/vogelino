@@ -194,10 +194,14 @@ function CoolSitesGrid({
 						<div class="flex flex-col gap-2">
 							<p class="text-xl">
 								No cool sites found with{' '}
-								<Show when={tagOperator() === 'AND'} fallback="any">
-									all
-								</Show>{' '}
-								of the following tags:
+								<Show when={searchResults()}>the current search query</Show>
+								<Show when={tags().length > 0}>
+									<Show when={searchResults()}>{' and '}</Show>
+									<Show when={tagOperator() === 'AND'} fallback="any">
+										all
+									</Show>{' '}
+									of the following tags:
+								</Show>
 							</p>
 							<ul class="flex gap-0.5 items-start max-w-md flex-wrap">
 								<For each={tags()}>{(tag) => <Tag name={tag} slug={toSlug(tag)} />}</For>
