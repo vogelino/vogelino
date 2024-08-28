@@ -5,9 +5,16 @@ import classNames from '../utils/classNames'
 export type Props = {
 	showLeftSidebar?: boolean
 	showRightSidebar?: boolean
+	initialLeftSidebarOpen?: boolean
+	initialRightSidebarOpen?: boolean
 }
 
-const { showLeftSidebar = false, showRightSidebar = false } = Astro.props
+const {
+	showLeftSidebar = false,
+	showRightSidebar = false,
+	initialLeftSidebarOpen = true,
+	initialRightSidebarOpen = true,
+} = Astro.props
 
 const showOnlyLeftSidebar = showLeftSidebar && !showRightSidebar
 const showOnlyRightSidebar = !showLeftSidebar && showRightSidebar
@@ -17,8 +24,8 @@ const showBothSidebars = showLeftSidebar && showRightSidebar
 <StuffHeader />
 <main
   id="main-container"
-  data-left-sidebar-open="true"
-  data-right-sidebar-open="true"
+  data-left-sidebar-open={`${initialLeftSidebarOpen}`}
+  data-right-sidebar-open={`${initialRightSidebarOpen}`}
   class={classNames(
     "grid grid-cols-1",
     "transition-all ease-in-out-extreme duration-500",
@@ -27,7 +34,11 @@ const showBothSidebars = showLeftSidebar && showRightSidebar
     showOnlyLeftSidebar && "grid-cols-[var(--left-sidebar-width,4rem),1fr]",
     showOnlyRightSidebar && "grid-cols-[1fr,var(--right-sidebar-width,4rem)]"
   )}
-  style="grid-template-areas: 'left-sidebar main right-sidebar';"
+  style={{
+    'grid-template-areas': 'left-sidebar main right-sidebar',
+    '--left-sidebar-width': `${initialLeftSidebarOpen ? "min(20rem,100vw)" : "4rem"}`,
+    '--right-sidebar-width': `${initialRightSidebarOpen ? "min(20rem,100vw)" : "4rem"}`
+  }}
 >
   <slot />
 </main>

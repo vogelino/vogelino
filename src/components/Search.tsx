@@ -1,4 +1,4 @@
-import Fuse, { type FuseResultMatch } from "fuse.js";
+import Fuse, { type FuseResult, type FuseResultMatch } from "fuse.js";
 import {
   For,
   type JSX,
@@ -15,15 +15,17 @@ function Search<ItemType extends Record<string, unknown>>({
   searchOptions,
   disabled = false,
   renderResult,
+  onSearch = () => {},
 }: {
   label?: string;
   searchItems: ItemType[];
   searchOptions: ConstructorParameters<typeof Fuse<ItemType>>[1];
   disabled?: boolean;
-  renderResult: (
+  renderResult?: (
     item: ItemType,
     matches: readonly FuseResultMatch[] | undefined
   ) => JSX.Element;
+  onSearch?: (results: FuseResult<ItemType>[] | null) => void;
 }) {
   const [fuse] = createSignal(new Fuse(searchItems, searchOptions));
   const [query, setQuery] = createSignal("");
@@ -44,7 +46,9 @@ function Search<ItemType extends Record<string, unknown>>({
   }
 
   const posts = createMemo(() => {
-    return fuse().search(query()).slice(0, 6) || [];
+    const results = fuse().search(query()).slice(0, 6) || [];
+    onSearch(query() ? results : null);
+    return results;
   });
 
   function onKeyDown(event: KeyboardEvent) {
@@ -116,7 +120,7 @@ function Search<ItemType extends Record<string, unknown>>({
           <kbd class="text-2xl leading-4">⌘</kbd>
           <kbd class="text-base font-bold">K</kbd>
         </span>
-        {!disabled && query() && isOpened() && (
+        {!disabled && query() && isOpened() && !!renderResult && (
           <div
             class={classNames(
               "absolute top-full left-0 border-grayMed",

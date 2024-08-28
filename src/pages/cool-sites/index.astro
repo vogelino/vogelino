@@ -14,4 +14,7 @@ export interface Props {
 const allCoolSites = await getParsedCoolSites()
 ---
 
-<CoolSitesPage allCoolSites={allCoolSites} />
+<CoolSitesPage
+	allCoolSites={allCoolSites}
+	initialPage={Number.parseInt(Astro.url.searchParams.get("page") || "1", 10)}
+/>

@@ -11,6 +11,9 @@ export interface Props {
 }
 
 const { disableGrid = false, initialPage = 1, allCoolSites = [] } = Astro.props
+
+const initialLeftSidebarOpen = `${Astro.url.searchParams.get('leftSidebarOpen')}` === 'true'
+const initialTags = Astro.url.searchParams.get('tags')?.split(',') || []
 ---
 
 <Layout
@@ -19,7 +22,7 @@ const { disableGrid = false, initialPage = 1, allCoolSites = [] } = Astro.props
   disableScroll={disableGrid}
 >
   <slot />
-  <StuffLayout showLeftSidebar>
+  <StuffLayout showLeftSidebar initialLeftSidebarOpen={initialLeftSidebarOpen}>
     
     <CoolSitesGrid
       client:load={!disableGrid}
@@ -28,6 +31,8 @@ const { disableGrid = false, initialPage = 1, allCoolSites = [] } = Astro.props
       referrerUrl={Astro.site?.href?.toString() ?? ""}
       selectedId={Astro.params.id}
       initialPage={initialPage}
+      initialLeftSidebarOpen={initialLeftSidebarOpen}
+      initialTags={initialTags}
     />
   </StuffLayout>
 </Layout>

@@ -20,6 +20,7 @@ function CoolSitesItem({
   const linkWithRef = linkUrl.toString();
   return (
     <li
+      data-hk={`cool-site-${link.id}`}
       aria-label={`Cool site permalink: "${link.title}" (${link.url})`}
       class={classNames("relative group @container", className)}
       style={{
@@ -31,7 +32,7 @@ function CoolSitesItem({
         title={`Cool site permalink: "${link.title}" (${link.url})`}
         tabindex={disabled ? "-1" : "0"}
         class={classNames(
-          `flex flex-col gap-4 group`,
+          `flex flex-col gap-4 group h-fit`,
           `focus-visible:ring-2 focus-visible:ring-fg outline-none`,
           `focus-visible:overflow-hidden focus-visible:rounded-lg`,
           `focus-visible:ring-offset-8 focus-visible:ring-offset-bg`

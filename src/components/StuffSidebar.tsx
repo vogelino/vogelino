@@ -3,7 +3,6 @@ import {
   createEffect,
   createMemo,
   createSignal,
-  onMount,
 } from "solid-js";
 import classNames from "../utils/classNames";
 import SidebarArrowLeft from "./icons/SidebarArrowLeft";
@@ -46,15 +45,15 @@ function StuffSidebar({
   });
 
   const toggleSidebar = () => {
-    localStorage.setItem(`is-${position}-sidebar-opened`, `${!isOpened()}`);
+    const searchParams = new URLSearchParams(window.location.search);
+    searchParams.set(`${position}SidebarOpen`, `${!isOpened()}`);
+    window.history.replaceState(
+      null,
+      "",
+      `${window.location.pathname}?${searchParams.toString()}`
+    );
     setIsOpened(!isOpened());
   };
-
-  onMount(() => {
-    const wasOpened =
-      localStorage.getItem(`is-${position}-sidebar-opened`) === "true";
-    setIsOpened(wasOpened);
-  });
 
   return (
     <aside
@@ -70,7 +69,7 @@ function StuffSidebar({
     >
       <div
         class={classNames(
-          "w-[min(20rem,100vw)]  overflow-x-clip overflow-y-auto",
+          "w-[min(20rem,100vw)]",
           "transition-all ease-in-out-extreme duration-500 h-full",
           "flex flex-col gap-6 py-4 px-3",
           isOpened() && "px-6"
@@ -103,7 +102,9 @@ function StuffSidebar({
         {children && (
           <div
             class={classNames(
-              "h-full transition-opacity ease-in-out-extreme duration-500",
+              "h-fit transition-opacity ease-in-out-extreme duration-500",
+              "w-[calc(min(20rem,100vw)-3rem)] sticky",
+              "top-6 scrolled-up:top-24 transition-all",
               isOpened() ? "opacity-100" : "opacity-0"
             )}
           >
