@@ -1,16 +1,26 @@
 [
   {
+    "title": "Arthur Meijer",
+    "tags": [
+      "Ceramics",
+      "Portfolio"
+    ],
+    "url": "https://www.arthurmeijer.nl/",
+    "id": "arthur-meijer",
+    "date": "2024-09-03T19:47:58.776Z"
+  },
+  {
+    "id": "leanradacom",
     "title": "leanrada.com",
+    "url": "https://leanrada.com/",
+    "date": "2024-08-30T19:13:39.073Z",
     "tags": [
       "Portfolio",
       "Development",
       "Interactive Websites",
       "Web Animations",
       "Interactive Web Experiences"
-    ],
-    "url": "https://leanrada.com/",
-    "id": "leanradacom",
-    "date": "2024-08-30T19:13:39.073Z"
+    ]
   },
   {
     "id": "studio-garbett",
