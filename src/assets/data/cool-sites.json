@@ -1,6 +1,23 @@
 [
   {
+    "title": "Jun Ioneda",
+    "tags": [
+      "Interactive Art",
+      "Experimental Design",
+      "Digital Storytelling",
+      "Visual Experiments",
+      "New Media",
+      "Conceptual Art"
+    ],
+    "url": "https://junioneda.com/",
+    "id": "jun-ioneda",
+    "date": "2024-09-04T17:51:56.512Z"
+  },
+  {
+    "id": "home-or-park-hyun-gi",
     "title": "HOME | PARK HYUN GI",
+    "url": "https://www.parkhyungi.com/",
+    "date": "2024-09-04T17:51:22.597Z",
     "tags": [
       "Art",
       "Photography",
@@ -8,10 +25,7 @@
       "Contemporary Art",
       "Digital Media",
       "Korean Artist"
-    ],
-    "url": "https://www.parkhyungi.com/",
-    "id": "home-or-park-hyun-gi",
-    "date": "2024-09-04T17:51:22.597Z"
+    ]
   },
   {
     "id": "nhan",
