@@ -1,13 +1,27 @@
 [
   {
+    "title": "Departure Mono",
+    "tags": [
+      "Interactive Storytelling",
+      "Experimental Art",
+      "Point-and-Click Adventure",
+      "Animated Story",
+      "Indie Game",
+      "Visual Novel"
+    ],
+    "url": "https://departuremono.com/",
+    "id": "departure-mono",
+    "date": "2024-09-04T04:15:52.864Z"
+  },
+  {
+    "id": "arthur-meijer",
     "title": "Arthur Meijer",
+    "url": "https://www.arthurmeijer.nl/",
+    "date": "2024-09-03T19:47:58.776Z",
     "tags": [
       "Ceramics",
       "Portfolio"
-    ],
-    "url": "https://www.arthurmeijer.nl/",
-    "id": "arthur-meijer",
-    "date": "2024-09-03T19:47:58.776Z"
+    ]
   },
   {
     "id": "leanradacom",
