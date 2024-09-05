@@ -1,13 +1,24 @@
 [
   {
+    "title": "Loek Vugs",
+    "tags": [
+      "Portfolio",
+      "Graphic Design",
+      "Animation"
+    ],
+    "url": "https://loekvugs.nl/",
+    "id": "loek-vugs",
+    "date": "2024-09-05T15:50:13.683Z"
+  },
+  {
+    "id": "minne-unisan10",
     "title": "minne - unisan10",
+    "url": "https://minne.com/@unisan10",
+    "date": "2024-09-05T15:38:05.271Z",
     "tags": [
       "Ceramics",
       "shop"
-    ],
-    "url": "https://minne.com/@unisan10",
-    "id": "minne-unisan10",
-    "date": "2024-09-05T15:38:05.271Z"
+    ]
   },
   {
     "id": "kaitlyn-chai",
