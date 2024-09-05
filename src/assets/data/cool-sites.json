@@ -1,15 +1,28 @@
 [
   {
+    "title": "Angello Torres",
+    "tags": [
+      "Portfolio",
+      "Webdesign",
+      "Interaction",
+      "Graphic Design",
+      "Individual Inspiration"
+    ],
+    "url": "https://angellotorres.com/",
+    "id": "angello-torres",
+    "date": "2024-09-05T15:33:26.405Z"
+  },
+  {
+    "id": "wildflowersgarden",
     "title": "wildflowers.garden",
+    "url": "https://wildflowers.garden/garden1.php",
+    "date": "2024-09-05T15:29:55.849Z",
     "tags": [
       "Generative Art",
       "Illustration",
       "Fun",
       "Colorful"
-    ],
-    "url": "https://wildflowers.garden/garden1.php",
-    "id": "wildflowersgarden",
-    "date": "2024-09-05T15:29:55.849Z"
+    ]
   },
   {
     "id": "vascun-portfolio",
