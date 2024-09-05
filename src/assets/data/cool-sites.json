@@ -1,15 +1,28 @@
 [
   {
+    "title": "Kaitlyn Chai",
+    "tags": [
+      "Portfolio",
+      "Graphic Design",
+      "Illustration",
+      "Animation",
+      "Branding"
+    ],
+    "url": "https://kaitlynchai.work",
+    "id": "kaitlyn-chai",
+    "date": "2024-09-05T15:35:47.842Z"
+  },
+  {
+    "id": "hey",
     "title": "Hey",
+    "url": "https://heystudio.es/",
+    "date": "2024-09-05T15:34:49.489Z",
     "tags": [
       "Studio",
       "Agency",
       "Graphic Design",
       "Portfolio"
-    ],
-    "url": "https://heystudio.es/",
-    "id": "hey",
-    "date": "2024-09-05T15:34:49.489Z"
+    ]
   },
   {
     "id": "angello-torres",
