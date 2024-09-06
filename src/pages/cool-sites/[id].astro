@@ -25,8 +25,9 @@ export type Props = {
 	prevCoolSites: CoolSiteType
 }
 
+const ref = Astro.url.searchParams.get('ref') ?? Astro.site?.href?.toString() ?? ''
 const linkUrl = new URL(coolSite.url)
-linkUrl.searchParams.set('ref', Astro.site?.href?.toString() ?? '')
+linkUrl.searchParams.set('ref', ref)
 const linkWithRef = linkUrl.toString()
 
 const initialPage = Math.floor(idx / 48) + 1
@@ -36,7 +37,7 @@ const initialPage = Math.floor(idx / 48) + 1
   <a
     href={`/cool-sites?page=${initialPage}`}
     title="Back to coolSite list"
-    data-page={`/cool-sites?page=${initialPage}`}
+    data-page={ref}
     tabindex="-1"
     class={classNames(
       "overlay fixed px-10 inset-0 z-20 bg-opacity-10",

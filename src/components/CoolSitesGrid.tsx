@@ -11,7 +11,7 @@ import Tag from './Tag'
 
 function CoolSitesGrid({
 	disableGrid = false,
-	referrerUrl,
+	referrerUrl: initialReferrerUrl,
 	selectedId,
 	allCoolSites,
 	initialPage = 1,
@@ -30,14 +30,17 @@ function CoolSitesGrid({
 	const [tagOperator, setTagOperator] = createSignal<'AND' | 'OR'>('OR')
 	const [page, setPage] = createSignal<number>(initialPage)
 	const [searchResults, setSearchResults] = createSignal<CoolSiteType[] | null>(null)
+	const [referrerUrl, setReferrerUrl] = createSignal(initialReferrerUrl)
 	const itemsPerPage = 48
 
-	const filteredCoolSites = createMemo(() => {
+	const sitesByTags = createMemo(() => {
 		if (tags().length === 0) return allCoolSites
 		return filterByTags(allCoolSites, tags(), tagOperator())
 	})
 
-	const dataToRender = createMemo(() => searchResults() || filteredCoolSites())
+	const dataToRender = createMemo(() =>
+		searchResults() ? filterByTags(searchResults()!, tags(), tagOperator()) : sitesByTags()
+	)
 
 	const totalItems = createMemo(() => dataToRender().length)
 
@@ -78,11 +81,12 @@ function CoolSitesGrid({
 	})
 
 	createEffect(() => {
-		const searchParams = new URLSearchParams(window.location.search)
-		searchParams.set('tags', tags().join(','))
-		searchParams.set('page', `${Math.max(1, page())}`)
+		const url = new URL(window.location.toString())
+		url.searchParams.set('tags', tags().join(','))
+		url.searchParams.set('page', `${Math.max(1, page())}`)
 		// Shallow update of the url without reloading
-		window.history.pushState(null, '', `/cool-sites?${searchParams.toString()}`)
+		window.history.pushState(null, '', `/cool-sites?${url.searchParams.toString()}`)
+		setReferrerUrl(url.toString())
 	})
 
 	createEffect(() => {
@@ -97,7 +101,7 @@ function CoolSitesGrid({
 				defaultOpen={initialLeftSidebarOpen}
 			>
 				<CoolSitespirationsSearch
-					searchItems={filteredCoolSites()}
+					searchItems={allCoolSites}
 					disabled={disableGrid}
 					onSearch={(results) => {
 						setPage(1)
@@ -181,7 +185,7 @@ function CoolSitesGrid({
 										link={link}
 										class={classNames(disableGrid && link.id === selectedId && `opacity-0`)}
 										disabled={disableGrid}
-										referrerUrl={referrerUrl}
+										referrerUrl={referrerUrl()}
 									/>
 								)
 							})}
