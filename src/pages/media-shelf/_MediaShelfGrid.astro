@@ -28,7 +28,7 @@ const { page, disableGrid = false, fullMediaShelf = [] } = Astro.props
       <MediaShelfSearch
         client:visible
         searchItems={fullMediaShelf}
-        disabled={disableGrid}
+        disabled={() => disableGrid}
       />
     </StuffSidebar>
     <div class="flex flex-col w-full">

@@ -1,13 +1,14 @@
+import type { Accessor } from 'solid-js'
 import type { CoolSiteType } from '../schemas/coolSites'
 import Search from './Search'
 
 function CoolSitespirationsSearch({
 	searchItems,
-	disabled = false,
+	disabled = () => false,
 	onSearch,
 }: {
 	searchItems: CoolSiteType[]
-	disabled?: boolean
+	disabled?: Accessor<boolean>
 	onSearch?: (results: CoolSiteType[] | null) => void
 }) {
 	return (

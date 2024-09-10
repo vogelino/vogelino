@@ -1,19 +1,27 @@
 import Fuse, { type FuseResult, type FuseResultMatch } from 'fuse.js'
-import { For, type JSX, createMemo, createSignal, onCleanup, onMount } from 'solid-js'
+import {
+	type Accessor,
+	For,
+	type JSX,
+	createMemo,
+	createSignal,
+	onCleanup,
+	onMount,
+} from 'solid-js'
 import classNames, { cn } from '../utils/classNames'
 
 function Search<ItemType extends Record<string, unknown>>({
 	label = 'Search',
 	searchItems,
 	searchOptions,
-	disabled = false,
+	disabled = () => false,
 	renderResult,
 	onSearch = () => {},
 }: {
 	label?: string
 	searchItems: ItemType[]
 	searchOptions: ConstructorParameters<typeof Fuse<ItemType>>[1]
-	disabled?: boolean
+	disabled?: Accessor<boolean>
 	renderResult?: (item: ItemType, matches: readonly FuseResultMatch[] | undefined) => JSX.Element
 	onSearch?: (results: FuseResult<ItemType>[] | null) => void
 }) {
@@ -35,7 +43,7 @@ function Search<ItemType extends Record<string, unknown>>({
 		setIsOpened(!!value)
 	}
 
-	const posts = createMemo(() => {
+	const results = createMemo(() => {
 		const results = fuse().search(query()).slice(0, 6) || []
 		onSearch(query() ? results : null)
 		return results
@@ -48,6 +56,7 @@ function Search<ItemType extends Record<string, unknown>>({
 			setIsOpened(false)
 		}
 		if ((event.metaKey || event.ctrlKey) && event.key === 'k') {
+			if (disabled()) return
 			event.preventDefault()
 			focusSearch()
 		}
@@ -62,17 +71,18 @@ function Search<ItemType extends Record<string, unknown>>({
 	}
 
 	function focusSearch() {
+		if (disabled()) return
 		inputRef?.focus()
 	}
 
 	onMount(() => {
-		if (typeof document === 'undefined' || disabled) return
+		if (typeof document === 'undefined') return
 		document.addEventListener('keydown', onKeyDown)
 		document.addEventListener('keyup', onKeyUp)
 		focusSearch()
 	})
 	onCleanup(() => {
-		if (typeof document === 'undefined' || disabled) return
+		if (typeof document === 'undefined') return
 		document.removeEventListener('keydown', onKeyDown)
 		document.removeEventListener('keyup', onKeyUp)
 	})
@@ -85,10 +95,10 @@ function Search<ItemType extends Record<string, unknown>>({
 					ref={inputRef}
 					type="text"
 					value={query()}
-					autofocus={!disabled}
-					tabIndex={disabled ? '-1' : '0'}
-					onInput={disabled ? undefined : handleOnSearch}
-					onFocus={!disabled && posts().length > 0 ? () => setIsOpened(true) : undefined}
+					autofocus={!disabled()}
+					tabIndex={disabled() ? '-1' : '0'}
+					onInput={disabled() ? undefined : handleOnSearch}
+					onFocus={!disabled() && results().length > 0 ? () => setIsOpened(true) : undefined}
 					placeholder="Type to search..."
 					class={cn(
 						'rounded-md border border-grayMed bg-bg pt-3 px-3 pb-2',
@@ -106,7 +116,7 @@ function Search<ItemType extends Record<string, unknown>>({
 					<kbd class="text-2xl leading-4">⌘</kbd>
 					<kbd class="text-base font-bold">K</kbd>
 				</span>
-				{!disabled && query() && isOpened() && !!renderResult && (
+				{!disabled() && query() && isOpened() && !!renderResult && (
 					<div
 						class={classNames(
 							'absolute top-full left-0 border-grayMed',
@@ -115,14 +125,14 @@ function Search<ItemType extends Record<string, unknown>>({
 							`dark:shadow-black/80`
 						)}
 					>
-						{posts().length === 0 && (
+						{results().length === 0 && (
 							<p class="text-grayDark text-lg py-2">
 								No results for <strong class="font-bold">{query()}</strong>
 							</p>
 						)}
-						{posts().length > 0 && (
+						{results().length > 0 && (
 							<ul class={classNames(`grid @[280px]:grid-cols-2 @md:grid-cols-3 @lg:grid-cols-4`)}>
-								<For each={posts()}>{({ item, matches }) => renderResult(item, matches)}</For>
+								<For each={results()}>{({ item, matches }) => renderResult(item, matches)}</For>
 							</ul>
 						)}
 					</div>

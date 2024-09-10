@@ -26,6 +26,7 @@ function CoolSitesGrid({
 	initialLeftSidebarOpen?: boolean
 	initialTags?: string[]
 }) {
+	const [leftSidebarOpened, setLeftSidebarOpened] = createSignal(initialLeftSidebarOpen)
 	const [tags, setTags] = createSignal<string[]>(initialTags)
 	const [tagOperator, setTagOperator] = createSignal<'AND' | 'OR'>('OR')
 	const [page, setPage] = createSignal<number>(initialPage)
@@ -93,16 +94,19 @@ function CoolSitesGrid({
 		if (page() > lastPage()) setPage(Math.max(1, lastPage()))
 	})
 
+	const isSidebarDisabled = createMemo(() => disableGrid || !leftSidebarOpened())
+
 	return (
 		<>
 			<StuffSidebar
 				style="grid-area: left-sidebar;"
 				position="left"
-				defaultOpen={initialLeftSidebarOpen}
+				isOpened={leftSidebarOpened}
+				setIsOpened={setLeftSidebarOpened}
 			>
 				<CoolSitespirationsSearch
 					searchItems={allCoolSites}
-					disabled={disableGrid}
+					disabled={isSidebarDisabled}
 					onSearch={(results) => {
 						setPage(1)
 						setSearchResults(results)
@@ -113,6 +117,7 @@ function CoolSitesGrid({
 						<div class="flex gap-2 items-center pt-1.5">
 							<button
 								type="button"
+								class="px-2 pt-1 pb-0.5 -ml-2 focusable rounded-full"
 								onClick={() => {
 									const allAlreadySelected = tags().length === allTags().length
 									setTags(allAlreadySelected ? [] : allTags().map(({ slug }) => slug))
@@ -127,6 +132,7 @@ function CoolSitesGrid({
 								onClick={() => setTagOperator('OR')}
 								class={classNames(
 									'px-3 pt-1.5 pb-0.5 rounded-full bg-grayUltraLight transition',
+									'focusable',
 									tagOperator() === 'OR' && 'font-bold bg-alt text-fg'
 								)}
 							>
@@ -137,6 +143,7 @@ function CoolSitesGrid({
 								onClick={() => setTagOperator('AND')}
 								class={classNames(
 									'px-2 pt-1 pb-0.5 rounded-full bg-grayUltraLight transition',
+									'focusable',
 									tagOperator() === 'AND' && 'font-bold bg-alt text-fg'
 								)}
 							>
