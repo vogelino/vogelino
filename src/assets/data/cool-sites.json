@@ -1,6 +1,21 @@
 [
   {
+    "title": "Recurring creative challenges",
+    "tags": [
+      "Fun",
+      "Events",
+      "Development",
+      "Design"
+    ],
+    "url": "https://challenges.stefanbohacek.com/",
+    "id": "recurring-creative-challenges",
+    "date": "2024-09-20T12:54:00.916Z"
+  },
+  {
+    "id": "playlist-studio",
     "title": "Playlist Studio",
+    "url": "https://playlist.studio/projects/podplay",
+    "date": "2024-09-20T12:36:35.323Z",
     "tags": [
       "Studio",
       "Webdesign",
@@ -8,10 +23,7 @@
       "Corporate Design",
       "Graphic Design",
       "Portfolio"
-    ],
-    "url": "https://playlist.studio/projects/podplay",
-    "id": "playlist-studio",
-    "date": "2024-09-20T12:36:35.323Z"
+    ]
   },
   {
     "id": "free-public-apis",
