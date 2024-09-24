@@ -1,15 +1,30 @@
 [
   {
+    "title": "The Art of Andrew MacLean",
+    "tags": [
+      "Illustration",
+      "Comics",
+      "Fantasy Art",
+      "Character Design",
+      "Graphic Novels",
+      "Original Art",
+      "Sci-Fi Art"
+    ],
+    "url": "https://artofandrewmaclean.com/?fbclid=PAZXh0bgNhZW0CMTEAAaZen6mx2ris5QtVN4qV__-cuu-E9QF37vor5gVNXnNdM0FCe4kUxkr361E_aem_UE_jJwHDSuCqRBeVVDfWvg",
+    "id": "the-art-of-andrew-maclean",
+    "date": "2024-09-24T11:41:36.452Z"
+  },
+  {
+    "id": "recurring-creative-challenges",
     "title": "Recurring creative challenges",
+    "url": "https://challenges.stefanbohacek.com/",
+    "date": "2024-09-20T12:54:00.916Z",
     "tags": [
       "Fun",
       "Events",
       "Development",
       "Design"
-    ],
-    "url": "https://challenges.stefanbohacek.com/",
-    "id": "recurring-creative-challenges",
-    "date": "2024-09-20T12:54:00.916Z"
+    ]
   },
   {
     "id": "playlist-studio",
