@@ -1,14 +1,28 @@
 [
   {
+    "title": "Easing Graphs",
+    "tags": [
+      "Easing Functions",
+      "Data Visualization",
+      "JavaScript",
+      "Animation",
+      "Curves",
+      "Web Development"
+    ],
+    "url": "https://www.easing.dev/",
+    "id": "easing-graphs",
+    "date": "2024-10-04T12:02:36.242Z"
+  },
+  {
+    "id": "cobalt",
     "title": "cobalt",
+    "url": "https://cobalt.tools/",
+    "date": "2024-10-01T18:24:45.834Z",
     "tags": [
       "Resource",
       "Tool",
       "Utility Software"
-    ],
-    "url": "https://cobalt.tools/",
-    "id": "cobalt",
-    "date": "2024-10-01T18:24:45.834Z"
+    ]
   },
   {
     "id": "the-art-of-andrew-maclean",
