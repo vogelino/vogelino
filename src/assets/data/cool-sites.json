@@ -1,6 +1,24 @@
 [
   {
+    "title": "FlyonUI - Free Tailwind CSS Components Library",
+    "tags": [
+      "UI Components",
+      "Tailwind CSS",
+      "Web Design",
+      "Front-End Development",
+      "Tailwind Kit",
+      "UI Kit",
+      "Responsive Design"
+    ],
+    "url": "https://flyonui.com/",
+    "id": "flyonui-free-tailwind-css-components-library",
+    "date": "2024-10-19T06:12:32.533Z"
+  },
+  {
+    "id": "placeholderjs-ridiculously-simple-and-lightweight-placeholders",
     "title": "PlaceholderJS - Ridiculously simple and lightweight placeholders",
+    "url": "https://placeholderjs.com/",
+    "date": "2024-10-19T06:08:41.187Z",
     "tags": [
       "Placeholder Text",
       "JavaScript Library",
@@ -8,10 +26,7 @@
       "UI Design",
       "Front-End Tools",
       "Simple API"
-    ],
-    "url": "https://placeholderjs.com/",
-    "id": "placeholderjs-ridiculously-simple-and-lightweight-placeholders",
-    "date": "2024-10-19T06:08:41.187Z"
+    ]
   },
   {
     "id": "animation-studio-london-or-the-line-studio",
