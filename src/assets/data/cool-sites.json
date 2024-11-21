@@ -1,7 +1,23 @@
 [
   {
+    "title": "Taskwarrior - Command-line task manager with powerful filtering and organization",
+    "tags": [
+      "Task Management",
+      "Productivity Tools",
+      "Taskwarrior",
+      "Open Source",
+      "Project Organization",
+      "Task Tracking"
+    ],
+    "url": "https://kis.tools/taskwarrior",
+    "id": "taskwarrior-command-line-task-manager-with-powerful-filtering-and-organization",
+    "date": "2024-11-21T10:46:29.105Z"
+  },
+  {
+    "id": "twenty",
     "title": "Twenty - Open Source CRM",
     "url": "https://twenty.com/",
+    "date": "2024-11-20T08:40:00.000Z",
     "tags": [
       "CRM Software",
       "Customer Relationship Management",
@@ -11,20 +27,18 @@
       "Customer Engagement",
       "Cloud-Based CRM",
       "Team Collaboration"
-    ],
-    "id": "twenty",
-    "date": "2024-11-20T08:40:00.000Z"
+    ]
   },
   {
+    "id": "carmen-huidobro",
     "title": "Carmen Huidobro",
+    "url": "https://carmenh.dev/",
+    "date": "2024-11-17T13:46:56.076Z",
     "tags": [
       "Portfolio",
       "Development",
       "Front-End Development"
-    ],
-    "url": "https://carmenh.dev/",
-    "id": "carmen-huidobro",
-    "date": "2024-11-17T13:46:56.076Z"
+    ]
   },
   {
     "id": "home-or-pablo-dalas",
