@@ -1,6 +1,24 @@
 [
   {
+    "title": "Jazz - Build local-first apps",
+    "tags": [
+      "Local-First Software",
+      "Collaborative Apps",
+      "Offline-First Development",
+      "Data Sync",
+      "Privacy-Focused Tools",
+      "Web Development",
+      "Real-Time Collaboration"
+    ],
+    "url": "https://jazz.tools/",
+    "id": "jazz-build-local-first-apps",
+    "date": "2024-11-24T20:07:20.732Z"
+  },
+  {
+    "id": "new-york-botanical-garden-brand-identity-or-brand-archive",
     "title": "New York Botanical Garden Brand Identity | Brand Archive",
+    "url": "https://brandarchive.xyz/identity/new-york-botanical-garden",
+    "date": "2024-11-23T00:02:29.126Z",
     "tags": [
       "Brand Identity",
       "Botanical Garden",
@@ -10,10 +28,7 @@
       "Archive",
       "Branding",
       "New York"
-    ],
-    "url": "https://brandarchive.xyz/identity/new-york-botanical-garden",
-    "id": "new-york-botanical-garden-brand-identity-or-brand-archive",
-    "date": "2024-11-23T00:02:29.126Z"
+    ]
   },
   {
     "id": "aw-creative-developer-freelance-france",
