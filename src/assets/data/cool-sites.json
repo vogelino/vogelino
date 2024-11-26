@@ -1,6 +1,23 @@
 [
   {
+    "title": "Lab01 - Sebastiano Guerriero's portfolio",
+    "tags": [
+      "Portfolio",
+      "Web Development",
+      "Creative Studio",
+      "Digital Design",
+      "Experimental Projects",
+      "Interactive Design"
+    ],
+    "url": "https://lab01.dev/",
+    "id": "lab01-sebastiano-guerrieros-portfolio",
+    "date": "2024-11-26T12:11:59.035Z"
+  },
+  {
+    "id": "jazz-build-local-first-apps",
     "title": "Jazz - Build local-first apps",
+    "url": "https://jazz.tools/",
+    "date": "2024-11-24T20:07:20.732Z",
     "tags": [
       "Local-First Software",
       "Collaborative Apps",
@@ -9,10 +26,7 @@
       "Privacy-Focused Tools",
       "Web Development",
       "Real-Time Collaboration"
-    ],
-    "url": "https://jazz.tools/",
-    "id": "jazz-build-local-first-apps",
-    "date": "2024-11-24T20:07:20.732Z"
+    ]
   },
   {
     "id": "new-york-botanical-garden-brand-identity-or-brand-archive",
