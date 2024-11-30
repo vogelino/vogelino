@@ -1,6 +1,21 @@
 [
   {
+    "title": "Debugging CSS",
+    "tags": [
+      "CSS",
+      "Course",
+      "Web Development",
+      "Programming"
+    ],
+    "url": "https://debuggingcss.com/",
+    "id": "debugging-css",
+    "date": "2024-11-30T13:23:21.271Z"
+  },
+  {
+    "id": "home-or-bomk-shop",
     "title": "Home | Bom.k shop",
+    "url": "https://bomk.bigcartel.com/?fbclid=PAZXh0bgNhZW0CMTEAAaYijKsGsM4qIIW0qqhivCxfGUJ_bpSg-YnptNGDLV5sFfF5Ne3PEbY5g9g_aem_Ov8rD49cCmTwLEl6UhJbzg",
+    "date": "2024-11-29T11:59:48.107Z",
     "tags": [
       "Streetwear",
       "Fashion",
@@ -10,10 +25,7 @@
       "Limited Edition",
       "Independent Brand",
       "Clothing"
-    ],
-    "url": "https://bomk.bigcartel.com/?fbclid=PAZXh0bgNhZW0CMTEAAaYijKsGsM4qIIW0qqhivCxfGUJ_bpSg-YnptNGDLV5sFfF5Ne3PEbY5g9g_aem_Ov8rD49cCmTwLEl6UhJbzg",
-    "id": "home-or-bomk-shop",
-    "date": "2024-11-29T11:59:48.107Z"
+    ]
   },
   {
     "id": "lab01-sebastiano-guerrieros-portfolio",
