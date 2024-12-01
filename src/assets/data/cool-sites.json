@@ -1,6 +1,19 @@
 [
   {
+    "title": "Webbed Briefs",
+    "tags": [
+      "Fun",
+      "Web Development"
+    ],
+    "url": "https://briefs.video/",
+    "id": "webbed-briefs",
+    "date": "2024-12-01T23:49:01.684Z"
+  },
+  {
+    "id": "moving-icons",
     "title": "moving icons",
+    "url": "https://www.movingicons.dev/",
+    "date": "2024-12-01T21:31:27.828Z",
     "tags": [
       "Motion Design",
       "Animation",
@@ -9,10 +22,7 @@
       "Web Design",
       "Digital Art",
       "UX/UI"
-    ],
-    "url": "https://www.movingicons.dev/",
-    "id": "moving-icons",
-    "date": "2024-12-01T21:31:27.828Z"
+    ]
   },
   {
     "id": "tailwindcss-spring",
