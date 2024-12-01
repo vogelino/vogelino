@@ -1,15 +1,24 @@
 [
   {
+    "title": "tailwindcss-spring",
+    "tags": [
+      "Tailwind CSS,Spring Animations,Web Design,UI Animation,Front-End Development,Interactive Tools,Web Development"
+    ],
+    "url": "https://tailwindcss-spring.kvin.me/",
+    "id": "tailwindcss-spring",
+    "date": "2024-12-01T12:20:53.376Z"
+  },
+  {
+    "id": "debugging-css",
     "title": "Debugging CSS",
+    "url": "https://debuggingcss.com/",
+    "date": "2024-11-30T13:23:21.271Z",
     "tags": [
       "CSS",
       "Course",
       "Web Development",
       "Programming"
-    ],
-    "url": "https://debuggingcss.com/",
-    "id": "debugging-css",
-    "date": "2024-11-30T13:23:21.271Z"
+    ]
   },
   {
     "id": "home-or-bomk-shop",
