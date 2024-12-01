@@ -1,12 +1,27 @@
 [
   {
+    "title": "moving icons",
+    "tags": [
+      "Motion Design",
+      "Animation",
+      "Interactive Icons",
+      "SVG Animation",
+      "Web Design",
+      "Digital Art",
+      "UX/UI"
+    ],
+    "url": "https://www.movingicons.dev/",
+    "id": "moving-icons",
+    "date": "2024-12-01T21:31:27.828Z"
+  },
+  {
+    "id": "tailwindcss-spring",
     "title": "tailwindcss-spring",
+    "url": "https://tailwindcss-spring.kvin.me/",
+    "date": "2024-12-01T12:20:53.376Z",
     "tags": [
       "Tailwind CSS,Spring Animations,Web Design,UI Animation,Front-End Development,Interactive Tools,Web Development"
-    ],
-    "url": "https://tailwindcss-spring.kvin.me/",
-    "id": "tailwindcss-spring",
-    "date": "2024-12-01T12:20:53.376Z"
+    ]
   },
   {
     "id": "debugging-css",
