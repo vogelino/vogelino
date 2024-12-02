@@ -1,13 +1,28 @@
 [
   {
+    "title": "Markup from hell - HTMHell",
+    "tags": [
+      "HTML",
+      "Web Development",
+      "Coding Humor",
+      "Bad Practices",
+      "Markup Examples",
+      "Web Design",
+      "Developer Tips"
+    ],
+    "url": "https://htmhell.dev/",
+    "id": "markup-from-hell-htmhell",
+    "date": "2024-12-02T10:34:28.721Z"
+  },
+  {
+    "id": "webbed-briefs",
     "title": "Webbed Briefs",
+    "url": "https://briefs.video/",
+    "date": "2024-12-01T23:49:01.684Z",
     "tags": [
       "Fun",
       "Web Development"
-    ],
-    "url": "https://briefs.video/",
-    "id": "webbed-briefs",
-    "date": "2024-12-01T23:49:01.684Z"
+    ]
   },
   {
     "id": "moving-icons",
