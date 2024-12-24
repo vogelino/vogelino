@@ -1,15 +1,27 @@
 [
   {
-    "title": "Rombo | Animation library for Tailwind CSS Library",
+    "title": "Glaze",
     "tags": [
       "CSS",
       "Animation",
       "Web Animations",
       "Web Development"
     ],
-    "url": "https://rombo.co/tailwind/",
+    "url": "https://glaze.dev/",
+    "id": "glaze",
+    "date": "2024-12-24T18:10:27.978Z"
+  },
+  {
     "id": "rombo-or-animation-library-for-tailwind-css-library",
-    "date": "2024-12-24T18:09:54.939Z"
+    "title": "Rombo | Animation library for Tailwind CSS Library",
+    "url": "https://rombo.co/tailwind/",
+    "date": "2024-12-24T18:09:54.939Z",
+    "tags": [
+      "CSS",
+      "Animation",
+      "Web Animations",
+      "Web Development"
+    ]
   },
   {
     "id": "abran-or-illustration-and-creative-ideas",
