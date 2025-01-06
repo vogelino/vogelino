@@ -1,14 +1,30 @@
 [
   {
+    "title": "Laura Trummer",
+    "tags": [
+      "Graphic Design",
+      "Visual Communication",
+      "Art Direction",
+      "Swiss Design",
+      "Creative Projects",
+      "Visual Merchandising",
+      "Design Education",
+      "Collaborative Works "
+    ],
+    "url": "https://www.lauratrummer.ch/?fbclid=PAZXh0bgNhZW0CMTEAAaa9D3yp31qBJ6MIeo6WruxLyxB6w2yNxF_YwXIe-x4gA0iEcr8tEE9pIyk_aem_7sNZJtC65lpj5iqbWznG-g",
+    "id": "laura-trummer",
+    "date": "2025-01-06T14:19:12.160Z"
+  },
+  {
+    "id": "shrumpcam",
     "title": "shrump.cam",
+    "url": "https://www.shrump.cam/?utm_source=substack&utm_medium=email",
+    "date": "2025-01-04T19:04:44.910Z",
     "tags": [
       "Fun",
       "Interactive Web Experiences",
       "Experimental Websites"
-    ],
-    "url": "https://www.shrump.cam/?utm_source=substack&utm_medium=email",
-    "id": "shrumpcam",
-    "date": "2025-01-04T19:04:44.910Z"
+    ]
   },
   {
     "id": "glaze",
