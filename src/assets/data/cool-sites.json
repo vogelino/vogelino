@@ -1,6 +1,21 @@
 [
   {
+    "title": "Ingo Hinterding",
+    "tags": [
+      "Blog",
+      "Developer Tips",
+      "Development",
+      "Technology"
+    ],
+    "url": "https://www.hinterding.com/",
+    "id": "ingo-hinterding",
+    "date": "2025-01-08T17:06:53.272Z"
+  },
+  {
+    "id": "laura-trummer",
     "title": "Laura Trummer",
+    "url": "https://www.lauratrummer.ch/?fbclid=PAZXh0bgNhZW0CMTEAAaa9D3yp31qBJ6MIeo6WruxLyxB6w2yNxF_YwXIe-x4gA0iEcr8tEE9pIyk_aem_7sNZJtC65lpj5iqbWznG-g",
+    "date": "2025-01-06T14:19:12.160Z",
     "tags": [
       "Graphic Design",
       "Visual Communication",
@@ -10,10 +25,7 @@
       "Visual Merchandising",
       "Design Education",
       "Collaborative Works "
-    ],
-    "url": "https://www.lauratrummer.ch/?fbclid=PAZXh0bgNhZW0CMTEAAaa9D3yp31qBJ6MIeo6WruxLyxB6w2yNxF_YwXIe-x4gA0iEcr8tEE9pIyk_aem_7sNZJtC65lpj5iqbWznG-g",
-    "id": "laura-trummer",
-    "date": "2025-01-06T14:19:12.160Z"
+    ]
   },
   {
     "id": "shrumpcam",
