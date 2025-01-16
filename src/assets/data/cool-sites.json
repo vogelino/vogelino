@@ -1,15 +1,29 @@
 [
   {
+    "title": "Easing Wizard - CSS Easing Editor and Generator",
+    "tags": [
+      "Animation",
+      "Easing Functions",
+      "Web Development",
+      "UI Design",
+      "CSS Transitions",
+      "JavaScript Tools"
+    ],
+    "url": "https://easingwizard.com/",
+    "id": "easing-wizard-css-easing-editor-and-generator",
+    "date": "2025-01-16T18:53:59.567Z"
+  },
+  {
+    "id": "ingo-hinterding",
     "title": "Ingo Hinterding",
+    "url": "https://www.hinterding.com/",
+    "date": "2025-01-08T17:06:53.272Z",
     "tags": [
       "Blog",
       "Developer Tips",
       "Development",
       "Technology"
-    ],
-    "url": "https://www.hinterding.com/",
-    "id": "ingo-hinterding",
-    "date": "2025-01-08T17:06:53.272Z"
+    ]
   },
   {
     "id": "laura-trummer",
