@@ -1,6 +1,21 @@
 [
   {
+    "title": "Nikita Rokotyan",
+    "tags": [
+      "Dataviz",
+      "Data Visualization",
+      "Generative Art",
+      "Portfolio"
+    ],
+    "url": "https://rokotyan.com/dataviz/",
+    "id": "nikita-rokotyan",
+    "date": "2025-01-20T18:48:35.216Z"
+  },
+  {
+    "id": "easing-wizard-css-easing-editor-and-generator",
     "title": "Easing Wizard - CSS Easing Editor and Generator",
+    "url": "https://easingwizard.com/",
+    "date": "2025-01-16T18:53:59.567Z",
     "tags": [
       "Animation",
       "Easing Functions",
@@ -8,10 +23,7 @@
       "UI Design",
       "CSS Transitions",
       "JavaScript Tools"
-    ],
-    "url": "https://easingwizard.com/",
-    "id": "easing-wizard-css-easing-editor-and-generator",
-    "date": "2025-01-16T18:53:59.567Z"
+    ]
   },
   {
     "id": "ingo-hinterding",
