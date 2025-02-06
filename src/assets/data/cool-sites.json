@@ -1,16 +1,27 @@
 [
   {
+    "title": "Easing Wizard",
+    "tags": [
+      "Tool",
+      "Web Development",
+      "Web Animations"
+    ],
+    "url": "https://easingwizard.com",
+    "id": "easing-wizard",
+    "date": "2025-02-06T00:16:05.316Z"
+  },
+  {
+    "id": "samplekit",
     "title": "SampleKit",
+    "url": "https://www.samplekit.dev/",
+    "date": "2025-01-21T11:35:55.877Z",
     "tags": [
       "Libraries",
       "Javascript",
       "Tutorials",
       "Resource",
       "Web Development"
-    ],
-    "url": "https://www.samplekit.dev/",
-    "id": "samplekit",
-    "date": "2025-01-21T11:35:55.877Z"
+    ]
   },
   {
     "id": "nikita-rokotyan",
