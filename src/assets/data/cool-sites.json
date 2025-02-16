@@ -1,6 +1,20 @@
 [
   {
+    "title": "Antarctic Resolution",
+    "tags": [
+      "Book",
+      "UX Research",
+      "Dataviz"
+    ],
+    "url": "https://antarctic-resolution.org/openaccess/",
+    "id": "antarctic-resolution",
+    "date": "2025-02-16T13:39:57.927Z"
+  },
+  {
+    "id": "flexbox-labs",
     "title": "Flexbox Labs",
+    "url": "https://flexboxlabs.netlify.app/",
+    "date": "2025-02-13T10:39:42.098Z",
     "tags": [
       "CSS",
       "Flexbox",
@@ -8,10 +22,7 @@
       "Frontend Development",
       "Interactive Learning",
       "Web Tools"
-    ],
-    "url": "https://flexboxlabs.netlify.app/",
-    "id": "flexbox-labs",
-    "date": "2025-02-13T10:39:42.098Z"
+    ]
   },
   {
     "id": "easing-wizard",
