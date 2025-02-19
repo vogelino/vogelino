@@ -1,14 +1,27 @@
 [
   {
+    "title": "SQL Noir - A Detective SQL Game",
+    "tags": [
+      "SQL",
+      "Detective Game",
+      "Mystery Solving",
+      "Interactive Learning",
+      "Programming Education "
+    ],
+    "url": "https://www.sqlnoir.com/",
+    "id": "sql-noir-a-detective-sql-game",
+    "date": "2025-02-19T19:45:36.929Z"
+  },
+  {
+    "id": "antarctic-resolution",
     "title": "Antarctic Resolution",
+    "url": "https://antarctic-resolution.org/openaccess/",
+    "date": "2025-02-16T13:39:57.927Z",
     "tags": [
       "Book",
       "UX Research",
       "Dataviz"
-    ],
-    "url": "https://antarctic-resolution.org/openaccess/",
-    "id": "antarctic-resolution",
-    "date": "2025-02-16T13:39:57.927Z"
+    ]
   },
   {
     "id": "flexbox-labs",
