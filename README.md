@@ -32,7 +32,7 @@
 ---
 
 ### ![🕔](./readme/now.svg) Current Endeavors:
-- Moved back to Switzerland after more than a year as a freelance web developer and designer. <br/>**Currently open to job opportunities in Switzerland!** [Contact me now!](mailto:contact@vogelino.com)
+- Moved back to Switzerland after more than a year as a freelance web developer and designer in Santiago de Chile. <br/>**Currently open to job opportunities in Switzerland!** [Contact me now!](mailto:contact@vogelino.com)
 - Mostly coding and designing software applications and websites
 - Enjoy different creative practices like graphic design, ceramics, illustration, and animation
 
