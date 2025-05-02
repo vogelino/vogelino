@@ -32,8 +32,7 @@
 ---
 
 ### ![🕔](./readme/now.svg) Current Endeavors:
-
-- Since late 2023, living in Santiago, Chile and working as an independent digital product designer and developer
+- Moved back to Switzerland after more than a year as a freelance web developer and designer. <br/>**Currently open to job opportunities in Switzerland!** [Contact me now!](mailto:contact@vogelino.com)
 - Mostly coding and designing software applications and websites
 - Enjoy different creative practices like graphic design, ceramics, illustration, and animation
 
