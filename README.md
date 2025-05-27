@@ -2,9 +2,7 @@
 
 # Hello there! I am Lucas Vogel(ino).
 
-### ![🌐](./readme/globe.svg) To know more about me, visit my portfolio:
-
-[![Screenshot of Lucas Vogel's Portfolio Website](./readme/vogelinocom.svg)](https://vogelino.com)
+### ![🌐](./readme/globe.svg) To know more about me, visit my portfolio [lucasvogel.click](https://lucasvogel.click)
 
 ---
 
@@ -32,7 +30,7 @@
 ---
 
 ### ![🕔](./readme/now.svg) Current Endeavors:
-- Moved back to Switzerland after more than a year as a freelance web developer and designer in Santiago de Chile. <br/>**Currently open to job opportunities in Switzerland!** [Contact me now!](mailto:contact@vogelino.com)
+- Moved back to Switzerland after more than a year as a freelance web developer and designer in Santiago de Chile. <br/>**Currently open to job opportunities in Switzerland!** [Contact me now!](mailto:contact@lucasvogel.click)
 - Mostly coding and designing software applications and websites
 - Enjoy different creative practices like graphic design, ceramics, illustration, and animation
 
@@ -56,13 +54,13 @@
 
 ### ![🔖](./readme/bookmark.svg) For a list of cool sites I like and collect, follow this link: [vogelino.com/cool-sites](https://vogelino.com/cool-sites)
 
-[![Screenshot of Lucas Vogel's Cool Sites List](./readme/cool-sites.png)](https://vogelino.com/cool-sites)
+[![Screenshot of Lucas Vogel's Cool Sites List](./readme/cool-sites.png)](https://lucasvogel.click/cool-sites)
 
 ---
 
 ### ![🛜](./readme/rss.svg) Here are my RSS feeds:
 
-| [All contents](https://vogelino.com/rss.xml) | [Only the pages](https://vogelino.com/rss-pages-only.xml) | [Only the projects](https://vogelino.com/rss-projects-only.xml) | [Only the cool sites](https://vogelino.com/rss-cool-sites-only.xml) |
+| [All contents](https://lucasvogel.click/rss.xml) | [Only the pages](https://lucasvogel.click/rss-pages-only.xml) | [Only the projects](https://lucasvogel.click/rss-projects-only.xml) | [Only the cool sites](https://lucasvogel.click/rss-cool-sites-only.xml) |
 | :------------------------------------------- | :-------------------------------------------------------- | :-------------------------------------------------------------- | :------------------------------------------------------------------ |
 
 ---
@@ -74,9 +72,7 @@
 
 ---
 
-### ![🌐](./readme/globe.svg) To know more about me, visit my portfolio:
-
-[![Screenshot of Lucas Vogel's Portfolio Website](./readme/vogelinocom.svg)](https://vogelino.com)
+### ![🌐](./readme/globe.svg) To know more about me, visit my portfolio [lucasvogel.click](https://lucasvogel.click)
 
 ---
 
