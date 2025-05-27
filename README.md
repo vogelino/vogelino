@@ -1,5 +1,3 @@
-[![Vogelino's online portfolio](./readme/gh-banner.png)](https://vogelino.com)
-
 # Hello there! I am Lucas Vogel(ino).
 
 ### ![🌐](./readme/globe.svg) To know more about me, visit my portfolio [lucasvogel.click](https://lucasvogel.click)
