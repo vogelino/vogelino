@@ -50,7 +50,7 @@
 
 ---
 
-### ![🔖](./readme/bookmark.svg) For a list of cool sites I like and collect, follow this link: [vogelino.com/cool-sites](https://vogelino.com/cool-sites)
+### ![🔖](./readme/bookmark.svg) For a list of cool sites I like and collect, follow this link: [lucasvogel.click/cool-sites](https://lucasvogel.click/cool-sites)
 
 [![Screenshot of Lucas Vogel's Cool Sites List](./readme/cool-sites.png)](https://lucasvogel.click/cool-sites)
 
