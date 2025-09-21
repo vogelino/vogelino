@@ -24,6 +24,7 @@
 - Previously worked on complex stacks in SaaS companies such as Nexenio and Ubermetrics Technologies
 - In the last three years, worked at Berlin's public sector innovation laboratory ([@technologiestiftung](https://github.com/technologiestiftung)) as a creative technologist, building prototypes and projects for Berlin's citizens and government
 - Taught creative coding and data visualization at the University of Applied Science Potsdam (FH Potsdam) as a guest lecturer
+- Currently working as a Frontend-Engineer at DeepJudge ([@deepjudge-ai](https://github.com/deepjudge-ai))
 
 ---
 
